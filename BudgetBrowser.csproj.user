@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Controls\Button\Button.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\Dialog\ErrorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\Dialog\KeywordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\Label\Label.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\Layout\Layout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\Menu\ContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\Menu\MenuBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\Notification\Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\PictureBox\ImageBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\RichTextBox\RichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\Splash\SplashMessage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\TabControl\TabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\TabStrip\BaseStyledPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\TabStrip\BrowserTabStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\TabStrip\BrowserTabStripItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\TextBox\TextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ToolStrip\ToolButtonBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ToolStrip\ToolSeparator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ToolStrip\ToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ToolStrip\ToolStripBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ToolStrip\ToolStripButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ToolStrip\ToolStripComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ToolStrip\ToolStripDropDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ToolStrip\ToolStripLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ToolStrip\ToolStripTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ToolTip\ToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

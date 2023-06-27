@@ -57,7 +57,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The browser
         /// </summary>
-        private readonly MainForm _webBrowser;
+        private readonly WebBrowser _webBrowser;
 
         /// <summary>
         /// Initializes a new instance of the
@@ -66,7 +66,7 @@ namespace BudgetBrowser
         /// <param name="webBrowser">The webBrowser.</param>
         public HostHandler( Form webBrowser )
         {
-            _webBrowser = webBrowser as MainForm;
+            _webBrowser = webBrowser as WebBrowser;
         }
 
         /// <summary>

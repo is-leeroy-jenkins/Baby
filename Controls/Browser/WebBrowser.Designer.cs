@@ -1,6 +1,6 @@
 ﻿namespace BudgetBrowser
 {
-	public partial class MainForm
+	public partial class WebBrowser
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebBrowser));
 			this.menuStripTab = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.menuCloseTab = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuCloseOtherTabs = new System.Windows.Forms.ToolStripMenuItem();
@@ -321,7 +321,7 @@
 			this.BtnHome.UseVisualStyleBackColor = true;
 			this.BtnHome.Click += new System.EventHandler(this.BtnHome_Click);
 			// 
-			// MainForm
+			// WebBrowser
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.ClientSize = new System.Drawing.Size(934, 671);

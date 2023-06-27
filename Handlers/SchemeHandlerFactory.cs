@@ -63,7 +63,7 @@ namespace BudgetBrowser
         public IResourceHandler Create( IBrowser browser, IFrame frame, string schemeName,
             IRequest request )
         {
-            return new SchemeHandler( MainForm.Instance );
+            return new SchemeHandler( WebBrowser.Instance );
         }
     }
 }

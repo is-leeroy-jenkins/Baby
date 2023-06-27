@@ -55,7 +55,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The browser
         /// </summary>
-        private readonly MainForm _webBrowser;
+        private readonly WebBrowser _webBrowser;
 
         /// <summary>
         /// Initializes a new instance of the
@@ -65,7 +65,7 @@ namespace BudgetBrowser
         /// <param name="form"> The form. </param>
         public DownloadHandler( Form form )
         {
-            _webBrowser = form as MainForm;
+            _webBrowser = form as WebBrowser;
         }
 
         /// <summary> Determines whether this instance can download the specified chromium WebBrowser. </summary>

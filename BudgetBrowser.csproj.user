@@ -80,7 +80,7 @@
     <Compile Update="Controls\ToolTip\ToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="MainForm.cs">
+    <Compile Update="Controls\Browser\WebBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

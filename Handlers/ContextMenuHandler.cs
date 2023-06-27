@@ -61,7 +61,7 @@ namespace BudgetBrowser
         /// <summary>
         /// My form
         /// </summary>
-        private readonly MainForm _webBrowser;
+        private readonly WebBrowser _webBrowser;
 
         /// <summary>
         /// The show dev tools
@@ -120,7 +120,7 @@ namespace BudgetBrowser
         /// <param name="form">
         /// The form.
         /// </param>
-        public ContextMenuHandler( MainForm form )
+        public ContextMenuHandler( WebBrowser form )
         {
             _webBrowser = form;
         }

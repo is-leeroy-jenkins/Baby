@@ -97,12 +97,12 @@ namespace BudgetBrowser
         /// <summary>
         /// The definition start position
         /// </summary>
-        private int _defStartPos = 10;
+        private int _startPosition = 10;
 
         /// <summary>
         /// The format
         /// </summary>
-        private StringFormat _format;
+        private StringFormat _formatString;
 
         /// <summary>
         /// The is initializing
@@ -296,7 +296,7 @@ namespace BudgetBrowser
             _menu.VisibleChanged += OnMenuVisibleChanged;
             _closeButton = new BrowserTabStripCloseButton( ToolStripRenderer );
             Font = _font;
-            _format = new StringFormat( );
+            _formatString = new StringFormat( );
             EndInit( );
             UpdateLayout( );
         }
@@ -471,11 +471,11 @@ namespace BudgetBrowser
         /// </summary>
         private void UpdateLayout( )
         {
-            if( _format != null )
+            if( _formatString != null )
             {
-                _format.Trimming = StringTrimming.EllipsisCharacter;
-                _format.FormatFlags |= StringFormatFlags.NoWrap;
-                _format.FormatFlags &= StringFormatFlags.DirectionRightToLeft;
+                _formatString.Trimming = StringTrimming.EllipsisCharacter;
+                _formatString.FormatFlags |= StringFormatFlags.NoWrap;
+                _formatString.FormatFlags &= StringFormatFlags.DirectionRightToLeft;
             }
 
             _stripButtonRect = new Rectangle( 0, 0, ClientSize.Width - 40 - 2, 10 );
@@ -629,7 +629,7 @@ namespace BudgetBrowser
             var _client = ClientRectangle;
             _client.Width--;
             _client.Height--;
-            _defStartPos = 10;
+            _startPosition = 10;
             if( e.Graphics != null )
             {
                 e.Graphics.DrawRectangle( _pen, _client );
@@ -826,9 +826,9 @@ namespace BudgetBrowser
             }
 
             var _rectangleF2 =
-                currentItem.StripRect = new RectangleF( _defStartPos, 3f, _num, 28f );
+                currentItem.StripRect = new RectangleF( _startPosition, 3f, _num, 28f );
 
-            _defStartPos += _num;
+            _startPosition += _num;
         }
 
         /// <summary>
@@ -842,7 +842,7 @@ namespace BudgetBrowser
             Font currentFont )
         {
             var _result = g.MeasureString( currentItem.Title, currentFont, new SizeF( 200f, 28f ),
-                _format );
+                _formatString );
 
             _result.Width += 25f;
             return _result;
@@ -895,12 +895,12 @@ namespace BudgetBrowser
             if( currentItem == SelectedItem )
             {
                 g.DrawString( currentItem.Title, _font, new SolidBrush( ForeColor ),
-                    _layoutRectangle, _format );
+                    _layoutRectangle, _formatString );
             }
             else
             {
                 g.DrawString( currentItem.Title, _font, new SolidBrush( ForeColor ),
-                    _layoutRectangle, _format );
+                    _layoutRectangle, _formatString );
             }
 
             currentItem.IsDrawn = true;
@@ -970,7 +970,7 @@ namespace BudgetBrowser
                     _menu.Dispose( );
                 }
 
-                _format?.Dispose( );
+                _formatString?.Dispose( );
             }
 
             base.Dispose( disposing );

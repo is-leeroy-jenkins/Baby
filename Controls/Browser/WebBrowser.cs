@@ -44,50 +44,95 @@ namespace BudgetBrowser
     using System.Windows.Forms;
     using System.Threading;
     using System.Diagnostics;
-    using System.Configuration;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using System.Web;
     using CefSharp;
     using CefSharp.WinForms;
-    using Timer = System.Windows.Forms.Timer;
+    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Reflection;
-    using System.Windows.Forms.VisualStyles;
 
     /// <summary>
     /// The main BudgetBrowser form, supporting multiple tabs.
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
     /// If you would only like to support 64-bit machines, simply change the DLL references.
     /// </summary>
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
+    [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
     public partial class WebBrowser : Form
     {
-        private BrowserTabStripItem newStrip;
+        public static Form Instance;
 
-        private BrowserTabStripItem downloadsStrip;
+        public static Assembly Assembly;
 
-        private string currentFullURL;
+        public List<int> CancelRequests
+        {
+            get { return DownloadCancelRequests; }
+        }
 
-        private string currentCleanURL;
+        public Dictionary<int, DownloadItem> Downloads
+        {
+            get { return downloads; }
+        }
 
-        private string currentTitle;
+        public HostHandler Host;
 
-        public HostHandler host;
+        public BrowserTab CurTab
+        {
+            get
+            {
+                if( ( TabPages.SelectedItem != null )
+                   && ( TabPages.SelectedItem.Tag != null ) )
+                {
+                    return (BrowserTab)TabPages.SelectedItem.Tag;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
-        private DownloadHandler dHandler;
+        private int CurIndex
+        {
+            get { return TabPages.Items.IndexOf( TabPages.SelectedItem ); }
+            set { TabPages.SelectedItem = TabPages.Items[ value ]; }
+        }
 
-        private ContextMenuHandler mHandler;
+        private int LastIndex
+        {
+            get { return TabPages.Items.Count - 2; }
+        }
 
-        private LifeSpanHandler lHandler;
+        private BrowserTabStripItem _newTabStrip;
 
-        private KeyboardHandler kHandler;
+        private BrowserTabStripItem _downloadStrip;
 
-        private RequestHandler rHandler;
+        private string _currentFullUrl;
+
+        private string _currentCleanUrl;
+
+        private string _currentTitle;
+
+        private DownloadHandler _downloadHandler;
+
+        private ContextMenuHandler _contextMenuHandler;
+
+        private LifeSpanHandler _lifeSpanHandler;
+
+        private KeyboardHandler _keyboardHandler;
+
+        private RequestHandler _requestHandler;
 
         private string _appPath = Path.GetDirectoryName( Application.ExecutablePath ) + @"\";
 
-        public static Form Instance;
+        private bool _searchOpen;
+
+        private string _lastSearch = "";
 
         public WebBrowser( )
         {
@@ -110,7 +155,7 @@ namespace BudgetBrowser
         /// </summary>
         private void InitAppIcon( )
         {
-            assembly = Assembly.GetAssembly( typeof( WebBrowser ) );
+            Assembly = Assembly.GetAssembly( typeof( WebBrowser ) );
             var _path =
                 @"C:\Users\terry\source\repos\BudgetBrowser\Resources\Images\budgetbrowser.ico";
 
@@ -118,15 +163,16 @@ namespace BudgetBrowser
             Icon = new Icon( _stream, new Size( 64, 64 ) );
         }
 
-        public static Assembly assembly;
-
         public Stream GetResourceStream( string filename, bool withNamespace = true )
         {
             try
             {
-                return assembly.GetManifestResourceStream( "BudgetBrowser.Resources." + filename );
+                return Assembly.GetManifestResourceStream( "BudgetBrowser.Resources." + filename );
             }
-            catch( Exception ex ) { }
+            catch( Exception _ex )
+            {
+                //ignore exception
+            }
 
             return null;
         }
@@ -159,24 +205,22 @@ namespace BudgetBrowser
         /// </summary>
         public void InitTooltips( Control.ControlCollection parent )
         {
-            foreach( Control ui in parent )
+            foreach( Control _ui in parent )
             {
-                var btn = ui as Button;
-                if( btn != null )
+                if( _ui is Button _btn )
                 {
-                    if( btn.Tag != null )
+                    if( _btn.Tag != null )
                     {
-                        System.Windows.Forms.ToolTip tip = new ToolTip( );
-                        tip.ReshowDelay = tip.InitialDelay = 200;
-                        tip.ShowAlways = true;
-                        tip.SetToolTip( btn, btn.Tag.ToString( ) );
+                        System.Windows.Forms.ToolTip _tip = new ToolTip( );
+                        _tip.ReshowDelay = _tip.InitialDelay = 200;
+                        _tip.ShowAlways = true;
+                        _tip.SetToolTip( _btn, _btn.Tag.ToString( ) );
                     }
                 }
 
-                var panel = ui as Panel;
-                if( panel != null )
+                if( _ui is Panel _panel )
                 {
-                    InitTooltips( panel.Controls );
+                    InitTooltips( _panel.Controls );
                 }
             }
         }
@@ -187,17 +231,17 @@ namespace BudgetBrowser
         private void InitBrowser( )
         {
             //CefSharpSettings.LegacyJavascriptBindingEnabled = true;
-            var settings = new CefSettings( );
-            settings.RegisterScheme( new CefCustomScheme
+            var _settings = new CefSettings( );
+            _settings.RegisterScheme( new CefCustomScheme
             {
                 SchemeName = BrowserConfig.InternalURL,
                 SchemeHandlerFactory = new SchemeHandlerFactory( )
             } );
 
-            settings.UserAgent = BrowserConfig.UserAgent;
-            settings.AcceptLanguageList = BrowserConfig.AcceptLanguage;
-            settings.IgnoreCertificateErrors = true;
-            settings.CachePath = GetAppDir( "Cache" );
+            _settings.UserAgent = BrowserConfig.UserAgent;
+            _settings.AcceptLanguageList = BrowserConfig.AcceptLanguage;
+            _settings.IgnoreCertificateErrors = true;
+            _settings.CachePath = GetAppDir( "Cache" );
             if( BrowserConfig.Proxy )
             {
                 CefSharpSettings.Proxy = new ProxyOptions( BrowserConfig.ProxyIP,
@@ -205,14 +249,14 @@ namespace BudgetBrowser
                     BrowserConfig.ProxyPassword, BrowserConfig.ProxyBypassList );
             }
 
-            Cef.Initialize( settings );
-            dHandler = new DownloadHandler( this );
-            lHandler = new LifeSpanHandler( this );
-            mHandler = new ContextMenuHandler( this );
-            kHandler = new KeyboardHandler( this );
-            rHandler = new RequestHandler( this );
+            Cef.Initialize( _settings );
+            _downloadHandler = new DownloadHandler( this );
+            _lifeSpanHandler = new LifeSpanHandler( this );
+            _contextMenuHandler = new ContextMenuHandler( this );
+            _keyboardHandler = new KeyboardHandler( this );
+            _requestHandler = new RequestHandler( this );
             InitDownloads( );
-            host = new HostHandler( this );
+            Host = new HostHandler( this );
             AddNewBrowser( tabStrip1, BrowserConfig.HomepageURL );
         }
 
@@ -224,83 +268,80 @@ namespace BudgetBrowser
         /// </param>
         private void ConfigureBrowser( ChromiumWebBrowser browser )
         {
-            var config = new BrowserSettings( );
+            var _config = new BrowserSettings( );
 
-            //config.FileAccessFromFileUrls = (!CrossDomainSecurity).ToCefState();
-            //config.UniversalAccessFromFileUrls = (!CrossDomainSecurity).ToCefState();
-            //config.WebSecurity = WebSecurity.ToCefState();
-            config.WebGl = BrowserConfig.WebGL.ToCefState( );
-
-            //config.ApplicationCache = ApplicationCache.ToCefState();
-            browser.BrowserSettings = config;
+            //_config.FileAccessFromFileUrls = (!CrossDomainSecurity).ToCefState();
+            //_config.UniversalAccessFromFileUrls = (!CrossDomainSecurity).ToCefState();
+            //_config.WebSecurity = WebSecurity.ToCefState();
+            _config.WebGl = BrowserConfig.WebGL.ToCefState( );
+            browser.BrowserSettings = _config;
         }
 
         private static string GetAppDir( string name )
         {
-            var winXPDir = @"C:\Documents and Settings\All Users\Application Data\";
-            if( Directory.Exists( winXPDir ) )
+            var _winXpDir = @"C:\Documents and Settings\All Users\Application Data\";
+            if( Directory.Exists( _winXpDir ) )
             {
-                return winXPDir + BrowserConfig.Branding + @"\" + name + @"\";
+                return _winXpDir + BrowserConfig.Branding + @"\" + name + @"\";
             }
 
             return @"C:\ProgramData\" + BrowserConfig.Branding + @"\" + name + @"\";
         }
 
-        private void LoadURL( string url )
+        private void LoadUrl( string url )
         {
-            Uri outUri;
-            var newUrl = url;
-            var urlLower = url.Trim( ).ToLower( );
+            var _newUrl = url;
+            var _urlLower = url.Trim( ).ToLower( );
 
             // UI
             SetTabTitle( CurBrowser, "Loading..." );
 
             // load page
-            if( urlLower == "localhost" )
+            if( _urlLower == "localhost" )
             {
-                newUrl = "http://localhost/";
+                _newUrl = "http://localhost/";
             }
             else if( url.CheckIfFilePath( )
                     || url.CheckIfFilePath2( ) )
             {
-                newUrl = url.PathToUrl( );
+                _newUrl = url.PathToUrl( );
             }
             else
             {
-                Uri.TryCreate( url, UriKind.Absolute, out outUri );
-                if( !( urlLower.StartsWith( "http" )
-                       || urlLower.StartsWith( BrowserConfig.InternalURL ) ) )
+                Uri.TryCreate( url, UriKind.Absolute, out var _outUri );
+                if( !( _urlLower.StartsWith( "http" )
+                       || _urlLower.StartsWith( BrowserConfig.InternalURL ) ) )
                 {
-                    if( ( outUri == null )
-                       || ( outUri.Scheme != Uri.UriSchemeFile ) )
+                    if( ( _outUri == null )
+                       || ( _outUri.Scheme != Uri.UriSchemeFile ) )
                     {
-                        newUrl = "http://" + url;
+                        _newUrl = "http://" + url;
                     }
                 }
 
-                if( urlLower.StartsWith( BrowserConfig.InternalURL + ":" )
+                if( _urlLower.StartsWith( BrowserConfig.InternalURL + ":" )
                    ||
 
                    // load URL if it seems valid
-                   ( Uri.TryCreate( newUrl, UriKind.Absolute, out outUri )
-                       && ( ( ( ( outUri.Scheme == Uri.UriSchemeHttp )
-                                   || ( outUri.Scheme == Uri.UriSchemeHttps ) )
-                               && newUrl.Contains( "." ) )
-                           || ( outUri.Scheme == Uri.UriSchemeFile ) ) ) )
+                   ( Uri.TryCreate( _newUrl, UriKind.Absolute, out _outUri )
+                       && ( ( ( ( _outUri.Scheme == Uri.UriSchemeHttp )
+                                   || ( _outUri.Scheme == Uri.UriSchemeHttps ) )
+                               && _newUrl.Contains( "." ) )
+                           || ( _outUri.Scheme == Uri.UriSchemeFile ) ) ) )
                 {
                 }
                 else
                 {
                     // run search if unknown URL
-                    newUrl = BrowserConfig.SearchURL + HttpUtility.UrlEncode( url );
+                    _newUrl = BrowserConfig.SearchURL + HttpUtility.UrlEncode( url );
                 }
             }
 
             // load URL
-            CurBrowser.Load( newUrl );
+            CurBrowser.Load( _newUrl );
 
             // set URL in UI
-            SetFormURL( newUrl );
+            SetFormUrl( _newUrl );
 
             // always enable back btn
             EnableBackButton( true );
@@ -312,21 +353,21 @@ namespace BudgetBrowser
             if( tabName.CheckIfValid( ) )
             {
                 Text = tabName + " - " + BrowserConfig.Branding;
-                currentTitle = tabName;
+                _currentTitle = tabName;
             }
             else
             {
                 Text = BrowserConfig.Branding;
-                currentTitle = "New Tab";
+                _currentTitle = "New Tab";
             }
         }
 
-        private void SetFormURL( string URL )
+        private void SetFormUrl( string url )
         {
-            currentFullURL = URL;
-            currentCleanURL = CleanUrl( URL );
-            TxtURL.Text = currentCleanURL;
-            CurTab.CurURL = currentFullURL;
+            _currentFullUrl = url;
+            _currentCleanUrl = CleanUrl( url );
+            TxtURL.Text = _currentCleanUrl;
+            CurTab.CurURL = _currentFullUrl;
             CloseSearch( );
         }
 
@@ -360,15 +401,15 @@ namespace BudgetBrowser
         public void AddBlankWindow( )
         {
             // open a new instance of the browser
-            var info = new ProcessStartInfo( Application.ExecutablePath, "" );
+            var _info = new ProcessStartInfo( Application.ExecutablePath, "" );
 
             //info.WorkingDirectory = workingDir ?? exePath.GetPathDir(true);
-            info.LoadUserProfile = true;
-            info.UseShellExecute = false;
-            info.RedirectStandardError = true;
-            info.RedirectStandardOutput = true;
-            info.RedirectStandardInput = true;
-            Process.Start( info );
+            _info.LoadUserProfile = true;
+            _info.UseShellExecute = false;
+            _info.RedirectStandardError = true;
+            _info.RedirectStandardOutput = true;
+            _info.RedirectStandardInput = true;
+            Process.Start( _info );
         }
 
         public void AddBlankTab( )
@@ -386,29 +427,29 @@ namespace BudgetBrowser
             return Invoke( delegate
             {
                 // check if already exists
-                foreach( BrowserTabStripItem tab in TabPages.Items )
+                foreach( BrowserTabStripItem _tab in TabPages.Items )
                 {
-                    var tab2 = (BrowserTab)tab.Tag;
-                    if( ( tab2 != null )
-                       && ( tab2.CurURL == url ) )
+                    var _tab2 = (BrowserTab)_tab.Tag;
+                    if( ( _tab2 != null )
+                       && ( _tab2.CurURL == url ) )
                     {
-                        TabPages.SelectedItem = tab;
-                        return tab2.Browser;
+                        TabPages.SelectedItem = _tab;
+                        return _tab2.Browser;
                     }
                 }
 
-                var tabStrip = new BrowserTabStripItem( );
-                tabStrip.Title = "New Tab";
-                TabPages.Items.Insert( TabPages.Items.Count - 1, tabStrip );
-                newStrip = tabStrip;
-                var newTab = AddNewBrowser( newStrip, url );
-                newTab.ReferringUrl = refererUrl;
+                var _tabStrip = new BrowserTabStripItem( );
+                _tabStrip.Title = "New Tab";
+                TabPages.Items.Insert( TabPages.Items.Count - 1, _tabStrip );
+                _newTabStrip = _tabStrip;
+                var _newTab = AddNewBrowser( _newTabStrip, url );
+                _newTab.ReferringUrl = refererUrl;
                 if( focusNewTab )
                 {
                     timer1.Enabled = true;
                 }
 
-                return newTab.Browser;
+                return _newTab.Browser;
             } );
         }
 
@@ -419,33 +460,33 @@ namespace BudgetBrowser
                 url = BrowserConfig.NewTabURL;
             }
 
-            var browser = new ChromiumWebBrowser( url );
+            var _browser = new ChromiumWebBrowser( url );
 
             // set config
-            ConfigureBrowser( browser );
+            ConfigureBrowser( _browser );
 
             // set layout
-            browser.Dock = DockStyle.Fill;
-            tabStrip.Controls.Add( browser );
-            browser.BringToFront( );
+            _browser.Dock = DockStyle.Fill;
+            tabStrip.Controls.Add( _browser );
+            _browser.BringToFront( );
 
             // add events
-            browser.StatusMessage += Browser_StatusMessage;
-            browser.LoadingStateChanged += Browser_LoadingStateChanged;
-            browser.TitleChanged += Browser_TitleChanged;
-            browser.LoadError += Browser_LoadError;
-            browser.AddressChanged += Browser_URLChanged;
-            browser.DownloadHandler = dHandler;
-            browser.MenuHandler = mHandler;
-            browser.LifeSpanHandler = lHandler;
-            browser.KeyboardHandler = kHandler;
-            browser.RequestHandler = rHandler;
+            _browser.StatusMessage += Browser_StatusMessage;
+            _browser.LoadingStateChanged += Browser_LoadingStateChanged;
+            _browser.TitleChanged += Browser_TitleChanged;
+            _browser.LoadError += Browser_LoadError;
+            _browser.AddressChanged += Browser_URLChanged;
+            _browser.DownloadHandler = _downloadHandler;
+            _browser.MenuHandler = _contextMenuHandler;
+            _browser.LifeSpanHandler = _lifeSpanHandler;
+            _browser.KeyboardHandler = _keyboardHandler;
+            _browser.RequestHandler = _requestHandler;
 
             // new tab obj
-            var tab = new BrowserTab
+            var _tab = new BrowserTab
             {
                 IsOpen = true,
-                Browser = browser,
+                Browser = _browser,
                 Tab = tabStrip,
                 OrigURL = url,
                 CurURL = url,
@@ -454,25 +495,25 @@ namespace BudgetBrowser
             };
 
             // save tab obj in tabstrip
-            tabStrip.Tag = tab;
+            tabStrip.Tag = _tab;
             if( url.StartsWith( BrowserConfig.InternalURL + ":" ) )
             {
-                browser.JavascriptObjectRepository.Register( "host", host,
+                _browser.JavascriptObjectRepository.Register( "host", Host,
                     BindingOptions.DefaultBinder );
             }
 
-            return tab;
+            return _tab;
         }
 
         public BrowserTab GetTabByBrowser( IWebBrowser browser )
         {
-            foreach( BrowserTabStripItem tab2 in TabPages.Items )
+            foreach( BrowserTabStripItem _tab2 in TabPages.Items )
             {
-                var tab = (BrowserTab)tab2.Tag;
-                if( ( tab != null )
-                   && ( tab.Browser == browser ) )
+                var _tab = (BrowserTab)_tab2.Tag;
+                if( ( _tab != null )
+                   && ( _tab.Browser == browser ) )
                 {
-                    return tab;
+                    return _tab;
                 }
             }
 
@@ -489,60 +530,38 @@ namespace BudgetBrowser
             if( CurTab != null/* && TabPages.Items.Count > 2*/ )
             {
                 // remove tab and save its index
-                var index = TabPages.Items.IndexOf( TabPages.SelectedItem );
+                var _index = TabPages.Items.IndexOf( TabPages.SelectedItem );
                 TabPages.RemoveTab( TabPages.SelectedItem );
 
                 // keep tab at same index focussed
-                if( TabPages.Items.Count - 1 > index )
+                if( TabPages.Items.Count - 1 > _index )
                 {
-                    TabPages.SelectedItem = TabPages.Items[ index ];
+                    TabPages.SelectedItem = TabPages.Items[ _index ];
                 }
             }
         }
 
-        private FormWindowState oldWindowState;
+        private FormWindowState _oldWindowState;
 
-        private FormBorderStyle oldBorderStyle;
+        private FormBorderStyle _oldBorderStyle;
 
-        private bool isFullScreen;
+        private bool _isFullScreen;
 
         private void ToggleFullscreen( )
         {
-            if( !isFullScreen )
+            if( !_isFullScreen )
             {
-                oldWindowState = WindowState;
-                oldBorderStyle = FormBorderStyle;
+                _oldWindowState = WindowState;
+                _oldBorderStyle = FormBorderStyle;
                 FormBorderStyle = FormBorderStyle.None;
                 WindowState = FormWindowState.Maximized;
-                isFullScreen = true;
+                _isFullScreen = true;
             }
             else
             {
-                FormBorderStyle = oldBorderStyle;
-                WindowState = oldWindowState;
-                isFullScreen = false;
-            }
-        }
-
-        private void OnTabClosed( object sender, EventArgs e )
-        {
-        }
-
-        private void OnTabClosing( TabStripItemClosingEventArgs e )
-        {
-            // exit if invalid tab
-            if( CurTab == null )
-            {
-                e.Cancel = true;
-                return;
-            }
-
-            // add a blank tab if the very last tab is closed!
-            if( TabPages.Items.Count <= 2 )
-            {
-                AddBlankTab( );
-
-                //e.Cancel = true;
+                FormBorderStyle = _oldBorderStyle;
+                WindowState = _oldWindowState;
+                _isFullScreen = false;
             }
         }
 
@@ -559,17 +578,6 @@ namespace BudgetBrowser
         private bool IsOnLastTab( )
         {
             return TabPages.SelectedItem == TabPages.Items[ TabPages.Items.Count - 2 ];
-        }
-
-        private int CurIndex
-        {
-            get { return TabPages.Items.IndexOf( TabPages.SelectedItem ); }
-            set { TabPages.SelectedItem = TabPages.Items[ value ]; }
-        }
-
-        private int LastIndex
-        {
-            get { return TabPages.Items.Count - 2; }
         }
 
         private void NextTab( )
@@ -612,34 +620,18 @@ namespace BudgetBrowser
             }
         }
 
-        public BrowserTab CurTab
-        {
-            get
-            {
-                if( ( TabPages.SelectedItem != null )
-                   && ( TabPages.SelectedItem.Tag != null ) )
-                {
-                    return (BrowserTab)TabPages.SelectedItem.Tag;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-
         public List<BrowserTab> GetAllTabs( )
         {
-            var tabs = new List<BrowserTab>( );
-            foreach( BrowserTabStripItem tabPage in TabPages.Items )
+            var _tabs = new List<BrowserTab>( );
+            foreach( BrowserTabStripItem _tabPage in TabPages.Items )
             {
-                if( tabPage.Tag != null )
+                if( _tabPage.Tag != null )
                 {
-                    tabs.Add( (BrowserTab)tabPage.Tag );
+                    _tabs.Add( (BrowserTab)_tabPage.Tag );
                 }
             }
 
-            return tabs;
+            return _tabs;
         }
 
         public int CurTabLoadingDur
@@ -649,8 +641,8 @@ namespace BudgetBrowser
                 if( ( TabPages.SelectedItem != null )
                    && ( TabPages.SelectedItem.Tag != null ) )
                 {
-                    var loadTime = (int)( DateTime.Now - CurTab.DateCreated ).TotalMilliseconds;
-                    return loadTime;
+                    var _loadTime = (int)( DateTime.Now - CurTab.DateCreated ).TotalMilliseconds;
+                    return _loadTime;
                 }
                 else
                 {
@@ -668,7 +660,7 @@ namespace BudgetBrowser
                 {
                     if( !WebUtils.IsFocused( TxtURL ) )
                     {
-                        SetFormURL( e.Address );
+                        SetFormUrl( e.Address );
                     }
 
                     EnableBackButton( CurBrowser.CanGoBack );
@@ -690,8 +682,8 @@ namespace BudgetBrowser
         {
             InvokeIfNeeded( ( ) =>
             {
-                var browser = (ChromiumWebBrowser)sender;
-                SetTabTitle( browser, e.Title );
+                var _browser = (ChromiumWebBrowser)sender;
+                SetTabTitle( _browser, e.Title );
             } );
         }
 
@@ -707,8 +699,8 @@ namespace BudgetBrowser
             browser.Tag = text;
 
             // get tab of given browser
-            var tabStrip = (BrowserTabStripItem)browser.Parent;
-            tabStrip.Title = text;
+            var _tabStrip = (BrowserTabStripItem)browser.Parent;
+            _tabStrip.Title = text;
 
             // if current tab
             if( browser == CurBrowser )
@@ -774,14 +766,39 @@ namespace BudgetBrowser
             InvokeIfNeeded( ( ) => BtnForward.Enabled = canGoForward );
         }
 
+        private void OnTabClosed( object sender, EventArgs e )
+        {
+        }
+
+        private void OnTabClosing( TabStripItemClosingEventArgs e )
+        {
+            // exit if invalid tab
+            if( CurTab == null )
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            // add a blank tab if the very last tab is closed!
+            if( TabPages.Items.Count <= 2 )
+            {
+                AddBlankTab( );
+
+                //e.Cancel = true;
+            }
+        }
+
         private void OnTabsChanged( TabStripItemChangedEventArgs e )
         {
-            ChromiumWebBrowser browser = null;
+            ChromiumWebBrowser _browser = null;
             try
             {
-                browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
+                _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
             }
-            catch( Exception ex ) { }
+            catch( Exception _ex )
+            {
+                // ignore 
+            }
 
             if( e.ChangeType == BrowserTabStripItemChangeTypes.SelectionChanged )
             {
@@ -791,34 +808,34 @@ namespace BudgetBrowser
                 }
                 else
                 {
-                    browser = CurBrowser;
-                    SetFormURL( browser.Address );
-                    SetFormTitle( browser.Tag.ConvertToString( ) ?? "New Tab" );
-                    EnableBackButton( browser.CanGoBack );
-                    EnableForwardButton( browser.CanGoForward );
+                    _browser = CurBrowser;
+                    SetFormUrl( _browser.Address );
+                    SetFormTitle( _browser.Tag.ConvertToString( ) ?? "New Tab" );
+                    EnableBackButton( _browser.CanGoBack );
+                    EnableForwardButton( _browser.CanGoForward );
                 }
             }
 
             if( e.ChangeType == BrowserTabStripItemChangeTypes.Removed )
             {
-                if( e.Item == downloadsStrip )
+                if( e.Item == _downloadStrip )
                 {
-                    downloadsStrip = null;
+                    _downloadStrip = null;
                 }
 
-                if( browser != null )
+                if( _browser != null )
                 {
-                    browser.Dispose( );
+                    _browser.Dispose( );
                 }
             }
 
             if( e.ChangeType == BrowserTabStripItemChangeTypes.Changed )
             {
-                if( browser != null )
+                if( _browser != null )
                 {
-                    if( currentFullURL != "about:blank" )
+                    if( _currentFullUrl != "about:blank" )
                     {
-                        browser.Focus( );
+                        _browser.Focus( );
                     }
                 }
             }
@@ -826,7 +843,7 @@ namespace BudgetBrowser
 
         private void timer1_Tick( object sender, EventArgs e )
         {
-            TabPages.SelectedItem = newStrip;
+            TabPages.SelectedItem = _newTabStrip;
             timer1.Enabled = false;
         }
 
@@ -837,25 +854,20 @@ namespace BudgetBrowser
 
         private void menuCloseOtherTabs_Click( object sender, EventArgs e )
         {
-            var listToClose = new List<BrowserTabStripItem>( );
-            foreach( BrowserTabStripItem tab in TabPages.Items )
+            var _listToClose = new List<BrowserTabStripItem>( );
+            foreach( BrowserTabStripItem _tab in TabPages.Items )
             {
-                if( ( tab != tabStripAdd )
-                   && ( tab != TabPages.SelectedItem ) )
+                if( ( _tab != tabStripAdd )
+                   && ( _tab != TabPages.SelectedItem ) )
                 {
-                    listToClose.Add( tab );
+                    _listToClose.Add( _tab );
                 }
             }
 
-            foreach( var tab in listToClose )
+            foreach( var _tab in _listToClose )
             {
-                TabPages.RemoveTab( tab );
+                TabPages.RemoveTab( _tab );
             }
-        }
-
-        public List<int> CancelRequests
-        {
-            get { return downloadCancelRequests; }
         }
 
         private void bBack_Click( object sender, EventArgs e )
@@ -893,7 +905,7 @@ namespace BudgetBrowser
             if( e.IsHotKey( Keys.Enter )
                || e.IsHotKey( Keys.Enter, true ) )
             {
-                LoadURL( TxtURL.Text );
+                LoadUrl( TxtURL.Text );
 
                 // im handling this
                 e.Handled = true;
@@ -953,20 +965,17 @@ namespace BudgetBrowser
             // dispose all browsers
             try
             {
-                foreach( TabPage tab in TabPages.Items )
+                foreach( TabPage _tab in TabPages.Items )
                 {
-                    var browser = (ChromiumWebBrowser)tab.Controls[ 0 ];
-                    browser.Dispose( );
+                    var _browser = (ChromiumWebBrowser)_tab.Controls[ 0 ];
+                    _browser.Dispose( );
                 }
             }
-            catch( Exception ex ) { }
+            catch( Exception _ex )
+            {
+                // ignore exception
+            }
         }
-
-        public Dictionary<int, DownloadItem> downloads;
-
-        public Dictionary<int, string> downloadNames;
-
-        public List<int> downloadCancelRequests;
 
         /// <summary>
         /// we must store download metadata in a list, since CefSharp does not
@@ -974,13 +983,8 @@ namespace BudgetBrowser
         private void InitDownloads( )
         {
             downloads = new Dictionary<int, DownloadItem>( );
-            downloadNames = new Dictionary<int, string>( );
-            downloadCancelRequests = new List<int>( );
-        }
-
-        public Dictionary<int, DownloadItem> Downloads
-        {
-            get { return downloads; }
+            DownloadNames = new Dictionary<int, string>( );
+            DownloadCancelRequests = new List<int>( );
         }
 
         public void UpdateDownloadItem( DownloadItem item )
@@ -990,14 +994,14 @@ namespace BudgetBrowser
                 // SuggestedFileName comes full only in the first attempt so keep it somewhere
                 if( item.SuggestedFileName != "" )
                 {
-                    downloadNames[ item.Id ] = item.SuggestedFileName;
+                    DownloadNames[ item.Id ] = item.SuggestedFileName;
                 }
 
                 // Set it back if it is empty
                 if( ( item.SuggestedFileName == "" )
-                   && downloadNames.ContainsKey( item.Id ) )
+                   && DownloadNames.ContainsKey( item.Id ) )
                 {
-                    item.SuggestedFileName = downloadNames[ item.Id ];
+                    item.SuggestedFileName = DownloadNames[ item.Id ];
                 }
 
                 downloads[ item.Id ] = item;
@@ -1013,9 +1017,9 @@ namespace BudgetBrowser
 
         public bool DownloadsInProgress( )
         {
-            foreach( var item in downloads.Values )
+            foreach( var _item in downloads.Values )
             {
-                if( item.IsInProgress )
+                if( _item.IsInProgress )
                 {
                     return true;
                 }
@@ -1034,32 +1038,28 @@ namespace BudgetBrowser
 
         public void OpenDownloadsTab( )
         {
-            if( ( downloadsStrip != null )
-               && ( ( (ChromiumWebBrowser)downloadsStrip.Controls[ 0 ] ).Address
+            if( ( _downloadStrip != null )
+               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[ 0 ] ).Address
                    == BrowserConfig.DownloadsURL ) )
             {
-                TabPages.SelectedItem = downloadsStrip;
+                TabPages.SelectedItem = _downloadStrip;
             }
             else
             {
-                var brw = AddNewBrowserTab( BrowserConfig.DownloadsURL );
-                downloadsStrip = (BrowserTabStripItem)brw.Parent;
+                var _brw = AddNewBrowserTab( BrowserConfig.DownloadsURL );
+                _downloadStrip = (BrowserTabStripItem)_brw.Parent;
             }
         }
 
-        private bool searchOpen;
-
-        private string lastSearch = "";
-
         private void OpenSearch( )
         {
-            if( !searchOpen )
+            if( !_searchOpen )
             {
-                searchOpen = true;
+                _searchOpen = true;
                 InvokeIfNeeded( delegate
                 {
                     PanelSearch.Visible = true;
-                    TxtSearch.Text = lastSearch;
+                    TxtSearch.Text = _lastSearch;
                     TxtSearch.Focus( );
                     TxtSearch.SelectAll( );
                 } );
@@ -1076,9 +1076,9 @@ namespace BudgetBrowser
 
         private void CloseSearch( )
         {
-            if( searchOpen )
+            if( _searchOpen )
             {
-                searchOpen = false;
+                _searchOpen = false;
                 InvokeIfNeeded( delegate
                 {
                     PanelSearch.Visible = false;
@@ -1104,11 +1104,11 @@ namespace BudgetBrowser
 
         private void FindTextOnPage( bool next = true )
         {
-            var first = lastSearch != TxtSearch.Text;
-            lastSearch = TxtSearch.Text;
-            if( lastSearch.CheckIfValid( ) )
+            var _first = _lastSearch != TxtSearch.Text;
+            _lastSearch = TxtSearch.Text;
+            if( _lastSearch.CheckIfValid( ) )
             {
-                CurBrowser.GetBrowser( ).Find( lastSearch, true, false, !first );
+                CurBrowser.GetBrowser( ).Find( _lastSearch, true, false, !_first );
             }
             else
             {

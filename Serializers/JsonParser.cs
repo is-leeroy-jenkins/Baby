@@ -50,7 +50,7 @@ namespace BudgetBrowser
     /// This class encodes and decodes JSON strings.
     /// Spec. details, see http://www.json.org/
     /// JSON uses Arrays and Objects. These correspond here
-    /// to the datatypes ArrayList and Hashtable.
+    /// to the data types ArrayList and Hashtable.
     /// All numbers are parsed to doubles.
     /// </summary>
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]

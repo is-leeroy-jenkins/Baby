@@ -35,9 +35,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\sharpbrowser.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="cef.redist.x64" Version="113.3.5" />
     <PackageReference Include="cef.redist.x86" Version="113.3.5" />
     <PackageReference Include="CefSharp.Common" Version="113.3.50" />

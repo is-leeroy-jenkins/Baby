@@ -19,7 +19,7 @@ namespace BudgetBrowser
 	using System.Windows.Forms.VisualStyles;
 
 	/// <summary>
-	/// The main SharpBrowser form, supporting multiple tabs.
+	/// The main BudgetBrowser form, supporting multiple tabs.
 	/// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
 	/// If you would only like to support 64-bit machines, simply change the DLL references.
 	/// </summary>

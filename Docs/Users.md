@@ -1,5 +1,5 @@
-# How to use SharpBrowser
+﻿# How to use BudgetBrowser
 
-Simply run the executable `SharpBrowserSetup.exe` and it should install.
+Simply run the executable `BudgetBrowserSetup.exe` and it should install.
 
 This only works on Windows.

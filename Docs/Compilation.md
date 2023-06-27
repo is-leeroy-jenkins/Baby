@@ -1,8 +1,8 @@
-# How to compile SharpBrowser
+# How to compile BudgetBrowser
 
-#### Step 1: Fork sharpbrowser
+#### Step 1: Fork budgetbrowser
 
-Fork the sharpbrowser repository on GitHub.
+Fork the budgetbrowser repository on GitHub.
 
 ![image](https://user-images.githubusercontent.com/104514709/183603613-65eff2a1-0d80-4e70-83d8-805edecd2c0c.png)
 
@@ -20,12 +20,12 @@ Open VS Community and select "Clone a repository"
 
 #### Step 3: Clone this project
 
-Type in your sharpbrowser fork URL and press "Clone"
+Type in your budgetbrowser fork URL and press "Clone"
 
 ![image](https://user-images.githubusercontent.com/104514709/183603880-92217d8a-bc99-4adf-b6d7-030096576090.png)
 
 #### Step 4: Develop!
 
-You now have a copy of SharpBrowser! Press "Start" after you choose the system architecture
+You now have a copy of BudgetBrowser! Press "Start" after you choose the system architecture
 
 ![image](https://user-images.githubusercontent.com/104514709/183604128-771daefc-6254-41bc-8660-2d28200a0b1e.png)

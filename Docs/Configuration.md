@@ -1,4 +1,4 @@
-# How to customize SharpBrowser
+# How to customize BudgetBrowser
 
 Options:
 ### Branding

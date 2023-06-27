@@ -1,4 +1,4 @@
-![BudgetBrowser](https://github.com/budgetbrowser/BudgetBrowser/raw/master/images/logo3.png)
+﻿![BudgetBrowser](https://github.com/budgetbrowser/BudgetBrowser/Resources/Images/logo3.png)
 
 BudgetBrowser is the fastest open source C# web browser there is! Slightly faster than Google Chrome when rendering web pages due to lightweight CEF renderer. We compared every available .NET browsing engine and finally settled on the high-performance [CefSharp](https://github.com/cefsharp/CefSharp/). Released under the permissive MIT license.
 
@@ -56,51 +56,47 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 - BudgetBrowser uses CefSharp 106 and is built on NET 6
 - BudgetBrowser supports AnyCPU as well as x86/x64 specific builds
-- `MainForm.cs` - main web browser UI and related functionality
+- `WebBrowser.cs` - main web browser UI and related functionality
 - `Handlers` - various handlers that we have registered with CefSharp that enable deeper integration between us and CefSharp
-- `Data/JSON.cs` - fast JSON serializer/deserializer
+- `Serializers` - fast JSON serializer/deserializer
 - `bin` - Binaries are included in the `bin` folder due to the complex CefSharp setup required. Don't empty this folder.
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages
 
 ## Credits
 
-- [Robin Rodricks](https://github.com/robinrodricks) - BudgetBrowser project.
-- [Alex Maitland](https://github.com/amaitland) - CefSharp project, wrapper for CEF embeddable browser.
-- [Ahmet Uzun](https://github.com/postacik) - Original browser project.
-
 ## Screenshots
 
 ### Apple.com
 
-![](https://github.comhttps://github.com/KarmaScripter/BudgetBrowser/BudgetBrowser/raw/master/images/1.png)
+![](https://github.comhttps://github.com/KarmaScripter/BudgetBrowser/Resources/Images/1.png)
 
 ### WebAssembly & WebGL
 
-![](https://github.com/KarmaScripter/BudgetBrowser/BudgetBrowser/raw/master/images/5.png)
+![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/5.png)
 
 ### YouTube
 
-![](https://github.com/KarmaScripter/BudgetBrowser/BudgetBrowser/raw/master/images/6.png)
+![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/6.png)
 
 ### Google Maps
 
-![](https://github.com/KarmaScripter/BudgetBrowser/BudgetBrowser/raw/master/images/2.png)
+![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/2.png)
 
 ### Search Bar
 
-![](https://github.com/KarmaScripter/BudgetBrowser/BudgetBrowser/raw/master/images/search.png)
+![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/search.png)
 
 ### Downloads Tab
 
-![](https://github.com/KarmaScripter/BudgetBrowser/BudgetBrowser/raw/master/images/3.png)
+![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/3.png)
 
 ### Developer Tools
 
-![](https://github.com/KarmaScripter/BudgetBrowser/udgetBrowser/raw/master/images/4.png)
+![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/4.png)
 
 ### Custom Error Pages
 
-![](https://github.com/KarmaScripter/BudgetBrowser/BudgetBrowser/raw/master/images/error1.png)
+![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/error1.png)
 
-![](https://github.com/KarmaScripter/BudgetBrowser/BudgetBrowser/raw/master/images/error2.png)
+![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/error2.png)
 

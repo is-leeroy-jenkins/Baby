@@ -72,7 +72,8 @@ namespace BudgetBrowser
         public string HoverText { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Label"/> class.
+        /// Initializes a new instance of
+        /// the <see cref="Label"/> class.
         /// </summary>
         public Label( )
         {
@@ -107,8 +108,9 @@ namespace BudgetBrowser
             Location = location;
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="System.Windows.Forms.Label"/> class.
+        /// Initializes a new instance of the <see cref="T:System.Windows.Forms.Label" /> class.
         /// </summary>
         /// <param name="label">The label.</param>
         public Label( MetroSetLabel label )
@@ -116,8 +118,9 @@ namespace BudgetBrowser
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="System.Windows.Forms.Label"/> class.
+        /// Initializes a new instance of the <see cref="T:System.Windows.Forms.Label" /> class.
         /// </summary>
         /// <param name="size">The size.</param>
         /// <param name="location">The location.</param>
@@ -129,8 +132,9 @@ namespace BudgetBrowser
             Parent.Controls.Add( this );
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="System.Windows.Forms.Label"/> class.
+        /// Initializes a new instance of the <see cref="T:System.Windows.Forms.Label" /> class.
         /// </summary>
         /// <param name="size">The size.</param>
         /// <param name="location">The location.</param>
@@ -188,7 +192,6 @@ namespace BudgetBrowser
         public virtual void OnMouseOver( object sender, EventArgs e )
         {
             var _budgetLabel = sender as Label;
-
             try
             {
                 if( ( _budgetLabel != null )

@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
 //     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-26-2023
+//     Last Modified On:        06-27-2023
 // ******************************************************************************************
 // <copyright file="WebBrowser.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -53,6 +53,7 @@ namespace BudgetBrowser
     using System.Drawing;
     using System.Reflection;
 
+    /// <inheritdoc />
     /// <summary>
     /// The main BudgetBrowser form, supporting multiple tabs.
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
@@ -63,77 +64,219 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
     [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
+    [ SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoProperty" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" ) ]
     public partial class WebBrowser : Form
     {
-        public static Form Instance;
+        /// <summary>
+        /// The new tab strip
+        /// </summary>
+        private BrowserTabStripItem _newTabStrip;
 
-        public static Assembly Assembly;
+        /// <summary>
+        /// The download strip
+        /// </summary>
+        private BrowserTabStripItem _downloadStrip;
 
-        public List<int> CancelRequests
-        {
-            get { return DownloadCancelRequests; }
-        }
+        /// <summary>
+        /// The current full URL
+        /// </summary>
+        private string _currentFullUrl;
 
-        public Dictionary<int, DownloadItem> Downloads
-        {
-            get { return downloads; }
-        }
+        /// <summary>
+        /// The current clean URL
+        /// </summary>
+        private string _currentCleanUrl;
 
-        public HostHandler Host;
+        /// <summary>
+        /// The current title
+        /// </summary>
+        private string _currentTitle;
 
-        public BrowserTab CurTab
-        {
-            get
-            {
-                if( ( TabPages.SelectedItem != null )
-                   && ( TabPages.SelectedItem.Tag != null ) )
-                {
-                    return (BrowserTab)TabPages.SelectedItem.Tag;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
+        /// <summary>
+        /// The download handler
+        /// </summary>
+        private DownloadHandler _downloadHandler;
 
-        private int CurIndex
+        /// <summary>
+        /// The context menu handler
+        /// </summary>
+        private ContextMenuHandler _contextMenuHandler;
+
+        /// <summary>
+        /// The life span handler
+        /// </summary>
+        private LifeSpanHandler _lifeSpanHandler;
+
+        /// <summary>
+        /// The keyboard handler
+        /// </summary>
+        private KeyboardHandler _keyboardHandler;
+
+        /// <summary>
+        /// The request handler
+        /// </summary>
+        private RequestHandler _requestHandler;
+
+        /// <summary>
+        /// The application path
+        /// </summary>
+        private string _appPath = Path.GetDirectoryName( Application.ExecutablePath ) + @"\";
+
+        /// <summary>
+        /// The search open
+        /// </summary>
+        private bool _searchOpen;
+
+        /// <summary>
+        /// The last search
+        /// </summary>
+        private string _lastSearch = "";
+
+        /// <summary>
+        /// The old window state
+        /// </summary>
+        private FormWindowState _oldWindowState;
+
+        /// <summary>
+        /// The old border style
+        /// </summary>
+        private FormBorderStyle _oldBorderStyle;
+
+        /// <summary>
+        /// The is full screen
+        /// </summary>
+        private bool _isFullScreen;
+
+        /// <summary>
+        /// The download cancel requests
+        /// </summary>
+        private List<int> _downloadCancelRequests;
+
+        /// <summary>
+        /// The downloads
+        /// </summary>
+        private Dictionary<int, DownloadItem> _downloads;
+
+        /// <summary>
+        /// Gets or sets the index of the current.
+        /// </summary>
+        /// <value>
+        /// The index of the current.
+        /// </value>
+        private int CurrentIndex
         {
             get { return TabPages.Items.IndexOf( TabPages.SelectedItem ); }
             set { TabPages.SelectedItem = TabPages.Items[ value ]; }
         }
 
+        /// <summary>
+        /// Gets the last index.
+        /// </summary>
+        /// <value>
+        /// The last index.
+        /// </value>
         private int LastIndex
         {
             get { return TabPages.Items.Count - 2; }
         }
 
-        private BrowserTabStripItem _newTabStrip;
+        /// <summary>
+        /// The instance
+        /// </summary>
+        public static Form Instance;
 
-        private BrowserTabStripItem _downloadStrip;
+        /// <summary>
+        /// The assembly
+        /// </summary>
+        public static Assembly Assembly;
 
-        private string _currentFullUrl;
+        /// <summary>
+        /// The host
+        /// </summary>
+        public HostHandler Host;
 
-        private string _currentCleanUrl;
+        /// <summary>
+        /// The download names
+        /// </summary>
+        public Dictionary<int, string> DownloadNames;
 
-        private string _currentTitle;
+        /// <summary>
+        /// Gets the cancel requests.
+        /// </summary>
+        /// <value>
+        /// The cancel requests.
+        /// </value>
+        public List<int> CancelRequests
+        {
+            get { return _downloadCancelRequests; }
+        }
 
-        private DownloadHandler _downloadHandler;
+        /// <summary>
+        /// Gets the downloads.
+        /// </summary>
+        /// <value>
+        /// The downloads.
+        /// </value>
+        public Dictionary<int, DownloadItem> Downloads
+        {
+            get { return _downloads; }
+        }
 
-        private ContextMenuHandler _contextMenuHandler;
+        /// <summary>
+        /// Gets the current tab.
+        /// </summary>
+        /// <value>
+        /// The current tab.
+        /// </value>
+        public BrowserTab CurrentTab
+        {
+            get
+            {
+                return (BrowserTab)TabPages.SelectedItem?.Tag;
+            }
+        }
 
-        private LifeSpanHandler _lifeSpanHandler;
+        /// <summary>
+        /// Gets the duration of the current tab loading.
+        /// </summary>
+        /// <value>
+        /// The duration of the current tab loading.
+        /// </value>
+        public int CurrentTabLoadingDuration
+        {
+            get
+            {
+                if( TabPages.SelectedItem?.Tag != null )
+                {
+                    var _loadTime =
+                        (int)( DateTime.Now - CurrentTab.DateCreated ).TotalMilliseconds;
 
-        private KeyboardHandler _keyboardHandler;
+                    return _loadTime;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
-        private RequestHandler _requestHandler;
+        /// <summary>
+        /// Gets the current browser.
+        /// </summary>
+        /// <value>
+        /// The current browser.
+        /// </value>
+        public ChromiumWebBrowser CurrentBrowser
+        {
+            get { return ( (BrowserTab)TabPages.SelectedItem?.Tag )?.Browser; }
+        }
 
-        private string _appPath = Path.GetDirectoryName( Application.ExecutablePath ) + @"\";
-
-        private bool _searchOpen;
-
-        private string _lastSearch = "";
-
+        /// <inheritdoc />
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:BudgetBrowser.WebBrowser" /> class.
+        /// </summary>
         public WebBrowser( )
         {
             Instance = this;
@@ -142,15 +285,9 @@ namespace BudgetBrowser
             SetFormTitle( null );
         }
 
-        private void MainForm_Load( object sender, EventArgs e )
-        {
-            InitAppIcon( );
-            InitTooltips( Controls );
-            InitHotkeys( );
-        }
-
         /// <summary>
-        /// embedding the resource using the Visual Studio designer results in a blurry icon.
+        /// embedding the resource using the
+        /// Visual Studio designer results in a blurry icon.
         /// the best way to get a non-blurry icon for Windows 7 apps.
         /// </summary>
         private void InitAppIcon( )
@@ -163,27 +300,13 @@ namespace BudgetBrowser
             Icon = new Icon( _stream, new Size( 64, 64 ) );
         }
 
-        public Stream GetResourceStream( string filename, bool withNamespace = true )
-        {
-            try
-            {
-                return Assembly.GetManifestResourceStream( "BudgetBrowser.Resources." + filename );
-            }
-            catch( Exception _ex )
-            {
-                //ignore exception
-            }
-
-            return null;
-        }
-
         /// <summary>
         /// these hot keys work when the user is focused on the .NET form and its controls,
         /// AND when the user is focused on the browser (CefSharp portion)
         /// </summary>
         private void InitHotkeys( )
         {
-            // browser hotkeys
+            // browser hot keys
             KeyboardHandler.AddHotKey( this, CloseActiveTab, Keys.W, true );
             KeyboardHandler.AddHotKey( this, CloseActiveTab, Keys.Escape, true );
             KeyboardHandler.AddHotKey( this, AddBlankWindow, Keys.N, true );
@@ -191,9 +314,9 @@ namespace BudgetBrowser
             KeyboardHandler.AddHotKey( this, RefreshActiveTab, Keys.F5 );
             KeyboardHandler.AddHotKey( this, OpenDeveloperTools, Keys.F12 );
             KeyboardHandler.AddHotKey( this, NextTab, Keys.Tab, true );
-            KeyboardHandler.AddHotKey( this, PrevTab, Keys.Tab, true, true );
+            KeyboardHandler.AddHotKey( this, PreviousTab, Keys.Tab, true, true );
 
-            // search hotkeys
+            // search hot keys
             KeyboardHandler.AddHotKey( this, OpenSearch, Keys.F, true );
             KeyboardHandler.AddHotKey( this, CloseSearch, Keys.Escape );
             KeyboardHandler.AddHotKey( this, StopActiveTab, Keys.Escape );
@@ -203,6 +326,7 @@ namespace BudgetBrowser
         /// <summary>
         /// we activate all the tooltips stored in the Tag property of the buttons
         /// </summary>
+        /// <param name="parent">The parent.</param>
         public void InitTooltips( Control.ControlCollection parent )
         {
             foreach( Control _ui in parent )
@@ -241,7 +365,7 @@ namespace BudgetBrowser
             _settings.UserAgent = BrowserConfig.UserAgent;
             _settings.AcceptLanguageList = BrowserConfig.AcceptLanguage;
             _settings.IgnoreCertificateErrors = true;
-            _settings.CachePath = GetAppDir( "Cache" );
+            _settings.CachePath = GetApplicationDirectory( "Cache" );
             if( BrowserConfig.Proxy )
             {
                 CefSharpSettings.Proxy = new ProxyOptions( BrowserConfig.ProxyIP,
@@ -277,7 +401,80 @@ namespace BudgetBrowser
             browser.BrowserSettings = _config;
         }
 
-        private static string GetAppDir( string name )
+        /// <summary>
+        /// Calculates the download path.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns></returns>
+        public string GetDownloadPath( DownloadItem item )
+        {
+            return item.SuggestedFileName;
+        }
+
+        /// <summary>
+        /// Finds the text on page.
+        /// </summary>
+        /// <param name="next">if set to <c>true</c> [next].</param>
+        private void FindTextOnPage( bool next = true )
+        {
+            var _first = _lastSearch != TxtSearch.Text;
+            _lastSearch = TxtSearch.Text;
+            if( _lastSearch.CheckIfValid( ) )
+            {
+                CurrentBrowser.GetBrowser( ).Find( _lastSearch, true, false, !_first );
+            }
+            else
+            {
+                CurrentBrowser.GetBrowser( ).StopFinding( true );
+            }
+
+            TxtSearch.Focus( );
+        }
+
+        /// <summary>
+        /// Gets all tabs.
+        /// </summary>
+        /// <returns></returns>
+        public List<BrowserTab> GetAllTabs( )
+        {
+            var _tabs = new List<BrowserTab>( );
+            foreach( BrowserTabStripItem _tabPage in TabPages.Items )
+            {
+                if( _tabPage.Tag != null )
+                {
+                    _tabs.Add( (BrowserTab)_tabPage.Tag );
+                }
+            }
+
+            return _tabs;
+        }
+
+        /// <summary>
+        /// Gets the tab by browser.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
+        /// <returns></returns>
+        public BrowserTab GetTabByBrowser( IWebBrowser browser )
+        {
+            foreach( BrowserTabStripItem _tab2 in TabPages.Items )
+            {
+                var _tab = (BrowserTab)_tab2.Tag;
+                if( ( _tab != null )
+                   && ( _tab.Browser == browser ) )
+                {
+                    return _tab;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Gets the application directory.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        private static string GetApplicationDirectory( string name )
         {
             var _winXpDir = @"C:\Documents and Settings\All Users\Application Data\";
             if( Directory.Exists( _winXpDir ) )
@@ -288,13 +485,95 @@ namespace BudgetBrowser
             return @"C:\ProgramData\" + BrowserConfig.Branding + @"\" + name + @"\";
         }
 
+        /// <summary>
+        /// Gets the resource stream.
+        /// </summary>
+        /// <param name="filename">The filename.</param>
+        /// <param name="withNamespace">if set to <c>true</c> [with namespace].</param>
+        /// <returns></returns>
+        public Stream GetResourceStream( string filename, bool withNamespace = true )
+        {
+            try
+            {
+                return Assembly.GetManifestResourceStream( "BudgetBrowser.Resources." + filename );
+            }
+            catch( Exception _ex )
+            {
+                //ignore exception
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Sets the tab title.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
+        /// <param name="text">The text.</param>
+        private void SetTabTitle( ChromiumWebBrowser browser, string text )
+        {
+            text = text.Trim( );
+            if( IsBlank( text ) )
+            {
+                text = "New Tab";
+            }
+
+            // save text
+            browser.Tag = text;
+
+            // get tab of given browser
+            var _tabStrip = (BrowserTabStripItem)browser.Parent;
+            _tabStrip.Title = text;
+
+            // if current tab
+            if( browser == CurrentBrowser )
+            {
+                SetFormTitle( text );
+            }
+        }
+
+        /// <summary>
+        /// Sets the form title.
+        /// </summary>
+        /// <param name="tabName">Name of the tab.</param>
+        private void SetFormTitle( string tabName )
+        {
+            if( tabName.CheckIfValid( ) )
+            {
+                Text = tabName + " - " + BrowserConfig.Branding;
+                _currentTitle = tabName;
+            }
+            else
+            {
+                Text = BrowserConfig.Branding;
+                _currentTitle = "New Tab";
+            }
+        }
+
+        /// <summary>
+        /// Sets the form URL.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        private void SetFormUrl( string url )
+        {
+            _currentFullUrl = url;
+            _currentCleanUrl = CleanUrl( url );
+            TxtURL.Text = _currentCleanUrl;
+            CurrentTab.CurURL = _currentFullUrl;
+            CloseSearch( );
+        }
+
+        /// <summary>
+        /// Loads the URL.
+        /// </summary>
+        /// <param name="url">The URL.</param>
         private void LoadUrl( string url )
         {
             var _newUrl = url;
             var _urlLower = url.Trim( ).ToLower( );
 
             // UI
-            SetTabTitle( CurBrowser, "Loading..." );
+            SetTabTitle( CurrentBrowser, "Loading..." );
 
             // load page
             if( _urlLower == "localhost" )
@@ -338,7 +617,7 @@ namespace BudgetBrowser
             }
 
             // load URL
-            CurBrowser.Load( _newUrl );
+            CurrentBrowser.Load( _newUrl );
 
             // set URL in UI
             SetFormUrl( _newUrl );
@@ -348,29 +627,59 @@ namespace BudgetBrowser
             EnableForwardButton( false );
         }
 
-        private void SetFormTitle( string tabName )
+        /// <summary>
+        /// Invokes if needed.
+        /// </summary>
+        /// <param name="action">The action.</param>
+        public void InvokeIfNeeded( Action action )
         {
-            if( tabName.CheckIfValid( ) )
+            if( InvokeRequired )
             {
-                Text = tabName + " - " + BrowserConfig.Branding;
-                _currentTitle = tabName;
+                BeginInvoke( action );
             }
             else
             {
-                Text = BrowserConfig.Branding;
-                _currentTitle = "New Tab";
+                action.Invoke( );
             }
         }
 
-        private void SetFormUrl( string url )
+        /// <summary>
+        /// Waits for browser to initialize.
+        /// </summary>
+        /// <param name="browser">
+        /// The browser.
+        /// </param>
+        public void WaitForBrowserToInitialize( ChromiumWebBrowser browser )
         {
-            _currentFullUrl = url;
-            _currentCleanUrl = CleanUrl( url );
-            TxtURL.Text = _currentCleanUrl;
-            CurTab.CurURL = _currentFullUrl;
-            CloseSearch( );
+            while( !browser.IsBrowserInitialized )
+            {
+                Thread.Sleep( 100 );
+            }
         }
 
+        /// <summary>
+        /// Enables the back button.
+        /// </summary>
+        /// <param name="canGoBack">if set to <c>true</c> [can go back].</param>
+        private void EnableBackButton( bool canGoBack )
+        {
+            InvokeIfNeeded( ( ) => BtnBack.Enabled = canGoBack );
+        }
+
+        /// <summary>
+        /// Enables the forward button.
+        /// </summary>
+        /// <param name="canGoForward">if set to <c>true</c> [can go forward].</param>
+        private void EnableForwardButton( bool canGoForward )
+        {
+            InvokeIfNeeded( ( ) => BtnForward.Enabled = canGoForward );
+        }
+
+        /// <summary>
+        /// Cleans the URL.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
         private string CleanUrl( string url )
         {
             if( url.BeginsWith( "about:" ) )
@@ -385,11 +694,25 @@ namespace BudgetBrowser
             return url.UrlEncode( );
         }
 
+        /// <summary>
+        /// Determines whether the specified URL is blank.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified URL is blank; otherwise, <c>false</c>.
+        /// </returns>
         private bool IsBlank( string url )
         {
             return ( url == "" ) || ( url == "about:blank" );
         }
 
+        /// <summary>
+        /// Determines whether [is blank or system] [the specified URL].
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns>
+        ///   <c>true</c> if [is blank or system] [the specified URL]; otherwise, <c>false</c>.
+        /// </returns>
         private bool IsBlankOrSystem( string url )
         {
             return ( url == "" )
@@ -398,6 +721,9 @@ namespace BudgetBrowser
                 || url.BeginsWith( BrowserConfig.InternalURL + ":" );
         }
 
+        /// <summary>
+        /// Adds the blank window.
+        /// </summary>
         public void AddBlankWindow( )
         {
             // open a new instance of the browser
@@ -412,6 +738,9 @@ namespace BudgetBrowser
             Process.Start( _info );
         }
 
+        /// <summary>
+        /// Adds the blank tab.
+        /// </summary>
         public void AddBlankTab( )
         {
             AddNewBrowserTab( "" );
@@ -421,8 +750,15 @@ namespace BudgetBrowser
             } );
         }
 
+        /// <summary>
+        /// Adds the new browser tab.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <param name="focusNewTab">if set to <c>true</c> [focus new tab].</param>
+        /// <param name="referringUrl">The referring URL.</param>
+        /// <returns></returns>
         public ChromiumWebBrowser AddNewBrowserTab( string url, bool focusNewTab = true,
-            string refererUrl = null )
+            string referringUrl = null )
         {
             return Invoke( delegate
             {
@@ -443,7 +779,7 @@ namespace BudgetBrowser
                 TabPages.Items.Insert( TabPages.Items.Count - 1, _tabStrip );
                 _newTabStrip = _tabStrip;
                 var _newTab = AddNewBrowser( _newTabStrip, url );
-                _newTab.ReferringUrl = refererUrl;
+                _newTab.ReferringUrl = referringUrl;
                 if( focusNewTab )
                 {
                     timer1.Enabled = true;
@@ -453,6 +789,12 @@ namespace BudgetBrowser
             } );
         }
 
+        /// <summary>
+        /// Adds the new browser.
+        /// </summary>
+        /// <param name="tabStrip">The tab strip.</param>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
         private BrowserTab AddNewBrowser( BrowserTabStripItem tabStrip, String url )
         {
             if( url == "" )
@@ -460,33 +802,33 @@ namespace BudgetBrowser
                 url = BrowserConfig.NewTabURL;
             }
 
-            var _browser = new ChromiumWebBrowser( url );
+            var _chromiumBrowser = new ChromiumWebBrowser( url );
 
             // set config
-            ConfigureBrowser( _browser );
+            ConfigureBrowser( _chromiumBrowser );
 
             // set layout
-            _browser.Dock = DockStyle.Fill;
-            tabStrip.Controls.Add( _browser );
-            _browser.BringToFront( );
+            _chromiumBrowser.Dock = DockStyle.Fill;
+            tabStrip.Controls.Add( _chromiumBrowser );
+            _chromiumBrowser.BringToFront( );
 
             // add events
-            _browser.StatusMessage += Browser_StatusMessage;
-            _browser.LoadingStateChanged += Browser_LoadingStateChanged;
-            _browser.TitleChanged += Browser_TitleChanged;
-            _browser.LoadError += Browser_LoadError;
-            _browser.AddressChanged += Browser_URLChanged;
-            _browser.DownloadHandler = _downloadHandler;
-            _browser.MenuHandler = _contextMenuHandler;
-            _browser.LifeSpanHandler = _lifeSpanHandler;
-            _browser.KeyboardHandler = _keyboardHandler;
-            _browser.RequestHandler = _requestHandler;
+            _chromiumBrowser.StatusMessage += OnStatusUpdated;
+            _chromiumBrowser.LoadingStateChanged += OnLoadingStateChanged;
+            _chromiumBrowser.TitleChanged += OnTitleChanged;
+            _chromiumBrowser.LoadError += OnLoadError;
+            _chromiumBrowser.AddressChanged += OnUrlChanged;
+            _chromiumBrowser.DownloadHandler = _downloadHandler;
+            _chromiumBrowser.MenuHandler = _contextMenuHandler;
+            _chromiumBrowser.LifeSpanHandler = _lifeSpanHandler;
+            _chromiumBrowser.KeyboardHandler = _keyboardHandler;
+            _chromiumBrowser.RequestHandler = _requestHandler;
 
             // new tab obj
-            var _tab = new BrowserTab
+            var _browserTab = new BrowserTab
             {
                 IsOpen = true,
-                Browser = _browser,
+                Browser = _chromiumBrowser,
                 Tab = tabStrip,
                 OrigURL = url,
                 CurURL = url,
@@ -495,39 +837,85 @@ namespace BudgetBrowser
             };
 
             // save tab obj in tabstrip
-            tabStrip.Tag = _tab;
+            tabStrip.Tag = _browserTab;
             if( url.StartsWith( BrowserConfig.InternalURL + ":" ) )
             {
-                _browser.JavascriptObjectRepository.Register( "host", Host,
+                _chromiumBrowser.JavascriptObjectRepository.Register( "host", Host,
                     BindingOptions.DefaultBinder );
             }
 
-            return _tab;
+            return _browserTab;
         }
 
-        public BrowserTab GetTabByBrowser( IWebBrowser browser )
+        /// <summary>
+        /// we must store download metadata in a list,
+        /// since CefSharp does not
+        /// </summary>
+        private void InitDownloads( )
         {
-            foreach( BrowserTabStripItem _tab2 in TabPages.Items )
+            _downloads = new Dictionary<int, DownloadItem>( );
+            DownloadNames = new Dictionary<int, string>( );
+            _downloadCancelRequests = new List<int>( );
+        }
+
+        /// <summary>
+        /// Updates the download item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        public void UpdateDownloadItem( DownloadItem item )
+        {
+            lock( _downloads )
             {
-                var _tab = (BrowserTab)_tab2.Tag;
-                if( ( _tab != null )
-                   && ( _tab.Browser == browser ) )
+                // SuggestedFileName comes full only in the first attempt so keep it somewhere
+                if( item.SuggestedFileName != "" )
                 {
-                    return _tab;
+                    DownloadNames[ item.Id ] = item.SuggestedFileName;
+                }
+
+                // Set it back if it is empty
+                if( ( item.SuggestedFileName == "" )
+                   && DownloadNames.TryGetValue( item.Id, out var _name ) )
+                {
+                    item.SuggestedFileName = _name;
+                }
+
+                _downloads[ item.Id ] = item;
+
+                //UpdateSnipProgress();
+            }
+        }
+
+        /// <summary>
+        /// Downloadses the in progress.
+        /// </summary>
+        /// <returns></returns>
+        public bool DownloadsInProgress( )
+        {
+            foreach( var _item in _downloads.Values )
+            {
+                if( _item.IsInProgress )
+                {
+                    return true;
                 }
             }
 
-            return null;
+            return false;
         }
 
+        /// <summary>
+        /// Refreshes the active tab.
+        /// </summary>
         public void RefreshActiveTab( )
         {
-            CurBrowser.Load( CurBrowser.Address );
+            CurrentBrowser.Load( CurrentBrowser.Address );
         }
 
+        /// <summary>
+        /// Closes the active tab.
+        /// </summary>
         public void CloseActiveTab( )
         {
-            if( CurTab != null/* && TabPages.Items.Count > 2*/ )
+            if( CurrentTab != null/* && TabPages.Items.Count > 2*/ )
             {
                 // remove tab and save its index
                 var _index = TabPages.Items.IndexOf( TabPages.SelectedItem );
@@ -541,12 +929,69 @@ namespace BudgetBrowser
             }
         }
 
-        private FormWindowState _oldWindowState;
+        /// <summary>
+        /// Opens the downloads tab.
+        /// </summary>
+        public void OpenDownloadsTab( )
+        {
+            if( ( _downloadStrip != null )
+               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[ 0 ] ).Address
+                   == BrowserConfig.DownloadsURL ) )
+            {
+                TabPages.SelectedItem = _downloadStrip;
+            }
+            else
+            {
+                var _brw = AddNewBrowserTab( BrowserConfig.DownloadsURL );
+                _downloadStrip = (BrowserTabStripItem)_brw.Parent;
+            }
+        }
 
-        private FormBorderStyle _oldBorderStyle;
+        /// <summary>
+        /// Opens the search.
+        /// </summary>
+        private void OpenSearch( )
+        {
+            if( !_searchOpen )
+            {
+                _searchOpen = true;
+                InvokeIfNeeded( delegate
+                {
+                    PanelSearch.Visible = true;
+                    TxtSearch.Text = _lastSearch;
+                    TxtSearch.Focus( );
+                    TxtSearch.SelectAll( );
+                } );
+            }
+            else
+            {
+                InvokeIfNeeded( delegate
+                {
+                    TxtSearch.Focus( );
+                    TxtSearch.SelectAll( );
+                } );
+            }
+        }
 
-        private bool _isFullScreen;
+        /// <summary>
+        /// Closes the search.
+        /// </summary>
+        private void CloseSearch( )
+        {
+            if( _searchOpen )
+            {
+                _searchOpen = false;
+                InvokeIfNeeded( delegate
+                {
+                    PanelSearch.Visible = false;
+                    CurrentBrowser.GetBrowser( ).StopFinding( true );
+                } );
+            }
+        }
 
+        /// <summary>
+        /// Toggles the fullscreen.
+        /// </summary>
         private void ToggleFullscreen( )
         {
             if( !_isFullScreen )
@@ -565,120 +1010,122 @@ namespace BudgetBrowser
             }
         }
 
+        /// <summary>
+        /// Stops the active tab.
+        /// </summary>
         private void StopActiveTab( )
         {
-            CurBrowser.Stop( );
+            CurrentBrowser.Stop( );
         }
 
+        /// <summary>
+        /// Determines whether [is on first tab].
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if [is on first tab]; otherwise, <c>false</c>.
+        /// </returns>
         private bool IsOnFirstTab( )
         {
             return TabPages.SelectedItem == TabPages.Items[ 0 ];
         }
 
+        /// <summary>
+        /// Determines whether [is on last tab].
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if [is on last tab]; otherwise, <c>false</c>.
+        /// </returns>
         private bool IsOnLastTab( )
         {
             return TabPages.SelectedItem == TabPages.Items[ TabPages.Items.Count - 2 ];
         }
 
+        /// <summary>
+        /// Nexts the tab.
+        /// </summary>
         private void NextTab( )
         {
             if( IsOnLastTab( ) )
             {
-                CurIndex = 0;
+                CurrentIndex = 0;
             }
             else
             {
-                CurIndex++;
+                CurrentIndex++;
             }
         }
 
-        private void PrevTab( )
+        /// <summary>
+        /// Previouses the tab.
+        /// </summary>
+        private void PreviousTab( )
         {
             if( IsOnFirstTab( ) )
             {
-                CurIndex = LastIndex;
+                CurrentIndex = LastIndex;
             }
             else
             {
-                CurIndex--;
+                CurrentIndex--;
             }
         }
 
-        public ChromiumWebBrowser CurBrowser
+        /// <summary>
+        /// Called when [load].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void OnLoad( object sender, EventArgs e )
         {
-            get
-            {
-                if( ( TabPages.SelectedItem != null )
-                   && ( TabPages.SelectedItem.Tag != null ) )
-                {
-                    return ( (BrowserTab)TabPages.SelectedItem.Tag ).Browser;
-                }
-                else
-                {
-                    return null;
-                }
-            }
+            InitAppIcon( );
+            InitTooltips( Controls );
+            InitHotkeys( );
         }
 
-        public List<BrowserTab> GetAllTabs( )
-        {
-            var _tabs = new List<BrowserTab>( );
-            foreach( BrowserTabStripItem _tabPage in TabPages.Items )
-            {
-                if( _tabPage.Tag != null )
-                {
-                    _tabs.Add( (BrowserTab)_tabPage.Tag );
-                }
-            }
-
-            return _tabs;
-        }
-
-        public int CurTabLoadingDur
-        {
-            get
-            {
-                if( ( TabPages.SelectedItem != null )
-                   && ( TabPages.SelectedItem.Tag != null ) )
-                {
-                    var _loadTime = (int)( DateTime.Now - CurTab.DateCreated ).TotalMilliseconds;
-                    return _loadTime;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
-
-        private void Browser_URLChanged( object sender, AddressChangedEventArgs e )
+        /// <summary>
+        /// Called when [URL changed].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="AddressChangedEventArgs"/> instance containing the event data.</param>
+        private void OnUrlChanged( object sender, AddressChangedEventArgs e )
         {
             InvokeIfNeeded( ( ) =>
             {
                 // if current tab
-                if( sender == CurBrowser )
+                if( sender == CurrentBrowser )
                 {
                     if( !WebUtils.IsFocused( TxtURL ) )
                     {
                         SetFormUrl( e.Address );
                     }
 
-                    EnableBackButton( CurBrowser.CanGoBack );
-                    EnableForwardButton( CurBrowser.CanGoForward );
+                    EnableBackButton( CurrentBrowser.CanGoBack );
+                    EnableForwardButton( CurrentBrowser.CanGoForward );
                     SetTabTitle( (ChromiumWebBrowser)sender, "Loading..." );
                     BtnRefresh.Visible = false;
                     BtnStop.Visible = true;
-                    CurTab.DateCreated = DateTime.Now;
+                    CurrentTab.DateCreated = DateTime.Now;
                 }
             } );
         }
 
-        private void Browser_LoadError( object sender, LoadErrorEventArgs e )
+        /// <summary>
+        /// Called when [load error].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="LoadErrorEventArgs"/> instance containing the event data.</param>
+        private void OnLoadError( object sender, LoadErrorEventArgs e )
         {
             // ("Load Error:" + e.ErrorCode + ";" + e.ErrorText);
         }
 
-        private void Browser_TitleChanged( object sender, TitleChangedEventArgs e )
+        /// <summary>
+        /// Called when [title changed].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="TitleChangedEventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnTitleChanged( object sender, TitleChangedEventArgs e )
         {
             InvokeIfNeeded( ( ) =>
             {
@@ -687,31 +1134,16 @@ namespace BudgetBrowser
             } );
         }
 
-        private void SetTabTitle( ChromiumWebBrowser browser, string text )
+        /// <summary>
+        /// Called when [loading state changed].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="LoadingStateChangedEventArgs"/>
+        /// instance containing the event data.
+        /// </param>
+        private void OnLoadingStateChanged( object sender, LoadingStateChangedEventArgs e )
         {
-            text = text.Trim( );
-            if( IsBlank( text ) )
-            {
-                text = "New Tab";
-            }
-
-            // save text
-            browser.Tag = text;
-
-            // get tab of given browser
-            var _tabStrip = (BrowserTabStripItem)browser.Parent;
-            _tabStrip.Title = text;
-
-            // if current tab
-            if( browser == CurBrowser )
-            {
-                SetFormTitle( text );
-            }
-        }
-
-        private void Browser_LoadingStateChanged( object sender, LoadingStateChangedEventArgs e )
-        {
-            if( sender == CurBrowser )
+            if( sender == CurrentBrowser )
             {
                 EnableBackButton( e.CanGoBack );
                 EnableForwardButton( e.CanGoForward );
@@ -732,48 +1164,38 @@ namespace BudgetBrowser
             }
         }
 
-        public void InvokeIfNeeded( Action action )
-        {
-            if( InvokeRequired )
-            {
-                BeginInvoke( action );
-            }
-            else
-            {
-                action.Invoke( );
-            }
-        }
-
-        private void Browser_StatusMessage( object sender, StatusMessageEventArgs e )
-        {
-        }
-
-        public void WaitForBrowserToInitialize( ChromiumWebBrowser browser )
-        {
-            while( !browser.IsBrowserInitialized )
-            {
-                Thread.Sleep( 100 );
-            }
-        }
-
-        private void EnableBackButton( bool canGoBack )
-        {
-            InvokeIfNeeded( ( ) => BtnBack.Enabled = canGoBack );
-        }
-
-        private void EnableForwardButton( bool canGoForward )
-        {
-            InvokeIfNeeded( ( ) => BtnForward.Enabled = canGoForward );
-        }
-
+        /// <summary>
+        /// Called when [tab closed].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         private void OnTabClosed( object sender, EventArgs e )
         {
         }
 
+        /// <summary>
+        /// Called when [status updated].
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">The <see cref="StatusMessageEventArgs"/>
+        /// instance containing the event data.
+        /// </param>
+        private void OnStatusUpdated( object sender, StatusMessageEventArgs e )
+        {
+        }
+
+        /// <summary>
+        /// Raises the <see cref="E:TabClosing" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="TabStripItemClosingEventArgs"/>
+        /// instance containing the event data.</param>
         private void OnTabClosing( TabStripItemClosingEventArgs e )
         {
             // exit if invalid tab
-            if( CurTab == null )
+            if( CurrentTab == null )
             {
                 e.Cancel = true;
                 return;
@@ -788,6 +1210,11 @@ namespace BudgetBrowser
             }
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:TabsChanged" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="TabStripItemChangedEventArgs"/>
+        /// instance containing the event data.</param>
         private void OnTabsChanged( TabStripItemChangedEventArgs e )
         {
             ChromiumWebBrowser _browser = null;
@@ -808,7 +1235,7 @@ namespace BudgetBrowser
                 }
                 else
                 {
-                    _browser = CurBrowser;
+                    _browser = CurrentBrowser;
                     SetFormUrl( _browser.Address );
                     SetFormTitle( _browser.Tag.ConvertToString( ) ?? "New Tab" );
                     EnableBackButton( _browser.CanGoBack );
@@ -823,10 +1250,7 @@ namespace BudgetBrowser
                     _downloadStrip = null;
                 }
 
-                if( _browser != null )
-                {
-                    _browser.Dispose( );
-                }
+                _browser?.Dispose( );
             }
 
             if( e.ChangeType == BrowserTabStripItemChangeTypes.Changed )
@@ -841,18 +1265,36 @@ namespace BudgetBrowser
             }
         }
 
-        private void timer1_Tick( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [timer tick].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnTimerTick( object sender, EventArgs e )
         {
             TabPages.SelectedItem = _newTabStrip;
             timer1.Enabled = false;
         }
 
-        private void menuCloseTab_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [menu close clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnMenuCloseClicked( object sender, EventArgs e )
         {
             CloseActiveTab( );
         }
 
-        private void menuCloseOtherTabs_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [close other tabs clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnCloseOtherTabsClicked( object sender, EventArgs e )
         {
             var _listToClose = new List<BrowserTabStripItem>( );
             foreach( BrowserTabStripItem _tab in TabPages.Items )
@@ -870,36 +1312,78 @@ namespace BudgetBrowser
             }
         }
 
-        private void bBack_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [back button click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnBackButtonClick( object sender, EventArgs e )
         {
-            CurBrowser.Back( );
+            CurrentBrowser.Back( );
         }
 
-        private void bForward_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [forward button click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnForwardButtonClick( object sender, EventArgs e )
         {
-            CurBrowser.Forward( );
+            CurrentBrowser.Forward( );
         }
 
-        private void txtUrl_TextChanged( object sender, EventArgs e )
-        {
-        }
-
-        private void bDownloads_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [downloads button clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnDownloadsButtonClicked( object sender, EventArgs e )
         {
             AddNewBrowserTab( BrowserConfig.DownloadsURL );
         }
 
-        private void bRefresh_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [refresh button clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnRefreshButtonClicked( object sender, EventArgs e )
         {
             RefreshActiveTab( );
         }
 
-        private void bStop_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [stop button clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnStopButtonClicked( object sender, EventArgs e )
         {
             StopActiveTab( );
         }
 
-        private void TxtURL_KeyDown( object sender, KeyEventArgs e )
+        /// <summary>
+        /// Called when [URL text box text changed].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnUrlTextBoxTextChanged( object sender, EventArgs e )
+        {
+        }
+
+        /// <summary>
+        /// Called when [URL text box key down].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="KeyEventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnUrlTextBoxKeyDown( object sender, KeyEventArgs e )
         {
             // if ENTER or CTRL+ENTER pressed
             if( e.IsHotKey( Keys.Enter )
@@ -911,7 +1395,7 @@ namespace BudgetBrowser
                 e.Handled = true;
                 e.SuppressKeyPress = true;
 
-                // defocus from url textbox
+                // defocus from url text box
                 Focus( );
             }
 
@@ -920,7 +1404,7 @@ namespace BudgetBrowser
                && WebUtils.IsFullySelected( TxtURL ) )
             {
                 // copy the real URL, not the pretty one
-                Clipboard.SetText( CurBrowser.Address, TextDataFormat.UnicodeText );
+                Clipboard.SetText( CurrentBrowser.Address, TextDataFormat.UnicodeText );
 
                 // im handling this
                 e.Handled = true;
@@ -928,7 +1412,13 @@ namespace BudgetBrowser
             }
         }
 
-        private void txtUrl_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [URL text box clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnUrlTextBoxClicked( object sender, EventArgs e )
         {
             if( !WebUtils.HasSelection( TxtURL ) )
             {
@@ -936,19 +1426,34 @@ namespace BudgetBrowser
             }
         }
 
+        /// <summary>
+        /// Opens the developer tools.
+        /// </summary>
         private void OpenDeveloperTools( )
         {
-            CurBrowser.ShowDevTools( );
+            CurrentBrowser.ShowDevTools( );
         }
 
-        private void tabPages_MouseClick( object sender, MouseEventArgs e )
+        /// <summary>
+        /// Called when [tab pages clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnTabPagesClicked( object sender, MouseEventArgs e )
         {
             /*if (e.Button == System.Windows.Forms.MouseButtons.Right) {
                 tabPages.GetTabItemByPoint(this.mouse
             }*/
         }
 
-        private void MainForm_FormClosing( object sender, FormClosingEventArgs e )
+        /// <summary>
+        /// Called when [closing].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="FormClosingEventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnClosing( object sender, FormClosingEventArgs e )
         {
             // ask user if they are sure
             if( DownloadsInProgress( ) )
@@ -978,152 +1483,67 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// we must store download metadata in a list, since CefSharp does not
-        /// </summary>
-        private void InitDownloads( )
-        {
-            downloads = new Dictionary<int, DownloadItem>( );
-            DownloadNames = new Dictionary<int, string>( );
-            DownloadCancelRequests = new List<int>( );
-        }
-
-        public void UpdateDownloadItem( DownloadItem item )
-        {
-            lock( downloads )
-            {
-                // SuggestedFileName comes full only in the first attempt so keep it somewhere
-                if( item.SuggestedFileName != "" )
-                {
-                    DownloadNames[ item.Id ] = item.SuggestedFileName;
-                }
-
-                // Set it back if it is empty
-                if( ( item.SuggestedFileName == "" )
-                   && DownloadNames.ContainsKey( item.Id ) )
-                {
-                    item.SuggestedFileName = DownloadNames[ item.Id ];
-                }
-
-                downloads[ item.Id ] = item;
-
-                //UpdateSnipProgress();
-            }
-        }
-
-        public string CalcDownloadPath( DownloadItem item )
-        {
-            return item.SuggestedFileName;
-        }
-
-        public bool DownloadsInProgress( )
-        {
-            foreach( var _item in downloads.Values )
-            {
-                if( _item.IsInProgress )
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        /// <summary>
         /// open a new tab with the downloads URL
         /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         private void btnDownloads_Click( object sender, EventArgs e )
         {
             OpenDownloadsTab( );
         }
 
-        public void OpenDownloadsTab( )
-        {
-            if( ( _downloadStrip != null )
-               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[ 0 ] ).Address
-                   == BrowserConfig.DownloadsURL ) )
-            {
-                TabPages.SelectedItem = _downloadStrip;
-            }
-            else
-            {
-                var _brw = AddNewBrowserTab( BrowserConfig.DownloadsURL );
-                _downloadStrip = (BrowserTabStripItem)_brw.Parent;
-            }
-        }
-
-        private void OpenSearch( )
-        {
-            if( !_searchOpen )
-            {
-                _searchOpen = true;
-                InvokeIfNeeded( delegate
-                {
-                    PanelSearch.Visible = true;
-                    TxtSearch.Text = _lastSearch;
-                    TxtSearch.Focus( );
-                    TxtSearch.SelectAll( );
-                } );
-            }
-            else
-            {
-                InvokeIfNeeded( delegate
-                {
-                    TxtSearch.Focus( );
-                    TxtSearch.SelectAll( );
-                } );
-            }
-        }
-
-        private void CloseSearch( )
-        {
-            if( _searchOpen )
-            {
-                _searchOpen = false;
-                InvokeIfNeeded( delegate
-                {
-                    PanelSearch.Visible = false;
-                    CurBrowser.GetBrowser( ).StopFinding( true );
-                } );
-            }
-        }
-
-        private void BtnClearSearch_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [close search button click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnCloseSearchButtonClick( object sender, EventArgs e )
         {
             CloseSearch( );
         }
 
-        private void BtnPrevSearch_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [previous search button click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnPreviousSearchButtonClick( object sender, EventArgs e )
         {
             FindTextOnPage( false );
         }
 
-        private void BtnNextSearch_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [next search button click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnNextSearchButtonClick( object sender, EventArgs e )
         {
             FindTextOnPage( true );
         }
 
-        private void FindTextOnPage( bool next = true )
-        {
-            var _first = _lastSearch != TxtSearch.Text;
-            _lastSearch = TxtSearch.Text;
-            if( _lastSearch.CheckIfValid( ) )
-            {
-                CurBrowser.GetBrowser( ).Find( _lastSearch, true, false, !_first );
-            }
-            else
-            {
-                CurBrowser.GetBrowser( ).StopFinding( true );
-            }
-
-            TxtSearch.Focus( );
-        }
-
-        private void TxtSearch_TextChanged( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [search text changed].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnSearchTextChanged( object sender, EventArgs e )
         {
             FindTextOnPage( true );
         }
 
-        private void TxtSearch_KeyDown( object sender, KeyEventArgs e )
+        /// <summary>
+        /// Called when [search key down].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="KeyEventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnSearchKeyDown( object sender, KeyEventArgs e )
         {
             if( e.IsHotKey( Keys.Enter ) )
             {
@@ -1137,9 +1557,15 @@ namespace BudgetBrowser
             }
         }
 
-        private void BtnHome_Click( object sender, EventArgs e )
+        /// <summary>
+        /// Called when [home button click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnHomeButtonClick( object sender, EventArgs e )
         {
-            CurBrowser.Load( BrowserConfig.HomepageURL );
+            CurrentBrowser.Load( BrowserConfig.HomepageURL );
         }
     }
 }

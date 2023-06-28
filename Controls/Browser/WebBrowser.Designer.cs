@@ -73,14 +73,14 @@
 			this.menuCloseTab.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
 			this.menuCloseTab.Size = new System.Drawing.Size(197, 24);
 			this.menuCloseTab.Text = "Close tab";
-			this.menuCloseTab.Click += new System.EventHandler(this.menuCloseTab_Click);
+			this.menuCloseTab.Click += new System.EventHandler(this.OnMenuCloseClicked);
 			// 
 			// menuCloseOtherTabs
 			// 
 			this.menuCloseOtherTabs.Name = "menuCloseOtherTabs";
 			this.menuCloseOtherTabs.Size = new System.Drawing.Size(197, 24);
 			this.menuCloseOtherTabs.Text = "Close other tabs";
-			this.menuCloseOtherTabs.Click += new System.EventHandler(this.menuCloseOtherTabs_Click);
+			this.menuCloseOtherTabs.Click += new System.EventHandler(this.OnCloseOtherTabsClicked);
 			// 
 			// BtnRefresh
 			// 
@@ -94,7 +94,7 @@
 			this.BtnRefresh.Size = new System.Drawing.Size(25, 30);
 			this.BtnRefresh.TabIndex = 3;
 			this.BtnRefresh.UseVisualStyleBackColor = true;
-			this.BtnRefresh.Click += new System.EventHandler(this.bRefresh_Click);
+			this.BtnRefresh.Click += new System.EventHandler(this.OnRefreshButtonClicked);
 			// 
 			// BtnStop
 			// 
@@ -108,7 +108,7 @@
 			this.BtnStop.Size = new System.Drawing.Size(25, 30);
 			this.BtnStop.TabIndex = 2;
 			this.BtnStop.UseVisualStyleBackColor = true;
-			this.BtnStop.Click += new System.EventHandler(this.bStop_Click);
+			this.BtnStop.Click += new System.EventHandler(this.OnStopButtonClicked);
 			// 
 			// BtnForward
 			// 
@@ -121,7 +121,7 @@
 			this.BtnForward.Size = new System.Drawing.Size(25, 30);
 			this.BtnForward.TabIndex = 1;
 			this.BtnForward.UseVisualStyleBackColor = true;
-			this.BtnForward.Click += new System.EventHandler(this.bForward_Click);
+			this.BtnForward.Click += new System.EventHandler(this.OnForwardButtonClick);
 			// 
 			// BtnBack
 			// 
@@ -134,12 +134,12 @@
 			this.BtnBack.Size = new System.Drawing.Size(25, 30);
 			this.BtnBack.TabIndex = 0;
 			this.BtnBack.UseVisualStyleBackColor = true;
-			this.BtnBack.Click += new System.EventHandler(this.bBack_Click);
+			this.BtnBack.Click += new System.EventHandler(this.OnBackButtonClick);
 			// 
 			// timer1
 			// 
 			this.timer1.Interval = 50;
-			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			this.timer1.Tick += new System.EventHandler(this.OnTimerTick);
 			// 
 			// BtnDownloads
 			// 
@@ -154,7 +154,7 @@
 			this.BtnDownloads.TabIndex = 4;
 			this.BtnDownloads.Tag = "Downloads";
 			this.BtnDownloads.UseVisualStyleBackColor = true;
-			this.BtnDownloads.Click += new System.EventHandler(this.bDownloads_Click);
+			this.BtnDownloads.Click += new System.EventHandler(this.OnDownloadsButtonClicked);
 			// 
 			// TxtURL
 			// 
@@ -167,9 +167,9 @@
 			this.TxtURL.Name = "TxtURL";
 			this.TxtURL.Size = new System.Drawing.Size(812, 27);
 			this.TxtURL.TabIndex = 5;
-			this.TxtURL.Click += new System.EventHandler(this.txtUrl_Click);
-			this.TxtURL.TextChanged += new System.EventHandler(this.txtUrl_TextChanged);
-			this.TxtURL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtURL_KeyDown);
+			this.TxtURL.Click += new System.EventHandler(this.OnUrlTextBoxClicked);
+			this.TxtURL.TextChanged += new System.EventHandler(this.OnUrlTextBoxTextChanged);
+			this.TxtURL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnUrlTextBoxKeyDown);
 			// 
 			// PanelToolbar
 			// 
@@ -204,7 +204,7 @@
 			this.TabPages.Text = "faTabStrip1";
 			this.TabPages.TabStripItemSelectionChanged += new TabStripItemChangedHandler(this.OnTabsChanged);
 			this.TabPages.TabStripItemClosed += new System.EventHandler(this.OnTabClosed);
-			this.TabPages.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabPages_MouseClick);
+			this.TabPages.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnTabPagesClicked);
 			// 
 			// tabStrip1
 			// 
@@ -260,7 +260,7 @@
 			this.BtnNextSearch.TabIndex = 9;
 			this.BtnNextSearch.Tag = "Find next (Enter)";
 			this.BtnNextSearch.UseVisualStyleBackColor = true;
-			this.BtnNextSearch.Click += new System.EventHandler(this.BtnNextSearch_Click);
+			this.BtnNextSearch.Click += new System.EventHandler(this.OnNextSearchButtonClick);
 			// 
 			// BtnPrevSearch
 			// 
@@ -275,7 +275,7 @@
 			this.BtnPrevSearch.TabIndex = 8;
 			this.BtnPrevSearch.Tag = "Find previous (Shift+Enter)";
 			this.BtnPrevSearch.UseVisualStyleBackColor = true;
-			this.BtnPrevSearch.Click += new System.EventHandler(this.BtnPrevSearch_Click);
+			this.BtnPrevSearch.Click += new System.EventHandler(this.OnPreviousSearchButtonClick);
 			// 
 			// BtnCloseSearch
 			// 
@@ -290,7 +290,7 @@
 			this.BtnCloseSearch.TabIndex = 7;
 			this.BtnCloseSearch.Tag = "Close (Esc)";
 			this.BtnCloseSearch.UseVisualStyleBackColor = true;
-			this.BtnCloseSearch.Click += new System.EventHandler(this.BtnClearSearch_Click);
+			this.BtnCloseSearch.Click += new System.EventHandler(this.OnCloseSearchButtonClick);
 			// 
 			// TxtSearch
 			// 
@@ -303,8 +303,8 @@
 			this.TxtSearch.Name = "TxtSearch";
 			this.TxtSearch.Size = new System.Drawing.Size(181, 31);
 			this.TxtSearch.TabIndex = 6;
-			this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
-			this.TxtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyDown);
+			this.TxtSearch.TextChanged += new System.EventHandler(this.OnSearchTextChanged);
+			this.TxtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnSearchKeyDown);
 			// 
 			// BtnHome
 			// 
@@ -319,7 +319,7 @@
 			this.BtnHome.TabIndex = 6;
 			this.BtnHome.Tag = "Home";
 			this.BtnHome.UseVisualStyleBackColor = true;
-			this.BtnHome.Click += new System.EventHandler(this.BtnHome_Click);
+			this.BtnHome.Click += new System.EventHandler(this.OnHomeButtonClick);
 			// 
 			// WebBrowser
 			// 
@@ -335,8 +335,8 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Title";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-			this.Load += new System.EventHandler(this.MainForm_Load);
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
+			this.Load += new System.EventHandler(this.OnLoad);
 			this.menuStripTab.ResumeLayout(false);
 			this.PanelToolbar.ResumeLayout(false);
 			this.PanelToolbar.PerformLayout();

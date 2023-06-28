@@ -98,7 +98,7 @@ namespace BudgetBrowser
                 using( callback )
                 {
                     _webBrowser.UpdateDownloadItem( item );
-                    var _path = _webBrowser.CalcDownloadPath( item );
+                    var _path = _webBrowser.GetDownloadPath( item );
                     if( _path == null )
                     {
                         callback.Continue( _path, false );

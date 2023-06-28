@@ -70,15 +70,6 @@ namespace BudgetBrowser
             _webBrowser = form as WebBrowser;
         }
 
-        /// <inheritdoc />
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing,
-        /// releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose( )
-        {
-        }
-
         /// <summary>
         /// Gets the cookie access filter.
         /// </summary>
@@ -235,6 +226,15 @@ namespace BudgetBrowser
             IFrame frame, IRequest request, IResponse response )
         {
             return false;
+        }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing,
+        /// releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose( )
+        {
         }
     }
 }

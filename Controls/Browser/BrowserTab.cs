@@ -1,5 +1,4 @@
-﻿
-// ******************************************************************************************
+﻿// ******************************************************************************************
 //     Assembly:                Budget Browser
 //     Author:                  Terry D. Eppler
 //     Created:                 06-26-2023
@@ -41,25 +40,30 @@
 
 namespace BudgetBrowser
 {
-	using CefSharp.WinForms;
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
-	using System.Threading.Tasks;
+    using CefSharp.WinForms;
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
 
-	/// <summary>
-	/// POCO created for holding data per tab
-	/// </summary>
-	public class BrowserTab 
-	{
+    /// <summary>
+    /// POCO created for holding data per tab
+    /// </summary>
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "MissingBlankLines" ) ]
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    public class BrowserTab 
+    {
+        // ReSharper disable once MemberCanBeInternal
         public bool IsOpen;
-        public string OrigURL;
-		public string CurURL;
-		public string Title;
+        public string OriginalUrl;
+        public string CurrentUrl;
+        public string Title;
         public string ReferringUrl;
         public DateTime DateCreated;
         public BrowserTabStripItem Tab;
-		public ChromiumWebBrowser Browser;
+        public ChromiumWebBrowser Browser;
     }
 }

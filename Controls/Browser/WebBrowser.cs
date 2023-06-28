@@ -72,7 +72,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The new tab strip
         /// </summary>
-        private BrowserTabStripItem _newTabStrip;
+        private BrowserTabStripItem _newTabItem;
 
         /// <summary>
         /// The download strip
@@ -82,12 +82,12 @@ namespace BudgetBrowser
         /// <summary>
         /// The current full URL
         /// </summary>
-        private string _currentFullUrl;
+        private string _originalUrl;
 
         /// <summary>
         /// The current clean URL
         /// </summary>
-        private string _currentCleanUrl;
+        private string _finalUrl;
 
         /// <summary>
         /// The current title
@@ -122,12 +122,12 @@ namespace BudgetBrowser
         /// <summary>
         /// The application path
         /// </summary>
-        private string _appPath = Path.GetDirectoryName( Application.ExecutablePath ) + @"\";
+        private string _path = Path.GetDirectoryName( Application.ExecutablePath ) + @"\";
 
         /// <summary>
         /// The search open
         /// </summary>
-        private bool _searchOpen;
+        private bool _isSearchOpen;
 
         /// <summary>
         /// The last search
@@ -293,10 +293,10 @@ namespace BudgetBrowser
         private void InitAppIcon( )
         {
             Assembly = Assembly.GetAssembly( typeof( WebBrowser ) );
-            var _path =
+            var _assembly =
                 @"C:\Users\terry\source\repos\BudgetBrowser\Resources\Images\budgetbrowser.ico";
 
-            using var _stream = File.Open( _path, FileMode.Open );
+            using var _stream = File.Open( _assembly, FileMode.Open );
             Icon = new Icon( _stream, new Size( 64, 64 ) );
         }
 
@@ -381,7 +381,7 @@ namespace BudgetBrowser
             _requestHandler = new RequestHandler( this );
             InitDownloads( );
             Host = new HostHandler( this );
-            AddNewBrowser( tabStrip1, BrowserConfig.HomepageURL );
+            AddNewBrowser( TabItem, BrowserConfig.HomepageURL );
         }
 
         /// <summary>
@@ -417,8 +417,8 @@ namespace BudgetBrowser
         /// <param name="next">if set to <c>true</c> [next].</param>
         private void FindTextOnPage( bool next = true )
         {
-            var _first = _lastSearch != TxtSearch.Text;
-            _lastSearch = TxtSearch.Text;
+            var _first = _lastSearch != SearchPanelTextBox.Text;
+            _lastSearch = SearchPanelTextBox.Text;
             if( _lastSearch.CheckIfValid( ) )
             {
                 CurrentBrowser.GetBrowser( ).Find( _lastSearch, true, false, !_first );
@@ -428,7 +428,7 @@ namespace BudgetBrowser
                 CurrentBrowser.GetBrowser( ).StopFinding( true );
             }
 
-            TxtSearch.Focus( );
+            SearchPanelTextBox.Focus( );
         }
 
         /// <summary>
@@ -556,10 +556,10 @@ namespace BudgetBrowser
         /// <param name="url">The URL.</param>
         private void SetFormUrl( string url )
         {
-            _currentFullUrl = url;
-            _currentCleanUrl = CleanUrl( url );
-            TxtURL.Text = _currentCleanUrl;
-            CurrentTab.CurURL = _currentFullUrl;
+            _originalUrl = url;
+            _finalUrl = CleanUrl( url );
+            PrimaryTextBox.Text = _finalUrl;
+            CurrentTab.CurrentUrl = _originalUrl;
             CloseSearch( );
         }
 
@@ -663,7 +663,7 @@ namespace BudgetBrowser
         /// <param name="canGoBack">if set to <c>true</c> [can go back].</param>
         private void EnableBackButton( bool canGoBack )
         {
-            InvokeIfNeeded( ( ) => BtnBack.Enabled = canGoBack );
+            InvokeIfNeeded( ( ) => PreviousSearchButton.Enabled = canGoBack );
         }
 
         /// <summary>
@@ -672,7 +672,7 @@ namespace BudgetBrowser
         /// <param name="canGoForward">if set to <c>true</c> [can go forward].</param>
         private void EnableForwardButton( bool canGoForward )
         {
-            InvokeIfNeeded( ( ) => BtnForward.Enabled = canGoForward );
+            InvokeIfNeeded( ( ) => NextSearchButton.Enabled = canGoForward );
         }
 
         /// <summary>
@@ -746,7 +746,7 @@ namespace BudgetBrowser
             AddNewBrowserTab( "" );
             this.InvokeOnParent( delegate
             {
-                TxtURL.Focus( );
+                PrimaryTextBox.Focus( );
             } );
         }
 
@@ -767,7 +767,7 @@ namespace BudgetBrowser
                 {
                     var _tab2 = (BrowserTab)_tab.Tag;
                     if( ( _tab2 != null )
-                       && ( _tab2.CurURL == url ) )
+                       && ( _tab2.CurrentUrl == url ) )
                     {
                         TabPages.SelectedItem = _tab;
                         return _tab2.Browser;
@@ -777,8 +777,8 @@ namespace BudgetBrowser
                 var _tabStrip = new BrowserTabStripItem( );
                 _tabStrip.Title = "New Tab";
                 TabPages.Items.Insert( TabPages.Items.Count - 1, _tabStrip );
-                _newTabStrip = _tabStrip;
-                var _newTab = AddNewBrowser( _newTabStrip, url );
+                _newTabItem = _tabStrip;
+                var _newTab = AddNewBrowser( _newTabItem, url );
                 _newTab.ReferringUrl = referringUrl;
                 if( focusNewTab )
                 {
@@ -830,8 +830,8 @@ namespace BudgetBrowser
                 IsOpen = true,
                 Browser = _chromiumBrowser,
                 Tab = tabStrip,
-                OrigURL = url,
-                CurURL = url,
+                OriginalUrl = url,
+                CurrentUrl = url,
                 Title = "New Tab",
                 DateCreated = DateTime.Now
             };
@@ -952,23 +952,23 @@ namespace BudgetBrowser
         /// </summary>
         private void OpenSearch( )
         {
-            if( !_searchOpen )
+            if( !_isSearchOpen )
             {
-                _searchOpen = true;
+                _isSearchOpen = true;
                 InvokeIfNeeded( delegate
                 {
-                    PanelSearch.Visible = true;
-                    TxtSearch.Text = _lastSearch;
-                    TxtSearch.Focus( );
-                    TxtSearch.SelectAll( );
+                    SearchPanel.Visible = true;
+                    SearchPanelTextBox.Text = _lastSearch;
+                    SearchPanelTextBox.Focus( );
+                    SearchPanelTextBox.SelectAll( );
                 } );
             }
             else
             {
                 InvokeIfNeeded( delegate
                 {
-                    TxtSearch.Focus( );
-                    TxtSearch.SelectAll( );
+                    SearchPanelTextBox.Focus( );
+                    SearchPanelTextBox.SelectAll( );
                 } );
             }
         }
@@ -978,12 +978,12 @@ namespace BudgetBrowser
         /// </summary>
         private void CloseSearch( )
         {
-            if( _searchOpen )
+            if( _isSearchOpen )
             {
-                _searchOpen = false;
+                _isSearchOpen = false;
                 InvokeIfNeeded( delegate
                 {
-                    PanelSearch.Visible = false;
+                    SearchPanel.Visible = false;
                     CurrentBrowser.GetBrowser( ).StopFinding( true );
                 } );
             }
@@ -1094,7 +1094,7 @@ namespace BudgetBrowser
                 // if current tab
                 if( sender == CurrentBrowser )
                 {
-                    if( !WebUtils.IsFocused( TxtURL ) )
+                    if( !WebUtils.IsFocused( PrimaryTextBox ) )
                     {
                         SetFormUrl( e.Address );
                     }
@@ -1102,8 +1102,8 @@ namespace BudgetBrowser
                     EnableBackButton( CurrentBrowser.CanGoBack );
                     EnableForwardButton( CurrentBrowser.CanGoForward );
                     SetTabTitle( (ChromiumWebBrowser)sender, "Loading..." );
-                    BtnRefresh.Visible = false;
-                    BtnStop.Visible = true;
+                    RefreshSearchButton.Visible = false;
+                    StopSearchButton.Visible = true;
                     CurrentTab.DateCreated = DateTime.Now;
                 }
             } );
@@ -1157,8 +1157,8 @@ namespace BudgetBrowser
                     // after loaded / stopped
                     InvokeIfNeeded( ( ) =>
                     {
-                        BtnRefresh.Visible = true;
-                        BtnStop.Visible = false;
+                        RefreshSearchButton.Visible = true;
+                        StopSearchButton.Visible = false;
                     } );
                 }
             }
@@ -1229,7 +1229,7 @@ namespace BudgetBrowser
 
             if( e.ChangeType == BrowserTabStripItemChangeTypes.SelectionChanged )
             {
-                if( TabPages.SelectedItem == tabStripAdd )
+                if( TabPages.SelectedItem == AddItemTab )
                 {
                     AddBlankTab( );
                 }
@@ -1257,7 +1257,7 @@ namespace BudgetBrowser
             {
                 if( _browser != null )
                 {
-                    if( _currentFullUrl != "about:blank" )
+                    if( _originalUrl != "about:blank" )
                     {
                         _browser.Focus( );
                     }
@@ -1273,7 +1273,7 @@ namespace BudgetBrowser
         /// instance containing the event data.</param>
         private void OnTimerTick( object sender, EventArgs e )
         {
-            TabPages.SelectedItem = _newTabStrip;
+            TabPages.SelectedItem = _newTabItem;
             timer1.Enabled = false;
         }
 
@@ -1299,7 +1299,7 @@ namespace BudgetBrowser
             var _listToClose = new List<BrowserTabStripItem>( );
             foreach( BrowserTabStripItem _tab in TabPages.Items )
             {
-                if( ( _tab != tabStripAdd )
+                if( ( _tab != AddItemTab )
                    && ( _tab != TabPages.SelectedItem ) )
                 {
                     _listToClose.Add( _tab );
@@ -1389,7 +1389,7 @@ namespace BudgetBrowser
             if( e.IsHotKey( Keys.Enter )
                || e.IsHotKey( Keys.Enter, true ) )
             {
-                LoadUrl( TxtURL.Text );
+                LoadUrl( PrimaryTextBox.Text );
 
                 // im handling this
                 e.Handled = true;
@@ -1401,7 +1401,7 @@ namespace BudgetBrowser
 
             // if full URL copied
             if( e.IsHotKey( Keys.C, true )
-               && WebUtils.IsFullySelected( TxtURL ) )
+               && WebUtils.IsFullySelected( PrimaryTextBox ) )
             {
                 // copy the real URL, not the pretty one
                 Clipboard.SetText( CurrentBrowser.Address, TextDataFormat.UnicodeText );
@@ -1420,9 +1420,9 @@ namespace BudgetBrowser
         /// instance containing the event data.</param>
         private void OnUrlTextBoxClicked( object sender, EventArgs e )
         {
-            if( !WebUtils.HasSelection( TxtURL ) )
+            if( !WebUtils.HasSelection( PrimaryTextBox ) )
             {
-                TxtURL.SelectAll( );
+                PrimaryTextBox.SelectAll( );
             }
         }
 

@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStripTab.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="MenuTabStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>325, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="BtnRefresh.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="RefreshSearchButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAQhJREFUOE/V
         lNERwiAQROnAEizBEvzxyzFJCZZgCZaSEixAiCVYQkpICcpCIHdwYH50xjezo0M2Cwdc1O9ohk51pled
@@ -131,7 +131,7 @@
         IRAFZuxj/hEY3XjYhu+i1BtXQGc6/upxWQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="BtnStop.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="StopSearchButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAATlJREFUOE+9
         U9uNAkEMSweUQAmUQAmUQAmUcCXwy3FIWwIlUMKVQAlbAtg5BzIPdvk4YSnSyuN4PJlZ+xi+zRY/ZhvU
@@ -142,7 +142,7 @@
         ner/YHYH1F8a8lpKiKEAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="BtnForward.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="NextSearchButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAQtJREFUOE+9
         lNERwiAMhtnAERzBEXzxybMwgiM4giM4giM4gFBHcARH6Aiav0BLaLD0vPO7+19o+CEhqfoPe7dWxt6U
@@ -152,7 +152,7 @@
         bguRUfX/MAWFxkakG7W08X9DqQ9C2Z1KjUXdLwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="BtnBack.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="PreviousSearchButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAP9JREFUOE+9
         U8ERwiAQpANLsARL8OPLMVCCJViCJViCJViAEEtICZZgCcoSwnBwJ8knO7MzmWRvuSN7ah0c3VYZ+1DG
@@ -165,7 +165,7 @@
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>238, 17</value>
   </metadata>
-  <data name="BtnDownloads.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="SearchDownloadButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAM5JREFUOE/l
         k20NwjAUReugEpBAP4QgYRKQgAQkTMIkTAISJgEJcO9yGzqybqW/ILzkJO3be6fduprfjxDCFGN8EI6V
@@ -174,7 +174,7 @@
         t+O8AzfwEnIVPWyGDum+Oox5AmJH+ASE2L9zAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="BtnHome.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="HomeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
         dAAAEnQB3mYfeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEPSURBVDhP1ZIx
@@ -185,7 +185,7 @@
         OM8z/ZhlWUrjehzHLQE0cxnsvgXwAvr4W8D8LvUNAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="BtnNextSearch.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="NextButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAJpJREFUSEtj
         GAWjYLgC333+DH578qE8/ACkDqSeJOC3J57Bf+9/KJ4PFcUOQPIwtT779KGiBIDXXnm4JgTGbhGyBRD8
@@ -193,7 +193,7 @@
         RdS0AAZQLKKFBTAAtggYBzSzYBSMgkEIGBgAcuCqYV2//8YAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="BtnPrevSearch.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="PreviousButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAIpJREFUSEtj
         GAWjYBABvz3xUBaNgP/e+UD8H0zTBCAsgGEqW4RpAZUtAsUBdgtgmEKLCFsAw2RahNWCPecZvPbKg2kM
@@ -201,7 +201,7 @@
         /SgYBaOATMDAAADrRqilMw6anwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="BtnCloseSearch.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="CloseSearchButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAAMZJREFUSEtj
         GAWjYACAy25+Bv895xn8975n8NmnDxVFBSBxkDxIHVkAYsF/KMa0CG4BXM18qAyRwGuvPJJmGEZYhGkB

@@ -1190,9 +1190,9 @@ namespace BudgetBrowser
         /// <summary>
         /// Raises the <see cref="E:TabClosing" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="TabStripItemClosingEventArgs"/>
+        /// <param name="e">The <see cref="TabClosingEventArgs"/>
         /// instance containing the event data.</param>
-        private void OnTabClosing( TabStripItemClosingEventArgs e )
+        private void OnTabClosing( TabClosingEventArgs e )
         {
             // exit if invalid tab
             if( CurrentTab == null )
@@ -1213,9 +1213,9 @@ namespace BudgetBrowser
         /// <summary>
         /// Raises the <see cref="E:TabsChanged" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="TabStripItemChangedEventArgs"/>
+        /// <param name="e">The <see cref="TabItemChangedEventArgs"/>
         /// instance containing the event data.</param>
-        private void OnTabsChanged( TabStripItemChangedEventArgs e )
+        private void OnTabsChanged( TabItemChangedEventArgs e )
         {
             ChromiumWebBrowser _browser = null;
             try
@@ -1227,7 +1227,7 @@ namespace BudgetBrowser
                 // ignore 
             }
 
-            if( e.ChangeType == BrowserTabStripItemChangeTypes.SelectionChanged )
+            if( e.ChangeType == ChangeType.SelectionChanged )
             {
                 if( TabPages.SelectedItem == AddItemTab )
                 {
@@ -1243,7 +1243,7 @@ namespace BudgetBrowser
                 }
             }
 
-            if( e.ChangeType == BrowserTabStripItemChangeTypes.Removed )
+            if( e.ChangeType == ChangeType.Removed )
             {
                 if( e.Item == _downloadStrip )
                 {
@@ -1253,7 +1253,7 @@ namespace BudgetBrowser
                 _browser?.Dispose( );
             }
 
-            if( e.ChangeType == BrowserTabStripItemChangeTypes.Changed )
+            if( e.ChangeType == ChangeType.Changed )
             {
                 if( _browser != null )
                 {

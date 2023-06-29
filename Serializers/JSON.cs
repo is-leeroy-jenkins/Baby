@@ -54,7 +54,7 @@ namespace BudgetBrowser
     /// <summary>
     /// 
     /// </summary>
-    [SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
+    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
     [ SuppressMessage( "ReSharper", "InternalOrPrivateMemberNotDocumented" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]

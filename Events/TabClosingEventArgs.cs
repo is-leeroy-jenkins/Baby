@@ -1,12 +1,12 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-17-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-17-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
-// <copyright file="FileIconSize.cs" company="Terry D. Eppler">
+// <copyright file="TabClosingEventArgs.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -34,28 +34,46 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   FileIconSize.cs
+//   TabClosingEventArgs.cs
 // </summary>
 // ******************************************************************************************
 
 namespace BudgetBrowser
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
+    /// <inheritdoc />
     /// <summary>
-    /// Two constants extracted from the FileInfoFlags, the only that are
-    /// meaningful for the user of this class.
     /// </summary>
-    public enum FileIconSize
+    /// <seealso cref="T:System.EventArgs" />
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    public class TabClosingEventArgs : EventArgs
     {
         /// <summary>
-        /// The large
+        /// Gets or sets the item.
         /// </summary>
-        Large = 0x000000000,
+        /// <value>
+        /// The item.
+        /// </value>
+        public BrowserTabStripItem Item { get; set; }
 
         /// <summary>
-        /// The small
+        /// Gets or sets a value indicating whether this <see cref="TabClosingEventArgs"/> is cancel.
         /// </summary>
-        Small = 0x000000001
+        /// <value>
+        ///   <c>true</c> if cancel; otherwise, <c>false</c>.
+        /// </value>
+        public bool Cancel { get; set; }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:BudgetBrowser.TabStripItemClosingEventArgs" /> class.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        public TabClosingEventArgs( BrowserTabStripItem item )
+        {
+            Item = item;
+        }
     }
 }

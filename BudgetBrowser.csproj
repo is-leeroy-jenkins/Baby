@@ -23,6 +23,18 @@
     <RepositoryUrl>https://github.com/KarmaScripter/BudgetBrowser</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NoWarn>1701;1702;1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NoWarn>1701;1702;1416</NoWarn>
+  </PropertyGroup>
   <ItemGroup>
     <Content Include="Resources\Images\budgetbrowser.ico" />
   </ItemGroup>
@@ -100,7 +112,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libraries\" />
-    <Folder Include="Enumerations\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">

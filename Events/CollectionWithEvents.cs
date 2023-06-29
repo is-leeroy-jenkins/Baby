@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-01-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
 // <copyright file="CollectionWithEvents.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -65,10 +65,7 @@ namespace BudgetBrowser
         [ Browsable( false ) ]
         public bool IsSuspended
         {
-            get
-            {
-                return _suspendCount > 0;
-            }
+            get { return _suspendCount > 0; }
         }
 
         /// <inheritdoc />
@@ -97,25 +94,25 @@ namespace BudgetBrowser
         /// Occurs when [inserting].
         /// </summary>
         [ Browsable( false ) ]
-        public event CollectionChange Inserting;
+        public event CollectionChanged Inserting;
 
         /// <summary>
         /// Occurs when [inserted].
         /// </summary>
         [ Browsable( false ) ]
-        public event CollectionChange Inserted;
+        public event CollectionChanged Inserted;
 
         /// <summary>
         /// Occurs when [removing].
         /// </summary>
         [ Browsable( false ) ]
-        public event CollectionChange Removing;
+        public event CollectionChanged Removing;
 
         /// <summary>
         /// Occurs when [removed].
         /// </summary>
         [ Browsable( false ) ]
-        public event CollectionChange Removed;
+        public event CollectionChanged Removed;
 
         /// <summary>
         /// Suspends the events.

@@ -207,8 +207,8 @@ namespace BudgetBrowser
                     Invalidate( );
                 }
 
-                OnTabStripItemChanged( new TabStripItemChangedEventArgs( _selectedItem,
-                    BrowserTabStripItemChangeTypes.SelectionChanged ) );
+                OnTabStripItemChanged( new TabItemChangedEventArgs( _selectedItem,
+                    ChangeType.SelectionChanged ) );
             }
         }
 
@@ -250,12 +250,12 @@ namespace BudgetBrowser
         /// <summary>
         /// Occurs when [tab strip item closing].
         /// </summary>
-        public event TabStripItemClosingHandler TabStripItemClosing;
+        public event TabItemClose TabStripItemClosing;
 
         /// <summary>
         /// Occurs when [tab strip item selection changed].
         /// </summary>
-        public event TabStripItemChangedHandler TabStripItemSelectionChanged;
+        public event TabItemChange TabStripItemSelectionChanged;
 
         /// <summary>
         /// Occurs when [menu items loading].
@@ -307,17 +307,17 @@ namespace BudgetBrowser
         /// </summary>
         /// <param name="point">The pt.</param>
         /// <returns></returns>
-        public HitTestResult HitTest( Point point )
+        public HitResult HitTest( Point point )
         {
             if( _closeButton.IsVisible
                && _closeButton.ButtonRectangle.Contains( point ) )
             {
-                return HitTestResult.CloseButton;
+                return HitResult.CloseButton;
             }
 
             return GetTabItemByPoint( point ) != null
-                ? HitTestResult.TabItem
-                : HitTestResult.None;
+                ? HitResult.TabItem
+                : HitResult.None;
         }
 
         /// <summary>
@@ -384,7 +384,7 @@ namespace BudgetBrowser
             for( var _i = 0; _i < Items.Count; _i++ )
             {
                 var _fATabStripItem = Items[ _i ];
-                if( _fATabStripItem.StripRect.Contains( pt )
+                if( _fATabStripItem.StripRectangle.Contains( pt )
                    && _fATabStripItem.Visible
                    && _fATabStripItem.IsDrawn )
                 {
@@ -555,8 +555,8 @@ namespace BudgetBrowser
         /// <summary>
         /// Raises the <see cref="E:TabStripItemClosing" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="TabStripItemClosingEventArgs"/> instance containing the event data.</param>
-        protected virtual void OnTabStripItemClosing( TabStripItemClosingEventArgs e )
+        /// <param name="e">The <see cref="TabClosingEventArgs"/> instance containing the event data.</param>
+        protected virtual void OnTabStripItemClosing( TabClosingEventArgs e )
         {
             TabStripItemClosing?.Invoke( e );
         }
@@ -592,8 +592,8 @@ namespace BudgetBrowser
         /// <summary>
         /// Raises the <see cref="E:TabStripItemChanged" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="TabStripItemChangedEventArgs"/> instance containing the event data.</param>
-        protected virtual void OnTabStripItemChanged( TabStripItemChangedEventArgs e )
+        /// <param name="e">The <see cref="TabItemChangedEventArgs"/> instance containing the event data.</param>
+        protected virtual void OnTabStripItemChanged( TabItemChangedEventArgs e )
         {
             TabStripItemSelectionChanged?.Invoke( e );
         }
@@ -636,9 +636,13 @@ namespace BudgetBrowser
 
         /// <inheritdoc />
         /// <summary>
-        /// Raises the <see cref="E:System.Windows.Forms.Control.Paint" /> event.
+        /// Raises the
+        /// <see cref="E:System.Windows.Forms.Control.Paint" /> event.
         /// </summary>
-        /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs" /> that contains the event data.</param>
+        /// <param name="e">A
+        /// <see cref="T:System.Windows.Forms.PaintEventArgs" />
+        /// that contains the event data.
+        /// </param>
         protected override void OnPaint( PaintEventArgs e )
         {
             SetDefaultSelection( );
@@ -681,10 +685,10 @@ namespace BudgetBrowser
                 else if( ( SelectedItem != null )
                         && SelectedItem.IsDrawn )
                 {
-                    var _num = (int)( SelectedItem.StripRect.Height / 4f );
-                    var _point = new Point( (int)SelectedItem.StripRect.Left - _num, 28 );
+                    var _num = (int)( SelectedItem.StripRectangle.Height / 4f );
+                    var _point = new Point( (int)SelectedItem.StripRectangle.Left - _num, 28 );
                     e.Graphics.DrawLine( _pen, new Point( 0, 28 ), _point );
-                    _point.X += (int)SelectedItem.StripRect.Width + _num * 2;
+                    _point.X += (int)SelectedItem.StripRectangle.Width + _num * 2;
                     e.Graphics.DrawLine( _pen, _point, new Point( ClientRectangle.Width, 28 ) );
                 }
 
@@ -713,7 +717,7 @@ namespace BudgetBrowser
         {
             base.OnMouseDown( e );
             var _hitTestResult = HitTest( e.Location );
-            if( _hitTestResult == HitTestResult.TabItem )
+            if( _hitTestResult == HitResult.TabItem )
             {
                 var _tabItemByPoint = GetTabItemByPoint( e.Location );
                 if( _tabItemByPoint != null )
@@ -733,7 +737,7 @@ namespace BudgetBrowser
                 if( SelectedItem != null )
                 {
                     var _tabStripItemClosingEventArgs =
-                        new TabStripItemClosingEventArgs( SelectedItem );
+                        new TabClosingEventArgs( SelectedItem );
 
                     OnTabStripItemClosing( _tabStripItemClosingEventArgs );
                     if( !_tabStripItemClosingEventArgs.Cancel
@@ -850,7 +854,7 @@ namespace BudgetBrowser
             }
 
             var _rectangleF2 =
-                currentItem.StripRect = new RectangleF( _startPosition, 3f, _num, 28f );
+                currentItem.StripRectangle = new RectangleF( _startPosition, 3f, _num, 28f );
 
             _startPosition += _num;
         }
@@ -865,7 +869,7 @@ namespace BudgetBrowser
             Items.IndexOf( currentItem );
             var _font = Font;
             var _solidBrush = new SolidBrush( _dark );
-            var _stripRect = currentItem.StripRect;
+            var _stripRect = currentItem.StripRectangle;
             var _graphicsPath = new GraphicsPath( );
             var _left = _stripRect.Left;
             var _right = _stripRect.Right;
@@ -926,19 +930,19 @@ namespace BudgetBrowser
             if( e.Action == CollectionChangeAction.Add )
             {
                 Controls.Add( _fATabStripItem );
-                OnTabStripItemChanged( new TabStripItemChangedEventArgs( _fATabStripItem,
-                    BrowserTabStripItemChangeTypes.Added ) );
+                OnTabStripItemChanged( new TabItemChangedEventArgs( _fATabStripItem,
+                    ChangeType.Added ) );
             }
             else if( e.Action == CollectionChangeAction.Remove )
             {
                 Controls.Remove( _fATabStripItem );
-                OnTabStripItemChanged( new TabStripItemChangedEventArgs( _fATabStripItem,
-                    BrowserTabStripItemChangeTypes.Removed ) );
+                OnTabStripItemChanged( new TabItemChangedEventArgs( _fATabStripItem,
+                    ChangeType.Removed ) );
             }
             else
             {
-                OnTabStripItemChanged( new TabStripItemChangedEventArgs( _fATabStripItem,
-                    BrowserTabStripItemChangeTypes.Changed ) );
+                OnTabStripItemChanged( new TabItemChangedEventArgs( _fATabStripItem,
+                    ChangeType.Changed ) );
             }
 
             UpdateLayout( );

@@ -202,7 +202,7 @@
 			this.TabPages.Size = new System.Drawing.Size(934, 621);
 			this.TabPages.TabIndex = 4;
 			this.TabPages.Text = "faTabStrip1";
-			this.TabPages.TabStripItemSelectionChanged += new TabStripItemChangedHandler(this.OnTabsChanged);
+			this.TabPages.TabStripItemSelectionChanged += new TabItemChange(this.OnTabsChanged);
 			this.TabPages.TabStripItemClosed += new System.EventHandler(this.OnTabClosed);
 			this.TabPages.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnTabPagesClicked);
 			// 

@@ -1,12 +1,12 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-01-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
-// <copyright file="BrowserTabStripItemChangeTypes.cs" company="Terry D. Eppler">
+// <copyright file="BabyGetter.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -31,38 +31,21 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    Contact:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   BrowserTabStripItemChangeTypes.cs
+//   BabyGetter.cs
 // </summary>
 // ******************************************************************************************
 
 namespace BudgetBrowser
 {
+    using System;
+
     /// <summary>
     /// 
     /// </summary>
-    public enum BrowserTabStripItemChangeTypes
-    {
-        /// <summary>
-        /// The added
-        /// </summary>
-        Added,
-
-        /// <summary>
-        /// The removed
-        /// </summary>
-        Removed,
-
-        /// <summary>
-        /// The changed
-        /// </summary>
-        Changed,
-
-        /// <summary>
-        /// The selection changed
-        /// </summary>
-        SelectionChanged
-    }
+    /// <param name="obj">The object.</param>
+    /// <returns></returns>
+    public delegate object BabyGetter( object obj );
 }

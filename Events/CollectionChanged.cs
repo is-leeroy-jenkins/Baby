@@ -1,18 +1,18 @@
-Ôªø// ******************************************************************************************
-//     Assembly:                Budget Browser
+// ******************************************************************************************
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-01-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
-// <copyright file="BrowserTabStripItemClosingHandler.cs" company="Terry D. Eppler">
+// <copyright file="CollectionChanged.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
-//    Copyright ¬©  2023  Terry Eppler
+//    Copyright ©  2023  Terry Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
-//    of this software and associated documentation files (the ‚ÄúSoftware‚Äù),
+//    of this software and associated documentation files (the ìSoftwareî),
 //    to deal in the Software without restriction,
 //    including without limitation the rights to use,
 //    copy, modify, merge, publish, distribute, sublicense,
@@ -23,7 +23,7 @@
 //    The above copyright notice and this permission notice shall be included in all
 //    copies or substantial portions of the Software.
 // 
-//    THE SOFTWARE IS PROVIDED ‚ÄúAS IS‚Äù, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+//    THE SOFTWARE IS PROVIDED ìAS ISî, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 //    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 //    FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
 //    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
@@ -34,7 +34,7 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   BrowserTabStripItemClosingHandler.cs
+//   CollectionChanged.cs
 // </summary>
 // ******************************************************************************************
 
@@ -43,8 +43,7 @@ namespace BudgetBrowser
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="e">The <see cref="TabStripItemClosingEventArgs"/>
-    /// instance containing the event data.
-    /// </param>
-    public delegate void TabStripItemClosingHandler( TabStripItemClosingEventArgs e );
+    /// <param name="index">The index.</param>
+    /// <param name="value">The value.</param>
+    public delegate void CollectionChanged( int index, object value );
 }

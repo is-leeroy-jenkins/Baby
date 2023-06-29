@@ -77,7 +77,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The getter
         /// </summary>
-        public GenericGetter Getter;
+        public BabyGetter Getter;
 
         /// <summary>
         /// The is array
@@ -177,6 +177,6 @@ namespace BudgetBrowser
         /// <summary>
         /// The setter
         /// </summary>
-        public GenericSetter Setter;
+        public BabySetter Setter;
     }
 }

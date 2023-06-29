@@ -53,7 +53,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The getter
         /// </summary>
-        public GenericGetter Getter;
+        public BabyGetter Getter;
 
         /// <summary>
         /// The name

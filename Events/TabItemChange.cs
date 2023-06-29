@@ -1,12 +1,12 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-17-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-17-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
-// <copyright file="FileInfoFlags.cs" company="Terry D. Eppler">
+// <copyright file="TabItemChange.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -34,35 +34,16 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   FileInfoFlags.cs
+//   TabItemChange.cs
 // </summary>
 // ******************************************************************************************
 
 namespace BudgetBrowser
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
-
     /// <summary>
     /// 
     /// </summary>
-    [ Flags ]
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public enum FileInfoFlags
-    {
-        /// <summary>
-        /// Retrieve the handle to the icon that represents the file and the index
-        /// of the icon within the system image list. The handle is copied to the
-        /// IconHandle member of the structure specified by psfi, and the index is copied
-        /// to the IconIndex member.
-        /// </summary>
-        ShgfiIcon = 0x000000100,
-
-        /// <summary>
-        /// Indicates that the function should not attempt to access the file
-        /// specified by pszPath. Rather, it should act as if the file specified by
-        /// pszPath exists with the file attributes passed in FileAttributes.
-        /// </summary>
-        ShgfiUsefileattributes = 0x000000010
-    }
+    /// <param name="e">The <see cref="TabItemChangedEventArgs"/>
+    /// instance containing the event data.</param>
+    public delegate void TabItemChange( TabItemChangedEventArgs e );
 }

@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-04-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
 // <copyright file="SchemeHandler.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -88,7 +88,8 @@ namespace BudgetBrowser
         /// <summary>
         /// The application path
         /// </summary>
-        private static readonly string _path = Path.GetDirectoryName( Application.ExecutablePath ) + @"\";
+        private static readonly string _path =
+            Path.GetDirectoryName( Application.ExecutablePath ) + @"\";
 
         /// <summary>
         /// Initializes a new instance of the
@@ -158,7 +159,7 @@ namespace BudgetBrowser
                     {
                         using( callBack )
                         {
-                            _stream = IconUtils.GetFileIcon( _fileName, FileIconSize.Large );
+                            _stream = IconUtils.GetFileIcon( _fileName, IconSize.Large );
                             _mimeType = ResourceHandler.GetMimeType( ".png" );
                             callBack.Continue( );
                         }

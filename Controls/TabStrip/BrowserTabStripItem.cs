@@ -81,9 +81,35 @@ namespace BudgetBrowser
         private bool _isVisible = true;
 
         /// <summary>
+        /// Gets or sets the strip rect.
+        /// </summary>
+        /// <value>
+        /// The strip rect.
+        /// </value>
+        public RectangleF StripRectangle { get; set; } = Rectangle.Empty;
+
+        /// <summary>
+        /// Gets or sets the image.
+        /// </summary>
+        /// <value>
+        /// The image.
+        /// </value>
+        [ DefaultValue( null ) ]
+        public Image Image { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance can close.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance can close; otherwise, <c>false</c>.
+        /// </value>
+        [ DefaultValue( true ) ]
+        public bool CanClose { get; set; } = true;
+
+        /// <summary>
         /// Gets or sets the height and width of the control.
         /// </summary>
-        [ Browsable( false ) ]
+        [Browsable( false ) ]
         [ EditorBrowsable( EditorBrowsableState.Never ) ]
         public new Size Size
         {
@@ -119,14 +145,6 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// Gets or sets the strip rect.
-        /// </summary>
-        /// <value>
-        /// The strip rect.
-        /// </value>
-        internal RectangleF StripRect { get; set; } = Rectangle.Empty;
-
-        /// <summary>
         /// Gets or sets a value indicating whether this instance is drawn.
         /// </summary>
         /// <value>
@@ -149,24 +167,6 @@ namespace BudgetBrowser
                 }
             }
         }
-
-        /// <summary>
-        /// Gets or sets the image.
-        /// </summary>
-        /// <value>
-        /// The image.
-        /// </value>
-        [ DefaultValue( null ) ]
-        public Image Image { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance can close.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance can close; otherwise, <c>false</c>.
-        /// </value>
-        [ DefaultValue( true ) ]
-        public bool CanClose { get; set; } = true;
 
         /// <summary>
         /// Gets or sets the title.

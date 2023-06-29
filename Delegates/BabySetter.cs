@@ -6,7 +6,7 @@
 //     Last Modified By:        Terry D. Eppler
 //     Last Modified On:        $CURRENT_MONTH$-$CURRENT_DAY$-$CURRENT_YEAR$
 // ******************************************************************************************
-// <copyright file="GenericSetter.cs" company="Terry D. Eppler">
+// <copyright file="BabySetter.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the 
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  $CURRENT_YEAR$  Terry Eppler
@@ -34,7 +34,7 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   GenericSetter.cs
+//   BabySetter.cs
 // </summary>
 // ******************************************************************************************
 
@@ -48,5 +48,5 @@ namespace BudgetBrowser
     /// <param name="target">The target.</param>
     /// <param name="value">The value.</param>
     /// <returns></returns>
-    public delegate object GenericSetter( object target, object value );
+    public delegate object BabySetter( object target, object value );
 }

@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-24-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
 // <copyright file="RequestHandler.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -46,12 +46,11 @@ namespace BudgetBrowser
     using System.Diagnostics.CodeAnalysis;
     using System.Windows.Forms;
 
-
     /// <summary>
     /// 
     /// </summary>
     /// <seealso cref="CefSharp.IRequestHandler" />
-    [SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
+    [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public class RequestHandler : IRequestHandler

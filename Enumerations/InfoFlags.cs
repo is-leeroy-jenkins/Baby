@@ -1,12 +1,12 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-01-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
-// <copyright file="BrowserTabStripItemChangedEventArgs.cs" company="Terry D. Eppler">
+// <copyright file="InfoFlags.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -34,51 +34,35 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   BrowserTabStripItemChangedEventArgs.cs
+//   InfoFlags.cs
 // </summary>
 // ******************************************************************************************
 
-using System;
-
 namespace BudgetBrowser
 {
+    using System;
     using System.Diagnostics.CodeAnalysis;
 
-    /// <inheritdoc />
     /// <summary>
+    /// 
     /// </summary>
-    /// <seealso cref="T:System.EventArgs" />
-    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ Flags ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class TabStripItemChangedEventArgs : EventArgs
+    public enum InfoFlags
     {
         /// <summary>
-        /// Gets the type of the change.
+        /// Retrieve the handle to the icon that represents the file and the index
+        /// of the icon within the system image list. The handle is copied to the
+        /// IconHandle member of the structure specified by psfi, and the index is copied
+        /// to the IconIndex member.
         /// </summary>
-        /// <value>
-        /// The type of the change.
-        /// </value>
-        public BrowserTabStripItemChangeTypes ChangeType { get; }
+        ShgfiIcon = 0x000000100,
 
         /// <summary>
-        /// Gets the item.
+        /// Indicates that the function should not attempt to access the file
+        /// specified by pszPath. Rather, it should act as if the file specified by
+        /// pszPath exists with the file attributes passed in FileAttributes.
         /// </summary>
-        /// <value>
-        /// The item.
-        /// </value>
-        public BrowserTabStripItem Item { get; }
-
-        /// <inheritdoc />
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.TabStripItemChangedEventArgs" /> class.
-        /// </summary>
-        /// <param name="item">The item.</param>
-        /// <param name="type">The type.</param>
-        public TabStripItemChangedEventArgs( BrowserTabStripItem item,
-            BrowserTabStripItemChangeTypes type )
-        {
-            ChangeType = type;
-            Item = item;
-        }
+        ShgfiUsefileattributes = 0x000000010
     }
 }

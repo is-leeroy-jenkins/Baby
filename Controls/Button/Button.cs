@@ -73,7 +73,8 @@ namespace BudgetBrowser
         public string HoverText { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Button"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="Button"/> class.
         /// </summary>
         public Button( )
             : base( )
@@ -142,7 +143,6 @@ namespace BudgetBrowser
         public void OnMouseOver( object sender, EventArgs e )
         {
             var _button = sender as Button;
-
             try
             {
                 if( ( _button != null )
@@ -237,8 +237,12 @@ namespace BudgetBrowser
         /// <summary>
         /// Called when [mouse leave].
         /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="sender">The sender.
+        /// </param>
+        /// <param name="e">The
+        /// <see cref="EventArgs"/>
+        /// instance containing the event data.
+        /// </param>
         public virtual void OnMouseLeave( object sender, EventArgs e )
         {
             try

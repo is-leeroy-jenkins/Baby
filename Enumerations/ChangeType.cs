@@ -1,12 +1,12 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-01-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
-// <copyright file="BrowserTabStripItemChangedHandler.cs" company="Terry D. Eppler">
+// <copyright file="ChangeType.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -34,7 +34,7 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   BrowserTabStripItemChangedHandler.cs
+//   ChangeType.cs
 // </summary>
 // ******************************************************************************************
 
@@ -43,7 +43,26 @@ namespace BudgetBrowser
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="e">The <see cref="TabStripItemChangedEventArgs"/>
-    /// instance containing the event data.</param>
-    public delegate void TabStripItemChangedHandler( TabStripItemChangedEventArgs e );
+    public enum ChangeType
+    {
+        /// <summary>
+        /// The added
+        /// </summary>
+        Added,
+
+        /// <summary>
+        /// The removed
+        /// </summary>
+        Removed,
+
+        /// <summary>
+        /// The changed
+        /// </summary>
+        Changed,
+
+        /// <summary>
+        /// The selection changed
+        /// </summary>
+        SelectionChanged
+    }
 }

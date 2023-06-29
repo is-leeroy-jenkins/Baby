@@ -77,9 +77,11 @@ namespace BudgetBrowser
         public ToolStripProfessionalRenderer Renderer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BrowserTabStripCloseButton"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="BrowserTabStripCloseButton"/> class.
         /// </summary>
-        /// <param name="renderer">The renderer.</param>
+        /// <param name="renderer">The renderer.
+        /// </param>
         public BrowserTabStripCloseButton( ToolStripProfessionalRenderer renderer )
         {
             Renderer = renderer;
@@ -91,7 +93,7 @@ namespace BudgetBrowser
         /// <param name="tab">The tab.</param>
         public void CalculateBounds( BrowserTabStripItem tab )
         {
-            ButtonRectangle = new Rectangle( (int)tab.StripRect.Right - 20, (int)tab.StripRect.Top + 5, 15,
+            ButtonRectangle = new Rectangle( (int)tab.StripRectangle.Right - 20, (int)tab.StripRectangle.Top + 5, 15,
                 15 );
 
             RedrawRectangle = new Rectangle( ButtonRectangle.X - 2, ButtonRectangle.Y - 2, 
@@ -118,12 +120,12 @@ namespace BudgetBrowser
 
                 var _num = 4;
                 var _pen = new Pen( _color, 1.6f );
-                g.DrawLine( _pen, ButtonRectangle.Left + _num, ButtonRectangle.Top + _num, ButtonRectangle.Right - _num,
-                    ButtonRectangle.Bottom - _num );
-
-                g.DrawLine( _pen, ButtonRectangle.Right - _num, ButtonRectangle.Top + _num, ButtonRectangle.Left + _num,
-                    ButtonRectangle.Bottom - _num );
-
+                var _left = ButtonRectangle.Left;
+                var _right = ButtonRectangle.Right;
+                var _top = ButtonRectangle.Top;
+                var _bottom = ButtonRectangle.Bottom;
+                g.DrawLine( _pen, _left + _num, _top + _num, _right - _num, _bottom - _num );
+                g.DrawLine( _pen, _right - _num, _top + _num, _left + _num, _bottom - _num );
                 _pen.Dispose( );
             }
         }

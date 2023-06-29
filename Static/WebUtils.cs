@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-17-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
 // <copyright file="WebUtils.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -397,10 +397,9 @@ namespace BudgetBrowser
         public static string RemovePrefix( this string str, string prefix,
             bool caseSensitive = true )
         {
-            return ( str.Length >= prefix.Length ) 
-                && str.BeginsWith( prefix, caseSensitive )
-                    ? str.Substring( prefix.Length )
-                    : str;
+            return ( str.Length >= prefix.Length ) && str.BeginsWith( prefix, caseSensitive )
+                ? str.Substring( prefix.Length )
+                : str;
         }
     }
 }

@@ -38,10 +38,9 @@
 // </summary>
 // ******************************************************************************************
 
-using System;
-
 namespace BudgetBrowser.IO
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
@@ -139,7 +138,7 @@ namespace BudgetBrowser.IO
         /// <summary>
         /// Fasts the create instance.
         /// </summary>
-        /// <param name="objtype">The objtype.</param>
+        /// <param name="objtype">The object type.</param>
         /// <returns></returns>
         /// <exception cref="ErrorDialog.Exception"></exception>
         public object FastCreateInstance( Type objtype )
@@ -194,7 +193,7 @@ namespace BudgetBrowser.IO
         /// <param name="type">The type.</param>
         /// <param name="fieldInfo">The field information.</param>
         /// <returns></returns>
-        public static GenericSetter CreateSetField( Type type, FieldInfo fieldInfo )
+        public static BabySetter CreateSetField( Type type, FieldInfo fieldInfo )
         {
             var _arguments = new Type[ 2 ];
             _arguments[ 0 ] = _arguments[ 1 ] = typeof( object );
@@ -236,7 +235,7 @@ namespace BudgetBrowser.IO
                 _il.Emit( OpCodes.Ret );
             }
 
-            return (GenericSetter)_dynamicSet.CreateDelegate( typeof( GenericSetter ) );
+            return (BabySetter)_dynamicSet.CreateDelegate( typeof( BabySetter ) );
         }
 
         /// <summary>
@@ -245,7 +244,7 @@ namespace BudgetBrowser.IO
         /// <param name="type">The type.</param>
         /// <param name="propertyInfo">The property information.</param>
         /// <returns></returns>
-        public static GenericSetter CreateSetMethod( Type type, PropertyInfo propertyInfo )
+        public static BabySetter CreateSetMethod( Type type, PropertyInfo propertyInfo )
         {
             var _setMethod = propertyInfo.GetSetMethod( );
             if( _setMethod == null )
@@ -297,7 +296,7 @@ namespace BudgetBrowser.IO
             }
 
             _il.Emit( OpCodes.Ret );
-            return (GenericSetter)_setter.CreateDelegate( typeof( GenericSetter ) );
+            return (BabySetter)_setter.CreateDelegate( typeof( BabySetter ) );
         }
 
         /// <summary>
@@ -306,7 +305,7 @@ namespace BudgetBrowser.IO
         /// <param name="type">The type.</param>
         /// <param name="fieldInfo">The field information.</param>
         /// <returns></returns>
-        public static GenericGetter CreateGetField( Type type, FieldInfo fieldInfo )
+        public static BabyGetter CreateGetField( Type type, FieldInfo fieldInfo )
         {
             var _dynamicGet = new DynamicMethod( "_", typeof( object ), new[ ]
             {
@@ -338,7 +337,7 @@ namespace BudgetBrowser.IO
             }
 
             _il.Emit( OpCodes.Ret );
-            return (GenericGetter)_dynamicGet.CreateDelegate( typeof( GenericGetter ) );
+            return (BabyGetter)_dynamicGet.CreateDelegate( typeof( BabyGetter ) );
         }
 
         /// <summary>
@@ -347,7 +346,7 @@ namespace BudgetBrowser.IO
         /// <param name="type">The type.</param>
         /// <param name="propertyInfo">The property information.</param>
         /// <returns></returns>
-        public static GenericGetter CreateGetMethod( Type type, PropertyInfo propertyInfo )
+        public static BabyGetter CreateGetMethod( Type type, PropertyInfo propertyInfo )
         {
             var _getMethod = propertyInfo.GetGetMethod( );
             if( _getMethod == null )
@@ -384,7 +383,7 @@ namespace BudgetBrowser.IO
             }
 
             _il.Emit( OpCodes.Ret );
-            return (GenericGetter)_getter.CreateDelegate( typeof( GenericGetter ) );
+            return (BabyGetter)_getter.CreateDelegate( typeof( BabyGetter ) );
         }
 
         /// <summary>

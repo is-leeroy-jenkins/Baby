@@ -1,12 +1,12 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-01-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
-// <copyright file="HitTestResult.cs" company="Terry D. Eppler">
+// <copyright file="TabItemChangedEventArgs.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -34,30 +34,49 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   HitTestResult.cs
+//   TabItemChangedEventArgs.cs
 // </summary>
 // ******************************************************************************************
 
 namespace BudgetBrowser
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
-    public enum HitTestResult
+    /// <seealso cref="T:System.EventArgs" />
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    public class TabItemChangedEventArgs : EventArgs
     {
         /// <summary>
-        /// The close button
+        /// Gets the type of the change.
         /// </summary>
-        CloseButton,
+        /// <value>
+        /// The type of the change.
+        /// </value>
+        public ChangeType ChangeType { get; }
 
         /// <summary>
-        /// The tab item
+        /// Gets the item.
         /// </summary>
-        TabItem,
+        /// <value>
+        /// The item.
+        /// </value>
+        public BrowserTabStripItem Item { get; }
 
+        /// <inheritdoc />
         /// <summary>
-        /// The none
+        /// Initializes a new instance of the <see cref="T:BudgetBrowser.TabStripItemChangedEventArgs" /> class.
         /// </summary>
-        None
+        /// <param name="item">The item.</param>
+        /// <param name="type">The type.</param>
+        public TabItemChangedEventArgs( BrowserTabStripItem item, ChangeType type )
+        {
+            ChangeType = type;
+            Item = item;
+        }
     }
 }

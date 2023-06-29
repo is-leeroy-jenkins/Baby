@@ -4,7 +4,7 @@
 //     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-28-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
 // <copyright file="IconUtils.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -64,7 +64,7 @@ namespace BudgetBrowser
         /// <param name="name">The name.</param>
         /// <param name="size">The size.</param>
         /// <returns></returns>
-        public static MemoryStream GetFileIcon( string name, FileIconSize size )
+        public static MemoryStream GetFileIcon( string name, IconSize size )
         {
             var _icon = IconFromExtension( name.GetAfter( "." ), size );
             using( _icon )
@@ -137,18 +137,18 @@ namespace BudgetBrowser
         /// <param name="iconCount">The icon count.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException">size</exception>
-        public static List<Icon> ExtractEx( string fileName, FileIconSize size, int firstIconIndex,
+        public static List<Icon> ExtractEx( string fileName, IconSize size, int firstIconIndex,
             int iconCount )
         {
             var _iconList = new List<Icon>( );
             switch( size )
             {
-                case FileIconSize.Large:
+                case IconSize.Large:
                 {
                     ExtractEx( fileName, _iconList, null, firstIconIndex, iconCount );
                     break;
                 }
-                case FileIconSize.Small:
+                case IconSize.Small:
                 {
                     ExtractEx( fileName, null, _iconList, firstIconIndex, iconCount );
                     break;
@@ -180,7 +180,7 @@ namespace BudgetBrowser
         /// <param name="fileName">Name of the file.</param>
         /// <param name="size">The size.</param>
         /// <returns></returns>
-        public static List<Icon> Extract( string fileName, FileIconSize size )
+        public static List<Icon> Extract( string fileName, IconSize size )
         {
             var _iconCount = GetIconsCountInFile( fileName );
             return ExtractEx( fileName, size, 0, _iconCount );
@@ -194,7 +194,7 @@ namespace BudgetBrowser
         /// <param name="size">The size.</param>
         /// <returns></returns>
         /// <exception cref="IconNotFoundException"></exception>
-        public static Icon ExtractOne( string fileName, int index, FileIconSize size )
+        public static Icon ExtractOne( string fileName, int index, IconSize size )
         {
             try
             {
@@ -238,7 +238,7 @@ namespace BudgetBrowser
         /// <param name="extension">The extension.</param>
         /// <param name="size">The size.</param>
         /// <returns></returns>
-        public static Icon IconFromExtension( string extension, FileIconSize size )
+        public static Icon IconFromExtension( string extension, IconSize size )
         {
             // Add the '.' to the extension if needed
             if( extension[ 0 ] != '.' )
@@ -264,7 +264,7 @@ namespace BudgetBrowser
 
             //extracts the icon from the file.
             ExtractIconEx( _iconPath[ 0 ], Convert.ToInt16( _iconPath[ 1 ] ), _large, _small, 1 );
-            return size == FileIconSize.Large
+            return size == IconSize.Large
                 ? FromHandle( _large[ 0 ] )
                 : FromHandle( _small[ 0 ] );
         }
@@ -358,7 +358,7 @@ namespace BudgetBrowser
         /// <returns></returns>
         [ DllImport( "Shell32", CharSet = CharSet.Auto ) ]
         private static extern IntPtr SHGetFileInfo( string pszPath, int dwFileAttributes,
-            out ShellFileInfo psfi, int cbFileInfo, FileInfoFlags uFlags );
+            out ShellFileInfo psfi, int cbFileInfo, InfoFlags uFlags );
 
         /// <summary>
         /// Get the number of icons in the specified file.

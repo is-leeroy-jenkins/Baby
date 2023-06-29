@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-03-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
 // <copyright file="LifeSpanHandler.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -48,7 +48,7 @@ namespace BudgetBrowser
     /// 
     /// </summary>
     /// <seealso cref="CefSharp.ILifeSpanHandler" />
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     public class LifeSpanHandler : ILifeSpanHandler
     {

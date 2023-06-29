@@ -1,12 +1,12 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-01-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
-// <copyright file="BrowserTabStripItemClosingEventArgs.cs" company="Terry D. Eppler">
+// <copyright file="HitResult.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -34,46 +34,30 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   BrowserTabStripItemClosingEventArgs.cs
+//   HitResult.cs
 // </summary>
 // ******************************************************************************************
 
 namespace BudgetBrowser
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
-
-    /// <inheritdoc />
     /// <summary>
+    /// 
     /// </summary>
-    /// <seealso cref="T:System.EventArgs" />
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class TabStripItemClosingEventArgs : EventArgs
+    public enum HitResult
     {
         /// <summary>
-        /// Gets or sets the item.
+        /// The close button
         /// </summary>
-        /// <value>
-        /// The item.
-        /// </value>
-        public BrowserTabStripItem Item { get; set; }
+        CloseButton,
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="TabStripItemClosingEventArgs"/> is cancel.
+        /// The tab item
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if cancel; otherwise, <c>false</c>.
-        /// </value>
-        public bool Cancel { get; set; }
+        TabItem,
 
-        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.TabStripItemClosingEventArgs" /> class.
+        /// The none
         /// </summary>
-        /// <param name="item">The item.</param>
-        public TabStripItemClosingEventArgs( BrowserTabStripItem item )
-        {
-            Item = item;
-        }
+        None
     }
 }

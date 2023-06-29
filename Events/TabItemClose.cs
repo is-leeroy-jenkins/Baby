@@ -6,7 +6,7 @@
 //     Last Modified By:        Terry D. Eppler
 //     Last Modified On:        06-29-2023
 // ******************************************************************************************
-// <copyright file="MenuItem.cs" company="Terry D. Eppler">
+// <copyright file="TabItemClose.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -34,33 +34,17 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   MenuItem.cs
+//   TabItemClose.cs
 // </summary>
 // ******************************************************************************************
 
 namespace BudgetBrowser
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
-
     /// <summary>
+    /// 
     /// </summary>
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public enum MenuItem
-    {
-        /// <summary>
-        /// The search
-        /// </summary>
-        Search = 1,
-
-        /// <summary>
-        /// The close
-        /// </summary>
-        Close = 3,
-
-        /// <summary>
-        /// The exit
-        /// </summary>
-        Exit = 4
-    }
+    /// <param name="e">The <see cref="TabClosingEventArgs"/>
+    /// instance containing the event data.
+    /// </param>
+    public delegate void TabItemClose( TabClosingEventArgs e );
 }

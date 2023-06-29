@@ -84,7 +84,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ### Search Bar
 
-![]Resources/Images/search.png)
+![](Resources/Images/search.png)
 
 ### Downloads Tab
 

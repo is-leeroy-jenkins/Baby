@@ -54,6 +54,7 @@ namespace BudgetBrowser
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Reflection;
+    using static System.IO.Path;
     using Action = System.Action;
 
     /// <inheritdoc />
@@ -62,14 +63,14 @@ namespace BudgetBrowser
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
     /// If you would only like to support 64-bit machines, simply change the DLL references.
     /// </summary>
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
-    [SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" )]
-    [SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" )]
-    [SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" )]
-    [SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" )]
-    [SuppressMessage( "ReSharper", "ConvertToAutoProperty" )]
-    [SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" )]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
+    [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
+    [ SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoProperty" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" ) ]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -125,7 +126,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The application path
         /// </summary>
-        private string _path = Path.GetDirectoryName( Application.ExecutablePath ) + @"\";
+        private string _path = GetDirectoryName( Application.ExecutablePath ) + @"\";
 
         /// <summary>
         /// The search open
@@ -171,7 +172,7 @@ namespace BudgetBrowser
         private int CurrentIndex
         {
             get { return TabPages.Items.IndexOf( TabPages.SelectedItem ); }
-            set { TabPages.SelectedItem = TabPages.Items[value]; }
+            set { TabPages.SelectedItem = TabPages.Items[ value ]; }
         }
 
         /// <summary>
@@ -275,7 +276,8 @@ namespace BudgetBrowser
 
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.WebBrowser" /> class.
+        /// Initializes a new instance of the
+        /// <see cref="T:BudgetBrowser.WebBrowser" /> class.
         /// </summary>
         public WebBrowser( )
         {
@@ -339,7 +341,8 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// we activate all the tooltips stored in the Tag property of the buttons
+        /// we activate all the tooltips stored
+        /// in the Tag property of the buttons
         /// </summary>
         /// <param name="parent">The parent.</param>
         public void InitTooltips( Control.ControlCollection parent )
@@ -408,10 +411,6 @@ namespace BudgetBrowser
         private void ConfigureBrowser( ChromiumWebBrowser browser )
         {
             var _config = new BrowserSettings( );
-
-            //_config.FileAccessFromFileUrls = (!CrossDomainSecurity).ToCefState();
-            //_config.UniversalAccessFromFileUrls = (!CrossDomainSecurity).ToCefState();
-            //_config.WebSecurity = WebSecurity.ToCefState();
             _config.WebGl = BrowserConfig.WebGl.ToCefState( );
             browser.BrowserSettings = _config;
         }
@@ -950,7 +949,7 @@ namespace BudgetBrowser
                 // SuggestedFileName comes full only in the first attempt so keep it somewhere
                 if( item.SuggestedFileName != "" )
                 {
-                    DownloadNames[item.Id] = item.SuggestedFileName;
+                    DownloadNames[ item.Id ] = item.SuggestedFileName;
                 }
 
                 // Set it back if it is empty
@@ -960,7 +959,7 @@ namespace BudgetBrowser
                     item.SuggestedFileName = _name;
                 }
 
-                _downloads[item.Id] = item;
+                _downloads[ item.Id ] = item;
 
                 //UpdateSnipProgress();
             }
@@ -1005,7 +1004,7 @@ namespace BudgetBrowser
                 // keep tab at same index focused
                 if( TabPages.Items.Count - 1 > _index )
                 {
-                    TabPages.SelectedItem = TabPages.Items[_index];
+                    TabPages.SelectedItem = TabPages.Items[ _index ];
                 }
             }
         }
@@ -1016,7 +1015,7 @@ namespace BudgetBrowser
         public void OpenDownloadsTab( )
         {
             if( ( _downloadStrip != null )
-               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[0] ).Address
+               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[ 0 ] ).Address
                    == BrowserConfig.DownloadsUrl ) )
             {
                 TabPages.SelectedItem = _downloadStrip;
@@ -1107,7 +1106,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsOnFirstTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[0];
+            return TabPages.SelectedItem == TabPages.Items[ 0 ];
         }
 
         /// <summary>
@@ -1118,7 +1117,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsOnLastTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[TabPages.Items.Count - 2];
+            return TabPages.SelectedItem == TabPages.Items[ TabPages.Items.Count - 2 ];
         }
 
         /// <summary>
@@ -1303,7 +1302,7 @@ namespace BudgetBrowser
             ChromiumWebBrowser _browser = null;
             try
             {
-                _browser = (ChromiumWebBrowser)e.Item.Controls[0];
+                _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
             }
             catch( Exception _ex )
             {
@@ -1555,7 +1554,7 @@ namespace BudgetBrowser
             {
                 foreach( TabPage _tab in TabPages.Items )
                 {
-                    var _browser = (ChromiumWebBrowser)_tab.Controls[0];
+                    var _browser = (ChromiumWebBrowser)_tab.Controls[ 0 ];
                     _browser.Dispose( );
                 }
             }

@@ -1,6 +1,6 @@
 ﻿![BudgetBrowser](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/logo3.png)
 
-BudgetBrowser is the fastest open source C# web browser there is! Slightly faster than Google Chrome when rendering web pages due to lightweight CEF renderer. We compared every available .NET browsing engine and finally settled on the high-performance [CefSharp](https://github.com/cefsharp/CefSharp/). Released under the permissive MIT license.
+BudgetBrowser is an open source C# web browser!. Slightly faster than Google Chrome when rendering web pages due to lightweight CEF renderer. We compared every available .NET browsing engine and finally settled on the high-performance [CefSharp](https://github.com/cefsharp/CefSharp/). Released under the permissive MIT license.
 
 ## Features
 
@@ -34,22 +34,22 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 - You need [VC++ 2019 Runtime](https://aka.ms/vs/17/release/vc_redist.x64.exe) 32-bit and 64-bit versions
 
-- You need .NET 6.
+- You will need .NET 6.
 
 - You need to install the version of VC++ Runtime that CEFSharp needs. Since we are using CefSharp 106, according to [this](https://github.com/cefsharp/CefSharp/#release-branches) we need the above versions
 
 
 ## Getting started
 
-- See the [Compilation Guide](docs/Compilation.md) for steps to get started.
+- See the [Compilation Guide](Docs/Compilation.md) for steps to get started.
 
 
 ## Documentation
 
-- [User Guide](docs/Users.md)
-- [Compilation Guide](docs/Compilation.md)
-- [Configuration Guide](docs/Configuration.md)
-- [Distribution Guide](docs/Distribution.md)
+- [User Guide](Docs/Users.md)
+- [Compilation Guide](Docs/Compilation.md)
+- [Configuration Guide](Docs/Configuration.md)
+- [Distribution Guide](Docs/Distribution.md)
 
 
 ## Code
@@ -68,7 +68,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ### Apple.com
 
-![](https://github.comhttps://github.com/KarmaScripter/BudgetBrowser/Resources/Images/1.png)
+![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/1.png)
 
 ### WebAssembly & WebGL
 

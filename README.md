@@ -1,4 +1,4 @@
-﻿![BudgetBrowser](https://github.com/budgetbrowser/BudgetBrowser/Resources/Images/logo3.png)
+﻿![BudgetBrowser](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/logo3.png)
 
 BudgetBrowser is the fastest open source C# web browser there is! Slightly faster than Google Chrome when rendering web pages due to lightweight CEF renderer. We compared every available .NET browsing engine and finally settled on the high-performance [CefSharp](https://github.com/cefsharp/CefSharp/). Released under the permissive MIT license.
 

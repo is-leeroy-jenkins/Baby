@@ -50,9 +50,11 @@ namespace BudgetBrowser
     using CefSharp;
     using CefSharp.WinForms;
     using Syncfusion.Windows.Forms;
+    using Syncfusion.Windows.Forms.Tools;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Reflection;
+    using Action = System.Action;
 
     /// <inheritdoc />
     /// <summary>
@@ -291,7 +293,7 @@ namespace BudgetBrowser
             BackColor = Color.FromArgb( 20, 20, 20 );
             ForeColor = Color.LightGray;
             Font = new Font( "Roboto", 9 );
-            ShowIcon = false;
+            ShowIcon = true;
             ShowInTaskbar = true;
             MetroColor = Color.FromArgb( 20, 20, 20 );
             CaptionBarHeight = 26;
@@ -308,19 +310,9 @@ namespace BudgetBrowser
             ControlBox = true;
             InitBrowser( );
             SetFormTitle( null );
-        }
 
-        /// <summary>
-        /// embedding the resource using the
-        /// Visual Studio designer results in a blurry icon.
-        /// the best way to get a non-blurry icon for Windows 7 apps.
-        /// </summary>
-        private void InitAppIcon( )
-        {
-            Assembly = Assembly.GetAssembly( typeof( WebBrowser ) );
-            var _path = @"C:\Users\terry\source\repos\BudgetBrowser\Properties\Images\budgetbrowser.ico";
-            var _stream = File.Open( _path, FileMode.Open );
-            Icon = Icon = new Icon( _stream, new Size( 64, 64 ) );
+            // Wire Events
+            Load += OnLoad;
         }
 
         /// <summary>
@@ -518,7 +510,7 @@ namespace BudgetBrowser
         {
             try
             {
-                var _prefix = "Properties.Resources."; 
+                var _prefix = "Properties.Resources.";
                 return Assembly.GetManifestResourceStream( filename );
             }
             catch( Exception _ex )
@@ -585,6 +577,71 @@ namespace BudgetBrowser
             PrimaryTextBox.Text = _finalUrl;
             CurrentTab.CurrentUrl = _originalUrl;
             CloseSearch( );
+        }
+
+        /// <summary>
+        /// Sets the tool strip properties.
+        /// </summary>
+        private void SetTextBoxProperties( )
+        {
+            try
+            {
+                // Header URL Search
+
+                // Key Word Dialog Search
+
+                // Toolbar TextBox
+                ToolStripTextBox.ForeColor = Color.White;
+                ToolStripTextBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
+                ToolStripTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
+                ToolStripTextBox.BackColor = Color.FromArgb( 75, 75, 75 );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Sets the ComboBox properties.
+        /// </summary>
+        private void SetComboBoxProperties( )
+        {
+            try
+            {
+                // Website ComboBox Properties
+                ToolStripComboBox.Font = new Font( "Roboto", 8, FontStyle.Bold );
+                ToolStripComboBox.Style = ToolStripExStyle.Office2016Black;
+                ToolStripComboBox.ForeColor = Color.White;
+                ToolStripComboBox.Size = new Size( 175, 32 );
+
+                // SearchEngine ComboBox Properties
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Sets the tool strip properties.
+        /// </summary>
+        private void SetToolStripProperties( )
+        {
+            try
+            {
+                ToolStrip.Visible = true;
+                ToolStrip.Text = string.Empty;
+                ToolStrip.VisualStyle = ToolStripExStyle.Office2016Black;
+                ToolStrip.Office12Mode = true;
+                ToolStrip.OfficeColorScheme = ToolStripEx.ColorScheme.Blue;
+                ToolStrip.LauncherStyle = LauncherStyle.Office2007;
+                ToolStrip.ImageScalingSize = new Size( 16, 16 );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
         }
 
         /// <summary>
@@ -1101,9 +1158,11 @@ namespace BudgetBrowser
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void OnLoad( object sender, EventArgs e )
         {
-            InitAppIcon( );
             InitTooltips( Controls );
             InitHotkeys( );
+            SetComboBoxProperties( );
+            SetTextBoxProperties( );
+            SetToolStripProperties( );
         }
 
         /// <summary>

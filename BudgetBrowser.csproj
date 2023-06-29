@@ -11,7 +11,7 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Images\budgetbrowser.ico</ApplicationIcon>
+    <ApplicationIcon>Properties\Images\budgetbrowser.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>BudgetBrowser.Program</StartupObject>
@@ -36,7 +36,7 @@
     <NoWarn>1701;1702;1416</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Resources\Images\budgetbrowser.ico" />
+    <Content Include="Properties\Images\budgetbrowser.ico" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Controls\TabStrip\BaseStyledPanel.cs">
@@ -47,6 +47,11 @@
     </Compile>
     <Compile Update="Controls\TabStrip\BrowserTabStripItem.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -96,7 +101,7 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Update="Resources\Images\BudgetExecution.png">
+    <None Update="Properties\Images\BudgetExecution.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
@@ -116,6 +121,8 @@
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

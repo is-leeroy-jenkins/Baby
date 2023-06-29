@@ -4,7 +4,7 @@
 //     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-27-2023
+//     Last Modified On:        06-29-2023
 // ******************************************************************************************
 // <copyright file="WebBrowser.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -233,10 +233,7 @@ namespace BudgetBrowser
         /// </value>
         public BrowserTab CurrentTab
         {
-            get
-            {
-                return (BrowserTab)TabPages.SelectedItem?.Tag;
-            }
+            get { return (BrowserTab)TabPages.SelectedItem?.Tag; }
         }
 
         /// <summary>
@@ -321,11 +318,9 @@ namespace BudgetBrowser
         private void InitAppIcon( )
         {
             Assembly = Assembly.GetAssembly( typeof( WebBrowser ) );
-            var _assembly =
-                @"C:\Users\terry\source\repos\BudgetBrowser\Resources\Images\budgetbrowser.ico";
-
-            using var _stream = File.Open( _assembly, FileMode.Open );
-            Icon = new Icon( _stream, new Size( 64, 64 ) );
+            var _path = @"C:\Users\terry\source\repos\BudgetBrowser\Properties\Images\budgetbrowser.ico";
+            var _stream = File.Open( _path, FileMode.Open );
+            Icon = Icon = new Icon( _stream, new Size( 64, 64 ) );
         }
 
         /// <summary>
@@ -386,7 +381,7 @@ namespace BudgetBrowser
             var _settings = new CefSettings( );
             _settings.RegisterScheme( new CefCustomScheme
             {
-                SchemeName = BrowserConfig.InternalURL,
+                SchemeName = BrowserConfig.InternalUrl,
                 SchemeHandlerFactory = new SchemeHandlerFactory( )
             } );
 
@@ -396,7 +391,7 @@ namespace BudgetBrowser
             _settings.CachePath = GetApplicationDirectory( "Cache" );
             if( BrowserConfig.Proxy )
             {
-                CefSharpSettings.Proxy = new ProxyOptions( BrowserConfig.ProxyIP,
+                CefSharpSettings.Proxy = new ProxyOptions( BrowserConfig.ProxyIp,
                     BrowserConfig.ProxyPort.ToString( ), BrowserConfig.ProxyUsername,
                     BrowserConfig.ProxyPassword, BrowserConfig.ProxyBypassList );
             }
@@ -409,7 +404,7 @@ namespace BudgetBrowser
             _requestHandler = new RequestHandler( this );
             InitDownloads( );
             Host = new HostHandler( this );
-            AddNewBrowser( TabItem, BrowserConfig.HomepageURL );
+            AddNewBrowser( TabItem, BrowserConfig.HomepageUrl );
         }
 
         /// <summary>
@@ -425,7 +420,7 @@ namespace BudgetBrowser
             //_config.FileAccessFromFileUrls = (!CrossDomainSecurity).ToCefState();
             //_config.UniversalAccessFromFileUrls = (!CrossDomainSecurity).ToCefState();
             //_config.WebSecurity = WebSecurity.ToCefState();
-            _config.WebGl = BrowserConfig.WebGL.ToCefState( );
+            _config.WebGl = BrowserConfig.WebGl.ToCefState( );
             browser.BrowserSettings = _config;
         }
 
@@ -523,7 +518,8 @@ namespace BudgetBrowser
         {
             try
             {
-                return Assembly.GetManifestResourceStream( "BudgetBrowser.Resources." + filename );
+                var _prefix = "Properties.Resources."; 
+                return Assembly.GetManifestResourceStream( filename );
             }
             catch( Exception _ex )
             {
@@ -617,7 +613,7 @@ namespace BudgetBrowser
             {
                 Uri.TryCreate( url, UriKind.Absolute, out var _outUri );
                 if( !( _urlLower.StartsWith( "http" )
-                       || _urlLower.StartsWith( BrowserConfig.InternalURL ) ) )
+                       || _urlLower.StartsWith( BrowserConfig.InternalUrl ) ) )
                 {
                     if( ( _outUri == null )
                        || ( _outUri.Scheme != Uri.UriSchemeFile ) )
@@ -626,7 +622,7 @@ namespace BudgetBrowser
                     }
                 }
 
-                if( _urlLower.StartsWith( BrowserConfig.InternalURL + ":" )
+                if( _urlLower.StartsWith( BrowserConfig.InternalUrl + ":" )
                    ||
 
                    // load URL if it seems valid
@@ -640,7 +636,7 @@ namespace BudgetBrowser
                 else
                 {
                     // run search if unknown URL
-                    _newUrl = BrowserConfig.SearchURL + HttpUtility.UrlEncode( url );
+                    _newUrl = BrowserConfig.SearchUrl + HttpUtility.UrlEncode( url );
                 }
             }
 
@@ -746,7 +742,7 @@ namespace BudgetBrowser
             return ( url == "" )
                 || url.BeginsWith( "about:" )
                 || url.BeginsWith( "chrome:" )
-                || url.BeginsWith( BrowserConfig.InternalURL + ":" );
+                || url.BeginsWith( BrowserConfig.InternalUrl + ":" );
         }
 
         /// <summary>
@@ -827,7 +823,7 @@ namespace BudgetBrowser
         {
             if( url == "" )
             {
-                url = BrowserConfig.NewTabURL;
+                url = BrowserConfig.NewTabUrl;
             }
 
             var _chromiumBrowser = new ChromiumWebBrowser( url );
@@ -864,9 +860,9 @@ namespace BudgetBrowser
                 DateCreated = DateTime.Now
             };
 
-            // save tab obj in tabstrip
+            // save tab obj in tab strip
             tabStrip.Tag = _browserTab;
-            if( url.StartsWith( BrowserConfig.InternalURL + ":" ) )
+            if( url.StartsWith( BrowserConfig.InternalUrl + ":" ) )
             {
                 _chromiumBrowser.JavascriptObjectRepository.Register( "host", Host,
                     BindingOptions.DefaultBinder );
@@ -914,7 +910,7 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// Downloadses the in progress.
+        /// Downloads the in progress.
         /// </summary>
         /// <returns></returns>
         public bool DownloadsInProgress( )
@@ -949,7 +945,7 @@ namespace BudgetBrowser
                 var _index = TabPages.Items.IndexOf( TabPages.SelectedItem );
                 TabPages.RemoveTab( TabPages.SelectedItem );
 
-                // keep tab at same index focussed
+                // keep tab at same index focused
                 if( TabPages.Items.Count - 1 > _index )
                 {
                     TabPages.SelectedItem = TabPages.Items[_index];
@@ -964,13 +960,13 @@ namespace BudgetBrowser
         {
             if( ( _downloadStrip != null )
                && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[0] ).Address
-                   == BrowserConfig.DownloadsURL ) )
+                   == BrowserConfig.DownloadsUrl ) )
             {
                 TabPages.SelectedItem = _downloadStrip;
             }
             else
             {
-                var _brw = AddNewBrowserTab( BrowserConfig.DownloadsURL );
+                var _brw = AddNewBrowserTab( BrowserConfig.DownloadsUrl );
                 _downloadStrip = (BrowserTabStripItem)_brw.Parent;
             }
         }
@@ -1370,7 +1366,7 @@ namespace BudgetBrowser
         /// instance containing the event data.</param>
         private void OnDownloadsButtonClicked( object sender, EventArgs e )
         {
-            AddNewBrowserTab( BrowserConfig.DownloadsURL );
+            AddNewBrowserTab( BrowserConfig.DownloadsUrl );
         }
 
         /// <summary>
@@ -1593,7 +1589,20 @@ namespace BudgetBrowser
         /// instance containing the event data.</param>
         private void OnHomeButtonClick( object sender, EventArgs e )
         {
-            CurrentBrowser.Load( BrowserConfig.HomepageURL );
+            CurrentBrowser.Load( BrowserConfig.HomepageUrl );
+        }
+
+        /// <summary>
+        /// Fails the specified ex.
+        /// </summary>
+        /// <param name="ex">
+        /// The ex.
+        /// </param>
+        private protected static void Fail( Exception ex )
+        {
+            using var _error = new ErrorDialog( ex );
+            _error?.SetText( );
+            _error?.ShowDialog( );
         }
     }
 }

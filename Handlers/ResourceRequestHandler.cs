@@ -175,7 +175,7 @@ namespace BudgetBrowser
                 }
                 else
                 {
-                    frame.LoadUrl( BrowserConfig.FileNotFoundURL
+                    frame.LoadUrl( BrowserConfig.FileNotFoundUrl
                         + "?path="
                         + request.Url.UrlEncode( ) );
                 }
@@ -185,7 +185,7 @@ namespace BudgetBrowser
                 var _path = request.Url.FileUrlToPath( );
                 if( _path.FileNotExists( ) )
                 {
-                    frame.LoadUrl( BrowserConfig.FileNotFoundURL + "?path=" + _path.UrlEncode( ) );
+                    frame.LoadUrl( BrowserConfig.FileNotFoundUrl + "?path=" + _path.UrlEncode( ) );
                 }
             }
             else
@@ -193,7 +193,7 @@ namespace BudgetBrowser
                 if( ( _code == 444 )
                    || ( ( _code >= 500 ) && ( _code <= 599 ) ) )
                 {
-                    frame.LoadUrl( BrowserConfig.CannotConnectURL );
+                    frame.LoadUrl( BrowserConfig.CannotConnectUrl );
                 }
             }
         }

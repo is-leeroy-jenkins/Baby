@@ -45,6 +45,7 @@ namespace BudgetBrowser
     using System.Diagnostics.CodeAnalysis;
 
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
     public static class BrowserConfig 
     {
         /// <summary>
@@ -68,37 +69,38 @@ namespace BudgetBrowser
         /// <summary>
         /// 
         /// </summary>
-        public static string HomepageURL = "https://www.google.com";
+        public static string HomepageUrl = 
+            "file:///C:/Users/terry/source/repos/BudgetBrowser/WebPages/index.html";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string NewTabURL = "about:blank";
+        public static string NewTabUrl = "about:blank";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string InternalURL = "budgetbrowser";
+        public static string InternalUrl = "budgetbrowser";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string DownloadsURL = "budgetbrowser://storage/downloads.html";
+        public static string DownloadsUrl = "budgetbrowser://storage/downloads.html";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string FileNotFoundURL = "budgetbrowser://storage/errors/notFound.html";
+        public static string FileNotFoundUrl = "budgetbrowser://storage/errors/notFound.html";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string CannotConnectURL = "budgetbrowser://storage/errors/cannotConnect.html";
+        public static string CannotConnectUrl = "budgetbrowser://storage/errors/cannotConnect.html";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string SearchURL = "https://www.google.com/search?q=";
+        public static string SearchUrl = "https://www.google.com/search?q=";
 
         /// <summary>
         /// 
@@ -113,7 +115,7 @@ namespace BudgetBrowser
         /// <summary>
         /// 
         /// </summary>
-        public static bool WebGL = true;
+        public static bool WebGl = true;
 
         /// <summary>
         /// 
@@ -128,7 +130,7 @@ namespace BudgetBrowser
         /// <summary>
         /// 
         /// </summary>
-        public static string ProxyIP = "123.123.123.123";
+        public static string ProxyIp = "123.123.123.123";
 
         /// <summary>
         /// 

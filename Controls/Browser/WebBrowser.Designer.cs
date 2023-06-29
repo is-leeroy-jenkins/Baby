@@ -85,6 +85,7 @@
             RefreshSearchButton.Anchor =   System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Right  ;
             RefreshSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             RefreshSearchButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            RefreshSearchButton.Image = Properties.Resources.SearchRefreshButton;
             RefreshSearchButton.Location = new System.Drawing.Point( 1282, 0 );
             RefreshSearchButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
             RefreshSearchButton.Name = "RefreshSearchButton";
@@ -110,6 +111,7 @@
             // 
             NextSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             NextSearchButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            NextSearchButton.Image = Properties.Resources.SearchNextButton;
             NextSearchButton.Location = new System.Drawing.Point( 29, 0 );
             NextSearchButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
             NextSearchButton.Name = "NextSearchButton";
@@ -122,6 +124,7 @@
             // 
             PreviousSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             PreviousSearchButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            PreviousSearchButton.Image = Properties.Resources.SearchPreviousButton;
             PreviousSearchButton.Location = new System.Drawing.Point( 2, 0 );
             PreviousSearchButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
             PreviousSearchButton.Name = "PreviousSearchButton";
@@ -140,6 +143,7 @@
             SearchDownloadButton.Anchor =   System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Right  ;
             SearchDownloadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             SearchDownloadButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            SearchDownloadButton.Image = Properties.Resources.SearchDownloadButton;
             SearchDownloadButton.Location = new System.Drawing.Point( 1310, 0 );
             SearchDownloadButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
             SearchDownloadButton.Name = "SearchDownloadButton";
@@ -152,14 +156,14 @@
             // PrimaryTextBox
             // 
             PrimaryTextBox.Anchor =    System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Left   |  System.Windows.Forms.AnchorStyles.Right  ;
-            PrimaryTextBox.BackColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            PrimaryTextBox.BackColor = System.Drawing.Color.FromArgb(   40  ,   40  ,   40   );
             PrimaryTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             PrimaryTextBox.Font = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             PrimaryTextBox.ForeColor = System.Drawing.Color.LightGray;
             PrimaryTextBox.Location = new System.Drawing.Point( 60, 5 );
             PrimaryTextBox.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
             PrimaryTextBox.Name = "PrimaryTextBox";
-            PrimaryTextBox.Size = new System.Drawing.Size( 1216, 20 );
+            PrimaryTextBox.Size = new System.Drawing.Size( 1185, 20 );
             PrimaryTextBox.TabIndex = 5;
             PrimaryTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             PrimaryTextBox.Click += OnUrlTextBoxClicked;
@@ -188,6 +192,7 @@
             HomeButton.Anchor =   System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Right  ;
             HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             HomeButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            HomeButton.Image = Properties.Resources.SearchHomeButton;
             HomeButton.Location = new System.Drawing.Point( 1251, 0 );
             HomeButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
             HomeButton.Name = "HomeButton";
@@ -299,6 +304,7 @@
             NextButton.Anchor =   System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Right  ;
             NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             NextButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            NextButton.Image = Properties.Resources.SearchNextButton;
             NextButton.Location = new System.Drawing.Point( 239, 4 );
             NextButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
             NextButton.Name = "NextButton";
@@ -313,6 +319,7 @@
             PreviousButton.Anchor =   System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Right  ;
             PreviousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             PreviousButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            PreviousButton.Image = Properties.Resources.SearchPreviousButton;
             PreviousButton.Location = new System.Drawing.Point( 206, 4 );
             PreviousButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
             PreviousButton.Name = "PreviousButton";
@@ -327,6 +334,7 @@
             CloseSearchButton.Anchor =   System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Right  ;
             CloseSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             CloseSearchButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            CloseSearchButton.Image = Properties.Resources.SearchCancelButton;
             CloseSearchButton.Location = new System.Drawing.Point( 272, 4 );
             CloseSearchButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
             CloseSearchButton.Name = "CloseSearchButton";
@@ -339,7 +347,7 @@
             // SearchPanelTextBox
             // 
             SearchPanelTextBox.Anchor =    System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Left   |  System.Windows.Forms.AnchorStyles.Right  ;
-            SearchPanelTextBox.BackColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            SearchPanelTextBox.BackColor = System.Drawing.Color.FromArgb(   40  ,   40  ,   40   );
             SearchPanelTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             SearchPanelTextBox.Font = new System.Drawing.Font( "Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             SearchPanelTextBox.ForeColor = System.Drawing.Color.LightGray;

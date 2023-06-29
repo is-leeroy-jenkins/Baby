@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-24-2023
+//     Last Modified On:        06-28-2023
 // ******************************************************************************************
 // <copyright file="BrowserTabStrip.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -58,11 +58,12 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     [ SuppressMessage( "ReSharper", "UnusedVariable" ) ]
     [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ DefaultEvent( "TabStripItemSelectionChanged" ) ]
     [ DefaultProperty( "Items" ) ]
     [ ToolboxItem( true ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class BrowserTabStrip : BaseStyledPanel, ISupportInitialize, IDisposable
+    public class BrowserTabStrip : BaseStyledPanel, ISupportInitialize, IDisposable 
+
     {
         /// <summary>
         /// The text left margin
@@ -127,7 +128,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The strip button rect
         /// </summary>
-        private Rectangle _stripButtonRect = Rectangle.Empty;
+        private Rectangle _rectangle = Rectangle.Empty;
 
         /// <summary>
         /// The add button width
@@ -309,7 +310,7 @@ namespace BudgetBrowser
         public HitTestResult HitTest( Point point )
         {
             if( _closeButton.IsVisible
-               && _closeButton.Rect.Contains( point ) )
+               && _closeButton.ButtonRectangle.Contains( point ) )
             {
                 return HitTestResult.CloseButton;
             }
@@ -440,6 +441,23 @@ namespace BudgetBrowser
         }
 
         /// <summary>
+        /// Measures the width of the tab.
+        /// </summary>
+        /// <param name="g">The g.</param>
+        /// <param name="currentItem">The current item.</param>
+        /// <param name="currentFont">The current font.</param>
+        /// <returns></returns>
+        private SizeF MeasureTabWidth( Graphics g, BrowserTabStripItem currentItem,
+            Font currentFont )
+        {
+            var _result = g.MeasureString( currentItem.Title, currentFont, new SizeF( 200f, 28f ),
+                _formatString );
+
+            _result.Width += 25f;
+            return _result;
+        }
+
+        /// <summary>
         /// Resets the <see cref="P:System.Windows.Forms.Control.Font" />
         /// property to its default value.
         /// </summary>
@@ -478,7 +496,7 @@ namespace BudgetBrowser
                 _formatString.FormatFlags &= StringFormatFlags.DirectionRightToLeft;
             }
 
-            _stripButtonRect = new Rectangle( 0, 0, ClientSize.Width - 40 - 2, 10 );
+            _rectangle = new Rectangle( 0, 0, ClientSize.Width - 40 - 2, 10 );
             DockPadding.Top = 29;
             DockPadding.Bottom = 1;
             DockPadding.Right = 1;
@@ -688,7 +706,9 @@ namespace BudgetBrowser
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Control.MouseDown" /> event.
         /// </summary>
-        /// <param name="e">A <see cref="T:System.Windows.Forms.MouseEventArgs" /> that contains the event data.</param>
+        /// <param name="e">A
+        /// <see cref="T:System.Windows.Forms.MouseEventArgs" />
+        /// that contains the event data.</param>
         protected override void OnMouseDown( MouseEventArgs e )
         {
             base.OnMouseDown( e );
@@ -732,21 +752,23 @@ namespace BudgetBrowser
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Control.MouseMove" /> event.
         /// </summary>
-        /// <param name="e">A <see cref="T:System.Windows.Forms.MouseEventArgs" /> that contains the event data.</param>
+        /// <param name="e">A
+        /// <see cref="T:System.Windows.Forms.MouseEventArgs" />
+        /// that contains the event data.</param>
         protected override void OnMouseMove( MouseEventArgs e )
         {
             base.OnMouseMove( e );
             if( _closeButton.IsVisible )
             {
-                if( _closeButton.Rect.Contains( e.Location ) )
+                if( _closeButton.ButtonRectangle.Contains( e.Location ) )
                 {
                     _closeButton.IsMouseOver = true;
-                    Invalidate( _closeButton.RedrawRect );
+                    Invalidate( _closeButton.RedrawRectangle );
                 }
                 else if( _closeButton.IsMouseOver )
                 {
                     _closeButton.IsMouseOver = false;
-                    Invalidate( _closeButton.RedrawRect );
+                    Invalidate( _closeButton.RedrawRectangle );
                 }
             }
         }
@@ -762,7 +784,7 @@ namespace BudgetBrowser
             _closeButton.IsMouseOver = false;
             if( _closeButton.IsVisible )
             {
-                Invalidate( _closeButton.RedrawRect );
+                Invalidate( _closeButton.RedrawRectangle );
             }
         }
 
@@ -784,7 +806,9 @@ namespace BudgetBrowser
         /// Called when [menu item clicked].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="ToolStripItemClickedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The
+        /// <see cref="ToolStripItemClickedEventArgs"/>
+        /// instance containing the event data.</param>
         private void OnMenuItemClicked( object sender, ToolStripItemClickedEventArgs e )
         {
             var _fATabStripItem2 = SelectedItem = (BrowserTabStripItem)e.ClickedItem.Tag;
@@ -829,23 +853,6 @@ namespace BudgetBrowser
                 currentItem.StripRect = new RectangleF( _startPosition, 3f, _num, 28f );
 
             _startPosition += _num;
-        }
-
-        /// <summary>
-        /// Measures the width of the tab.
-        /// </summary>
-        /// <param name="g">The g.</param>
-        /// <param name="currentItem">The current item.</param>
-        /// <param name="currentFont">The current font.</param>
-        /// <returns></returns>
-        private SizeF MeasureTabWidth( Graphics g, BrowserTabStripItem currentItem,
-            Font currentFont )
-        {
-            var _result = g.MeasureString( currentItem.Title, currentFont, new SizeF( 200f, 28f ),
-                _formatString );
-
-            _result.Width += 25f;
-            return _result;
         }
 
         /// <summary>

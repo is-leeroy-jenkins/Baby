@@ -40,12 +40,15 @@
 
 namespace BudgetBrowser
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Windows.Forms;
 
     /// <summary>
     /// 
     /// </summary>
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public class BrowserTabStripCloseButton
     {
         /// <summary>
@@ -61,12 +64,12 @@ namespace BudgetBrowser
         /// <summary>
         /// The rect
         /// </summary>
-        public Rectangle Rect = Rectangle.Empty;
+        public Rectangle ButtonRectangle = Rectangle.Empty;
 
         /// <summary>
         /// The redraw rect
         /// </summary>
-        public Rectangle RedrawRect = Rectangle.Empty;
+        public Rectangle RedrawRectangle = Rectangle.Empty;
 
         /// <summary>
         /// The renderer
@@ -88,10 +91,11 @@ namespace BudgetBrowser
         /// <param name="tab">The tab.</param>
         public void CalculateBounds( BrowserTabStripItem tab )
         {
-            Rect = new Rectangle( (int)tab.StripRect.Right - 20, (int)tab.StripRect.Top + 5, 15,
+            ButtonRectangle = new Rectangle( (int)tab.StripRect.Right - 20, (int)tab.StripRect.Top + 5, 15,
                 15 );
 
-            RedrawRect = new Rectangle( Rect.X - 2, Rect.Y - 2, Rect.Width + 4, Rect.Height + 4 );
+            RedrawRectangle = new Rectangle( ButtonRectangle.X - 2, ButtonRectangle.Y - 2, 
+                ButtonRectangle.Width + 4, ButtonRectangle.Height + 4 );
         }
 
         /// <summary>
@@ -106,21 +110,19 @@ namespace BudgetBrowser
                     ? Color.White
                     : Color.DarkGray;
 
-                g.FillRectangle( Brushes.White, Rect );
-
+                g.FillRectangle( Brushes.White, ButtonRectangle );
                 if( IsMouseOver )
                 {
-                    g.FillEllipse( Brushes.IndianRed, Rect );
+                    g.FillEllipse( Brushes.IndianRed, ButtonRectangle );
                 }
 
                 var _num = 4;
                 var _pen = new Pen( _color, 1.6f );
+                g.DrawLine( _pen, ButtonRectangle.Left + _num, ButtonRectangle.Top + _num, ButtonRectangle.Right - _num,
+                    ButtonRectangle.Bottom - _num );
 
-                g.DrawLine( _pen, Rect.Left + _num, Rect.Top + _num, Rect.Right - _num,
-                    Rect.Bottom - _num );
-
-                g.DrawLine( _pen, Rect.Right - _num, Rect.Top + _num, Rect.Left + _num,
-                    Rect.Bottom - _num );
+                g.DrawLine( _pen, ButtonRectangle.Right - _num, ButtonRectangle.Top + _num, ButtonRectangle.Left + _num,
+                    ButtonRectangle.Bottom - _num );
 
                 _pen.Dispose( );
             }

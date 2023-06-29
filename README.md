@@ -68,35 +68,35 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ### Apple.com
 
-![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/1.png)
+![](Resources/Images/1.png)
 
 ### WebAssembly & WebGL
 
-![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/5.png)
+![](Resources/Images/5.png)
 
 ### YouTube
 
-![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/6.png)
+![](Resources/Images/6.png)
 
 ### Google Maps
 
-![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/2.png)
+![](Resources/Images/2.png)
 
 ### Search Bar
 
-![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/search.png)
+![]Resources/Images/search.png)
 
 ### Downloads Tab
 
-![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/3.png)
+![](Resources/Images/3.png)
 
 ### Developer Tools
 
-![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/4.png)
+![](Resources/Images/4.png)
 
 ### Custom Error Pages
 
-![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/error1.png)
+![](Resources/Images/error1.png)
 
-![](https://github.com/KarmaScripter/BudgetBrowser/Resources/Images/error2.png)
+![](Resources/Images/error2.png)
 

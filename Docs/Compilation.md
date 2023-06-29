@@ -1,8 +1,8 @@
-# How to compile BudgetBrowser
+﻿# How to compile BudgetBrowser
 
-#### Step 1: Fork budgetbrowser
+#### Step 1: Fork BudgetBrowser
 
-Fork the budgetbrowser repository on GitHub.
+Fork the BudgetBrowser repository on GitHub.
 
 ![image](https://user-images.githubusercontent.com/104514709/183603613-65eff2a1-0d80-4e70-83d8-805edecd2c0c.png)
 
@@ -20,7 +20,7 @@ Open VS Community and select "Clone a repository"
 
 #### Step 3: Clone this project
 
-Type in your budgetbrowser fork URL and press "Clone"
+Type in your BudgetBrowser fork URL and press "Clone"
 
 ![image](https://user-images.githubusercontent.com/104514709/183603880-92217d8a-bc99-4adf-b6d7-030096576090.png)
 

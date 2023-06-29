@@ -1,12 +1,12 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-24-2023
+//     Last Modified On:        06-28-2023
 // ******************************************************************************************
-// <copyright file="FileIconUtils.cs" company="Terry D. Eppler">
+// <copyright file="IconUtils.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -34,7 +34,7 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   FileIconUtils.cs
+//   IconUtils.cs
 // </summary>
 // ******************************************************************************************
 
@@ -55,7 +55,7 @@ namespace BudgetBrowser
     /// 
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public static class FileIconUtils
+    public static class IconUtils
     {
         /// <summary>
         /// Gets the file icon.

@@ -6,7 +6,7 @@
 //     Last Modified By:        Terry D. Eppler
 //     Last Modified On:        06-24-2023
 // ******************************************************************************************
-// <copyright file="MyPropInfo.cs" company="Terry D. Eppler">
+// <copyright file="PropInfo.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -34,7 +34,7 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   MyPropInfo.cs
+//   PropInfo.cs
 // </summary>
 // ******************************************************************************************
 
@@ -47,7 +47,7 @@ namespace BudgetBrowser
     /// 
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public struct MyPropInfo
+    public struct PropInfo
     {
         /// <summary>
         /// The bt

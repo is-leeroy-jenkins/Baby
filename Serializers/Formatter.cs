@@ -48,6 +48,7 @@ namespace BudgetBrowser
     /// 
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
     public static class Formatter
     {
         /// <summary>
@@ -105,6 +106,7 @@ namespace BudgetBrowser
                 {
                     case '{':
                     case '[':
+                    {
                         _output.Append( _ch );
                         if( !_quote.HasValue )
                         {
@@ -113,8 +115,10 @@ namespace BudgetBrowser
                         }
 
                         break;
+                    }
                     case '}':
                     case ']':
+                    {
                         if( _quote.HasValue )
                         {
                             _output.Append( _ch );
@@ -127,8 +131,10 @@ namespace BudgetBrowser
                         }
 
                         break;
+                    }
                     case '"':
                     case '\'':
+                    {
                         _output.Append( _ch );
                         if( _quote.HasValue )
                         {
@@ -143,7 +149,9 @@ namespace BudgetBrowser
                         }
 
                         break;
+                    }
                     case ',':
+                    {
                         _output.Append( _ch );
                         if( !_quote.HasValue )
                         {
@@ -152,7 +160,9 @@ namespace BudgetBrowser
                         }
 
                         break;
+                    }
                     case ':':
+                    {
                         if( _quote.HasValue )
                         {
                             _output.Append( _ch );
@@ -163,7 +173,9 @@ namespace BudgetBrowser
                         }
 
                         break;
+                    }
                     default:
+                    {
                         if( _quote.HasValue
                            || !char.IsWhiteSpace( _ch ) )
                         {
@@ -171,6 +183,7 @@ namespace BudgetBrowser
                         }
 
                         break;
+                    }
                 }
             }
 

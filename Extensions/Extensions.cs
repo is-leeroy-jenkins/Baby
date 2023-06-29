@@ -6,7 +6,7 @@
 //     Last Modified By:        Terry D. Eppler
 //     Last Modified On:        06-04-2023
 // ******************************************************************************************
-// <copyright file="WebExtensions.cs" company="Terry D. Eppler">
+// <copyright file="Extensions.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -34,7 +34,7 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   WebExtensions.cs
+//   Extensions.cs
 // </summary>
 // ******************************************************************************************
 
@@ -49,7 +49,7 @@ namespace BudgetBrowser
     /// 
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public static class WebExtensions
+    public static class Extensions
     {
         /// <summary>
         /// Converts to log string.

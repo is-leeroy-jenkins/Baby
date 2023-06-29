@@ -54,7 +54,7 @@ namespace BudgetBrowser
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:FileIconUtils.UnableToExtractIconsException" /> class.
+        /// <see cref="T:IconUtils.UnableToExtractIconsException" /> class.
         /// </summary>
         /// <param name="fileName">Name of the file.</param>
         /// <param name="firstIconIndex">First index of the icon.</param>

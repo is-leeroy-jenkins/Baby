@@ -51,7 +51,8 @@ namespace BudgetBrowser
     /// <seealso cref="CefSharp.IContextMenuHandler" />
     [ SuppressMessage( "ReSharper", "UnusedVariable" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    internal class ContextMenuHandler : IContextMenuHandler
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    public class ContextMenuHandler : IContextMenuHandler
     {
         /// <summary>
         /// The last sel text

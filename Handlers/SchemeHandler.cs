@@ -57,6 +57,7 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "RedundantCheckBeforeAssignment" ) ]
     public class SchemeHandler : IResourceHandler
     {
         /// <summary>
@@ -106,6 +107,10 @@ namespace BudgetBrowser
         /// </summary>
         public void Dispose( )
         {
+            if( _stream != null )
+            {
+                _stream = null;
+            }
         }
 
         /// <summary>
@@ -153,7 +158,7 @@ namespace BudgetBrowser
                     {
                         using( callBack )
                         {
-                            _stream = FileIconUtils.GetFileIcon( _fileName, FileIconSize.Large );
+                            _stream = IconUtils.GetFileIcon( _fileName, FileIconSize.Large );
                             _mimeType = ResourceHandler.GetMimeType( ".png" );
                             callBack.Continue( );
                         }

@@ -54,7 +54,7 @@ namespace BudgetBrowser
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:FileIconUtils.IconNotFoundException" /> class.
+        /// <see cref="T:IconUtils.IconNotFoundException" /> class.
         /// </summary>
         /// <param name="fileName">Name of the file.</param>
         /// <param name="index">The index.</param>

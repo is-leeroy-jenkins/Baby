@@ -54,6 +54,7 @@ namespace BudgetBrowser
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "InlineOutVariableDeclaration" ) ]
     public class JsonSerializer
     {
         /// <summary>
@@ -695,25 +696,33 @@ namespace BudgetBrowser
                 switch( _c )
                 {
                     case '\t':
+                    {
                         _output.Append( "\\t" );
                         break;
+                    }
                     case '\r':
+                    {
                         _output.Append( "\\r" );
                         break;
+                    }
                     case '\n':
+                    {
                         _output.Append( "\\n" );
                         break;
+                    }
                     case '"':
                     case '\\':
+                    {
                         _output.Append( '\\' );
                         _output.Append( _c );
                         break;
+                    }
                     default:
+                    {
                         _output.Append( "\\u" );
-                        _output.Append(
-                            ( (int)_c ).ToString( "X4", NumberFormatInfo.InvariantInfo ) );
-
+                        _output.Append( ( (int)_c ).ToString( "X4", NumberFormatInfo.InvariantInfo ) );
                         break;
+                    }
                 }
             }
 

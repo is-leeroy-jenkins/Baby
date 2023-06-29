@@ -11,7 +11,7 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\budgetbrowser.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Images\budgetbrowser.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>BudgetBrowser.Program</StartupObject>
@@ -19,9 +19,12 @@
     <Nullable>disable</Nullable>
     <PlatformTarget>x64</PlatformTarget>
     <PackageIcon>BudgetExecution.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/KarmaScripter/BudgetBrowser</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Resources\budgetbrowser.ico" />
+    <Content Include="Resources\Images\budgetbrowser.ico" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Controls\TabStrip\BaseStyledPanel.cs">
@@ -73,6 +76,14 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Update="Resources\Images\BudgetExecution.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

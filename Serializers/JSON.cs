@@ -61,6 +61,7 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
     [ SuppressMessage( "ReSharper", "FunctionComplexityOverflow" ) ]
     [ SuppressMessage( "ReSharper", "UseDeconstruction" ) ]
+    [ SuppressMessage( "ReSharper", "UseNegatedPatternMatching" ) ]
     public class Json
     {
         /// <summary>
@@ -69,10 +70,10 @@ namespace BudgetBrowser
         private JsonParameters _params;
 
         /// <summary>
-        /// The propertycache
+        /// The property cache
         /// </summary>
-        private readonly SafeDictionary<string, SafeDictionary<string, MyPropInfo>> _propertycache =
-            new SafeDictionary<string, SafeDictionary<string, MyPropInfo>>( );
+        private readonly SafeDictionary<string, SafeDictionary<string, PropInfo>> _propertycache =
+            new SafeDictionary<string, SafeDictionary<string, PropInfo>>( );
 
         /// <summary>
         /// You can set these paramters globally for all calls
@@ -80,7 +81,7 @@ namespace BudgetBrowser
         public JsonParameters Parameters = new JsonParameters( );
 
         /// <summary>
-        /// The usingglobals
+        /// The using globals
         /// </summary>
         private bool _usingglobals;
 
@@ -244,7 +245,7 @@ namespace BudgetBrowser
         /// <param name="type">The type.</param>
         /// <param name="typename">The typename.</param>
         /// <returns></returns>
-        private SafeDictionary<string, MyPropInfo> Getproperties( Type type, string typename )
+        private SafeDictionary<string, PropInfo> Getproperties( Type type, string typename )
         {
             if( _propertycache.TryGetValue( typename, out var _sd ) )
             {
@@ -252,7 +253,7 @@ namespace BudgetBrowser
             }
             else
             {
-                _sd = new SafeDictionary<string, MyPropInfo>( );
+                _sd = new SafeDictionary<string, PropInfo>( );
                 var _pr = type.GetProperties( BindingFlags.Public | BindingFlags.Instance );
                 foreach( var _p in _pr )
                 {
@@ -283,9 +284,9 @@ namespace BudgetBrowser
         /// <param name="t">The t.</param>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        private MyPropInfo CreateMyProp( Type t, string name )
+        private PropInfo CreateMyProp( Type t, string name )
         {
-            var _d = new MyPropInfo( );
+            var _d = new PropInfo( );
             _d.Filled = true;
             _d.CanWrite = true;
             _d.Pt = t;
@@ -435,7 +436,7 @@ namespace BudgetBrowser
                     continue;
                 }
 
-                MyPropInfo _pi;
+                PropInfo _pi;
                 if( _props.TryGetValue( _name, out _pi ) == false )
                 {
                     continue;
@@ -546,7 +547,7 @@ namespace BudgetBrowser
         /// <param name="obj">The object.</param>
         /// <param name="props">The props.</param>
         /// <param name="dic">The dic.</param>
-        private void ProcessMap( object obj, SafeDictionary<string, MyPropInfo> props,
+        private void ProcessMap( object obj, SafeDictionary<string, PropInfo> props,
             Dictionary<string, object> dic )
         {
             foreach( var _kv in dic )

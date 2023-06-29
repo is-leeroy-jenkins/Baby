@@ -49,6 +49,7 @@ namespace BudgetBrowser
     using System.Web;
     using CefSharp;
     using CefSharp.WinForms;
+    using Syncfusion.Windows.Forms;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Reflection;
@@ -59,15 +60,15 @@ namespace BudgetBrowser
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
     /// If you would only like to support 64-bit machines, simply change the DLL references.
     /// </summary>
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
-    [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
-    [ SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertToAutoProperty" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" ) ]
-    public partial class WebBrowser : Form
+    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
+    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
+    [SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" )]
+    [SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" )]
+    [SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" )]
+    [SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" )]
+    [SuppressMessage( "ReSharper", "ConvertToAutoProperty" )]
+    [SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" )]
+    public partial class WebBrowser : MetroForm
     {
         /// <summary>
         /// The new tab strip
@@ -168,7 +169,7 @@ namespace BudgetBrowser
         private int CurrentIndex
         {
             get { return TabPages.Items.IndexOf( TabPages.SelectedItem ); }
-            set { TabPages.SelectedItem = TabPages.Items[ value ]; }
+            set { TabPages.SelectedItem = TabPages.Items[value]; }
         }
 
         /// <summary>
@@ -281,6 +282,33 @@ namespace BudgetBrowser
         {
             Instance = this;
             InitializeComponent( );
+
+            // Form Properties
+            Size = new Size( 1350, 750 );
+            MaximumSize = new Size( 1350, 750 );
+            MinimumSize = new Size( 1350, 750 );
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            BorderColor = Color.FromArgb( 0, 120, 212 );
+            BorderThickness = 1;
+            BackColor = Color.FromArgb( 20, 20, 20 );
+            ForeColor = Color.LightGray;
+            Font = new Font( "Roboto", 9 );
+            ShowIcon = false;
+            ShowInTaskbar = true;
+            MetroColor = Color.FromArgb( 20, 20, 20 );
+            CaptionBarHeight = 26;
+            CaptionAlign = HorizontalAlignment.Center;
+            CaptionFont = new Font( "Roboto", 12, FontStyle.Regular );
+            CaptionBarColor = Color.FromArgb( 20, 20, 20 );
+            CaptionForeColor = Color.FromArgb( 0, 120, 212 );
+            CaptionButtonColor = Color.FromArgb( 20, 20, 20 );
+            CaptionButtonHoverColor = Color.FromArgb( 20, 20, 20 );
+            SizeGripStyle = SizeGripStyle.Hide;
+            ShowMouseOver = true;
+            MinimizeBox = false;
+            MaximizeBox = false;
+            ControlBox = true;
             InitBrowser( );
             SetFormTitle( null );
         }
@@ -782,7 +810,7 @@ namespace BudgetBrowser
                 _newTab.ReferringUrl = referringUrl;
                 if( focusNewTab )
                 {
-                    timer1.Enabled = true;
+                    Timer.Enabled = true;
                 }
 
                 return _newTab.Browser;
@@ -869,7 +897,7 @@ namespace BudgetBrowser
                 // SuggestedFileName comes full only in the first attempt so keep it somewhere
                 if( item.SuggestedFileName != "" )
                 {
-                    DownloadNames[ item.Id ] = item.SuggestedFileName;
+                    DownloadNames[item.Id] = item.SuggestedFileName;
                 }
 
                 // Set it back if it is empty
@@ -879,7 +907,7 @@ namespace BudgetBrowser
                     item.SuggestedFileName = _name;
                 }
 
-                _downloads[ item.Id ] = item;
+                _downloads[item.Id] = item;
 
                 //UpdateSnipProgress();
             }
@@ -924,7 +952,7 @@ namespace BudgetBrowser
                 // keep tab at same index focussed
                 if( TabPages.Items.Count - 1 > _index )
                 {
-                    TabPages.SelectedItem = TabPages.Items[ _index ];
+                    TabPages.SelectedItem = TabPages.Items[_index];
                 }
             }
         }
@@ -935,7 +963,7 @@ namespace BudgetBrowser
         public void OpenDownloadsTab( )
         {
             if( ( _downloadStrip != null )
-               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[ 0 ] ).Address
+               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[0] ).Address
                    == BrowserConfig.DownloadsURL ) )
             {
                 TabPages.SelectedItem = _downloadStrip;
@@ -1026,7 +1054,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsOnFirstTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[ 0 ];
+            return TabPages.SelectedItem == TabPages.Items[0];
         }
 
         /// <summary>
@@ -1037,7 +1065,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsOnLastTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[ TabPages.Items.Count - 2 ];
+            return TabPages.SelectedItem == TabPages.Items[TabPages.Items.Count - 2];
         }
 
         /// <summary>
@@ -1220,7 +1248,7 @@ namespace BudgetBrowser
             ChromiumWebBrowser _browser = null;
             try
             {
-                _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
+                _browser = (ChromiumWebBrowser)e.Item.Controls[0];
             }
             catch( Exception _ex )
             {
@@ -1274,7 +1302,7 @@ namespace BudgetBrowser
         private void OnTimerTick( object sender, EventArgs e )
         {
             TabPages.SelectedItem = _newTabItem;
-            timer1.Enabled = false;
+            Timer.Enabled = false;
         }
 
         /// <summary>
@@ -1472,7 +1500,7 @@ namespace BudgetBrowser
             {
                 foreach( TabPage _tab in TabPages.Items )
                 {
-                    var _browser = (ChromiumWebBrowser)_tab.Controls[ 0 ];
+                    var _browser = (ChromiumWebBrowser)_tab.Controls[0];
                     _browser.Dispose( );
                 }
             }

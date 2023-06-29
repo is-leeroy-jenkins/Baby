@@ -95,7 +95,8 @@ namespace BudgetBrowser
 
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.Notification" /> class.
+        /// Initializes a new instance of the
+        /// <see cref="T:BudgetBrowser.Notification" /> class.
         /// </summary>
         public Notification( )
         {
@@ -108,7 +109,8 @@ namespace BudgetBrowser
 
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="Notification"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="Notification"/> class.
         /// </summary>
         /// <param name="body">The body.</param>
         /// <param name="duration">The duration.</param>

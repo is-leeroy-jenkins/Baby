@@ -43,33 +43,29 @@ namespace BudgetBrowser
     using MetroSet_UI.Controls;
     using MetroSet_UI.Enums;
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
+    using System.Threading;
     using System.Windows.Forms;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <seealso cref="MetroSet_UI.Controls.MetroSetRichTextBox" />
+    /// <summary> </summary>
+    /// <seealso cref="MetroSet_UI.Controls.MetroSetRichTextBox"/>
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public class RichTextBox : MetroSetRichTextBox
     {
-        /// <summary>
-        /// Gets or sets the tool tip.
-        /// </summary>
-        /// <value>
-        /// The tool tip.
-        /// </value>
+        /// <summary> Gets or sets the tool tip. </summary>
+        /// <value> The tool tip. </value>
         public ToolTip ToolTip { get; set; }
 
-        /// <summary>
-        /// Gets or sets the hover text.
-        /// </summary>
-        /// <value>
-        /// The hover text.
-        /// </value>
+        /// <summary> Gets or sets the hover text. </summary>
+        /// <value> The hover text. </value>
         public string HoverText { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RichTextBox"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="RichTextBox"/>
+        /// class.
         /// </summary>
         public RichTextBox( )
         {
@@ -96,10 +92,12 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RichTextBox"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="RichTextBox"/>
+        /// class.
         /// </summary>
-        /// <param name="size">The size.</param>
-        /// <param name="location">The location.</param>
+        /// <param name="size"> The size. </param>
+        /// <param name="location"> The location. </param>
         public RichTextBox( Size size, Point location )
             : this( )
         {
@@ -108,15 +106,16 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RichTextBox"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="RichTextBox"/>
+        /// class.
         /// </summary>
-        /// <param name="location">The location.</param>
-        /// <param name="parent">The parent.</param>
+        /// <param name="location"> The location. </param>
+        /// <param name="parent"> The parent. </param>
         public RichTextBox( Point location, Control parent = null )
             : this( )
         {
             Location = location;
-
             if( parent != null )
             {
                 Parent = parent;
@@ -125,15 +124,16 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RichTextBox"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="RichTextBox"/>
+        /// class.
         /// </summary>
-        /// <param name="size">The size.</param>
-        /// <param name="parent">The parent.</param>
+        /// <param name="size"> The size. </param>
+        /// <param name="parent"> The parent. </param>
         public RichTextBox( Size size, Control parent = null )
             : this( )
         {
             Size = size;
-
             if( parent != null )
             {
                 Parent = parent;
@@ -142,11 +142,13 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RichTextBox"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="RichTextBox"/>
+        /// class.
         /// </summary>
-        /// <param name="size">The size.</param>
-        /// <param name="location">The location.</param>
-        /// <param name="parent">The parent.</param>
+        /// <param name="size"> The size. </param>
+        /// <param name="location"> The location. </param>
+        /// <param name="parent"> The parent. </param>
         public RichTextBox( Size size, Point location, Control parent )
             : this( )
         {
@@ -157,19 +159,19 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RichTextBox"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="RichTextBox"/>
+        /// class.
         /// </summary>
-        /// <param name="title">The title.</param>
+        /// <param name="title"> The title. </param>
         public RichTextBox( string title )
             : this( )
         {
             Text = title;
         }
 
-        /// <summary>
-        /// Sets the text.
-        /// </summary>
-        /// <param name="text">The text.</param>
+        /// <summary> Sets the text. </summary>
+        /// <param name="text"> The text. </param>
         public void SetText( string text )
         {
             if( !string.IsNullOrEmpty( text ) )
@@ -185,12 +187,10 @@ namespace BudgetBrowser
             }
         }
 
-        /// <summary>
-        /// Sets the font style.
-        /// </summary>
-        /// <param name="fontFamily">The font family.</param>
-        /// <param name="fontColor">Color of the font.</param>
-        /// <param name="fontSize">Size of the font.</param>
+        /// <summary> Sets the font style. </summary>
+        /// <param name="fontFamily"> The font family. </param>
+        /// <param name="fontColor"> Color of the font. </param>
+        /// <param name="fontSize"> Size of the font. </param>
         public void SetFontStyle( string fontFamily, Color fontColor, int fontSize = 10 )
         {
             if( !string.IsNullOrEmpty( fontFamily )
@@ -208,10 +208,8 @@ namespace BudgetBrowser
             }
         }
 
-        /// <summary>
-        /// Sets the color of the back.
-        /// </summary>
-        /// <param name="backColor">Color of the back.</param>
+        /// <summary> Sets the color of the back. </summary>
+        /// <param name="backColor"> Color of the back. </param>
         public void SetBackColor( Color backColor )
         {
             if( backColor != Color.Empty )
@@ -227,10 +225,8 @@ namespace BudgetBrowser
             }
         }
 
-        /// <summary>
-        /// Fails the specified ex.
-        /// </summary>
-        /// <param name="ex">The ex.</param>
+        /// <summary> Fails the specified ex. </summary>
+        /// <param name="ex"> The ex. </param>
         private protected void Fail( Exception ex )
         {
             using var _error = new ErrorDialog( ex );

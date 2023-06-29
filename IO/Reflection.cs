@@ -38,9 +38,10 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+using System;
+
+namespace BudgetBrowser.IO
 {
-    using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
@@ -52,6 +53,7 @@ namespace BudgetBrowser
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "InlineOutVariableDeclaration" ) ]
     public class Reflection
     {
         /// <summary>
@@ -88,7 +90,8 @@ namespace BudgetBrowser
         public static readonly Reflection Instance = new Reflection( );
         
         /// <summary>
-        /// Prevents a default instance of the <see cref="Reflection"/> class from being created.
+        /// Prevents a default instance of the
+        /// <see cref="Reflection"/> class from being created.
         /// </summary>
         public Reflection( )
         {
@@ -179,10 +182,9 @@ namespace BudgetBrowser
             }
             catch( Exception _exc )
             {
-                throw new Exception(
-                    string.Format(
-                        "Failed to fast create instance for type '{0}' from assemebly '{1}'",
-                        objtype.FullName, objtype.AssemblyQualifiedName ), _exc );
+                var _message = $"Failed to create instance for type '{0}' from Assemebly '{1}'";
+                throw new Exception( string.Format( _message, objtype.FullName, 
+                    objtype.AssemblyQualifiedName ), _exc );
             }
         }
 

@@ -41,7 +41,6 @@
 namespace BudgetBrowser
 {
     using System;
-    using System.Threading;
 
     /// <summary>
     /// 

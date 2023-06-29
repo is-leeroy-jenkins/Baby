@@ -1,7 +1,8 @@
 ﻿
-namespace BudgetBrowser
+using System;
+
+namespace BudgetBrowser.IO
 {
-    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
 

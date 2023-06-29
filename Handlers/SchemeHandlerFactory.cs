@@ -41,7 +41,6 @@
 namespace BudgetBrowser
 {
     using CefSharp;
-    using System.Windows.Forms;
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>

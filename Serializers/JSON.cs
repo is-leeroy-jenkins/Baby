@@ -40,6 +40,7 @@
 
 namespace BudgetBrowser
 {
+    using IO;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -47,10 +48,8 @@ namespace BudgetBrowser
     using System.Globalization;
     using System.IO;
     using System.Reflection;
-    using System.Data;
     using System.Diagnostics.CodeAnalysis;
-    using System.Xml;
-    using static Reflection;
+    using static IO.Reflection;
 
     /// <summary>
     /// 
@@ -62,6 +61,7 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "FunctionComplexityOverflow" ) ]
     [ SuppressMessage( "ReSharper", "UseDeconstruction" ) ]
     [ SuppressMessage( "ReSharper", "UseNegatedPatternMatching" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public class Json
     {
         /// <summary>

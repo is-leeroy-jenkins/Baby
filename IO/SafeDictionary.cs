@@ -38,9 +38,10 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+using System;
+
+namespace BudgetBrowser.IO
 {
-    using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
 

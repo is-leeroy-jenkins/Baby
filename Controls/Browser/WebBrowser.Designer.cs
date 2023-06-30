@@ -282,7 +282,6 @@
             TabItem.ThemeName = "Budget Browser";
             TabItem.Title = "Loading...";
             TabItem.ToolTip = null;
-            TabItem.Changed += TabItem_Changed;
             // 
             // AddItemTab
             // 

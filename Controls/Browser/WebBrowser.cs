@@ -295,7 +295,7 @@ namespace BudgetBrowser
             BackColor = Color.FromArgb( 20, 20, 20 );
             ForeColor = Color.LightGray;
             Font = new Font( "Roboto", 9 );
-            ShowIcon = true;
+            ShowIcon = false;
             ShowInTaskbar = true;
             MetroColor = Color.FromArgb( 20, 20, 20 );
             CaptionBarHeight = 5;
@@ -311,9 +311,13 @@ namespace BudgetBrowser
             MaximizeBox = false;
             ControlBox = true;
             InitBrowser( );
-            SetTitle( null );
+            SetTitleText( null );
 
             // Wire Events
+            PreviousButton.Click += OnBackButtonClick;
+            NextButton.Click += OnForwardButtonClick;
+            HomeButton.Click += OnHomeButtonClick;
+            CloseButton.Click += OnCloseButtonClicked;
             Load += OnLoad;
         }
 
@@ -543,7 +547,7 @@ namespace BudgetBrowser
             // if current tab
             if( browser == CurrentBrowser )
             {
-                SetTitle( text );
+                SetTitleText( text );
             }
         }
 
@@ -551,7 +555,7 @@ namespace BudgetBrowser
         /// Sets the form title.
         /// </summary>
         /// <param name="tabName">Name of the tab.</param>
-        private void SetTitle( string tabName )
+        private void SetTitleText( string tabName )
         {
             if( tabName.CheckIfValid( ) )
             {
@@ -1319,7 +1323,7 @@ namespace BudgetBrowser
                 {
                     _browser = CurrentBrowser;
                     SetUrl( _browser.Address );
-                    SetTitle( _browser.Tag.ConvertToString( ) ?? "New Tab" );
+                    SetTitleText( _browser.Tag.ConvertToString( ) ?? "New Tab" );
                     EnableBackButton( _browser.CanGoBack );
                     EnableForwardButton( _browser.CanGoForward );
                 }
@@ -1651,6 +1655,23 @@ namespace BudgetBrowser
         }
 
         /// <summary>
+        /// Called when [close button clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void OnCloseButtonClicked( object sender, EventArgs e )
+        {
+            try
+            {
+                Close( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
         /// Fails the specified ex.
         /// </summary>
         /// <param name="ex">
@@ -1661,11 +1682,6 @@ namespace BudgetBrowser
             using var _error = new ErrorDialog( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
-        }
-
-        private void TabItem_Changed( object sender, EventArgs e )
-        {
-
         }
     }
 }

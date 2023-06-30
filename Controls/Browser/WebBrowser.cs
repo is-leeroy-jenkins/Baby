@@ -63,14 +63,14 @@ namespace BudgetBrowser
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
     /// If you would only like to support 64-bit machines, simply change the DLL references.
     /// </summary>
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
-    [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
-    [ SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertToAutoProperty" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" ) ]
+    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
+    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
+    [SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" )]
+    [SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" )]
+    [SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" )]
+    [SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" )]
+    [SuppressMessage( "ReSharper", "ConvertToAutoProperty" )]
+    [SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" )]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -172,7 +172,7 @@ namespace BudgetBrowser
         private int CurrentIndex
         {
             get { return TabPages.Items.IndexOf( TabPages.SelectedItem ); }
-            set { TabPages.SelectedItem = TabPages.Items[ value ]; }
+            set { TabPages.SelectedItem = TabPages.Items[value]; }
         }
 
         /// <summary>
@@ -298,9 +298,9 @@ namespace BudgetBrowser
             ShowIcon = true;
             ShowInTaskbar = true;
             MetroColor = Color.FromArgb( 20, 20, 20 );
-            CaptionBarHeight = 26;
+            CaptionBarHeight = 5;
             CaptionAlign = HorizontalAlignment.Center;
-            CaptionFont = new Font( "Roboto", 12, FontStyle.Regular );
+            CaptionFont = new Font( "Roboto", 11, FontStyle.Regular );
             CaptionBarColor = Color.FromArgb( 20, 20, 20 );
             CaptionForeColor = Color.FromArgb( 0, 120, 212 );
             CaptionButtonColor = Color.FromArgb( 20, 20, 20 );
@@ -311,7 +311,7 @@ namespace BudgetBrowser
             MaximizeBox = false;
             ControlBox = true;
             InitBrowser( );
-            SetFormTitle( null );
+            SetTitle( null );
 
             // Wire Events
             Load += OnLoad;
@@ -452,7 +452,7 @@ namespace BudgetBrowser
         public List<BrowserTab> GetAllTabs( )
         {
             var _tabs = new List<BrowserTab>( );
-            foreach( BrowserTabStripItem _tabPage in TabPages.Items )
+            foreach( BrowserTabStripItem _tabPage in TabPages?.Items )
             {
                 if( _tabPage.Tag != null )
                 {
@@ -525,7 +525,7 @@ namespace BudgetBrowser
         /// </summary>
         /// <param name="browser">The browser.</param>
         /// <param name="text">The text.</param>
-        private void SetTabTitle( ChromiumWebBrowser browser, string text )
+        private void SetTabText( ChromiumWebBrowser browser, string text )
         {
             text = text.Trim( );
             if( IsBlank( text ) )
@@ -543,7 +543,7 @@ namespace BudgetBrowser
             // if current tab
             if( browser == CurrentBrowser )
             {
-                SetFormTitle( text );
+                SetTitle( text );
             }
         }
 
@@ -551,16 +551,16 @@ namespace BudgetBrowser
         /// Sets the form title.
         /// </summary>
         /// <param name="tabName">Name of the tab.</param>
-        private void SetFormTitle( string tabName )
+        private void SetTitle( string tabName )
         {
             if( tabName.CheckIfValid( ) )
             {
-                Text = tabName + " - " + BrowserConfig.Branding;
+                Title.Text = tabName + " - " + BrowserConfig.Branding;
                 _currentTitle = tabName;
             }
             else
             {
-                Text = BrowserConfig.Branding;
+                Title.Text = BrowserConfig.Branding;
                 _currentTitle = "New Tab";
             }
         }
@@ -569,11 +569,11 @@ namespace BudgetBrowser
         /// Sets the form URL.
         /// </summary>
         /// <param name="url">The URL.</param>
-        private void SetFormUrl( string url )
+        private void SetUrl( string url )
         {
             _originalUrl = url;
             _finalUrl = CleanUrl( url );
-            PrimaryTextBox.Text = _finalUrl;
+            UrlTextBox.Text = _finalUrl;
             CurrentTab.CurrentUrl = _originalUrl;
             CloseSearch( );
         }
@@ -590,10 +590,10 @@ namespace BudgetBrowser
                 // Key Word Dialog Search
 
                 // Toolbar TextBox
-                ToolStripTextBox.ForeColor = Color.White;
-                ToolStripTextBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
-                ToolStripTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
-                ToolStripTextBox.BackColor = Color.FromArgb( 75, 75, 75 );
+                KeyWordTextBox.ForeColor = Color.White;
+                KeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
+                KeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
+                KeyWordTextBox.BackColor = Color.FromArgb( 40, 40, 40 );
             }
             catch( Exception _ex )
             {
@@ -609,10 +609,11 @@ namespace BudgetBrowser
             try
             {
                 // Website ComboBox Properties
-                ToolStripComboBox.Font = new Font( "Roboto", 8, FontStyle.Bold );
-                ToolStripComboBox.Style = ToolStripExStyle.Office2016Black;
-                ToolStripComboBox.ForeColor = Color.White;
-                ToolStripComboBox.Size = new Size( 175, 32 );
+                SearchEngineComboBox.Font = new Font( "Roboto", 8, FontStyle.Bold );
+                SearchEngineComboBox.Style = ToolStripExStyle.Office2016Black;
+                SearchEngineComboBox.ForeColor = Color.White;
+                SearchEngineComboBox.BackColor = Color.FromArgb( 40, 40, 40 );
+                SearchEngineComboBox.Size = new Size( 150, 29 );
 
                 // SearchEngine ComboBox Properties
             }
@@ -653,7 +654,7 @@ namespace BudgetBrowser
             var _urlLower = url.Trim( ).ToLower( );
 
             // UI
-            SetTabTitle( CurrentBrowser, "Loading..." );
+            SetTabText( CurrentBrowser, "Loading..." );
 
             // load page
             if( _urlLower == "localhost" )
@@ -700,7 +701,7 @@ namespace BudgetBrowser
             CurrentBrowser.Load( _newUrl );
 
             // set URL in UI
-            SetFormUrl( _newUrl );
+            SetUrl( _newUrl );
 
             // always enable back btn
             EnableBackButton( true );
@@ -808,8 +809,6 @@ namespace BudgetBrowser
         {
             // open a new instance of the browser
             var _info = new ProcessStartInfo( Application.ExecutablePath, "" );
-
-            //info.WorkingDirectory = workingDir ?? exePath.GetPathDir(true);
             _info.LoadUserProfile = true;
             _info.UseShellExecute = false;
             _info.RedirectStandardError = true;
@@ -826,7 +825,7 @@ namespace BudgetBrowser
             AddNewBrowserTab( "" );
             this.InvokeOnParent( delegate
             {
-                PrimaryTextBox.Focus( );
+                UrlTextBox.Focus( );
             } );
         }
 
@@ -946,10 +945,11 @@ namespace BudgetBrowser
         {
             lock( _downloads )
             {
-                // SuggestedFileName comes full only in the first attempt so keep it somewhere
+                // SuggestedFileName comes full only
+                // in the first attempt so keep it somewhere
                 if( item.SuggestedFileName != "" )
                 {
-                    DownloadNames[ item.Id ] = item.SuggestedFileName;
+                    DownloadNames[item.Id] = item.SuggestedFileName;
                 }
 
                 // Set it back if it is empty
@@ -959,7 +959,7 @@ namespace BudgetBrowser
                     item.SuggestedFileName = _name;
                 }
 
-                _downloads[ item.Id ] = item;
+                _downloads[item.Id] = item;
 
                 //UpdateSnipProgress();
             }
@@ -1004,7 +1004,7 @@ namespace BudgetBrowser
                 // keep tab at same index focused
                 if( TabPages.Items.Count - 1 > _index )
                 {
-                    TabPages.SelectedItem = TabPages.Items[ _index ];
+                    TabPages.SelectedItem = TabPages.Items[_index];
                 }
             }
         }
@@ -1015,7 +1015,7 @@ namespace BudgetBrowser
         public void OpenDownloadsTab( )
         {
             if( ( _downloadStrip != null )
-               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[ 0 ] ).Address
+               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[0] ).Address
                    == BrowserConfig.DownloadsUrl ) )
             {
                 TabPages.SelectedItem = _downloadStrip;
@@ -1106,7 +1106,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsOnFirstTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[ 0 ];
+            return TabPages.SelectedItem == TabPages.Items[0];
         }
 
         /// <summary>
@@ -1117,7 +1117,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsOnLastTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[ TabPages.Items.Count - 2 ];
+            return TabPages.SelectedItem == TabPages.Items[TabPages.Items.Count - 2];
         }
 
         /// <summary>
@@ -1176,14 +1176,14 @@ namespace BudgetBrowser
                 // if current tab
                 if( sender == CurrentBrowser )
                 {
-                    if( !WebUtils.IsFocused( PrimaryTextBox ) )
+                    if( !WebUtils.IsFocused( UrlTextBox ) )
                     {
-                        SetFormUrl( e.Address );
+                        SetUrl( e.Address );
                     }
 
                     EnableBackButton( CurrentBrowser.CanGoBack );
                     EnableForwardButton( CurrentBrowser.CanGoForward );
-                    SetTabTitle( (ChromiumWebBrowser)sender, "Loading..." );
+                    SetTabText( (ChromiumWebBrowser)sender, "Loading..." );
                     RefreshSearchButton.Visible = false;
                     StopSearchButton.Visible = true;
                     CurrentTab.DateCreated = DateTime.Now;
@@ -1212,7 +1212,7 @@ namespace BudgetBrowser
             InvokeIfNeeded( ( ) =>
             {
                 var _browser = (ChromiumWebBrowser)sender;
-                SetTabTitle( _browser, e.Title );
+                SetTabText( _browser, e.Title );
             } );
         }
 
@@ -1302,7 +1302,7 @@ namespace BudgetBrowser
             ChromiumWebBrowser _browser = null;
             try
             {
-                _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
+                _browser = (ChromiumWebBrowser)e.Item.Controls[0];
             }
             catch( Exception _ex )
             {
@@ -1318,8 +1318,8 @@ namespace BudgetBrowser
                 else
                 {
                     _browser = CurrentBrowser;
-                    SetFormUrl( _browser.Address );
-                    SetFormTitle( _browser.Tag.ConvertToString( ) ?? "New Tab" );
+                    SetUrl( _browser.Address );
+                    SetTitle( _browser.Tag.ConvertToString( ) ?? "New Tab" );
                     EnableBackButton( _browser.CanGoBack );
                     EnableForwardButton( _browser.CanGoForward );
                 }
@@ -1471,7 +1471,7 @@ namespace BudgetBrowser
             if( e.IsHotKey( Keys.Enter )
                || e.IsHotKey( Keys.Enter, true ) )
             {
-                LoadUrl( PrimaryTextBox.Text );
+                LoadUrl( UrlTextBox.Text );
 
                 // im handling this
                 e.Handled = true;
@@ -1483,7 +1483,7 @@ namespace BudgetBrowser
 
             // if full URL copied
             if( e.IsHotKey( Keys.C, true )
-               && WebUtils.IsFullySelected( PrimaryTextBox ) )
+               && WebUtils.IsFullySelected( UrlTextBox ) )
             {
                 // copy the real URL, not the pretty one
                 Clipboard.SetText( CurrentBrowser.Address, TextDataFormat.UnicodeText );
@@ -1502,9 +1502,9 @@ namespace BudgetBrowser
         /// instance containing the event data.</param>
         private void OnUrlTextBoxClicked( object sender, EventArgs e )
         {
-            if( !WebUtils.HasSelection( PrimaryTextBox ) )
+            if( !WebUtils.HasSelection( UrlTextBox ) )
             {
-                PrimaryTextBox.SelectAll( );
+                UrlTextBox.SelectAll( );
             }
         }
 
@@ -1554,7 +1554,7 @@ namespace BudgetBrowser
             {
                 foreach( TabPage _tab in TabPages.Items )
                 {
-                    var _browser = (ChromiumWebBrowser)_tab.Controls[ 0 ];
+                    var _browser = (ChromiumWebBrowser)_tab.Controls[0];
                     _browser.Dispose( );
                 }
             }
@@ -1661,6 +1661,11 @@ namespace BudgetBrowser
             using var _error = new ErrorDialog( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
+        }
+
+        private void TabItem_Changed( object sender, EventArgs e )
+        {
+
         }
     }
 }

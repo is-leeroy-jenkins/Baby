@@ -163,6 +163,16 @@ namespace BudgetBrowser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ChromeButton {
+            get {
+                object obj = ResourceManager.GetObject("ChromeButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap CloseButton {
             get {
                 object obj = ResourceManager.GetObject("CloseButton", resourceCulture);
@@ -186,6 +196,16 @@ namespace BudgetBrowser.Properties {
         public static System.Drawing.Bitmap DownloadButton {
             get {
                 object obj = ResourceManager.GetObject("DownloadButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap EpaSkew {
+            get {
+                object obj = ResourceManager.GetObject("EpaSkew", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +303,9 @@ namespace BudgetBrowser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap PreviousButton {
+        public static System.Drawing.Bitmap Previous {
             get {
-                object obj = ResourceManager.GetObject("PreviousButton", resourceCulture);
+                object obj = ResourceManager.GetObject("Previous", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -366,46 +386,6 @@ namespace BudgetBrowser.Properties {
         public static System.Drawing.Bitmap SearchRefreshButton {
             get {
                 object obj = ResourceManager.GetObject("SearchRefreshButton", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap WebNextButton {
-            get {
-                object obj = ResourceManager.GetObject("WebNextButton", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap WebPreviousButton {
-            get {
-                object obj = ResourceManager.GetObject("WebPreviousButton", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap WebRefreshButton {
-            get {
-                object obj = ResourceManager.GetObject("WebRefreshButton", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap WebUpButton {
-            get {
-                object obj = ResourceManager.GetObject("WebUpButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

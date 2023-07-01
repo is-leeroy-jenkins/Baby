@@ -101,12 +101,7 @@ namespace BudgetBrowser
         /// 
         /// </summary>
         public static string GoogleSearchUrl = "https://www.google.com/search?q=";
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static string BingSearchUrl = "https://www.bing.com/search?q=";
-
+        
         /// <summary>
         /// 
         /// </summary>

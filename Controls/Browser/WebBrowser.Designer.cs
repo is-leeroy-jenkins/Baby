@@ -46,7 +46,7 @@
             BottomTable = new System.Windows.Forms.TableLayoutPanel( );
             ToolStrip = new ToolStrip( );
             Separator1 = new ToolSeparator( );
-            SearchEngineComboBox = new ToolStripComboBox( );
+            DomainSearchComboBox = new ToolStripComboBox( );
             ToolTip = new ToolTip( );
             Separator2 = new ToolSeparator( );
             PreviousButton = new ToolStripButton( );
@@ -310,7 +310,7 @@
             ToolStrip.HomeButton = null;
             ToolStrip.Image = null;
             ToolStrip.ImageScalingSize = new System.Drawing.Size( 18, 18 );
-            ToolStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[ ] { Separator1, SearchEngineComboBox, Separator2, PreviousButton, Separator3, NextButton, Separator4, KeyWordTextBox, Separator5, GoButton, Separator6, CancelButton, Separator7, GoogleButton, Separator8, EdgeButton, Separator9, SpfxButton, Separator10, RefreshButton, Separator11, DeveloperToolsButton, Separator12, Spacer, Separator13, DownloadButton, Separator14, HomePageButton, Separator15, CloseButton } );
+            ToolStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[ ] { Separator1, DomainSearchComboBox, Separator2, PreviousButton, Separator3, NextButton, Separator4, KeyWordTextBox, Separator5, GoButton, Separator6, CancelButton, Separator7, GoogleButton, Separator8, EdgeButton, Separator9, SpfxButton, Separator10, RefreshButton, Separator11, DeveloperToolsButton, Separator12, Spacer, Separator13, DownloadButton, Separator14, HomePageButton, Separator15, CloseButton } );
             ToolStrip.LauncherStyle = Syncfusion.Windows.Forms.Tools.LauncherStyle.Office12;
             ToolStrip.Location = new System.Drawing.Point( 236, 1 );
             ToolStrip.Margin = new System.Windows.Forms.Padding( 1 );
@@ -353,19 +353,19 @@
             Separator1.Padding = new System.Windows.Forms.Padding( 1 );
             Separator1.Size = new System.Drawing.Size( 6, 27 );
             // 
-            // SearchEngineComboBox
+            // DomainSearchComboBox
             // 
-            SearchEngineComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            SearchEngineComboBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            SearchEngineComboBox.ForeColor = System.Drawing.Color.FromArgb(   218  ,   218  ,   218   );
-            SearchEngineComboBox.HoverText = "Search Engines";
-            SearchEngineComboBox.Items.AddRange( new object[ ] { "Google", "Bing", "EPA", "Congress", "OMB", "Treasury", "NASA", "NOAA" } );
-            SearchEngineComboBox.MaxLength = 32767;
-            SearchEngineComboBox.MetroColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            SearchEngineComboBox.Name = "SearchEngineComboBox";
-            SearchEngineComboBox.Size = new System.Drawing.Size( 150, 29 );
-            SearchEngineComboBox.Style = Syncfusion.Windows.Forms.Tools.ToolStripExStyle.Office2016Black;
-            SearchEngineComboBox.ToolTip = ToolTip;
+            DomainSearchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            DomainSearchComboBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            DomainSearchComboBox.ForeColor = System.Drawing.Color.FromArgb(   218  ,   218  ,   218   );
+            DomainSearchComboBox.HoverText = "Search Engines";
+            DomainSearchComboBox.Items.AddRange( new object[ ] { "EPA", "Congress", "OMB", "Treasury", "NASA", "NOAA" } );
+            DomainSearchComboBox.MaxLength = 32767;
+            DomainSearchComboBox.MetroColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            DomainSearchComboBox.Name = "DomainSearchComboBox";
+            DomainSearchComboBox.Size = new System.Drawing.Size( 150, 29 );
+            DomainSearchComboBox.Style = Syncfusion.Windows.Forms.Tools.ToolStripExStyle.Office2016Black;
+            DomainSearchComboBox.ToolTip = ToolTip;
             // 
             // ToolTip
             // 
@@ -454,7 +454,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 300, 27 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 296, 27 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -931,7 +931,7 @@
         public System.Windows.Forms.TableLayoutPanel BottomTable;
         public ToolStrip ToolStrip;
         public ToolSeparator Separator1;
-        public ToolStripComboBox SearchEngineComboBox;
+        public ToolStripComboBox DomainSearchComboBox;
         public ToolTip ToolTip;
         public ToolSeparator Separator2;
         public ToolStripButton PreviousButton;

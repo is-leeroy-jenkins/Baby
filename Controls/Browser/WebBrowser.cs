@@ -340,7 +340,7 @@ namespace BudgetBrowser
             DownloadButton.Click += OnDownloadsButtonClicked;
             CancelButton.Click += OnStopButtonClicked;
             DeveloperToolsButton.Click += OnDeveloperToolsButtonClicked;
-            SearchEngineComboBox.SelectedIndexChanged += OnSelectedEngineChanged;
+            DomainSearchComboBox.SelectedIndexChanged += OnSelectedEngineChanged;
             GoButton.Click += OnGoButtonClicked;
             Load += OnBrowserLoad;
         }
@@ -623,13 +623,13 @@ namespace BudgetBrowser
                 ToolStrip.ImageScalingSize = new Size( 18, 18 );
 
                 // ComboBox Properties
-                SearchEngineComboBox.Font = new Font( "Roboto", 8, FontStyle.Bold );
-                SearchEngineComboBox.Style = ToolStripExStyle.Office2016Black;
-                SearchEngineComboBox.ForeColor = Color.White;
-                SearchEngineComboBox.BackColor = Color.FromArgb( 50, 50, 50 );
-                SearchEngineComboBox.Size = new Size( 150, 29 );
-                SearchEngineComboBox.TextAlign = ContentAlignment.MiddleCenter;
-                SearchEngineComboBox.SelectedIndex = 0;
+                DomainSearchComboBox.Font = new Font( "Roboto", 8, FontStyle.Bold );
+                DomainSearchComboBox.Style = ToolStripExStyle.Office2016Black;
+                DomainSearchComboBox.ForeColor = Color.White;
+                DomainSearchComboBox.BackColor = Color.FromArgb( 50, 50, 50 );
+                DomainSearchComboBox.Size = new Size( 150, 29 );
+                DomainSearchComboBox.TextAlign = ContentAlignment.MiddleCenter;
+                DomainSearchComboBox.SelectedIndex = -1;
 
                 // TextBox Properties
                 KeyWordTextBox.ForeColor = Color.White;
@@ -1377,17 +1377,16 @@ namespace BudgetBrowser
         {
             try
             {
-                var _index = SearchEngineComboBox.SelectedIndex;
+                var _index = DomainSearchComboBox.SelectedIndex;
                 _searchEngineUrl = _index switch
                 {
-                    0 => BrowserConfig.GoogleSearchUrl,
-                    1 => BrowserConfig.BingSearchUrl,
-                    2 => BrowserConfig.EpaSearchUrl,
-                    3 => BrowserConfig.CongressionalSearchUrl,
-                    4 => BrowserConfig.OmbSearchUrl,
-                    5 => BrowserConfig.TreasurySearchUrl,
-                    6 => BrowserConfig.NasaSearchUrl,
-                    7 => BrowserConfig.NoaaSearchUrl,
+                    -1 => BrowserConfig.GoogleSearchUrl,
+                    0 => BrowserConfig.EpaSearchUrl,
+                    1 => BrowserConfig.CongressionalSearchUrl,
+                    2 => BrowserConfig.OmbSearchUrl,
+                    3 => BrowserConfig.TreasurySearchUrl,
+                    4 => BrowserConfig.NasaSearchUrl,
+                    5 => BrowserConfig.NoaaSearchUrl,
                     _ => BrowserConfig.GoogleSearchUrl
                 };
             }

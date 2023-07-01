@@ -340,7 +340,7 @@ namespace BudgetBrowser
             DownloadButton.Click += OnDownloadsButtonClicked;
             CancelButton.Click += OnStopButtonClicked;
             DeveloperToolsButton.Click += OnDeveloperToolsButtonClicked;
-            DomainSearchComboBox.SelectedIndexChanged += OnSelectedEngineChanged;
+            DomainSearchComboBox.SelectedIndexChanged += OnDomainSearchIndexChanged;
             GoButton.Click += OnGoButtonClicked;
             Load += OnBrowserLoad;
         }
@@ -1373,20 +1373,20 @@ namespace BudgetBrowser
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void OnSelectedEngineChanged( object sender, EventArgs e )
+        private void OnDomainSearchIndexChanged( object sender, EventArgs e )
         {
             try
             {
                 var _index = DomainSearchComboBox.SelectedIndex;
                 _searchEngineUrl = _index switch
                 {
-                    -1 => BrowserConfig.GoogleSearchUrl,
-                    0 => BrowserConfig.EpaSearchUrl,
-                    1 => BrowserConfig.CongressionalSearchUrl,
-                    2 => BrowserConfig.OmbSearchUrl,
-                    3 => BrowserConfig.TreasurySearchUrl,
-                    4 => BrowserConfig.NasaSearchUrl,
-                    5 => BrowserConfig.NoaaSearchUrl,
+                    0 => BrowserConfig.GoogleSearchUrl,
+                    1 => BrowserConfig.EpaSearchUrl,
+                    2 => BrowserConfig.CongressionalSearchUrl,
+                    3 => BrowserConfig.OmbSearchUrl,
+                    4 => BrowserConfig.TreasurySearchUrl,
+                    5 => BrowserConfig.NasaSearchUrl,
+                    6 => BrowserConfig.NoaaSearchUrl,
                     _ => BrowserConfig.GoogleSearchUrl
                 };
             }
@@ -1705,6 +1705,7 @@ namespace BudgetBrowser
             finally
             {
                 KeyWordTextBox.Text = string.Empty;
+                DomainSearchComboBox.SelectedIndex = -1;
             }
         }
 

@@ -359,7 +359,7 @@
             DomainSearchComboBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             DomainSearchComboBox.ForeColor = System.Drawing.Color.FromArgb(   218  ,   218  ,   218   );
             DomainSearchComboBox.HoverText = "Search Engines";
-            DomainSearchComboBox.Items.AddRange( new object[ ] { "EPA", "Congress", "OMB", "Treasury", "NASA", "NOAA" } );
+            DomainSearchComboBox.Items.AddRange( new object[ ] { "Google", "EPA", "Congress", "OMB", "Treasury", "NASA", "NOAA" } );
             DomainSearchComboBox.MaxLength = 32767;
             DomainSearchComboBox.MetroColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
             DomainSearchComboBox.Name = "DomainSearchComboBox";
@@ -454,7 +454,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 296, 27 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 294, 27 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;

@@ -305,6 +305,7 @@ namespace BudgetBrowser
             MaximizeBox = false;
             ControlBox = true;
             InitBrowser( );
+            InitializeToolStripControls( );
             SetTitleText( null );
 
             // Title Properties
@@ -580,66 +581,37 @@ namespace BudgetBrowser
             CurrentTab.CurrentUrl = _originalUrl;
             CloseSearch( );
         }
-
+        
         /// <summary>
         /// Sets the tool strip properties.
         /// </summary>
-        private void InitTextBoxProperties( )
+        private void InitializeToolStripControls( )
         {
             try
             {
-                // Header URL Search
-
-                // Key Word Dialog Search
-
-                // Toolbar TextBox
-                KeyWordTextBox.ForeColor = Color.White;
-                KeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
-                KeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
-                KeyWordTextBox.BackColor = Color.FromArgb( 40, 40, 40 );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Sets the ComboBox properties.
-        /// </summary>
-        private void InitComboBoxProperties( )
-        {
-            try
-            {
-                // Website ComboBox Properties
-                SearchEngineComboBox.Font = new Font( "Roboto", 8, FontStyle.Bold );
-                SearchEngineComboBox.Style = ToolStripExStyle.Office2016Black;
-                SearchEngineComboBox.ForeColor = Color.White;
-                SearchEngineComboBox.BackColor = Color.FromArgb( 40, 40, 40 );
-                SearchEngineComboBox.Size = new Size( 150, 29 );
-
-                // SearchEngine ComboBox Properties
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Sets the tool strip properties.
-        /// </summary>
-        private void SetToolStripProperties( )
-        {
-            try
-            {
+                // ToolStrip Properties
                 ToolStrip.Visible = true;
                 ToolStrip.Text = string.Empty;
                 ToolStrip.VisualStyle = ToolStripExStyle.Office2016Black;
                 ToolStrip.Office12Mode = true;
                 ToolStrip.OfficeColorScheme = ToolStripEx.ColorScheme.Blue;
                 ToolStrip.LauncherStyle = LauncherStyle.Office2007;
-                ToolStrip.ImageScalingSize = new Size( 16, 16 );
+                ToolStrip.ImageScalingSize = new Size( 18, 18 );
+
+                // ComboBox Properties
+                SearchEngineComboBox.Font = new Font( "Roboto", 8, FontStyle.Bold );
+                SearchEngineComboBox.Style = ToolStripExStyle.Office2016Black;
+                SearchEngineComboBox.ForeColor = Color.White;
+                SearchEngineComboBox.BackColor = Color.FromArgb( 50, 50, 50 );
+                SearchEngineComboBox.Size = new Size( 150, 29 );
+                SearchEngineComboBox.TextAlign = ContentAlignment.MiddleCenter;
+                SearchEngineComboBox.SelectedIndex = 0;
+
+                // TextBox Properties
+                KeyWordTextBox.ForeColor = Color.White;
+                KeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
+                KeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
+                KeyWordTextBox.BackColor = Color.FromArgb( 50, 50, 50 );
             }
             catch( Exception _ex )
             {
@@ -1162,9 +1134,6 @@ namespace BudgetBrowser
         {
             InitTooltips( Controls );
             InitHotkeys( );
-            InitComboBoxProperties( );
-            InitTextBoxProperties( );
-            SetToolStripProperties( );
         }
 
         /// <summary>

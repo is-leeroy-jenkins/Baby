@@ -340,7 +340,7 @@ namespace BudgetBrowser
             DownloadButton.Click += OnDownloadsButtonClicked;
             CancelButton.Click += OnStopButtonClicked;
             DeveloperToolsButton.Click += OnDeveloperToolsButtonClicked;
-            DomainSearchComboBox.SelectedIndexChanged += OnDomainSearchIndexChanged;
+            DomainComboBox.SelectedIndexChanged += OnDomainSelectedIndexChanged;
             GoButton.Click += OnGoButtonClicked;
             Load += OnBrowserLoad;
         }
@@ -601,7 +601,7 @@ namespace BudgetBrowser
         {
             _originalUrl = url;
             _finalUrl = CleanUrl( url );
-            UrlTextBox.Text = _finalUrl;
+            UrlTextBox.Text = _originalUrl;
             CurrentTab.CurrentUrl = _originalUrl;
             CloseSearch( );
         }
@@ -623,13 +623,13 @@ namespace BudgetBrowser
                 ToolStrip.ImageScalingSize = new Size( 18, 18 );
 
                 // ComboBox Properties
-                DomainSearchComboBox.Font = new Font( "Roboto", 8, FontStyle.Bold );
-                DomainSearchComboBox.Style = ToolStripExStyle.Office2016Black;
-                DomainSearchComboBox.ForeColor = Color.White;
-                DomainSearchComboBox.BackColor = Color.FromArgb( 50, 50, 50 );
-                DomainSearchComboBox.Size = new Size( 150, 29 );
-                DomainSearchComboBox.TextAlign = ContentAlignment.MiddleCenter;
-                DomainSearchComboBox.SelectedIndex = -1;
+                DomainComboBox.Font = new Font( "Roboto", 8, FontStyle.Bold );
+                DomainComboBox.Style = ToolStripExStyle.Office2016Black;
+                DomainComboBox.ForeColor = Color.White;
+                DomainComboBox.BackColor = Color.FromArgb( 50, 50, 50 );
+                DomainComboBox.Size = new Size( 150, 29 );
+                DomainComboBox.TextAlign = ContentAlignment.MiddleCenter;
+                DomainComboBox.SelectedIndex = -1;
 
                 // TextBox Properties
                 KeyWordTextBox.ForeColor = Color.White;
@@ -1373,20 +1373,25 @@ namespace BudgetBrowser
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void OnDomainSearchIndexChanged( object sender, EventArgs e )
+        private void OnDomainSelectedIndexChanged( object sender, EventArgs e )
         {
             try
             {
-                var _index = DomainSearchComboBox.SelectedIndex;
+                var _index = DomainComboBox.SelectedIndex;
                 _searchEngineUrl = _index switch
                 {
                     0 => BrowserConfig.GoogleSearchUrl,
-                    1 => BrowserConfig.EpaSearchUrl,
-                    2 => BrowserConfig.CongressionalSearchUrl,
-                    3 => BrowserConfig.OmbSearchUrl,
-                    4 => BrowserConfig.TreasurySearchUrl,
-                    5 => BrowserConfig.NasaSearchUrl,
-                    6 => BrowserConfig.NoaaSearchUrl,
+                    1 => BrowserConfig.GoogleSearchUrl,
+                    2 => BrowserConfig.EpaSearchUrl,
+                    3 => BrowserConfig.CongressionalSearchUrl,
+                    4 => BrowserConfig.GpoSearchUrl,
+                    5 => BrowserConfig.GovInfoSearchUrl,
+                    6 => BrowserConfig.OmbSearchUrl,
+                    7 => BrowserConfig.TreasurySearchUrl,
+                    8 => BrowserConfig.NasaSearchUrl,
+                    9 => BrowserConfig.NoaaSearchUrl,
+                    10 => BrowserConfig.PyPiSearchUrl,
+                    11 => BrowserConfig.GithubSearchUrl,
                     _ => BrowserConfig.GoogleSearchUrl
                 };
             }
@@ -1705,7 +1710,7 @@ namespace BudgetBrowser
             finally
             {
                 KeyWordTextBox.Text = string.Empty;
-                DomainSearchComboBox.SelectedIndex = -1;
+                DomainComboBox.SelectedIndex = -1;
             }
         }
 
@@ -1713,7 +1718,9 @@ namespace BudgetBrowser
         /// Called when [close button clicked].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.
+        /// </param>
         private void OnCloseButtonClicked( object sender, EventArgs e )
         {
             try

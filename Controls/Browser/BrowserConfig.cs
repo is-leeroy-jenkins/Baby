@@ -108,6 +108,16 @@ namespace BudgetBrowser
         public static string EpaSearchUrl = "https://www.google.com/search?q=site:www.epa.gov ";
 
         /// <summary>
+        /// 
+        /// </summary>
+        public static string GpoSearchUrl = "https://www.google.com/search?q=site:www.gpo.gov ";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string GovInfoSearchUrl = "https://www.google.com/search?q=site:www.govinfo.gov ";
+
+        /// <summary>
         /// The congressional search URL
         /// </summary>
         public static string CongressionalSearchUrl =
@@ -134,6 +144,21 @@ namespace BudgetBrowser
         /// 
         /// </summary>
         public static string NoaaSearchUrl = "https://www.google.com/search?q=site:www.noaa.gov ";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string PyPiSearchUrl = "https://www.google.com/search?q=site:www.pypi.org ";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string NuGetSearchUrl = "https://www.google.com/search?q=site:www.nuget.org ";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string GithubSearchUrl = "https://www.google.com/search?q=site:www.github.com ";
 
         /// <summary>
         /// 

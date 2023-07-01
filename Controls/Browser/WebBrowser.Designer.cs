@@ -600,11 +600,10 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 342, 27 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 340, 27 );
             KeyWordTextBox.Tag = "";
-            KeyWordTextBox.Text = "< Enter Key Words >";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            KeyWordTextBox.ToolTip = null;
+            KeyWordTextBox.ToolTip = ToolTip;
             // 
             // Separator5
             // 

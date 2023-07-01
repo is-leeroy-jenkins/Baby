@@ -75,7 +75,7 @@ namespace BudgetBrowser
         /// <summary>
         /// 
         /// </summary>
-        public static string NewTabUrl = "about:blank";
+        public static string NewTabUrl = "https://www.google.com";
 
         /// <summary>
         /// 

@@ -4,7 +4,7 @@
 //     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-29-2023
+//     Last Modified On:        07-01-2023
 // ******************************************************************************************
 // <copyright file="WebBrowser.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -54,8 +54,10 @@ namespace BudgetBrowser
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Reflection;
+    using System.Windows.Forms.VisualStyles;
     using static System.IO.Path;
     using Action = System.Action;
+    using ContentAlignment = System.Drawing.ContentAlignment;
 
     /// <inheritdoc />
     /// <summary>
@@ -304,8 +306,8 @@ namespace BudgetBrowser
             MinimizeBox = false;
             MaximizeBox = false;
             ControlBox = true;
-            InitBrowser( );
-            InitializeToolStripControls( );
+            InitializeBrowser( );
+            InitializeToolStripProperties( );
             SetTitleText( null );
 
             // Title Properties
@@ -316,16 +318,21 @@ namespace BudgetBrowser
             // Wire Events
             PreviousButton.Click += OnBackButtonClick;
             NextButton.Click += OnForwardButtonClick;
-            HomeButton.Click += OnHomeButtonClick;
+            HomePageButton.Click += OnHomeButtonClick;
             CloseButton.Click += OnCloseButtonClicked;
-            Load += OnLoad;
+            RefreshButton.Click += OnRefreshButtonClicked;
+            DownloadButton.Click += OnDownloadsButtonClicked;
+            CancelButton.Click += OnStopButtonClicked;
+            DeveloperToolsButton.Click += OnDeveloperToolsButtonClicked;
+            GoButton.Click += OnGoButtonClicked;
+            Load += OnBrowserLoad;
         }
 
         /// <summary>
         /// these hot keys work when the user is focused on the .NET form and its controls,
         /// AND when the user is focused on the browser (CefSharp portion)
         /// </summary>
-        private void InitHotkeys( )
+        private void InitializeHotkeys( )
         {
             // browser hot keys
             KeyboardHandler.AddHotKey( this, CloseActiveTab, Keys.W, true );
@@ -349,7 +356,7 @@ namespace BudgetBrowser
         /// in the Tag property of the buttons
         /// </summary>
         /// <param name="parent">The parent.</param>
-        public void InitTooltips( Control.ControlCollection parent )
+        public void InitializeTooltips( Control.ControlCollection parent )
         {
             foreach( Control _ui in parent )
             {
@@ -366,7 +373,7 @@ namespace BudgetBrowser
 
                 if( _ui is Panel _panel )
                 {
-                    InitTooltips( _panel.Controls );
+                    InitializeTooltips( _panel.Controls );
                 }
             }
         }
@@ -374,7 +381,7 @@ namespace BudgetBrowser
         /// <summary>
         /// this is done just once, to globally initialize CefSharp/CEF
         /// </summary>
-        private void InitBrowser( )
+        private void InitializeBrowser( )
         {
             //CefSharpSettings.LegacyJavascriptBindingEnabled = true;
             var _settings = new CefSettings( );
@@ -581,11 +588,11 @@ namespace BudgetBrowser
             CurrentTab.CurrentUrl = _originalUrl;
             CloseSearch( );
         }
-        
+
         /// <summary>
         /// Sets the tool strip properties.
         /// </summary>
-        private void InitializeToolStripControls( )
+        private void InitializeToolStripProperties( )
         {
             try
             {
@@ -719,7 +726,7 @@ namespace BudgetBrowser
         /// <param name="canGoBack">if set to <c>true</c> [can go back].</param>
         private void EnableBackButton( bool canGoBack )
         {
-            InvokeIfNeeded( ( ) => PreviousSearchButton.Enabled = canGoBack );
+            InvokeIfNeeded( ( ) => PreviousButton.Enabled = canGoBack );
         }
 
         /// <summary>
@@ -728,7 +735,7 @@ namespace BudgetBrowser
         /// <param name="canGoForward">if set to <c>true</c> [can go forward].</param>
         private void EnableForwardButton( bool canGoForward )
         {
-            InvokeIfNeeded( ( ) => NextSearchButton.Enabled = canGoForward );
+            InvokeIfNeeded( ( ) => NextButton.Enabled = canGoForward );
         }
 
         /// <summary>
@@ -1066,6 +1073,14 @@ namespace BudgetBrowser
         }
 
         /// <summary>
+        /// Opens the developer tools.
+        /// </summary>
+        private void OpenDeveloperTools( )
+        {
+            CurrentBrowser.ShowDevTools( );
+        }
+
+        /// <summary>
         /// Stops the active tab.
         /// </summary>
         private void StopActiveTab( )
@@ -1129,11 +1144,13 @@ namespace BudgetBrowser
         /// Called when [load].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void OnLoad( object sender, EventArgs e )
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.
+        /// </param>
+        private void OnBrowserLoad( object sender, EventArgs e )
         {
-            InitTooltips( Controls );
-            InitHotkeys( );
+            InitializeTooltips( Controls );
+            InitializeHotkeys( );
         }
 
         /// <summary>
@@ -1156,8 +1173,10 @@ namespace BudgetBrowser
                     EnableBackButton( CurrentBrowser.CanGoBack );
                     EnableForwardButton( CurrentBrowser.CanGoForward );
                     SetTabText( (ChromiumWebBrowser)sender, "Loading..." );
-                    RefreshSearchButton.Visible = false;
-                    StopSearchButton.Visible = true;
+                    Separator10.Visible = false;
+                    RefreshButton.Visible = false;
+                    Separator6.Visible = true;
+                    CancelButton.Visible = true;
                     CurrentTab.DateCreated = DateTime.Now;
                 }
             } );
@@ -1189,6 +1208,16 @@ namespace BudgetBrowser
         }
 
         /// <summary>
+        /// Called when [develop tools button clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void OnDeveloperToolsButtonClicked( object sender, EventArgs e )
+        {
+            OpenDeveloperTools( );
+        }
+
+        /// <summary>
         /// Called when [loading state changed].
         /// </summary>
         /// <param name="sender">The sender.</param>
@@ -1204,15 +1233,17 @@ namespace BudgetBrowser
                 if( e.IsLoading )
                 {
                     // set title
-                    //SetTabTitle();
+                    //SetTabText( );
                 }
                 else
                 {
                     // after loaded / stopped
                     InvokeIfNeeded( ( ) =>
                     {
-                        RefreshSearchButton.Visible = true;
-                        StopSearchButton.Visible = false;
+                        Separator10.Visible = true;
+                        RefreshButton.Visible = true;
+                        Separator6.Visible = false;
+                        CancelButton.Visible = false;
                     } );
                 }
             }
@@ -1274,7 +1305,7 @@ namespace BudgetBrowser
             ChromiumWebBrowser _browser = null;
             try
             {
-                _browser = (ChromiumWebBrowser)e.Item.Controls[0];
+                _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
             }
             catch( Exception _ex )
             {
@@ -1481,14 +1512,6 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// Opens the developer tools.
-        /// </summary>
-        private void OpenDeveloperTools( )
-        {
-            CurrentBrowser.ShowDevTools( );
-        }
-
-        /// <summary>
         /// Called when [tab pages clicked].
         /// </summary>
         /// <param name="sender">The sender.</param>
@@ -1534,17 +1557,6 @@ namespace BudgetBrowser
             {
                 // ignore exception
             }
-        }
-
-        /// <summary>
-        /// open a new tab with the downloads URL
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/>
-        /// instance containing the event data.</param>
-        private void btnDownloads_Click( object sender, EventArgs e )
-        {
-            OpenDownloadsTab( );
         }
 
         /// <summary>
@@ -1620,6 +1632,27 @@ namespace BudgetBrowser
         private void OnHomeButtonClick( object sender, EventArgs e )
         {
             CurrentBrowser.Load( BrowserConfig.HomepageUrl );
+        }
+
+        private void OnGoButtonClicked( object sender, EventArgs e )
+        {
+            try
+            {
+                var _keywords = KeyWordTextBox.Text;
+                if( !string.IsNullOrEmpty( _keywords ) )
+                {
+                    var _search = BrowserConfig.SearchUrl + _keywords;
+                    CurrentBrowser.Load( _search );
+                }
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+            finally
+            {
+                KeyWordTextBox.Text = string.Empty;
+            }
         }
 
         /// <summary>

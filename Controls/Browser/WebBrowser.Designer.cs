@@ -33,15 +33,7 @@
             MenuTabStrip = new System.Windows.Forms.ContextMenuStrip( components );
             CloseTabMenuItem = new System.Windows.Forms.ToolStripMenuItem( );
             CloseOthersMenuItem = new System.Windows.Forms.ToolStripMenuItem( );
-            RefreshSearchButton = new System.Windows.Forms.Button( );
-            StopSearchButton = new System.Windows.Forms.Button( );
-            NextSearchButton = new System.Windows.Forms.Button( );
-            PreviousSearchButton = new System.Windows.Forms.Button( );
             Timer = new System.Windows.Forms.Timer( components );
-            SearchDownloadButton = new System.Windows.Forms.Button( );
-            UrlTextBox = new System.Windows.Forms.TextBox( );
-            UrlPanel = new System.Windows.Forms.Panel( );
-            HomeButton = new System.Windows.Forms.Button( );
             TabPages = new BrowserTabStrip( );
             TabItem = new BrowserTabStripItem( );
             AddItemTab = new BrowserTabStripItem( );
@@ -75,7 +67,7 @@
             Separator10 = new ToolSeparator( );
             RefreshButton = new ToolStripButton( );
             Separator11 = new ToolSeparator( );
-            WebToolsButton = new ToolStripButton( );
+            DeveloperToolsButton = new ToolStripButton( );
             Separator12 = new ToolSeparator( );
             Spacer = new ToolStripLabel( );
             Separator13 = new ToolSeparator( );
@@ -87,8 +79,10 @@
             TopTable = new System.Windows.Forms.TableLayoutPanel( );
             PictureBox = new ImageBox( );
             Title = new Label( );
+            UrlTextBoxTable = new System.Windows.Forms.TableLayoutPanel( );
+            UrlTextBox = new TextBox( );
+            UrlSearchPanel = new Layout( );
             MenuTabStrip.SuspendLayout( );
-            UrlPanel.SuspendLayout( );
             ( (System.ComponentModel.ISupportInitialize) TabPages  ).BeginInit( );
             TabPages.SuspendLayout( );
             SearchPanel.SuspendLayout( );
@@ -96,6 +90,8 @@
             ToolStrip.SuspendLayout( );
             TopTable.SuspendLayout( );
             ( (System.ComponentModel.ISupportInitialize) PictureBox  ).BeginInit( );
+            UrlTextBoxTable.SuspendLayout( );
+            UrlSearchPanel.SuspendLayout( );
             SuspendLayout( );
             // 
             // MenuTabStrip
@@ -120,127 +116,10 @@
             CloseOthersMenuItem.Text = "Close other tabs";
             CloseOthersMenuItem.Click += OnCloseOtherTabsClicked;
             // 
-            // RefreshSearchButton
-            // 
-            RefreshSearchButton.Anchor =   System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Right  ;
-            RefreshSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            RefreshSearchButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            RefreshSearchButton.Image = Properties.Resources.SearchRefreshButton;
-            RefreshSearchButton.Location = new System.Drawing.Point( 1282, 0 );
-            RefreshSearchButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
-            RefreshSearchButton.Name = "RefreshSearchButton";
-            RefreshSearchButton.Size = new System.Drawing.Size( 25, 30 );
-            RefreshSearchButton.TabIndex = 3;
-            RefreshSearchButton.UseVisualStyleBackColor = true;
-            RefreshSearchButton.Click += OnRefreshButtonClicked;
-            // 
-            // StopSearchButton
-            // 
-            StopSearchButton.Anchor =   System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Right  ;
-            StopSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            StopSearchButton.ForeColor = System.Drawing.Color.White;
-            StopSearchButton.Location = new System.Drawing.Point( 1282, -2 );
-            StopSearchButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
-            StopSearchButton.Name = "StopSearchButton";
-            StopSearchButton.Size = new System.Drawing.Size( 25, 30 );
-            StopSearchButton.TabIndex = 2;
-            StopSearchButton.UseVisualStyleBackColor = true;
-            StopSearchButton.Click += OnStopButtonClicked;
-            // 
-            // NextSearchButton
-            // 
-            NextSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            NextSearchButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            NextSearchButton.Image = Properties.Resources.SearchNextButton;
-            NextSearchButton.Location = new System.Drawing.Point( 29, 0 );
-            NextSearchButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
-            NextSearchButton.Name = "NextSearchButton";
-            NextSearchButton.Size = new System.Drawing.Size( 25, 30 );
-            NextSearchButton.TabIndex = 1;
-            NextSearchButton.UseVisualStyleBackColor = true;
-            NextSearchButton.Click += OnForwardButtonClick;
-            // 
-            // PreviousSearchButton
-            // 
-            PreviousSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            PreviousSearchButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            PreviousSearchButton.Image = Properties.Resources.SearchPreviousButton;
-            PreviousSearchButton.Location = new System.Drawing.Point( 2, 0 );
-            PreviousSearchButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
-            PreviousSearchButton.Name = "PreviousSearchButton";
-            PreviousSearchButton.Size = new System.Drawing.Size( 25, 30 );
-            PreviousSearchButton.TabIndex = 0;
-            PreviousSearchButton.UseVisualStyleBackColor = true;
-            PreviousSearchButton.Click += OnBackButtonClick;
-            // 
             // Timer
             // 
             Timer.Interval = 50;
             Timer.Tick += OnTimerTick;
-            // 
-            // SearchDownloadButton
-            // 
-            SearchDownloadButton.Anchor =   System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Right  ;
-            SearchDownloadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SearchDownloadButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            SearchDownloadButton.Image = Properties.Resources.SearchDownloadButton;
-            SearchDownloadButton.Location = new System.Drawing.Point( 1310, 0 );
-            SearchDownloadButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
-            SearchDownloadButton.Name = "SearchDownloadButton";
-            SearchDownloadButton.Size = new System.Drawing.Size( 25, 30 );
-            SearchDownloadButton.TabIndex = 4;
-            SearchDownloadButton.Tag = "Downloads";
-            SearchDownloadButton.UseVisualStyleBackColor = true;
-            SearchDownloadButton.Click += OnDownloadsButtonClicked;
-            // 
-            // UrlTextBox
-            // 
-            UrlTextBox.Anchor =    System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Left   |  System.Windows.Forms.AnchorStyles.Right  ;
-            UrlTextBox.BackColor = System.Drawing.Color.FromArgb(   40  ,   40  ,   40   );
-            UrlTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            UrlTextBox.Font = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            UrlTextBox.ForeColor = System.Drawing.Color.LightGray;
-            UrlTextBox.Location = new System.Drawing.Point( 60, 5 );
-            UrlTextBox.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
-            UrlTextBox.Name = "UrlTextBox";
-            UrlTextBox.Size = new System.Drawing.Size( 1185, 20 );
-            UrlTextBox.TabIndex = 5;
-            UrlTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            UrlTextBox.Click += OnUrlTextBoxClicked;
-            UrlTextBox.TextChanged += OnUrlTextBoxTextChanged;
-            UrlTextBox.KeyDown += OnUrlTextBoxKeyDown;
-            // 
-            // UrlPanel
-            // 
-            UrlPanel.BackColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            UrlPanel.Controls.Add( HomeButton );
-            UrlPanel.Controls.Add( SearchDownloadButton );
-            UrlPanel.Controls.Add( NextSearchButton );
-            UrlPanel.Controls.Add( PreviousSearchButton );
-            UrlPanel.Controls.Add( RefreshSearchButton );
-            UrlPanel.Controls.Add( StopSearchButton );
-            UrlPanel.Controls.Add( UrlTextBox );
-            UrlPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            UrlPanel.Location = new System.Drawing.Point( 0, 24 );
-            UrlPanel.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
-            UrlPanel.Name = "UrlPanel";
-            UrlPanel.Size = new System.Drawing.Size( 1338, 30 );
-            UrlPanel.TabIndex = 6;
-            // 
-            // HomeButton
-            // 
-            HomeButton.Anchor =   System.Windows.Forms.AnchorStyles.Top  |  System.Windows.Forms.AnchorStyles.Right  ;
-            HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            HomeButton.ForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            HomeButton.Image = Properties.Resources.SearchHomeButton;
-            HomeButton.Location = new System.Drawing.Point( 1251, 0 );
-            HomeButton.Margin = new System.Windows.Forms.Padding( 3, 4, 3, 4 );
-            HomeButton.Name = "HomeButton";
-            HomeButton.Size = new System.Drawing.Size( 25, 30 );
-            HomeButton.TabIndex = 6;
-            HomeButton.Tag = "Home";
-            HomeButton.UseVisualStyleBackColor = true;
-            HomeButton.Click += OnHomeButtonClick;
             // 
             // TabPages
             // 
@@ -249,11 +128,11 @@
             TabPages.Dock = System.Windows.Forms.DockStyle.Fill;
             TabPages.Font = new System.Drawing.Font( "Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             TabPages.Items.AddRange( new BrowserTabStripItem[ ] { TabItem, AddItemTab } );
-            TabPages.Location = new System.Drawing.Point( 0, 54 );
+            TabPages.Location = new System.Drawing.Point( 0, 66 );
             TabPages.Name = "TabPages";
             TabPages.Padding = new System.Windows.Forms.Padding( 1, 29, 1, 1 );
             TabPages.SelectedItem = TabItem;
-            TabPages.Size = new System.Drawing.Size( 1338, 652 );
+            TabPages.Size = new System.Drawing.Size( 1338, 640 );
             TabPages.TabIndex = 4;
             TabPages.Text = "faTabStrip1";
             TabPages.TabStripItemSelectionChanged += OnTabsChanged;
@@ -278,7 +157,7 @@
             TabItem.Location = new System.Drawing.Point( 1, 29 );
             TabItem.Name = "TabItem";
             TabItem.Padding = new System.Windows.Forms.Padding( 1 );
-            TabItem.Size = new System.Drawing.Size( 1336, 622 );
+            TabItem.Size = new System.Drawing.Size( 1336, 610 );
             TabItem.StripRectangle = (System.Drawing.RectangleF) resources.GetObject( "TabItem.StripRectangle" ) ;
             TabItem.Style = MetroSet_UI.Enums.Style.Custom;
             TabItem.StyleManager = null;
@@ -431,7 +310,7 @@
             ToolStrip.HomeButton = null;
             ToolStrip.Image = null;
             ToolStrip.ImageScalingSize = new System.Drawing.Size( 18, 18 );
-            ToolStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[ ] { Separator1, SearchEngineComboBox, Separator2, PreviousButton, Separator3, NextButton, Separator4, KeyWordTextBox, Separator5, GoButton, Separator6, CancelButton, Separator7, GoogleButton, Separator8, EdgeButton, Separator9, SpfxButton, Separator10, RefreshButton, Separator11, WebToolsButton, Separator12, Spacer, Separator13, DownloadButton, Separator14, HomePageButton, Separator15, CloseButton } );
+            ToolStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[ ] { Separator1, SearchEngineComboBox, Separator2, PreviousButton, Separator3, NextButton, Separator4, KeyWordTextBox, Separator5, GoButton, Separator6, CancelButton, Separator7, GoogleButton, Separator8, EdgeButton, Separator9, SpfxButton, Separator10, RefreshButton, Separator11, DeveloperToolsButton, Separator12, Spacer, Separator13, DownloadButton, Separator14, HomePageButton, Separator15, CloseButton } );
             ToolStrip.LauncherStyle = Syncfusion.Windows.Forms.Tools.LauncherStyle.Office12;
             ToolStrip.Location = new System.Drawing.Point( 236, 1 );
             ToolStrip.Margin = new System.Windows.Forms.Padding( 1 );
@@ -575,7 +454,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 320, 27 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 310, 27 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -743,23 +622,23 @@
             Separator11.Padding = new System.Windows.Forms.Padding( 1 );
             Separator11.Size = new System.Drawing.Size( 6, 27 );
             // 
-            // WebToolsButton
+            // DeveloperToolsButton
             // 
-            WebToolsButton.AutoToolTip = false;
-            WebToolsButton.BackColor = System.Drawing.Color.Transparent;
-            WebToolsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            WebToolsButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            WebToolsButton.ForeColor = System.Drawing.Color.LightGray;
-            WebToolsButton.HoverText = "Open Developer Tools";
-            WebToolsButton.Image = Properties.Resources.WebToolButton;
-            WebToolsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            WebToolsButton.Margin = new System.Windows.Forms.Padding( 3 );
-            WebToolsButton.Name = "WebToolsButton";
-            WebToolsButton.Padding = new System.Windows.Forms.Padding( 1 );
-            WebToolsButton.Size = new System.Drawing.Size( 24, 23 );
-            WebToolsButton.Text = "toolStripButton1";
-            WebToolsButton.ToolTip = ToolTip;
-            WebToolsButton.ToolType = ToolType.FirstButton;
+            DeveloperToolsButton.AutoToolTip = false;
+            DeveloperToolsButton.BackColor = System.Drawing.Color.Transparent;
+            DeveloperToolsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            DeveloperToolsButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            DeveloperToolsButton.ForeColor = System.Drawing.Color.LightGray;
+            DeveloperToolsButton.HoverText = "Open Developer Tools";
+            DeveloperToolsButton.Image = Properties.Resources.WebToolButton;
+            DeveloperToolsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            DeveloperToolsButton.Margin = new System.Windows.Forms.Padding( 3 );
+            DeveloperToolsButton.Name = "DeveloperToolsButton";
+            DeveloperToolsButton.Padding = new System.Windows.Forms.Padding( 1 );
+            DeveloperToolsButton.Size = new System.Drawing.Size( 24, 23 );
+            DeveloperToolsButton.Text = "toolStripButton1";
+            DeveloperToolsButton.ToolTip = ToolTip;
+            DeveloperToolsButton.ToolType = ToolType.FirstButton;
             // 
             // Separator12
             // 
@@ -872,7 +751,7 @@
             TopTable.Name = "TopTable";
             TopTable.RowCount = 1;
             TopTable.RowStyles.Add( new System.Windows.Forms.RowStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
-            TopTable.Size = new System.Drawing.Size( 1338, 24 );
+            TopTable.Size = new System.Drawing.Size( 1338, 30 );
             TopTable.TabIndex = 0;
             // 
             // PictureBox
@@ -899,7 +778,7 @@
             Title.Margin = new System.Windows.Forms.Padding( 3 );
             Title.Name = "Title";
             Title.Padding = new System.Windows.Forms.Padding( 1 );
-            Title.Size = new System.Drawing.Size( 1283, 18 );
+            Title.Size = new System.Drawing.Size( 1283, 24 );
             Title.Style = MetroSet_UI.Enums.Style.Custom;
             Title.StyleManager = null;
             Title.TabIndex = 1;
@@ -908,6 +787,79 @@
             Title.ThemeAuthor = "Terry D. Eppler";
             Title.ThemeName = "Budget Browser";
             Title.ToolTip = ToolTip;
+            // 
+            // UrlTextBoxTable
+            // 
+            UrlTextBoxTable.ColumnCount = 3;
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 4.227517F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 95.7724838F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 68F ) );
+            UrlTextBoxTable.Controls.Add( UrlTextBox, 1, 0 );
+            UrlTextBoxTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            UrlTextBoxTable.Location = new System.Drawing.Point( 1, 1 );
+            UrlTextBoxTable.Name = "UrlTextBoxTable";
+            UrlTextBoxTable.RowCount = 1;
+            UrlTextBoxTable.RowStyles.Add( new System.Windows.Forms.RowStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
+            UrlTextBoxTable.Size = new System.Drawing.Size( 1336, 34 );
+            UrlTextBoxTable.TabIndex = 0;
+            // 
+            // UrlTextBox
+            // 
+            UrlTextBox.AutoCompleteCustomSource = null;
+            UrlTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            UrlTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            UrlTextBox.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            UrlTextBox.DisabledBackColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            UrlTextBox.DisabledBorderColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            UrlTextBox.DisabledForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            UrlTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            UrlTextBox.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            UrlTextBox.HoverColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            UrlTextBox.HoverText = null;
+            UrlTextBox.Image = null;
+            UrlTextBox.IsDerivedStyle = true;
+            UrlTextBox.Lines = null;
+            UrlTextBox.Location = new System.Drawing.Point( 56, 3 );
+            UrlTextBox.MaxLength = 32767;
+            UrlTextBox.Multiline = false;
+            UrlTextBox.Name = "UrlTextBox";
+            UrlTextBox.ReadOnly = false;
+            UrlTextBox.SelectionLength = 0;
+            UrlTextBox.Size = new System.Drawing.Size( 1208, 28 );
+            UrlTextBox.Style = MetroSet_UI.Enums.Style.Custom;
+            UrlTextBox.StyleManager = null;
+            UrlTextBox.TabIndex = 0;
+            UrlTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            UrlTextBox.ThemeAuthor = "Terry D. Eppler";
+            UrlTextBox.ThemeName = "Budget Browser";
+            UrlTextBox.ToolTip = null;
+            UrlTextBox.UseSystemPasswordChar = false;
+            UrlTextBox.WatermarkText = "";
+            // 
+            // UrlSearchPanel
+            // 
+            UrlSearchPanel.BackColor = System.Drawing.Color.Transparent;
+            UrlSearchPanel.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            UrlSearchPanel.BorderColor = System.Drawing.Color.Transparent;
+            UrlSearchPanel.BorderThickness = 1;
+            UrlSearchPanel.Children = null;
+            UrlSearchPanel.Controls.Add( UrlTextBoxTable );
+            UrlSearchPanel.DataFilter = null;
+            UrlSearchPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            UrlSearchPanel.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            UrlSearchPanel.ForeColor = System.Drawing.Color.Transparent;
+            UrlSearchPanel.HoverText = null;
+            UrlSearchPanel.IsDerivedStyle = true;
+            UrlSearchPanel.Location = new System.Drawing.Point( 0, 30 );
+            UrlSearchPanel.Name = "UrlSearchPanel";
+            UrlSearchPanel.Padding = new System.Windows.Forms.Padding( 1 );
+            UrlSearchPanel.Size = new System.Drawing.Size( 1338, 36 );
+            UrlSearchPanel.Style = MetroSet_UI.Enums.Style.Custom;
+            UrlSearchPanel.StyleManager = null;
+            UrlSearchPanel.TabIndex = 1;
+            UrlSearchPanel.ThemeAuthor = "Terry D. Eppler";
+            UrlSearchPanel.ThemeName = "Budget Browser";
+            UrlSearchPanel.ToolTip = null;
             // 
             // WebBrowser
             // 
@@ -923,8 +875,8 @@
             CaptionForeColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
             ClientSize = new System.Drawing.Size( 1338, 739 );
             Controls.Add( TabPages );
+            Controls.Add( UrlSearchPanel );
             Controls.Add( BottomTable );
-            Controls.Add( UrlPanel );
             Controls.Add( TopTable );
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ForeColor = System.Drawing.Color.LightGray;
@@ -944,10 +896,8 @@
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Title";
             FormClosing += OnClosing;
-            Load += OnLoad;
+            Load += OnBrowserLoad;
             MenuTabStrip.ResumeLayout( false );
-            UrlPanel.ResumeLayout( false );
-            UrlPanel.PerformLayout( );
             ( (System.ComponentModel.ISupportInitialize) TabPages  ).EndInit( );
             TabPages.ResumeLayout( false );
             SearchPanel.ResumeLayout( false );
@@ -958,6 +908,8 @@
             ToolStrip.PerformLayout( );
             TopTable.ResumeLayout( false );
             ( (System.ComponentModel.ISupportInitialize) PictureBox  ).EndInit( );
+            UrlTextBoxTable.ResumeLayout( false );
+            UrlSearchPanel.ResumeLayout( false );
             ResumeLayout( false );
         }
 
@@ -970,20 +922,12 @@
         public System.Windows.Forms.ContextMenuStrip MenuTabStrip;
         public System.Windows.Forms.ToolStripMenuItem CloseTabMenuItem;
         public System.Windows.Forms.ToolStripMenuItem CloseOthersMenuItem;
-        public System.Windows.Forms.Button NextSearchButton;
-        public System.Windows.Forms.Button PreviousSearchButton;
-        public System.Windows.Forms.Button StopSearchButton;
-        public System.Windows.Forms.Button RefreshSearchButton;
-        public System.Windows.Forms.Button SearchDownloadButton;
-        public System.Windows.Forms.TextBox UrlTextBox;
-        public System.Windows.Forms.Panel UrlPanel;
         public System.Windows.Forms.Panel StatusPanel;
         public System.Windows.Forms.Panel SearchPanel;
         public System.Windows.Forms.TextBox SearchPanelTextBox;
         public System.Windows.Forms.Button CloseSearchButton;
         public System.Windows.Forms.Button FirstButton;
         public System.Windows.Forms.Button LastButton;
-        public System.Windows.Forms.Button HomeButton;
         public System.Windows.Forms.TableLayoutPanel BottomTable;
         public ToolStrip ToolStrip;
         public ToolSeparator Separator1;
@@ -1010,16 +954,19 @@
         public ImageBox PictureBox;
         public ToolStripButton GoButton;
         public ToolSeparator Separator5;
-        private Label Title;
         public System.Windows.Forms.TableLayoutPanel TopTable;
         public ToolStripButton EdgeButton;
         public ToolStripButton SpfxButton;
         public ToolStripButton RefreshButton;
-        public ToolStripButton WebToolsButton;
+        public ToolStripButton DeveloperToolsButton;
         public ToolSeparator Separator9;
         public ToolSeparator Separator10;
         public ToolSeparator Separator11;
         public ToolSeparator Separator12;
+        public System.Windows.Forms.TableLayoutPanel UrlTextBoxTable;
+        private TextBox UrlTextBox;
+        private Layout UrlSearchPanel;
+        public Label Title;
     }
 }
 

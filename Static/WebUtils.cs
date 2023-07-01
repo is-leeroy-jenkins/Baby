@@ -67,6 +67,18 @@ namespace BudgetBrowser
         }
 
         /// <summary>
+        /// Determines whether the specified tb is focused.
+        /// </summary>
+        /// <param name="textBox">The tb.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified tb is focused; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsFocused( TextBox textBox )
+        {
+            return textBox.Focused;
+        }
+
+        /// <summary>
         /// Adds the hot key.
         /// </summary>
         /// <param name="form">The form.</param>
@@ -102,6 +114,19 @@ namespace BudgetBrowser
         }
 
         /// <summary>
+        /// Determines whether [is fully selected] [the specified tb].
+        /// </summary>
+        /// <param name="textBox">The tb.</param>
+        /// <returns>
+        /// <c>true</c> if [is fully selected]
+        /// [the specified tb]; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsFullySelected( TextBox textBox )
+        {
+            return textBox.SelectionLength == textBox.Text.Length;
+        }
+
+        /// <summary>
         /// Determines whether the specified tb has selection.
         /// </summary>
         /// <param name="textBox">The tb.</param>
@@ -109,6 +134,18 @@ namespace BudgetBrowser
         ///   <c>true</c> if the specified tb has selection; otherwise, <c>false</c>.
         /// </returns>
         public static bool HasSelection( System.Windows.Forms.TextBox textBox )
+        {
+            return textBox.SelectionLength > 0;
+        }
+
+        /// <summary>
+        /// Determines whether the specified tb has selection.
+        /// </summary>
+        /// <param name="textBox">The tb.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified tb has selection; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool HasSelection( TextBox textBox )
         {
             return textBox.SelectionLength > 0;
         }

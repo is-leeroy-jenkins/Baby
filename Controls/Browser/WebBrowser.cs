@@ -299,12 +299,6 @@ namespace BudgetBrowser
             ShowInTaskbar = true;
             MetroColor = Color.FromArgb( 20, 20, 20 );
             CaptionBarHeight = 5;
-            CaptionAlign = HorizontalAlignment.Center;
-            CaptionFont = new Font( "Roboto", 11, FontStyle.Regular );
-            CaptionBarColor = Color.FromArgb( 20, 20, 20 );
-            CaptionForeColor = Color.FromArgb( 0, 120, 212 );
-            CaptionButtonColor = Color.FromArgb( 20, 20, 20 );
-            CaptionButtonHoverColor = Color.FromArgb( 20, 20, 20 );
             SizeGripStyle = SizeGripStyle.Hide;
             ShowMouseOver = true;
             MinimizeBox = false;
@@ -312,6 +306,11 @@ namespace BudgetBrowser
             ControlBox = true;
             InitBrowser( );
             SetTitleText( null );
+
+            // Title Properties
+            Title.Font = new Font( "Roboto", 11 );
+            Title.ForeColor = Color.FromArgb( 0, 120, 212 );
+            Title.TextAlign = ContentAlignment.TopCenter;
 
             // Wire Events
             PreviousButton.Click += OnBackButtonClick;
@@ -585,7 +584,7 @@ namespace BudgetBrowser
         /// <summary>
         /// Sets the tool strip properties.
         /// </summary>
-        private void SetTextBoxProperties( )
+        private void InitTextBoxProperties( )
         {
             try
             {
@@ -608,7 +607,7 @@ namespace BudgetBrowser
         /// <summary>
         /// Sets the ComboBox properties.
         /// </summary>
-        private void SetComboBoxProperties( )
+        private void InitComboBoxProperties( )
         {
             try
             {
@@ -1163,8 +1162,8 @@ namespace BudgetBrowser
         {
             InitTooltips( Controls );
             InitHotkeys( );
-            SetComboBoxProperties( );
-            SetTextBoxProperties( );
+            InitComboBoxProperties( );
+            InitTextBoxProperties( );
             SetToolStripProperties( );
         }
 

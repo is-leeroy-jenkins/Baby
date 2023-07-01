@@ -73,7 +73,7 @@ namespace BudgetBrowser
             BackColor = Color.Transparent;
             ForeColor = Color.Black;
             Font = new Font( "Roboto", 9 );
-            Height = 20;
+            Height = 24;
             ShowCaption = true;
             CaptionFont = new Font( "Roboto", 8 );
             CaptionStyle = CaptionStyle.Top;
@@ -85,7 +85,7 @@ namespace BudgetBrowser
             BorderStyle = ToolStripBorderStyle.StaticEdge;
             CanApplyTheme = true;
             CanOverrideStyle = true;
-            ImageScalingSize = new Size( 16, 16 );
+            ImageScalingSize = new Size( 18, 18 );
             Office12Mode = true;
             LauncherStyle = LauncherStyle.Office12;
             ShowLauncher = true;

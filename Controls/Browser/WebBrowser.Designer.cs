@@ -359,7 +359,7 @@
             SearchEngineComboBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             SearchEngineComboBox.ForeColor = System.Drawing.Color.FromArgb(   218  ,   218  ,   218   );
             SearchEngineComboBox.HoverText = "Search Engines";
-            SearchEngineComboBox.Items.AddRange( new object[ ] { "Google", "Bing", "DuckDuckGo" } );
+            SearchEngineComboBox.Items.AddRange( new object[ ] { "Google", "Bing", "EPA", "Congress", "OMB", "Treasury", "NASA", "NOAA" } );
             SearchEngineComboBox.MaxLength = 32767;
             SearchEngineComboBox.MetroColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
             SearchEngineComboBox.Name = "SearchEngineComboBox";
@@ -454,7 +454,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 310, 27 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 300, 27 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;

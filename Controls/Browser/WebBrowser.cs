@@ -141,6 +141,11 @@ namespace BudgetBrowser
         private string _lastSearch = "";
 
         /// <summary>
+        /// The search engine URL
+        /// </summary>
+        private string _searchEngineUrl;
+
+        /// <summary>
         /// The old window state
         /// </summary>
         private FormWindowState _oldWindowState;
@@ -242,6 +247,17 @@ namespace BudgetBrowser
         }
 
         /// <summary>
+        /// Gets the search engine URL.
+        /// </summary>
+        /// <value>
+        /// The search engine URL.
+        /// </value>
+        public string SearchEngineUrl
+        {
+            get { return _searchEngineUrl; }
+        }
+
+        /// <summary>
         /// Gets the duration of the current tab loading.
         /// </summary>
         /// <value>
@@ -324,6 +340,7 @@ namespace BudgetBrowser
             DownloadButton.Click += OnDownloadsButtonClicked;
             CancelButton.Click += OnStopButtonClicked;
             DeveloperToolsButton.Click += OnDeveloperToolsButtonClicked;
+            SearchEngineComboBox.SelectedIndexChanged += OnSelectedEngineChanged;
             GoButton.Click += OnGoButtonClicked;
             Load += OnBrowserLoad;
         }
@@ -675,7 +692,7 @@ namespace BudgetBrowser
                 else
                 {
                     // run search if unknown URL
-                    _newUrl = BrowserConfig.SearchUrl + HttpUtility.UrlEncode( url );
+                    _newUrl = BrowserConfig.GoogleSearchUrl + HttpUtility.UrlEncode( url );
                 }
             }
 
@@ -1151,6 +1168,7 @@ namespace BudgetBrowser
         {
             InitializeTooltips( Controls );
             InitializeHotkeys( );
+            _searchEngineUrl = BrowserConfig.GoogleSearchUrl;
         }
 
         /// <summary>
@@ -1305,7 +1323,7 @@ namespace BudgetBrowser
             ChromiumWebBrowser _browser = null;
             try
             {
-                _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
+                _browser = (ChromiumWebBrowser)e.Item.Controls[0];
             }
             catch( Exception _ex )
             {
@@ -1347,6 +1365,35 @@ namespace BudgetBrowser
                         _browser.Focus( );
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Called when [search engine selected].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void OnSelectedEngineChanged( object sender, EventArgs e )
+        {
+            try
+            {
+                var _index = SearchEngineComboBox.SelectedIndex;
+                _searchEngineUrl = _index switch
+                {
+                    0 => BrowserConfig.GoogleSearchUrl,
+                    1 => BrowserConfig.BingSearchUrl,
+                    2 => BrowserConfig.EpaSearchUrl,
+                    3 => BrowserConfig.CongressionalSearchUrl,
+                    4 => BrowserConfig.OmbSearchUrl,
+                    5 => BrowserConfig.TreasurySearchUrl,
+                    6 => BrowserConfig.NasaSearchUrl,
+                    7 => BrowserConfig.NoaaSearchUrl,
+                    _ => BrowserConfig.GoogleSearchUrl
+                };
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
             }
         }
 
@@ -1634,6 +1681,13 @@ namespace BudgetBrowser
             CurrentBrowser.Load( BrowserConfig.HomepageUrl );
         }
 
+        /// <summary>
+        /// Called when [go button clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.
+        /// </param>
         private void OnGoButtonClicked( object sender, EventArgs e )
         {
             try
@@ -1641,7 +1695,7 @@ namespace BudgetBrowser
                 var _keywords = KeyWordTextBox.Text;
                 if( !string.IsNullOrEmpty( _keywords ) )
                 {
-                    var _search = BrowserConfig.SearchUrl + _keywords;
+                    var _search = SearchEngineUrl + _keywords;
                     CurrentBrowser.Load( _search );
                 }
             }

@@ -100,7 +100,45 @@ namespace BudgetBrowser
         /// <summary>
         /// 
         /// </summary>
-        public static string SearchUrl = "https://www.google.com/search?q=";
+        public static string GoogleSearchUrl = "https://www.google.com/search?q=";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string BingSearchUrl = "https://www.bing.com/search?q=";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string EpaSearchUrl = "https://www.google.com/search?q=site:www.epa.gov ";
+
+        /// <summary>
+        /// The congressional search URL
+        /// </summary>
+        public static string CongressionalSearchUrl =
+            "https://www.google.com/search?q=site:crsreports.congress.gov ";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string OmbSearchUrl = 
+            "https://www.google.com/search?q=site:www.whitehouse.gov ";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string TreasurySearchUrl = 
+            "https://www.google.com/search?q=site:fiscal.treasury.gov ";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string NasaSearchUrl = "https://www.google.com/search?q=site:www.nasa.gov ";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string NoaaSearchUrl = "https://www.google.com/search?q=site:www.noaa.gov ";
 
         /// <summary>
         /// 

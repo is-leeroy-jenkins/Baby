@@ -55,10 +55,10 @@ namespace BudgetBrowser
     /// 
     /// </summary>
     /// <seealso cref="Syncfusion.Windows.Forms.MetroForm" />
-    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
-    [ SuppressMessage( "ReSharper", "ReplaceAutoPropertyWithComputedProperty" ) ]
-    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
+    [SuppressMessage( "ReSharper", "ReplaceAutoPropertyWithComputedProperty" )]
+    [SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" )]
+    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
     public partial class Notification : MetroForm
     {
         /// <summary>
@@ -128,9 +128,7 @@ namespace BudgetBrowser
             Title.ForeColor = Color.FromArgb( 0, 120, 212 );
             Title.Text = "Budget Browser Notification";
             Message.Text = body;
-            Region = FromHrgn( CreateRoundRectRgn( 0, 0, Width - 5, Height - 5, 20,
-                20 ) );
-
+            Region = FromHrgn( CreateRoundRectRgn( 0, 0, Width - 5, Height - 5, 20, 20 ) );
             Click += ( s, e ) => Close( );
             Message.Click += ( s, e ) => Close( );
             Title.Click += ( s, e ) => Close( );
@@ -157,9 +155,7 @@ namespace BudgetBrowser
             Title.ForeColor = Color.FromArgb( 0, 120, 212 );
             Title.Text = title;
             Message.Text = body;
-            Region = FromHrgn( CreateRoundRectRgn( 0, 0, Width - 5, Height - 5, 20,
-                20 ) );
-
+            Region = FromHrgn( CreateRoundRectRgn( 0, 0, Width - 5, Height - 5, 20, 20 ) );
             Click += ( s, e ) => Close( );
             Message.Click += ( s, e ) => Close( );
             Title.Click += ( s, e ) => Close( );

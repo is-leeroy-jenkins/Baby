@@ -355,6 +355,7 @@ namespace BudgetBrowser
             GoButton.Click += OnGoButtonClicked;
             EdgeButton.Click += OnEdgeButtonClicked;
             ChromeButton.Click += OnChromeButtonClicked;
+            SpfxButton.Click += OnSpfxButtonClicked;
             Load += OnBrowserLoad;
             Timer.Tick += OnTimerTick;
         }
@@ -1830,6 +1831,27 @@ namespace BudgetBrowser
         /// instance containing the event data.
         /// </param>
         private void OnChromeButtonClicked( object sender, EventArgs e )
+        {
+            try
+            {
+                var _message = "NOT YET IMPLEMENTED!";
+                var _notify = new Notification( _message );
+                _notify.Show( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [close button clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.
+        /// </param>
+        private void OnSpfxButtonClicked( object sender, EventArgs e )
         {
             try
             {

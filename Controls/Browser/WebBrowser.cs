@@ -4,7 +4,7 @@
 //     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        07-01-2023
+//     Last Modified On:        07-02-2023
 // ******************************************************************************************
 // <copyright file="WebBrowser.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -73,6 +73,7 @@ namespace BudgetBrowser
     [SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" )]
     [SuppressMessage( "ReSharper", "ConvertToAutoProperty" )]
     [SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" )]
+    [SuppressMessage( "ReSharper", "RedundantDelegateCreation" )]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -124,6 +125,18 @@ namespace BudgetBrowser
         /// The request handler
         /// </summary>
         private RequestHandler _requestHandler;
+
+        /// <summary>
+        /// The thread timer
+        /// </summary>
+        private System.Threading.Timer _threadTimer;
+
+        private Action _statusUpdate;
+
+        /// <summary>
+        /// The timer callback
+        /// </summary>
+        private TimerCallback _timerCallback;
 
         /// <summary>
         /// The application path
@@ -322,14 +335,11 @@ namespace BudgetBrowser
             MinimizeBox = false;
             MaximizeBox = false;
             ControlBox = true;
-            InitializeBrowser( );
-            InitializeToolStripProperties( );
+            InitBrowser( );
+            SetToolStripProperties( );
+            SetStatusLabelProperties( );
+            SetTitleLabelProperties( );
             SetTitleText( null );
-
-            // Title Properties
-            Title.Font = new Font( "Roboto", 11 );
-            Title.ForeColor = Color.FromArgb( 0, 120, 212 );
-            Title.TextAlign = ContentAlignment.TopCenter;
 
             // Wire Events
             PreviousButton.Click += OnBackButtonClick;
@@ -343,13 +353,14 @@ namespace BudgetBrowser
             DomainComboBox.SelectedIndexChanged += OnDomainSelectedIndexChanged;
             GoButton.Click += OnGoButtonClicked;
             Load += OnBrowserLoad;
+            Timer.Tick += OnTimerTick;
         }
 
         /// <summary>
         /// these hot keys work when the user is focused on the .NET form and its controls,
         /// AND when the user is focused on the browser (CefSharp portion)
         /// </summary>
-        private void InitializeHotkeys( )
+        private void SetHotkeys( )
         {
             // browser hot keys
             KeyboardHandler.AddHotKey( this, CloseActiveTab, Keys.W, true );
@@ -373,7 +384,7 @@ namespace BudgetBrowser
         /// in the Tag property of the buttons
         /// </summary>
         /// <param name="parent">The parent.</param>
-        public void InitializeTooltips( Control.ControlCollection parent )
+        public void SetTooltips( Control.ControlCollection parent )
         {
             foreach( Control _ui in parent )
             {
@@ -390,15 +401,144 @@ namespace BudgetBrowser
 
                 if( _ui is Panel _panel )
                 {
-                    InitializeTooltips( _panel.Controls );
+                    SetTooltips( _panel.Controls );
                 }
+            }
+        }
+
+        /// <summary>
+        /// Sets the status label properties.
+        /// </summary>
+        private void SetStatusLabelProperties( )
+        {
+            try
+            {
+                StatusLabel.Font = new Font( "Roboto", 8 );
+                StatusLabel.TextAlign = ContentAlignment.BottomLeft;
+                StatusLabel.ForeColor = Color.FromArgb( 0, 120, 212 );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Sets the title label properties.
+        /// </summary>
+        private void SetTitleLabelProperties( )
+        {
+            try
+            {
+                Title.Font = new Font( "Roboto", 11 );
+                Title.ForeColor = Color.FromArgb( 0, 120, 212 );
+                Title.TextAlign = ContentAlignment.TopCenter;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Sets the tab title.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
+        /// <param name="text">The text.</param>
+        private void SetTabText( ChromiumWebBrowser browser, string text )
+        {
+            text = text.Trim( );
+            if( IsBlank( text ) )
+            {
+                text = "New Tab";
+            }
+
+            // save text
+            browser.Tag = text;
+
+            // get tab of given browser
+            var _tabStrip = (BrowserTabStripItem)browser.Parent;
+            _tabStrip.Title = text;
+
+            // if current tab
+            if( browser == CurrentBrowser )
+            {
+                SetTitleText( text );
+            }
+        }
+
+        /// <summary>
+        /// Sets the form title.
+        /// </summary>
+        /// <param name="tabName">Name of the tab.</param>
+        private void SetTitleText( string tabName )
+        {
+            if( tabName.CheckIfValid( ) )
+            {
+                Title.Text = tabName + " - " + BrowserConfig.Branding;
+                _currentTitle = tabName;
+            }
+            else
+            {
+                Title.Text = BrowserConfig.Branding;
+                _currentTitle = "New Tab";
+            }
+        }
+
+        /// <summary>
+        /// Sets the form URL.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        private void SetUrl( string url )
+        {
+            _originalUrl = url;
+            _finalUrl = CleanUrl( url );
+            UrlTextBox.Text = _originalUrl;
+            CurrentTab.CurrentUrl = _originalUrl;
+            CloseSearch( );
+        }
+
+        /// <summary>
+        /// Sets the tool strip properties.
+        /// </summary>
+        private void SetToolStripProperties( )
+        {
+            try
+            {
+                // ToolStrip Properties
+                ToolStrip.Visible = true;
+                ToolStrip.Text = string.Empty;
+                ToolStrip.VisualStyle = ToolStripExStyle.Office2016DarkGray;
+                ToolStrip.Office12Mode = true;
+                ToolStrip.OfficeColorScheme = ToolStripEx.ColorScheme.Blue;
+                ToolStrip.LauncherStyle = LauncherStyle.Office2007;
+                ToolStrip.ImageScalingSize = new Size( 16, 16 );
+
+                // ComboBox Properties
+                DomainComboBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
+                DomainComboBox.Style = ToolStripExStyle.Office2016Black;
+                DomainComboBox.ForeColor = Color.White;
+                DomainComboBox.BackColor = Color.FromArgb( 50, 50, 50 );
+                DomainComboBox.Size = new Size( 150, 29 );
+                DomainComboBox.TextAlign = ContentAlignment.MiddleCenter;
+                DomainComboBox.SelectedIndex = -1;
+
+                // TextBox Properties
+                KeyWordTextBox.ForeColor = Color.White;
+                KeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
+                KeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
+                KeyWordTextBox.BackColor = Color.FromArgb( 50, 50, 50 );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
             }
         }
 
         /// <summary>
         /// this is done just once, to globally initialize CefSharp/CEF
         /// </summary>
-        private void InitializeBrowser( )
+        private void InitBrowser( )
         {
             //CefSharpSettings.LegacyJavascriptBindingEnabled = true;
             var _settings = new CefSettings( );
@@ -428,6 +568,17 @@ namespace BudgetBrowser
             InitDownloads( );
             Host = new HostHandler( this );
             AddNewBrowser( TabItem, BrowserConfig.HomepageUrl );
+        }
+
+        /// <summary>
+        /// we must store download metadata in a list,
+        /// since CefSharp does not
+        /// </summary>
+        private void InitDownloads( )
+        {
+            _downloads = new Dictionary<int, DownloadItem>( );
+            DownloadNames = new Dictionary<int, string>( );
+            _downloadCancelRequests = new List<int>( );
         }
 
         /// <summary>
@@ -549,93 +700,16 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// Sets the tab title.
+        /// Updates the status label.
         /// </summary>
-        /// <param name="browser">The browser.</param>
-        /// <param name="text">The text.</param>
-        private void SetTabText( ChromiumWebBrowser browser, string text )
-        {
-            text = text.Trim( );
-            if( IsBlank( text ) )
-            {
-                text = "New Tab";
-            }
-
-            // save text
-            browser.Tag = text;
-
-            // get tab of given browser
-            var _tabStrip = (BrowserTabStripItem)browser.Parent;
-            _tabStrip.Title = text;
-
-            // if current tab
-            if( browser == CurrentBrowser )
-            {
-                SetTitleText( text );
-            }
-        }
-
-        /// <summary>
-        /// Sets the form title.
-        /// </summary>
-        /// <param name="tabName">Name of the tab.</param>
-        private void SetTitleText( string tabName )
-        {
-            if( tabName.CheckIfValid( ) )
-            {
-                Title.Text = tabName + " - " + BrowserConfig.Branding;
-                _currentTitle = tabName;
-            }
-            else
-            {
-                Title.Text = BrowserConfig.Branding;
-                _currentTitle = "New Tab";
-            }
-        }
-
-        /// <summary>
-        /// Sets the form URL.
-        /// </summary>
-        /// <param name="url">The URL.</param>
-        private void SetUrl( string url )
-        {
-            _originalUrl = url;
-            _finalUrl = CleanUrl( url );
-            UrlTextBox.Text = _originalUrl;
-            CurrentTab.CurrentUrl = _originalUrl;
-            CloseSearch( );
-        }
-
-        /// <summary>
-        /// Sets the tool strip properties.
-        /// </summary>
-        private void InitializeToolStripProperties( )
+        private void UpdateStatusLabel( )
         {
             try
             {
-                // ToolStrip Properties
-                ToolStrip.Visible = true;
-                ToolStrip.Text = string.Empty;
-                ToolStrip.VisualStyle = ToolStripExStyle.Office2016Black;
-                ToolStrip.Office12Mode = true;
-                ToolStrip.OfficeColorScheme = ToolStripEx.ColorScheme.Blue;
-                ToolStrip.LauncherStyle = LauncherStyle.Office2007;
-                ToolStrip.ImageScalingSize = new Size( 18, 18 );
-
-                // ComboBox Properties
-                DomainComboBox.Font = new Font( "Roboto", 8, FontStyle.Bold );
-                DomainComboBox.Style = ToolStripExStyle.Office2016Black;
-                DomainComboBox.ForeColor = Color.White;
-                DomainComboBox.BackColor = Color.FromArgb( 50, 50, 50 );
-                DomainComboBox.Size = new Size( 150, 29 );
-                DomainComboBox.TextAlign = ContentAlignment.MiddleCenter;
-                DomainComboBox.SelectedIndex = -1;
-
-                // TextBox Properties
-                KeyWordTextBox.ForeColor = Color.White;
-                KeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
-                KeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
-                KeyWordTextBox.BackColor = Color.FromArgb( 50, 50, 50 );
+                var _dateTime = DateTime.Now;
+                var _dateString = _dateTime.ToLongDateString( );
+                var _timeString = _dateTime.ToLongTimeString( );
+                StatusLabel.Text = _dateString + "  " + _timeString;
             }
             catch( Exception _ex )
             {
@@ -692,7 +766,7 @@ namespace BudgetBrowser
                 else
                 {
                     // run search if unknown URL
-                    _newUrl = BrowserConfig.GoogleSearchUrl + HttpUtility.UrlEncode( url );
+                    _newUrl = BrowserConfig.Google + HttpUtility.UrlEncode( url );
                 }
             }
 
@@ -926,17 +1000,6 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// we must store download metadata in a list,
-        /// since CefSharp does not
-        /// </summary>
-        private void InitDownloads( )
-        {
-            _downloads = new Dictionary<int, DownloadItem>( );
-            DownloadNames = new Dictionary<int, string>( );
-            _downloadCancelRequests = new List<int>( );
-        }
-
-        /// <summary>
         /// Updates the download item.
         /// </summary>
         /// <param name="item">The item.</param>
@@ -1166,9 +1229,11 @@ namespace BudgetBrowser
         /// </param>
         private void OnBrowserLoad( object sender, EventArgs e )
         {
-            InitializeTooltips( Controls );
-            InitializeHotkeys( );
-            _searchEngineUrl = BrowserConfig.GoogleSearchUrl;
+            SetTooltips( Controls );
+            SetHotkeys( );
+            _searchEngineUrl = BrowserConfig.Google;
+            TabPages.TabStripItemClosing += OnTabClosing;
+            _statusUpdate += UpdateStatusLabel;
         }
 
         /// <summary>
@@ -1380,19 +1445,20 @@ namespace BudgetBrowser
                 var _index = DomainComboBox.SelectedIndex;
                 _searchEngineUrl = _index switch
                 {
-                    0 => BrowserConfig.GoogleSearchUrl,
-                    1 => BrowserConfig.GoogleSearchUrl,
-                    2 => BrowserConfig.EpaSearchUrl,
-                    3 => BrowserConfig.CongressionalSearchUrl,
-                    4 => BrowserConfig.GpoSearchUrl,
-                    5 => BrowserConfig.GovInfoSearchUrl,
-                    6 => BrowserConfig.OmbSearchUrl,
-                    7 => BrowserConfig.TreasurySearchUrl,
-                    8 => BrowserConfig.NasaSearchUrl,
-                    9 => BrowserConfig.NoaaSearchUrl,
-                    10 => BrowserConfig.PyPiSearchUrl,
-                    11 => BrowserConfig.GithubSearchUrl,
-                    _ => BrowserConfig.GoogleSearchUrl
+                    0 => BrowserConfig.Google,
+                    1 => BrowserConfig.EPA,
+                    2 => BrowserConfig.CRS,
+                    3 => BrowserConfig.LOC,
+                    4 => BrowserConfig.GPO,
+                    5 => BrowserConfig.GovInfo,
+                    6 => BrowserConfig.OMB,
+                    7 => BrowserConfig.Treasury,
+                    8 => BrowserConfig.NASA,
+                    9 => BrowserConfig.NOAA,
+                    10 => BrowserConfig.Github,
+                    11 => BrowserConfig.NuGet,
+                    12 => BrowserConfig.PyPI,
+                    _ => BrowserConfig.Google
                 };
             }
             catch( Exception _ex )
@@ -1409,8 +1475,7 @@ namespace BudgetBrowser
         /// instance containing the event data.</param>
         private void OnTimerTick( object sender, EventArgs e )
         {
-            TabPages.SelectedItem = _newTabItem;
-            Timer.Enabled = false;
+            BeginInvoke( _statusUpdate );
         }
 
         /// <summary>

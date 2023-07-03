@@ -100,65 +100,70 @@ namespace BudgetBrowser
         /// <summary>
         /// 
         /// </summary>
-        public static string GoogleSearchUrl = "https://www.google.com/search?q=";
+        public static string Google = "https://www.google.com/search?q=";
         
         /// <summary>
         /// 
         /// </summary>
-        public static string EpaSearchUrl = "https://www.google.com/search?q=site:www.epa.gov ";
+        public static string EPA = "https://www.google.com/search?q=site:epa.gov ";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string GpoSearchUrl = "https://www.google.com/search?q=site:www.gpo.gov ";
+        public static string GPO = "https://www.google.com/search?q=site:gpo.gov ";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string GovInfoSearchUrl = "https://www.google.com/search?q=site:www.govinfo.gov ";
+        public static string GovInfo = "https://www.google.com/search?q=site:govinfo.gov ";
 
         /// <summary>
         /// The congressional search URL
         /// </summary>
-        public static string CongressionalSearchUrl =
+        public static string CRS =
             "https://www.google.com/search?q=site:crsreports.congress.gov ";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string OmbSearchUrl = 
-            "https://www.google.com/search?q=site:www.whitehouse.gov ";
+        public static string LOC = "https://www.google.com/search?q=site:loc.gov ";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string TreasurySearchUrl = 
+        public static string OMB = 
+            "https://www.google.com/search?q=site:whitehouse.gov ";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string Treasury = 
             "https://www.google.com/search?q=site:fiscal.treasury.gov ";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string NasaSearchUrl = "https://www.google.com/search?q=site:www.nasa.gov ";
+        public static string NASA = "https://www.google.com/search?q=site:nasa.gov ";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string NoaaSearchUrl = "https://www.google.com/search?q=site:www.noaa.gov ";
+        public static string NOAA = "https://www.google.com/search?q=site:noaa.gov ";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string PyPiSearchUrl = "https://www.google.com/search?q=site:www.pypi.org ";
+        public static string PyPI = "https://www.google.com/search?q=site:pypi.org ";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string NuGetSearchUrl = "https://www.google.com/search?q=site:www.nuget.org ";
+        public static string NuGet = "https://www.google.com/search?q=site:nuget.org ";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string GithubSearchUrl = "https://www.google.com/search?q=site:www.github.com ";
+        public static string Github = "https://www.google.com/search?q=site:github.com ";
 
         /// <summary>
         /// 

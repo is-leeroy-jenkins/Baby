@@ -58,6 +58,7 @@ namespace BudgetBrowser
     using static System.IO.Path;
     using Action = System.Action;
     using ContentAlignment = System.Drawing.ContentAlignment;
+    using Timer = System.Threading.Timer;
 
     /// <inheritdoc />
     /// <summary>
@@ -129,7 +130,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The thread timer
         /// </summary>
-        private System.Threading.Timer _threadTimer;
+        private Timer _threadTimer;
 
         private Action _statusUpdate;
 
@@ -352,6 +353,8 @@ namespace BudgetBrowser
             DeveloperToolsButton.Click += OnDeveloperToolsButtonClicked;
             DomainComboBox.SelectedIndexChanged += OnDomainSelectedIndexChanged;
             GoButton.Click += OnGoButtonClicked;
+            EdgeButton.Click += OnEdgeButtonClicked;
+            ChromeButton.Click += OnChromeButtonClicked;
             Load += OnBrowserLoad;
             Timer.Tick += OnTimerTick;
         }
@@ -527,7 +530,7 @@ namespace BudgetBrowser
                 KeyWordTextBox.ForeColor = Color.White;
                 KeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
                 KeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
-                KeyWordTextBox.BackColor = Color.FromArgb( 50, 50, 50 );
+                KeyWordTextBox.BackColor = Color.FromArgb( 75, 75, 75 );
             }
             catch( Exception _ex )
             {
@@ -1791,6 +1794,48 @@ namespace BudgetBrowser
             try
             {
                 Close( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [close button clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.
+        /// </param>
+        private void OnEdgeButtonClicked( object sender, EventArgs e )
+        {
+            try
+            {
+                var _message = "NOT YET IMPLEMENTED!";
+                var _notify = new Notification( _message );
+                _notify.Show( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [close button clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.
+        /// </param>
+        private void OnChromeButtonClicked( object sender, EventArgs e )
+        {
+            try
+            {
+                var _message = "NOT YET IMPLEMENTED!";
+                var _notify = new Notification( _message );
+                _notify.Show( );
             }
             catch( Exception _ex )
             {

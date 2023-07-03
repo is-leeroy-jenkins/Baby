@@ -60,7 +60,7 @@
             Separator6 = new ToolSeparator( );
             CancelButton = new ToolStripButton( );
             Separator7 = new ToolSeparator( );
-            GoogleButton = new ToolStripButton( );
+            ChromeButton = new ToolStripButton( );
             Separator8 = new ToolSeparator( );
             EdgeButton = new ToolStripButton( );
             Separator9 = new ToolSeparator( );
@@ -334,7 +334,7 @@
             ToolStrip.HomeButton = null;
             ToolStrip.Image = null;
             ToolStrip.ImageScalingSize = new System.Drawing.Size( 18, 18 );
-            ToolStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[ ] { Separator1, DomainComboBox, Separator2, PreviousButton, Separator3, NextButton, Separator4, KeyWordTextBox, Separator5, GoButton, Separator6, CancelButton, Separator7, GoogleButton, Separator8, EdgeButton, Separator9, SpfxButton, Separator10, RefreshButton, Separator11, DeveloperToolsButton, Separator13, DownloadButton, Separator12, HomePageButton, Separator15, Spacer, CloseButton, Separator14 } );
+            ToolStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[ ] { Separator1, DomainComboBox, Separator2, PreviousButton, Separator3, NextButton, Separator4, KeyWordTextBox, Separator5, GoButton, Separator6, CancelButton, Separator7, ChromeButton, Separator8, EdgeButton, Separator9, SpfxButton, Separator10, RefreshButton, Separator11, DeveloperToolsButton, Separator13, DownloadButton, Separator12, HomePageButton, Separator15, Spacer, CloseButton, Separator14 } );
             ToolStrip.LauncherStyle = Syncfusion.Windows.Forms.Tools.LauncherStyle.Office2007;
             ToolStrip.Location = new System.Drawing.Point( 236, 1 );
             ToolStrip.Margin = new System.Windows.Forms.Padding( 1 );
@@ -479,7 +479,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 268, 27 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 266, 27 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -543,23 +543,23 @@
             Separator7.Padding = new System.Windows.Forms.Padding( 1 );
             Separator7.Size = new System.Drawing.Size( 6, 27 );
             // 
-            // GoogleButton
+            // ChromeButton
             // 
-            GoogleButton.AutoToolTip = false;
-            GoogleButton.BackColor = System.Drawing.Color.Transparent;
-            GoogleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            GoogleButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            GoogleButton.ForeColor = System.Drawing.Color.LightGray;
-            GoogleButton.HoverText = "Use Chrome";
-            GoogleButton.Image = Properties.Resources.WebChromeButton;
-            GoogleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            GoogleButton.Margin = new System.Windows.Forms.Padding( 3 );
-            GoogleButton.Name = "GoogleButton";
-            GoogleButton.Padding = new System.Windows.Forms.Padding( 1 );
-            GoogleButton.Size = new System.Drawing.Size( 24, 23 );
-            GoogleButton.Text = "toolStripButton1";
-            GoogleButton.ToolTip = ToolTip;
-            GoogleButton.ToolType = ToolType.GoogleButton;
+            ChromeButton.AutoToolTip = false;
+            ChromeButton.BackColor = System.Drawing.Color.Transparent;
+            ChromeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            ChromeButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            ChromeButton.ForeColor = System.Drawing.Color.LightGray;
+            ChromeButton.HoverText = "Use Chrome";
+            ChromeButton.Image = Properties.Resources.WebChromeButton;
+            ChromeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            ChromeButton.Margin = new System.Windows.Forms.Padding( 3 );
+            ChromeButton.Name = "ChromeButton";
+            ChromeButton.Padding = new System.Windows.Forms.Padding( 1 );
+            ChromeButton.Size = new System.Drawing.Size( 24, 23 );
+            ChromeButton.Text = "toolStripButton1";
+            ChromeButton.ToolTip = ToolTip;
+            ChromeButton.ToolType = ToolType.GoogleButton;
             // 
             // Separator8
             // 
@@ -970,7 +970,7 @@
         public ToolSeparator Separator6;
         public ToolStripButton CancelButton;
         public ToolSeparator Separator7;
-        public ToolStripButton GoogleButton;
+        public ToolStripButton ChromeButton;
         public ToolSeparator Separator13;
         public ToolStripButton DownloadButton;
         public ToolSeparator Separator8;

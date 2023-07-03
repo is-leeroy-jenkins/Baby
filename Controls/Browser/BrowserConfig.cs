@@ -46,6 +46,7 @@ namespace BudgetBrowser
 
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
+    [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
     public static class BrowserConfig 
     {
         /// <summary>

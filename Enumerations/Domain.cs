@@ -1,5 +1,5 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Enumerations
+//     Assembly:                Budget Browser
 //     Author:                  Terry D. Eppler
 //     Created:                 07-08-2023
 // 

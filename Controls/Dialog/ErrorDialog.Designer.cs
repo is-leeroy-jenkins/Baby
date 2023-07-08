@@ -70,7 +70,7 @@
             HeaderLabel.Text =  "There has been error!" ;
             HeaderLabel.TextAlign =  System.Drawing.ContentAlignment.MiddleLeft ;
             HeaderLabel.ThemeAuthor =  "Terry D. Eppler" ;
-            HeaderLabel.ThemeName =  "BudgetExecution" ;
+            HeaderLabel.ThemeName =  "Budget Browser" ;
             HeaderLabel.ToolTip =  null ;
             // 
             // CloseButton

@@ -30,9 +30,6 @@
         {
             components = new System.ComponentModel.Container( );
             var resources = new System.ComponentModel.ComponentResourceManager( typeof( WebBrowser ) );
-            MenuTabStrip = new System.Windows.Forms.ContextMenuStrip( components );
-            CloseTabMenuItem = new System.Windows.Forms.ToolStripMenuItem( );
-            CloseOthersMenuItem = new System.Windows.Forms.ToolStripMenuItem( );
             Timer = new System.Windows.Forms.Timer( components );
             TabPages = new BrowserTabStrip( );
             TabItem = new BrowserTabStripItem( );
@@ -83,7 +80,7 @@
             UrlTextBoxTable = new System.Windows.Forms.TableLayoutPanel( );
             UrlTextBox = new TextBox( );
             UrlSearchPanel = new Layout( );
-            MenuTabStrip.SuspendLayout( );
+            ContextMenu = new ContextMenu( );
             ( (System.ComponentModel.ISupportInitialize) TabPages  ).BeginInit( );
             TabPages.SuspendLayout( );
             StatusPanel.SuspendLayout( );
@@ -96,28 +93,6 @@
             UrlSearchPanel.SuspendLayout( );
             SuspendLayout( );
             // 
-            // MenuTabStrip
-            // 
-            MenuTabStrip.ImageScalingSize = new System.Drawing.Size( 20, 20 );
-            MenuTabStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[ ] { CloseTabMenuItem, CloseOthersMenuItem } );
-            MenuTabStrip.Name = "MenuTabStrip";
-            MenuTabStrip.Size = new System.Drawing.Size( 170, 48 );
-            // 
-            // CloseTabMenuItem
-            // 
-            CloseTabMenuItem.Name = "CloseTabMenuItem";
-            CloseTabMenuItem.ShortcutKeys =   System.Windows.Forms.Keys.Control  |  System.Windows.Forms.Keys.F4  ;
-            CloseTabMenuItem.Size = new System.Drawing.Size( 169, 22 );
-            CloseTabMenuItem.Text = "Close tab";
-            CloseTabMenuItem.Click += OnMenuCloseClicked;
-            // 
-            // CloseOthersMenuItem
-            // 
-            CloseOthersMenuItem.Name = "CloseOthersMenuItem";
-            CloseOthersMenuItem.Size = new System.Drawing.Size( 169, 22 );
-            CloseOthersMenuItem.Text = "Close other tabs";
-            CloseOthersMenuItem.Click += OnCloseOtherTabsClicked;
-            // 
             // Timer
             // 
             Timer.Enabled = true;
@@ -127,7 +102,6 @@
             // TabPages
             // 
             TabPages.BackColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            TabPages.ContextMenuStrip = MenuTabStrip;
             TabPages.Dock = System.Windows.Forms.DockStyle.Fill;
             TabPages.Font = new System.Drawing.Font( "Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             TabPages.Items.AddRange( new BrowserTabStripItem[ ] { TabItem, AddItemTab } );
@@ -151,15 +125,15 @@
             TabItem.Children = null;
             TabItem.DataFilter = null;
             TabItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            TabItem.Drawn = true;
             TabItem.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             TabItem.ForeColor = System.Drawing.Color.Transparent;
             TabItem.HoverText = null;
             TabItem.IsDerivedStyle = true;
-            TabItem.Drawn = true;
-            TabItem.Selected = true;
             TabItem.Location = new System.Drawing.Point( 1, 29 );
             TabItem.Name = "TabItem";
             TabItem.Padding = new System.Windows.Forms.Padding( 1 );
+            TabItem.Selected = true;
             TabItem.Size = new System.Drawing.Size( 1336, 610 );
             TabItem.StripRectangle = (System.Drawing.RectangleF) resources.GetObject( "TabItem.StripRectangle" ) ;
             TabItem.Style = MetroSet_UI.Enums.Style.Custom;
@@ -180,11 +154,11 @@
             AddItemTab.Children = null;
             AddItemTab.DataFilter = null;
             AddItemTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            AddItemTab.Drawn = true;
             AddItemTab.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             AddItemTab.ForeColor = System.Drawing.Color.Transparent;
             AddItemTab.HoverText = null;
             AddItemTab.IsDerivedStyle = true;
-            AddItemTab.Drawn = true;
             AddItemTab.Location = new System.Drawing.Point( 1, 1 );
             AddItemTab.Name = "AddItemTab";
             AddItemTab.Padding = new System.Windows.Forms.Padding( 1 );
@@ -479,7 +453,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 266, 27 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 262, 27 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -888,6 +862,20 @@
             UrlSearchPanel.ThemeName = "Budget Browser";
             UrlSearchPanel.ToolTip = null;
             // 
+            // ContextMenu
+            // 
+            ContextMenu.AutoSize = false;
+            ContextMenu.BackColor = System.Drawing.Color.FromArgb(   30  ,   30  ,   30   );
+            ContextMenu.ForeColor = System.Drawing.Color.White;
+            ContextMenu.IsDerivedStyle = false;
+            ContextMenu.Name = "ContextMenu";
+            ContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            ContextMenu.Size = new System.Drawing.Size( 156, 264 );
+            ContextMenu.Style = MetroSet_UI.Enums.Style.Custom;
+            ContextMenu.StyleManager = null;
+            ContextMenu.ThemeAuthor = "Terry Eppler";
+            ContextMenu.ThemeName = "Budget Browser";
+            // 
             // WebBrowser
             // 
             AutoScaleDimensions = new System.Drawing.SizeF( 7F, 14F );
@@ -924,7 +912,6 @@
             Text = "Title";
             FormClosing += OnClosing;
             Load += OnLoad;
-            MenuTabStrip.ResumeLayout( false );
             ( (System.ComponentModel.ISupportInitialize) TabPages  ).EndInit( );
             TabPages.ResumeLayout( false );
             StatusPanel.ResumeLayout( false );
@@ -947,9 +934,6 @@
         public BrowserTabStripItem TabItem;
         public BrowserTabStripItem AddItemTab;
         public System.Windows.Forms.Timer Timer;
-        public System.Windows.Forms.ContextMenuStrip MenuTabStrip;
-        public System.Windows.Forms.ToolStripMenuItem CloseTabMenuItem;
-        public System.Windows.Forms.ToolStripMenuItem CloseOthersMenuItem;
         public System.Windows.Forms.Panel StatusPanel;
         public System.Windows.Forms.Panel SearchPanel;
         public System.Windows.Forms.TextBox SearchPanelTextBox;
@@ -996,6 +980,7 @@
         private Layout UrlSearchPanel;
         public Label Title;
         public Label StatusLabel;
+        private ContextMenu ContextMenu;
     }
 }
 

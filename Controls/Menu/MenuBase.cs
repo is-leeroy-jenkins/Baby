@@ -61,14 +61,54 @@ namespace BudgetBrowser
         /// The calculator option.
         /// </value>
         public MetroSetToolStripMenuItem SearchOption { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the calculator option.
+        /// </summary>
+        /// <value>
+        /// The calculator option.
+        /// </value>
+        public MetroSetToolStripMenuItem FileBrowseOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets the calculator option.
+        /// </summary>
+        /// <value>
+        /// The calculator option.
+        /// </value>
+        public MetroSetToolStripMenuItem GuidanceOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets the calculator option.
+        /// </summary>
+        /// <value>
+        /// The calculator option.
+        /// </value>
+        public MetroSetToolStripMenuItem DeveloperToolsOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets the calculator option.
+        /// </summary>
+        /// <value>
+        /// The calculator option.
+        /// </value>
+        public MetroSetToolStripMenuItem ViewSourceOption { get; set; }
+
         /// <summary>
         /// Gets or sets the close option.
         /// </summary>
         /// <value>
         /// The close option.
         /// </value>
-        public MetroSetToolStripMenuItem CloseOption { get; set; }
+        public MetroSetToolStripMenuItem CloseTabOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets the exit option.
+        /// </summary>
+        /// <value>
+        /// The exit option.
+        /// </value>
+        public MetroSetToolStripMenuItem CloseOthersOption { get; set; }
 
         /// <summary>
         /// Gets or sets the exit option.

@@ -1,5 +1,5 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Enumerations
+//     Assembly:                Budget Browser
 //     Author:                  Terry D. Eppler
 //     Created:                 06-26-2023
 // 
@@ -113,7 +113,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The menu
         /// </summary>
-        private readonly ContextMenuStrip _menu;
+        private readonly ContextMenu _menu;
 
         /// <summary>
         /// The is open
@@ -290,9 +290,7 @@ namespace BudgetBrowser
             Items.CollectionChanged += OnCollectionChanged;
             BackColor = _dark;
             base.Size = new Size( 350, 200 );
-            _menu = new ContextMenuStrip( );
-            _menu.BackColor = _dark;
-            _menu.Renderer = ToolStripRenderer;
+            _menu = new ContextMenu( );
             _menu.ItemClicked += OnMenuItemClicked;
             _menu.VisibleChanged += OnMenuVisibleChanged;
             _closeButton = new BrowserTabStripCloseButton( ToolStripRenderer );
@@ -458,7 +456,8 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// Resets the <see cref="P:System.Windows.Forms.Control.Font" />
+        /// Resets the
+        /// <see cref="P:System.Windows.Forms.Control.Font" />
         /// property to its default value.
         /// </summary>
         public new void ResetFont( )

@@ -41,7 +41,7 @@
             // NotifyIcon
             // 
             NotifyIcon.BackColor = System.Drawing.Color.Transparent;
-            NotifyIcon.Image = Properties.Resources.BudgetExecution;
+            NotifyIcon.Image = Properties.Resources.Budget_Browser;
             NotifyIcon.Location = new System.Drawing.Point( 4, 4 );
             NotifyIcon.Name = "NotifyIcon";
             NotifyIcon.Size = new System.Drawing.Size( 24, 37 );
@@ -66,7 +66,7 @@
             Message.Text = "label1";
             Message.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             Message.ThemeAuthor = "Terry D. Eppler";
-            Message.ThemeName = "BudgetExecution";
+            Message.ThemeName = "Budget Browser";
             Message.ToolTip = null;
             // 
             // Title

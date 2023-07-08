@@ -1,5 +1,5 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Enumerations
+//     Assembly:                Budget Browser
 //     Author:                  Terry D. Eppler
 //     Created:                 06-26-2023
 // 
@@ -49,6 +49,7 @@ namespace BudgetBrowser
     using System.Web;
     using CefSharp;
     using CefSharp.WinForms;
+    using MetroSet_UI.Child;
     using Syncfusion.Windows.Forms;
     using Syncfusion.Windows.Forms.Tools;
     using System.Diagnostics.CodeAnalysis;
@@ -65,15 +66,15 @@ namespace BudgetBrowser
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
     /// If you would only like to support 64-bit machines, simply change the DLL references.
     /// </summary>
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
-    [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
-    [ SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertToAutoProperty" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" ) ]
-    [ SuppressMessage( "ReSharper", "RedundantDelegateCreation" ) ]
+    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
+    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
+    [SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" )]
+    [SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" )]
+    [SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" )]
+    [SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" )]
+    [SuppressMessage( "ReSharper", "ConvertToAutoProperty" )]
+    [SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" )]
+    [SuppressMessage( "ReSharper", "RedundantDelegateCreation" )]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -182,7 +183,7 @@ namespace BudgetBrowser
         private int CurrentIndex
         {
             get { return TabPages.Items.IndexOf( TabPages.SelectedItem ); }
-            set { TabPages.SelectedItem = TabPages.Items[ value ]; }
+            set { TabPages.SelectedItem = TabPages.Items[value]; }
         }
 
         /// <summary>
@@ -345,8 +346,8 @@ namespace BudgetBrowser
             EdgeButton.Click += OnEdgeButtonClicked;
             ChromeButton.Click += OnChromeButtonClicked;
             SpfxButton.Click += OnSpfxButtonClicked;
-            Load += OnLoad;
             Timer.Tick += OnTimerTick;
+            Load += OnLoad;
         }
 
         /// <summary>
@@ -521,6 +522,31 @@ namespace BudgetBrowser
                 KeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
                 KeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
                 KeyWordTextBox.BackColor = Color.FromArgb( 75, 75, 75 );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Sets the context menu.
+        /// </summary>
+        private void SetContextMenu( )
+        {
+            try
+            {
+                foreach( MetroSetToolStripMenuItem _item in ContextMenu.Items )
+                {
+                    _item.MouseDown += OnItemClicked;
+                }
+
+                Title.MouseClick += OnRightClick;
+                TabPages.MouseClick += OnRightClick;
+                TabItem.MouseClick += OnRightClick;
+                PictureBox.MouseClick += OnRightClick;
+                CurrentBrowser.MouseClick += OnRightClick;
+                StatusLabel.MouseClick += OnRightClick;
             }
             catch( Exception _ex )
             {
@@ -1044,7 +1070,7 @@ namespace BudgetBrowser
                 // in the first attempt so keep it somewhere
                 if( item.SuggestedFileName != "" )
                 {
-                    DownloadNames[ item.Id ] = item.SuggestedFileName;
+                    DownloadNames[item.Id] = item.SuggestedFileName;
                 }
 
                 // Set it back if it is empty
@@ -1054,7 +1080,7 @@ namespace BudgetBrowser
                     item.SuggestedFileName = _name;
                 }
 
-                _downloadItems[ item.Id ] = item;
+                _downloadItems[item.Id] = item;
 
                 //UpdateSnipProgress();
             }
@@ -1099,7 +1125,7 @@ namespace BudgetBrowser
                 // keep tab at same index focused
                 if( TabPages.Items.Count - 1 > _index )
                 {
-                    TabPages.SelectedItem = TabPages.Items[ _index ];
+                    TabPages.SelectedItem = TabPages.Items[_index];
                 }
             }
         }
@@ -1264,6 +1290,7 @@ namespace BudgetBrowser
         {
             SetTooltips( Controls );
             SetHotkeys( );
+            SetContextMenu( );
             _searchEngineUrl = BrowserConfig.Google;
             TabPages.TabStripItemClosing += OnTabClosing;
             _statusUpdate += UpdateStatusLabel;
@@ -1421,7 +1448,7 @@ namespace BudgetBrowser
             ChromiumWebBrowser _browser = null;
             try
             {
-                _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
+                _browser = (ChromiumWebBrowser)e.Item.Controls[0];
             }
             catch( Exception _ex )
             {
@@ -1698,7 +1725,7 @@ namespace BudgetBrowser
             {
                 foreach( TabPage _tab in TabPages.Items )
                 {
-                    var _browser = (ChromiumWebBrowser)_tab.Controls[ 0 ];
+                    var _browser = (ChromiumWebBrowser)_tab.Controls[0];
                     _browser.Dispose( );
                 }
             }
@@ -1865,6 +1892,117 @@ namespace BudgetBrowser
         private void OnSpfxButtonClicked( object sender, EventArgs e )
         {
             Notify( );
+        }
+
+        /// <summary>
+        /// Called when [right click].
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">The
+        /// <see cref="MouseEventArgs"/>
+        /// instance containing the event data.
+        /// </param>
+        private void OnRightClick( object sender, MouseEventArgs e )
+        {
+            if( e.Button == MouseButtons.Right )
+            {
+                try
+                {
+                    ContextMenu.Show( this, e.Location );
+                }
+                catch( Exception _ex )
+                {
+                    Fail( _ex );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when [item clicked].
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The <see cref="MouseEventArgs"/>
+        /// instance containing the event data.
+        /// </param>
+        private void OnItemClicked( object sender, MouseEventArgs e )
+        {
+            if( sender is MetroSetToolStripMenuItem _item
+               && ( e?.Button == MouseButtons.Left ) )
+            {
+                try
+                {
+                    var _name = _item.Tag.ToString( );
+                    if( !string.IsNullOrEmpty( _name ) )
+                    {
+                        var _option = Enum.Parse( typeof( MenuItem ), _name );
+                        switch( _option )
+                        {
+                            case MenuItem.Search:
+                            {
+                                var _search = new SearchDialog( );
+                                _search.ShowDialog( );
+                                break;
+                            }
+                            case MenuItem.FileBrowse:
+                            {
+                                var _browser = new FileBrowser( );
+                                _browser.ShowDialog( );
+                                break;
+                            }
+                            case MenuItem.DeveloperTools:
+                            {
+                                OpenDeveloperTools( );
+                                break;
+                            }
+                            case MenuItem.ViewSource:
+                            {
+                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
+                                var _notification = new Notification( _msg );
+                                _notification.Show( );
+                                break;
+                            }
+                            case MenuItem.CloseOthers:
+                            {
+                                var _listToClose = new List<BrowserTabStripItem>( );
+                                foreach( BrowserTabStripItem _tab in TabPages.Items )
+                                {
+                                    if( ( _tab != AddItemTab )
+                                       && ( _tab != TabPages.SelectedItem ) )
+                                    {
+                                        _listToClose.Add( _tab );
+                                    }
+                                }
+
+                                foreach( var _tab in _listToClose )
+                                {
+                                    TabPages.RemoveTab( _tab );
+                                }
+
+                                break;
+                            }
+                            case MenuItem.CloseTab:
+                            {
+                                CloseActiveTab( );
+                                break;
+                            }
+                            case MenuItem.Exit:
+                            {
+                                Close( );
+                                break;
+                            }
+                        }
+                    }
+                }
+                catch( Exception _ex )
+                {
+                    Fail( _ex );
+                }
+            }
         }
 
         /// <summary>

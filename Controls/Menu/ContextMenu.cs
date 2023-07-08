@@ -47,12 +47,13 @@ namespace BudgetBrowser
     using MetroSet_UI.Child;
     using MetroSet_UI.Enums;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
-    /// <seealso cref="MenuBase" />
+    /// <seealso cref="T:BudgetBrowser.MenuBase" />
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "ArrangeDefaultValueWhenTypeNotEvident" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public class ContextMenu : MenuBase
     {
         /// <summary>
@@ -67,8 +68,8 @@ namespace BudgetBrowser
             ArrowColor = Color.FromArgb( 50, 93, 129 );
             SeparatorColor = Color.FromArgb( 65, 65, 65 );
             AutoSize = false;
-            Size = new Size( 156, 264 );
-            IsDerivedStyle = false;
+            Size = new Size( 156, 270 );
+            IsDerivedStyle = true;
             RenderMode = ToolStripRenderMode.System;
             Style = Style.Custom;
             ShowCheckMargin = false;
@@ -80,7 +81,12 @@ namespace BudgetBrowser
 
             // Menu Items
             SearchOption = CreateSearchOption( );
-            CloseOption = CreateCloseOption( );
+            FileBrowseOption = CreateFileBrowseOption( );
+            GuidanceOption = CreateGuidanceOption( );
+            DeveloperToolsOption = CreateDeveloperTooolsOption( );
+            ViewSourceOption = CreateViewSourceOption( );
+            CloseTabOption = CreateCloseTabOption( );
+            CloseOthersOption = CreateCloseOthersOption( );
             ExitOption = CreateExitOption( );
         }
 
@@ -95,8 +101,9 @@ namespace BudgetBrowser
             try
             {
                 var _item = new MetroSetToolStripMenuItem( );
-                _item.TextAlign = ContentAlignment.MiddleCenter;
-                _item.Font = new Font( "Roboto", 8 );
+                _item.TextAlign = ContentAlignment.BottomCenter;
+                _item.Font = new Font( "Roboto", 9 );
+                _item.Name = MenuItem.Search.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
                 _item.ForeColor = Color.White;
@@ -104,7 +111,6 @@ namespace BudgetBrowser
                 _item.Tag = MenuItem.Search.ToString( );
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
-                _item.MouseDown += OnItemClicked;
                 Items.Add( _item );
                 return _item;
             }
@@ -114,29 +120,175 @@ namespace BudgetBrowser
                 return default( MetroSetToolStripMenuItem );
             }
         }
-        
+
+        /// <summary>
+        /// Creates the file browse option.
+        /// </summary>
+        /// <returns></returns>
+        private MetroSetToolStripMenuItem CreateFileBrowseOption( )
+        {
+            try
+            {
+                var _item = new MetroSetToolStripMenuItem( );
+                _item.TextAlign = ContentAlignment.BottomCenter;
+                _item.Font = new Font( "Roboto", 9 );
+                _item.Name = MenuItem.FileBrowse.ToString( );
+                _item.Size = new Size( 160, 30 );
+                _item.BackColor = Color.FromArgb( 30, 30, 30 );
+                _item.ForeColor = Color.White;
+                _item.Text = $"{MenuItem.FileBrowse}".SplitPascal( );
+                _item.Tag = MenuItem.FileBrowse.ToString( );
+                _item.MouseHover += OnMouseEnter;
+                _item.MouseLeave += OnMouseLeave;
+                Items.Add( _item );
+                return _item;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return default( MetroSetToolStripMenuItem );
+            }
+        }
+
+        /// <summary>
+        /// Creates the guidance option.
+        /// </summary>
+        /// <returns></returns>
+        private MetroSetToolStripMenuItem CreateGuidanceOption( )
+        {
+            try
+            {
+                var _item = new MetroSetToolStripMenuItem( );
+                _item.TextAlign = ContentAlignment.BottomCenter;
+                _item.Font = new Font( "Roboto", 9 );
+                _item.Name = MenuItem.Guidance.ToString( );
+                _item.Size = new Size( 160, 30 );
+                _item.BackColor = Color.FromArgb( 30, 30, 30 );
+                _item.ForeColor = Color.White;
+                _item.Text = $"{MenuItem.Guidance}".SplitPascal( );
+                _item.Tag = MenuItem.Guidance.ToString( );
+                _item.MouseHover += OnMouseEnter;
+                _item.MouseLeave += OnMouseLeave;
+                Items.Add( _item );
+                return _item;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return default( MetroSetToolStripMenuItem );
+            }
+        }
+
+        /// <summary>
+        /// Creates the developer toools option.
+        /// </summary>
+        /// <returns></returns>
+        private MetroSetToolStripMenuItem CreateDeveloperTooolsOption( )
+        {
+            try
+            {
+                var _item = new MetroSetToolStripMenuItem( );
+                _item.TextAlign = ContentAlignment.BottomCenter;
+                _item.Font = new Font( "Roboto", 9 );
+                _item.Name = MenuItem.DeveloperTools.ToString( );
+                _item.Size = new Size( 160, 30 );
+                _item.BackColor = Color.FromArgb( 30, 30, 30 );
+                _item.ForeColor = Color.White;
+                _item.Text = $"{MenuItem.DeveloperTools}".SplitPascal( );
+                _item.Tag = MenuItem.DeveloperTools.ToString( );
+                _item.MouseHover += OnMouseEnter;
+                _item.MouseLeave += OnMouseLeave;
+                Items.Add( _item );
+                return _item;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return default( MetroSetToolStripMenuItem );
+            }
+        }
+
+        /// <summary>
+        /// Creates the close others option.
+        /// </summary>
+        /// <returns></returns>
+        private MetroSetToolStripMenuItem CreateViewSourceOption( )
+        {
+            try
+            {
+                var _item = new MetroSetToolStripMenuItem( );
+                _item.TextAlign = ContentAlignment.BottomCenter;
+                _item.Font = new Font( "Roboto", 9 );
+                _item.Name = MenuItem.ViewSource.ToString( );
+                _item.Size = new Size( 160, 30 );
+                _item.BackColor = Color.FromArgb( 30, 30, 30 );
+                _item.ForeColor = Color.White;
+                _item.Text = $"{MenuItem.ViewSource}".SplitPascal( );
+                _item.Tag = MenuItem.ViewSource.ToString( );
+                _item.MouseHover += OnMouseEnter;
+                _item.MouseLeave += OnMouseLeave;
+                Items.Add( _item );
+                return _item;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return default( MetroSetToolStripMenuItem );
+            }
+        }
+
         /// <summary>
         /// Creates the close option.
         /// </summary>
         /// <returns>
         /// MetroSetToolStripMenuItem
         /// </returns>
-        private MetroSetToolStripMenuItem CreateCloseOption( )
+        private MetroSetToolStripMenuItem CreateCloseOthersOption( )
         {
             try
             {
                 var _item = new MetroSetToolStripMenuItem( );
-                _item.TextAlign = ContentAlignment.MiddleCenter;
-                _item.Font = new Font( "Roboto", 8 );
-                _item.Name = MenuItem.Close.ToString( );
+                _item.TextAlign = ContentAlignment.BottomCenter;
+                _item.Font = new Font( "Roboto", 9 );
+                _item.Name = MenuItem.CloseOthers.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
                 _item.ForeColor = Color.White;
-                _item.Text = $"{MenuItem.Close}";
-                _item.Tag = MenuItem.Close.ToString( );
+                _item.Text = $"{MenuItem.CloseOthers}".SplitPascal( );
+                _item.Tag = MenuItem.CloseOthers.ToString( );
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
-                _item.MouseDown += OnItemClicked;
+                Items.Add( _item );
+                return _item;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return default( MetroSetToolStripMenuItem );
+            }
+        }
+
+        /// <summary>
+        /// Creates the close option.
+        /// </summary>
+        /// <returns>
+        /// MetroSetToolStripMenuItem
+        /// </returns>
+        private MetroSetToolStripMenuItem CreateCloseTabOption( )
+        {
+            try
+            {
+                var _item = new MetroSetToolStripMenuItem( );
+                _item.TextAlign = ContentAlignment.BottomCenter;
+                _item.Font = new Font( "Roboto", 9 );
+                _item.Name = MenuItem.CloseTab.ToString( );
+                _item.Size = new Size( 160, 30 );
+                _item.BackColor = Color.FromArgb( 30, 30, 30 );
+                _item.ForeColor = Color.White;
+                _item.Text = $"{MenuItem.CloseTab}".SplitPascal( );
+                _item.Tag = MenuItem.CloseTab.ToString( );
+                _item.MouseHover += OnMouseEnter;
+                _item.MouseLeave += OnMouseLeave;
                 Items.Add( _item );
                 return _item;
             }
@@ -158,7 +310,7 @@ namespace BudgetBrowser
             try
             {
                 var _item = new MetroSetToolStripMenuItem( );
-                _item.TextAlign = ContentAlignment.MiddleCenter;
+                _item.TextAlign = ContentAlignment.BottomCenter;
                 _item.Font = new Font( "Roboto", 8 );
                 _item.Name = MenuItem.Exit.ToString( );
                 _item.Size = new Size( 160, 30 );
@@ -168,7 +320,6 @@ namespace BudgetBrowser
                 _item.Tag = MenuItem.Exit.ToString( );
                 _item.MouseEnter += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
-                _item.MouseDown += OnItemClicked;
                 Items.Add( _item );
                 return _item;
             }
@@ -202,23 +353,51 @@ namespace BudgetBrowser
                         var _option = Enum.Parse( typeof( MenuItem ), _name );
                         switch( _option )
                         {
-                            case MenuItem.Close:
+                            case MenuItem.Search:
                             {
-                                var _msg = "NOT YET IMPLEMENTED!!";
+                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
+                                var _notification = new Notification( _msg );
+                                _notification.Show( );
+                                break;
+                            }
+                            case MenuItem.FileBrowse:
+                            {
+                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
+                                var _notification = new Notification( _msg );
+                                _notification.Show( );
+                                break;
+                            }
+                            case MenuItem.DeveloperTools:
+                            {
+                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
+                                var _notification = new Notification( _msg );
+                                _notification.Show( );
+                                break;
+                            }
+                            case MenuItem.ViewSource:
+                            {
+                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
+                                var _notification = new Notification( _msg );
+                                _notification.Show( );
+                                break;
+                            }
+                            case MenuItem.CloseOthers:
+                            {
+                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
+                                var _notification = new Notification( _msg );
+                                _notification.Show( );
+                                break;
+                            }
+                            case MenuItem.CloseTab:
+                            {
+                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
                                 var _notification = new Notification( _msg );
                                 _notification.Show( );
                                 break;
                             }
                             case MenuItem.Exit:
                             {
-                                var _msg = "NOT YET IMPLEMENTED!!";
-                                var _notification = new Notification( _msg );
-                                _notification.Show( );
-                                break;
-                            }
-                            default:
-                            {
-                                var _msg = "NOT YET IMPLEMENTED!!";
+                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
                                 var _notification = new Notification( _msg );
                                 _notification.Show( );
                                 break;

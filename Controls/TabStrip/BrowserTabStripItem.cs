@@ -343,24 +343,6 @@ namespace BudgetBrowser
             return Caption;
         }
 
-        /// <inheritdoc />
-        /// <summary>
-        /// Releases the unmanaged resources used by the
-        /// <see cref="T:System.Windows.Forms.Control" />
-        /// and its child controls and optionally releases the managed resources.
-        /// </summary>
-        /// <param name="disposing"><see langword="true" />
-        /// to release both managed and unmanaged resources;
-        /// <see langword="false" /> to release only unmanaged resources.</param>
-        protected override void Dispose( bool disposing )
-        {
-            base.Dispose( disposing );
-            if( disposing && ( Image != null ) )
-            {
-                Image.Dispose( );
-            }
-        }
-
         /// <summary>
         /// Updates the text.
         /// </summary>
@@ -387,6 +369,24 @@ namespace BudgetBrowser
         public virtual void OnChanged( )
         {
             Changed?.Invoke( this, EventArgs.Empty );
+        }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Releases the unmanaged resources used by the
+        /// <see cref="T:System.Windows.Forms.Control" />
+        /// and its child controls and optionally releases the managed resources.
+        /// </summary>
+        /// <param name="disposing"><see langword="true" />
+        /// to release both managed and unmanaged resources;
+        /// <see langword="false" /> to release only unmanaged resources.</param>
+        protected override void Dispose( bool disposing )
+        {
+            base.Dispose( disposing );
+            if( disposing && ( Image != null ) )
+            {
+                Image.Dispose( );
+            }
         }
     }
 }

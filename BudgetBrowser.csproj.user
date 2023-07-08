@@ -11,13 +11,25 @@
     <Compile Update="Controls\Dialog\ErrorDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Controls\Dialog\KeywordDialog.cs">
+    <Compile Update="Controls\Dialog\FileBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\Dialog\GuidanceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\Dialog\MessageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\Dialog\SearchDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Controls\Label\Label.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Controls\Layout\Layout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ListBox\ListBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Controls\Menu\ContextMenu.cs">
@@ -29,7 +41,10 @@
     <Compile Update="Controls\Notification\Notification.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Controls\PictureBox\ImageBox.cs">
+    <Compile Update="Controls\ImageBox\ImageBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\RadioButton\RadioButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Controls\RichTextBox\RichTextBox.cs">

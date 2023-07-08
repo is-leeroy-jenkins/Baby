@@ -1,5 +1,5 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Enumerations
+//     Assembly:                Budget Browser
 //     Author:                  Terry D. Eppler
 //     Created:                 06-26-2023
 // 
@@ -54,13 +54,38 @@ namespace BudgetBrowser
         Search = 1,
 
         /// <summary>
+        /// The browse
+        /// </summary>
+        FileBrowse = 2,
+
+        /// <summary>
+        /// The guidance
+        /// </summary>
+        Guidance = 3,
+
+        /// <summary>
+        /// The developer tools
+        /// </summary>
+        DeveloperTools = 4,
+
+        /// <summary>
+        /// The view source
+        /// </summary>
+        ViewSource = 5,
+
+        /// <summary>
+        /// The other tabs
+        /// </summary>
+        CloseOthers = 6, 
+
+        /// <summary>
         /// The close
         /// </summary>
-        Close = 3,
+        CloseTab = 7,
 
         /// <summary>
         /// The exit
         /// </summary>
-        Exit = 4
+        Exit = 8
     }
 }

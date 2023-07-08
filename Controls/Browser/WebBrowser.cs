@@ -4,7 +4,7 @@
 //     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        07-02-2023
+//     Last Modified On:        07-07-2023
 // ******************************************************************************************
 // <copyright file="WebBrowser.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -58,7 +58,6 @@ namespace BudgetBrowser
     using static System.IO.Path;
     using Action = System.Action;
     using ContentAlignment = System.Drawing.ContentAlignment;
-    using Timer = System.Threading.Timer;
 
     /// <inheritdoc />
     /// <summary>
@@ -66,15 +65,15 @@ namespace BudgetBrowser
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
     /// If you would only like to support 64-bit machines, simply change the DLL references.
     /// </summary>
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
-    [SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" )]
-    [SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" )]
-    [SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" )]
-    [SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" )]
-    [SuppressMessage( "ReSharper", "ConvertToAutoProperty" )]
-    [SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" )]
-    [SuppressMessage( "ReSharper", "RedundantDelegateCreation" )]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
+    [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
+    [ SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoProperty" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" ) ]
+    [ SuppressMessage( "ReSharper", "RedundantDelegateCreation" ) ]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -127,17 +126,7 @@ namespace BudgetBrowser
         /// </summary>
         private RequestHandler _requestHandler;
 
-        /// <summary>
-        /// The thread timer
-        /// </summary>
-        private Timer _threadTimer;
-
         private Action _statusUpdate;
-
-        /// <summary>
-        /// The timer callback
-        /// </summary>
-        private TimerCallback _timerCallback;
 
         /// <summary>
         /// The application path
@@ -147,7 +136,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The search open
         /// </summary>
-        private bool _isSearchOpen;
+        private bool _searchOpen;
 
         /// <summary>
         /// The last search
@@ -172,7 +161,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The is full screen
         /// </summary>
-        private bool _isFullScreen;
+        private bool _fullScreen;
 
         /// <summary>
         /// The download cancel requests
@@ -182,7 +171,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The downloads
         /// </summary>
-        private Dictionary<int, DownloadItem> _downloads;
+        private Dictionary<int, DownloadItem> _downloadItems;
 
         /// <summary>
         /// Gets or sets the index of the current.
@@ -193,7 +182,7 @@ namespace BudgetBrowser
         private int CurrentIndex
         {
             get { return TabPages.Items.IndexOf( TabPages.SelectedItem ); }
-            set { TabPages.SelectedItem = TabPages.Items[value]; }
+            set { TabPages.SelectedItem = TabPages.Items[ value ]; }
         }
 
         /// <summary>
@@ -244,9 +233,9 @@ namespace BudgetBrowser
         /// <value>
         /// The downloads.
         /// </value>
-        public Dictionary<int, DownloadItem> Downloads
+        public Dictionary<int, DownloadItem> DownloadItems
         {
-            get { return _downloads; }
+            get { return _downloadItems; }
         }
 
         /// <summary>
@@ -277,7 +266,7 @@ namespace BudgetBrowser
         /// <value>
         /// The duration of the current tab loading.
         /// </value>
-        public int CurrentTabLoadingDuration
+        public int LoadingDuration
         {
             get
             {
@@ -351,12 +340,12 @@ namespace BudgetBrowser
             DownloadButton.Click += OnDownloadsButtonClicked;
             CancelButton.Click += OnStopButtonClicked;
             DeveloperToolsButton.Click += OnDeveloperToolsButtonClicked;
-            DomainComboBox.SelectedIndexChanged += OnDomainSelectedIndexChanged;
+            DomainComboBox.SelectedIndexChanged += OnSelectedDomainChanged;
             GoButton.Click += OnGoButtonClicked;
             EdgeButton.Click += OnEdgeButtonClicked;
             ChromeButton.Click += OnChromeButtonClicked;
             SpfxButton.Click += OnSpfxButtonClicked;
-            Load += OnBrowserLoad;
+            Load += OnLoad;
             Timer.Tick += OnTimerTick;
         }
 
@@ -417,7 +406,7 @@ namespace BudgetBrowser
         {
             try
             {
-                StatusLabel.Font = new Font( "Roboto", 8 );
+                StatusLabel.Font = new Font( "Roboto", 9 );
                 StatusLabel.TextAlign = ContentAlignment.BottomLeft;
                 StatusLabel.ForeColor = Color.FromArgb( 0, 120, 212 );
             }
@@ -474,13 +463,13 @@ namespace BudgetBrowser
         /// <summary>
         /// Sets the form title.
         /// </summary>
-        /// <param name="tabName">Name of the tab.</param>
-        private void SetTitleText( string tabName )
+        /// <param name="title">Name of the tab.</param>
+        private void SetTitleText( string title )
         {
-            if( tabName.CheckIfValid( ) )
+            if( title.CheckIfValid( ) )
             {
-                Title.Text = tabName + " - " + BrowserConfig.Branding;
-                _currentTitle = tabName;
+                Title.Text = title + " - " + BrowserConfig.Branding;
+                _currentTitle = title;
             }
             else
             {
@@ -580,7 +569,7 @@ namespace BudgetBrowser
         /// </summary>
         private void InitDownloads( )
         {
-            _downloads = new Dictionary<int, DownloadItem>( );
+            _downloadItems = new Dictionary<int, DownloadItem>( );
             DownloadNames = new Dictionary<int, string>( );
             _downloadCancelRequests = new List<int>( );
         }
@@ -596,6 +585,23 @@ namespace BudgetBrowser
             var _config = new BrowserSettings( );
             _config.WebGl = BrowserConfig.WebGl.ToCefState( );
             browser.BrowserSettings = _config;
+        }
+
+        /// <summary>
+        /// Notifies this instance.
+        /// </summary>
+        private void Notify( )
+        {
+            try
+            {
+                var _message = "THIS IS NOT YET IMPLEMENTED!";
+                var _notify = new Notification( _message );
+                _notify.Show( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
         }
 
         /// <summary>
@@ -618,11 +624,13 @@ namespace BudgetBrowser
             _lastSearch = SearchPanelTextBox.Text;
             if( _lastSearch.CheckIfValid( ) )
             {
-                CurrentBrowser.GetBrowser( ).Find( _lastSearch, true, false, !_first );
+                CurrentBrowser.GetBrowser( )
+                    ?.Find( _lastSearch, true, false, !_first );
             }
             else
             {
-                CurrentBrowser.GetBrowser( ).StopFinding( true );
+                CurrentBrowser.GetBrowser( )
+                    ?.StopFinding( true );
             }
 
             SearchPanelTextBox.Focus( );
@@ -632,7 +640,7 @@ namespace BudgetBrowser
         /// Gets all tabs.
         /// </summary>
         /// <returns></returns>
-        public List<BrowserTab> GetAllTabs( )
+        public List<BrowserTab> GetTabs( )
         {
             var _tabs = new List<BrowserTab>( );
             foreach( BrowserTabStripItem _tabPage in TabPages?.Items )
@@ -653,9 +661,9 @@ namespace BudgetBrowser
         /// <returns></returns>
         public BrowserTab GetTabByBrowser( IWebBrowser browser )
         {
-            foreach( BrowserTabStripItem _tab2 in TabPages.Items )
+            foreach( BrowserTabStripItem _item in TabPages.Items )
             {
-                var _tab = (BrowserTab)_tab2.Tag;
+                var _tab = (BrowserTab)_item.Tag;
                 if( ( _tab != null )
                    && ( _tab.Browser == browser ) )
                 {
@@ -713,6 +721,26 @@ namespace BudgetBrowser
                 var _dateTime = DateTime.Now;
                 var _dateString = _dateTime.ToLongDateString( );
                 var _timeString = _dateTime.ToLongTimeString( );
+                StatusLabel.Text = _dateString + "  " + _timeString;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Updates the status label.
+        /// </summary>
+        /// <param name="dateTime">
+        /// The date time.
+        /// </param>
+        private void UpdateStatusLabel( DateTime dateTime )
+        {
+            try
+            {
+                var _dateString = dateTime.ToLongDateString( );
+                var _timeString = dateTime.ToLongTimeString( );
                 StatusLabel.Text = _dateString + "  " + _timeString;
             }
             catch( Exception _ex )
@@ -958,6 +986,7 @@ namespace BudgetBrowser
                 url = BrowserConfig.NewTabUrl;
             }
 
+            var _uri = new Uri( url );
             var _chromiumBrowser = new ChromiumWebBrowser( url );
 
             // set config
@@ -1009,13 +1038,13 @@ namespace BudgetBrowser
         /// <param name="item">The item.</param>
         public void UpdateDownloadItem( DownloadItem item )
         {
-            lock( _downloads )
+            lock( _downloadItems )
             {
                 // SuggestedFileName comes full only
                 // in the first attempt so keep it somewhere
                 if( item.SuggestedFileName != "" )
                 {
-                    DownloadNames[item.Id] = item.SuggestedFileName;
+                    DownloadNames[ item.Id ] = item.SuggestedFileName;
                 }
 
                 // Set it back if it is empty
@@ -1025,19 +1054,19 @@ namespace BudgetBrowser
                     item.SuggestedFileName = _name;
                 }
 
-                _downloads[item.Id] = item;
+                _downloadItems[ item.Id ] = item;
 
                 //UpdateSnipProgress();
             }
         }
 
         /// <summary>
-        /// Downloads the in progress.
+        /// DownloadItems the in progress.
         /// </summary>
         /// <returns></returns>
         public bool DownloadsInProgress( )
         {
-            foreach( var _item in _downloads.Values )
+            foreach( var _item in _downloadItems.Values )
             {
                 if( _item.IsInProgress )
                 {
@@ -1070,7 +1099,7 @@ namespace BudgetBrowser
                 // keep tab at same index focused
                 if( TabPages.Items.Count - 1 > _index )
                 {
-                    TabPages.SelectedItem = TabPages.Items[_index];
+                    TabPages.SelectedItem = TabPages.Items[ _index ];
                 }
             }
         }
@@ -1081,7 +1110,7 @@ namespace BudgetBrowser
         public void OpenDownloadsTab( )
         {
             if( ( _downloadStrip != null )
-               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[0] ).Address
+               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[ 0 ] ).Address
                    == BrowserConfig.DownloadsUrl ) )
             {
                 TabPages.SelectedItem = _downloadStrip;
@@ -1098,9 +1127,9 @@ namespace BudgetBrowser
         /// </summary>
         private void OpenSearch( )
         {
-            if( !_isSearchOpen )
+            if( !_searchOpen )
             {
-                _isSearchOpen = true;
+                _searchOpen = true;
                 InvokeIfNeeded( delegate
                 {
                     SearchPanel.Visible = true;
@@ -1124,9 +1153,9 @@ namespace BudgetBrowser
         /// </summary>
         private void CloseSearch( )
         {
-            if( _isSearchOpen )
+            if( _searchOpen )
             {
-                _isSearchOpen = false;
+                _searchOpen = false;
                 InvokeIfNeeded( delegate
                 {
                     SearchPanel.Visible = false;
@@ -1140,19 +1169,19 @@ namespace BudgetBrowser
         /// </summary>
         private void ToggleFullscreen( )
         {
-            if( !_isFullScreen )
+            if( !_fullScreen )
             {
                 _oldWindowState = WindowState;
                 _oldBorderStyle = FormBorderStyle;
                 FormBorderStyle = FormBorderStyle.None;
                 WindowState = FormWindowState.Maximized;
-                _isFullScreen = true;
+                _fullScreen = true;
             }
             else
             {
                 FormBorderStyle = _oldBorderStyle;
                 WindowState = _oldWindowState;
-                _isFullScreen = false;
+                _fullScreen = false;
             }
         }
 
@@ -1178,9 +1207,9 @@ namespace BudgetBrowser
         /// <returns>
         ///   <c>true</c> if [is on first tab]; otherwise, <c>false</c>.
         /// </returns>
-        private bool IsOnFirstTab( )
+        private bool IsFirstTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[0];
+            return TabPages.SelectedItem == TabPages.Items[ 0 ];
         }
 
         /// <summary>
@@ -1189,9 +1218,9 @@ namespace BudgetBrowser
         /// <returns>
         ///   <c>true</c> if [is on last tab]; otherwise, <c>false</c>.
         /// </returns>
-        private bool IsOnLastTab( )
+        private bool IsLastTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[TabPages.Items.Count - 2];
+            return TabPages.SelectedItem == TabPages.Items[ TabPages.Items.Count - 2 ];
         }
 
         /// <summary>
@@ -1199,7 +1228,7 @@ namespace BudgetBrowser
         /// </summary>
         private void NextTab( )
         {
-            if( IsOnLastTab( ) )
+            if( IsLastTab( ) )
             {
                 CurrentIndex = 0;
             }
@@ -1214,7 +1243,7 @@ namespace BudgetBrowser
         /// </summary>
         private void PreviousTab( )
         {
-            if( IsOnFirstTab( ) )
+            if( IsFirstTab( ) )
             {
                 CurrentIndex = LastIndex;
             }
@@ -1231,7 +1260,7 @@ namespace BudgetBrowser
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.
         /// </param>
-        private void OnBrowserLoad( object sender, EventArgs e )
+        private void OnLoad( object sender, EventArgs e )
         {
             SetTooltips( Controls );
             SetHotkeys( );
@@ -1392,7 +1421,7 @@ namespace BudgetBrowser
             ChromiumWebBrowser _browser = null;
             try
             {
-                _browser = (ChromiumWebBrowser)e.Item.Controls[0];
+                _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
             }
             catch( Exception _ex )
             {
@@ -1442,7 +1471,7 @@ namespace BudgetBrowser
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void OnDomainSelectedIndexChanged( object sender, EventArgs e )
+        private void OnSelectedDomainChanged( object sender, EventArgs e )
         {
             try
             {
@@ -1459,7 +1488,7 @@ namespace BudgetBrowser
                     7 => BrowserConfig.Treasury,
                     8 => BrowserConfig.NASA,
                     9 => BrowserConfig.NOAA,
-                    10 => BrowserConfig.Github,
+                    10 => BrowserConfig.GitHub,
                     11 => BrowserConfig.NuGet,
                     12 => BrowserConfig.PyPI,
                     _ => BrowserConfig.Google
@@ -1655,7 +1684,7 @@ namespace BudgetBrowser
             // ask user if they are sure
             if( DownloadsInProgress( ) )
             {
-                if( MessageBox.Show( "Downloads are in progress. Cancel those and exit?",
+                if( MessageBox.Show( "DownloadItems are in progress. Cancel those and exit?",
                        "Confirm exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question )
                    != DialogResult.Yes )
                 {
@@ -1669,7 +1698,7 @@ namespace BudgetBrowser
             {
                 foreach( TabPage _tab in TabPages.Items )
                 {
-                    var _browser = (ChromiumWebBrowser)_tab.Controls[0];
+                    var _browser = (ChromiumWebBrowser)_tab.Controls[ 0 ];
                     _browser.Dispose( );
                 }
             }
@@ -1811,16 +1840,7 @@ namespace BudgetBrowser
         /// </param>
         private void OnEdgeButtonClicked( object sender, EventArgs e )
         {
-            try
-            {
-                var _message = "NOT YET IMPLEMENTED!";
-                var _notify = new Notification( _message );
-                _notify.Show( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
+            Notify( );
         }
 
         /// <summary>
@@ -1832,16 +1852,7 @@ namespace BudgetBrowser
         /// </param>
         private void OnChromeButtonClicked( object sender, EventArgs e )
         {
-            try
-            {
-                var _message = "NOT YET IMPLEMENTED!";
-                var _notify = new Notification( _message );
-                _notify.Show( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
+            Notify( );
         }
 
         /// <summary>
@@ -1853,16 +1864,7 @@ namespace BudgetBrowser
         /// </param>
         private void OnSpfxButtonClicked( object sender, EventArgs e )
         {
-            try
-            {
-                var _message = "NOT YET IMPLEMENTED!";
-                var _notify = new Notification( _message );
-                _notify.Show( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
+            Notify( );
         }
 
         /// <summary>

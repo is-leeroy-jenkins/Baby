@@ -52,7 +52,7 @@ namespace BudgetBrowser
     /// 
     /// </summary>
     /// <seealso cref="MetroSet_UI.Components.MetroSetSetToolTip" />
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public class ToolTip : MetroSetSetToolTip
     {
         /// <summary>

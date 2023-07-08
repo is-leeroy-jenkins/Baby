@@ -63,12 +63,12 @@ namespace BudgetBrowser
         /// <summary>
         /// The is drawn
         /// </summary>
-        private bool _isDrawn;
+        private bool _drawn;
 
         /// <summary>
         /// The is selected
         /// </summary>
-        private bool _isSelected;
+        private bool _selected;
 
         /// <summary>
         /// The title
@@ -78,7 +78,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The is visible
         /// </summary>
-        private bool _isVisible = true;
+        private bool _visible = true;
 
         /// <summary>
         /// Gets or sets the strip rect.
@@ -109,7 +109,7 @@ namespace BudgetBrowser
         /// <summary>
         /// Gets or sets the height and width of the control.
         /// </summary>
-        [Browsable( false ) ]
+        [ Browsable( false ) ]
         [ EditorBrowsable( EditorBrowsableState.Never ) ]
         public new Size Size
         {
@@ -132,13 +132,13 @@ namespace BudgetBrowser
         {
             get
             {
-                return _isVisible;
+                return _visible;
             }
             set
             {
-                if( _isVisible != value )
+                if( _visible != value )
                 {
-                    _isVisible = value;
+                    _visible = value;
                     OnChanged( );
                 }
             }
@@ -153,17 +153,17 @@ namespace BudgetBrowser
         [ DefaultValue( false ) ]
         [ EditorBrowsable( EditorBrowsableState.Never ) ]
         [ Browsable( false ) ]
-        public bool IsDrawn
+        public bool Drawn
         {
             get
             {
-                return _isDrawn;
+                return _drawn;
             }
             set
             {
-                if( _isDrawn != value )
+                if( _drawn != value )
                 {
-                    _isDrawn = value;
+                    _drawn = value;
                 }
             }
         }
@@ -199,17 +199,17 @@ namespace BudgetBrowser
         /// </value>
         [ DefaultValue( false ) ]
         [ Browsable( false ) ]
-        public bool IsSelected
+        public bool Selected
         {
             get
             {
-                return _isSelected;
+                return _selected;
             }
             set
             {
-                if( _isSelected != value )
+                if( _selected != value )
                 {
-                    _isSelected = value;
+                    _selected = value;
                 }
             }
         }
@@ -269,7 +269,7 @@ namespace BudgetBrowser
             SetStyle( ControlStyles.UserPaint, true );
             SetStyle( ControlStyles.AllPaintingInWmPaint, true );
             SetStyle( ControlStyles.ContainerControl, true );
-            _isSelected = false;
+            _selected = false;
             Visible = true;
             UpdateText( caption, displayControl );
             if( displayControl != null )

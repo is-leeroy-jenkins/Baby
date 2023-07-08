@@ -103,7 +103,7 @@ namespace BudgetBrowser
 
                 for( var _i = 0; _i < _count; _i++ )
                 {
-                    if( this[ _i ].IsDrawn )
+                    if( this[ _i ].Drawn )
                     {
                         _num++;
                     }

@@ -93,7 +93,6 @@ namespace BudgetBrowser
             HoverText = GetHoverText( toolType );
             Tag = HoverText;
             Image = GetImage( toolType );
-            Click += OnClick;
         }
 
         /// <summary>
@@ -129,7 +128,9 @@ namespace BudgetBrowser
         /// Called when [mouse hover].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.
+        /// </param>
         public void OnMouseHover( object sender, EventArgs e )
         {
             try

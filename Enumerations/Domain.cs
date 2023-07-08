@@ -1,12 +1,12 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 07-08-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-26-2023
+//     Last Modified On:        07-08-2023
 // ******************************************************************************************
-// <copyright file="BrowserTab.cs" company="Terry D. Eppler">
+// <copyright file="Domain.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -31,66 +31,85 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at: terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   BrowserTab.cs
+//   Domain.cs
 // </summary>
 // ******************************************************************************************
 
 namespace BudgetBrowser
 {
-    using CefSharp.WinForms;
     using System;
-    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// POCO created for holding data per tab
+    /// 
     /// </summary>
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    [ SuppressMessage( "ReSharper", "MissingBlankLines" ) ]
-    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    public class BrowserTab 
+    public enum Domain
     {
-        // ReSharper disable once MemberCanBeInternal
         /// <summary>
-        /// The is open
+        /// The google
         /// </summary>
-        public bool IsOpen;
+        Google,
 
         /// <summary>
-        /// The original URL
+        /// The epa
         /// </summary>
-        public string OriginalUrl;
+        EPA,
 
         /// <summary>
-        /// The current URL
+        /// The gpo
         /// </summary>
-        public string CurrentUrl;
+        GPO,
 
         /// <summary>
-        /// The title
+        /// The gov information
         /// </summary>
-        public string Title;
+        GovInfo,
 
         /// <summary>
-        /// The referring URL
+        /// The CRS
         /// </summary>
-        public string ReferringUrl;
+        CRS,
 
         /// <summary>
-        /// The date created
+        /// The loc
         /// </summary>
-        public DateTime DateCreated;
+        LOC,
 
         /// <summary>
-        /// The tab
+        /// The omb
         /// </summary>
-        public BrowserTabStripItem Tab;
+        OMB,
 
         /// <summary>
-        /// The browser
+        /// The treasury
         /// </summary>
-        public ChromiumWebBrowser Browser;
+        Treasury,
+
+        /// <summary>
+        /// The nasa
+        /// </summary>
+        NASA,
+
+        /// <summary>
+        /// The noaa
+        /// </summary>
+        NOAA,
+
+        /// <summary>
+        /// The py pi
+        /// </summary>
+        PyPI,
+
+        /// <summary>
+        /// The nu get
+        /// </summary>
+        NuGet,
+
+        /// <summary>
+        /// The git hub
+        /// </summary>
+        GitHub
     }
 }

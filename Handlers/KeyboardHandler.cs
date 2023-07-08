@@ -215,9 +215,9 @@ namespace BudgetBrowser
             if( type == KeyType.RawKeyDown )
             {
                 var _mod = (int)modifiers;
-                var _ctrlDown = _mod.IsBitmaskOn( (int)CefEventFlags.ControlDown );
-                var _shiftDown = _mod.IsBitmaskOn( (int)CefEventFlags.ShiftDown );
-                var _altDown = _mod.IsBitmaskOn( (int)CefEventFlags.AltDown );
+                var _ctrlDown = _mod.IsBitMaskOn( (int)CefEventFlags.ControlDown );
+                var _shiftDown = _mod.IsBitMaskOn( (int)CefEventFlags.ShiftDown );
+                var _altDown = _mod.IsBitMaskOn( (int)CefEventFlags.AltDown );
                 foreach( var _key in Hotkeys )
                 {
                     if( _key.KeyCode == windowsKeyCode )

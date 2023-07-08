@@ -88,9 +88,9 @@ namespace BudgetBrowser
         /// </returns>
         public string GetDownloads( )
         {
-            lock( _webBrowser.Downloads )
+            lock( _webBrowser.DownloadItems )
             {
-                var _x = Json.Instance.ToJson( _webBrowser.Downloads );
+                var _x = Json.Instance.ToJson( _webBrowser.DownloadItems );
                 return _x;
             }
         }

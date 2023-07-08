@@ -175,7 +175,7 @@ namespace BudgetBrowser
                     if( _fATabStripItem.Visible )
                     {
                         _selectedItem = _fATabStripItem;
-                        _selectedItem.IsSelected = true;
+                        _selectedItem.Selected = true;
                         _selectedItem.Dock = DockStyle.Fill;
                     }
                 }
@@ -201,7 +201,7 @@ namespace BudgetBrowser
 
                 SelectItem( _selectedItem );
                 Invalidate( );
-                if( !_selectedItem.IsDrawn )
+                if( !_selectedItem.Drawn )
                 {
                     Items.MoveTo( 0, _selectedItem );
                     Invalidate( );
@@ -250,7 +250,7 @@ namespace BudgetBrowser
         /// <summary>
         /// Occurs when [tab strip item closing].
         /// </summary>
-        public event TabItemClose TabStripItemClosing;
+        public event TabItemClosing TabStripItemClosing;
 
         /// <summary>
         /// Occurs when [tab strip item selection changed].
@@ -386,7 +386,7 @@ namespace BudgetBrowser
                 var _fATabStripItem = Items[ _i ];
                 if( _fATabStripItem.StripRectangle.Contains( pt )
                    && _fATabStripItem.Visible
-                   && _fATabStripItem.IsDrawn )
+                   && _fATabStripItem.Drawn )
                 {
                     _result = _fATabStripItem;
                     _flag = true;
@@ -510,7 +510,7 @@ namespace BudgetBrowser
         {
             for( var _i = 0; _i < Items.Count; _i++ )
             {
-                Items[ _i ].IsDrawn = false;
+                Items[ _i ].Drawn = false;
             }
         }
 
@@ -522,7 +522,7 @@ namespace BudgetBrowser
         {
             tabItem.Dock = DockStyle.Fill;
             tabItem.Visible = true;
-            tabItem.IsSelected = true;
+            tabItem.Selected = true;
         }
 
         /// <summary>
@@ -531,7 +531,7 @@ namespace BudgetBrowser
         /// <param name="tabItem">The tab item.</param>
         public void UnSelectItem( BrowserTabStripItem tabItem )
         {
-            tabItem.IsSelected = false;
+            tabItem.Selected = false;
         }
 
         /// <summary>
@@ -666,7 +666,7 @@ namespace BudgetBrowser
                     if( _fATabStripItem.Visible || DesignMode )
                     {
                         OnCalculateTabPage( e.Graphics, _fATabStripItem );
-                        _fATabStripItem.IsDrawn = false;
+                        _fATabStripItem.Drawn = false;
                         OnDrawTabButton( e.Graphics, _fATabStripItem );
                     }
                 }
@@ -683,7 +683,7 @@ namespace BudgetBrowser
                         new Point( ClientRectangle.Width, 28 ) );
                 }
                 else if( ( SelectedItem != null )
-                        && SelectedItem.IsDrawn )
+                        && SelectedItem.Drawn )
                 {
                     var _num = (int)( SelectedItem.StripRectangle.Height / 4f );
                     var _point = new Point( (int)SelectedItem.StripRectangle.Left - _num, 28 );
@@ -914,7 +914,7 @@ namespace BudgetBrowser
                     _layoutRectangle, _formatString );
             }
 
-            currentItem.IsDrawn = true;
+            currentItem.Drawn = true;
         }
 
         /// <summary>

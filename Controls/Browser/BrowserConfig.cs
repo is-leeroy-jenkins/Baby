@@ -164,7 +164,7 @@ namespace BudgetBrowser
         /// <summary>
         /// 
         /// </summary>
-        public static string Github = "https://www.google.com/search?q=site:github.com ";
+        public static string GitHub = "https://www.google.com/search?q=site:github.com ";
 
         /// <summary>
         /// 

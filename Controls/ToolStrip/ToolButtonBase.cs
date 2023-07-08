@@ -42,8 +42,8 @@ namespace BudgetBrowser
 {
     using System;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
     public abstract class ToolButtonBase : System.Windows.Forms.ToolStripButton
     {
@@ -85,7 +85,7 @@ namespace BudgetBrowser
                     return tool switch
                     {
                         ToolType.HomeButton => "Google Search",
-                        ToolType.DownloadButton => "View Downloads",
+                        ToolType.DownloadButton => "View DownloadItems",
                         ToolType.ExitButton => "Close Browser",
                         ToolType.NextButton => "Next Page",
                         ToolType.PreviousButton => "Previous Page",

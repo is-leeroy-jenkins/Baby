@@ -187,7 +187,7 @@ namespace BudgetBrowser
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <returns></returns>
-        public static string DecodeUrlForFilepath( this string url )
+        public static string DecodeUrlForFilePath( this string url )
         {
             if( url == null )
             {

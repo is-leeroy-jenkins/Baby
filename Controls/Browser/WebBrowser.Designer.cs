@@ -155,8 +155,8 @@
             TabItem.ForeColor = System.Drawing.Color.Transparent;
             TabItem.HoverText = null;
             TabItem.IsDerivedStyle = true;
-            TabItem.IsDrawn = true;
-            TabItem.IsSelected = true;
+            TabItem.Drawn = true;
+            TabItem.Selected = true;
             TabItem.Location = new System.Drawing.Point( 1, 29 );
             TabItem.Name = "TabItem";
             TabItem.Padding = new System.Windows.Forms.Padding( 1 );
@@ -184,7 +184,7 @@
             AddItemTab.ForeColor = System.Drawing.Color.Transparent;
             AddItemTab.HoverText = null;
             AddItemTab.IsDerivedStyle = true;
-            AddItemTab.IsDrawn = true;
+            AddItemTab.Drawn = true;
             AddItemTab.Location = new System.Drawing.Point( 1, 1 );
             AddItemTab.Name = "AddItemTab";
             AddItemTab.Padding = new System.Windows.Forms.Padding( 1 );
@@ -383,7 +383,7 @@
             DomainComboBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             DomainComboBox.ForeColor = System.Drawing.Color.FromArgb(   218  ,   218  ,   218   );
             DomainComboBox.HoverText = "Domains";
-            DomainComboBox.Items.AddRange( new object[ ] { "Google", "EPA", "CRS", "LOC", "GPO", "GovInfo", "OMB", "Treasury", "NASA", "NOAA", "Github", "NuGet", "PyPI" } );
+            DomainComboBox.Items.AddRange( new object[ ] { "Google", "EPA", "CRS", "LOC", "GPO", "GovInfo", "OMB", "Treasury", "NASA", "NOAA", "GitHub", "NuGet", "PyPI" } );
             DomainComboBox.MaxLength = 32767;
             DomainComboBox.MetroColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
             DomainComboBox.Name = "DomainComboBox";
@@ -680,7 +680,7 @@
             DownloadButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             DownloadButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             DownloadButton.ForeColor = System.Drawing.Color.LightGray;
-            DownloadButton.HoverText = "View Downloads";
+            DownloadButton.HoverText = "View DownloadItems";
             DownloadButton.Image = Properties.Resources.WebDownloadButton;
             DownloadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             DownloadButton.Margin = new System.Windows.Forms.Padding( 3 );
@@ -923,7 +923,7 @@
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Title";
             FormClosing += OnClosing;
-            Load += OnBrowserLoad;
+            Load += OnLoad;
             MenuTabStrip.ResumeLayout( false );
             ( (System.ComponentModel.ISupportInitialize) TabPages  ).EndInit( );
             TabPages.ResumeLayout( false );

@@ -303,7 +303,7 @@ namespace BudgetBrowser
         /// <returns></returns>
         public static string FileUrlToPath( this string url )
         {
-            return url.RemovePrefix( "file:///" ).ChangePathSlash( @"\" ).DecodeUrlForFilepath( );
+            return url.RemovePrefix( "file:///" ).ChangePathSlash( @"\" ).DecodeUrlForFilePath( );
         }
 
         /// <summary>
@@ -384,16 +384,16 @@ namespace BudgetBrowser
         }
 
         /// <summary>
-        /// Determines whether [is bitmask on] [the specified bitmask].
+        /// Determines whether [is bitMask on] [the specified bitMask].
         /// </summary>
         /// <param name="num">The number.</param>
-        /// <param name="bitmask">The bitmask.</param>
+        /// <param name="bitMask">The bitMask.</param>
         /// <returns>
-        ///   <c>true</c> if [is bitmask on] [the specified bitmask]; otherwise, <c>false</c>.
+        ///   <c>true</c> if [is bitMask on] [the specified bitMask]; otherwise, <c>false</c>.
         /// </returns>
-        public static bool IsBitmaskOn( this int num, int bitmask )
+        public static bool IsBitMaskOn( this int num, int bitMask )
         {
-            return ( num & bitmask ) != 0;
+            return ( num & bitMask ) != 0;
         }
 
         /// <summary>

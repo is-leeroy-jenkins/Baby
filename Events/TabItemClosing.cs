@@ -6,7 +6,7 @@
 //     Last Modified By:        Terry D. Eppler
 //     Last Modified On:        06-29-2023
 // ******************************************************************************************
-// <copyright file="TabItemClose.cs" company="Terry D. Eppler">
+// <copyright file="TabItemClosing.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
@@ -34,7 +34,7 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   TabItemClose.cs
+//   TabItemClosing.cs
 // </summary>
 // ******************************************************************************************
 
@@ -46,5 +46,5 @@ namespace BudgetBrowser
     /// <param name="e">The <see cref="TabClosingEventArgs"/>
     /// instance containing the event data.
     /// </param>
-    public delegate void TabItemClose( TabClosingEventArgs e );
+    public delegate void TabItemClosing( TabClosingEventArgs e );
 }

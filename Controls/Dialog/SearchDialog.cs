@@ -58,9 +58,9 @@ namespace BudgetBrowser
         public SearchDialog( )
         {
             InitializeComponent( );
-            Size = new Size( 700, 400 );
-            MinimumSize = new Size( 700, 400 );
-            MaximumSize = new Size( 700, 400 );
+            Size = new Size( 700, 170 );
+            MinimumSize = new Size( 700, 170 );
+            MaximumSize = new Size( 700, 170 );
             BorderColor = Color.FromArgb( 0, 120, 212 );
             FormBorderStyle = FormBorderStyle.FixedSingle;
             BorderThickness = 1;
@@ -81,8 +81,7 @@ namespace BudgetBrowser
             CloseButton.Text = "Close";
             CloseButton.ForeColor = Color.FromArgb( 0, 120, 212 );
             CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
-            KeyWordTextBox.BackColor = Color.FromArgb( 40, 40, 40 );
-            CloseButton.Focus( );
+            KeyWordTextBox.BackColor = Color.FromArgb( 70, 70, 70 );
 
             //Event Wiring
             CloseButton.Click += OnCloseButtonClick;
@@ -100,9 +99,8 @@ namespace BudgetBrowser
         /// </param>
         public SearchDialog( string text )
             : this( )
-        {
-            KeyWordTextBox.Text = Environment.NewLine + text;
-            CloseButton.Focus( );
+        { 
+            KeyWordTextBox.Text = text;
         }
 
         /// <inheritdoc />
@@ -121,7 +119,6 @@ namespace BudgetBrowser
             : this( text )
         {
             Header.Text = caption;
-            CloseButton.Focus( );
         }
 
         /// <summary> Called when [load]. </summary>
@@ -135,7 +132,9 @@ namespace BudgetBrowser
         {
             try
             {
+                CloseButton.Focus( );
                 Header.ForeColor = Color.FromArgb( 0, 120, 212 );
+                Header.Text = "Web Search";
             }
             catch( Exception _ex )
             {
@@ -156,17 +155,13 @@ namespace BudgetBrowser
         /// </param>
         public virtual void OnCloseButtonClick( object sender, EventArgs e )
         {
-            if( sender is Button _button
-               && !string.IsNullOrEmpty( _button?.Name ) )
+            try
             {
-                try
-                {
-                    Close( );
-                }
-                catch( Exception _ex )
-                {
-                    Fail( _ex );
-                }
+                Close( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
             }
         }
 

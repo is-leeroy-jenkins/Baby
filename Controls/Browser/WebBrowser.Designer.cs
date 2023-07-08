@@ -453,7 +453,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 262, 27 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 258, 27 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -867,7 +867,7 @@
             ContextMenu.AutoSize = false;
             ContextMenu.BackColor = System.Drawing.Color.FromArgb(   30  ,   30  ,   30   );
             ContextMenu.ForeColor = System.Drawing.Color.White;
-            ContextMenu.IsDerivedStyle = false;
+            ContextMenu.IsDerivedStyle = true;
             ContextMenu.Name = "ContextMenu";
             ContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             ContextMenu.Size = new System.Drawing.Size( 156, 264 );
@@ -980,7 +980,7 @@
         private Layout UrlSearchPanel;
         public Label Title;
         public Label StatusLabel;
-        private ContextMenu ContextMenu;
+        public ContextMenu ContextMenu;
     }
 }
 

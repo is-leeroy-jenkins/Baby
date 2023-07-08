@@ -108,17 +108,17 @@ namespace BudgetBrowser
         /// <summary>
         /// The is initializing
         /// </summary>
-        private bool _isInitializing;
+        private bool _initializing;
 
         /// <summary>
         /// The menu
         /// </summary>
-        private readonly ContextMenu _menu;
+        private readonly ContextMenuStrip _menu;
 
         /// <summary>
         /// The is open
         /// </summary>
-        private bool _isOpen;
+        private bool _open;
 
         /// <summary>
         /// The selected item
@@ -290,7 +290,7 @@ namespace BudgetBrowser
             Items.CollectionChanged += OnCollectionChanged;
             BackColor = _dark;
             base.Size = new Size( 350, 200 );
-            _menu = new ContextMenu( );
+            _menu = new ContextMenuStrip( );
             _menu.ItemClicked += OnMenuItemClicked;
             _menu.VisibleChanged += OnMenuVisibleChanged;
             _closeButton = new BrowserTabStripCloseButton( ToolStripRenderer );
@@ -471,7 +471,7 @@ namespace BudgetBrowser
         /// </summary>
         public void BeginInit( )
         {
-            _isInitializing = true;
+            _initializing = true;
         }
 
         /// <inheritdoc />
@@ -480,7 +480,7 @@ namespace BudgetBrowser
         /// </summary>
         public void EndInit( )
         {
-            _isInitializing = false;
+            _initializing = false;
         }
 
         /// <summary>
@@ -799,7 +799,7 @@ namespace BudgetBrowser
         protected override void OnSizeChanged( EventArgs e )
         {
             base.OnSizeChanged( e );
-            if( !_isInitializing )
+            if( !_initializing )
             {
                 UpdateLayout( );
             }
@@ -826,7 +826,7 @@ namespace BudgetBrowser
         {
             if( !_menu.Visible )
             {
-                _isOpen = false;
+                _open = false;
             }
         }
 

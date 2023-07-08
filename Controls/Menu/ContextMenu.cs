@@ -54,6 +54,7 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "ArrangeDefaultValueWhenTypeNotEvident" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     public class ContextMenu : MenuBase
     {
         /// <summary>
@@ -311,7 +312,7 @@ namespace BudgetBrowser
             {
                 var _item = new MetroSetToolStripMenuItem( );
                 _item.TextAlign = ContentAlignment.BottomCenter;
-                _item.Font = new Font( "Roboto", 8 );
+                _item.Font = new Font( "Roboto", 9 );
                 _item.Name = MenuItem.Exit.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
@@ -327,90 +328,6 @@ namespace BudgetBrowser
             {
                 Fail( _ex );
                 return default( MetroSetToolStripMenuItem );
-            }
-        }
-
-        /// <summary>
-        /// Called when [item clicked].
-        /// </summary>
-        /// <param name="sender">
-        /// The sender.
-        /// </param>
-        /// <param name="e">
-        /// The <see cref="MouseEventArgs"/>
-        /// instance containing the event data.
-        /// </param>
-        private void OnItemClicked( object sender, MouseEventArgs e )
-        {
-            if( sender is MetroSetToolStripMenuItem _item
-               && ( e?.Button == MouseButtons.Left ) )
-            {
-                try
-                {
-                    var _name = _item.Tag.ToString( );
-                    if( !string.IsNullOrEmpty( _name ) )
-                    {
-                        var _option = Enum.Parse( typeof( MenuItem ), _name );
-                        switch( _option )
-                        {
-                            case MenuItem.Search:
-                            {
-                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
-                                var _notification = new Notification( _msg );
-                                _notification.Show( );
-                                break;
-                            }
-                            case MenuItem.FileBrowse:
-                            {
-                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
-                                var _notification = new Notification( _msg );
-                                _notification.Show( );
-                                break;
-                            }
-                            case MenuItem.DeveloperTools:
-                            {
-                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
-                                var _notification = new Notification( _msg );
-                                _notification.Show( );
-                                break;
-                            }
-                            case MenuItem.ViewSource:
-                            {
-                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
-                                var _notification = new Notification( _msg );
-                                _notification.Show( );
-                                break;
-                            }
-                            case MenuItem.CloseOthers:
-                            {
-                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
-                                var _notification = new Notification( _msg );
-                                _notification.Show( );
-                                break;
-                            }
-                            case MenuItem.CloseTab:
-                            {
-                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
-                                var _notification = new Notification( _msg );
-                                _notification.Show( );
-                                break;
-                            }
-                            case MenuItem.Exit:
-                            {
-                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
-                                var _notification = new Notification( _msg );
-                                _notification.Show( );
-                                break;
-                            }
-                        }
-
-                        Close( );
-                    }
-                }
-                catch( Exception _ex )
-                {
-                    Fail( _ex );
-                }
             }
         }
     }

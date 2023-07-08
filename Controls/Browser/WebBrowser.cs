@@ -1136,7 +1136,7 @@ namespace BudgetBrowser
         public void OpenDownloadsTab( )
         {
             if( ( _downloadStrip != null )
-               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[ 0 ] ).Address
+               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[0] ).Address
                    == BrowserConfig.DownloadsUrl ) )
             {
                 TabPages.SelectedItem = _downloadStrip;
@@ -1235,7 +1235,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsFirstTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[ 0 ];
+            return TabPages.SelectedItem == TabPages.Items[0];
         }
 
         /// <summary>
@@ -1246,7 +1246,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsLastTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[ TabPages.Items.Count - 2 ];
+            return TabPages.SelectedItem == TabPages.Items[TabPages.Items.Count - 2];
         }
 
         /// <summary>
@@ -1931,8 +1931,7 @@ namespace BudgetBrowser
         /// </param>
         private void OnItemClicked( object sender, MouseEventArgs e )
         {
-            if( sender is MetroSetToolStripMenuItem _item
-               && ( e?.Button == MouseButtons.Left ) )
+            if( sender is MetroSetToolStripMenuItem _item )
             {
                 try
                 {
@@ -1945,13 +1944,15 @@ namespace BudgetBrowser
                             case MenuItem.Search:
                             {
                                 var _search = new SearchDialog( );
-                                _search.ShowDialog( );
+                                _search.Owner = this;
+                                _search.Show( );
                                 break;
                             }
                             case MenuItem.FileBrowse:
                             {
                                 var _browser = new FileBrowser( );
-                                _browser.ShowDialog( );
+                                _browser.Owner = this;
+                                _browser.Show( );
                                 break;
                             }
                             case MenuItem.DeveloperTools:

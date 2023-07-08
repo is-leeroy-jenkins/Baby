@@ -82,7 +82,7 @@ namespace BudgetBrowser
             // Basic SeriesConfiguration
             Style = Style.Custom;
             ThemeAuthor = "Terry D. Eppler";
-            ThemeName = "Budget Browser";
+            ThemeName = "BudgetBrowser";
             Font = new Font( "Roboto", 8 );
             ForeColor = Color.FromArgb( 0, 120, 212 );
             Margin = new Padding( 3 );

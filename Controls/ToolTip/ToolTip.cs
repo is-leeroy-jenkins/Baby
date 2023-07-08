@@ -96,7 +96,7 @@ namespace BudgetBrowser
         {
             Style = Style.Custom;
             ThemeAuthor = "Terry D. Eppler";
-            ThemeName = "Budget Browser";
+            ThemeName = "BudgetBrowser";
             BackColor = Color.FromArgb( 5, 5, 5 );
             BorderColor = SystemColors.Highlight;
             ForeColor = Color.White;

@@ -80,7 +80,7 @@ namespace BudgetBrowser
             // Basic Properties
             Style = Style.Custom;
             ThemeAuthor = "Terry D. Eppler";
-            ThemeName = "Budget Browser";
+            ThemeName = "BudgetBrowser";
             Size = new Size( 165, 23 );
             BackColor = Color.Transparent;
             ForeColor = Color.DarkGray;

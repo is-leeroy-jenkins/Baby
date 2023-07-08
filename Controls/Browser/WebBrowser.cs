@@ -538,7 +538,7 @@ namespace BudgetBrowser
             {
                 foreach( MetroSetToolStripMenuItem _item in ContextMenu.Items )
                 {
-                    _item.MouseDown += OnItemClicked;
+                    _item.MouseDown += OnContextMenuItemClicked;
                 }
 
                 Title.MouseClick += OnRightClick;
@@ -1070,7 +1070,7 @@ namespace BudgetBrowser
                 // in the first attempt so keep it somewhere
                 if( item.SuggestedFileName != "" )
                 {
-                    DownloadNames[item.Id] = item.SuggestedFileName;
+                    DownloadNames[ item.Id ] = item.SuggestedFileName;
                 }
 
                 // Set it back if it is empty
@@ -1080,7 +1080,7 @@ namespace BudgetBrowser
                     item.SuggestedFileName = _name;
                 }
 
-                _downloadItems[item.Id] = item;
+                _downloadItems[ item.Id ] = item;
 
                 //UpdateSnipProgress();
             }
@@ -1125,7 +1125,7 @@ namespace BudgetBrowser
                 // keep tab at same index focused
                 if( TabPages.Items.Count - 1 > _index )
                 {
-                    TabPages.SelectedItem = TabPages.Items[_index];
+                    TabPages.SelectedItem = TabPages.Items[ _index ];
                 }
             }
         }
@@ -1136,7 +1136,7 @@ namespace BudgetBrowser
         public void OpenDownloadsTab( )
         {
             if( ( _downloadStrip != null )
-               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[0] ).Address
+               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[ 0 ] ).Address
                    == BrowserConfig.DownloadsUrl ) )
             {
                 TabPages.SelectedItem = _downloadStrip;
@@ -1235,7 +1235,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsFirstTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[0];
+            return TabPages.SelectedItem == TabPages.Items[ 0 ];
         }
 
         /// <summary>
@@ -1246,7 +1246,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsLastTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[TabPages.Items.Count - 2];
+            return TabPages.SelectedItem == TabPages.Items[ TabPages.Items.Count - 2 ];
         }
 
         /// <summary>
@@ -1448,7 +1448,7 @@ namespace BudgetBrowser
             ChromiumWebBrowser _browser = null;
             try
             {
-                _browser = (ChromiumWebBrowser)e.Item.Controls[0];
+                _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
             }
             catch( Exception _ex )
             {
@@ -1725,7 +1725,7 @@ namespace BudgetBrowser
             {
                 foreach( TabPage _tab in TabPages.Items )
                 {
-                    var _browser = (ChromiumWebBrowser)_tab.Controls[0];
+                    var _browser = (ChromiumWebBrowser)_tab.Controls[ 0 ];
                     _browser.Dispose( );
                 }
             }
@@ -1929,7 +1929,7 @@ namespace BudgetBrowser
         /// The <see cref="MouseEventArgs"/>
         /// instance containing the event data.
         /// </param>
-        private void OnItemClicked( object sender, MouseEventArgs e )
+        private void OnContextMenuItemClicked( object sender, EventArgs e )
         {
             if( sender is MetroSetToolStripMenuItem _item )
             {
@@ -1938,7 +1938,7 @@ namespace BudgetBrowser
                     var _name = _item.Tag.ToString( );
                     if( !string.IsNullOrEmpty( _name ) )
                     {
-                        var _option = Enum.Parse( typeof( MenuItem ), _name );
+                        var _option = (MenuItem)Enum.Parse( typeof( MenuItem ), _name );
                         switch( _option )
                         {
                             case MenuItem.Search:

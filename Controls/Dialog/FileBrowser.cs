@@ -56,8 +56,8 @@ namespace BudgetBrowser
     /// 
     /// </summary>
     /// <seealso cref="Syncfusion.Windows.Forms.MetroForm" />
-    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
+    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
     public partial class FileBrowser
     {
         /// <summary>
@@ -128,9 +128,9 @@ namespace BudgetBrowser
             ForeColor = Color.LightGray;
             Margin = new Padding( 3 );
             Padding = new Padding( 1 );
-            Size = new Size( 700, 480 );
-            MaximumSize = new Size( 700, 480 );
-            MinimumSize = new Size( 700, 480 );
+            Size = new Size( 700, 460 );
+            MaximumSize = new Size( 700, 460 );
+            MinimumSize = new Size( 700, 460 );
             Header.ForeColor = Color.FromArgb( 0, 120, 212 );
             Header.TextAlign = ContentAlignment.TopLeft;
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -160,8 +160,9 @@ namespace BudgetBrowser
             FindButton.Click += OnFindButtonClicked;
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileBrowser"/> class.
+        /// Initializes a new instance of the <see cref="T:BudgetBrowser.FileBrowser" /> class.
         /// </summary>
         /// <param name="extension">The extension.</param>
         public FileBrowser( EXT extension )
@@ -209,7 +210,7 @@ namespace BudgetBrowser
                     var _paths = filePaths.ToArray( );
                     for( var _i = 0; _i < _paths.Length; _i++ )
                     {
-                        var _path = _paths[ _i ];
+                        var _path = _paths[_i];
                         if( !string.IsNullOrEmpty( _path ) )
                         {
                             FileList?.Items.Add( _path );
@@ -233,14 +234,17 @@ namespace BudgetBrowser
             {
                 try
                 {
-                    var _path = AppSettings[ "Extensions" ];
+                    var _path = AppSettings["Extensions"];
                     if( _path != null )
                     {
                         var _files = GetFiles( _path );
                         if( _files?.Any( ) == true )
                         {
                             var _extension = FileExtension.TrimStart( '.' ).ToUpper( );
-                            var _file = _files?.Where( f => f.Contains( _extension ) )?.First( );
+                            var _file = _files
+                                ?.Where( f => f.Contains( _extension ) )
+                                ?.First( );
+
                             using var _stream = File.Open( _file, FileMode.Open );
                             var _img = Image.FromStream( _stream );
                             return new Bitmap( _img, 22, 22 );
@@ -311,7 +315,7 @@ namespace BudgetBrowser
                             ?.Where( f => f.EndsWith( FileExtension ) )
                             ?.Select( f => Path.GetFullPath( f ) )
                             ?.ToList( );
-                        
+
                         _list.AddRange( _first );
                         var _dirs = GetDirectories( _filePath );
                         foreach( var _dir in _dirs )
@@ -322,7 +326,7 @@ namespace BudgetBrowser
                                     ?.Where( s => s.EndsWith( FileExtension ) )
                                     ?.Select( s => Path.GetFullPath( s ) )
                                     ?.ToList( );
-                                
+
                                 if( _second?.Any( ) == true )
                                 {
                                     _list.AddRange( _second );
@@ -331,14 +335,14 @@ namespace BudgetBrowser
                                 var _subDir = GetDirectories( _dir );
                                 for( var _i = 0; _i < _subDir.Length; _i++ )
                                 {
-                                    var _path = _subDir[ _i ];
+                                    var _path = _subDir[_i];
                                     if( !string.IsNullOrEmpty( _path ) )
                                     {
                                         var _last = GetFiles( _path )
                                             ?.Where( l => l.EndsWith( FileExtension ) )
                                             ?.Select( l => Path.GetFullPath( l ) )
                                             ?.ToList( );
-                                        
+
                                         if( _last?.Any( ) == true )
                                         {
                                             _list.AddRange( _last );
@@ -378,7 +382,7 @@ namespace BudgetBrowser
                     var _ext = _radioButton.Tag?.ToString( )
                         ?.Trim( ".".ToCharArray( ) )
                         ?.ToUpper( );
-                    
+
                     Header.Text = $"{_ext} File Search";
                     MessageLabel.Text = string.Empty;
                     FoundLabel.Text = string.Empty;

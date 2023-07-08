@@ -78,7 +78,7 @@ namespace BudgetBrowser
             SelectedItemBackColor = Color.FromArgb( 50, 93, 129 );
             SelectedItemColor = Color.White;
             ThemeAuthor = "Terry Eppler";
-            ThemeName = "Budget Browser";
+            ThemeName = "BudgetBrowser";
 
             // Menu Items
             SearchOption = CreateSearchOption( );

@@ -40,12 +40,12 @@ namespace BudgetBrowser
             Picture = new PictureBox( );
             Header = new Label( );
             BackPanel = new Layout( );
+            KeyWordTextBox = new TextBox( );
             TitleTable = new TableLayoutPanel( );
             ClearButton = new Button( );
             SearchButton = new Button( );
             CancelButton = new Button( );
             ButtonTable = new TableLayoutPanel( );
-            KeyWordTextBox = new TextBox( );
             ( (ISupportInitialize) Picture  ).BeginInit( );
             BackPanel.SuspendLayout( );
             TitleTable.SuspendLayout( );
@@ -66,7 +66,7 @@ namespace BudgetBrowser
             ToolTip.Style = MetroSet_UI.Enums.Style.Custom;
             ToolTip.StyleManager = null;
             ToolTip.ThemeAuthor = "Terry D. Eppler";
-            ToolTip.ThemeName = "Budget Browser";
+            ToolTip.ThemeName = "BudgetBrowser";
             ToolTip.TipIcon = ToolTipIcon.Info;
             ToolTip.TipText = null;
             ToolTip.TipTitle = null;
@@ -100,7 +100,7 @@ namespace BudgetBrowser
             CloseButton.TabIndex = 10;
             CloseButton.Text = "Close";
             CloseButton.ThemeAuthor = "Terry D. Eppler";
-            CloseButton.ThemeName = "Budget Browser";
+            CloseButton.ThemeName = "BudgetBrowser";
             CloseButton.ToolTip = ToolTip;
             // 
             // Picture
@@ -118,7 +118,7 @@ namespace BudgetBrowser
             // Header
             // 
             Header.FlatStyle = FlatStyle.Flat;
-            Header.Font = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point );
+            Header.Font = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             Header.HoverText = null;
             Header.IsDerivedStyle = true;
             Header.Location = new System.Drawing.Point( 43, 3 );
@@ -151,13 +151,45 @@ namespace BudgetBrowser
             BackPanel.Location = new System.Drawing.Point( 12, 44 );
             BackPanel.Name = "BackPanel";
             BackPanel.Padding = new Padding( 1 );
-            BackPanel.Size = new System.Drawing.Size( 664, 69 );
+            BackPanel.Size = new System.Drawing.Size( 664, 61 );
             BackPanel.Style = MetroSet_UI.Enums.Style.Custom;
             BackPanel.StyleManager = null;
             BackPanel.TabIndex = 15;
             BackPanel.ThemeAuthor = "Terry D. Eppler";
-            BackPanel.ThemeName = "Budget Browser";
+            BackPanel.ThemeName = "BudgetBrowser";
             BackPanel.ToolTip = null;
+            // 
+            // KeyWordTextBox
+            // 
+            KeyWordTextBox.AutoCompleteCustomSource = null;
+            KeyWordTextBox.AutoCompleteMode = AutoCompleteMode.None;
+            KeyWordTextBox.AutoCompleteSource = AutoCompleteSource.None;
+            KeyWordTextBox.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            KeyWordTextBox.DisabledBackColor = System.Drawing.Color.FromArgb(   204  ,   204  ,   204   );
+            KeyWordTextBox.DisabledBorderColor = System.Drawing.Color.FromArgb(   155  ,   155  ,   155   );
+            KeyWordTextBox.DisabledForeColor = System.Drawing.Color.FromArgb(   136  ,   136  ,   136   );
+            KeyWordTextBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            KeyWordTextBox.HoverColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            KeyWordTextBox.HoverText = null;
+            KeyWordTextBox.Image = null;
+            KeyWordTextBox.IsDerivedStyle = true;
+            KeyWordTextBox.Lines = null;
+            KeyWordTextBox.Location = new System.Drawing.Point( 31, 18 );
+            KeyWordTextBox.MaxLength = 32767;
+            KeyWordTextBox.Multiline = false;
+            KeyWordTextBox.Name = "KeyWordTextBox";
+            KeyWordTextBox.ReadOnly = false;
+            KeyWordTextBox.SelectionLength = 0;
+            KeyWordTextBox.Size = new System.Drawing.Size( 608, 26 );
+            KeyWordTextBox.Style = MetroSet_UI.Enums.Style.Custom;
+            KeyWordTextBox.StyleManager = null;
+            KeyWordTextBox.TabIndex = 1;
+            KeyWordTextBox.TextAlign = HorizontalAlignment.Center;
+            KeyWordTextBox.ThemeAuthor = "Terry D. Eppler";
+            KeyWordTextBox.ThemeName = "BudgetBrowser";
+            KeyWordTextBox.ToolTip = null;
+            KeyWordTextBox.UseSystemPasswordChar = false;
+            KeyWordTextBox.WatermarkText = "";
             // 
             // TitleTable
             // 
@@ -203,7 +235,7 @@ namespace BudgetBrowser
             ClearButton.TabIndex = 17;
             ClearButton.Text = "Clear";
             ClearButton.ThemeAuthor = "Terry D. Eppler";
-            ClearButton.ThemeName = "Budget Browser";
+            ClearButton.ThemeName = "BudgetBrowser";
             ClearButton.ToolTip = ToolTip;
             // 
             // SearchButton
@@ -235,7 +267,7 @@ namespace BudgetBrowser
             SearchButton.TabIndex = 18;
             SearchButton.Text = "Search";
             SearchButton.ThemeAuthor = "Terry D. Eppler";
-            SearchButton.ThemeName = "Budget Browser";
+            SearchButton.ThemeName = "BudgetBrowser";
             SearchButton.ToolTip = ToolTip;
             // 
             // CancelButton
@@ -267,7 +299,7 @@ namespace BudgetBrowser
             CancelButton.TabIndex = 19;
             CancelButton.Text = "Cancel";
             CancelButton.ThemeAuthor = "Terry D. Eppler";
-            CancelButton.ThemeName = "Budget Browser";
+            CancelButton.ThemeName = "BudgetBrowser";
             CancelButton.ToolTip = ToolTip;
             // 
             // ButtonTable
@@ -287,44 +319,12 @@ namespace BudgetBrowser
             ButtonTable.Controls.Add( CancelButton, 3, 0 );
             ButtonTable.Controls.Add( CloseButton, 7, 0 );
             ButtonTable.Dock = DockStyle.Bottom;
-            ButtonTable.Location = new System.Drawing.Point( 0, 130 );
+            ButtonTable.Location = new System.Drawing.Point( 0, 120 );
             ButtonTable.Name = "ButtonTable";
             ButtonTable.RowCount = 1;
             ButtonTable.RowStyles.Add( new RowStyle( SizeType.Percent, 50F ) );
             ButtonTable.Size = new System.Drawing.Size( 688, 29 );
             ButtonTable.TabIndex = 20;
-            // 
-            // KeyWordTextBox
-            // 
-            KeyWordTextBox.AutoCompleteCustomSource = null;
-            KeyWordTextBox.AutoCompleteMode = AutoCompleteMode.None;
-            KeyWordTextBox.AutoCompleteSource = AutoCompleteSource.None;
-            KeyWordTextBox.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            KeyWordTextBox.DisabledBackColor = System.Drawing.Color.FromArgb(   204  ,   204  ,   204   );
-            KeyWordTextBox.DisabledBorderColor = System.Drawing.Color.FromArgb(   155  ,   155  ,   155   );
-            KeyWordTextBox.DisabledForeColor = System.Drawing.Color.FromArgb(   136  ,   136  ,   136   );
-            KeyWordTextBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            KeyWordTextBox.HoverColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            KeyWordTextBox.HoverText = null;
-            KeyWordTextBox.Image = null;
-            KeyWordTextBox.IsDerivedStyle = true;
-            KeyWordTextBox.Lines = null;
-            KeyWordTextBox.Location = new System.Drawing.Point( 31, 18 );
-            KeyWordTextBox.MaxLength = 32767;
-            KeyWordTextBox.Multiline = false;
-            KeyWordTextBox.Name = "KeyWordTextBox";
-            KeyWordTextBox.ReadOnly = false;
-            KeyWordTextBox.SelectionLength = 0;
-            KeyWordTextBox.Size = new System.Drawing.Size( 608, 34 );
-            KeyWordTextBox.Style = MetroSet_UI.Enums.Style.Custom;
-            KeyWordTextBox.StyleManager = null;
-            KeyWordTextBox.TabIndex = 1;
-            KeyWordTextBox.TextAlign = HorizontalAlignment.Center;
-            KeyWordTextBox.ThemeAuthor = "Terry D. Eppler";
-            KeyWordTextBox.ThemeName = "Budget Browser";
-            KeyWordTextBox.ToolTip = null;
-            KeyWordTextBox.UseSystemPasswordChar = false;
-            KeyWordTextBox.WatermarkText = "";
             // 
             // SearchDialog
             // 
@@ -338,7 +338,7 @@ namespace BudgetBrowser
             CaptionButtonHoverColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
             CaptionFont = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CaptionForeColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            ClientSize = new System.Drawing.Size( 688, 159 );
+            ClientSize = new System.Drawing.Size( 688, 149 );
             Controls.Add( ButtonTable );
             Controls.Add( TitleTable );
             Controls.Add( BackPanel );
@@ -347,10 +347,10 @@ namespace BudgetBrowser
             ForeColor = System.Drawing.Color.LightSteelBlue;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            MaximumSize = new System.Drawing.Size( 700, 170 );
+            MaximumSize = new System.Drawing.Size( 700, 160 );
             MetroColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
             MinimizeBox = false;
-            MinimumSize = new System.Drawing.Size( 700, 170 );
+            MinimumSize = new System.Drawing.Size( 700, 160 );
             Name = "SearchDialog";
             ShowIcon = false;
             ShowMaximizeBox = false;
@@ -368,7 +368,7 @@ namespace BudgetBrowser
         public Button CloseButton;
         public Label Label;
         public PictureBox Picture;
-        private Label Header;
+        public Label Header;
         public BindingSource BindingSource;
         public TableLayoutPanel TitleTable;
         public Layout BackPanel;

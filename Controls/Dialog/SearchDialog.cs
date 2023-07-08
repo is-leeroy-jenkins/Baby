@@ -48,8 +48,8 @@ namespace BudgetBrowser
 
     /// <summary>
     /// </summary>
-    [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public partial class SearchDialog : MetroForm
     {
         /// <inheritdoc />
@@ -58,9 +58,9 @@ namespace BudgetBrowser
         public SearchDialog( )
         {
             InitializeComponent( );
-            Size = new Size( 700, 170 );
-            MinimumSize = new Size( 700, 170 );
-            MaximumSize = new Size( 700, 170 );
+            Size = new Size( 700, 160 );
+            MinimumSize = new Size( 700, 160 );
+            MaximumSize = new Size( 700, 160 );
             BorderColor = Color.FromArgb( 0, 120, 212 );
             FormBorderStyle = FormBorderStyle.FixedSingle;
             BorderThickness = 1;
@@ -81,11 +81,14 @@ namespace BudgetBrowser
             CloseButton.Text = "Close";
             CloseButton.ForeColor = Color.FromArgb( 0, 120, 212 );
             CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
-            KeyWordTextBox.BackColor = Color.FromArgb( 70, 70, 70 );
+            KeyWordTextBox.BackColor = Color.FromArgb( 75, 75, 75 );
+            KeyWordTextBox.BorderColor = Color.FromArgb( 0, 120, 212 );
+            KeyWordTextBox.HoverColor = Color.FromArgb( 0, 120, 212 );
+            Header.ForeColor = Color.FromArgb( 0, 120, 212 );
+            Header.Text = "Web Search";
 
             //Event Wiring
             CloseButton.Click += OnCloseButtonClick;
-            Load += OnLoad;
         }
 
         /// <inheritdoc />
@@ -99,7 +102,7 @@ namespace BudgetBrowser
         /// </param>
         public SearchDialog( string text )
             : this( )
-        { 
+        {
             KeyWordTextBox.Text = text;
         }
 
@@ -132,9 +135,6 @@ namespace BudgetBrowser
         {
             try
             {
-                CloseButton.Focus( );
-                Header.ForeColor = Color.FromArgb( 0, 120, 212 );
-                Header.Text = "Web Search";
             }
             catch( Exception _ex )
             {

@@ -66,7 +66,7 @@ namespace BudgetBrowser
             ToolTip.Style = MetroSet_UI.Enums.Style.Custom;
             ToolTip.StyleManager = null;
             ToolTip.ThemeAuthor = "Terry D. Eppler";
-            ToolTip.ThemeName = "Budget Browser";
+            ToolTip.ThemeName = "BudgetBrowser";
             ToolTip.TipIcon = ToolTipIcon.Info;
             ToolTip.TipText = null;
             ToolTip.TipTitle = null;
@@ -100,7 +100,7 @@ namespace BudgetBrowser
             CloseButton.TabIndex = 10;
             CloseButton.Text = "Close";
             CloseButton.ThemeAuthor = "Terry D. Eppler";
-            CloseButton.ThemeName = "Budget Browser";
+            CloseButton.ThemeName = "BudgetBrowser";
             CloseButton.ToolTip = ToolTip;
             // 
             // Label
@@ -120,7 +120,7 @@ namespace BudgetBrowser
             Label.TabIndex = 12;
             Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             Label.ThemeAuthor = "Terry D. Eppler";
-            Label.ThemeName = "Budget Browser";
+            Label.ThemeName = "BudgetBrowser";
             Label.ToolTip = null;
             // 
             // Picture
@@ -176,7 +176,7 @@ namespace BudgetBrowser
             BackPanel.StyleManager = null;
             BackPanel.TabIndex = 15;
             BackPanel.ThemeAuthor = "Terry D. Eppler";
-            BackPanel.ThemeName = "Budget Browser";
+            BackPanel.ThemeName = "BudgetBrowser";
             BackPanel.ToolTip = null;
             // 
             // TextBox
@@ -202,7 +202,7 @@ namespace BudgetBrowser
             TextBox.TabIndex = 0;
             TextBox.Text = " ";
             TextBox.ThemeAuthor = "Terry D. Eppler";
-            TextBox.ThemeName = "Budget Browser";
+            TextBox.ThemeName = "BudgetBrowser";
             TextBox.ToolTip = ToolTip;
             TextBox.WordWrap = true;
             // 

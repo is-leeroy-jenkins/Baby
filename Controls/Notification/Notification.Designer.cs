@@ -66,7 +66,7 @@
             Message.Text = "label1";
             Message.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             Message.ThemeAuthor = "Terry D. Eppler";
-            Message.ThemeName = "Budget Browser";
+            Message.ThemeName = "BudgetBrowser";
             Message.ToolTip = null;
             // 
             // Title
@@ -86,7 +86,7 @@
             Title.Text = "label1";
             Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             Title.ThemeAuthor = "Terry D. Eppler";
-            Title.ThemeName = "Budget Browser";
+            Title.ThemeName = "BudgetBrowser";
             Title.ToolTip = null;
             // 
             // Notification

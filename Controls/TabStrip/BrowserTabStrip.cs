@@ -291,9 +291,10 @@ namespace BudgetBrowser
             BackColor = _dark;
             base.Size = new Size( 350, 200 );
             _menu = new ContextMenuStrip( );
+            _menu.Renderer = base.ToolStripRenderer;
             _menu.ItemClicked += OnMenuItemClicked;
             _menu.VisibleChanged += OnMenuVisibleChanged;
-            _closeButton = new BrowserTabStripCloseButton( ToolStripRenderer );
+            _closeButton = new BrowserTabStripCloseButton( base.ToolStripRenderer );
             Font = _font;
             _formatString = new StringFormat( );
             EndInit( );

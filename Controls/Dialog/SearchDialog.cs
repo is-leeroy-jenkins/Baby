@@ -93,7 +93,7 @@ namespace BudgetBrowser
             KeyWordTextBox.BorderColor = Color.FromArgb( 0, 120, 212 );
             KeyWordTextBox.HoverColor = Color.FromArgb( 0, 120, 212 );
             Header.ForeColor = Color.FromArgb( 0, 120, 212 );
-            Header.Text = "Web Search";
+            Header.Text = "Web SaveAsPdf";
 
             //Event Wiring
             CloseButton.Click += OnCloseButtonClick;

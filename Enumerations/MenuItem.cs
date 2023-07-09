@@ -49,43 +49,40 @@ namespace BudgetBrowser
     public enum MenuItem
     {
         /// <summary>
-        /// The search
+        /// The close
         /// </summary>
-        Search = 1,
-
-        /// <summary>
-        /// The browse
-        /// </summary>
-        FileBrowse = 2,
-
-        /// <summary>
-        /// The guidance
-        /// </summary>
-        Guidance = 3,
-
-        /// <summary>
-        /// The developer tools
-        /// </summary>
-        DeveloperTools = 4,
-
-        /// <summary>
-        /// The view source
-        /// </summary>
-        ViewSource = 5,
+        CloseTab = 1,
 
         /// <summary>
         /// The other tabs
         /// </summary>
-        CloseOthers = 6, 
+        CloseOthers = 2,
 
         /// <summary>
-        /// The close
+        /// The search
         /// </summary>
-        CloseTab = 7,
+        SaveAsPdf = 3,
+
+        /// <summary>
+        /// The browse
+        /// </summary>
+        Print = 4,
+
+        /// <summary>
+        /// The developer tools
+        /// </summary>
+        DeveloperTools = 5,
+
+        /// <summary>
+        /// The view source
+        /// </summary>
+        ViewSource = 6,
 
         /// <summary>
         /// The exit
         /// </summary>
-        Exit = 8
+        Exit = 7,
+
+        Refresh = 8
     }
 }

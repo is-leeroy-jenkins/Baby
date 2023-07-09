@@ -239,7 +239,7 @@
             // 
             // OpenFileDialog
             // 
-            OpenFileDialog.Title = "Search for Document";
+            OpenFileDialog.Title = "SaveAsPdf for Document";
             // 
             // ToolTip
             // 

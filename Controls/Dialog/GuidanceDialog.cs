@@ -151,7 +151,7 @@ namespace BudgetBrowser
             Picture.SizeMode = PictureBoxSizeMode.StretchImage;
 
             // File Dialog Properties
-            OpenFileDialog.Title = "Search for Document";
+            OpenFileDialog.Title = "SaveAsPdf for Document";
             OpenFileDialog.CheckPathExists = true;
             OpenFileDialog.CheckFileExists = true;
 
@@ -251,7 +251,7 @@ namespace BudgetBrowser
                 CloseButton.HoverText = "Close Window";
                 SelectButton.HoverText = "Open Selected Item";
                 ClearButton.HoverText = "Clear Selected Item";
-                BrowseButton.HoverText = "Search for File";
+                BrowseButton.HoverText = "SaveAsPdf for File";
                 PopulateListBox( );
                 SetLabelText( );
             }

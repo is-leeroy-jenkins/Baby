@@ -565,7 +565,7 @@ namespace BudgetBrowser
             Header.Style = MetroSet_UI.Enums.Style.Custom;
             Header.StyleManager = null;
             Header.TabIndex = 0;
-            Header.Text = "File Search";
+            Header.Text = "File SaveAsPdf";
             Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             Header.ThemeAuthor = "Terry D. Eppler";
             Header.ThemeName = "BudgetExecution";

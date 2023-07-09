@@ -70,33 +70,33 @@ namespace BudgetBrowser
         /// <summary>
         /// 
         /// </summary>
-        public static string HomepageUrl = 
+        public static string Homepage = 
             "file:///C:/Users/terry/source/repos/BudgetBrowser/WebPages/index.html";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string NewTabUrl = "https://www.google.com";
+        public static string NewTab = "https://www.google.com";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string InternalUrl = "budgetbrowser";
+        public static string Internal = "budgetbrowser";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string DownloadsUrl = "budgetbrowser://storage/downloads.html";
+        public static string Downloads = "budgetbrowser://storage/downloads.html";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string FileNotFoundUrl = "budgetbrowser://storage/errors/notFound.html";
+        public static string FileNotFound = "budgetbrowser://storage/errors/notFound.html";
 
         /// <summary>
         /// 
         /// </summary>
-        public static string CannotConnectUrl = "budgetbrowser://storage/errors/cannotConnect.html";
+        public static string CannotConnect = "budgetbrowser://storage/errors/cannotConnect.html";
 
         /// <summary>
         /// 

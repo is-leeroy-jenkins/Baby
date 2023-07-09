@@ -157,7 +157,7 @@ namespace BudgetBrowser
             Load += OnLoad;
             CloseButton.Click += OnCloseButtonClicked;
             FileList.SelectedValueChanged += OnPathSelected;
-            FindButton.Click += OnFindButtonClicked;
+            FindButton.Click += OnBrowseButtonClicked;
         }
 
         /// <inheritdoc />
@@ -509,7 +509,7 @@ namespace BudgetBrowser
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private protected virtual void OnFindButtonClicked( object sender, EventArgs e )
+        private protected virtual void OnBrowseButtonClicked( object sender, EventArgs e )
         {
             if( sender is Button )
             {

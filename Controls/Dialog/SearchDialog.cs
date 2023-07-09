@@ -52,6 +52,14 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public partial class SearchDialog : MetroForm
     {
+        /// <summary>
+        /// Gets or sets the results.
+        /// </summary>
+        /// <value>
+        /// The results.
+        /// </value>
+        public string Results { get; set; }
+
         /// <inheritdoc />
         /// <summary>
         /// </summary>
@@ -157,6 +165,11 @@ namespace BudgetBrowser
         {
             try
             {
+                if( !string.IsNullOrEmpty( KeyWordTextBox.Text ) )
+                {
+                    Results = KeyWordTextBox.Text;
+                }
+
                 Close( );
             }
             catch( Exception _ex )

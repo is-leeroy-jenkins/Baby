@@ -62,7 +62,7 @@ namespace BudgetBrowser
     [ DefaultEvent( "TabStripItemSelectionChanged" ) ]
     [ DefaultProperty( "Items" ) ]
     [ ToolboxItem( true ) ]
-    public class BrowserTabStrip : BaseStyledPanel, ISupportInitialize, IDisposable 
+    public class BrowserTabStrip : BaseStyledPanel, ISupportInitialize 
 
     {
         /// <summary>

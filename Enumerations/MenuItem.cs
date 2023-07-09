@@ -51,38 +51,41 @@ namespace BudgetBrowser
         /// <summary>
         /// The close
         /// </summary>
-        CloseTab = 1,
+        Close = 1,
 
         /// <summary>
         /// The other tabs
         /// </summary>
-        CloseOthers = 2,
+        Other = 2,
+
+        /// <summary>
+        /// The refresh
+        /// </summary>
+        Refresh = 3,
 
         /// <summary>
         /// The search
         /// </summary>
-        SaveAsPdf = 3,
+        SaveAs = 4,
 
         /// <summary>
         /// The browse
         /// </summary>
-        Print = 4,
+        Print = 5,
 
         /// <summary>
         /// The developer tools
         /// </summary>
-        DeveloperTools = 5,
+        Developer = 6,
 
         /// <summary>
         /// The view source
         /// </summary>
-        ViewSource = 6,
+        Source = 7,
 
         /// <summary>
         /// The exit
         /// </summary>
-        Exit = 7,
-
-        Refresh = 8
+        Exit = 8
     }
 }

@@ -84,7 +84,7 @@ namespace BudgetBrowser
                 {
                     return tool switch
                     {
-                        ToolType.HomeButton => "Google SaveAsPdf",
+                        ToolType.HomeButton => "Google SaveAs",
                         ToolType.DownloadButton => "View DownloadItems",
                         ToolType.ExitButton => "Close Browser",
                         ToolType.NextButton => "Next Page",

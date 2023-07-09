@@ -69,7 +69,7 @@ namespace BudgetBrowser
             ArrowColor = Color.FromArgb( 50, 93, 129 );
             SeparatorColor = Color.FromArgb( 65, 65, 65 );
             AutoSize = false;
-            Size = new Size( 156, 260 );
+            Size = new Size( 160, 250 );
             IsDerivedStyle = true;
             RenderMode = ToolStripRenderMode.System;
             Style = Style.Custom;
@@ -81,12 +81,13 @@ namespace BudgetBrowser
             ThemeName = "BudgetBrowser";
 
             // Menu Items
-            CloseTabOption = CreateCloseTabOption( );
-            CloseOthersOption = CreateCloseOthersOption( );
-            SaveAsPdfOption = CreateSaveAsPdfOption( );
+            CloseOption = CreateCloseOption( );
+            OtherOption = CreateOtherOption( );
+            RefreshOption = CreateRefreshOption( );
+            SaveAsOption = CreateSaveAsOption( );
             PrintOption = CreatePrintOption( );
-            DeveloperToolsOption = CreateDeveloperTooolsOption( );
-            ViewSourceOption = CreateViewSourceOption( );
+            DeveloperOption = CreateDeveloperOption( );
+            SourceOption = CreateSourceOption( );
             ExitOption = CreateExitOption( );
         }
     }

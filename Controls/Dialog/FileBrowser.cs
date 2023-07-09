@@ -185,7 +185,7 @@ namespace BudgetBrowser
                 {
                     PopulateListBox( );
                     FoundLabel.Text = "Found : " + FilePaths?.Count( );
-                    Header.Text = $"{Extension} File SaveAsPdf";
+                    Header.Text = $"{Extension} File SaveAs";
                     ClearRadioButtons( );
                     SetRadioButtonEvents( );
                 }
@@ -383,7 +383,7 @@ namespace BudgetBrowser
                         ?.Trim( ".".ToCharArray( ) )
                         ?.ToUpper( );
 
-                    Header.Text = $"{_ext} File SaveAsPdf";
+                    Header.Text = $"{_ext} File SaveAs";
                     MessageLabel.Text = string.Empty;
                     FoundLabel.Text = string.Empty;
                     var _paths = GetListViewPaths( );
@@ -522,7 +522,7 @@ namespace BudgetBrowser
                     FileDialog.Multiselect = false;
                     var _ext = FileExtension.ToLower( );
                     FileDialog.Filter = $@"File Extension | *{_ext}";
-                    FileDialog.Title = $@"SaveAsPdf Directories for *{_ext} files...";
+                    FileDialog.Title = $@"SaveAs Directories for *{_ext} files...";
                     FileDialog.InitialDirectory = GetFolderPath( SpecialFolder.DesktopDirectory );
                     FileDialog.ShowDialog( );
                     var _selectedPath = FileDialog.FileName;

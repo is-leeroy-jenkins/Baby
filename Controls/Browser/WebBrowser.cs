@@ -539,7 +539,7 @@ namespace BudgetBrowser
             }
         }
 
-        private void WireUpMenuEvents( )
+        private void WireUpMenuItems( )
         {
             foreach( ToolStripItem _item in ContextMenu.Items )
             {
@@ -1364,10 +1364,14 @@ namespace BudgetBrowser
         {
             SetTooltips( Controls );
             SetHotkeys( );
-            _searchEngineUrl = AppSettings["Google"];
+            WireUpMenuItems( );
+            _searchEngineUrl = AppSettings[ "Google" ];
             TabPages.TabStripItemClosing += OnTabClosing;
+            TabPages.MouseClick += OnRightClick;
+            TabItem.MouseClick += OnRightClick;
+            Title.MouseClick += OnRightClick;
+            ContextMenu.MouseClick += OnContextMenuItemClick;
             _statusUpdate += UpdateStatusLabel;
-            WireUpMenuEvents( );
         }
 
         /// <summary>
@@ -1992,38 +1996,44 @@ namespace BudgetBrowser
             {
                 try
                 {
+                    var _parent = _item.GetCurrentParent( );
                     var _type = _item.Tag?.ToString( );
                     var _option = (MenuItem)Enum.Parse( typeof( MenuItem ), _type );
                     switch( _option )
                     {
-                        case MenuItem.CloseTab:
+                        case MenuItem.Close:
                         {
                             CloseActiveTab( );
                             break;
                         }
-                        case MenuItem.CloseOthers:
+                        case MenuItem.Other:
                         {
                             CloseOtherTabs( );
                             break;
                         }
-                        case MenuItem.SaveAsPdf:
+                        case MenuItem.Refresh:
+                        {
+                            RefreshActiveTab( );
+                            break;
+                        }
+                        case MenuItem.SaveAs:
                         {
                             var _fileDialog = new SaveFileDialog( );
-                            _fileDialog.ShowDialog( Instance );
+                            _fileDialog.ShowDialog( this );
                             break;
                         }
                         case MenuItem.Print:
                         {
                             var _printDialog = new PrintDialog( );
-                            _printDialog.ShowDialog( Instance );
+                            _printDialog.ShowDialog( this );
                             break;
                         }
-                        case MenuItem.DeveloperTools:
+                        case MenuItem.Developer:
                         {
                             OpenDeveloperTools( );
                             break;
                         }
-                        case MenuItem.ViewSource:
+                        case MenuItem.Source:
                         {
                             Notify( );
                             break;

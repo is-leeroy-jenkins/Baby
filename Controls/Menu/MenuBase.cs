@@ -60,7 +60,7 @@ namespace BudgetBrowser
         /// <value>
         /// The close option.
         /// </value>
-        public MetroSetToolStripMenuItem CloseTabOption { get; set; }
+        public MetroSetToolStripMenuItem CloseOption { get; set; }
 
         /// <summary>
         /// Gets or sets the exit option.
@@ -68,7 +68,7 @@ namespace BudgetBrowser
         /// <value>
         /// The exit option.
         /// </value>
-        public MetroSetToolStripMenuItem CloseOthersOption { get; set; }
+        public MetroSetToolStripMenuItem OtherOption { get; set; }
 
         /// <summary>
         /// Gets or sets the calculator option.
@@ -76,7 +76,7 @@ namespace BudgetBrowser
         /// <value>
         /// The calculator option.
         /// </value>
-        public MetroSetToolStripMenuItem DeveloperToolsOption { get; set; }
+        public MetroSetToolStripMenuItem DeveloperOption { get; set; }
 
         /// <summary>
         /// Gets or sets the calculator option.
@@ -84,7 +84,15 @@ namespace BudgetBrowser
         /// <value>
         /// The calculator option.
         /// </value>
-        public MetroSetToolStripMenuItem ViewSourceOption { get; set; }
+        public MetroSetToolStripMenuItem SourceOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets the refresh option.
+        /// </summary>
+        /// <value>
+        /// The refresh option.
+        /// </value>
+        public MetroSetToolStripMenuItem RefreshOption { get; set; }
 
         /// <summary>
         /// Gets or sets the Save As Pdf option.
@@ -92,7 +100,7 @@ namespace BudgetBrowser
         /// <value>
         /// The calculator option.
         /// </value>
-        public MetroSetToolStripMenuItem SaveAsPdfOption { get; set; }
+        public MetroSetToolStripMenuItem SaveAsOption { get; set; }
 
         /// <summary>
         /// Gets or sets the calculator option.
@@ -116,21 +124,22 @@ namespace BudgetBrowser
         /// <returns>
         /// MetroSetToolStripMenuItem
         /// </returns>
-        protected MetroSetToolStripMenuItem CreateCloseTabOption( )
+        protected MetroSetToolStripMenuItem CreateCloseOption( )
         {
             try
             {
                 var _item = new MetroSetToolStripMenuItem( );
                 _item.TextAlign = ContentAlignment.BottomCenter;
                 _item.Font = new Font( "Roboto", 9 );
-                _item.Name = MenuItem.CloseTab.ToString( );
+                _item.Name = MenuItem.Close.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
                 _item.ForeColor = Color.White;
-                _item.Text = $"{MenuItem.CloseTab}".SplitPascal( );
-                _item.Tag = MenuItem.CloseTab.ToString( );
+                _item.Text = $"{MenuItem.Close} Tab";
+                _item.Tag = MenuItem.Close.ToString( );
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
+                _item.MouseDown += null;
                 Items.Add( _item );
                 return _item;
             }
@@ -147,21 +156,54 @@ namespace BudgetBrowser
         /// <returns>
         /// MetroSetToolStripMenuItem
         /// </returns>
-        protected MetroSetToolStripMenuItem CreateCloseOthersOption( )
+        protected MetroSetToolStripMenuItem CreateOtherOption( )
         {
             try
             {
                 var _item = new MetroSetToolStripMenuItem( );
                 _item.TextAlign = ContentAlignment.BottomCenter;
                 _item.Font = new Font( "Roboto", 9 );
-                _item.Name = MenuItem.CloseOthers.ToString( );
+                _item.Name = MenuItem.Other.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
                 _item.ForeColor = Color.White;
-                _item.Text = $"{MenuItem.CloseOthers}".SplitPascal( );
-                _item.Tag = MenuItem.CloseOthers.ToString( );
+                _item.Text = $"Close {MenuItem.Other} Tabs";
+                _item.Tag = MenuItem.Other.ToString( );
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
+                _item.MouseDown += null;
+                Items.Add( _item );
+                return _item;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return default( MetroSetToolStripMenuItem );
+            }
+        }
+
+        /// <summary>
+        /// Creates the close option.
+        /// </summary>
+        /// <returns>
+        /// MetroSetToolStripMenuItem
+        /// </returns>
+        protected MetroSetToolStripMenuItem CreateRefreshOption( )
+        {
+            try
+            {
+                var _item = new MetroSetToolStripMenuItem( );
+                _item.TextAlign = ContentAlignment.BottomCenter;
+                _item.Font = new Font( "Roboto", 9 );
+                _item.Name = MenuItem.Refresh.ToString( );
+                _item.Size = new Size( 160, 30 );
+                _item.BackColor = Color.FromArgb( 30, 30, 30 );
+                _item.ForeColor = Color.White;
+                _item.Text = $"{MenuItem.Refresh} Tab";
+                _item.Tag = MenuItem.Refresh.ToString( );
+                _item.MouseHover += OnMouseEnter;
+                _item.MouseLeave += OnMouseLeave;
+                _item.MouseDown -= null;
                 Items.Add( _item );
                 return _item;
             }
@@ -178,21 +220,22 @@ namespace BudgetBrowser
         /// <returns>
         /// MetroSetToolStripMenuItem
         /// </returns>
-        protected MetroSetToolStripMenuItem CreateSaveAsPdfOption( )
+        protected MetroSetToolStripMenuItem CreateSaveAsOption( )
         {
             try
             {
                 var _item = new MetroSetToolStripMenuItem( );
                 _item.TextAlign = ContentAlignment.BottomCenter;
                 _item.Font = new Font( "Roboto", 9 );
-                _item.Name = MenuItem.SaveAsPdf.ToString( );
+                _item.Name = MenuItem.SaveAs.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
                 _item.ForeColor = Color.White;
-                _item.Text = $"{MenuItem.SaveAsPdf}".SplitPascal( );
-                _item.Tag = MenuItem.SaveAsPdf.ToString( );
+                _item.Text = $"{MenuItem.SaveAs}".SplitPascal( ) + " PDF";
+                _item.Tag = MenuItem.SaveAs.ToString( );
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
+                _item.MouseDown -= null;
                 Items.Add( _item );
                 return _item;
             }
@@ -222,6 +265,7 @@ namespace BudgetBrowser
                 _item.Tag = MenuItem.Print.ToString( );
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
+                _item.MouseDown -= null;
                 Items.Add( _item );
                 return _item;
             }
@@ -236,21 +280,22 @@ namespace BudgetBrowser
         /// Creates the developer toools option.
         /// </summary>
         /// <returns></returns>
-        protected MetroSetToolStripMenuItem CreateDeveloperTooolsOption( )
+        protected MetroSetToolStripMenuItem CreateDeveloperOption( )
         {
             try
             {
                 var _item = new MetroSetToolStripMenuItem( );
                 _item.TextAlign = ContentAlignment.BottomCenter;
                 _item.Font = new Font( "Roboto", 9 );
-                _item.Name = MenuItem.DeveloperTools.ToString( );
+                _item.Name = MenuItem.Developer.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
                 _item.ForeColor = Color.White;
-                _item.Text = $"{MenuItem.DeveloperTools}".SplitPascal( );
-                _item.Tag = MenuItem.DeveloperTools.ToString( );
+                _item.Text = $"{MenuItem.Developer} Tools";
+                _item.Tag = MenuItem.Developer.ToString( );
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
+                _item.MouseDown -= null;
                 Items.Add( _item );
                 return _item;
             }
@@ -265,21 +310,22 @@ namespace BudgetBrowser
         /// Creates the close others option.
         /// </summary>
         /// <returns></returns>
-        protected MetroSetToolStripMenuItem CreateViewSourceOption( )
+        protected MetroSetToolStripMenuItem CreateSourceOption( )
         {
             try
             {
                 var _item = new MetroSetToolStripMenuItem( );
                 _item.TextAlign = ContentAlignment.BottomCenter;
                 _item.Font = new Font( "Roboto", 9 );
-                _item.Name = MenuItem.ViewSource.ToString( );
+                _item.Name = MenuItem.Source.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
                 _item.ForeColor = Color.White;
-                _item.Text = $"{MenuItem.ViewSource}".SplitPascal( );
-                _item.Tag = MenuItem.ViewSource.ToString( );
+                _item.Text = $"View {MenuItem.Source}";
+                _item.Tag = MenuItem.Source.ToString( );
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
+                _item.MouseDown -= null;
                 Items.Add( _item );
                 return _item;
             }
@@ -311,6 +357,7 @@ namespace BudgetBrowser
                 _item.Tag = MenuItem.Exit.ToString( );
                 _item.MouseEnter += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
+                _item.MouseDown -= null;
                 Items.Add( _item );
                 return _item;
             }

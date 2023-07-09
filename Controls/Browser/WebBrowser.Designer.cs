@@ -449,7 +449,7 @@
             KeyWordTextBox.BackColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
             KeyWordTextBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             KeyWordTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            KeyWordTextBox.HoverText = "SaveAsPdf Keywords";
+            KeyWordTextBox.HoverText = "SaveAs Keywords";
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
@@ -473,7 +473,7 @@
             GoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             GoButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             GoButton.ForeColor = System.Drawing.Color.LightGray;
-            GoButton.HoverText = "Begin SaveAsPdf";
+            GoButton.HoverText = "Begin SaveAs";
             GoButton.Image = Properties.Resources.WebGoButton;
             GoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             GoButton.Margin = new System.Windows.Forms.Padding( 3 );
@@ -498,7 +498,7 @@
             CancelButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             CancelButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CancelButton.ForeColor = System.Drawing.Color.LightGray;
-            CancelButton.HoverText = "Stop SaveAsPdf";
+            CancelButton.HoverText = "Stop SaveAs";
             CancelButton.Image = Properties.Resources.WebCancelButton;
             CancelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             CancelButton.Margin = new System.Windows.Forms.Padding( 3 );
@@ -602,7 +602,7 @@
             RefreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             RefreshButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             RefreshButton.ForeColor = System.Drawing.Color.LightGray;
-            RefreshButton.HoverText = "Refresh SaveAsPdf";
+            RefreshButton.HoverText = "Refresh SaveAs";
             RefreshButton.Image = Properties.Resources.WebRefreshButton;
             RefreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             RefreshButton.Margin = new System.Windows.Forms.Padding( 3 );

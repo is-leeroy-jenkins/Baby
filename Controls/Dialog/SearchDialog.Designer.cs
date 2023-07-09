@@ -129,7 +129,7 @@ namespace BudgetBrowser
             Header.Style = MetroSet_UI.Enums.Style.Custom;
             Header.StyleManager = null;
             Header.TabIndex = 14;
-            Header.Text = "Web SaveAsPdf";
+            Header.Text = "Web SaveAs";
             Header.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Header.ThemeAuthor = "Terry D. Eppler";
             Header.ThemeName = "BudgetBrowser";
@@ -248,7 +248,7 @@ namespace BudgetBrowser
             SearchButton.ForeColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
             SearchButton.HoverBorderColor = System.Drawing.Color.FromArgb(   50  ,   93  ,   129   );
             SearchButton.HoverColor = System.Drawing.Color.FromArgb(   17  ,   53  ,   84   );
-            SearchButton.HoverText = "Begin SaveAsPdf";
+            SearchButton.HoverText = "Begin SaveAs";
             SearchButton.HoverTextColor = System.Drawing.Color.White;
             SearchButton.IsDerivedStyle = true;
             SearchButton.Location = new System.Drawing.Point( 373, 0 );
@@ -265,7 +265,7 @@ namespace BudgetBrowser
             SearchButton.Style = MetroSet_UI.Enums.Style.Custom;
             SearchButton.StyleManager = null;
             SearchButton.TabIndex = 18;
-            SearchButton.Text = "SaveAsPdf";
+            SearchButton.Text = "SaveAs";
             SearchButton.ThemeAuthor = "Terry D. Eppler";
             SearchButton.ThemeName = "BudgetBrowser";
             SearchButton.ToolTip = ToolTip;
@@ -280,7 +280,7 @@ namespace BudgetBrowser
             CancelButton.ForeColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
             CancelButton.HoverBorderColor = System.Drawing.Color.FromArgb(   50  ,   93  ,   129   );
             CancelButton.HoverColor = System.Drawing.Color.FromArgb(   17  ,   53  ,   84   );
-            CancelButton.HoverText = "Cancel SaveAsPdf";
+            CancelButton.HoverText = "Cancel SaveAs";
             CancelButton.HoverTextColor = System.Drawing.Color.White;
             CancelButton.IsDerivedStyle = true;
             CancelButton.Location = new System.Drawing.Point( 181, 0 );

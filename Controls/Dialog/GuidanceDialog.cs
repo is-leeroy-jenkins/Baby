@@ -31,7 +31,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at: terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   GuidanceDialog.cs
@@ -90,7 +90,7 @@ namespace BudgetBrowser
         /// The fields.
         /// </value>
         public IList<string> Fields { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the selected path.
         /// </summary>

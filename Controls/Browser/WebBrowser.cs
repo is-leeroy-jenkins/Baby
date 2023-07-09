@@ -351,6 +351,60 @@ namespace BudgetBrowser
         }
 
         /// <summary>
+        /// Shows the file browser dialog.
+        /// </summary>
+        private void OpenFileBrowserDialog( )
+        {
+            try
+            {
+                using var _browser = new FileBrowser( );
+                _browser.Owner = Instance;
+                _browser.Visible = false;
+                _browser.ShowDialog( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Shows the search dialog.
+        /// </summary>
+        private void OpenSearchDialog( )
+        {
+            try
+            {
+                using var _search = new SearchDialog( );
+                _search.Owner = Instance;
+                _search.Visible = false;
+                _search.ShowDialog( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Opens the guidance dialog.
+        /// </summary>
+        private void OpenGuidanceDialog( )
+        {
+            try
+            {
+                using var _search = new GuidanceDialog( );
+                _search.Owner = Instance;
+                _search.Visible = false;
+                _search.ShowDialog( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
         /// these hot keys work when the user is focused on the .NET form and its controls,
         /// AND when the user is focused on the browser (CefSharp portion)
         /// </summary>
@@ -1943,16 +1997,17 @@ namespace BudgetBrowser
                         {
                             case MenuItem.Search:
                             {
-                                var _search = new SearchDialog( );
-                                _search.Owner = this;
-                                _search.Show( );
+                                OpenSearchDialog( );
                                 break;
                             }
                             case MenuItem.FileBrowse:
                             {
-                                var _browser = new FileBrowser( );
-                                _browser.Owner = this;
-                                _browser.Show( );
+                                OpenFileBrowserDialog( );
+                                break;
+                            }
+                            case MenuItem.Guidance:
+                            {
+                                OpenGuidanceDialog( );
                                 break;
                             }
                             case MenuItem.DeveloperTools:
@@ -1962,9 +2017,7 @@ namespace BudgetBrowser
                             }
                             case MenuItem.ViewSource:
                             {
-                                var _msg = "THIS IS NOT YET IMPLEMENTED!";
-                                var _notification = new Notification( _msg );
-                                _notification.Show( );
+                                Notify( );
                                 break;
                             }
                             case MenuItem.CloseOthers:

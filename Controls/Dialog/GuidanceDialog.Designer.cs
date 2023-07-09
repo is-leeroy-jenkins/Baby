@@ -180,7 +180,7 @@
             Picture.Location = new System.Drawing.Point( 3, 3 );
             Picture.Name = "Picture";
             Picture.Padding = new System.Windows.Forms.Padding( 1 );
-            Picture.Size = new System.Drawing.Size( 24, 22 );
+            Picture.Size = new System.Drawing.Size( 34, 22 );
             Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             Picture.TabIndex = 4;
             Picture.TabStop = false;
@@ -244,7 +244,7 @@
             // ToolTip
             // 
             ToolTip.AutoPopDelay = 5000;
-            ToolTip.BackColor = System.Drawing.Color.FromArgb( 5  , 5  , 5   );
+            ToolTip.BackColor = System.Drawing.Color.FromArgb(   5  ,   5  ,   5   );
             ToolTip.BorderColor = System.Drawing.SystemColors.Highlight;
             ToolTip.ForeColor = System.Drawing.Color.White;
             ToolTip.InitialDelay = 500;
@@ -263,8 +263,8 @@
             // HeaderTable
             // 
             HeaderTable.ColumnCount = 3;
-            HeaderTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 71.0843353F ) );
-            HeaderTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 28.9156628F ) );
+            HeaderTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 76.78571F ) );
+            HeaderTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 23.2142849F ) );
             HeaderTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 434F ) );
             HeaderTable.Controls.Add( Picture, 0, 0 );
             HeaderTable.Controls.Add( HeaderLabel, 2, 0 );

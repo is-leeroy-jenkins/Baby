@@ -67,15 +67,15 @@ namespace BudgetBrowser
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
     /// If you would only like to support 64-bit machines, simply change the DLL references.
     /// </summary>
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
-    [SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" )]
-    [SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" )]
-    [SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" )]
-    [SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" )]
-    [SuppressMessage( "ReSharper", "ConvertToAutoProperty" )]
-    [SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" )]
-    [SuppressMessage( "ReSharper", "RedundantDelegateCreation" )]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
+    [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
+    [ SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoProperty" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" ) ]
+    [ SuppressMessage( "ReSharper", "RedundantDelegateCreation" ) ]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -192,7 +192,7 @@ namespace BudgetBrowser
         private int CurrentIndex
         {
             get { return TabPages.Items.IndexOf( TabPages.SelectedItem ); }
-            set { TabPages.SelectedItem = TabPages.Items[value]; }
+            set { TabPages.SelectedItem = TabPages.Items[ value ]; }
         }
 
         /// <summary>
@@ -479,12 +479,12 @@ namespace BudgetBrowser
         {
             if( title.CheckIfValid( ) )
             {
-                Title.Text = title + " - " + BrowserConfig.Branding;
+                Title.Text = title + " - " + AppSettings[ "Branding" ];
                 _currentTitle = title;
             }
             else
             {
-                Title.Text = BrowserConfig.Branding;
+                Title.Text = AppSettings[ "Branding" ];
                 _currentTitle = "New Tab";
             }
         }
@@ -552,7 +552,6 @@ namespace BudgetBrowser
         /// </summary>
         private void InitBrowser( )
         {
-            //CefSharpSettings.LegacyJavascriptBindingEnabled = true;
             var _cefSettings = new CefSettings( );
             _cefSettings.RegisterScheme( new CefCustomScheme
             {
@@ -560,15 +559,15 @@ namespace BudgetBrowser
                 SchemeHandlerFactory = new SchemeHandlerFactory( )
             } );
 
-            _cefSettings.UserAgent = BrowserConfig.UserAgent;
-            _cefSettings.AcceptLanguageList = BrowserConfig.AcceptLanguage;
+            _cefSettings.UserAgent = AppSettings[ "UserAgent" ];
+            _cefSettings.AcceptLanguageList = AppSettings[ "AcceptLanguage" ];
             _cefSettings.IgnoreCertificateErrors = true;
             _cefSettings.CachePath = GetApplicationDirectory( "Cache" );
-            if( BrowserConfig.Proxy )
+            if( bool.Parse( AppSettings[ "Proxy" ] ) )
             {
-                CefSharpSettings.Proxy = new ProxyOptions( BrowserConfig.ProxyIp,
-                    BrowserConfig.ProxyPort.ToString( ), BrowserConfig.ProxyUsername,
-                    BrowserConfig.ProxyPassword, BrowserConfig.ProxyBypassList );
+                CefSharpSettings.Proxy = new ProxyOptions( AppSettings[ "ProxyIP" ],
+                    AppSettings[ "ProxyPort" ], AppSettings[ "ProxyUsername" ],
+                    AppSettings[ "ProxyPassword" ], AppSettings[ "ProxyBypassList" ] );
             }
 
             Cef.Initialize( _cefSettings );
@@ -701,10 +700,10 @@ namespace BudgetBrowser
             var _winXpDir = @"C:\Documents and Settings\All Users\Application Data\";
             if( Directory.Exists( _winXpDir ) )
             {
-                return _winXpDir + BrowserConfig.Branding + @"\" + name + @"\";
+                return _winXpDir + AppSettings[ "Branding" ] + @"\" + name + @"\";
             }
 
-            return @"C:\ProgramData\" + BrowserConfig.Branding + @"\" + name + @"\";
+            return @"C:\ProgramData\" + AppSettings[ "Branding" ] + @"\" + name + @"\";
         }
 
         /// <summary>
@@ -1108,21 +1107,21 @@ namespace BudgetBrowser
             {
                 try
                 {
-                    var _google = AppSettings["Google"] + keyWords;
+                    var _google = AppSettings[ "Google" ] + keyWords;
                     CurrentBrowser.LoadUrl( _google );
-                    var _epa = AppSettings["EPA"] + keyWords;
+                    var _epa = AppSettings[ "EPA" ] + keyWords;
                     AddNewBrowserTab( _epa, false );
-                    var _crs = AppSettings["CRS"] + keyWords;
+                    var _crs = AppSettings[ "CRS" ] + keyWords;
                     AddNewBrowserTab( _crs, false );
-                    var _loc = AppSettings["LOC"] + keyWords;
+                    var _loc = AppSettings[ "LOC" ] + keyWords;
                     AddNewBrowserTab( _loc, false );
-                    var _gpo = AppSettings["GPO"] + keyWords;
+                    var _gpo = AppSettings[ "GPO" ] + keyWords;
                     AddNewBrowserTab( _gpo, false );
-                    var _govinfo = AppSettings["GovInfo"] + keyWords;
+                    var _govinfo = AppSettings[ "GovInfo" ] + keyWords;
                     AddNewBrowserTab( _govinfo, false );
-                    var _omb = AppSettings["OMB"] + keyWords;
+                    var _omb = AppSettings[ "OMB" ] + keyWords;
                     AddNewBrowserTab( _omb, false );
-                    var _treasury = AppSettings["Treasury"] + keyWords;
+                    var _treasury = AppSettings[ "Treasury" ] + keyWords;
                     AddNewBrowserTab( _treasury, false );
                 }
                 catch( Exception _ex )
@@ -1144,7 +1143,7 @@ namespace BudgetBrowser
                 // in the first attempt so keep it somewhere
                 if( item.SuggestedFileName != "" )
                 {
-                    DownloadNames[item.Id] = item.SuggestedFileName;
+                    DownloadNames[ item.Id ] = item.SuggestedFileName;
                 }
 
                 // Set it back if it is empty
@@ -1154,7 +1153,7 @@ namespace BudgetBrowser
                     item.SuggestedFileName = _name;
                 }
 
-                _downloadItems[item.Id] = item;
+                _downloadItems[ item.Id ] = item;
 
                 //UpdateSnipProgress();
             }
@@ -1199,7 +1198,7 @@ namespace BudgetBrowser
                 // keep tab at same index focused
                 if( TabPages.Items.Count - 1 > _index )
                 {
-                    TabPages.SelectedItem = TabPages.Items[_index];
+                    TabPages.SelectedItem = TabPages.Items[ _index ];
                 }
             }
         }
@@ -1219,6 +1218,66 @@ namespace BudgetBrowser
             {
                 var _brw = AddNewBrowserTab( BrowserConfig.Downloads );
                 _downloadStrip = (BrowserTabStripItem)_brw.Parent;
+            }
+        }
+
+        /// <summary>
+        /// Opens the chrome browser.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
+        private void OpenChromeBrowser( string args )
+        {
+            try
+            {
+                var _info = new ProcessStartInfo( );
+                _info.FileName = AppSettings[ "Chrome" ];
+                _info.UseShellExecute = true;
+                _info.Arguments = AppSettings[ "Google" ] + args;
+                Process.Start( _info );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Opens the edge browser.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
+        private void OpenEdgeBrowser( string args )
+        {
+            try
+            {
+                var _info = new ProcessStartInfo( );
+                _info.FileName = AppSettings[ "Edge" ];
+                _info.UseShellExecute = true;
+                _info.Arguments = AppSettings[ "Google" ] + args;
+                Process.Start( _info );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Opens the fire fox browser.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
+        private void OpenFireFoxBrowser( string args )
+        {
+            try
+            {
+                var _info = new ProcessStartInfo( );
+                _info.FileName = AppSettings[ "FireFox" ];
+                _info.UseShellExecute = true;
+                _info.Arguments = AppSettings[ "Google" ] + args;
+                Process.Start( _info );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
             }
         }
 
@@ -1309,7 +1368,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsFirstTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[0];
+            return TabPages.SelectedItem == TabPages.Items[ 0 ];
         }
 
         /// <summary>
@@ -1320,7 +1379,7 @@ namespace BudgetBrowser
         /// </returns>
         private bool IsLastTab( )
         {
-            return TabPages.SelectedItem == TabPages.Items[TabPages.Items.Count - 2];
+            return TabPages.SelectedItem == TabPages.Items[ TabPages.Items.Count - 2 ];
         }
 
         /// <summary>
@@ -1370,15 +1429,16 @@ namespace BudgetBrowser
             TabPages.MouseClick += OnRightClick;
             TabItem.MouseClick += OnRightClick;
             Title.MouseClick += OnRightClick;
-            ContextMenu.MouseClick += OnContextMenuItemClick;
             _statusUpdate += UpdateStatusLabel;
+            ContextMenu.MouseLeave += OnContextMenuMouseLeave;
         }
 
         /// <summary>
         /// Called when [URL changed].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="AddressChangedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="AddressChangedEventArgs"/>
+        /// instance containing the event data.</param>
         private void OnUrlChanged( object sender, AddressChangedEventArgs e )
         {
             InvokeIfNeeded( ( ) =>
@@ -1407,7 +1467,8 @@ namespace BudgetBrowser
         /// Called when [load error].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="LoadErrorEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="LoadErrorEventArgs"/>
+        /// instance containing the event data.</param>
         private void OnLoadError( object sender, LoadErrorEventArgs e )
         {
             // ("Load Error:" + e.ErrorCode + ";" + e.ErrorText);
@@ -1432,7 +1493,8 @@ namespace BudgetBrowser
         /// Called when [develop tools button clicked].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         private void OnDeveloperToolsButtonClick( object sender, EventArgs e )
         {
             OpenDeveloperTools( );
@@ -1526,7 +1588,7 @@ namespace BudgetBrowser
             ChromiumWebBrowser _browser = null;
             try
             {
-                _browser = (ChromiumWebBrowser)e.Item.Controls[0];
+                _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
             }
             catch( Exception _ex )
             {
@@ -1583,20 +1645,20 @@ namespace BudgetBrowser
                 var _index = DomainComboBox.SelectedIndex;
                 _searchEngineUrl = _index switch
                 {
-                    0 => AppSettings["Google"],
-                    1 => AppSettings["EPA"],
-                    2 => AppSettings["CRS"],
-                    3 => AppSettings["LOC"],
-                    4 => AppSettings["GPO"],
-                    5 => AppSettings["GovInfo"],
-                    6 => AppSettings["OMB"],
-                    7 => AppSettings["Treasury"],
-                    8 => AppSettings["NASA"],
-                    9 => AppSettings["NOAA"],
-                    10 => AppSettings["GitHub"],
-                    11 => AppSettings["NuGet"],
-                    12 => AppSettings["PyPI"],
-                    _ => AppSettings["Google"]
+                    0 => AppSettings[ "Google" ],
+                    1 => AppSettings[ "EPA" ],
+                    2 => AppSettings[ "CRS" ],
+                    3 => AppSettings[ "LOC" ],
+                    4 => AppSettings[ "GPO" ],
+                    5 => AppSettings[ "GovInfo" ],
+                    6 => AppSettings[ "OMB" ],
+                    7 => AppSettings[ "Treasury" ],
+                    8 => AppSettings[ "NASA" ],
+                    9 => AppSettings[ "NOAA" ],
+                    10 => AppSettings[ "GitHub" ],
+                    11 => AppSettings[ "NuGet" ],
+                    12 => AppSettings[ "PyPI" ],
+                    _ => AppSettings[ "Google" ]
                 };
             }
             catch( Exception _ex )
@@ -1790,7 +1852,7 @@ namespace BudgetBrowser
             {
                 foreach( TabPage _tab in TabPages.Items )
                 {
-                    var _browser = (ChromiumWebBrowser)_tab.Controls[0];
+                    var _browser = (ChromiumWebBrowser)_tab.Controls[ 0 ];
                     _browser.Dispose( );
                 }
             }
@@ -1938,7 +2000,17 @@ namespace BudgetBrowser
         /// </param>
         private void OnEdgeButtonClick( object sender, EventArgs e )
         {
-            Notify( );
+            KeyWordTextBox.SelectAll( );
+            var _args = KeyWordTextBox.Text;
+            if( !string.IsNullOrEmpty( _args ) )
+            {
+                OpenEdgeBrowser( _args );
+            }
+            else
+            {
+                var _url = AppSettings[ "Google" ];
+                OpenEdgeBrowser( _url );
+            }
         }
 
         /// <summary>
@@ -1950,7 +2022,17 @@ namespace BudgetBrowser
         /// </param>
         private void OnChromeButtonClick( object sender, EventArgs e )
         {
-            Notify( );
+            KeyWordTextBox.SelectAll( );
+            var _args = KeyWordTextBox.Text;
+            if( !string.IsNullOrEmpty( _args ) )
+            {
+                OpenChromeBrowser( _args );
+            }
+            else
+            {
+                var _url = AppSettings[ "Google" ];
+                OpenChromeBrowser( _url );
+            }
         }
 
         /// <summary>
@@ -1990,13 +2072,18 @@ namespace BudgetBrowser
             }
         }
 
+        /// <summary>
+        /// Called when [context menu item click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/>
+        /// instance containing the event data.</param>
         private void OnContextMenuItemClick( object sender, MouseEventArgs e )
         {
             if( sender is MetroSetToolStripMenuItem _item )
             {
                 try
                 {
-                    var _parent = _item.GetCurrentParent( );
                     var _type = _item.Tag?.ToString( );
                     var _option = (MenuItem)Enum.Parse( typeof( MenuItem ), _type );
                     switch( _option )
@@ -2019,13 +2106,13 @@ namespace BudgetBrowser
                         case MenuItem.SaveAs:
                         {
                             var _fileDialog = new SaveFileDialog( );
-                            _fileDialog.ShowDialog( this );
+                            _fileDialog.ShowDialog( Instance );
                             break;
                         }
                         case MenuItem.Print:
                         {
                             var _printDialog = new PrintDialog( );
-                            _printDialog.ShowDialog( this );
+                            _printDialog.ShowDialog( Instance );
                             break;
                         }
                         case MenuItem.Developer:
@@ -2049,6 +2136,31 @@ namespace BudgetBrowser
                 {
                     Fail( _ex );
                 }
+                finally
+                {
+                    ContextMenu.Hide( );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when [context menu mouse leave].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnContextMenuMouseLeave( object sender, EventArgs e )
+        {
+            try
+            {
+                if( sender is ContextMenu _menu )
+                {
+                    _menu.Hide( );
+                }
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
             }
         }
 

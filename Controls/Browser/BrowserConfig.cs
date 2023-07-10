@@ -52,7 +52,7 @@ namespace BudgetBrowser
         /// <summary>
         /// 
         /// </summary>
-        public static string Branding = "BudgetBrowser";
+        public static string Branding = "Budget Browser";
 
         /// <summary>
         /// 

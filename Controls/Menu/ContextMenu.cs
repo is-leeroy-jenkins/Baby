@@ -69,7 +69,7 @@ namespace BudgetBrowser
             ArrowColor = Color.FromArgb( 50, 93, 129 );
             SeparatorColor = Color.FromArgb( 65, 65, 65 );
             AutoSize = false;
-            Size = new Size( 160, 250 );
+            Size = new Size( 160, 240 );
             IsDerivedStyle = true;
             RenderMode = ToolStripRenderMode.System;
             Style = Style.Custom;

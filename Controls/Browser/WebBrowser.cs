@@ -52,6 +52,7 @@ namespace BudgetBrowser
     using MetroSet_UI.Child;
     using Syncfusion.Windows.Forms;
     using Syncfusion.Windows.Forms.Tools;
+    using System.Collections.ObjectModel;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Reflection;
@@ -1229,10 +1230,30 @@ namespace BudgetBrowser
         {
             try
             {
+                var _url = AppSettings[ "Google" ] + args;
                 var _info = new ProcessStartInfo( );
                 _info.FileName = AppSettings[ "Chrome" ];
+                _info.LoadUserProfile = true;
                 _info.UseShellExecute = true;
-                _info.Arguments = AppSettings[ "Google" ] + args;
+                _info.ArgumentList.Add( _url );
+                Process.Start( _info );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        private void OpenChromeBrowser( )
+        {
+            try
+            {
+                var _url = AppSettings[ "HomePage" ];
+                var _info = new ProcessStartInfo( );
+                _info.FileName = AppSettings[ "Chrome" ];
+                _info.LoadUserProfile = true;
+                _info.UseShellExecute = true;
+                _info.ArgumentList.Add( _url );
                 Process.Start( _info );
             }
             catch( Exception _ex )
@@ -1249,10 +1270,32 @@ namespace BudgetBrowser
         {
             try
             {
+                var _url = AppSettings[ "Google" ] + args;
                 var _info = new ProcessStartInfo( );
                 _info.FileName = AppSettings[ "Edge" ];
+                _info.LoadUserProfile = true;
                 _info.UseShellExecute = true;
-                _info.Arguments = AppSettings[ "Google" ] + args;
+                _info.WindowStyle = ProcessWindowStyle.Normal;
+                _info.ArgumentList.Add( _url );
+                Process.Start( _info );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        private void OpenEdgeBrowser( )
+        {
+            try
+            {
+                var _url = AppSettings["HomePage"];
+                var _info = new ProcessStartInfo( );
+                _info.FileName = AppSettings[ "Edge" ];
+                _info.LoadUserProfile = true;
+                _info.UseShellExecute = true;
+                _info.WindowStyle = ProcessWindowStyle.Normal;
+                _info.ArgumentList.Add( _url );
                 Process.Start( _info );
             }
             catch( Exception _ex )
@@ -1269,10 +1312,32 @@ namespace BudgetBrowser
         {
             try
             {
+                var _url = AppSettings[ "Google" ] + args;
                 var _info = new ProcessStartInfo( );
                 _info.FileName = AppSettings[ "FireFox" ];
+                _info.LoadUserProfile = true;
                 _info.UseShellExecute = true;
-                _info.Arguments = AppSettings[ "Google" ] + args;
+                _info.WindowStyle = ProcessWindowStyle.Normal;
+                _info.ArgumentList.Add( _url );
+                Process.Start( _info );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        private void OpenFireFoxBrowser( )
+        {
+            try
+            {
+                var _url = AppSettings[ "HomePage" ];
+                var _info = new ProcessStartInfo( );
+                _info.FileName = AppSettings[ "FireFox" ];
+                _info.LoadUserProfile = true;
+                _info.UseShellExecute = true;
+                _info.WindowStyle = ProcessWindowStyle.Normal;
+                _info.ArgumentList.Add( _url );
                 Process.Start( _info );
             }
             catch( Exception _ex )
@@ -1991,6 +2056,22 @@ namespace BudgetBrowser
             }
         }
 
+        private void OnFireFoxButtonClick( object sender, EventArgs e )
+        {
+            KeyWordTextBox.SelectAll( );
+            var _args = KeyWordTextBox.Text;
+            if( !string.IsNullOrEmpty( _args ) )
+            {
+                OpenFireFoxBrowser( _args );
+                KeyWordTextBox.Clear( );
+                DomainComboBox.SelectedIndex = -1;
+            }
+            else
+            {
+                OpenFireFoxBrowser( );
+            }
+        }
+
         /// <summary>
         /// Called when [close button clicked].
         /// </summary>
@@ -2005,11 +2086,12 @@ namespace BudgetBrowser
             if( !string.IsNullOrEmpty( _args ) )
             {
                 OpenEdgeBrowser( _args );
+                KeyWordTextBox.Clear( );
+                DomainComboBox.SelectedIndex = -1;
             }
             else
             {
-                var _url = AppSettings[ "Google" ];
-                OpenEdgeBrowser( _url );
+                OpenEdgeBrowser( );
             }
         }
 
@@ -2027,11 +2109,12 @@ namespace BudgetBrowser
             if( !string.IsNullOrEmpty( _args ) )
             {
                 OpenChromeBrowser( _args );
+                KeyWordTextBox.Clear( );
+                DomainComboBox.SelectedIndex = -1;
             }
             else
             {
-                var _url = AppSettings[ "Google" ];
-                OpenChromeBrowser( _url );
+                OpenChromeBrowser( );
             }
         }
 

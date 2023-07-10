@@ -300,9 +300,12 @@ namespace BudgetBrowser
                 return null;
             }
 
-            var _m = new DataSchema( );
-            _m.Info = new List<string>( );
-            _m.Name = ds.TableName;
+            var _m = new DataSchema
+            {
+                Info = new List<string>( ),
+                Name = ds.TableName
+            };
+
             foreach( DataColumn _c in ds.Columns )
             {
                 _m.Info.Add( ds.TableName );
@@ -326,9 +329,12 @@ namespace BudgetBrowser
                 return null;
             }
 
-            var _m = new DataSchema( );
-            _m.Info = new List<string>( );
-            _m.Name = ds.DataSetName;
+            var _m = new DataSchema
+            {
+                Info = new List<string>( ),
+                Name = ds.DataSetName
+            };
+
             foreach( DataTable _t in ds.Tables )
             {
                 foreach( DataColumn _c in _t.Columns )

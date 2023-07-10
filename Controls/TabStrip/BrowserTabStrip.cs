@@ -62,6 +62,8 @@ namespace BudgetBrowser
     [ DefaultEvent( "TabStripItemSelectionChanged" ) ]
     [ DefaultProperty( "Items" ) ]
     [ ToolboxItem( true ) ]
+    [ SuppressMessage( "ReSharper", "LocalVariableHidesMember" ) ]
+    [ SuppressMessage( "ReSharper", "IntroduceOptionalParameters.Global" ) ]
     public class BrowserTabStrip : BaseStyledPanel, ISupportInitialize 
 
     {
@@ -413,12 +415,8 @@ namespace BudgetBrowser
         /// <returns></returns>
         public bool ShouldSerializeFont( )
         {
-            if( Font != null )
-            {
-                return !Font.Equals( _font );
-            }
-
-            return false;
+            return ( Font != null ) 
+                && !Font.Equals( _font );
         }
 
         /// <summary>
@@ -868,25 +866,25 @@ namespace BudgetBrowser
         {
             Items.IndexOf( currentItem );
             var _font = Font;
-            var _solidBrush = new SolidBrush( _dark );
-            var _stripRect = currentItem.StripRectangle;
-            var _graphicsPath = new GraphicsPath( );
-            var _left = _stripRect.Left;
-            var _right = _stripRect.Right;
+            var _backColor = new SolidBrush( _dark );
+            var _tab = currentItem.StripRectangle;
+            var _graphics = new GraphicsPath( );
+            var _left = _tab.Left;
+            var _right = _tab.Right;
             var _num = 3f;
-            var _num2 = _stripRect.Bottom - 1f;
-            var _num3 = _stripRect.Width;
-            var _num4 = _stripRect.Height;
+            var _num2 = _tab.Bottom - 1f;
+            var _num3 = _tab.Width;
+            var _num4 = _tab.Height;
             var _num5 = _num4 / 4f;
-            _graphicsPath.AddLine( _left - _num5, _num2, _left + _num5, _num );
-            _graphicsPath.AddLine( _right - _num5, _num, _right + _num5, _num2 );
-            _graphicsPath.CloseFigure( );
+            _graphics?.AddLine( _left - _num5, _num2, _left + _num5, _num );
+            _graphics?.AddLine( _right - _num5, _num, _right + _num5, _num2 );
+            _graphics?.CloseFigure( );
             var _brush = new SolidBrush( currentItem == SelectedItem
-                ? _solidBrush.Color
+                ? _backColor.Color
                 : Color.SteelBlue );
 
-            g.FillPath( _brush, _graphicsPath );
-            g.DrawPath( SystemPens.ControlDark, _graphicsPath );
+            g.FillPath( _brush, _graphics );
+            g.DrawPath( SystemPens.ControlDark, _graphics );
             if( currentItem == SelectedItem )
             {
                 g.DrawLine( new Pen( _brush ), _left - 9f, _num4 + 2f, _left + _num3 - 1f,
@@ -894,24 +892,24 @@ namespace BudgetBrowser
             }
 
             var _location = new PointF( _left + 15f, 5f );
-            var _layoutRectangle = _stripRect;
-            _layoutRectangle.Location = _location;
-            _layoutRectangle.Width = _num3 - ( _layoutRectangle.Left - _left ) - 4f;
+            var _layout = _tab;
+            _layout.Location = _location;
+            _layout.Width = _num3 - ( _layout.Left - _left ) - 4f;
             if( currentItem == _selectedItem )
             {
-                _layoutRectangle.Width -= 15f;
+                _layout.Width -= 15f;
             }
 
-            _layoutRectangle.Height = 23f;
+            _layout.Height = 23f;
             if( currentItem == SelectedItem )
             {
                 g.DrawString( currentItem.Title, _font, new SolidBrush( ForeColor ),
-                    _layoutRectangle, _formatString );
+                    _layout, _formatString );
             }
             else
             {
                 g.DrawString( currentItem.Title, _font, new SolidBrush( ForeColor ),
-                    _layoutRectangle, _formatString );
+                    _layout, _formatString );
             }
 
             currentItem.Drawn = true;
@@ -926,23 +924,20 @@ namespace BudgetBrowser
         /// instance containing the event data.</param>
         private void OnCollectionChanged( object sender, CollectionChangeEventArgs e )
         {
-            var _fATabStripItem = (BrowserTabStripItem)e.Element;
+            var _tab = (BrowserTabStripItem)e.Element;
             if( e.Action == CollectionChangeAction.Add )
             {
-                Controls.Add( _fATabStripItem );
-                OnTabStripItemChanged( new TabItemChangedEventArgs( _fATabStripItem,
-                    ChangeType.Added ) );
+                Controls.Add( _tab );
+                OnTabStripItemChanged( new TabItemChangedEventArgs( _tab, ChangeType.Added ) );
             }
             else if( e.Action == CollectionChangeAction.Remove )
             {
-                Controls.Remove( _fATabStripItem );
-                OnTabStripItemChanged( new TabItemChangedEventArgs( _fATabStripItem,
-                    ChangeType.Removed ) );
+                Controls.Remove( _tab );
+                OnTabStripItemChanged( new TabItemChangedEventArgs( _tab, ChangeType.Removed ) );
             }
             else
             {
-                OnTabStripItemChanged( new TabItemChangedEventArgs( _fATabStripItem,
-                    ChangeType.Changed ) );
+                OnTabStripItemChanged( new TabItemChangedEventArgs( _tab, ChangeType.Changed ) );
             }
 
             UpdateLayout( );

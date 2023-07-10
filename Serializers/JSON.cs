@@ -286,12 +286,15 @@ namespace BudgetBrowser
         /// <returns></returns>
         private PropInfo CreateMyProp( Type t, string name )
         {
-            var _d = new PropInfo( );
-            _d.Filled = true;
-            _d.CanWrite = true;
-            _d.Pt = t;
-            _d.Name = name;
-            _d.IsDictionary = t.Name.Contains( "Dictionary" );
+            var _d = new PropInfo
+            {
+                Filled = true,
+                CanWrite = true,
+                Pt = t,
+                Name = name,
+                IsDictionary = t.Name.Contains( "Dictionary" )
+            };
+
             if( _d.IsDictionary )
             {
                 _d.GenericTypes = t.GetGenericArguments( );

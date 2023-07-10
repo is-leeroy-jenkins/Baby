@@ -111,12 +111,12 @@ namespace BudgetBrowser
             var _decoder = new UrlDecoder( _length, Encoding.UTF8 );
             for( var _i = 0; _i < _length; _i++ )
             {
-                var _ch = url[ _i ];
-                if( _ch == '+' )
+                var _char = url[ _i ];
+                if( _char == '+' )
                 {
-                    _ch = ' ';
+                    _char = ' ';
                 }
-                else if( ( _ch == '%' )
+                else if( ( _char == '%' )
                         && ( _i < _length - 2 ) )
                 {
                     if( ( url[ _i + 1 ] == 'u' )
@@ -134,9 +134,9 @@ namespace BudgetBrowser
                             goto Label_010B;
                         }
 
-                        _ch = (char)( _num3 << 12 | _num4 << 8 | _num5 << 4 | _num6 );
+                        _char = (char)( _num3 << 12 | _num4 << 8 | _num5 << 4 | _num6 );
                         _i += 5;
-                        _decoder.AddChar( _ch );
+                        _decoder.AddChar( _char );
                         continue;
                     }
 
@@ -153,13 +153,13 @@ namespace BudgetBrowser
                 }
 
                 Label_010B:
-                if( ( _ch & 0xff80 ) == 0 )
+                if( ( _char & 0xff80 ) == 0 )
                 {
-                    _decoder.AddByte( (byte)_ch );
+                    _decoder.AddByte( (byte)_char );
                 }
                 else
                 {
-                    _decoder.AddChar( _ch );
+                    _decoder.AddChar( _char );
                 }
             }
 
@@ -195,8 +195,11 @@ namespace BudgetBrowser
             }
 
             var _length = url.Length;
-            var _decoder = new UrlDecoder( _length * 10, Encoding.UTF8 );
-            _decoder.ForFilePaths = true;
+            var _decoder = new UrlDecoder( _length * 10, Encoding.UTF8 )
+            {
+                ForFilePaths = true
+            };
+
             for( var _i = 0; _i < _length; _i++ )
             {
                 var _ch = url[ _i ];

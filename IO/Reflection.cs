@@ -419,10 +419,13 @@ namespace BudgetBrowser.IO
                 var _g = CreateGetMethod( type, _p );
                 if( _g != null )
                 {
-                    var _gg = new Getters( );
-                    _gg.Name = _p.Name;
-                    _gg.Getter = _g;
-                    _gg.PropertyType = _p.PropertyType;
+                    var _gg = new Getters
+                    {
+                        Name = _p.Name,
+                        Getter = _g,
+                        PropertyType = _p.PropertyType
+                    };
+
                     _getters.Add( _gg );
                 }
             }
@@ -440,10 +443,13 @@ namespace BudgetBrowser.IO
                 var _g = CreateGetField( type, _f );
                 if( _g != null )
                 {
-                    var _gg = new Getters( );
-                    _gg.Name = _f.Name;
-                    _gg.Getter = _g;
-                    _gg.PropertyType = _f.FieldType;
+                    var _gg = new Getters
+                    {
+                        Name = _f.Name,
+                        Getter = _g,
+                        PropertyType = _f.FieldType
+                    };
+
                     _getters.Add( _gg );
                 }
             }

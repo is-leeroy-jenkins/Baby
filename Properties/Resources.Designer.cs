@@ -323,6 +323,16 @@ namespace BudgetBrowser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap WebFirefoxButton {
+            get {
+                object obj = ResourceManager.GetObject("WebFirefoxButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap WebGoButton {
             get {
                 object obj = ResourceManager.GetObject("WebGoButton", resourceCulture);
@@ -336,6 +346,16 @@ namespace BudgetBrowser.Properties {
         public static System.Drawing.Bitmap WebHomeButton {
             get {
                 object obj = ResourceManager.GetObject("WebHomeButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WebMenuButton {
+            get {
+                object obj = ResourceManager.GetObject("WebMenuButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

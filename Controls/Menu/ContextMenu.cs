@@ -66,10 +66,10 @@ namespace BudgetBrowser
             BackColor = Color.FromArgb( 30, 30, 30 );
             BackgroundColor = Color.FromArgb( 30, 30, 30 );
             ForeColor = Color.White;
-            ArrowColor = Color.FromArgb( 50, 93, 129 );
-            SeparatorColor = Color.FromArgb( 65, 65, 65 );
+            ArrowColor = Color.FromArgb( 0, 120, 212 );
+            SeparatorColor = Color.FromArgb( 0, 120, 212 );
             AutoSize = false;
-            Size = new Size( 160, 240 );
+            Size = new Size( 160, 360 );
             IsDerivedStyle = true;
             RenderMode = ToolStripRenderMode.System;
             Style = Style.Custom;
@@ -88,7 +88,100 @@ namespace BudgetBrowser
             PrintOption = CreatePrintOption( );
             DeveloperOption = CreateDeveloperOption( );
             SourceOption = CreateSourceOption( );
+            ChromeOption = CreateChromeOption( );
+            EdgeOption = CreateEdgeOption( );
+            FirefoxOption = CreateFirefoxOption( );
             ExitOption = CreateExitOption( );
+        }
+
+        /// <summary>
+        /// Creates the chrome option.
+        /// </summary>
+        /// <returns></returns>
+        protected MetroSetToolStripMenuItem CreateChromeOption( )
+        {
+            try
+            {
+                var _item = new MetroSetToolStripMenuItem( );
+                _item.TextAlign = ContentAlignment.BottomCenter;
+                _item.Font = new Font( "Roboto", 9 );
+                _item.Name = MenuItem.Chrome.ToString( );
+                _item.Size = new Size( 160, 30 );
+                _item.BackColor = Color.FromArgb( 30, 30, 30 );
+                _item.ForeColor = Color.White;
+                _item.Text = $"Launch {MenuItem.Chrome}";
+                _item.Tag = MenuItem.Chrome.ToString( );
+                _item.MouseHover += OnMouseEnter;
+                _item.MouseLeave += OnMouseLeave;
+                _item.MouseDown += null;
+                Items.Add( _item );
+                return _item;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return default( MetroSetToolStripMenuItem );
+            }
+        }
+
+        /// <summary>
+        /// Creates the edge option.
+        /// </summary>
+        /// <returns></returns>
+        protected MetroSetToolStripMenuItem CreateEdgeOption( )
+        {
+            try
+            {
+                var _item = new MetroSetToolStripMenuItem( );
+                _item.TextAlign = ContentAlignment.BottomCenter;
+                _item.Font = new Font( "Roboto", 9 );
+                _item.Name = MenuItem.Edge.ToString( );
+                _item.Size = new Size( 160, 30 );
+                _item.BackColor = Color.FromArgb( 30, 30, 30 );
+                _item.ForeColor = Color.White;
+                _item.Text = $"Launch MS{MenuItem.Edge}";
+                _item.Tag = MenuItem.Edge.ToString( );
+                _item.MouseHover += OnMouseEnter;
+                _item.MouseLeave += OnMouseLeave;
+                _item.MouseDown += null;
+                Items.Add( _item );
+                return _item;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return default( MetroSetToolStripMenuItem );
+            }
+        }
+
+        /// <summary>
+        /// Creates the firefox option.
+        /// </summary>
+        /// <returns></returns>
+        protected MetroSetToolStripMenuItem CreateFirefoxOption( )
+        {
+            try
+            {
+                var _item = new MetroSetToolStripMenuItem( );
+                _item.TextAlign = ContentAlignment.BottomCenter;
+                _item.Font = new Font( "Roboto", 9 );
+                _item.Name = MenuItem.Firefox.ToString( );
+                _item.Size = new Size( 160, 30 );
+                _item.BackColor = Color.FromArgb( 30, 30, 30 );
+                _item.ForeColor = Color.White;
+                _item.Text = $"Launch {MenuItem.Firefox}";
+                _item.Tag = MenuItem.Firefox.ToString( );
+                _item.MouseHover += OnMouseEnter;
+                _item.MouseLeave += OnMouseLeave;
+                _item.MouseDown += null;
+                Items.Add( _item );
+                return _item;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return default( MetroSetToolStripMenuItem );
+            }
         }
     }
 }

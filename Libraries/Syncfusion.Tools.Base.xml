@@ -23,7 +23,7 @@
         </member>
         <member name="F:Syncfusion.ToolsBaseAssembly.RootNamespace">
             <summary>
-            The root namespace of this assembly. Used internally for locating resources within the assembly.
+            The root nameSpace of this assembly. Used internally for locating resources within the assembly.
             </summary>
         </member>
         <member name="M:Syncfusion.ToolsBaseAssembly.AssemblyResolver(System.Object,System.ResolveEventArgs)">

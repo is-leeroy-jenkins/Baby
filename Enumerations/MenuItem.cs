@@ -84,8 +84,23 @@ namespace BudgetBrowser
         Source = 7,
 
         /// <summary>
+        /// The chrome
+        /// </summary>
+        Chrome = 8,
+
+        /// <summary>
+        /// The edge
+        /// </summary>
+        Edge = 9,
+
+        /// <summary>
+        /// The firefox
+        /// </summary>
+        Firefox = 10,
+
+        /// <summary>
         /// The exit
         /// </summary>
-        Exit = 8
+        Exit = 11
     }
 }

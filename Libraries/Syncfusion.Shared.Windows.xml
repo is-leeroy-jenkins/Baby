@@ -24,7 +24,7 @@
         </member>
         <member name="F:Syncfusion.SharedWindowsAssembly.RootNamespace">
             <summary>
-            The root namespace of this assembly. Used internally for locating resources within the assembly.
+            The root nameSpace of this assembly. Used internally for locating resources within the assembly.
             </summary>
         </member>
         <member name="M:Syncfusion.SharedWindowsAssembly.AssemblyResolver(System.Object,System.ResolveEventArgs)">
@@ -426,7 +426,7 @@
             </param>
             <param name="eventActionNamespace" type="string">
                 <para>
-                    The fully qualified namespace that contains the menu actions
+                    The fully qualified nameSpace that contains the menu actions
                 </para>
             </param>
             <param name="toolbarDefinitionXmlResource" type="string[]">
@@ -464,7 +464,7 @@
             </param>
             <param name="eventActionNamespace" type="string">
                 <para>
-                    Fully qualified namespace that contains the action items
+                    Fully qualified nameSpace that contains the action items
                 </para>
             </param>
             <param name="toolbarItemStructXmlResource" type="string">
@@ -502,7 +502,7 @@
             </param>
             <param name="eventActionNamespace" type="string">
                 <para>
-                    Fully qualified namespace that contains the action items
+                    Fully qualified nameSpace that contains the action items
                 </para>
             </param>
             <param name="toolbarItemCollectionXmlStream" type="System.IO.Stream">
@@ -540,7 +540,7 @@
             </param>
             <param name="eventActionNamespace" type="string">
                 <para>
-                    Fully qualified namespace containing the action items
+                    Fully qualified nameSpace containing the action items
                 </para>
             </param>
             <param name="toolbarItemStructCollection" type="Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection">
@@ -578,7 +578,7 @@
             </param>
             <param name="eventActionNamespace" type="string">
                 <para>
-                    Fully qualified namespace that contains the action items
+                    Fully qualified nameSpace that contains the action items
                 </para>
             </param>
             <param name="toolbarItemStructs" type="Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection[]">

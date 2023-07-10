@@ -63,6 +63,8 @@
             Separator9 = new ToolSeparator( );
             SpfxButton = new ToolStripButton( );
             Separator10 = new ToolSeparator( );
+            FireFoxButton = new ToolStripButton( );
+            Separator16 = new ToolSeparator( );
             RefreshButton = new ToolStripButton( );
             Separator11 = new ToolSeparator( );
             DeveloperToolsButton = new ToolStripButton( );
@@ -78,6 +80,7 @@
             PictureBox = new ImageBox( );
             Title = new Label( );
             UrlTextBoxTable = new System.Windows.Forms.TableLayoutPanel( );
+            MenuButton = new System.Windows.Forms.Button( );
             UrlTextBox = new TextBox( );
             UrlSearchPanel = new Layout( );
             ContextMenu = new ContextMenu( );
@@ -308,7 +311,7 @@
             ToolStrip.HomeButton = null;
             ToolStrip.Image = null;
             ToolStrip.ImageScalingSize = new System.Drawing.Size( 18, 18 );
-            ToolStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[ ] { Separator1, DomainComboBox, Separator2, PreviousButton, Separator3, NextButton, Separator4, KeyWordTextBox, Separator5, GoButton, Separator6, CancelButton, Separator7, ChromeButton, Separator8, EdgeButton, Separator9, SpfxButton, Separator10, RefreshButton, Separator11, DeveloperToolsButton, Separator13, DownloadButton, Separator12, HomePageButton, Separator15, Spacer, CloseButton, Separator14 } );
+            ToolStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[ ] { Separator1, DomainComboBox, Separator2, PreviousButton, Separator3, NextButton, Separator4, KeyWordTextBox, Separator5, GoButton, Separator6, CancelButton, Separator7, ChromeButton, Separator8, EdgeButton, Separator9, SpfxButton, Separator10, FireFoxButton, Separator16, RefreshButton, Separator11, DeveloperToolsButton, Separator13, DownloadButton, Separator12, HomePageButton, Separator15, Spacer, CloseButton, Separator14 } );
             ToolStrip.LauncherStyle = Syncfusion.Windows.Forms.Tools.LauncherStyle.Office2007;
             ToolStrip.Location = new System.Drawing.Point( 236, 1 );
             ToolStrip.Margin = new System.Windows.Forms.Padding( 1 );
@@ -353,10 +356,11 @@
             // 
             // DomainComboBox
             // 
+            DomainComboBox.AutoToolTip = true;
             DomainComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             DomainComboBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             DomainComboBox.ForeColor = System.Drawing.Color.FromArgb(   218  ,   218  ,   218   );
-            DomainComboBox.HoverText = "Domains";
+            DomainComboBox.HoverText = "Select Domains";
             DomainComboBox.Items.AddRange( new object[ ] { "Google", "EPA", "CRS", "LOC", "GPO", "GovInfo", "OMB", "Treasury", "NASA", "NOAA", "GitHub", "NuGet", "PyPI" } );
             DomainComboBox.MaxLength = 32767;
             DomainComboBox.MetroColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
@@ -364,7 +368,7 @@
             DomainComboBox.Size = new System.Drawing.Size( 150, 29 );
             DomainComboBox.Style = Syncfusion.Windows.Forms.Tools.ToolStripExStyle.Office2016Black;
             DomainComboBox.ToolTip = ToolTip;
-            DomainComboBox.ToolTipText = "Domains";
+            DomainComboBox.ToolTipText = "Select Domains";
             // 
             // ToolTip
             // 
@@ -400,7 +404,7 @@
             PreviousButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             PreviousButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             PreviousButton.ForeColor = System.Drawing.Color.LightGray;
-            PreviousButton.HoverText = "Previous Result";
+            PreviousButton.HoverText = "Previous Page";
             PreviousButton.Image = Properties.Resources.WebPreviousButton;
             PreviousButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             PreviousButton.Margin = new System.Windows.Forms.Padding( 3 );
@@ -426,7 +430,7 @@
             NextButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             NextButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             NextButton.ForeColor = System.Drawing.Color.LightGray;
-            NextButton.HoverText = "Next Result";
+            NextButton.HoverText = "Next Page";
             NextButton.Image = Properties.Resources.WebNextButton;
             NextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             NextButton.Margin = new System.Windows.Forms.Padding( 3 );
@@ -453,7 +457,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 254, 27 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 228, 27 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -473,7 +477,7 @@
             GoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             GoButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             GoButton.ForeColor = System.Drawing.Color.LightGray;
-            GoButton.HoverText = "Begin SaveAs";
+            GoButton.HoverText = "Begin Search";
             GoButton.Image = Properties.Resources.WebGoButton;
             GoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             GoButton.Margin = new System.Windows.Forms.Padding( 3 );
@@ -498,7 +502,7 @@
             CancelButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             CancelButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CancelButton.ForeColor = System.Drawing.Color.LightGray;
-            CancelButton.HoverText = "Stop SaveAs";
+            CancelButton.HoverText = "Cancel Search";
             CancelButton.Image = Properties.Resources.WebCancelButton;
             CancelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             CancelButton.Margin = new System.Windows.Forms.Padding( 3 );
@@ -595,6 +599,32 @@
             Separator10.Padding = new System.Windows.Forms.Padding( 1 );
             Separator10.Size = new System.Drawing.Size( 6, 27 );
             // 
+            // FireFoxButton
+            // 
+            FireFoxButton.AutoToolTip = false;
+            FireFoxButton.BackColor = System.Drawing.Color.Transparent;
+            FireFoxButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            FireFoxButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            FireFoxButton.ForeColor = System.Drawing.Color.LightGray;
+            FireFoxButton.HoverText = "Open Firefox";
+            FireFoxButton.Image = Properties.Resources.WebFirefoxButton;
+            FireFoxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            FireFoxButton.Margin = new System.Windows.Forms.Padding( 3 );
+            FireFoxButton.Name = "FireFoxButton";
+            FireFoxButton.Padding = new System.Windows.Forms.Padding( 1 );
+            FireFoxButton.Size = new System.Drawing.Size( 24, 23 );
+            FireFoxButton.Text = "toolStripButton1";
+            FireFoxButton.ToolTip = ToolTip;
+            FireFoxButton.ToolType = ToolType.FirstButton;
+            // 
+            // Separator16
+            // 
+            Separator16.ForeColor = System.Drawing.Color.Black;
+            Separator16.Margin = new System.Windows.Forms.Padding( 1 );
+            Separator16.Name = "Separator16";
+            Separator16.Padding = new System.Windows.Forms.Padding( 1 );
+            Separator16.Size = new System.Drawing.Size( 6, 27 );
+            // 
             // RefreshButton
             // 
             RefreshButton.AutoToolTip = false;
@@ -602,7 +632,7 @@
             RefreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             RefreshButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             RefreshButton.ForeColor = System.Drawing.Color.LightGray;
-            RefreshButton.HoverText = "Refresh SaveAs";
+            RefreshButton.HoverText = "Refresh Search";
             RefreshButton.Image = Properties.Resources.WebRefreshButton;
             RefreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             RefreshButton.Margin = new System.Windows.Forms.Padding( 3 );
@@ -654,7 +684,7 @@
             DownloadButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             DownloadButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             DownloadButton.ForeColor = System.Drawing.Color.LightGray;
-            DownloadButton.HoverText = "View DownloadItems";
+            DownloadButton.HoverText = "View Downloads";
             DownloadButton.Image = Properties.Resources.WebDownloadButton;
             DownloadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             DownloadButton.Margin = new System.Windows.Forms.Padding( 3 );
@@ -792,9 +822,10 @@
             // UrlTextBoxTable
             // 
             UrlTextBoxTable.ColumnCount = 3;
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 4.227517F ) );
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 95.7724838F ) );
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 68F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 3.5658915F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 96.4341049F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 45F ) );
+            UrlTextBoxTable.Controls.Add( MenuButton, 2, 0 );
             UrlTextBoxTable.Controls.Add( UrlTextBox, 1, 0 );
             UrlTextBoxTable.Dock = System.Windows.Forms.DockStyle.Fill;
             UrlTextBoxTable.Location = new System.Drawing.Point( 1, 1 );
@@ -803,6 +834,20 @@
             UrlTextBoxTable.RowStyles.Add( new System.Windows.Forms.RowStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
             UrlTextBoxTable.Size = new System.Drawing.Size( 1336, 34 );
             UrlTextBoxTable.TabIndex = 0;
+            // 
+            // MenuButton
+            // 
+            MenuButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            MenuButton.FlatAppearance.BorderSize = 0;
+            MenuButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(   64  ,   64  ,   64   );
+            MenuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(   50  ,   93  ,   129   );
+            MenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            MenuButton.Image = Properties.Resources.WebMenuButton;
+            MenuButton.Location = new System.Drawing.Point( 1293, 3 );
+            MenuButton.Name = "MenuButton";
+            MenuButton.Size = new System.Drawing.Size( 40, 28 );
+            MenuButton.TabIndex = 0;
+            MenuButton.UseVisualStyleBackColor = true;
             // 
             // UrlTextBox
             // 
@@ -820,13 +865,13 @@
             UrlTextBox.Image = null;
             UrlTextBox.IsDerivedStyle = true;
             UrlTextBox.Lines = null;
-            UrlTextBox.Location = new System.Drawing.Point( 56, 3 );
+            UrlTextBox.Location = new System.Drawing.Point( 49, 3 );
             UrlTextBox.MaxLength = 32767;
             UrlTextBox.Multiline = false;
             UrlTextBox.Name = "UrlTextBox";
             UrlTextBox.ReadOnly = false;
             UrlTextBox.SelectionLength = 0;
-            UrlTextBox.Size = new System.Drawing.Size( 1208, 28 );
+            UrlTextBox.Size = new System.Drawing.Size( 1238, 28 );
             UrlTextBox.Style = MetroSet_UI.Enums.Style.Custom;
             UrlTextBox.StyleManager = null;
             UrlTextBox.TabIndex = 0;
@@ -870,7 +915,7 @@
             ContextMenu.IsDerivedStyle = true;
             ContextMenu.Name = "ContextMenu";
             ContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            ContextMenu.Size = new System.Drawing.Size( 156, 264 );
+            ContextMenu.Size = new System.Drawing.Size( 160, 360 );
             ContextMenu.Style = MetroSet_UI.Enums.Style.Custom;
             ContextMenu.StyleManager = null;
             ContextMenu.ThemeAuthor = "Terry Eppler";
@@ -980,7 +1025,12 @@
         private Layout UrlSearchPanel;
         public Label Title;
         public Label StatusLabel;
+        public ToolStripButton FireFoxButton;
+        public ToolSeparator Separator16;
         public ContextMenu ContextMenu;
+        public Label MenuLabel;
+        private Label label1;
+        public System.Windows.Forms.Button MenuButton;
     }
 }
 

@@ -141,5 +141,15 @@ namespace BudgetBrowser
         /// The web next button
         /// </summary>
         NextButton,
+
+        /// <summary>
+        /// The edge button
+        /// </summary>
+        EdgeButton,
+
+        /// <summary>
+        /// The fire fox button
+        /// </summary>
+        FireFoxButton
     }
 }

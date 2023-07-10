@@ -63,7 +63,7 @@
                 xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
                 id="root"
                 xmlns="">
-        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:import nameSpace="http://www.w3.org/XML/1998/nameSpace"/>
         <xsd:element name="root"
                      msdata:IsDataSet="true">
             <xsd:complexType>

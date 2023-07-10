@@ -119,6 +119,30 @@ namespace BudgetBrowser
         public MetroSetToolStripMenuItem ExitOption { get; set; }
 
         /// <summary>
+        /// Gets or sets the chrome option.
+        /// </summary>
+        /// <value>
+        /// The chrome option.
+        /// </value>
+        public MetroSetToolStripMenuItem ChromeOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets the edge option.
+        /// </summary>
+        /// <value>
+        /// The edge option.
+        /// </value>
+        public MetroSetToolStripMenuItem EdgeOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets the firefox option.
+        /// </summary>
+        /// <value>
+        /// The firefox option.
+        /// </value>
+        public MetroSetToolStripMenuItem FirefoxOption { get; set; }
+
+        /// <summary>
         /// Creates the close option.
         /// </summary>
         /// <returns>

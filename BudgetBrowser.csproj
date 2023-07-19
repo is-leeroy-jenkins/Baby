@@ -30,6 +30,8 @@
     <PackageProjectUrl>https://github.com/KarmaScripter/BudgetBrowser</PackageProjectUrl>
     <PackageTags>Web Browser; Budget; Baby</PackageTags>
     <IncludeSymbols>True</IncludeSymbols>
+    <BaseOutputPath>C:\Users\terry\source\repos\BudgetBrowser\bin\BudgetBrowser</BaseOutputPath>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702;CA1416</NoWarn>

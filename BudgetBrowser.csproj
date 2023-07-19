@@ -23,6 +23,13 @@
     <RepositoryUrl>https://github.com/KarmaScripter/BudgetBrowser</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <AssemblyName>BudgetBrowser</AssemblyName>
+    <RootNamespace>BudgetBrowser</RootNamespace>
+    <SignAssembly>False</SignAssembly>
+    <Version>0.0.1</Version>
+    <PackageProjectUrl>https://github.com/KarmaScripter/BudgetBrowser</PackageProjectUrl>
+    <PackageTags>Web Browser; Budget; Baby</PackageTags>
+    <IncludeSymbols>True</IncludeSymbols>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702;CA1416</NoWarn>

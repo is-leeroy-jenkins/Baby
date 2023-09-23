@@ -92,7 +92,7 @@ namespace BudgetBrowser
 
                     if( ex.StackTrace != null )
                     {
-                        _stringBuilder.Append( "StackTrace:" );
+                        _stringBuilder.Append( "Stack Trace:" );
                         _stringBuilder.Append( Environment.NewLine );
                         _stringBuilder.Append( ex.StackTrace );
                         _stringBuilder.Append( Environment.NewLine );
@@ -100,7 +100,7 @@ namespace BudgetBrowser
 
                     if( ex.Source != null )
                     {
-                        _stringBuilder.Append( "ErrorSource:" );
+                        _stringBuilder.Append( "Error Source:" );
                         _stringBuilder.Append( Environment.NewLine );
                         _stringBuilder.Append( ex.Source );
                         _stringBuilder.Append( Environment.NewLine );
@@ -108,7 +108,7 @@ namespace BudgetBrowser
 
                     if( ex.TargetSite != null )
                     {
-                        _stringBuilder.Append( "TargetSite:" );
+                        _stringBuilder.Append( "Target Site:" );
                         _stringBuilder.Append( Environment.NewLine );
                         _stringBuilder.Append( ex.TargetSite );
                         _stringBuilder.Append( Environment.NewLine );
@@ -117,7 +117,7 @@ namespace BudgetBrowser
                     var _baseException = ex.GetBaseException( );
                     if( _baseException != null )
                     {
-                        _stringBuilder.Append( "BaseException:" );
+                        _stringBuilder.Append( "Base Exception:" );
                         _stringBuilder.Append( Environment.NewLine );
                         _stringBuilder.Append( ex.GetBaseException( ) );
                     }

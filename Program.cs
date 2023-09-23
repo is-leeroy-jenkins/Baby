@@ -42,9 +42,13 @@ namespace BudgetBrowser
 {
     using System;
     using System.Windows.Forms;
+    using System.Configuration;
     using Syncfusion.Licensing;
     using System.Diagnostics.CodeAnalysis;
 
+    /// <summary>
+    /// 
+    /// </summary>
     [ SuppressMessage( "ReSharper", "ArrangeTypeModifiers" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public static class Program
@@ -55,9 +59,8 @@ namespace BudgetBrowser
         [ STAThread ]
         private static void Main( )
         {
-            SyncfusionLicenseProvider.RegisterLicense(
-                "MjIyNzQwMEAzMjMxMmUzMTJlMzMzNWJ6Ylo1L05Bcm1yT0wyenJGMWhFM21xdUJlUERvMUdOUmE3MnBJUjJFbzQ9;MjIyNzQwMUAzMjMxMmUzMTJlMzMzNUZUcGV5Y29yQkkvS0lNVWl1RTBSTTArYmFJQ3Z0NHZMK1FYYm0zOFo1OGM9" );
-
+            var _key = ConfigurationManager.AppSettings[ "Syncfusion" ];
+            SyncfusionLicenseProvider.RegisterLicense( _key );
             Application.EnableVisualStyles( );
             Application.SetCompatibleTextRenderingDefault( false );
             Application.Run( new WebBrowser( ) );

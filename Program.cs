@@ -59,7 +59,7 @@ namespace BudgetBrowser
         [ STAThread ]
         private static void Main( )
         {
-            var _key = ConfigurationManager.AppSettings[ "Syncfusion" ];
+            var _key = ConfigurationManager.AppSettings[ "Sync" ];
             SyncfusionLicenseProvider.RegisterLicense( _key );
             Application.EnableVisualStyles( );
             Application.SetCompatibleTextRenderingDefault( false );

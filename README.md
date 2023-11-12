@@ -1,6 +1,6 @@
-﻿![BudgetBrowser](Resources/Images/logo3.png)
+﻿![Baby](Resources/Images/logo3.png)
 
-BudgetBrowser is an open source C# web browser!. Slightly faster than Google Chrome when rendering web pages due to lightweight CEF renderer. We compared every available .NET browsing engine and finally settled on the high-performance [CefSharp](https://github.com/cefsharp/CefSharp/). Released under the permissive MIT license.
+Baby is an open source C# web browser!. Slightly faster than Google Chrome when rendering web pages due to lightweight CEF renderer. We compared every available .NET browsing engine and finally settled on the high-performance [CefSharp](https://github.com/cefsharp/CefSharp/). Released under the permissive MIT license.
 
 ## Features
 
@@ -54,10 +54,10 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ## Code
 
-- BudgetBrowser uses CefSharp 106 and is built on NET 6
-- BudgetBrowser supports AnyCPU as well as x86/x64 specific builds
+- Baby uses CefSharp 106 and is built on NET 6
+- Baby supports AnyCPU as well as x86/x64 specific builds
 - `WebBrowser.cs` - main web browser UI and related functionality
-- `Handlers` - various handlers that we have registered with CefSharp that enable deeper integration between us and CefSharp
+- `Callbacks` - various handlers that we have registered with CefSharp that enable deeper integration between us and CefSharp
 - `Serializers` - fast JSON serializer/deserializer
 - `bin` - Binaries are included in the `bin` folder due to the complex CefSharp setup required. Don't empty this folder.
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages

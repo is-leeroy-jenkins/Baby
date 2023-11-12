@@ -112,22 +112,22 @@ namespace BudgetBrowser
         /// <summary>
         /// The context menu handler
         /// </summary>
-        private ContextMenuHandler _contextMenuHandler;
+        private ContextMenuCallback _contextMenuCallback;
 
         /// <summary>
         /// The life span handler
         /// </summary>
-        private LifeSpanHandler _lifeSpanHandler;
+        private LifeSpanCallback _lifeSpanCallback;
 
         /// <summary>
         /// The keyboard handler
         /// </summary>
-        private KeyboardHandler _keyboardHandler;
+        private KeyboardCallback _keyboardCallback;
 
         /// <summary>
         /// The request handler
         /// </summary>
-        private RequestHandler _requestHandler;
+        private RequestCallback _requestCallback;
 
         /// <summary>
         /// The status update
@@ -229,7 +229,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The host
         /// </summary>
-        public HostHandler Host;
+        public HostCallback Host;
 
         /// <summary>
         /// The download names
@@ -396,20 +396,20 @@ namespace BudgetBrowser
         private void SetHotkeys( )
         {
             // browser hot keys
-            KeyboardHandler.AddHotKey( this, CloseActiveTab, Keys.W, true );
-            KeyboardHandler.AddHotKey( this, CloseActiveTab, Keys.Escape, true );
-            KeyboardHandler.AddHotKey( this, AddBlankWindow, Keys.N, true );
-            KeyboardHandler.AddHotKey( this, AddBlankTab, Keys.T, true );
-            KeyboardHandler.AddHotKey( this, RefreshActiveTab, Keys.F5 );
-            KeyboardHandler.AddHotKey( this, OpenDeveloperTools, Keys.F12 );
-            KeyboardHandler.AddHotKey( this, NextTab, Keys.Tab, true );
-            KeyboardHandler.AddHotKey( this, PreviousTab, Keys.Tab, true, true );
+            KeyboardCallback.AddHotKey( this, CloseActiveTab, Keys.W, true );
+            KeyboardCallback.AddHotKey( this, CloseActiveTab, Keys.Escape, true );
+            KeyboardCallback.AddHotKey( this, AddBlankWindow, Keys.N, true );
+            KeyboardCallback.AddHotKey( this, AddBlankTab, Keys.T, true );
+            KeyboardCallback.AddHotKey( this, RefreshActiveTab, Keys.F5 );
+            KeyboardCallback.AddHotKey( this, OpenDeveloperTools, Keys.F12 );
+            KeyboardCallback.AddHotKey( this, NextTab, Keys.Tab, true );
+            KeyboardCallback.AddHotKey( this, PreviousTab, Keys.Tab, true, true );
 
             // search hot keys
-            KeyboardHandler.AddHotKey( this, OpenSearch, Keys.F, true );
-            KeyboardHandler.AddHotKey( this, CloseSearch, Keys.Escape );
-            KeyboardHandler.AddHotKey( this, StopActiveTab, Keys.Escape );
-            KeyboardHandler.AddHotKey( this, ToggleFullscreen, Keys.F11 );
+            KeyboardCallback.AddHotKey( this, OpenSearch, Keys.F, true );
+            KeyboardCallback.AddHotKey( this, CloseSearch, Keys.Escape );
+            KeyboardCallback.AddHotKey( this, StopActiveTab, Keys.Escape );
+            KeyboardCallback.AddHotKey( this, ToggleFullscreen, Keys.F11 );
         }
 
         /// <summary>
@@ -585,7 +585,7 @@ namespace BudgetBrowser
             _cefSettings.RegisterScheme( new CefCustomScheme
             {
                 SchemeName = AppSettings[ "Internal" ],
-                SchemeHandlerFactory = new SchemeHandlerFactory( )
+                SchemeHandlerFactory = new SchemaCallbackFactory( )
             } );
 
             _cefSettings.UserAgent = AppSettings[ "UserAgent" ];
@@ -601,12 +601,12 @@ namespace BudgetBrowser
 
             Cef.Initialize( _cefSettings );
             _downloadHandler = new DownloadHandler( this );
-            _lifeSpanHandler = new LifeSpanHandler( this );
-            _contextMenuHandler = new ContextMenuHandler( this );
-            _keyboardHandler = new KeyboardHandler( this );
-            _requestHandler = new RequestHandler( this );
+            _lifeSpanCallback = new LifeSpanCallback( this );
+            _contextMenuCallback = new ContextMenuCallback( this );
+            _keyboardCallback = new KeyboardCallback( this );
+            _requestCallback = new RequestCallback( this );
             InitDownloads( );
-            Host = new HostHandler( this );
+            Host = new HostCallback( this );
             AddNewBrowser( TabItem, AppSettings[ "HomePage" ] );
         }
 
@@ -1103,10 +1103,10 @@ namespace BudgetBrowser
             _browser.LoadError += OnLoadError;
             _browser.AddressChanged += OnUrlChanged;
             _browser.DownloadHandler = _downloadHandler;
-            _browser.MenuHandler = _contextMenuHandler;
-            _browser.LifeSpanHandler = _lifeSpanHandler;
-            _browser.KeyboardHandler = _keyboardHandler;
-            _browser.RequestHandler = _requestHandler;
+            _browser.MenuHandler = _contextMenuCallback;
+            _browser.LifeSpanHandler = _lifeSpanCallback;
+            _browser.KeyboardHandler = _keyboardCallback;
+            _browser.RequestHandler = _requestCallback;
             var _tab = new BrowserTab
             {
                 IsOpen = true,

@@ -53,7 +53,7 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class RequestHandler : IRequestHandler
+    public class RequestCallback : IRequestHandler
     {
         /// <summary>
         /// The browser
@@ -62,10 +62,10 @@ namespace BudgetBrowser
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="RequestHandler"/> class.
+        /// <see cref="RequestCallback"/> class.
         /// </summary>
         /// <param name="form">The form.</param>
-        public RequestHandler( Form form )
+        public RequestCallback( Form form )
         {
             _webBrowser = form;
         }
@@ -201,7 +201,7 @@ namespace BudgetBrowser
             IBrowser browser, IFrame frame, IRequest request, bool isNavigation,
             bool isDownload, string requestInitiator, ref bool disableDefaultHandling )
         {
-            var _rh = new ResourceRequestHandler( _webBrowser );
+            var _rh = new ResourceRequestCallback( _webBrowser );
             return _rh;
         }
 

@@ -54,7 +54,7 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
-    public class KeyboardHandler : IKeyboardHandler
+    public class KeyboardCallback : IKeyboardHandler
     {
         /// <summary>
         /// My form
@@ -68,10 +68,10 @@ namespace BudgetBrowser
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="KeyboardHandler"/> class.
+        /// <see cref="KeyboardCallback"/> class.
         /// </summary>
         /// <param name="form">The form.</param>
-        public KeyboardHandler( Form form )
+        public KeyboardCallback( Form form )
         {
             _webBrowser = form;
         }

@@ -58,7 +58,7 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "RedundantCheckBeforeAssignment" ) ]
-    public class SchemeHandler : IResourceHandler
+    public class SchemaCallback : IResourceHandler
     {
         /// <summary>
         /// The file name
@@ -93,10 +93,10 @@ namespace BudgetBrowser
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="SchemeHandler"/> class.
+        /// <see cref="SchemaCallback"/> class.
         /// </summary>
         /// <param name="form">The form.</param>
-        public SchemeHandler( Form form )
+        public SchemaCallback( Form form )
         {
             _webBrowser = form;
         }

@@ -49,7 +49,7 @@ namespace BudgetBrowser
     /// <seealso cref="CefSharp.ISchemeHandlerFactory" />
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    public class SchemeHandlerFactory : ISchemeHandlerFactory
+    public class SchemaCallbackFactory : ISchemeHandlerFactory
     {
         /// <summary>
         /// Creates the specified browser.
@@ -62,7 +62,7 @@ namespace BudgetBrowser
         public IResourceHandler Create( IBrowser browser, IFrame frame, string schemeName,
             IRequest request )
         {
-            return new SchemeHandler( WebBrowser.Instance );
+            return new SchemaCallback( WebBrowser.Instance );
         }
     }
 }

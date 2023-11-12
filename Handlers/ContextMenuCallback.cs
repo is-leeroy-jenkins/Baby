@@ -52,7 +52,7 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "UnusedVariable" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class ContextMenuHandler : IContextMenuHandler
+    public class ContextMenuCallback : IContextMenuHandler
     {
         /// <summary>
         /// The last sel text
@@ -116,12 +116,12 @@ namespace BudgetBrowser
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="ContextMenuHandler"/> class.
+        /// <see cref="ContextMenuCallback"/> class.
         /// </summary>
         /// <param name="form">
         /// The form.
         /// </param>
-        public ContextMenuHandler( WebBrowser form )
+        public ContextMenuCallback( WebBrowser form )
         {
             _webBrowser = form;
         }

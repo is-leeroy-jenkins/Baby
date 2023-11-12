@@ -51,7 +51,7 @@ namespace BudgetBrowser
     /// <seealso cref="CefSharp.IResourceRequestHandler" />
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class ResourceRequestHandler : IResourceRequestHandler
+    public class ResourceRequestCallback : IResourceRequestHandler
     {
         /// <summary>
         /// The browser
@@ -60,11 +60,11 @@ namespace BudgetBrowser
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="ResourceRequestHandler"/>
+        /// <see cref="ResourceRequestCallback"/>
         /// class.
         /// </summary>
         /// <param name="form">The form.</param>
-        public ResourceRequestHandler( Form form )
+        public ResourceRequestCallback( Form form )
         {
             _webBrowser = form as WebBrowser;
         }

@@ -50,7 +50,7 @@ namespace BudgetBrowser
     /// <seealso cref="CefSharp.ILifeSpanHandler" />
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    public class LifeSpanHandler : ILifeSpanHandler
+    public class LifeSpanCallback : ILifeSpanHandler
     {
         /// <summary>
         /// The browser
@@ -59,10 +59,10 @@ namespace BudgetBrowser
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="LifeSpanHandler"/> class.
+        /// <see cref="LifeSpanCallback"/> class.
         /// </summary>
         /// <param name="form">The form.</param>
-        public LifeSpanHandler( Form form )
+        public LifeSpanCallback( Form form )
         {
             _webBrowser = form as WebBrowser;
         }

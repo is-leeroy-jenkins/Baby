@@ -51,7 +51,7 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "InconsistentlySynchronizedField" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class HostHandler
+    public class HostCallback
     {
         /// <summary>
         /// The browser
@@ -60,10 +60,10 @@ namespace BudgetBrowser
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="HostHandler"/> class.
+        /// <see cref="HostCallback"/> class.
         /// </summary>
         /// <param name="webBrowser">The webBrowser.</param>
-        public HostHandler( Form webBrowser )
+        public HostCallback( Form webBrowser )
         {
             _webBrowser = webBrowser as WebBrowser;
         }

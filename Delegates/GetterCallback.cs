@@ -47,5 +47,5 @@ namespace Baby
     /// </summary>
     /// <param name="obj">The object.</param>
     /// <returns></returns>
-    public delegate object BabyGetter( object obj );
+    public delegate object GetterCallback( object obj );
 }

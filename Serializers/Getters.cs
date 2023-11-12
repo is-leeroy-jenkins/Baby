@@ -53,7 +53,7 @@ namespace Baby
         /// <summary>
         /// The getter
         /// </summary>
-        public BabyGetter Getter;
+        public GetterCallback GetterCallback;
 
         /// <summary>
         /// The name

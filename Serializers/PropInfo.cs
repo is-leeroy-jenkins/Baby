@@ -177,6 +177,6 @@ namespace Baby
         /// <summary>
         /// The setter
         /// </summary>
-        public BabySetter Setter;
+        public SetterCallback SetterCallback;
     }
 }

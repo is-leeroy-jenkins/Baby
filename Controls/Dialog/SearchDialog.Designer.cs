@@ -106,7 +106,7 @@ namespace Baby
             // Picture
             // 
             Picture.BackColor = System.Drawing.Color.Transparent;
-            Picture.Image = Properties.Resources.Budget_Browser;
+            Picture.Image = Properties.Resources.BabyBrowser;
             Picture.Location = new System.Drawing.Point( 3, 3 );
             Picture.Name = "Picture";
             Picture.Padding = new Padding( 1 );

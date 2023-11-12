@@ -121,32 +121,32 @@ namespace Baby.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon Baby {
+            get {
+                object obj = ResourceManager.GetObject("Baby", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap BabyBrowser {
+            get {
+                object obj = ResourceManager.GetObject("BabyBrowser", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap blankpage {
             get {
                 object obj = ResourceManager.GetObject("blankpage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Budget_Browser {
-            get {
-                object obj = ResourceManager.GetObject("Budget Browser", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon budgetbrowser {
-            get {
-                object obj = ResourceManager.GetObject("budgetbrowser", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
         

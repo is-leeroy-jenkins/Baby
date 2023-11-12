@@ -259,7 +259,7 @@ namespace Baby
                 {
                     var _d = CreateMyProp( _p.PropertyType, _p.Name );
                     _d.CanWrite = _p.CanWrite;
-                    _d.Setter = CreateSetMethod( type, _p );
+                    _d.SetterCallback = CreateSetMethod( type, _p );
                     _d.GetterCallback = CreateGetMethod( type, _p );
                     _sd.Add( _p.Name, _d );
                 }
@@ -268,7 +268,7 @@ namespace Baby
                 foreach( var _f in _fi )
                 {
                     var _d = CreateMyProp( _f.FieldType, _f.Name );
-                    _d.Setter = CreateSetField( type, _f );
+                    _d.SetterCallback = CreateSetField( type, _f );
                     _d.GetterCallback = CreateGetField( type, _f );
                     _sd.Add( _f.Name, _d );
                 }
@@ -535,7 +535,7 @@ namespace Baby
 
                         if( _pi.CanWrite )
                         {
-                            _o = _pi.Setter( _o, _oset );
+                            _o = _pi.SetterCallback( _o, _oset );
                         }
                     }
                 }
@@ -560,7 +560,7 @@ namespace Baby
                 var _t = Type.GetType( (string)_kv.Value );
                 if( _t == typeof( Guid ) )
                 {
-                    _p.Setter( obj, CreateGuid( (string)_o ) );
+                    _p.SetterCallback( obj, CreateGuid( (string)_o ) );
                 }
             }
         }

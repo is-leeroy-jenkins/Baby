@@ -193,7 +193,7 @@ namespace Baby.IO
         /// <param name="type">The type.</param>
         /// <param name="fieldInfo">The field information.</param>
         /// <returns></returns>
-        public static BabySetter CreateSetField( Type type, FieldInfo fieldInfo )
+        public static SetterCallback CreateSetField( Type type, FieldInfo fieldInfo )
         {
             var _arguments = new Type[ 2 ];
             _arguments[ 0 ] = _arguments[ 1 ] = typeof( object );
@@ -235,7 +235,7 @@ namespace Baby.IO
                 _il.Emit( OpCodes.Ret );
             }
 
-            return (BabySetter)_dynamicSet.CreateDelegate( typeof( BabySetter ) );
+            return (SetterCallback)_dynamicSet.CreateDelegate( typeof( SetterCallback ) );
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace Baby.IO
         /// <param name="type">The type.</param>
         /// <param name="propertyInfo">The property information.</param>
         /// <returns></returns>
-        public static BabySetter CreateSetMethod( Type type, PropertyInfo propertyInfo )
+        public static SetterCallback CreateSetMethod( Type type, PropertyInfo propertyInfo )
         {
             var _setMethod = propertyInfo.GetSetMethod( );
             if( _setMethod == null )
@@ -296,7 +296,7 @@ namespace Baby.IO
             }
 
             _il.Emit( OpCodes.Ret );
-            return (BabySetter)_setter.CreateDelegate( typeof( BabySetter ) );
+            return (SetterCallback)_setter.CreateDelegate( typeof( SetterCallback ) );
         }
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace Baby.IO
         /// <param name="type">The type.</param>
         /// <param name="fieldInfo">The field information.</param>
         /// <returns></returns>
-        public static BabyGetter CreateGetField( Type type, FieldInfo fieldInfo )
+        public static GetterCallback CreateGetField( Type type, FieldInfo fieldInfo )
         {
             var _dynamicGet = new DynamicMethod( "_", typeof( object ), new[ ]
             {
@@ -337,7 +337,7 @@ namespace Baby.IO
             }
 
             _il.Emit( OpCodes.Ret );
-            return (BabyGetter)_dynamicGet.CreateDelegate( typeof( BabyGetter ) );
+            return (GetterCallback)_dynamicGet.CreateDelegate( typeof( GetterCallback ) );
         }
 
         /// <summary>
@@ -346,7 +346,7 @@ namespace Baby.IO
         /// <param name="type">The type.</param>
         /// <param name="propertyInfo">The property information.</param>
         /// <returns></returns>
-        public static BabyGetter CreateGetMethod( Type type, PropertyInfo propertyInfo )
+        public static GetterCallback CreateGetMethod( Type type, PropertyInfo propertyInfo )
         {
             var _getMethod = propertyInfo.GetGetMethod( );
             if( _getMethod == null )
@@ -383,7 +383,7 @@ namespace Baby.IO
             }
 
             _il.Emit( OpCodes.Ret );
-            return (BabyGetter)_getter.CreateDelegate( typeof( BabyGetter ) );
+            return (GetterCallback)_getter.CreateDelegate( typeof( GetterCallback ) );
         }
 
         /// <summary>
@@ -422,7 +422,7 @@ namespace Baby.IO
                     var _gg = new Getters
                     {
                         Name = _p.Name,
-                        Getter = _g,
+                        GetterCallback = _g,
                         PropertyType = _p.PropertyType
                     };
 
@@ -446,7 +446,7 @@ namespace Baby.IO
                     var _gg = new Getters
                     {
                         Name = _f.Name,
-                        Getter = _g,
+                        GetterCallback = _g,
                         PropertyType = _f.FieldType
                     };
 

@@ -41,7 +41,7 @@
             // NotifyIcon
             // 
             NotifyIcon.BackColor = System.Drawing.Color.Transparent;
-            NotifyIcon.Image = Properties.Resources.Budget_Browser;
+            NotifyIcon.Image = Properties.Resources.BabyBrowser;
             NotifyIcon.Location = new System.Drawing.Point( 4, 4 );
             NotifyIcon.Name = "NotifyIcon";
             NotifyIcon.Size = new System.Drawing.Size( 24, 37 );

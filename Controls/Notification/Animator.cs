@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.ComponentModel;
@@ -99,7 +99,7 @@ namespace BudgetBrowser
 
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.Animator" /> class.
+        /// Initializes a new instance of the <see cref="T:Baby.Animator" /> class.
         /// </summary>
         /// <param name="form">The form.</param>
         /// <param name="method">The method.</param>
@@ -113,7 +113,7 @@ namespace BudgetBrowser
 
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.Animator" /> class.
+        /// Initializes a new instance of the <see cref="T:Baby.Animator" /> class.
         /// </summary>
         /// <param name="form">The form.</param>
         /// <param name="method">The method.</param>

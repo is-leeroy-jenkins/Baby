@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -69,7 +69,7 @@ namespace BudgetBrowser
 
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.TabStripItemChangedEventArgs" /> class.
+        /// Initializes a new instance of the <see cref="T:Baby.TabStripItemChangedEventArgs" /> class.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <param name="type">The type.</param>

@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.Collections.Generic;
@@ -166,7 +166,7 @@ namespace BudgetBrowser
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:BudgetBrowser.GuidanceDialog" /> class.
+        /// <see cref="T:Baby.GuidanceDialog" /> class.
         /// </summary>
         /// <param name="bindingSource">The binding source.
         /// </param>

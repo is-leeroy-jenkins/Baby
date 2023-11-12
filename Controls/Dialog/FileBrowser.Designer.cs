@@ -1,5 +1,5 @@
 ﻿
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.ComponentModel;

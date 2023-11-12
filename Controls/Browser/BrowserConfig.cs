@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using CefSharp;
@@ -74,7 +74,7 @@ namespace BudgetBrowser
         /// 
         /// </summary>
         public static string Homepage = 
-            "file:///C:/Users/terry/source/repos/BudgetBrowser/WebPages/index.html";
+            "file:///C:/Users/terry/source/repos/Baby/WebPages/index.html";
 
         /// <summary>
         /// 

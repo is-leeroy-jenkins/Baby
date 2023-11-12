@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using IO;
     using System;
@@ -518,7 +518,7 @@ namespace BudgetBrowser
                     _output.Append( ',' );
                 }
 
-                var _o = _p.Getter( obj );
+                var _o = _p.GetterCallback( obj );
                 if( ( ( _o == null ) || _o is DBNull )
                    && ( _params.SerializeNullValues == false ) )
                 {

@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -96,7 +96,7 @@ namespace BudgetBrowser
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:BudgetBrowser.Notification" /> class.
+        /// <see cref="T:Baby.Notification" /> class.
         /// </summary>
         public Notification( )
         {

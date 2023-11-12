@@ -1,8 +1,8 @@
-# How to distribute BudgetBrowser with your own branding
+# How to distribute Baby with your own branding
 
 #### Step 1: Clone the source
 
-Create a Github clone of BudgetBrowser using [our tutorial](Compilation.md).
+Create a Github clone of Baby using [our tutorial](Compilation.md).
 
 #### Step 2: Open BrowserConfig.cs
 

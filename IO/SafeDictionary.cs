@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser.IO
+namespace Baby.IO
 {
     using System;
     using System.Collections.Generic;

@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.Drawing;
@@ -60,7 +60,7 @@ namespace BudgetBrowser
         
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.ImageBox" /> class.
+        /// Initializes a new instance of the <see cref="T:Baby.ImageBox" /> class.
         /// </summary>
         public ImageBox( )
         {

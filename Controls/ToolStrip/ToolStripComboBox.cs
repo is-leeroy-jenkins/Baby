@@ -38,14 +38,14 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
 
     /// <inheritdoc />
     /// <summary>
     /// </summary>
-    /// <seealso cref="T:BudgetBrowser.ToolStripDropDown" />
+    /// <seealso cref="T:Baby.ToolStripDropDown" />
     public class ToolStripComboBox : ToolStripDropDown
     {
         /// <summary>

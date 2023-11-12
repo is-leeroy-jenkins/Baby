@@ -1,4 +1,4 @@
-﻿namespace BudgetBrowser
+﻿namespace Baby
 {
     public partial class GuidanceDialog
     {
@@ -80,7 +80,7 @@
             ListBox.StyleManager = null;
             ListBox.TabIndex = 0;
             ListBox.ThemeAuthor = "Terry D. Eppler";
-            ListBox.ThemeName = "BudgetBrowser";
+            ListBox.ThemeName = "Baby";
             ListBox.ToolTip = null;
             // 
             // ClearButton
@@ -110,7 +110,7 @@
             ClearButton.TabIndex = 1;
             ClearButton.Text = "Clear";
             ClearButton.ThemeAuthor = "Terry D. Eppler";
-            ClearButton.ThemeName = "BudgetBrowser";
+            ClearButton.ThemeName = "Baby";
             ClearButton.ToolTip = null;
             // 
             // SelectButton
@@ -140,7 +140,7 @@
             SelectButton.TabIndex = 2;
             SelectButton.Text = "Select";
             SelectButton.ThemeAuthor = "Terry D. Eppler";
-            SelectButton.ThemeName = "BudgetBrowser";
+            SelectButton.ThemeName = "Baby";
             SelectButton.ToolTip = null;
             // 
             // CloseButton
@@ -170,7 +170,7 @@
             CloseButton.TabIndex = 3;
             CloseButton.Text = "Close";
             CloseButton.ThemeAuthor = "Terry D. Eppler";
-            CloseButton.ThemeName = "BudgetBrowser";
+            CloseButton.ThemeName = "Baby";
             CloseButton.ToolTip = null;
             // 
             // Picture
@@ -204,7 +204,7 @@
             HeaderLabel.Text = "Guidance";
             HeaderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             HeaderLabel.ThemeAuthor = "Terry D. Eppler";
-            HeaderLabel.ThemeName = "BudgetBrowser";
+            HeaderLabel.ThemeName = "Baby";
             HeaderLabel.ToolTip = null;
             // 
             // BrowseButton
@@ -234,7 +234,7 @@
             BrowseButton.TabIndex = 6;
             BrowseButton.Text = "FromBrowser";
             BrowseButton.ThemeAuthor = "Terry D. Eppler";
-            BrowseButton.ThemeName = "BudgetBrowser";
+            BrowseButton.ThemeName = "Baby";
             BrowseButton.ToolTip = null;
             // 
             // OpenFileDialog
@@ -255,7 +255,7 @@
             ToolTip.Style = MetroSet_UI.Enums.Style.Custom;
             ToolTip.StyleManager = null;
             ToolTip.ThemeAuthor = "Terry D. Eppler";
-            ToolTip.ThemeName = "BudgetBrowser";
+            ToolTip.ThemeName = "Baby";
             ToolTip.TipIcon = System.Windows.Forms.ToolTipIcon.Info;
             ToolTip.TipText = null;
             ToolTip.TipTitle = null;

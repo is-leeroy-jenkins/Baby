@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -68,7 +68,7 @@ namespace BudgetBrowser
 
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.TabStripItemClosingEventArgs" /> class.
+        /// Initializes a new instance of the <see cref="T:Baby.TabStripItemClosingEventArgs" /> class.
         /// </summary>
         /// <param name="item">The item.</param>
         public TabClosingEventArgs( BrowserTabStripItem item )

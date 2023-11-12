@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System.Drawing;
     using System.Windows.Forms;
@@ -55,7 +55,7 @@ namespace BudgetBrowser
     {
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.ToolSeparator" /> class.
+        /// Initializes a new instance of the <see cref="T:Baby.ToolSeparator" /> class.
         /// </summary>
         public ToolSeparator( )
         {

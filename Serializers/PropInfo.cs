@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -77,7 +77,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The getter
         /// </summary>
-        public BabyGetter Getter;
+        public GetterCallback GetterCallback;
 
         /// <summary>
         /// The is array

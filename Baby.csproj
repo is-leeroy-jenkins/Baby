@@ -11,26 +11,26 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Properties\Images\budgetbrowser.ico</ApplicationIcon>
+    <ApplicationIcon>Properties\Images\Baby.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>BudgetBrowser.Program</StartupObject>
+    <StartupObject>Baby.Program</StartupObject>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Nullable>disable</Nullable>
     <PlatformTarget>x64</PlatformTarget>
     <PackageIcon>BudgetExecution.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/KarmaScripter/BudgetBrowser</RepositoryUrl>
+    <RepositoryUrl>https://github.com/KarmaScripter/Baby</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
     <AssemblyName>Baby</AssemblyName>
     <RootNamespace>Baby</RootNamespace>
     <SignAssembly>False</SignAssembly>
     <Version>0.0.1</Version>
-    <PackageProjectUrl>https://github.com/KarmaScripter/BudgetBrowser</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/KarmaScripter/Baby</PackageProjectUrl>
     <PackageTags>Web Browser; Budget; Baby</PackageTags>
     <IncludeSymbols>True</IncludeSymbols>
-    <BaseOutputPath>C:\Users\terry\source\repos\BudgetBrowser\bin\BudgetBrowser</BaseOutputPath>
+    <BaseOutputPath>C:\Users\terry\source\repos\Baby\bin\Baby</BaseOutputPath>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -46,7 +46,7 @@
     <NoWarn>1701;1702;CA1416</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Properties\Images\budgetbrowser.ico" />
+    <Content Include="Properties\Images\Baby.ico" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Controls\TabStrip\BaseStyledPanel.cs">

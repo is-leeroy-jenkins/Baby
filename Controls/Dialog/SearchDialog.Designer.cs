@@ -1,5 +1,5 @@
 ﻿
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.ComponentModel;
@@ -66,7 +66,7 @@ namespace BudgetBrowser
             ToolTip.Style = MetroSet_UI.Enums.Style.Custom;
             ToolTip.StyleManager = null;
             ToolTip.ThemeAuthor = "Terry D. Eppler";
-            ToolTip.ThemeName = "BudgetBrowser";
+            ToolTip.ThemeName = "Baby";
             ToolTip.TipIcon = ToolTipIcon.Info;
             ToolTip.TipText = null;
             ToolTip.TipTitle = null;
@@ -100,7 +100,7 @@ namespace BudgetBrowser
             CloseButton.TabIndex = 10;
             CloseButton.Text = "Close";
             CloseButton.ThemeAuthor = "Terry D. Eppler";
-            CloseButton.ThemeName = "BudgetBrowser";
+            CloseButton.ThemeName = "Baby";
             CloseButton.ToolTip = ToolTip;
             // 
             // Picture
@@ -132,7 +132,7 @@ namespace BudgetBrowser
             Header.Text = "Web SaveAs";
             Header.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Header.ThemeAuthor = "Terry D. Eppler";
-            Header.ThemeName = "BudgetBrowser";
+            Header.ThemeName = "Baby";
             Header.ToolTip = null;
             // 
             // BackPanel
@@ -156,7 +156,7 @@ namespace BudgetBrowser
             BackPanel.StyleManager = null;
             BackPanel.TabIndex = 15;
             BackPanel.ThemeAuthor = "Terry D. Eppler";
-            BackPanel.ThemeName = "BudgetBrowser";
+            BackPanel.ThemeName = "Baby";
             BackPanel.ToolTip = null;
             // 
             // KeyWordTextBox
@@ -186,7 +186,7 @@ namespace BudgetBrowser
             KeyWordTextBox.TabIndex = 1;
             KeyWordTextBox.TextAlign = HorizontalAlignment.Center;
             KeyWordTextBox.ThemeAuthor = "Terry D. Eppler";
-            KeyWordTextBox.ThemeName = "BudgetBrowser";
+            KeyWordTextBox.ThemeName = "Baby";
             KeyWordTextBox.ToolTip = null;
             KeyWordTextBox.UseSystemPasswordChar = false;
             KeyWordTextBox.WatermarkText = "";
@@ -235,7 +235,7 @@ namespace BudgetBrowser
             ClearButton.TabIndex = 17;
             ClearButton.Text = "Clear";
             ClearButton.ThemeAuthor = "Terry D. Eppler";
-            ClearButton.ThemeName = "BudgetBrowser";
+            ClearButton.ThemeName = "Baby";
             ClearButton.ToolTip = ToolTip;
             // 
             // SearchButton
@@ -267,7 +267,7 @@ namespace BudgetBrowser
             SearchButton.TabIndex = 18;
             SearchButton.Text = "SaveAs";
             SearchButton.ThemeAuthor = "Terry D. Eppler";
-            SearchButton.ThemeName = "BudgetBrowser";
+            SearchButton.ThemeName = "Baby";
             SearchButton.ToolTip = ToolTip;
             // 
             // CancelButton
@@ -299,7 +299,7 @@ namespace BudgetBrowser
             CancelButton.TabIndex = 19;
             CancelButton.Text = "Cancel";
             CancelButton.ThemeAuthor = "Terry D. Eppler";
-            CancelButton.ThemeName = "BudgetBrowser";
+            CancelButton.ThemeName = "Baby";
             CancelButton.ToolTip = ToolTip;
             // 
             // ButtonTable

@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.Collections.Generic;
@@ -162,7 +162,7 @@ namespace BudgetBrowser
 
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.FileBrowser" /> class.
+        /// Initializes a new instance of the <see cref="T:Baby.FileBrowser" /> class.
         /// </summary>
         /// <param name="extension">The extension.</param>
         public FileBrowser( EXT extension )

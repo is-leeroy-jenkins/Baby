@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -50,7 +50,7 @@ namespace BudgetBrowser
     /// <inheritdoc />
     /// <summary>
     /// </summary>
-    /// <seealso cref="T:BudgetBrowser.MenuBase" />
+    /// <seealso cref="T:Baby.MenuBase" />
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "ArrangeDefaultValueWhenTypeNotEvident" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
@@ -78,7 +78,7 @@ namespace BudgetBrowser
             SelectedItemBackColor = Color.FromArgb( 50, 93, 129 );
             SelectedItemColor = Color.White;
             ThemeAuthor = "Terry Eppler";
-            ThemeName = "BudgetBrowser";
+            ThemeName = "Baby";
 
             // Menu Items
             CloseOption = CreateCloseOption( );

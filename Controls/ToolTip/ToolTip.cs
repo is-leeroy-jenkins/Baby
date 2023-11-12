@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using MetroSet_UI.Components;
     using MetroSet_UI.Enums;
@@ -96,7 +96,7 @@ namespace BudgetBrowser
         {
             Style = Style.Custom;
             ThemeAuthor = "Terry D. Eppler";
-            ThemeName = "BudgetBrowser";
+            ThemeName = "Baby";
             BackColor = Color.FromArgb( 5, 5, 5 );
             BorderColor = SystemColors.Highlight;
             ForeColor = Color.White;
@@ -126,7 +126,7 @@ namespace BudgetBrowser
 
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.ToolTip" /> class.
+        /// Initializes a new instance of the <see cref="T:Baby.ToolTip" /> class.
         /// </summary>
         /// <param name="component">The component.</param>
         /// <param name="text">The text.</param>

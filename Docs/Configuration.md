@@ -1,4 +1,4 @@
-# How to customize BudgetBrowser
+# How to customize Baby
 
 Options:
 ### Branding

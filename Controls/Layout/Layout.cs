@@ -1,5 +1,5 @@
 ﻿
-namespace BudgetBrowser
+namespace Baby
 {
     using MetroSet_UI.Controls;
     using MetroSet_UI.Enums;
@@ -57,7 +57,7 @@ namespace BudgetBrowser
             // Basic Properties
             Style = Style.Custom;
             ThemeAuthor = "Terry D. Eppler";
-            ThemeName = "BudgetBrowser";
+            ThemeName = "Baby";
             Size = new Size( 700, 428 );
             Location = new Point( 1, 1 );
             Anchor = AnchorStyles.Top | AnchorStyles.Left;

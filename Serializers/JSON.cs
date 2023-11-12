@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using IO;
     using System;
@@ -260,7 +260,7 @@ namespace BudgetBrowser
                     var _d = CreateMyProp( _p.PropertyType, _p.Name );
                     _d.CanWrite = _p.CanWrite;
                     _d.Setter = CreateSetMethod( type, _p );
-                    _d.Getter = CreateGetMethod( type, _p );
+                    _d.GetterCallback = CreateGetMethod( type, _p );
                     _sd.Add( _p.Name, _d );
                 }
 
@@ -269,7 +269,7 @@ namespace BudgetBrowser
                 {
                     var _d = CreateMyProp( _f.FieldType, _f.Name );
                     _d.Setter = CreateSetField( type, _f );
-                    _d.Getter = CreateGetField( type, _f );
+                    _d.GetterCallback = CreateGetField( type, _f );
                     _sd.Add( _f.Name, _d );
                 }
 
@@ -556,7 +556,7 @@ namespace BudgetBrowser
             foreach( var _kv in dic )
             {
                 var _p = props[ _kv.Key ];
-                var _o = _p.Getter( obj );
+                var _o = _p.GetterCallback( obj );
                 var _t = Type.GetType( (string)_kv.Value );
                 if( _t == typeof( Guid ) )
                 {

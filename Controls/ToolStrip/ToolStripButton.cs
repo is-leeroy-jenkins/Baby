@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -50,7 +50,7 @@ namespace BudgetBrowser
     /// <inheritdoc />
     /// <summary>
     /// </summary>
-    /// <seealso cref="T:BudgetBrowser.ToolButtonBase" />
+    /// <seealso cref="T:Baby.ToolButtonBase" />
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     public class ToolStripButton : ToolButtonBase
     {
@@ -80,7 +80,7 @@ namespace BudgetBrowser
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:BudgetBrowser.ToolStripButton" /> class.
+        /// <see cref="T:Baby.ToolStripButton" /> class.
         /// </summary>
         /// <param name="toolType">
         /// Type of the tool.

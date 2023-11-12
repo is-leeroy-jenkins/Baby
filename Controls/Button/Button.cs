@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using MetroSet_UI.Controls;
     using MetroSet_UI.Enums;
@@ -82,7 +82,7 @@ namespace BudgetBrowser
             // Basic SeriesConfiguration
             Style = Style.Custom;
             ThemeAuthor = "Terry D. Eppler";
-            ThemeName = "BudgetBrowser";
+            ThemeName = "Baby";
             Font = new Font( "Roboto", 8 );
             ForeColor = Color.FromArgb( 0, 120, 212 );
             Margin = new Padding( 3 );

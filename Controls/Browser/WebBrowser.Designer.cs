@@ -1,4 +1,4 @@
-﻿namespace BudgetBrowser
+﻿namespace Baby
 {
     public partial class WebBrowser
     {
@@ -143,7 +143,7 @@
             TabItem.StyleManager = null;
             TabItem.TabIndex = 0;
             TabItem.ThemeAuthor = "Terry D. Eppler";
-            TabItem.ThemeName = "BudgetBrowser";
+            TabItem.ThemeName = "Baby";
             TabItem.Title = "Loading...";
             TabItem.ToolTip = null;
             // 
@@ -171,7 +171,7 @@
             AddItemTab.StyleManager = null;
             AddItemTab.TabIndex = 1;
             AddItemTab.ThemeAuthor = "Terry D. Eppler";
-            AddItemTab.ThemeName = "BudgetBrowser";
+            AddItemTab.ThemeName = "Baby";
             AddItemTab.Title = "+";
             AddItemTab.ToolTip = null;
             // 
@@ -201,7 +201,7 @@
             StatusLabel.TabIndex = 0;
             StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             StatusLabel.ThemeAuthor = "Terry D. Eppler";
-            StatusLabel.ThemeName = "BudgetBrowser";
+            StatusLabel.ThemeName = "Baby";
             StatusLabel.ToolTip = null;
             // 
             // SearchPanel
@@ -384,7 +384,7 @@
             ToolTip.Style = MetroSet_UI.Enums.Style.Custom;
             ToolTip.StyleManager = null;
             ToolTip.ThemeAuthor = "Terry D. Eppler";
-            ToolTip.ThemeName = "BudgetBrowser";
+            ToolTip.ThemeName = "Baby";
             ToolTip.TipIcon = System.Windows.Forms.ToolTipIcon.Info;
             ToolTip.TipText = null;
             ToolTip.TipTitle = null;
@@ -816,7 +816,7 @@
             Title.Text = "Title";
             Title.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             Title.ThemeAuthor = "Terry D. Eppler";
-            Title.ThemeName = "BudgetBrowser";
+            Title.ThemeName = "Baby";
             Title.ToolTip = ToolTip;
             // 
             // UrlTextBoxTable
@@ -877,7 +877,7 @@
             UrlTextBox.TabIndex = 0;
             UrlTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             UrlTextBox.ThemeAuthor = "Terry D. Eppler";
-            UrlTextBox.ThemeName = "BudgetBrowser";
+            UrlTextBox.ThemeName = "Baby";
             UrlTextBox.ToolTip = null;
             UrlTextBox.UseSystemPasswordChar = false;
             UrlTextBox.WatermarkText = "";
@@ -904,7 +904,7 @@
             UrlSearchPanel.StyleManager = null;
             UrlSearchPanel.TabIndex = 1;
             UrlSearchPanel.ThemeAuthor = "Terry D. Eppler";
-            UrlSearchPanel.ThemeName = "BudgetBrowser";
+            UrlSearchPanel.ThemeName = "Baby";
             UrlSearchPanel.ToolTip = null;
             // 
             // ContextMenu
@@ -919,7 +919,7 @@
             ContextMenu.Style = MetroSet_UI.Enums.Style.Custom;
             ContextMenu.StyleManager = null;
             ContextMenu.ThemeAuthor = "Terry Eppler";
-            ContextMenu.ThemeName = "BudgetBrowser";
+            ContextMenu.ThemeName = "Baby";
             // 
             // WebBrowser
             // 

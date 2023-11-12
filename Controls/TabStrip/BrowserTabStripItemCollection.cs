@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.ComponentModel;
@@ -47,7 +47,7 @@ namespace BudgetBrowser
     /// <inheritdoc />
     /// <summary>
     /// </summary>
-    /// <seealso cref="T:BudgetBrowser.CollectionWithEvents" />
+    /// <seealso cref="T:Baby.CollectionWithEvents" />
     [ SuppressMessage( "ReSharper", "UnusedMethodReturnValue.Global" ) ]
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     [ SuppressMessage( "ReSharper", "ParameterTypeCanBeEnumerable.Global" ) ]
@@ -196,7 +196,7 @@ namespace BudgetBrowser
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:BudgetBrowser.BrowserTabStripItemCollection" /> class.
+        /// <see cref="T:Baby.BrowserTabStripItemCollection" /> class.
         /// </summary>
         public BrowserTabStripItemCollection( )
         {

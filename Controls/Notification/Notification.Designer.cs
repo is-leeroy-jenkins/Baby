@@ -1,4 +1,4 @@
-﻿namespace BudgetBrowser
+﻿namespace Baby
 {
     using System.Windows.Forms;
 
@@ -66,7 +66,7 @@
             Message.Text = "label1";
             Message.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             Message.ThemeAuthor = "Terry D. Eppler";
-            Message.ThemeName = "BudgetBrowser";
+            Message.ThemeName = "Baby";
             Message.ToolTip = null;
             // 
             // Title
@@ -86,7 +86,7 @@
             Title.Text = "label1";
             Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             Title.ThemeAuthor = "Terry D. Eppler";
-            Title.ThemeName = "BudgetBrowser";
+            Title.ThemeName = "Baby";
             Title.ToolTip = null;
             // 
             // Notification

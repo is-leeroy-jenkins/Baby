@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.Windows.Forms;
@@ -63,7 +63,7 @@ namespace BudgetBrowser
 
     /// <inheritdoc />
     /// <summary>
-    /// The main BudgetBrowser form, supporting multiple tabs.
+    /// The main Baby form, supporting multiple tabs.
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
     /// If you would only like to support 64-bit machines, simply change the DLL references.
     /// </summary>
@@ -333,7 +333,7 @@ namespace BudgetBrowser
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:BudgetBrowser.WebBrowser" /> class.
+        /// <see cref="T:Baby.WebBrowser" /> class.
         /// </summary>
         public WebBrowser( )
         {

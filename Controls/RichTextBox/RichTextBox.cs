@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using MetroSet_UI.Controls;
     using MetroSet_UI.Enums;
@@ -72,7 +72,7 @@ namespace BudgetBrowser
             // Basic Properties
             Style = Style.Custom;
             ThemeAuthor = "Terry D. Eppler";
-            ThemeName = "BudgetBrowser";
+            ThemeName = "Baby";
             Size = new Size( 140, 30 );
             Anchor = AnchorStyles.Top | AnchorStyles.Left;
             Dock = DockStyle.None;

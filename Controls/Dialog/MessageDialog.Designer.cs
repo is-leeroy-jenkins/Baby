@@ -1,5 +1,5 @@
 ﻿
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.ComponentModel;
@@ -66,7 +66,7 @@ namespace BudgetBrowser
             ToolTip.Style = MetroSet_UI.Enums.Style.Custom;
             ToolTip.StyleManager = null;
             ToolTip.ThemeAuthor = "Terry D. Eppler";
-            ToolTip.ThemeName = "BudgetBrowser";
+            ToolTip.ThemeName = "Baby";
             ToolTip.TipIcon = ToolTipIcon.Info;
             ToolTip.TipText = null;
             ToolTip.TipTitle = null;
@@ -100,7 +100,7 @@ namespace BudgetBrowser
             CloseButton.TabIndex = 10;
             CloseButton.Text = "Close";
             CloseButton.ThemeAuthor = "Terry D. Eppler";
-            CloseButton.ThemeName = "BudgetBrowser";
+            CloseButton.ThemeName = "Baby";
             CloseButton.ToolTip = ToolTip;
             // 
             // Label
@@ -120,7 +120,7 @@ namespace BudgetBrowser
             Label.TabIndex = 12;
             Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             Label.ThemeAuthor = "Terry D. Eppler";
-            Label.ThemeName = "BudgetBrowser";
+            Label.ThemeName = "Baby";
             Label.ToolTip = null;
             // 
             // Picture
@@ -152,7 +152,7 @@ namespace BudgetBrowser
             Header.Text = "Budget Browser Message";
             Header.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Header.ThemeAuthor = "Terry D. Eppler";
-            Header.ThemeName = "BudgetBrowser";
+            Header.ThemeName = "Baby";
             Header.ToolTip = null;
             // 
             // BackPanel
@@ -176,7 +176,7 @@ namespace BudgetBrowser
             BackPanel.StyleManager = null;
             BackPanel.TabIndex = 15;
             BackPanel.ThemeAuthor = "Terry D. Eppler";
-            BackPanel.ThemeName = "BudgetBrowser";
+            BackPanel.ThemeName = "Baby";
             BackPanel.ToolTip = null;
             // 
             // TextBox
@@ -202,7 +202,7 @@ namespace BudgetBrowser
             TextBox.TabIndex = 0;
             TextBox.Text = " ";
             TextBox.ThemeAuthor = "Terry D. Eppler";
-            TextBox.ThemeName = "BudgetBrowser";
+            TextBox.ThemeName = "Baby";
             TextBox.ToolTip = ToolTip;
             TextBox.WordWrap = true;
             // 

@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using Syncfusion.Windows.Forms.Tools;
     using System;
@@ -50,7 +50,7 @@ namespace BudgetBrowser
     /// <inheritdoc />
     /// <summary>
     /// </summary>
-    /// <seealso cref="T:BudgetBrowser.ToolStripBase" />
+    /// <seealso cref="T:Baby.ToolStripBase" />
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     public class ToolStrip : ToolStripBase
     {
@@ -64,7 +64,7 @@ namespace BudgetBrowser
 
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:BudgetBrowser.ToolStrip" /> class.
+        /// Initializes a new instance of the <see cref="T:Baby.ToolStrip" /> class.
         /// </summary>
         public ToolStrip( )
         {

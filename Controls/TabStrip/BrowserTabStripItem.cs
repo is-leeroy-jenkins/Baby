@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace BudgetBrowser
+namespace Baby
 {
     using System;
     using System.ComponentModel;
@@ -237,7 +237,7 @@ namespace BudgetBrowser
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:BudgetBrowser.BrowserTabStripItem" /> class.
+        /// <see cref="T:Baby.BrowserTabStripItem" /> class.
         /// </summary>
         public BrowserTabStripItem( )
             : this( string.Empty, null )
@@ -247,7 +247,7 @@ namespace BudgetBrowser
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:BudgetBrowser.BrowserTabStripItem" /> class.
+        /// <see cref="T:Baby.BrowserTabStripItem" /> class.
         /// </summary>
         /// <param name="displayControl">The display control.</param>
         public BrowserTabStripItem( Control displayControl )
@@ -258,7 +258,7 @@ namespace BudgetBrowser
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:BudgetBrowser.BrowserTabStripItem" /> class.
+        /// <see cref="T:Baby.BrowserTabStripItem" /> class.
         /// </summary>
         /// <param name="caption">The caption.</param>
         /// <param name="displayControl">The display control.</param>

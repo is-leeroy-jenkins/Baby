@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BudgetBrowser.Properties {
+namespace Baby.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

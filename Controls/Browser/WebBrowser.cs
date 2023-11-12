@@ -107,7 +107,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The download handler
         /// </summary>
-        private DownloadHandler _downloadHandler;
+        private DownloadCallback _downloadCallback;
 
         /// <summary>
         /// The context menu handler
@@ -137,7 +137,7 @@ namespace BudgetBrowser
         /// <summary>
         /// The brower action
         /// </summary>
-        private Func<ChromiumWebBrowser> _browserDelegate;
+        private Func<ChromiumWebBrowser> _browserCallback;
 
         /// <summary>
         /// The application path
@@ -600,7 +600,7 @@ namespace BudgetBrowser
             }
 
             Cef.Initialize( _cefSettings );
-            _downloadHandler = new DownloadHandler( this );
+            _downloadCallback = new DownloadCallback( this );
             _lifeSpanCallback = new LifeSpanCallback( this );
             _contextMenuCallback = new ContextMenuCallback( this );
             _keyboardCallback = new KeyboardCallback( this );
@@ -1102,7 +1102,7 @@ namespace BudgetBrowser
             _browser.TitleChanged += OnTitleChanged;
             _browser.LoadError += OnLoadError;
             _browser.AddressChanged += OnUrlChanged;
-            _browser.DownloadHandler = _downloadHandler;
+            _browser.DownloadHandler = _downloadCallback;
             _browser.MenuHandler = _contextMenuCallback;
             _browser.LifeSpanHandler = _lifeSpanCallback;
             _browser.KeyboardHandler = _keyboardCallback;
@@ -1273,6 +1273,9 @@ namespace BudgetBrowser
             }
         }
 
+        /// <summary>
+        /// Opens the chrome browser.
+        /// </summary>
         private void OpenChromeBrowser( )
         {
             try

@@ -23,8 +23,8 @@
     <RepositoryUrl>https://github.com/KarmaScripter/BudgetBrowser</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
-    <AssemblyName>BudgetBrowser</AssemblyName>
-    <RootNamespace>BudgetBrowser</RootNamespace>
+    <AssemblyName>Baby</AssemblyName>
+    <RootNamespace>Baby</RootNamespace>
     <SignAssembly>False</SignAssembly>
     <Version>0.0.1</Version>
     <PackageProjectUrl>https://github.com/KarmaScripter/BudgetBrowser</PackageProjectUrl>

@@ -50,7 +50,7 @@ namespace BudgetBrowser
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "ExpressionIsAlwaysNull" ) ]
-    public class DownloadHandler : IDownloadHandler
+    public class DownloadCallback : IDownloadHandler
     {
         /// <summary>
         /// The browser
@@ -59,11 +59,11 @@ namespace BudgetBrowser
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="DownloadHandler"/>
+        /// <see cref="DownloadCallback"/>
         /// class.
         /// </summary>
         /// <param name="form"> The form. </param>
-        public DownloadHandler( Form form )
+        public DownloadCallback( Form form )
         {
             _webBrowser = form as WebBrowser;
         }

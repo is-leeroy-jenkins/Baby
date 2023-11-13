@@ -77,6 +77,7 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" ) ]
     [ SuppressMessage( "ReSharper", "RedundantDelegateCreation" ) ]
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
+    [ SuppressMessage( "ReSharper", "StringLiteralTypo" ) ]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -135,7 +136,7 @@ namespace Baby
         private Action _statusUpdate;
 
         /// <summary>
-        /// The brower action
+        /// The browser action
         /// </summary>
         private Func<ChromiumWebBrowser> _browserCallback;
 
@@ -185,6 +186,26 @@ namespace Baby
         private Dictionary<int, DownloadItem> _downloadItems;
 
         /// <summary>
+        /// The instance
+        /// </summary>
+        public static Form Instance;
+
+        /// <summary>
+        /// The assembly
+        /// </summary>
+        public static Assembly Assembly;
+
+        /// <summary>
+        /// The host
+        /// </summary>
+        public HostCallback Host;
+
+        /// <summary>
+        /// The download names
+        /// </summary>
+        public Dictionary<int, string> DownloadNames;
+
+        /// <summary>
         /// Gets or sets the index of the current.
         /// </summary>
         /// <value>
@@ -215,26 +236,6 @@ namespace Baby
                 return TabPages.Items.Count - 2;
             }
         }
-
-        /// <summary>
-        /// The instance
-        /// </summary>
-        public static Form Instance;
-
-        /// <summary>
-        /// The assembly
-        /// </summary>
-        public static Assembly Assembly;
-
-        /// <summary>
-        /// The host
-        /// </summary>
-        public HostCallback Host;
-
-        /// <summary>
-        /// The download names
-        /// </summary>
-        public Dictionary<int, string> DownloadNames;
 
         /// <summary>
         /// Gets the cancel requests.
@@ -419,20 +420,20 @@ namespace Baby
         /// <param name="parent">The parent.</param>
         public void SetTooltips( Control.ControlCollection parent )
         {
-            foreach( Control _ui in parent )
+            foreach( Control _control in parent )
             {
-                if( _ui is Button _btn )
+                if( _control is Button _button )
                 {
-                    if( _btn.Tag != null )
+                    if( _button.Tag != null )
                     {
                         System.Windows.Forms.ToolTip _tip = new ToolTip( );
                         _tip.ReshowDelay = _tip.InitialDelay = 200;
                         _tip.ShowAlways = true;
-                        _tip.SetToolTip( _btn, _btn.Tag.ToString( ) );
+                        _tip.SetToolTip( _button, _button.Tag.ToString( ) );
                     }
                 }
 
-                if( _ui is Panel _panel )
+                if( _control is Panel _panel )
                 {
                     SetTooltips( _panel.Controls );
                 }
@@ -446,9 +447,9 @@ namespace Baby
         {
             try
             {
-                StatusLabel.Font = new Font( "Roboto", 9 );
+                StatusLabel.Font = new Font( "Roboto", 8 );
                 StatusLabel.TextAlign = ContentAlignment.BottomLeft;
-                StatusLabel.ForeColor = Color.FromArgb( 0, 120, 212 );
+                StatusLabel.ForeColor = Color.FromArgb( 106, 189, 252 );
             }
             catch( Exception _ex )
             {
@@ -464,7 +465,7 @@ namespace Baby
             try
             {
                 Title.Font = new Font( "Roboto", 11 );
-                Title.ForeColor = Color.FromArgb( 0, 120, 212 );
+                Title.ForeColor = Color.FromArgb( 106, 189, 252 );
                 Title.TextAlign = ContentAlignment.TopCenter;
             }
             catch( Exception _ex )
@@ -568,6 +569,9 @@ namespace Baby
             }
         }
 
+        /// <summary>
+        /// Wires up menu items.
+        /// </summary>
         private void WireUpMenuItems( )
         {
             foreach( ToolStripItem _item in ContextMenu.Items )
@@ -577,7 +581,8 @@ namespace Baby
         }
 
         /// <summary>
-        /// this is done just once, to globally initialize CefSharp/CEF
+        /// this is done just once,
+        /// to globally initialize CefSharp/CEF
         /// </summary>
         private void InitBrowser( )
         {
@@ -629,18 +634,16 @@ namespace Baby
         /// </param>
         private void ConfigureBrowser( ChromiumWebBrowser browser )
         {
-            if( browser != null )
+            try
             {
-                try
-                {
-                    var _config = new BrowserSettings( );
-                    _config.WebGl = bool.Parse( AppSettings[ "WebGL" ] ).ToCefState( );
-                    browser.BrowserSettings = _config;
-                }
-                catch( Exception _ex )
-                {
-                    Fail( _ex );
-                }
+                ThrowIf.Null( browser, nameof( browser ) );
+                var _config = new BrowserSettings( );
+                _config.WebGl = bool.Parse( AppSettings[ "WebGL" ] ).ToCefState( );
+                browser.BrowserSettings = _config;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
             }
         }
 
@@ -674,7 +677,9 @@ namespace Baby
         /// <summary>
         /// Finds the text on page.
         /// </summary>
-        /// <param name="next">if set to <c>true</c> [next].</param>
+        /// <param name="next">if set to
+        /// <c>true</c> [next].
+        /// </param>
         private void FindTextOnPage( bool next = true )
         {
             var _first = _lastSearch != SearchPanelTextBox.Text;
@@ -759,8 +764,10 @@ namespace Baby
         /// Gets the resource stream.
         /// </summary>
         /// <param name="fileName">The fileName.</param>
-        /// <param name="nameSpace">if set to <c>true</c> [with nameSpace].</param>
-        /// <returns></returns>
+        /// <param name="nameSpace">if set to
+        /// <c>true</c> [with nameSpace].</param>
+        /// <returns>
+        /// </returns>
         public Stream GetResourceStream( string fileName, bool nameSpace = true )
         {
             try
@@ -768,7 +775,7 @@ namespace Baby
                 var _prefix = "Properties.Resources.";
                 return Assembly.GetManifestResourceStream( fileName );
             }
-            catch( Exception _ex )
+            catch( Exception )
             {
                 //ignore exception
             }
@@ -787,6 +794,7 @@ namespace Baby
             var _tcs = new TaskCompletionSource<ChromiumWebBrowser>( );
             try
             {
+                ThrowIf.NullOrEmpty( url, nameof( url ) );
                 var _browser = AddNewBrowserTab( url, focused );
                 _tcs.SetResult( _browser );
                 return _tcs.Task;
@@ -958,7 +966,9 @@ namespace Baby
         /// <summary>
         /// Enables the forward button.
         /// </summary>
-        /// <param name="canGoForward">if set to <c>true</c> [can go forward].</param>
+        /// <param name="canGoForward">
+        /// if set to <c>true</c> [can go forward].
+        /// </param>
         private void EnableForwardButton( bool canGoForward )
         {
             InvokeIfNeeded( ( ) => NextButton.Enabled = canGoForward );
@@ -988,7 +998,10 @@ namespace Baby
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <returns>
-        ///   <c>true</c> if the specified URL is blank; otherwise, <c>false</c>.
+        /// <c>true</c>
+        /// if the specified URL is blank;
+        /// otherwise,
+        /// <c>false</c>.
         /// </returns>
         private bool IsBlank( string url )
         {
@@ -1131,7 +1144,7 @@ namespace Baby
         /// <summary>
         /// Executes the multi search.
         /// </summary>
-        private void SearchBudgetDomains( string keyWords )
+        private void SearchGovernmentDomains( string keyWords )
         {
             if( !string.IsNullOrEmpty( keyWords ) )
             {
@@ -1141,18 +1154,62 @@ namespace Baby
                     CurrentBrowser.LoadUrl( _google );
                     var _epa = AppSettings[ "EPA" ] + keyWords;
                     AddNewBrowserTab( _epa, false );
+                    var _data = AppSettings[ "DATA" ] + keyWords;
+                    AddNewBrowserTab( _data, false );
                     var _crs = AppSettings[ "CRS" ] + keyWords;
                     AddNewBrowserTab( _crs, false );
                     var _loc = AppSettings[ "LOC" ] + keyWords;
                     AddNewBrowserTab( _loc, false );
                     var _gpo = AppSettings[ "GPO" ] + keyWords;
                     AddNewBrowserTab( _gpo, false );
-                    var _govinfo = AppSettings[ "GovInfo" ] + keyWords;
-                    AddNewBrowserTab( _govinfo, false );
+                    var _usgi = AppSettings[ "USGI" ] + keyWords;
+                    AddNewBrowserTab( _usgi, false );
                     var _omb = AppSettings[ "OMB" ] + keyWords;
                     AddNewBrowserTab( _omb, false );
-                    var _treasury = AppSettings[ "Treasury" ] + keyWords;
-                    AddNewBrowserTab( _treasury, false );
+                    var _ust = AppSettings[ "UST" ] + keyWords;
+                    AddNewBrowserTab( _ust, false );
+                    var _nara = AppSettings[ "NARA" ] + keyWords;
+                    AddNewBrowserTab( _nara, false );
+                    var _nasa = AppSettings[ "NASA" ] + keyWords;
+                    AddNewBrowserTab( _nasa, false );
+                    var _noaa = AppSettings[ "NOAA" ] + keyWords;
+                    AddNewBrowserTab( _noaa, false );
+                    var _doi = AppSettings[ "DOI" ] + keyWords;
+                    AddNewBrowserTab( _doi, false );
+                    var _nps = AppSettings[ "NPS" ] + keyWords;
+                    AddNewBrowserTab( _nps, false );
+                    var _gsa = AppSettings[ "GSA" ] + keyWords;
+                    AddNewBrowserTab( _gsa, false );
+                    var _doc = AppSettings[ "DOC" ] + keyWords;
+                    AddNewBrowserTab( _doc, false );
+                    var _hhs = AppSettings[ "HHS" ] + keyWords;
+                    AddNewBrowserTab( _hhs, false );
+                    var _nrc = AppSettings[ "NRC" ] + keyWords;
+                    AddNewBrowserTab( _nrc, false );
+                    var _doe = AppSettings[ "DOE" ] + keyWords;
+                    AddNewBrowserTab( _doe, false );
+                    var _nsf = AppSettings[ "NSF" ] + keyWords;
+                    AddNewBrowserTab( _nsf, false );
+                    var _usda = AppSettings[ "USDA" ] + keyWords;
+                    AddNewBrowserTab( _usda, false );
+                    var _csb = AppSettings[ "CSB" ] + keyWords;
+                    AddNewBrowserTab( _csb, false );
+                    var _irs = AppSettings[ "IRS" ] + keyWords;
+                    AddNewBrowserTab( _irs, false );
+                    var _fda = AppSettings[ "FDA" ] + keyWords;
+                    AddNewBrowserTab( _fda, false );
+                    var _cdc = AppSettings[ "CDC" ] + keyWords;
+                    AddNewBrowserTab( _cdc, false );
+                    var _ace = AppSettings[ "ACE" ] + keyWords;
+                    AddNewBrowserTab( _ace, false );
+                    var _dhs = AppSettings[ "DHS" ] + keyWords;
+                    AddNewBrowserTab( _dhs, false );
+                    var _dod = AppSettings[ "DOD" ] + keyWords;
+                    AddNewBrowserTab( _dod, false );
+                    var _usno = AppSettings[ "USNO" ] + keyWords;
+                    AddNewBrowserTab( _usno, false );
+                    var _nws = AppSettings[ "NWS" ] + keyWords;
+                    AddNewBrowserTab( _nws, false );
                 }
                 catch( Exception _ex )
                 {
@@ -1323,6 +1380,9 @@ namespace Baby
             }
         }
 
+        /// <summary>
+        /// Opens the edge browser.
+        /// </summary>
         private void OpenEdgeBrowser( )
         {
             try
@@ -1371,6 +1431,9 @@ namespace Baby
             }
         }
 
+        /// <summary>
+        /// Opens the fire fox browser.
+        /// </summary>
         private void OpenFireFoxBrowser( )
         {
             try
@@ -1702,7 +1765,7 @@ namespace Baby
             {
                 _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
             }
-            catch( Exception _ex )
+            catch( Exception )
             {
                 // ignore 
             }
@@ -1995,7 +2058,7 @@ namespace Baby
                     _browser.Dispose( );
                 }
             }
-            catch( Exception _ex )
+            catch( Exception )
             {
                 // ignore exception
             }
@@ -2091,7 +2154,7 @@ namespace Baby
                 if( !string.IsNullOrEmpty( _keywords )
                    && ( DomainComboBox.SelectedIndex == -1 ) )
                 {
-                    SearchBudgetDomains( _keywords );
+                    SearchGovernmentDomains( _keywords );
                 }
                 else if( !string.IsNullOrEmpty( _keywords )
                         && ( DomainComboBox.SelectedIndex > -1 ) )

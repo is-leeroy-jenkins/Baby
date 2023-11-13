@@ -61,22 +61,22 @@ namespace Baby
         {
             try
             {
-                var _stringBuilder = new StringBuilder( );
+                var _builder = new StringBuilder( );
                 if( !string.IsNullOrEmpty( message ) )
                 {
-                    _stringBuilder.Append( message );
-                    _stringBuilder.Append( Environment.NewLine );
+                    _builder.Append( message );
+                    _builder.Append( Environment.NewLine );
                 }
 
                 if( ex != null )
                 {
                     var _exception = ex;
-                    _stringBuilder.Append( "Exception:" );
-                    _stringBuilder.Append( Environment.NewLine );
+                    _builder.Append( "Exception:" );
+                    _builder.Append( Environment.NewLine );
                     while( _exception != null )
                     {
-                        _stringBuilder.Append( _exception.Message );
-                        _stringBuilder.Append( Environment.NewLine );
+                        _builder.Append( _exception.Message );
+                        _builder.Append( Environment.NewLine );
                         _exception = _exception.InnerException;
                     }
 
@@ -84,46 +84,46 @@ namespace Baby
                     {
                         foreach( var _i in ex.Data )
                         {
-                            _stringBuilder.Append( "Data :" );
-                            _stringBuilder.Append( _i );
-                            _stringBuilder.Append( Environment.NewLine );
+                            _builder.Append( "Data :" );
+                            _builder.Append( _i );
+                            _builder.Append( Environment.NewLine );
                         }
                     }
 
                     if( ex.StackTrace != null )
                     {
-                        _stringBuilder.Append( "Stack Trace:" );
-                        _stringBuilder.Append( Environment.NewLine );
-                        _stringBuilder.Append( ex.StackTrace );
-                        _stringBuilder.Append( Environment.NewLine );
+                        _builder.Append( "Stack Trace:" );
+                        _builder.Append( Environment.NewLine );
+                        _builder.Append( ex.StackTrace );
+                        _builder.Append( Environment.NewLine );
                     }
 
                     if( ex.Source != null )
                     {
-                        _stringBuilder.Append( "Error Source:" );
-                        _stringBuilder.Append( Environment.NewLine );
-                        _stringBuilder.Append( ex.Source );
-                        _stringBuilder.Append( Environment.NewLine );
+                        _builder.Append( "Error Source:" );
+                        _builder.Append( Environment.NewLine );
+                        _builder.Append( ex.Source );
+                        _builder.Append( Environment.NewLine );
                     }
 
                     if( ex.TargetSite != null )
                     {
-                        _stringBuilder.Append( "Target Site:" );
-                        _stringBuilder.Append( Environment.NewLine );
-                        _stringBuilder.Append( ex.TargetSite );
-                        _stringBuilder.Append( Environment.NewLine );
+                        _builder.Append( "Target Site:" );
+                        _builder.Append( Environment.NewLine );
+                        _builder.Append( ex.TargetSite );
+                        _builder.Append( Environment.NewLine );
                     }
 
                     var _baseException = ex.GetBaseException( );
                     if( _baseException != null )
                     {
-                        _stringBuilder.Append( "Base Exception:" );
-                        _stringBuilder.Append( Environment.NewLine );
-                        _stringBuilder.Append( ex.GetBaseException( ) );
+                        _builder.Append( "Base Exception:" );
+                        _builder.Append( Environment.NewLine );
+                        _builder.Append( ex.GetBaseException( ) );
                     }
                 }
 
-                return _stringBuilder.ToString( );
+                return _builder.ToString( );
             }
             catch( Exception _ex )
             {

@@ -22,7 +22,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/KarmaScripter/Baby</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <EnableNETAnalyzers>True</EnableNETAnalyzers>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
     <AssemblyName>Baby</AssemblyName>
     <RootNamespace>Baby</RootNamespace>
     <SignAssembly>False</SignAssembly>
@@ -31,7 +31,7 @@
     <PackageTags>Web Browser; Budget; Baby</PackageTags>
     <IncludeSymbols>True</IncludeSymbols>
     <BaseOutputPath>C:\Users\terry\source\repos\Baby\bin\Baby</BaseOutputPath>
-    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Copyright>Terry D. Eppler</Copyright>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
@@ -116,7 +116,7 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Update="Properties\Images\Baby.png">
+    <None Update="Properties\Images\BudgetExecution.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

@@ -41,10 +41,12 @@
 namespace Baby
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// 
     /// </summary>
+    [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
     public enum Domain
     {
         /// <summary>
@@ -58,6 +60,11 @@ namespace Baby
         EPA,
 
         /// <summary>
+        /// The data.gov
+        /// </summary>
+        DATA,
+
+        /// <summary>
         /// The gpo
         /// </summary>
         GPO,
@@ -65,7 +72,7 @@ namespace Baby
         /// <summary>
         /// The gov information
         /// </summary>
-        GovInfo,
+        USGI,
 
         /// <summary>
         /// The CRS
@@ -85,7 +92,7 @@ namespace Baby
         /// <summary>
         /// The treasury
         /// </summary>
-        Treasury,
+        UST,
 
         /// <summary>
         /// The nasa
@@ -98,18 +105,98 @@ namespace Baby
         NOAA,
 
         /// <summary>
-        /// The py pi
+        /// The doi
         /// </summary>
-        PyPI,
+        DOI,
 
         /// <summary>
-        /// The nu get
+        /// The NPS
         /// </summary>
-        NuGet,
+        NPS,
 
         /// <summary>
-        /// The git hub
+        /// The gsa
         /// </summary>
-        GitHub
+        GSA,
+
+        /// <summary>
+        /// The National Archives
+        /// </summary>
+        NARA,
+
+        /// <summary>
+        /// The document
+        /// </summary>
+        DOC,
+
+        /// <summary>
+        /// The HHS
+        /// </summary>
+        HHS,
+
+        /// <summary>
+        /// The NRC
+        /// </summary>
+        NRC,
+
+        /// <summary>
+        /// The doe
+        /// </summary>
+        DOE,
+
+        /// <summary>
+        /// The NSF
+        /// </summary>
+        NSF,
+
+        /// <summary>
+        /// The usda
+        /// </summary>
+        USDA,
+
+        /// <summary>
+        /// The CSB
+        /// </summary>
+        CSB,
+
+        /// <summary>
+        /// The irs
+        /// </summary>
+        IRS,
+
+        /// <summary>
+        /// The fda
+        /// </summary>
+        FDA,
+
+        /// <summary>
+        /// The CDC
+        /// </summary>
+        CDC,
+
+        /// <summary>
+        /// The ace
+        /// </summary>
+        ACE,
+
+        /// <summary>
+        /// The DHS
+        /// </summary>
+        DHS,
+
+        /// <summary>
+        /// The dod
+        /// </summary>
+        DOD,
+
+        /// <summary>
+        /// The US Naval Observatory
+        /// </summary>
+        USNO,
+
+        /// <summary>
+        /// The NWS
+        /// </summary>
+        NWS
     }
 }

@@ -103,7 +103,7 @@ namespace Baby
             InitializeComponent( );
             DoubleBuffered = true;
             BorderColor = Color.FromArgb( 0, 120, 212 );
-            BackColor = Color.FromArgb( 20, 20, 20 );
+            BackColor = Color.FromArgb( 0, 73, 112 );
             Resize += OnResized;
         }
 
@@ -125,7 +125,7 @@ namespace Baby
             Time = 0;
             Seconds = duration;
             Timer.Interval = duration * 1000;
-            Title.ForeColor = Color.FromArgb( 0, 120, 212 );
+            Title.ForeColor = Color.FromArgb( 106, 189, 252 );
             Title.Text = "Budget Browser Notification";
             Message.Text = body;
             Region = FromHrgn( CreateRoundRectRgn( 0, 0, Width - 5, Height - 5, 20, 20 ) );
@@ -152,7 +152,7 @@ namespace Baby
             Time = 0;
             Seconds = duration;
             Timer.Interval = duration * 1000;
-            Title.ForeColor = Color.FromArgb( 0, 120, 212 );
+            Title.ForeColor = Color.FromArgb( 106, 189, 252 );
             Title.Text = title;
             Message.Text = body;
             Region = FromHrgn( CreateRoundRectRgn( 0, 0, Width - 5, Height - 5, 20, 20 ) );

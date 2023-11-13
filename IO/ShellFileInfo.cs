@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace Baby.IO
+namespace Baby
 {
     using System;
     using System.Diagnostics.CodeAnalysis;

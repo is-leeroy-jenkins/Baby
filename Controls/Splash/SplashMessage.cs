@@ -50,10 +50,10 @@ namespace Baby
     using Syncfusion.Windows.Forms.Tools;
     using Image = System.Drawing.Image;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
-    /// <seealso cref="Syncfusion.Windows.Forms.Tools.SplashPanel" />
+    /// <seealso cref="T:Syncfusion.Windows.Forms.Tools.SplashPanel" />
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public class SplashMessage : SplashPanel
     {
@@ -81,25 +81,28 @@ namespace Baby
         /// </value>
         public ToolTip ToolTip { get; set; }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="SplashMessage"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="T:Baby.SplashMessage" /> class.
         /// </summary>
         /// <remarks>
-        /// The default value for the <see cref="P:Syncfusion.Windows.Forms.Tools.SplashPanel.TimerInterval" /> is set to
+        /// The default value for the
+        /// <see cref="P:Syncfusion.Windows.Forms.Tools.SplashPanel.TimerInterval" /> is set to
         /// 5000 milliseconds.
         /// The splash panel has animation turned and by default will appear in the
         /// middle of the screen.
         /// </remarks>
         public SplashMessage( )
         {
-            BackColor = Color.FromArgb( 20, 20, 20 );
-            ForeColor = Color.LightGray;
+            BackColor = Color.FromArgb( 0, 73, 112 );
+            ForeColor = Color.FromArgb( 106, 189, 252 );
             Font = new Font( "Roboto", 9 );
             Size = new Size( 300, 150 );
             BorderStyle = Border3DStyle.Flat;
             BorderType = SplashBorderType.Border3D;
             BackgroundColor = new BrushInfo( GradientStyle.PathEllipse, 
-                Color.FromArgb( 20, 20, 20 ), Color.FromArgb( 45, 45, 45 ) );
+                Color.FromArgb( 0, 73, 112 ), Color.FromArgb( 0, 73, 112 ) );
             
             ShowAnimation = true;
             ShowAsTopMost = true;
@@ -117,8 +120,10 @@ namespace Baby
             SlideStyle = SlideStyle.FadeIn;
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="SplashMessage"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="T:Baby.SplashMessage" /> class.
         /// </summary>
         /// <param name="message">The message.</param>
         public SplashMessage( string message )
@@ -127,8 +132,10 @@ namespace Baby
             Text = message;
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="SplashMessage"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="T:Baby.SplashMessage" /> class.
         /// </summary>
         /// <param name="toolTip">The tool tip.</param>
         public SplashMessage( ToolTip toolTip )
@@ -137,8 +144,10 @@ namespace Baby
             Text = toolTip?.TipText;
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="SplashMessage"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="T:Baby.SplashMessage" /> class.
         /// </summary>
         /// <param name="control">The control.</param>
         /// <param name="message">The message.</param>

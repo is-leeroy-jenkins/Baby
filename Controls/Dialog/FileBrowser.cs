@@ -119,7 +119,7 @@ namespace Baby
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:BudgetExecution.FileBrowser" /> class.
+        /// <see cref="T:Baby.FileBrowser" /> class.
         /// </summary>
         public FileBrowser( )
         {

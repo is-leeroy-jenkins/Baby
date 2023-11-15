@@ -67,17 +67,17 @@ namespace Baby
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
     /// If you would only like to support 64-bit machines, simply change the DLL references.
     /// </summary>
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
-    [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
-    [ SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertToAutoProperty" ) ]
-    [ SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" ) ]
-    [ SuppressMessage( "ReSharper", "RedundantDelegateCreation" ) ]
-    [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
-    [ SuppressMessage( "ReSharper", "StringLiteralTypo" ) ]
+    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
+    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
+    [SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" )]
+    [SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" )]
+    [SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" )]
+    [SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" )]
+    [SuppressMessage( "ReSharper", "ConvertToAutoProperty" )]
+    [SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" )]
+    [SuppressMessage( "ReSharper", "RedundantDelegateCreation" )]
+    [SuppressMessage( "ReSharper", "UnusedParameter.Global" )]
+    [SuppressMessage( "ReSharper", "StringLiteralTypo" )]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>

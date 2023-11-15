@@ -110,7 +110,7 @@ namespace Baby
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:BudgetExecution.GuidanceDialog" /> class.
+        /// <see cref="T:Baby.GuidanceDialog" /> class.
         /// </summary>
         public GuidanceDialog( )
         {

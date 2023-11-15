@@ -51,7 +51,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Controls\Splash\SplashMessage.cs">
-      <SubType>Component</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Controls\TabControl\TabControl.cs">
       <SubType>Component</SubType>

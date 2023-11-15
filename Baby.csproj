@@ -18,7 +18,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Nullable>disable</Nullable>
     <PlatformTarget>x64</PlatformTarget>
-    <PackageIcon>BudgetExecution.png</PackageIcon>
+    <PackageIcon>Baby.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/KarmaScripter/Baby</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -28,7 +28,7 @@
     <SignAssembly>False</SignAssembly>
     <Version>0.0.1</Version>
     <PackageProjectUrl>https://github.com/KarmaScripter/Baby</PackageProjectUrl>
-    <PackageTags>Web Browser; Budget; Baby</PackageTags>
+    <PackageTags>Web Browser;Baby</PackageTags>
     <IncludeSymbols>True</IncludeSymbols>
     <BaseOutputPath>C:\Users\terry\source\repos\Baby\bin\Baby</BaseOutputPath>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
@@ -80,6 +80,9 @@
     <PackageReference Include="CefSharp.Wpf.NETCore" Version="119.1.20" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="CharmNotification">
+      <HintPath>Libraries\CharmNotification.dll</HintPath>
+    </Reference>
     <Reference Include="MetroSet UI">
       <HintPath>Libraries\MetroSet UI.dll</HintPath>
     </Reference>

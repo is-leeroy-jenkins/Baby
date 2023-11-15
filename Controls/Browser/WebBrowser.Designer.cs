@@ -457,7 +457,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 228, 27 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 224, 27 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -788,12 +788,12 @@
             // PictureBox
             // 
             PictureBox.BackColor = System.Drawing.Color.Transparent;
-            PictureBox.Image = Properties.Resources.EpaSkew;
+            PictureBox.Image = Properties.Resources.BabyBrowser;
             PictureBox.Location = new System.Drawing.Point( 3, 3 );
             PictureBox.Name = "PictureBox";
             PictureBox.Padding = new System.Windows.Forms.Padding( 1 );
-            PictureBox.Size = new System.Drawing.Size( 39, 18 );
-            PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            PictureBox.Size = new System.Drawing.Size( 20, 20 );
+            PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             PictureBox.TabIndex = 0;
             PictureBox.TabStop = false;
             PictureBox.ToolTip = null;
@@ -941,6 +941,7 @@
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ForeColor = System.Drawing.Color.LightGray;
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon) resources.GetObject( "$this.Icon" ) ;
             Margin = new System.Windows.Forms.Padding( 4, 5, 4, 5 );
             MaximizeBox = false;
             MaximumSize = new System.Drawing.Size( 1350, 750 );

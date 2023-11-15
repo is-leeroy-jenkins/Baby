@@ -476,7 +476,7 @@ namespace Baby
             FileList.StyleManager = null;
             FileList.TabIndex = 3;
             FileList.ThemeAuthor = "Terry D. Eppler";
-            FileList.ThemeName = "BudgetExecution";
+            FileList.ThemeName = "Baby";
             FileList.ToolTip = ToolTip;
             // 
             // ToolTip
@@ -514,7 +514,7 @@ namespace Baby
             FoundLabel.TabIndex = 4;
             FoundLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             FoundLabel.ThemeAuthor = "Terry D. Eppler";
-            FoundLabel.ThemeName = "BudgetExecution";
+            FoundLabel.ThemeName = "Baby";
             FoundLabel.ToolTip = null;
             // 
             // FileDialog
@@ -568,7 +568,7 @@ namespace Baby
             Header.Text = "File SaveAs";
             Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             Header.ThemeAuthor = "Terry D. Eppler";
-            Header.ThemeName = "BudgetExecution";
+            Header.ThemeName = "Baby";
             Header.ToolTip = null;
             // 
             // MessageLabel
@@ -587,7 +587,7 @@ namespace Baby
             MessageLabel.TabIndex = 12;
             MessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             MessageLabel.ThemeAuthor = "Terry D. Eppler";
-            MessageLabel.ThemeName = "BudgetExecution";
+            MessageLabel.ThemeName = "Baby";
             MessageLabel.ToolTip = null;
             // 
             // SelectButton
@@ -619,7 +619,7 @@ namespace Baby
             SelectButton.TabIndex = 11;
             SelectButton.Text = "Select";
             SelectButton.ThemeAuthor = "Terry D. Eppler";
-            SelectButton.ThemeName = "BudgetExecution";
+            SelectButton.ThemeName = "Baby";
             SelectButton.ToolTip = null;
             // 
             // CloseButton
@@ -651,7 +651,7 @@ namespace Baby
             CloseButton.TabIndex = 10;
             CloseButton.Text = "Close";
             CloseButton.ThemeAuthor = "Terry D. Eppler";
-            CloseButton.ThemeName = "BudgetExecution";
+            CloseButton.ThemeName = "Baby";
             CloseButton.ToolTip = null;
             // 
             // FindButton

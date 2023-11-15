@@ -1,6 +1,11 @@
 ﻿namespace Baby
 {
     using Syncfusion.Windows.Forms;
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using static Animator;
 
     partial class Notification : MetroForm
     {

@@ -53,6 +53,21 @@ namespace Baby
     public sealed class Animator
     {
         /// <summary>
+        /// The aw hide
+        /// </summary>
+        private const int _AW_HIDE = 0x10000;
+
+        /// <summary>
+        /// The aw activate
+        /// </summary>
+        private const int _AW_ACTIVATE = 0x20000;
+
+        /// <summary>
+        /// The default duration
+        /// </summary>
+        private const int _DEFAULT_DURATION = 250;
+
+        /// <summary>
         /// Gets or sets the method.
         /// </summary>
         /// <value>
@@ -124,21 +139,6 @@ namespace Baby
         {
             Direction = direction;
         }
-
-        /// <summary>
-        /// The aw hide
-        /// </summary>
-        private const int _AW_HIDE = 0x10000;
-
-        /// <summary>
-        /// The aw activate
-        /// </summary>
-        private const int _AW_ACTIVATE = 0x20000;
-
-        /// <summary>
-        /// The default duration
-        /// </summary>
-        private const int _DEFAULT_DURATION = 250;
 
         /// <summary>
         /// Handles the Load event of the Form control.

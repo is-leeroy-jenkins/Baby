@@ -45,35 +45,41 @@ namespace Baby
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Windows.Forms;
-    using static System.Drawing.Region;
     using static System.Windows.Forms.Screen;
     using static Animator;
-    using static NativeMethods;
 
     /// <summary>
     /// 
     /// </summary>
     /// <seealso cref="Syncfusion.Windows.Forms.MetroForm" />
-    [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "ReplaceAutoPropertyWithComputedProperty" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "RedundantExtendsListEntry" ) ]
     public partial class Notification : MetroForm
     {
-        /// <summary> Gets or sets the time. </summary>
-        /// <value> The time. </value>
+        /// <summary>
+        /// Gets or sets the time.
+        /// </summary>
+        /// <value>
+        /// The time.
+        /// </value>
         public int Time { get; set; }
 
-        /// <summary> Gets or sets the seconds. </summary>
-        /// <value> The seconds. </value>
+        /// <summary>
+        /// Gets or sets the seconds.
+        /// </summary>
+        /// <value>
+        /// The seconds.
+        /// </value>
         public int Seconds { get; set; }
 
-        /// <summary> Gets or sets a value indicating whether [allow focus]. </summary>
+        /// <summary>
+        /// Gets or sets a value indicating whether [allow focus].
+        /// </summary>
         /// <value>
-        /// <c> true </c>
-        /// if [allow focus]; otherwise,
-        /// <c> false </c>
-        /// .
+        ///   <c>true</c> if [allow focus]; otherwise, <c>false</c>.
         /// </value>
         public bool AllowFocus { get; set; }
 
@@ -81,18 +87,13 @@ namespace Baby
         /// Gets a value indicating whether [shown without activation].
         /// </summary>
         /// <value>
-        /// <c> true </c>
-        /// if [shown without activation]; otherwise,
-        /// <c> false </c>
-        /// .
+        ///   <c>true</c> if [shown without activation]; otherwise, <c>false</c>.
         /// </value>
         public bool ShownWithoutActivation { get; } = true;
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="T:BudgetExecution.Notification"/>
-        /// class.
+        /// Initializes a new instance of the <see cref="T:Baby.Notification" /> class.
         /// </summary>
         public Notification( )
         {
@@ -111,6 +112,7 @@ namespace Baby
             ShowIcon = false;
             ShowMouseOver = false;
             ShowInTaskbar = true;
+            StartPosition = FormStartPosition.Manual;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             SizeGripStyle = SizeGripStyle.Hide;
             Padding = new Padding( 0 );
@@ -125,16 +127,14 @@ namespace Baby
             Resize += OnResized;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="T:BudgetExecution.Notification"/>
-        /// class.
+        /// Initializes a new instance of the <see cref="T:Baby.Notification" /> class.
         /// </summary>
-        /// <param name="body"> The body. </param>
-        /// <param name="duration"> The duration. </param>
-        /// <param name="animation"> The animation. </param>
-        /// <param name="direction"> The direction. </param>
+        /// <param name="body">The body.</param>
+        /// <param name="duration">The duration.</param>
+        /// <param name="animation">The animation.</param>
+        /// <param name="direction">The direction.</param>
         public Notification( string body, int duration = 5,
             AnimationMethod animation = AnimationMethod.Fade,
             AnimationDirection direction = AnimationDirection.Up )
@@ -151,17 +151,15 @@ namespace Baby
             Title.Click += ( s, e ) => Close( );
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="T:BudgetExecution.Notification"/>
-        /// class.
+        /// Initializes a new instance of the <see cref="T:Baby.Notification" /> class.
         /// </summary>
-        /// <param name="title"> The title. </param>
-        /// <param name="body"> The body. </param>
-        /// <param name="duration"> The duration. </param>
-        /// <param name="animation"> The animation. </param>
-        /// <param name="direction"> The direction. </param>
+        /// <param name="title">The title.</param>
+        /// <param name="body">The body.</param>
+        /// <param name="duration">The duration.</param>
+        /// <param name="animation">The animation.</param>
+        /// <param name="direction">The direction.</param>
         public Notification( string title, string body, int duration = 5,
             AnimationMethod animation = AnimationMethod.Fade,
             AnimationDirection direction = AnimationDirection.Up )
@@ -178,7 +176,9 @@ namespace Baby
             Title.Click += ( s, e ) => Close( );
         }
 
-        /// <summary> Displays the control to the user. </summary>
+        /// <summary>
+        /// Displays the control to the user.
+        /// </summary>
         public new void Show( )
         {
             try
@@ -207,7 +207,9 @@ namespace Baby
             }
         }
 
-        /// <summary> Notifications the close. </summary>
+        /// <summary>
+        /// Raises the Close event.
+        /// </summary>
         public void OnClose( )
         {
             try
@@ -221,55 +223,9 @@ namespace Baby
             }
         }
 
-        /// <summary> Called when [load]. </summary>
-        /// <param name="sender"> The sender. </param>
-        /// <param name="e">
-        /// The
-        /// <see cref="EventArgs"/>
-        /// instance containing the event data.
-        /// </param>
-        private void OnLoad( object sender, EventArgs e )
-        {
-            try
-            {
-                Location = new Point( PrimaryScreen.WorkingArea.Width - Width - 5,
-                    PrimaryScreen.WorkingArea.Height - Height - 5 );
-
-                FadeIn( );
-                Timer.Start( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary> Fades the in. </summary>
-        private void FadeIn( )
-        {
-            try
-            {
-                var _timer = new Timer( );
-                _timer.Interval = 10;
-                _timer.Tick += ( sender, args ) =>
-                {
-                    if( Opacity == 1d )
-                    {
-                        _timer.Stop( );
-                    }
-
-                    Opacity += 0.02d;
-                };
-
-                _timer.Start( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary> Fades the out and close. </summary>
+        /// <summary>
+        /// Fades the out.
+        /// </summary>
         private void FadeOut( )
         {
             try
@@ -295,13 +251,133 @@ namespace Baby
             }
         }
 
-        /// <summary> Called when [resized]. </summary>
-        /// <param name="sender"> The sender. </param>
-        /// <param name="e">
-        /// The
-        /// <see cref="EventArgs"/>
+        /// <summary>
+        /// Called when [click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The
+        /// <see cref="MouseEventArgs"/>
         /// instance containing the event data.
         /// </param>
+        private void OnClick( object sender, MouseEventArgs e )
+        {
+            if( ( e.Button == MouseButtons.Left )
+               || ( e.Button == MouseButtons.Right ) )
+            {
+                try
+                {
+                    OnClose( );
+                }
+                catch( Exception _ex )
+                {
+                    Fail( _ex );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when [load].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void OnLoad( object sender, EventArgs e )
+        {
+            try
+            {
+                var _width = PrimaryScreen.WorkingArea.Width - Width - 5;
+                var _height = PrimaryScreen.WorkingArea.Height - Height - 5;
+                Location = new Point( _width, _height );
+                InitializeLabels( );
+                InitializePanel( );
+                InitializeTitle( );
+                FadeIn( );
+                Timer.Start( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Initializes the title.
+        /// </summary>
+        private protected void InitializeTitle( )
+        {
+            try
+            {
+                Title.ForeColor = Color.White;
+                Title.TextAlign = ContentAlignment.TopLeft;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Initializes the panel.
+        /// </summary>
+        private protected void InitializePanel( )
+        {
+            try
+            {
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Initializes the labels.
+        /// </summary>
+        private protected virtual void InitializeLabels( )
+        {
+            try
+            {
+                Message.BackColor = Color.FromArgb( 0, 73, 112 );
+                Message.Font = new Font( "Roboto", 11 );
+                Message.ForeColor = Color.FromArgb( 106, 189, 252 );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Fades the in.
+        /// </summary>
+        private protected virtual void FadeIn( )
+        {
+            try
+            {
+                var _timer = new Timer( );
+                _timer.Interval = 10;
+                _timer.Tick += ( sender, args ) =>
+                {
+                    if( Opacity == 1d )
+                    {
+                        _timer.Stop( );
+                    }
+
+                    Opacity += 0.02d;
+                };
+
+                _timer.Start( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [resized].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void OnResized( object sender, EventArgs e )
         {
             try
@@ -317,8 +393,10 @@ namespace Baby
             }
         }
 
-        /// <summary> Get ErrorDialog Dialog. </summary>
-        /// <param name="ex"> The ex. </param>
+        /// <summary>
+        /// Fails the specified ex.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
         private protected void Fail( Exception ex )
         {
             using var _error = new ErrorDialog( ex );

@@ -48,6 +48,7 @@ namespace Baby
     using System.Windows.Forms;
     using Syncfusion.Windows.Forms;
     using Timer = System.Windows.Forms.Timer;
+    using static Animator;
 
     /// <summary>
     /// 
@@ -58,6 +59,7 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "AutoPropertyCanBeMadeGetOnly.Global" ) ]
+    [ SuppressMessage( "ReSharper", "RedundantExtendsListEntry" ) ]
     public partial class SplashMessage : MetroForm
     {
         /// <summary>
@@ -113,15 +115,6 @@ namespace Baby
             Size = new Size( 650, 250 );
             MinimumSize = new Size( 650, 250 );
             MaximumSize = new Size( 650, 250 );
-            BackColor = Color.FromArgb( 0, 73, 112 );
-            MetroColor = Color.FromArgb( 0, 73, 112 );
-            BorderColor = Color.FromArgb( 106, 189, 252 );
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            BorderThickness = 1;
-            CaptionBarColor = Color.FromArgb( 0, 73, 112 );
-            CaptionButtonColor = Color.FromArgb( 0, 73, 112 );
-            CaptionAlign = HorizontalAlignment.Left;
-            CaptionBarHeight = 5;
             MinimizeBox = false;
             MaximizeBox = false;
             ControlBox = false;
@@ -130,9 +123,16 @@ namespace Baby
             ShowIcon = false;
             ShowMouseOver = false;
             ShowInTaskbar = true;
-            DoubleBuffered = true;
-            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             SizeGripStyle = SizeGripStyle.Hide;
+            Padding = new Padding( 0 );
+            Title.ForeColor = Color.White;
+            BorderColor = Color.FromArgb( 106, 189, 252 );
+            BackColor = Color.FromArgb( 0, 73, 112 );
+            CaptionBarColor = Color.FromArgb( 0, 73, 112 );
+            Message.BackColor = Color.FromArgb( 0, 73, 112 );
+            Message.ForeColor = Color.FromArgb( 106, 189, 252 );
+            StartPosition = FormStartPosition.CenterScreen;
             Padding = new Padding( 0 );
             ForeColor = Color.FromArgb( 106, 189, 252 );
             Font = new Font( "Roboto", 9 );
@@ -152,8 +152,8 @@ namespace Baby
         /// <param name="animation">The animation.</param>
         /// <param name="direction">The direction.</param>
         public SplashMessage( string message, int duration = 5,
-            Animator.AnimationMethod animation = Animator.AnimationMethod.Fade,
-            Animator.AnimationDirection direction = Animator.AnimationDirection.Up )
+            AnimationMethod animation = AnimationMethod.Fade,
+            AnimationDirection direction = AnimationDirection.Up )
             : this( )
         {
             Time = 0;
@@ -171,8 +171,8 @@ namespace Baby
         /// <param name="animation">The animation.</param>
         /// <param name="direction">The direction.</param>
         public SplashMessage( IEnumerable<string> lines, int duration = 5,
-            Animator.AnimationMethod animation = Animator.AnimationMethod.Fade,
-            Animator.AnimationDirection direction = Animator.AnimationDirection.Up )
+            AnimationMethod animation = AnimationMethod.Fade,
+            AnimationDirection direction = AnimationDirection.Up )
             : this( )
         {
             Lines = lines.ToList( );

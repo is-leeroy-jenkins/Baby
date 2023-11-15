@@ -1,5 +1,5 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Baby
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
 //     Created:                 11-14-2023
 // 
@@ -53,11 +53,11 @@ namespace Baby
     /// 
     /// </summary>
     /// <seealso cref="Syncfusion.Windows.Forms.MetroForm" />
-    [SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" )]
-    [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
-    [SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" )]
-    [SuppressMessage( "ReSharper", "AutoPropertyCanBeMadeGetOnly.Global" )]
+    [ SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "AutoPropertyCanBeMadeGetOnly.Global" ) ]
     public partial class SplashMessage : MetroForm
     {
         /// <summary>
@@ -115,8 +115,9 @@ namespace Baby
             MaximumSize = new Size( 650, 250 );
             BackColor = Color.FromArgb( 0, 73, 112 );
             MetroColor = Color.FromArgb( 0, 73, 112 );
-            BorderColor = Color.Transparent;
-            FormBorderStyle = FormBorderStyle.None;
+            BorderColor = Color.FromArgb( 106, 189, 252 );
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            BorderThickness = 1;
             CaptionBarColor = Color.FromArgb( 0, 73, 112 );
             CaptionButtonColor = Color.FromArgb( 0, 73, 112 );
             CaptionAlign = HorizontalAlignment.Left;
@@ -133,7 +134,7 @@ namespace Baby
             StartPosition = FormStartPosition.CenterScreen;
             SizeGripStyle = SizeGripStyle.Hide;
             Padding = new Padding( 0 );
-            ForeColor = Color.LightGray;
+            ForeColor = Color.FromArgb( 106, 189, 252 );
             Font = new Font( "Roboto", 9 );
 
             // Wire Events
@@ -336,7 +337,7 @@ namespace Baby
             {
                 Message.BackColor = Color.FromArgb( 0, 73, 112 );
                 Message.Font = new Font( "Roboto", 11 );
-                Message.ForeColor = Color.White;
+                Message.ForeColor = Color.FromArgb( 106, 189, 252 );
             }
             catch( Exception _ex )
             {

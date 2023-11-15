@@ -4,7 +4,7 @@
 //     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        07-19-2023
+//     Last Modified On:        11-15-2023
 // ******************************************************************************************
 // <copyright file="WebBrowser.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -213,14 +213,8 @@ namespace Baby
         /// </value>
         private int CurrentIndex
         {
-            get
-            {
-                return TabPages.Items.IndexOf( TabPages.SelectedItem );
-            }
-            set
-            {
-                TabPages.SelectedItem = TabPages.Items[ value ];
-            }
+            get { return TabPages.Items.IndexOf( TabPages.SelectedItem ); }
+            set { TabPages.SelectedItem = TabPages.Items[ value ]; }
         }
 
         /// <summary>
@@ -231,10 +225,7 @@ namespace Baby
         /// </value>
         private int LastIndex
         {
-            get
-            {
-                return TabPages.Items.Count - 2;
-            }
+            get { return TabPages.Items.Count - 2; }
         }
 
         /// <summary>
@@ -245,10 +236,7 @@ namespace Baby
         /// </value>
         public List<int> CancelRequests
         {
-            get
-            {
-                return _cancelRequests;
-            }
+            get { return _cancelRequests; }
         }
 
         /// <summary>
@@ -259,10 +247,7 @@ namespace Baby
         /// </value>
         public Dictionary<int, DownloadItem> DownloadItems
         {
-            get
-            {
-                return _downloadItems;
-            }
+            get { return _downloadItems; }
         }
 
         /// <summary>
@@ -273,10 +258,7 @@ namespace Baby
         /// </value>
         public BrowserTab CurrentTab
         {
-            get
-            {
-                return (BrowserTab)TabPages.SelectedItem?.Tag;
-            }
+            get { return (BrowserTab)TabPages.SelectedItem?.Tag; }
         }
 
         /// <summary>
@@ -287,10 +269,7 @@ namespace Baby
         /// </value>
         public string SearchEngineUrl
         {
-            get
-            {
-                return _searchEngineUrl;
-            }
+            get { return _searchEngineUrl; }
         }
 
         /// <summary>
@@ -325,10 +304,7 @@ namespace Baby
         /// </value>
         public ChromiumWebBrowser CurrentBrowser
         {
-            get
-            {
-                return ( (BrowserTab)TabPages.SelectedItem?.Tag )?.Browser;
-            }
+            get { return ( (BrowserTab)TabPages.SelectedItem?.Tag )?.Browser; }
         }
 
         /// <inheritdoc />
@@ -380,7 +356,7 @@ namespace Baby
             GoButton.Click += OnGoButtonClick;
             EdgeButton.Click += OnEdgeButtonClick;
             ChromeButton.Click += OnChromeButtonClick;
-            SpfxButton.Click += OnSpfxButtonClick;
+            SharepointButton.Click += OnSpfxButtonClick;
             FireFoxButton.Click += OnFireFoxButtonClick;
             Timer.Tick += OnTimerTick;
             TabPages.MouseClick += OnRightClick;
@@ -907,9 +883,9 @@ namespace Baby
                 if( _urlLower.StartsWith( AppSettings[ "Internal" ] + ":" )
                    || ( Uri.TryCreate( _newUrl, UriKind.Absolute, out _outUri )
                        && ( ( ( ( _outUri.Scheme == Uri.UriSchemeHttp )
-                                   || ( _outUri.Scheme == Uri.UriSchemeHttps ) )
-                               && _newUrl.Contains( "." ) )
-                           || ( _outUri.Scheme == Uri.UriSchemeFile ) ) ) )
+                               || ( _outUri.Scheme == Uri.UriSchemeHttps ) )
+                           && _newUrl.Contains( "." ) )
+                       || ( _outUri.Scheme == Uri.UriSchemeFile ) ) ) )
                 {
                 }
                 else
@@ -1017,9 +993,7 @@ namespace Baby
         /// </returns>
         private bool IsBlankOrSystem( string url )
         {
-            return ( url == "" )
-                || url.BeginsWith( "about:" )
-                || url.BeginsWith( "chrome:" )
+            return ( url == "" ) || url.BeginsWith( "about:" ) || url.BeginsWith( "chrome:" )
                 || url.BeginsWith( AppSettings[ "Internal" ] + ":" );
         }
 
@@ -1528,6 +1502,24 @@ namespace Baby
         }
 
         /// <summary>
+        /// Sends the message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        private void SendMessage( string message )
+        {
+            try
+            {
+                ThrowIf.NullOrEmpty( message, nameof( message ) );
+                var _splashMessage = new SplashMessage( message );
+                _splashMessage.Show( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
         /// Stops the active tab.
         /// </summary>
         private void StopActiveTab( )
@@ -1606,6 +1598,7 @@ namespace Baby
             Title.MouseClick += OnRightClick;
             _statusUpdate += UpdateStatusLabel;
             ContextMenu.MouseLeave += OnContextMenuMouseLeave;
+            SharepointButton.Click += OnSharepointButtonClicked;
         }
 
         /// <summary>
@@ -2398,6 +2391,25 @@ namespace Baby
                 {
                     _menu.Hide( );
                 }
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [refresh button clicked].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnSharepointButtonClicked( object sender, EventArgs e )
+        {
+            try
+            {
+                var _message = "THIS IS JUST A TEST!";
+                SendMessage( _message );
             }
             catch( Exception _ex )
             {

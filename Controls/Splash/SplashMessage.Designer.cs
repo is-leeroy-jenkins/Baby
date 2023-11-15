@@ -1,6 +1,7 @@
 ﻿namespace Baby
 {
-    public partial class SplashMessage
+    using Syncfusion.Windows.Forms;
+    public partial class SplashMessage : MetroForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +34,7 @@
             Timer = new System.Windows.Forms.Timer( components );
             HeaderTable = new System.Windows.Forms.TableLayoutPanel( );
             Title = new Label( );
-            PictureBox = new System.Windows.Forms.PictureBox( );
+            PictureBox = new ImageBox( );
             ButtonTable = new System.Windows.Forms.TableLayoutPanel( );
             CloseButton = new Button( );
             Message = new RichTextBox( );
@@ -205,7 +206,7 @@
         public Layout BackPanel;
         protected System.Windows.Forms.TableLayoutPanel HeaderTable;
         public Label Title;
-        public System.Windows.Forms.PictureBox PictureBox;
+        public ImageBox PictureBox;
         protected System.Windows.Forms.TableLayoutPanel ButtonTable;
         private Button CloseButton;
         public RichTextBox Message;

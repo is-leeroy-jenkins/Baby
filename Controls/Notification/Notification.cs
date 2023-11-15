@@ -1,5 +1,5 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Baby
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
 //     Created:                 06-26-2023
 // 
@@ -7,7 +7,7 @@
 //     Last Modified On:        11-15-2023
 // ******************************************************************************************
 // <copyright file="Notification.cs" company="Terry D. Eppler">
-//    Baby is a small web browser used in a Federal Budget, Finance, and Accounting application for the
+//    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2023  Terry Eppler
 // 
@@ -31,7 +31,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   Notification.cs
@@ -50,9 +50,11 @@ namespace Baby
     using static Animator;
     using static NativeMethods;
 
-    /// <summary> </summary>
-    /// <seealso cref="Syncfusion.Windows.Forms.MetroForm"/>
-    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Syncfusion.Windows.Forms.MetroForm" />
+    [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "ReplaceAutoPropertyWithComputedProperty" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
@@ -75,7 +77,9 @@ namespace Baby
         /// </value>
         public bool AllowFocus { get; set; }
 
-        /// <summary> Gets a value indicating whether [shown without activation]. </summary>
+        /// <summary>
+        /// Gets a value indicating whether [shown without activation].
+        /// </summary>
         /// <value>
         /// <c> true </c>
         /// if [shown without activation]; otherwise,
@@ -87,29 +91,51 @@ namespace Baby
         /// <inheritdoc/>
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="T:Baby.Notification"/>
+        /// <see cref="T:BudgetExecution.Notification"/>
         /// class.
         /// </summary>
         public Notification( )
         {
             InitializeComponent( );
+
+            // Form Properties
             DoubleBuffered = true;
+            Size = new Size( 400, 190 );
+            MinimumSize = new Size( 400, 190 );
+            MaximumSize = new Size( 400, 190 );
+            MinimizeBox = false;
+            MaximizeBox = false;
+            ControlBox = false;
+            ShowMaximizeBox = false;
+            ShowMinimizeBox = false;
+            ShowIcon = false;
+            ShowMouseOver = false;
+            ShowInTaskbar = true;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            SizeGripStyle = SizeGripStyle.Hide;
+            Padding = new Padding( 0 );
+            Title.ForeColor = Color.White;
             BorderColor = Color.FromArgb( 106, 189, 252 );
             BackColor = Color.FromArgb( 0, 73, 112 );
+            CaptionBarColor = Color.FromArgb( 0, 73, 112 );
+            Message.BackColor = Color.FromArgb( 0, 73, 112 );
+            Message.ForeColor = Color.FromArgb( 106, 189, 252 );
+
+            // Event Wiring
             Resize += OnResized;
         }
 
         /// <inheritdoc/>
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="Notification"/>
+        /// <see cref="T:BudgetExecution.Notification"/>
         /// class.
         /// </summary>
         /// <param name="body"> The body. </param>
         /// <param name="duration"> The duration. </param>
         /// <param name="animation"> The animation. </param>
         /// <param name="direction"> The direction. </param>
-        public Notification( string body, int duration = 3,
+        public Notification( string body, int duration = 5,
             AnimationMethod animation = AnimationMethod.Fade,
             AnimationDirection direction = AnimationDirection.Up )
             : this( )
@@ -118,12 +144,8 @@ namespace Baby
             Time = 0;
             Seconds = duration;
             Timer.Interval = duration * 1000;
-            Title.ForeColor = Color.FromArgb( 106, 189, 252 );
-            Title.Text = "Baby Notification";
+            Title.Text = "Notification";
             Message.Text = body;
-            Region = FromHrgn( CreateRoundRectRgn( 0, 0, Width - 5, Height - 5, 20,
-                20 ) );
-
             Click += ( s, e ) => Close( );
             Message.Click += ( s, e ) => Close( );
             Title.Click += ( s, e ) => Close( );
@@ -132,7 +154,7 @@ namespace Baby
         /// <inheritdoc/>
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="Notification"/>
+        /// <see cref="T:BudgetExecution.Notification"/>
         /// class.
         /// </summary>
         /// <param name="title"> The title. </param>
@@ -140,7 +162,7 @@ namespace Baby
         /// <param name="duration"> The duration. </param>
         /// <param name="animation"> The animation. </param>
         /// <param name="direction"> The direction. </param>
-        public Notification( string title, string body, int duration = 3,
+        public Notification( string title, string body, int duration = 5,
             AnimationMethod animation = AnimationMethod.Fade,
             AnimationDirection direction = AnimationDirection.Up )
             : this( )
@@ -149,12 +171,8 @@ namespace Baby
             Time = 0;
             Seconds = duration;
             Timer.Interval = duration * 1000;
-            Title.ForeColor = Color.FromArgb( 106, 189, 252 );
             Title.Text = title;
             Message.Text = body;
-            Region = FromHrgn( CreateRoundRectRgn( 0, 0, Width - 5, Height - 5, 20,
-                20 ) );
-
             Click += ( s, e ) => Close( );
             Message.Click += ( s, e ) => Close( );
             Title.Click += ( s, e ) => Close( );
@@ -176,7 +194,7 @@ namespace Baby
                         if( Time == Seconds )
                         {
                             Timer.Stop( );
-                            FadeOutAndClose( );
+                            FadeOut( );
                         }
                     };
                 }
@@ -189,12 +207,12 @@ namespace Baby
             }
         }
 
-        /// <summary> Raises the Close event. </summary>
+        /// <summary> Notifications the close. </summary>
         public void OnClose( )
         {
             try
             {
-                FadeOutAndClose( );
+                FadeOut( );
                 Close( );
             }
             catch( Exception _ex )
@@ -203,25 +221,22 @@ namespace Baby
             }
         }
 
-        /// <inheritdoc/>
-        /// <summary>
-        /// Raises the
-        /// <see cref="E:System.Windows.Forms.Control.Paint"/>
-        /// event.
-        /// </summary>
+        /// <summary> Called when [load]. </summary>
+        /// <param name="sender"> The sender. </param>
         /// <param name="e">
-        /// A
-        /// <see cref="T:System.Windows.Forms.PaintEventArgs"/>
-        /// that contains the event data.
+        /// The
+        /// <see cref="EventArgs"/>
+        /// instance containing the event data.
         /// </param>
-        protected override void OnPaint( PaintEventArgs e )
+        private void OnLoad( object sender, EventArgs e )
         {
             try
             {
-                base.OnPaint( e );
-                var _g = e.Graphics;
-                using var _pen = new Pen( BorderColor );
-                _g.DrawRectangle( _pen, 0, 0, Width - 1, Height - 1 );
+                Location = new Point( PrimaryScreen.WorkingArea.Width - Width - 5,
+                    PrimaryScreen.WorkingArea.Height - Height - 5 );
+
+                FadeIn( );
+                Timer.Start( );
             }
             catch( Exception _ex )
             {
@@ -255,7 +270,7 @@ namespace Baby
         }
 
         /// <summary> Fades the out and close. </summary>
-        private void FadeOutAndClose( )
+        private void FadeOut( )
         {
             try
             {
@@ -302,30 +317,7 @@ namespace Baby
             }
         }
 
-        /// <summary> Called when [load]. </summary>
-        /// <param name="sender"> The sender. </param>
-        /// <param name="e">
-        /// The
-        /// <see cref="EventArgs"/>
-        /// instance containing the event data.
-        /// </param>
-        private void OnLoad( object sender, EventArgs e )
-        {
-            try
-            {
-                Location = new Point( PrimaryScreen.WorkingArea.Width - Width - 5,
-                    PrimaryScreen.WorkingArea.Height - Height - 5 );
-
-                FadeIn( );
-                Timer.Start( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary> Fails the specified ex. </summary>
+        /// <summary> Get ErrorDialog Dialog. </summary>
         /// <param name="ex"> The ex. </param>
         private protected void Fail( Exception ex )
         {

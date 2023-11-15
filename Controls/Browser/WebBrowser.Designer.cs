@@ -61,7 +61,7 @@
             Separator8 = new ToolSeparator( );
             EdgeButton = new ToolStripButton( );
             Separator9 = new ToolSeparator( );
-            SpfxButton = new ToolStripButton( );
+            SharepointButton = new ToolStripButton( );
             Separator10 = new ToolSeparator( );
             FireFoxButton = new ToolStripButton( );
             Separator16 = new ToolSeparator( );
@@ -311,7 +311,7 @@
             ToolStrip.HomeButton = null;
             ToolStrip.Image = null;
             ToolStrip.ImageScalingSize = new System.Drawing.Size( 18, 18 );
-            ToolStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[ ] { Separator1, DomainComboBox, Separator2, PreviousButton, Separator3, NextButton, Separator4, KeyWordTextBox, Separator5, GoButton, Separator6, CancelButton, Separator7, ChromeButton, Separator8, EdgeButton, Separator9, SpfxButton, Separator10, FireFoxButton, Separator16, RefreshButton, Separator11, DeveloperToolsButton, Separator13, DownloadButton, Separator12, HomePageButton, Separator15, Spacer, CloseButton, Separator14 } );
+            ToolStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[ ] { Separator1, DomainComboBox, Separator2, PreviousButton, Separator3, NextButton, Separator4, KeyWordTextBox, Separator5, GoButton, Separator6, CancelButton, Separator7, ChromeButton, Separator8, EdgeButton, Separator9, SharepointButton, Separator10, FireFoxButton, Separator16, RefreshButton, Separator11, DeveloperToolsButton, Separator13, DownloadButton, Separator12, HomePageButton, Separator15, Spacer, CloseButton, Separator14 } );
             ToolStrip.LauncherStyle = Syncfusion.Windows.Forms.Tools.LauncherStyle.Office2007;
             ToolStrip.Location = new System.Drawing.Point( 236, 1 );
             ToolStrip.Margin = new System.Windows.Forms.Padding( 1 );
@@ -457,7 +457,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 224, 27 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 218, 27 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -573,23 +573,23 @@
             Separator9.Padding = new System.Windows.Forms.Padding( 1 );
             Separator9.Size = new System.Drawing.Size( 6, 27 );
             // 
-            // SpfxButton
+            // SharepointButton
             // 
-            SpfxButton.AutoToolTip = false;
-            SpfxButton.BackColor = System.Drawing.Color.Transparent;
-            SpfxButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            SpfxButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            SpfxButton.ForeColor = System.Drawing.Color.LightGray;
-            SpfxButton.HoverText = "Use Sharepoint";
-            SpfxButton.Image = Properties.Resources.WebSpfxButton;
-            SpfxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            SpfxButton.Margin = new System.Windows.Forms.Padding( 3 );
-            SpfxButton.Name = "SpfxButton";
-            SpfxButton.Padding = new System.Windows.Forms.Padding( 1 );
-            SpfxButton.Size = new System.Drawing.Size( 24, 23 );
-            SpfxButton.Text = "toolStripButton1";
-            SpfxButton.ToolTip = ToolTip;
-            SpfxButton.ToolType = ToolType.FirstButton;
+            SharepointButton.AutoToolTip = false;
+            SharepointButton.BackColor = System.Drawing.Color.Transparent;
+            SharepointButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            SharepointButton.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            SharepointButton.ForeColor = System.Drawing.Color.LightGray;
+            SharepointButton.HoverText = "Use Sharepoint";
+            SharepointButton.Image = Properties.Resources.WebSpfxButton;
+            SharepointButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            SharepointButton.Margin = new System.Windows.Forms.Padding( 3 );
+            SharepointButton.Name = "SharepointButton";
+            SharepointButton.Padding = new System.Windows.Forms.Padding( 1 );
+            SharepointButton.Size = new System.Drawing.Size( 24, 23 );
+            SharepointButton.Text = "toolStripButton1";
+            SharepointButton.ToolTip = ToolTip;
+            SharepointButton.ToolType = ToolType.FirstButton;
             // 
             // Separator10
             // 
@@ -641,7 +641,7 @@
             RefreshButton.Size = new System.Drawing.Size( 24, 23 );
             RefreshButton.Text = "toolStripButton1";
             RefreshButton.ToolTip = ToolTip;
-            RefreshButton.ToolType = ToolType.FirstButton;
+            RefreshButton.ToolType = ToolType.RefreshButton;
             // 
             // Separator11
             // 
@@ -792,7 +792,7 @@
             PictureBox.Location = new System.Drawing.Point( 3, 3 );
             PictureBox.Name = "PictureBox";
             PictureBox.Padding = new System.Windows.Forms.Padding( 1 );
-            PictureBox.Size = new System.Drawing.Size( 20, 20 );
+            PictureBox.Size = new System.Drawing.Size( 22, 22 );
             PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             PictureBox.TabIndex = 0;
             PictureBox.TabStop = false;
@@ -1014,7 +1014,7 @@
         public ToolSeparator Separator5;
         public System.Windows.Forms.TableLayoutPanel TopTable;
         public ToolStripButton EdgeButton;
-        public ToolStripButton SpfxButton;
+        public ToolStripButton SharepointButton;
         public ToolStripButton RefreshButton;
         public ToolStripButton DeveloperToolsButton;
         public ToolSeparator Separator9;

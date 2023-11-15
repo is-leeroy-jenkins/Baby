@@ -1,8 +1,8 @@
 ﻿namespace Baby
 {
-    using System.Windows.Forms;
+    using Syncfusion.Windows.Forms;
 
-    partial class Notification
+    partial class Notification : MetroForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,8 +31,9 @@
         private void InitializeComponent( )
         {
             components = new System.ComponentModel.Container( );
-            PictureBox = new PictureBox( );
-            Timer = new Timer( components );
+            var resources = new System.ComponentModel.ComponentResourceManager( typeof( Notification ) );
+            PictureBox = new ImageBox( );
+            Timer = new System.Windows.Forms.Timer( components );
             Title = new Label( );
             Message = new Label( );
             ( (System.ComponentModel.ISupportInitialize) PictureBox  ).BeginInit( );
@@ -64,6 +65,7 @@
             Title.StyleManager = null;
             Title.TabIndex = 3;
             Title.Text = "label1";
+            Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             Title.ThemeAuthor = "Terry D. Eppler";
             Title.ThemeName = "Baby";
             Title.ToolTip = null;
@@ -79,7 +81,7 @@
             Message.Margin = new Padding( 3 );
             Message.Name = "Message";
             Message.Padding = new Padding( 1 );
-            Message.Size = new System.Drawing.Size( 292, 81 );
+            Message.Size = new System.Drawing.Size( 339, 81 );
             Message.Style = MetroSet_UI.Enums.Style.Custom;
             Message.StyleManager = null;
             Message.TabIndex = 4;
@@ -88,7 +90,6 @@
             Message.ThemeAuthor = "Terry D. Eppler";
             Message.ThemeName = "Baby";
             Message.ToolTip = null;
-
             // 
             // Notification
             // 
@@ -102,7 +103,7 @@
             CaptionButtonHoverColor = System.Drawing.Color.FromArgb(   0  ,   73  ,   112   );
             CaptionFont = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CaptionForeColor = System.Drawing.Color.FromArgb(   0  ,   73  ,   112   );
-            ClientSize = new System.Drawing.Size( 401, 177 );
+            ClientSize = new System.Drawing.Size( 448, 177 );
             ControlBox = false;
             Controls.Add( Message );
             Controls.Add( Title );
@@ -110,13 +111,17 @@
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ForeColor = System.Drawing.Color.FromArgb(   106  ,   189  ,   252   );
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon) resources.GetObject( "$this.Icon" ) ;
             MaximumSize = new System.Drawing.Size( 460, 189 );
             MetroColor = System.Drawing.Color.FromArgb(   0  ,   73  ,   112   );
             MinimizeBox = false;
+            MinimumSize = new System.Drawing.Size( 460, 189 );
             Name = "Notification";
             Padding = new Padding( 1 );
             ShowIcon = false;
             ShowInTaskbar = false;
+            ShowMaximizeBox = false;
+            ShowMinimizeBox = false;
             SizeGripStyle = SizeGripStyle.Hide;
             TopMost = true;
             ( (System.ComponentModel.ISupportInitialize) PictureBox  ).EndInit( );
@@ -124,8 +129,8 @@
         }
 
         #endregion
-        public PictureBox PictureBox;
-        public Timer Timer;
+        public ImageBox PictureBox;
+        public System.Windows.Forms.Timer Timer;
         public Label Message;
         public Label Title;
     }

@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-24-2023
+//     Created:                 06-28-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-24-2023
+//     Last Modified On:        11-15-2023
 // ******************************************************************************************
 // <copyright file="SafeDictionary.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace Baby.IO
+namespace Baby
 {
     using System;
     using System.Collections.Generic;

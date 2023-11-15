@@ -33,6 +33,8 @@
             components = new System.ComponentModel.Container( );
             PictureBox = new PictureBox( );
             Timer = new Timer( components );
+            Title = new Label( );
+            Message = new Label( );
             ( (System.ComponentModel.ISupportInitialize) PictureBox  ).BeginInit( );
             SuspendLayout( );
             // 
@@ -46,6 +48,47 @@
             PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBox.TabIndex = 2;
             PictureBox.TabStop = false;
+            // 
+            // Title
+            // 
+            Title.FlatStyle = FlatStyle.Flat;
+            Title.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            Title.HoverText = null;
+            Title.IsDerivedStyle = true;
+            Title.Location = new System.Drawing.Point( 60, 4 );
+            Title.Margin = new Padding( 3 );
+            Title.Name = "Title";
+            Title.Padding = new Padding( 1 );
+            Title.Size = new System.Drawing.Size( 292, 23 );
+            Title.Style = MetroSet_UI.Enums.Style.Custom;
+            Title.StyleManager = null;
+            Title.TabIndex = 3;
+            Title.Text = "label1";
+            Title.ThemeAuthor = "Terry D. Eppler";
+            Title.ThemeName = "Baby";
+            Title.ToolTip = null;
+            // 
+            // Message
+            // 
+            Message.Anchor =     AnchorStyles.Top  |  AnchorStyles.Bottom   |  AnchorStyles.Left   |  AnchorStyles.Right  ;
+            Message.FlatStyle = FlatStyle.Flat;
+            Message.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            Message.HoverText = null;
+            Message.IsDerivedStyle = true;
+            Message.Location = new System.Drawing.Point( 60, 43 );
+            Message.Margin = new Padding( 3 );
+            Message.Name = "Message";
+            Message.Padding = new Padding( 1 );
+            Message.Size = new System.Drawing.Size( 292, 81 );
+            Message.Style = MetroSet_UI.Enums.Style.Custom;
+            Message.StyleManager = null;
+            Message.TabIndex = 4;
+            Message.Text = "label2";
+            Message.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            Message.ThemeAuthor = "Terry D. Eppler";
+            Message.ThemeName = "Baby";
+            Message.ToolTip = null;
+
             // 
             // Notification
             // 
@@ -61,6 +104,8 @@
             CaptionForeColor = System.Drawing.Color.FromArgb(   0  ,   73  ,   112   );
             ClientSize = new System.Drawing.Size( 401, 177 );
             ControlBox = false;
+            Controls.Add( Message );
+            Controls.Add( Title );
             Controls.Add( PictureBox );
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ForeColor = System.Drawing.Color.FromArgb(   106  ,   189  ,   252   );

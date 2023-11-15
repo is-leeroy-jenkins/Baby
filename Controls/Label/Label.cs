@@ -83,7 +83,7 @@ namespace Baby
             ThemeName = "Baby";
             Size = new Size( 165, 23 );
             BackColor = Color.Transparent;
-            ForeColor = Color.DarkGray;
+            ForeColor = Color.FromArgb( 106, 189, 252 );
             Font = new Font( "Roboto", 8 );
             Margin = new Padding( 3 );
             Padding = new Padding( 1 );

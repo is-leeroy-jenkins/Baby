@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-24-2023
+//     Created:                 06-28-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-24-2023
+//     Last Modified On:        11-15-2023
 // ******************************************************************************************
 // <copyright file="Reflection.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -38,7 +38,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace Baby.IO
+namespace Baby
 {
     using System;
     using System.Collections.Generic;
@@ -47,60 +47,46 @@ namespace Baby.IO
     using System.Reflection.Emit;
     using System.Xml.Serialization;
 
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary> </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "InlineOutVariableDeclaration" ) ]
     public class Reflection
     {
-        /// <summary>
-        /// The constructs cache
-        /// </summary>
+        /// <summary> The constructs cache </summary>
         private readonly SafeDictionary<Type, CreateObject> _constrcache =
             new SafeDictionary<Type, CreateObject>( );
 
-        /// <summary>
-        /// The gets cache
-        /// </summary>
+        /// <summary> The gets cache </summary>
         private readonly SafeDictionary<Type, List<Getters>> _getterscache =
             new SafeDictionary<Type, List<Getters>>( );
 
-        /// <summary>
-        /// The type name
-        /// </summary>
-        private readonly SafeDictionary<Type, string> _typeName = new SafeDictionary<Type, string>( );
+        /// <summary> The type name </summary>
+        private readonly SafeDictionary<Type, string> _typeName =
+            new SafeDictionary<Type, string>( );
 
-        /// <summary>
-        /// The type cache
-        /// </summary>
+        /// <summary> The type cache </summary>
         private readonly SafeDictionary<string, Type> _typeCache =
             new SafeDictionary<string, Type>( );
 
-        /// <summary>
-        /// The show read only properties
-        /// </summary>
+        /// <summary> The show read only properties </summary>
         public bool ShowReadOnlyProperties;
 
-        /// <summary>
-        /// The instance
-        /// </summary>
+        /// <summary> The instance </summary>
         public static readonly Reflection Instance = new Reflection( );
-        
+
         /// <summary>
         /// Prevents a default instance of the
-        /// <see cref="Reflection"/> class from being created.
+        /// <see cref="Reflection"/>
+        /// class from being created.
         /// </summary>
         public Reflection( )
         {
         }
 
-        /// <summary>
-        /// Gets the name of the type assembly.
-        /// </summary>
-        /// <param name="t">The t.</param>
-        /// <returns></returns>
+        /// <summary> Gets the name of the type assembly. </summary>
+        /// <param name="t" > The t. </param>
+        /// <returns> </returns>
         public string GetTypeAssemblyName( Type t )
         {
             var _val = "";
@@ -116,11 +102,9 @@ namespace Baby.IO
             }
         }
 
-        /// <summary>
-        /// Gets the type from cache.
-        /// </summary>
-        /// <param name="typename">The typename.</param>
-        /// <returns></returns>
+        /// <summary> Gets the type from cache. </summary>
+        /// <param name="typename" > The typename. </param>
+        /// <returns> </returns>
         public Type GetTypeFromCache( string typename )
         {
             if( _typeCache.TryGetValue( typename, out var _val ) )
@@ -135,12 +119,10 @@ namespace Baby.IO
             }
         }
 
-        /// <summary>
-        /// Fasts the create instance.
-        /// </summary>
-        /// <param name="objtype">The object type.</param>
-        /// <returns></returns>
-        /// <exception cref="ErrorDialog.Exception"></exception>
+        /// <summary> Fasts the create instance. </summary>
+        /// <param name="objtype" > The object type. </param>
+        /// <returns> </returns>
+        /// <exception cref="ErrorDialog.Exception" > </exception>
         public object FastCreateInstance( Type objtype )
         {
             try
@@ -182,17 +164,16 @@ namespace Baby.IO
             catch( Exception _exc )
             {
                 var _message = $"Failed to create instance for type '{0}' from Assemebly '{1}'";
-                throw new Exception( string.Format( _message, objtype.FullName, 
-                    objtype.AssemblyQualifiedName ), _exc );
+                throw new Exception(
+                    string.Format( _message, objtype.FullName, objtype.AssemblyQualifiedName ),
+                    _exc );
             }
         }
 
-        /// <summary>
-        /// Creates the set field.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        /// <param name="fieldInfo">The field information.</param>
-        /// <returns></returns>
+        /// <summary> Creates the set field. </summary>
+        /// <param name="type" > The type. </param>
+        /// <param name="fieldInfo" > The field information. </param>
+        /// <returns> </returns>
         public static SetterCallback CreateSetField( Type type, FieldInfo fieldInfo )
         {
             var _arguments = new Type[ 2 ];
@@ -238,12 +219,10 @@ namespace Baby.IO
             return (SetterCallback)_dynamicSet.CreateDelegate( typeof( SetterCallback ) );
         }
 
-        /// <summary>
-        /// Creates the set method.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        /// <param name="propertyInfo">The property information.</param>
-        /// <returns></returns>
+        /// <summary> Creates the set method. </summary>
+        /// <param name="type" > The type. </param>
+        /// <param name="propertyInfo" > The property information. </param>
+        /// <returns> </returns>
         public static SetterCallback CreateSetMethod( Type type, PropertyInfo propertyInfo )
         {
             var _setMethod = propertyInfo.GetSetMethod( );
@@ -299,12 +278,10 @@ namespace Baby.IO
             return (SetterCallback)_setter.CreateDelegate( typeof( SetterCallback ) );
         }
 
-        /// <summary>
-        /// Creates the get field.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        /// <param name="fieldInfo">The field information.</param>
-        /// <returns></returns>
+        /// <summary> Creates the get field. </summary>
+        /// <param name="type" > The type. </param>
+        /// <param name="fieldInfo" > The field information. </param>
+        /// <returns> </returns>
         public static GetterCallback CreateGetField( Type type, FieldInfo fieldInfo )
         {
             var _dynamicGet = new DynamicMethod( "_", typeof( object ), new[ ]
@@ -340,12 +317,10 @@ namespace Baby.IO
             return (GetterCallback)_dynamicGet.CreateDelegate( typeof( GetterCallback ) );
         }
 
-        /// <summary>
-        /// Creates the get method.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        /// <param name="propertyInfo">The property information.</param>
-        /// <returns></returns>
+        /// <summary> Creates the get method. </summary>
+        /// <param name="type" > The type. </param>
+        /// <param name="propertyInfo" > The property information. </param>
+        /// <returns> </returns>
         public static GetterCallback CreateGetMethod( Type type, PropertyInfo propertyInfo )
         {
             var _getMethod = propertyInfo.GetGetMethod( );
@@ -386,11 +361,9 @@ namespace Baby.IO
             return (GetterCallback)_getter.CreateDelegate( typeof( GetterCallback ) );
         }
 
-        /// <summary>
-        /// Gets the getters.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        /// <returns></returns>
+        /// <summary> Gets the getters. </summary>
+        /// <param name="type" > The type. </param>
+        /// <returns> </returns>
         public List<Getters> GetGetters( Type type )
         {
             List<Getters> _val = null;
@@ -458,10 +431,8 @@ namespace Baby.IO
             return _getters;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        /// <summary> </summary>
+        /// <returns> </returns>
         private delegate object CreateObject( );
     }
 }

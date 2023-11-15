@@ -52,7 +52,7 @@ namespace Baby
     /// <seealso cref="MetroSet_UI.Controls.MetroSetRichTextBox"/>
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
-    public class RichTextBox : MetroSetRichTextBox
+    public class SplashTextBox : MetroSetRichTextBox
     {
         /// <summary> Gets or sets the tool tip. </summary>
         /// <value> The tool tip. </value>
@@ -64,10 +64,10 @@ namespace Baby
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="RichTextBox"/>
+        /// <see cref="SplashTextBox "/>
         /// class.
         /// </summary>
-        public RichTextBox( )
+        public SplashTextBox( )
         {
             // Basic Properties
             Style = Style.Custom;
@@ -80,39 +80,41 @@ namespace Baby
             Padding = new Padding( 1 );
             Font = new Font( "Roboto", 8 );
             ForeColor = Color.FromArgb( 106, 189, 252 );
-            BackColor = Color.FromArgb( 30, 30, 30 );
+            BackColor = Color.FromArgb( 0, 73, 112 );
             Enabled = true;
             Visible = true;
 
             // BackColor SeriesConfiguration
 
             // Border SeriesConfiguration
-            BorderColor = Color.FromArgb( 65, 65, 65 );
-            HoverColor = Color.FromArgb( 0, 120, 212 );
+            BorderColor = Color.FromArgb( 0, 73, 112 );
+            HoverColor = Color.White;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="RichTextBox"/>
+        /// <see cref="T:Baby.SplashTextBox" />
         /// class.
         /// </summary>
         /// <param name="size"> The size. </param>
         /// <param name="location"> The location. </param>
-        public RichTextBox( Size size, Point location )
+        public SplashTextBox( Size size, Point location )
             : this( )
         {
             Size = size;
             Location = location;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="RichTextBox"/>
+        /// <see cref="T:Baby.SplashTextBox" />
         /// class.
         /// </summary>
         /// <param name="location"> The location. </param>
         /// <param name="parent"> The parent. </param>
-        public RichTextBox( Point location, Control parent = null )
+        public SplashTextBox( Point location, Control parent = null )
             : this( )
         {
             Location = location;
@@ -123,14 +125,15 @@ namespace Baby
             }
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="RichTextBox"/>
+        /// <see cref="T:Baby.SplashTextBox" />
         /// class.
         /// </summary>
         /// <param name="size"> The size. </param>
         /// <param name="parent"> The parent. </param>
-        public RichTextBox( Size size, Control parent = null )
+        public SplashTextBox( Size size, Control parent = null )
             : this( )
         {
             Size = size;
@@ -141,15 +144,16 @@ namespace Baby
             }
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="RichTextBox"/>
+        /// <see cref="T:Baby.SplashTextBox" />
         /// class.
         /// </summary>
         /// <param name="size"> The size. </param>
         /// <param name="location"> The location. </param>
         /// <param name="parent"> The parent. </param>
-        public RichTextBox( Size size, Point location, Control parent )
+        public SplashTextBox( Size size, Point location, Control parent )
             : this( )
         {
             Size = size;
@@ -158,13 +162,14 @@ namespace Baby
             Parent.Controls.Add( this );
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="RichTextBox"/>
+        /// <see cref="T:Baby.SplashTextBox" />
         /// class.
         /// </summary>
         /// <param name="title"> The title. </param>
-        public RichTextBox( string title )
+        public SplashTextBox( string title )
             : this( )
         {
             Text = title;

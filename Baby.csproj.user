@@ -98,6 +98,12 @@
     <Compile Update="Controls\ToolTip\ToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Controls\Layout\SplashLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\RichTextBox\SplashTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">

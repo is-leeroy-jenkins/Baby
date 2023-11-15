@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-01-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-24-2023
+//     Last Modified On:        11-15-2023
 // ******************************************************************************************
 // <copyright file="JSON.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -40,7 +40,6 @@
 
 namespace Baby
 {
-    using IO;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -49,7 +48,6 @@ namespace Baby
     using System.IO;
     using System.Reflection;
     using System.Diagnostics.CodeAnalysis;
-    using static IO.Reflection;
 
     /// <summary>
     /// 
@@ -245,7 +243,7 @@ namespace Baby
         /// <param name="type">The type.</param>
         /// <param name="typename">The typename.</param>
         /// <returns></returns>
-        private SafeDictionary<string, PropInfo> Getproperties( Type type, string typename )
+        private SafeDictionary<string, PropInfo> GetProperties( Type type, string typename )
         {
             if( _propertycache.TryGetValue( typename, out var _sd ) )
             {
@@ -259,8 +257,8 @@ namespace Baby
                 {
                     var _d = CreateMyProp( _p.PropertyType, _p.Name );
                     _d.CanWrite = _p.CanWrite;
-                    _d.SetterCallback = CreateSetMethod( type, _p );
-                    _d.GetterCallback = CreateGetMethod( type, _p );
+                    _d.SetterCallback = Reflection.CreateSetMethod( type, _p );
+                    _d.GetterCallback = Reflection.CreateGetMethod( type, _p );
                     _sd.Add( _p.Name, _d );
                 }
 
@@ -268,8 +266,8 @@ namespace Baby
                 foreach( var _f in _fi )
                 {
                     var _d = CreateMyProp( _f.FieldType, _f.Name );
-                    _d.SetterCallback = CreateSetField( type, _f );
-                    _d.GetterCallback = CreateGetField( type, _f );
+                    _d.SetterCallback = Reflection.CreateSetField( type, _f );
+                    _d.GetterCallback = Reflection.CreateGetField( type, _f );
                     _sd.Add( _f.Name, _d );
                 }
 
@@ -424,7 +422,7 @@ namespace Baby
                 _o = Reflection.Instance.FastCreateInstance( type );
             }
 
-            var _props = Getproperties( type, _typename );
+            var _props = GetProperties( type, _typename );
             foreach( var _n in d.Keys )
             {
                 var _name = _n;
@@ -894,8 +892,8 @@ namespace Baby
                         ds.Tables.Add( _ms.Info[ _i ] );
                     }
 
-                    ds.Tables[ _ms.Info[ _i ] ]
-                        .Columns.Add( _ms.Info[ _i + 1 ], Type.GetType( _ms.Info[ _i + 2 ] ) );
+                    ds.Tables[ _ms.Info[ _i ] ].Columns.Add( _ms.Info[ _i + 1 ],
+                        Type.GetType( _ms.Info[ _i + 2 ] ) );
                 }
             }
         }

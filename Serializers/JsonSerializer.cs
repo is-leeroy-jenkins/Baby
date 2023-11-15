@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-24-2023
+//     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-24-2023
+//     Last Modified On:        11-15-2023
 // ******************************************************************************************
 // <copyright file="JsonSerializer.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -40,7 +40,6 @@
 
 namespace Baby
 {
-    using IO;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -727,7 +726,9 @@ namespace Baby
                     default:
                     {
                         _output.Append( "\\u" );
-                        _output.Append( ( (int)_c ).ToString( "X4", NumberFormatInfo.InvariantInfo ) );
+                        _output.Append(
+                            ( (int)_c ).ToString( "X4", NumberFormatInfo.InvariantInfo ) );
+
                         break;
                     }
                 }

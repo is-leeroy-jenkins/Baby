@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
 //     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-29-2023
+//     Last Modified On:        11-15-2023
 // ******************************************************************************************
 // <copyright file="UrlUtils.cs" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
@@ -40,14 +40,11 @@
 
 namespace Baby
 {
-    using IO;
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
 
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary> </summary>
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
@@ -55,12 +52,10 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     public static class UrlUtils
     {
-        /// <summary>
-        /// Paths to URL.
-        /// </summary>
-        /// <param name="filePath">The file path.</param>
-        /// <param name="removeBaseDir">The remove base dir.</param>
-        /// <returns></returns>
+        /// <summary> Paths to URL. </summary>
+        /// <param name="filePath" > The file path. </param>
+        /// <param name="removeBaseDir" > The remove base dir. </param>
+        /// <returns> </returns>
         public static string PathToUrl( this string filePath, string removeBaseDir = null )
         {
             if( !filePath.CheckIfValid( ) )
@@ -71,35 +66,35 @@ namespace Baby
             return @"file:///" + filePath.Replace( @"\", "/" );
         }
 
-        /// <summary>
-        /// Determines whether [is file offline].
-        /// </summary>
-        /// <param name="url">The URL.</param>
+        /// <summary> Determines whether [is file offline]. </summary>
+        /// <param name="url" > The URL. </param>
         /// <returns>
-        ///   <c>true</c> if [is file offline] [the specified URL]; otherwise, <c>false</c>.
+        /// <c> true </c>
+        /// if [is file offline] [the specified URL]; otherwise,
+        /// <c> false </c>
+        /// .
         /// </returns>
         public static bool IsFileOffline( this string url )
         {
             return url.StartsWith( "file://", StringComparison.Ordinal );
         }
 
-        /// <summary>
-        /// Determines whether this instance is localhost.
-        /// </summary>
-        /// <param name="url">The URL.</param>
+        /// <summary> Determines whether this instance is localhost. </summary>
+        /// <param name="url" > The URL. </param>
         /// <returns>
-        ///   <c>true</c> if the specified URL is localhost; otherwise, <c>false</c>.
+        /// <c> true </c>
+        /// if the specified URL is localhost; otherwise,
+        /// <c> false </c>
+        /// .
         /// </returns>
         public static bool IsLocalhost( this string url )
         {
             return url.BeginsWith( "http://localhost" ) || url.BeginsWith( "localhost" );
         }
 
-        /// <summary>
-        /// URLs the decode.
-        /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <returns></returns>
+        /// <summary> URLs the decode. </summary>
+        /// <param name="url" > The URL. </param>
+        /// <returns> </returns>
         public static string UrlDecode( this string url )
         {
             if( url == null )
@@ -166,11 +161,9 @@ namespace Baby
             return _decoder.GetString( );
         }
 
-        /// <summary>
-        /// Hexadecimals to int.
-        /// </summary>
-        /// <param name="hex">The hexadecimal.</param>
-        /// <returns></returns>
+        /// <summary> Hexadecimals to int. </summary>
+        /// <param name="hex" > The hexadecimal. </param>
+        /// <returns> </returns>
         public static int HexToInt( this char hex )
         {
             return hex switch
@@ -182,11 +175,9 @@ namespace Baby
             };
         }
 
-        /// <summary>
-        /// Decodes the URL for filepath.
-        /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <returns></returns>
+        /// <summary> Decodes the URL for filepath. </summary>
+        /// <param name="url" > The URL. </param>
+        /// <returns> </returns>
         public static string DecodeUrlForFilePath( this string url )
         {
             if( url == null )
@@ -278,11 +269,9 @@ namespace Baby
             return _decoder.GetString( );
         }
 
-        /// <summary>
-        /// URLs the encode.
-        /// </summary>
-        /// <param name="text">The text.</param>
-        /// <returns></returns>
+        /// <summary> URLs the encode. </summary>
+        /// <param name="text" > The text. </param>
+        /// <returns> </returns>
         public static string UrlEncode( this string text )
         {
             return Uri.EscapeDataString( text );

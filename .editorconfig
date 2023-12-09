@@ -647,6 +647,20 @@ dotnet_diagnostic.ca1307.severity = silent
 
 # CA2211: Non-constant fields should not be visible
 dotnet_diagnostic.ca2211.severity = silent
+csharp_indent_labels = one_less_than_current
+csharp_space_around_binary_operators = before_and_after
+csharp_prefer_simple_using_statement = true:warning
+csharp_style_prefer_method_group_conversion = true:silent
+csharp_style_prefer_top_level_statements = false:warning
+csharp_style_prefer_primary_constructors = true:suggestion
+csharp_style_expression_bodied_methods = when_on_single_line:silent
+csharp_style_expression_bodied_constructors = false:silent
+csharp_style_expression_bodied_operators = false:silent
+csharp_style_expression_bodied_properties = true:silent
+csharp_style_expression_bodied_indexers = true:silent
+csharp_style_expression_bodied_accessors = false:silent
+csharp_style_expression_bodied_lambdas = true:silent
+csharp_style_expression_bodied_local_functions = false:silent
 
 [*.css]
 ij_css_align_closing_brace_with_properties = false
@@ -1220,3 +1234,15 @@ ij_yaml_spaces_within_brackets = true
 indent_style = space
 indent_size = 4
 tab_width = 4
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
+dotnet_style_coalesce_expression = true:silent
+dotnet_style_null_propagation = true:warning
+dotnet_style_prefer_is_null_check_over_reference_equality_method = false:warning
+dotnet_style_prefer_auto_properties = true:silent
+dotnet_style_object_initializer = true:suggestion
+dotnet_style_prefer_collection_expression = true:suggestion
+dotnet_style_collection_initializer = true:suggestion
+dotnet_style_prefer_simplified_boolean_expressions = true:warning
+dotnet_style_prefer_conditional_expression_over_assignment = true:warning
+dotnet_style_prefer_conditional_expression_over_return = true:warning
+dotnet_style_explicit_tuple_names = true:suggestion

@@ -78,6 +78,7 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "RedundantDelegateCreation" ) ]
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     [ SuppressMessage( "ReSharper", "StringLiteralTypo" ) ]
+    [ SuppressMessage( "ReSharper", "ArrangeMethodOrOperatorBody" ) ]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -2419,7 +2420,7 @@ namespace Baby
         {
             try
             {
-                var _message = "THIS IS JUST A TEST!";
+                var _message = "THIS HAS NOT BEEN IMPLEMENTED";
                 SendMessage( _message );
             }
             catch( Exception _ex )

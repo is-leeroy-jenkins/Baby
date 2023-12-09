@@ -37,18 +37,18 @@
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702;CA1416</NoWarn>
+    <NoWarn>1701;1702;CA1416;CS0169</NoWarn>
     <Optimize>True</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <NoWarn>1701;1702;CA1416</NoWarn>
+    <NoWarn>1701;1702;CA1416;CS0169</NoWarn>
     <Optimize>True</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>1701;1702;CA1416</NoWarn>
+    <NoWarn>1701;1702;CA1416;CS0169</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <NoWarn>1701;1702;CA1416</NoWarn>
+    <NoWarn>1701;1702;CA1416;CS0169</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Properties\Images\Baby.ico" />
@@ -70,14 +70,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="cef.redist.x64" Version="119.1.2" />
-    <PackageReference Include="cef.redist.x86" Version="119.1.2" />
-    <PackageReference Include="CefSharp.Common" Version="119.1.20" />
-    <PackageReference Include="CefSharp.Common.NETCore" Version="119.1.20" />
-    <PackageReference Include="CefSharp.WinForms" Version="119.1.20" />
-    <PackageReference Include="CefSharp.WinForms.NETCore" Version="119.1.20" />
-    <PackageReference Include="CefSharp.Wpf" Version="119.1.20" />
-    <PackageReference Include="CefSharp.Wpf.NETCore" Version="119.1.20" />
+    <PackageReference Include="cef.redist.x64" Version="119.4.3" />
+    <PackageReference Include="cef.redist.x86" Version="119.4.3" />
+    <PackageReference Include="CefSharp.Common" Version="119.4.30" />
+    <PackageReference Include="CefSharp.Common.NETCore" Version="119.4.30" />
+    <PackageReference Include="CefSharp.WinForms" Version="119.4.30" />
+    <PackageReference Include="CefSharp.WinForms.NETCore" Version="119.4.30" />
+    <PackageReference Include="CefSharp.Wpf" Version="119.4.30" />
+    <PackageReference Include="CefSharp.Wpf.NETCore" Version="119.4.30" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CharmNotification">

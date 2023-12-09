@@ -79,8 +79,10 @@ namespace Baby
         /// </value>
         public virtual string IconPath { get; set; }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="ErrorDialog"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="T:Baby.ErrorDialog" /> class.
         /// </summary>
         public ErrorDialog( )
         {
@@ -123,8 +125,10 @@ namespace Baby
             CloseButton.Click += OnCloseButtonClick;
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="ErrorDialog"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="T:Baby.ErrorDialog" /> class.
         /// </summary>
         /// <param name="ext">The ext.</param>
         public ErrorDialog( Exception ext )
@@ -134,8 +138,10 @@ namespace Baby
             TextBox.Text = ext.ToLogString( Exception?.Message );
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="ErrorDialog"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="T:Baby.ErrorDialog" /> class.
         /// </summary>
         /// <param name="message">The message.</param>
         public ErrorDialog( string message )
@@ -149,7 +155,8 @@ namespace Baby
         /// Called when [load].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         public void OnLoad( object sender, EventArgs e )
         {
             try
@@ -214,7 +221,8 @@ namespace Baby
         /// Called when [close button click].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         public void OnCloseButtonClick( object sender, EventArgs e )
         {
             if( sender is Button )
@@ -234,7 +242,7 @@ namespace Baby
         /// Fails the specified ex.
         /// </summary>
         /// <param name="ex">The ex.</param>
-        private static void Fail( Exception ex )
+        private void Fail( Exception ex )
         {
             Console.WriteLine( ex.Message );
         }

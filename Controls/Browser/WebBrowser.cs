@@ -1,15 +1,15 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Baby
+//     Assembly:                Budget Enumerations
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 $CREATED_MONTH$-$CREATED_DAY$-$CREATED_YEAR$
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        11-15-2023
+//     Last Modified On:        $CURRENT_MONTH$-$CURRENT_DAY$-$CURRENT_YEAR$
 // ******************************************************************************************
-// <copyright file="WebBrowser.cs" company="Terry D. Eppler">
+// <copyright file="$FILENAME$" company="Terry D. Eppler">
 //    This is a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//    Copyright ©  $CURRENT_YEAR$  Terry Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -34,7 +34,7 @@
 //    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   WebBrowser.cs
+//   $FILENAME$
 // </summary>
 // ******************************************************************************************
 
@@ -67,17 +67,17 @@ namespace Baby
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
     /// If you would only like to support 64-bit machines, simply change the DLL references.
     /// </summary>
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
-    [SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" )]
-    [SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" )]
-    [SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" )]
-    [SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" )]
-    [SuppressMessage( "ReSharper", "ConvertToAutoProperty" )]
-    [SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" )]
-    [SuppressMessage( "ReSharper", "RedundantDelegateCreation" )]
-    [SuppressMessage( "ReSharper", "UnusedParameter.Global" )]
-    [SuppressMessage( "ReSharper", "StringLiteralTypo" )]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
+    [ SuppressMessage( "ReSharper", "SuggestBaseTypeForParameter" ) ]
+    [ SuppressMessage( "ReSharper", "LoopCanBePartlyConvertedToQuery" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoProperty" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoPropertyWithPrivateSetter" ) ]
+    [ SuppressMessage( "ReSharper", "RedundantDelegateCreation" ) ]
+    [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
+    [ SuppressMessage( "ReSharper", "StringLiteralTypo" ) ]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -483,16 +483,19 @@ namespace Baby
         /// <param name="title">Name of the tab.</param>
         private void SetTitleText( string title )
         {
-            if( title.CheckIfValid( ) )
+            InvokeIfNeeded( delegate
             {
-                Title.Text = title + " - " + AppSettings[ "Branding" ];
-                _currentTitle = title;
-            }
-            else
-            {
-                Title.Text = AppSettings[ "Branding" ];
-                _currentTitle = "New Tab";
-            }
+                if( title.CheckIfValid( ) )
+                {
+                    Title.Text = title + " - " + AppSettings[ "Branding" ];
+                    _currentTitle = title;
+                }
+                else
+                {
+                    Title.Text = AppSettings[ "Branding" ];
+                    _currentTitle = "New Tab";
+                }
+            } );
         }
 
         /// <summary>
@@ -883,9 +886,9 @@ namespace Baby
                 if( _urlLower.StartsWith( AppSettings[ "Internal" ] + ":" )
                    || ( Uri.TryCreate( _newUrl, UriKind.Absolute, out _outUri )
                        && ( ( ( ( _outUri.Scheme == Uri.UriSchemeHttp )
-                               || ( _outUri.Scheme == Uri.UriSchemeHttps ) )
-                           && _newUrl.Contains( "." ) )
-                       || ( _outUri.Scheme == Uri.UriSchemeFile ) ) ) )
+                                   || ( _outUri.Scheme == Uri.UriSchemeHttps ) )
+                               && _newUrl.Contains( "." ) )
+                           || ( _outUri.Scheme == Uri.UriSchemeFile ) ) ) )
                 {
                 }
                 else
@@ -933,7 +936,9 @@ namespace Baby
         /// <summary>
         /// Enables the back button.
         /// </summary>
-        /// <param name="canGoBack">if set to <c>true</c> [can go back].</param>
+        /// <param name="canGoBack">if set to
+        /// <c>true</c> [can go back].
+        /// </param>
         private void EnableBackButton( bool canGoBack )
         {
             InvokeIfNeeded( ( ) => PreviousButton.Enabled = canGoBack );
@@ -1030,9 +1035,15 @@ namespace Baby
         /// <summary>
         /// Adds the new browser tab.
         /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <param name="focusNewTab">if set to <c>true</c> [focus new tab].</param>
-        /// <param name="referringUrl">The referring URL.</param>
+        /// <param name="url">
+        /// The URL.
+        /// </param>
+        /// <param name="focusNewTab">if set to
+        /// <c>true</c> [focus new tab].
+        /// </param>
+        /// <param name="referringUrl">
+        /// The referring URL.
+        /// </param>
         /// <returns></returns>
         public ChromiumWebBrowser AddNewBrowserTab( string url, bool focusNewTab = true,
             string referringUrl = null )
@@ -1684,7 +1695,7 @@ namespace Baby
                 if( e.IsLoading )
                 {
                     // set title
-                    //SetTabText( );
+                    SetTitleText( "Loading..." );
                 }
                 else
                 {

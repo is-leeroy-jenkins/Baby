@@ -64,13 +64,12 @@ namespace Baby
         /// </summary>
         public ImageBox( )
         {
-            Size = new Size( 60, 40 );
+            Size = new Size( 20, 18 );
             Anchor = AnchorStyles.Left | AnchorStyles.Top;
-            Location = new Point( 1, 1 );
             BackColor = Color.Transparent;
-            Margin = new Padding( 3 );
+            Margin = new Padding( 1 );
             Padding = new Padding( 1 );
-            SizeMode = PictureBoxSizeMode.StretchImage;
+            SizeMode = PictureBoxSizeMode.Zoom;
         }
     }
 }

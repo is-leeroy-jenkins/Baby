@@ -38,7 +38,6 @@
 // </summary>
 // ******************************************************************************************
 
-
 namespace Baby
 {
     using System;
@@ -48,6 +47,7 @@ namespace Baby
     /// <inheritdoc />
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
+    [ SuppressMessage( "ReSharper", "RedundantBaseConstructorCall" ) ]
     public class Palette : ColorCache
     {
         /// <summary>
@@ -450,7 +450,8 @@ namespace Baby
         /// <summary>
         /// Initializes a new instance of the <see cref="Palette"/> class.
         /// </summary>
-        public Palette( )
+        public Palette( ) 
+            : base( )
         {
             _blue = Color.FromArgb( 0, 120, 212 );
             _blueForeColor = Color.FromArgb( 106, 189, 252 );

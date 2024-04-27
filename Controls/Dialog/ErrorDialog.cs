@@ -69,7 +69,7 @@ namespace Baby
         /// <value>
         /// The exception.
         /// </value>
-        public virtual Exception Exception { get; set; }
+        public virtual Exception Exception { get; }
 
         /// <summary>
         /// Gets or sets the icon path.

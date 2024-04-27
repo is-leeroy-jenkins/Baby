@@ -47,7 +47,7 @@ namespace Baby
     using System.Linq;
     using System.Windows.Forms;
     using Syncfusion.Windows.Forms;
-    using Timer = System.Windows.Forms.Timer;
+    using System.Threading.Tasks;
     using static Animator;
 
     /// <summary>
@@ -60,39 +60,74 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "AutoPropertyCanBeMadeGetOnly.Global" ) ]
     [ SuppressMessage( "ReSharper", "RedundantExtendsListEntry" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoProperty" ) ]
     public partial class SplashMessage : MetroForm
     {
         /// <summary>
-        /// Gets or sets the time.
+        /// The busy
         /// </summary>
-        /// <value>
-        /// The time.
-        /// </value>
-        public int Time { get; set; }
+        private bool _busy;
 
         /// <summary>
-        /// Gets or sets the seconds.
+        /// The time
         /// </summary>
-        /// <value>
-        /// The seconds.
-        /// </value>
-        public int Seconds { get; set; }
+        private int _time;
+
+        /// <summary>
+        /// The seconds
+        /// </summary>
+        private int _seconds;
+
+        /// <summary>
+        /// The allow focus
+        /// </summary>
+        private bool _allowFocus;
+
+        /// <summary>
+        /// The without activation
+        /// </summary>
+        private bool _withoutActivation;
+
+        /// <summary>
+        /// The lines
+        /// </summary>
+        private IList<string> _lines;
 
         /// <summary>
         /// Gets or sets a value indicating whether [allow focus].
         /// </summary>
         /// <value>
-        /// <c>true</c> if [allow focus]; otherwise, <c>false</c>.
+        ///   <c>true</c> if [allow focus]; otherwise, <c>false</c>.
         /// </value>
-        public bool AllowFocus { get; set; }
+        public bool AllowFocus
+        {
+            get
+            {
+                return _allowFocus;
+            }
+            private set
+            {
+                _allowFocus = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether [shown without activation].
         /// </summary>
         /// <value>
-        /// <c>true</c> if [shown without activation]; otherwise, <c>false</c>.
+        ///   <c>true</c> if [shown without activation]; otherwise, <c>false</c>.
         /// </value>
-        public bool ShownWithoutActivation { get; set; } = true;
+        public bool ShownWithoutActivation
+        {
+            get
+            {
+                return _withoutActivation;
+            }
+            private set
+            {
+                _withoutActivation = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the lines.
@@ -100,7 +135,37 @@ namespace Baby
         /// <value>
         /// The lines.
         /// </value>
-        public List<string> Lines { get; set; }
+        public IList<string> Lines
+        {
+            get
+            {
+                return _lines;
+            }
+            private set
+            {
+                _lines = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this instance is busy.
+        /// </summary>
+        /// <value>
+        /// <c> true </c>
+        /// if this instance is busy; otherwise,
+        /// <c> false </c>
+        /// </value>
+        public bool IsBusy
+        {
+            get
+            {
+                return _busy;
+            }
+            private set
+            {
+                _busy = value;
+            }
+        }
 
         /// <inheritdoc />
         /// <summary>
@@ -110,6 +175,7 @@ namespace Baby
         public SplashMessage( )
         {
             InitializeComponent( );
+            RegisterCallbacks( );
 
             // Form Properties
             Size = new Size( 650, 250 );
@@ -156,9 +222,8 @@ namespace Baby
             AnimationDirection direction = AnimationDirection.Up )
             : this( )
         {
-            Time = 0;
-            Seconds = duration;
-            Timer.Interval = duration * 1000;
+            _time = 0;
+            _seconds = duration;
             Message.Text = message;
         }
 
@@ -175,127 +240,9 @@ namespace Baby
             AnimationDirection direction = AnimationDirection.Up )
             : this( )
         {
-            Lines = lines.ToList( );
-            Time = 0;
-            Seconds = duration;
-            Timer.Interval = duration * 1000;
-        }
-
-        /// <summary>
-        /// Displays the control to the user.
-        /// </summary>
-        public new void Show( )
-        {
-            try
-            {
-                Opacity = 0;
-                if( Seconds != 0 )
-                {
-                    Timer = new Timer( );
-                    Timer.Interval = 1000;
-                    Timer.Tick += ( sender, args ) =>
-                    {
-                        Time++;
-                        if( Time == Seconds )
-                        {
-                            Timer.Stop( );
-                            FadeOut( );
-                        }
-                    };
-                }
-
-                base.Show( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Raises the Close event.
-        /// </summary>
-        public void OnClose( )
-        {
-            try
-            {
-                FadeOut( );
-                Close( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Fades the out.
-        /// </summary>
-        private void FadeOut( )
-        {
-            try
-            {
-                var _timer = new Timer( );
-                _timer.Interval = 10;
-                _timer.Tick += ( sender, args ) =>
-                {
-                    if( Opacity == 0d )
-                    {
-                        _timer.Stop( );
-                        Close( );
-                    }
-
-                    Opacity -= 0.02d;
-                };
-
-                _timer.Start( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Called when [click].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
-        private void OnClick( object sender, MouseEventArgs e )
-        {
-            if( ( e.Button == MouseButtons.Left )
-               || ( e.Button == MouseButtons.Right ) )
-            {
-                try
-                {
-                    OnClose( );
-                }
-                catch( Exception _ex )
-                {
-                    Fail( _ex );
-                }
-            }
-        }
-
-        /// <summary>
-        /// Called when [load].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void OnLoad( object sender, EventArgs e )
-        {
-            try
-            {
-                InitializeLabels( );
-                InitializePanel( );
-                InitializeTitle( );
-                FadeIn( );
-                Timer.Start( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
+            _lines = lines.ToList( );
+            _time = 0;
+            _seconds = duration;
         }
 
         /// <summary>
@@ -321,6 +268,9 @@ namespace Baby
         {
             try
             {
+                BackPanel.BorderColor = Color.FromArgb( 106, 189, 252 );
+                BackPanel.Margin = new Padding( 0 );
+                BackPanel.Padding = new Padding( 0 );
             }
             catch( Exception _ex )
             {
@@ -331,7 +281,7 @@ namespace Baby
         /// <summary>
         /// Initializes the labels.
         /// </summary>
-        private protected virtual void InitializeLabels( )
+        private protected void InitializeLabels( )
         {
             try
             {
@@ -346,25 +296,160 @@ namespace Baby
         }
 
         /// <summary>
-        /// Fades the in.
+        /// Registers the callbacks.
         /// </summary>
-        private protected virtual void FadeIn( )
+        private protected void RegisterCallbacks( )
         {
             try
             {
-                var _timer = new Timer( );
-                _timer.Interval = 10;
-                _timer.Tick += ( sender, args ) =>
+                PictureBox.MouseClick += OnClick;
+                Title.MouseClick += OnClick;
+                Message.MouseClick += OnClick;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Fades the in asynchronous.
+        /// </summary>
+        /// <param name="form">The o.</param>
+        /// <param name="interval">The interval.</param>
+        private async void FadeInAsync( Form form, int interval = 80 )
+        {
+            try
+            {
+                ThrowIf.Null( form, nameof( form ) );
+                while( form.Opacity < 1.0 )
                 {
-                    if( Opacity == 1d )
-                    {
-                        _timer.Stop( );
-                    }
+                    await Task.Delay( interval );
+                    form.Opacity += 0.05;
+                }
 
-                    Opacity += 0.02d;
-                };
+                form.Opacity = 1;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
 
-                _timer.Start( );
+        /// <summary>
+        /// Fades the out asynchronous.
+        /// </summary>
+        /// <param name="form">The o.</param>
+        /// <param name="interval">The interval.</param>
+        private async void FadeOutAsync( Form form, int interval = 80 )
+        {
+            try
+            {
+                ThrowIf.Null( form, nameof( form ) );
+                while( form.Opacity > 0.0 )
+                {
+                    await Task.Delay( interval );
+                    form.Opacity -= 0.05;
+                }
+
+                form.Opacity = 0;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [load].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void OnLoad( object sender, EventArgs e )
+        {
+            try
+            {
+                Opacity = 0;
+                InitializeLabels( );
+                InitializePanel( );
+                InitializeTitle( );
+                FadeInAsync( this );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Raises the Close event.
+        /// </summary>
+        public void OnClose( )
+        {
+            try
+            {
+                FadeOutAsync( this );
+                Close( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
+        private void OnClick( object sender, MouseEventArgs e )
+        {
+            if( ( e.Button == MouseButtons.Left )
+               || ( e.Button == MouseButtons.Right ) )
+            {
+                try
+                {
+                    FadeOutAsync( this );
+                    Close( );
+                }
+                catch( Exception _ex )
+                {
+                    Fail( _ex );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when [form closing].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnFormClosing( object sender, EventArgs e )
+        {
+            try
+            {
+                Opacity = 1;
+                FadeOutAsync( this );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [activated].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnActivated( object sender, EventArgs e )
+        {
+            try
+            {
+                Opacity = 0;
+                FadeInAsync( this );
             }
             catch( Exception _ex )
             {

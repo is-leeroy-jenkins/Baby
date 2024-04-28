@@ -43,7 +43,6 @@ namespace Baby
     using CefSharp;
     using CefSharp.WinForms;
     using System;
-    using System.CodeDom;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
@@ -82,11 +81,11 @@ namespace Baby
         {
             switch( argument )
             {
-                case WebBrowser _browser:
+                case string _args:
                 {
-                    if( _browser == null )
+                    if( string.IsNullOrEmpty( _args ) )
                     {
-                        var _message = @$"The WebBrowser '{paramName}' is null!";
+                        var _message = @$"The '{paramName}' is null!";
                         throw new ArgumentNullException( _message );
                     }
 
@@ -96,7 +95,17 @@ namespace Baby
                 {
                     if( _action == null )
                     {
-                        var _message = @$"The Action '{paramName}' is null!";
+                        var _message = @$"The '{paramName}' is null!";
+                        throw new ArgumentNullException( _message );
+                    }
+
+                    break;
+                }
+                case WebBrowser _browser:
+                {
+                    if( _browser == null )
+                    {
+                        var _message = @$"The WebBrowser '{paramName}' is null!";
                         throw new ArgumentNullException( _message );
                     }
 

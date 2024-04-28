@@ -23,8 +23,8 @@
     <RepositoryUrl>https://github.com/KarmaScripter/Baby</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
-    <AssemblyName>Baby</AssemblyName>
-    <RootNamespace>Baby</RootNamespace>
+    <AssemblyName>BabyBrowser</AssemblyName>
+    <RootNamespace>BabyBrowser</RootNamespace>
     <SignAssembly>False</SignAssembly>
     <Version>0.0.1</Version>
     <PackageProjectUrl>https://github.com/KarmaScripter/Baby</PackageProjectUrl>

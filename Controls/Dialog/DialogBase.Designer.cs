@@ -39,7 +39,7 @@
 // ******************************************************************************************
 //
 
-namespace BabyBrowser
+namespace Baby
 {
     partial class DialogBase
     {

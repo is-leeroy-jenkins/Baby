@@ -56,95 +56,13 @@ namespace Baby
     /// <summary>
     /// </summary>
     /// <seealso cref="T:Syncfusion.Windows.Forms.MetroForm" />
-    [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
-    [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
-    public partial class FileBrowser 
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "RedundantBaseConstructorCall" ) ]
+    [ SuppressMessage( "ReSharper", "RedundantExtendsListEntry" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
+    public partial class FileBrowser : DialogBase
     {
-        /// <summary>
-        /// The locked object
-        /// </summary>
-        private protected object _path;
-
-        /// <summary>
-        /// The busy
-        /// </summary>
-        private protected bool _busy;
-
-        /// <summary>
-        /// The status update
-        /// </summary>
-        private protected Action _statusUpdate;
-
-        /// <summary>
-        /// The time
-        /// </summary>
-        private protected int _time;
-
-        /// <summary>
-        /// The count
-        /// </summary>
-        private protected int _count;
-
-        /// <summary>
-        /// The seconds
-        /// </summary>
-        private protected int _seconds;
-
-        /// <summary>
-        /// The duration
-        /// </summary>
-        private protected double _duration;
-
-        /// <summary>
-        /// The data
-        /// </summary>
-        private protected string _data;
-
-        /// <summary>
-        /// The selected path
-        /// </summary>
-        private protected string _selectedPath;
-
-        /// <summary>
-        /// The selected file
-        /// </summary>
-        private protected string _selectedFile;
-
-        /// <summary>
-        /// The initial directory
-        /// </summary>
-        private protected string _initialDirectory;
-
-        /// <summary>
-        /// The file extension
-        /// </summary>
-        private protected string _fileExtension;
-
-        /// <summary>
-        /// The extension
-        /// </summary>
-        private protected EXT _extension;
-
-        /// <summary>
-        /// The file paths
-        /// </summary>
-        private protected IList<string> _filePaths;
-
-        /// <summary>
-        /// The initial dir paths
-        /// </summary>
-        private protected IList<string> _initialPaths;
-
-        /// <summary>
-        /// The radio buttons
-        /// </summary>
-        private protected IList<RadioButton> _radioButtons;
-
-        /// <summary>
-        /// The image
-        /// </summary>
-        private protected Bitmap _image;
-
         /// <summary>
         /// Gets or sets the file extension.
         /// </summary>
@@ -270,7 +188,8 @@ namespace Baby
         /// Initializes a new instance of the
         /// <see cref="T:Baby.FileBrowser" /> class.
         /// </summary>
-        public FileBrowser( )
+        public FileBrowser( ) 
+            : base( )
         {
             InitializeComponent( );
             Font = new Font( "Roboto", 9 );
@@ -286,7 +205,7 @@ namespace Baby
             BorderColor = Color.FromArgb( 0, 120, 212 );
             BorderThickness = 1;
             BackColor = Color.FromArgb( 20, 20, 20 );
-            _initialPaths = GetInitialDirPaths( );
+            _searchPaths = GetInitialDirPaths( );
             RadioButtons = GetRadioButtons( );
             _fileExtension = "xlsx";
             _extension = EXT.XLSX;
@@ -322,143 +241,17 @@ namespace Baby
         }
 
         /// <summary>
-        /// Called when [load].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        public void OnLoad( object sender, EventArgs e )
-        {
-            if( _filePaths?.Any( ) == true )
-            {
-                try
-                {
-                    PopulateListBox( );
-                    FoundLabel.Text = "Found : " + _filePaths?.Count( );
-                    Header.Text = $"{_extension} File SaveAs";
-                    ClearRadioButtons( );
-                    SetRadioButtonEvents( );
-                }
-                catch( Exception _ex )
-                {
-                    Fail( _ex );
-                }
-            }
-        }
-
-        /// <summary>
-        /// Populates the ListBox.
-        /// </summary>
-        /// <param name="filePaths">The file paths.</param>
-        public virtual void PopulateListBox( IEnumerable<string> filePaths )
-        {
-            try
-            {
-                if( filePaths?.Any( ) == true )
-                {
-                    FileList.Items.Clear( );
-                    var _paths = filePaths.ToArray( );
-                    for( var _i = 0; _i < _paths.Length; _i++ )
-                    {
-                        var _path = _paths[_i];
-                        if( !string.IsNullOrEmpty( _path ) )
-                        {
-                            FileList?.Items.Add( _path );
-                        }
-                    }
-                }
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Gets the image.
-        /// </summary>
-        /// <returns></returns>
-        private protected Image GetImage( )
-        {
-            if( !string.IsNullOrEmpty( FileExtension ) )
-            {
-                try
-                {
-                    var _path = AppSettings["Extensions"];
-                    if( _path != null )
-                    {
-                        var _files = GetFiles( _path );
-                        if( _files?.Any( ) == true )
-                        {
-                            var _extension = FileExtension.TrimStart( '.' ).ToUpper( );
-                            var _file = _files
-                                ?.Where( f => f.Contains( _extension ) )
-                                ?.First( );
-
-                            using var _stream = File.Open( _file, FileMode.Open );
-                            var _img = Image.FromStream( _stream );
-                            return new Bitmap( _img, 22, 22 );
-                        }
-                    }
-                }
-                catch( Exception _ex )
-                {
-                    Fail( _ex );
-                    return default( Bitmap );
-                }
-            }
-
-            return default( Bitmap );
-        }
-
-        /// <summary>
-        /// Clears the radio buttons.
-        /// </summary>
-        private protected void ClearRadioButtons( )
-        {
-            try
-            {
-                foreach( var _radioButton in RadioButtons )
-                {
-                    _radioButton.CheckedChanged += null;
-                    _radioButton.CheckState = CheckState.Unchecked;
-                }
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Sets the RadioButton events.
-        /// </summary>
-        private protected void SetRadioButtonEvents( )
-        {
-            try
-            {
-                foreach( var _radioButton in RadioButtons )
-                {
-                    _radioButton.CheckedChanged += OnRadioButtonSelected;
-                }
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
         /// Gets the ListView paths.
         /// </summary>
         /// <returns></returns>
         private protected IList<string> GetListViewPaths( )
         {
-            if( _initialPaths?.Any( ) == true )
+            if( _searchPaths?.Any( ) == true )
             {
                 try
                 {
                     var _list = new List<string>( );
-                    foreach( var _filePath in _initialPaths )
+                    foreach( var _filePath in _searchPaths )
                     {
                         var _first = GetFiles( _filePath )
                             ?.Where( f => f.EndsWith( _fileExtension ) )
@@ -472,7 +265,7 @@ namespace Baby
                             if( !_dir.Contains( "My " ) )
                             {
                                 var _second = GetFiles( _dir )
-                                    ?.Where( s => s.EndsWith( _fileExtension) )
+                                    ?.Where( s => s.EndsWith( _fileExtension ) )
                                     ?.Select( s => Path.GetFullPath( s ) )
                                     ?.ToList( );
 
@@ -484,10 +277,10 @@ namespace Baby
                                 var _subDir = GetDirectories( _dir );
                                 for( var _i = 0; _i < _subDir.Length; _i++ )
                                 {
-                                    var _path = _subDir[_i];
-                                    if( !string.IsNullOrEmpty( _path ) )
+                                    var _value = _subDir[_i];
+                                    if( !string.IsNullOrEmpty( _value ) )
                                     {
-                                        var _last = GetFiles( _path )
+                                        var _last = GetFiles( _value )
                                             ?.Where( l => l.EndsWith( _fileExtension ) )
                                             ?.Select( l => Path.GetFullPath( l ) )
                                             ?.ToList( );
@@ -517,40 +310,10 @@ namespace Baby
         }
 
         /// <summary>
-        /// Called when [RadioButton selected].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        private protected virtual void OnRadioButtonSelected( object sender )
-        {
-            if( sender is RadioButton _radioButton
-               && !string.IsNullOrEmpty( _radioButton.Tag?.ToString( ) ) )
-            {
-                try
-                {
-                    _fileExtension = _radioButton?.Result;
-                    var _ext = _radioButton.Tag?.ToString( )
-                        ?.Trim( ".".ToCharArray( ) )
-                        ?.ToUpper( );
-
-                    Header.Text = $"{_ext} File SaveAs";
-                    MessageLabel.Text = string.Empty;
-                    FoundLabel.Text = string.Empty;
-                    var _paths = GetListViewPaths( );
-                    PopulateListBox( _paths );
-                    Picture.Image = GetImage( );
-                    FoundLabel.Text = "Found: " + _paths?.ToList( )?.Count ?? "0";
-                }
-                catch( Exception _ex )
-                {
-                    Fail( _ex );
-                }
-            }
-        }
-
-        /// <summary>
         /// Gets the radio buttons.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// </returns>
         private protected virtual IList<RadioButton> GetRadioButtons( )
         {
             try
@@ -616,14 +379,97 @@ namespace Baby
         /// </summary>
         private protected virtual void PopulateListBox( )
         {
-            if( FilePaths?.Any( ) == true )
+            if( _filePaths?.Any( ) == true )
             {
                 try
                 {
-                    foreach( var _path in FilePaths )
+                    foreach( var _item in _filePaths )
                     {
-                        FileList.Items.Add( _path );
+                        FileList.Items.Add( _item );
                     }
+                }
+                catch( Exception _ex )
+                {
+                    Fail( _ex );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Populates the ListBox.
+        /// </summary>
+        /// <param name="filePaths">The file paths.</param>
+        public virtual void PopulateListBox( IEnumerable<string> filePaths )
+        {
+            try
+            {
+                if( filePaths?.Any( ) == true )
+                {
+                    FileList.Items.Clear( );
+                    var _paths = filePaths.ToArray( );
+                    for( var _i = 0; _i < _paths.Length; _i++ )
+                    {
+                        var _item = _paths[ _i ];
+                        if( !string.IsNullOrEmpty( _item ) )
+                        {
+                            FileList?.Items.Add( _item );
+                        }
+                    }
+                }
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [load].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        public void OnLoad( object sender, EventArgs e )
+        {
+            if( _filePaths?.Any( ) == true )
+            {
+                try
+                {
+                    PopulateListBox( );
+                    FoundLabel.Text = "Found : " + _filePaths?.Count( );
+                    Header.Text = $"{_extension} File SaveAs";
+                    ClearRadioButtons( );
+                    SetRadioButtonEvents( );
+                }
+                catch( Exception _ex )
+                {
+                    Fail( _ex );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when [RadioButton selected].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        private protected virtual void OnRadioButtonSelected( object sender )
+        {
+            if( sender is RadioButton _radioButton
+               && !string.IsNullOrEmpty( _radioButton.Tag?.ToString( ) ) )
+            {
+                try
+                {
+                    _fileExtension = _radioButton?.Result;
+                    var _ext = _radioButton.Tag?.ToString( )
+                        ?.Trim( ".".ToCharArray( ) )
+                        ?.ToUpper( );
+
+                    Header.Text = $"{_ext} File SaveAs";
+                    MessageLabel.Text = string.Empty;
+                    FoundLabel.Text = string.Empty;
+                    var _paths = GetListViewPaths( );
+                    PopulateListBox( _paths );
+                    Picture.Image = GetImage( );
+                    FoundLabel.Text = "Found: " + _paths?.ToList( )?.Count ?? "0";
                 }
                 catch( Exception _ex )
                 {
@@ -643,8 +489,8 @@ namespace Baby
             {
                 try
                 {
-                    SelectedPath = _listBox.SelectedItem?.ToString( );
-                    MessageLabel.Text = SelectedPath;
+                    _selectedPath = _listBox.SelectedItem?.ToString( );
+                    MessageLabel.Text = _selectedPath;
                 }
                 catch( Exception _ex )
                 {
@@ -665,19 +511,19 @@ namespace Baby
                 try
                 {
                     FileDialog = new OpenFileDialog( );
-                    FileDialog.DefaultExt = FileExtension;
+                    FileDialog.DefaultExt = _fileExtension;
                     FileDialog.CheckFileExists = true;
                     FileDialog.CheckPathExists = true;
                     FileDialog.Multiselect = false;
-                    var _ext = FileExtension.ToLower( );
+                    var _ext = _fileExtension.ToLower( );
                     FileDialog.Filter = $@"File Extension | *{_ext}";
                     FileDialog.Title = $@"SaveAs Directories for *{_ext} files...";
                     FileDialog.InitialDirectory = GetFolderPath( SpecialFolder.DesktopDirectory );
                     FileDialog.ShowDialog( );
-                    var _selectedPath = FileDialog.FileName;
-                    if( !string.IsNullOrEmpty( _selectedPath ) )
+                    var _selection = FileDialog.FileName;
+                    if( !string.IsNullOrEmpty( _selection ) )
                     {
-                        SelectedPath = _selectedPath;
+                        _selectedPath = _selection;
                     }
                 }
                 catch( Exception _ex )
@@ -705,17 +551,6 @@ namespace Baby
                     Fail( _ex );
                 }
             }
-        }
-
-        /// <summary>
-        /// Fails the specified ex.
-        /// </summary>
-        /// <param name="ex">The ex.</param>
-        private void Fail( Exception ex )
-        {
-            using var _error = new ErrorDialog( ex );
-            _error?.SetText( );
-            _error?.ShowDialog( );
         }
     }
 }

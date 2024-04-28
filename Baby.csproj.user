@@ -104,7 +104,7 @@
     <Compile Update="Controls\RichTextBox\SplashTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="DialogBase.cs">
+    <Compile Update="Controls\Dialog\DialogBase.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

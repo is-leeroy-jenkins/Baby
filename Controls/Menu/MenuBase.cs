@@ -52,6 +52,7 @@ namespace Baby
     /// <seealso cref="MetroSet_UI.Controls.MetroSetContextMenuStrip" />
     [ SuppressMessage( "ReSharper", "ArrangeDefaultValueWhenTypeNotEvident" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
+    [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
     public abstract class MenuBase : MetroSetContextMenuStrip
     {
         /// <summary>
@@ -60,7 +61,7 @@ namespace Baby
         /// <value>
         /// The close option.
         /// </value>
-        public MetroSetToolStripMenuItem CloseOption { get; set; }
+        private protected MetroSetToolStripMenuItem _close;
 
         /// <summary>
         /// Gets or sets the exit option.
@@ -68,7 +69,7 @@ namespace Baby
         /// <value>
         /// The exit option.
         /// </value>
-        public MetroSetToolStripMenuItem OtherOption { get; set; }
+        private protected MetroSetToolStripMenuItem _other;
 
         /// <summary>
         /// Gets or sets the calculator option.
@@ -76,7 +77,7 @@ namespace Baby
         /// <value>
         /// The calculator option.
         /// </value>
-        public MetroSetToolStripMenuItem DeveloperOption { get; set; }
+        private protected MetroSetToolStripMenuItem _developer;
 
         /// <summary>
         /// Gets or sets the calculator option.
@@ -84,7 +85,7 @@ namespace Baby
         /// <value>
         /// The calculator option.
         /// </value>
-        public MetroSetToolStripMenuItem SourceOption { get; set; }
+        private protected MetroSetToolStripMenuItem _source;
 
         /// <summary>
         /// Gets or sets the refresh option.
@@ -92,7 +93,7 @@ namespace Baby
         /// <value>
         /// The refresh option.
         /// </value>
-        public MetroSetToolStripMenuItem RefreshOption { get; set; }
+        private protected MetroSetToolStripMenuItem _refresh;
 
         /// <summary>
         /// Gets or sets the Save As Pdf option.
@@ -100,7 +101,7 @@ namespace Baby
         /// <value>
         /// The calculator option.
         /// </value>
-        public MetroSetToolStripMenuItem SaveAsOption { get; set; }
+        private protected MetroSetToolStripMenuItem _saveAs;
 
         /// <summary>
         /// Gets or sets the calculator option.
@@ -108,15 +109,15 @@ namespace Baby
         /// <value>
         /// The calculator option.
         /// </value>
-        public MetroSetToolStripMenuItem PrintOption { get; set; }
-        
+        private protected MetroSetToolStripMenuItem _print;
+
         /// <summary>
         /// Gets or sets the exit option.
         /// </summary>
         /// <value>
         /// The exit option.
         /// </value>
-        public MetroSetToolStripMenuItem ExitOption { get; set; }
+        private protected MetroSetToolStripMenuItem _exit;
 
         /// <summary>
         /// Gets or sets the chrome option.
@@ -124,7 +125,7 @@ namespace Baby
         /// <value>
         /// The chrome option.
         /// </value>
-        public MetroSetToolStripMenuItem ChromeOption { get; set; }
+        private protected MetroSetToolStripMenuItem _chrome;
 
         /// <summary>
         /// Gets or sets the edge option.
@@ -132,7 +133,7 @@ namespace Baby
         /// <value>
         /// The edge option.
         /// </value>
-        public MetroSetToolStripMenuItem EdgeOption { get; set; }
+        private protected MetroSetToolStripMenuItem _edge;
 
         /// <summary>
         /// Gets or sets the firefox option.
@@ -140,7 +141,7 @@ namespace Baby
         /// <value>
         /// The firefox option.
         /// </value>
-        public MetroSetToolStripMenuItem FirefoxOption { get; set; }
+        private protected MetroSetToolStripMenuItem _firefox;
 
         /// <summary>
         /// Creates the close option.
@@ -158,7 +159,7 @@ namespace Baby
                 _item.Name = MenuItem.Close.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.White;
+                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Close} Tab";
                 _item.Tag = MenuItem.Close.ToString( );
                 _item.MouseHover += OnMouseEnter;
@@ -190,7 +191,7 @@ namespace Baby
                 _item.Name = MenuItem.Other.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.White;
+                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"Close {MenuItem.Other} Tabs";
                 _item.Tag = MenuItem.Other.ToString( );
                 _item.MouseHover += OnMouseEnter;
@@ -222,7 +223,7 @@ namespace Baby
                 _item.Name = MenuItem.Refresh.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.White;
+                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Refresh} Tab";
                 _item.Tag = MenuItem.Refresh.ToString( );
                 _item.MouseHover += OnMouseEnter;
@@ -254,7 +255,7 @@ namespace Baby
                 _item.Name = MenuItem.SaveAs.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.White;
+                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.SaveAs}".SplitPascal( ) + " PDF";
                 _item.Tag = MenuItem.SaveAs.ToString( );
                 _item.MouseHover += OnMouseEnter;
@@ -284,7 +285,7 @@ namespace Baby
                 _item.Name = MenuItem.Print.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.White;
+                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Print}";
                 _item.Tag = MenuItem.Print.ToString( );
                 _item.MouseHover += OnMouseEnter;
@@ -314,7 +315,7 @@ namespace Baby
                 _item.Name = MenuItem.Developer.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.White;
+                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Developer} Tools";
                 _item.Tag = MenuItem.Developer.ToString( );
                 _item.MouseHover += OnMouseEnter;
@@ -344,7 +345,7 @@ namespace Baby
                 _item.Name = MenuItem.Source.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.White;
+                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"View {MenuItem.Source}";
                 _item.Tag = MenuItem.Source.ToString( );
                 _item.MouseHover += OnMouseEnter;
@@ -376,7 +377,7 @@ namespace Baby
                 _item.Name = MenuItem.Exit.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.White;
+                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Exit}";
                 _item.Tag = MenuItem.Exit.ToString( );
                 _item.MouseEnter += OnMouseEnter;
@@ -435,7 +436,7 @@ namespace Baby
                 try
                 {
                     _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                    _item.ForeColor = Color.White;
+                    _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 }
                 catch( Exception _ex )
                 {

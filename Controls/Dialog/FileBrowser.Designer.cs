@@ -68,8 +68,8 @@ namespace Baby
             TextBoxLayout.SuspendLayout( );
             CheckBoxLayout.SuspendLayout( );
             TopTablePanel.SuspendLayout( );
-            ( (ISupportInitialize) Picture  ).BeginInit( );
-            ( (ISupportInitialize) BindingSource  ).BeginInit( );
+            ( (ISupportInitialize)Picture ).BeginInit( );
+            ( (ISupportInitialize)BindingSource ).BeginInit( );
             SuspendLayout( );
             // 
             // TextBoxLayout
@@ -133,12 +133,12 @@ namespace Baby
             // 
             // LibraryRadioButton
             // 
-            LibraryRadioButton.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            LibraryRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            LibraryRadioButton.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            LibraryRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             LibraryRadioButton.Checked = false;
-            LibraryRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            LibraryRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             LibraryRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            LibraryRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            LibraryRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             LibraryRadioButton.Dock = DockStyle.Fill;
             LibraryRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             LibraryRadioButton.Group = 0;
@@ -159,12 +159,12 @@ namespace Baby
             // 
             // PowerPointRadioButton
             // 
-            PowerPointRadioButton.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            PowerPointRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            PowerPointRadioButton.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            PowerPointRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             PowerPointRadioButton.Checked = false;
-            PowerPointRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            PowerPointRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             PowerPointRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            PowerPointRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            PowerPointRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             PowerPointRadioButton.Dock = DockStyle.Fill;
             PowerPointRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             PowerPointRadioButton.Group = 0;
@@ -185,12 +185,12 @@ namespace Baby
             // 
             // ExecutableRadioButton
             // 
-            ExecutableRadioButton.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            ExecutableRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            ExecutableRadioButton.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            ExecutableRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             ExecutableRadioButton.Checked = false;
-            ExecutableRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            ExecutableRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             ExecutableRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            ExecutableRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            ExecutableRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             ExecutableRadioButton.Dock = DockStyle.Fill;
             ExecutableRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ExecutableRadioButton.Group = 0;
@@ -211,12 +211,12 @@ namespace Baby
             // 
             // TextRadioButton
             // 
-            TextRadioButton.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            TextRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            TextRadioButton.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            TextRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             TextRadioButton.Checked = false;
-            TextRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            TextRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             TextRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            TextRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            TextRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             TextRadioButton.Dock = DockStyle.Fill;
             TextRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             TextRadioButton.Group = 0;
@@ -237,12 +237,12 @@ namespace Baby
             // 
             // SqlCeRadioButton
             // 
-            SqlCeRadioButton.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            SqlCeRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            SqlCeRadioButton.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            SqlCeRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             SqlCeRadioButton.Checked = false;
-            SqlCeRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            SqlCeRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             SqlCeRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            SqlCeRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            SqlCeRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             SqlCeRadioButton.Dock = DockStyle.Fill;
             SqlCeRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             SqlCeRadioButton.Group = 0;
@@ -263,12 +263,12 @@ namespace Baby
             // 
             // ExcelRadioButton
             // 
-            ExcelRadioButton.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            ExcelRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            ExcelRadioButton.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            ExcelRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             ExcelRadioButton.Checked = false;
-            ExcelRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            ExcelRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             ExcelRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            ExcelRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            ExcelRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             ExcelRadioButton.Dock = DockStyle.Fill;
             ExcelRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ExcelRadioButton.Group = 0;
@@ -289,12 +289,12 @@ namespace Baby
             // 
             // CsvRadioButton
             // 
-            CsvRadioButton.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            CsvRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            CsvRadioButton.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            CsvRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             CsvRadioButton.Checked = false;
-            CsvRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            CsvRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             CsvRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            CsvRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            CsvRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             CsvRadioButton.Dock = DockStyle.Fill;
             CsvRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CsvRadioButton.Group = 0;
@@ -315,12 +315,12 @@ namespace Baby
             // 
             // AccessRadioButton
             // 
-            AccessRadioButton.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            AccessRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            AccessRadioButton.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            AccessRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             AccessRadioButton.Checked = false;
-            AccessRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            AccessRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             AccessRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            AccessRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            AccessRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             AccessRadioButton.Dock = DockStyle.Fill;
             AccessRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             AccessRadioButton.Group = 0;
@@ -341,12 +341,12 @@ namespace Baby
             // 
             // SQLiteRadioButton
             // 
-            SQLiteRadioButton.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            SQLiteRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            SQLiteRadioButton.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            SQLiteRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             SQLiteRadioButton.Checked = false;
-            SQLiteRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            SQLiteRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             SQLiteRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            SQLiteRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            SQLiteRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             SQLiteRadioButton.Dock = DockStyle.Fill;
             SQLiteRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             SQLiteRadioButton.Group = 0;
@@ -367,12 +367,12 @@ namespace Baby
             // 
             // SqlServerRadioButton
             // 
-            SqlServerRadioButton.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            SqlServerRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            SqlServerRadioButton.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            SqlServerRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             SqlServerRadioButton.Checked = false;
-            SqlServerRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            SqlServerRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             SqlServerRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            SqlServerRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            SqlServerRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             SqlServerRadioButton.Dock = DockStyle.Fill;
             SqlServerRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             SqlServerRadioButton.Group = 0;
@@ -393,12 +393,12 @@ namespace Baby
             // 
             // WordRadioButton
             // 
-            WordRadioButton.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            WordRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            WordRadioButton.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            WordRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             WordRadioButton.Checked = false;
-            WordRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            WordRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             WordRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            WordRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            WordRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             WordRadioButton.Dock = DockStyle.Fill;
             WordRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             WordRadioButton.Group = 0;
@@ -420,11 +420,11 @@ namespace Baby
             // PdfRadioButton
             // 
             PdfRadioButton.BackgroundColor = System.Drawing.Color.Transparent;
-            PdfRadioButton.BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            PdfRadioButton.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             PdfRadioButton.Checked = false;
-            PdfRadioButton.CheckSignColor = System.Drawing.Color.FromArgb(   0  ,   192  ,   0   );
+            PdfRadioButton.CheckSignColor = System.Drawing.Color.FromArgb( 0, 192, 0 );
             PdfRadioButton.CheckState = MetroSet_UI.Enums.CheckState.Unchecked;
-            PdfRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb(   205  ,   205  ,   205   );
+            PdfRadioButton.DisabledBorderColor = System.Drawing.Color.FromArgb( 205, 205, 205 );
             PdfRadioButton.Dock = DockStyle.Fill;
             PdfRadioButton.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             PdfRadioButton.Group = 0;
@@ -445,15 +445,15 @@ namespace Baby
             // 
             // FileList
             // 
-            FileList.BackColor = System.Drawing.Color.FromArgb(   35  ,   35  ,   35   );
+            FileList.BackColor = System.Drawing.Color.FromArgb( 35, 35, 35 );
             FileList.BindingSource = null;
-            FileList.BorderColor = System.Drawing.Color.FromArgb(   64  ,   64  ,   64   );
+            FileList.BorderColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
             FileList.DataFilter = null;
-            FileList.DisabledBackColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            FileList.DisabledForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            FileList.DisabledBackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            FileList.DisabledForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             FileList.Dock = DockStyle.Fill;
             FileList.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            FileList.HoveredItemBackColor = System.Drawing.Color.FromArgb(   50  ,   93  ,   129   );
+            FileList.HoveredItemBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
             FileList.HoveredItemColor = System.Drawing.Color.LightSteelBlue;
             FileList.HoverText = null;
             FileList.IsDerivedStyle = true;
@@ -465,7 +465,7 @@ namespace Baby
             FileList.Padding = new Padding( 1 );
             FileList.SelectedIndex = -1;
             FileList.SelectedItem = null;
-            FileList.SelectedItemBackColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            FileList.SelectedItemBackColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             FileList.SelectedItemColor = System.Drawing.Color.White;
             FileList.SelectedText = null;
             FileList.SelectedValue = null;
@@ -482,7 +482,7 @@ namespace Baby
             // ToolTip
             // 
             ToolTip.AutoPopDelay = 5000;
-            ToolTip.BackColor = System.Drawing.Color.FromArgb(   5  ,   5  ,   5   );
+            ToolTip.BackColor = System.Drawing.Color.FromArgb( 5, 5, 5 );
             ToolTip.BorderColor = System.Drawing.SystemColors.Highlight;
             ToolTip.ForeColor = System.Drawing.Color.White;
             ToolTip.InitialDelay = 500;
@@ -525,8 +525,8 @@ namespace Baby
             // 
             TopTablePanel.BackColor = System.Drawing.Color.Transparent;
             TopTablePanel.ColumnCount = 2;
-            TopTablePanel.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 5.668605F ) );
-            TopTablePanel.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 94.3314F ) );
+            TopTablePanel.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 3.63372087F ) );
+            TopTablePanel.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 96.36628F ) );
             TopTablePanel.Controls.Add( Picture, 0, 0 );
             TopTablePanel.Controls.Add( Header, 1, 0 );
             TopTablePanel.Dock = DockStyle.Top;
@@ -541,11 +541,14 @@ namespace Baby
             // 
             Picture.BackColor = System.Drawing.Color.Transparent;
             Picture.Dock = DockStyle.Top;
-            Picture.Location = new System.Drawing.Point( 3, 3 );
+            Picture.Image = Baby.Properties.Resources.BabyBrowser;
+            Picture.InitialImage = null;
+            Picture.Location = new System.Drawing.Point( 1, 1 );
+            Picture.Margin = new Padding( 1 );
             Picture.Name = "Picture";
             Picture.Padding = new Padding( 1 );
-            Picture.Size = new System.Drawing.Size( 33, 31 );
-            Picture.SizeMode = PictureBoxSizeMode.AutoSize;
+            Picture.Size = new System.Drawing.Size( 23, 18 );
+            Picture.SizeMode = PictureBoxSizeMode.Zoom;
             Picture.TabIndex = 1;
             Picture.TabStop = false;
             Picture.ToolTip = ToolTip;
@@ -557,16 +560,16 @@ namespace Baby
             Header.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point );
             Header.HoverText = null;
             Header.IsDerivedStyle = true;
-            Header.Location = new System.Drawing.Point( 42, 3 );
+            Header.Location = new System.Drawing.Point( 28, 3 );
             Header.Margin = new Padding( 3 );
             Header.Name = "Header";
             Header.Padding = new Padding( 1 );
-            Header.Size = new System.Drawing.Size( 643, 31 );
+            Header.Size = new System.Drawing.Size( 657, 31 );
             Header.Style = MetroSet_UI.Enums.Style.Custom;
             Header.StyleManager = null;
             Header.TabIndex = 0;
-            Header.Text = "File SaveAs";
-            Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            Header.Text = "File Browser";
+            Header.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             Header.ThemeAuthor = "Terry D. Eppler";
             Header.ThemeName = "Baby";
             Header.ToolTip = null;
@@ -597,9 +600,9 @@ namespace Baby
             SelectButton.DisabledBorderColor = System.Drawing.Color.Transparent;
             SelectButton.DisabledForeColor = System.Drawing.Color.Transparent;
             SelectButton.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            SelectButton.ForeColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            SelectButton.HoverBorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            SelectButton.HoverColor = System.Drawing.Color.FromArgb(   17  ,   53  ,   84   );
+            SelectButton.ForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SelectButton.HoverBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SelectButton.HoverColor = System.Drawing.Color.FromArgb( 17, 53, 84 );
             SelectButton.HoverText = "Select File";
             SelectButton.HoverTextColor = System.Drawing.Color.White;
             SelectButton.IsDerivedStyle = true;
@@ -608,10 +611,10 @@ namespace Baby
             SelectButton.Name = "SelectButton";
             SelectButton.NormalBorderColor = System.Drawing.Color.Transparent;
             SelectButton.NormalColor = System.Drawing.Color.Transparent;
-            SelectButton.NormalTextColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            SelectButton.NormalTextColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             SelectButton.Padding = new Padding( 1 );
-            SelectButton.PressBorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            SelectButton.PressColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            SelectButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SelectButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             SelectButton.PressTextColor = System.Drawing.Color.White;
             SelectButton.Size = new System.Drawing.Size( 78, 26 );
             SelectButton.Style = MetroSet_UI.Enums.Style.Custom;
@@ -629,9 +632,9 @@ namespace Baby
             CloseButton.DisabledBorderColor = System.Drawing.Color.Transparent;
             CloseButton.DisabledForeColor = System.Drawing.Color.Transparent;
             CloseButton.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            CloseButton.ForeColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            CloseButton.HoverBorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            CloseButton.HoverColor = System.Drawing.Color.FromArgb(   17  ,   53  ,   84   );
+            CloseButton.ForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CloseButton.HoverBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CloseButton.HoverColor = System.Drawing.Color.FromArgb( 17, 53, 84 );
             CloseButton.HoverText = "Close Window";
             CloseButton.HoverTextColor = System.Drawing.Color.White;
             CloseButton.IsDerivedStyle = true;
@@ -640,10 +643,10 @@ namespace Baby
             CloseButton.Name = "CloseButton";
             CloseButton.NormalBorderColor = System.Drawing.Color.Transparent;
             CloseButton.NormalColor = System.Drawing.Color.Transparent;
-            CloseButton.NormalTextColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            CloseButton.NormalTextColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             CloseButton.Padding = new Padding( 1 );
-            CloseButton.PressBorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            CloseButton.PressColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            CloseButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CloseButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             CloseButton.PressTextColor = System.Drawing.Color.White;
             CloseButton.Size = new System.Drawing.Size( 78, 26 );
             CloseButton.Style = MetroSet_UI.Enums.Style.Custom;
@@ -661,9 +664,9 @@ namespace Baby
             FindButton.DisabledBorderColor = System.Drawing.Color.Transparent;
             FindButton.DisabledForeColor = System.Drawing.Color.Transparent;
             FindButton.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            FindButton.ForeColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            FindButton.HoverBorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            FindButton.HoverColor = System.Drawing.Color.FromArgb(   17  ,   53  ,   84   );
+            FindButton.ForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            FindButton.HoverBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            FindButton.HoverColor = System.Drawing.Color.FromArgb( 17, 53, 84 );
             FindButton.HoverText = "Select File";
             FindButton.HoverTextColor = System.Drawing.Color.White;
             FindButton.IsDerivedStyle = true;
@@ -672,10 +675,10 @@ namespace Baby
             FindButton.Name = "FindButton";
             FindButton.NormalBorderColor = System.Drawing.Color.Transparent;
             FindButton.NormalColor = System.Drawing.Color.Transparent;
-            FindButton.NormalTextColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            FindButton.NormalTextColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             FindButton.Padding = new Padding( 1 );
-            FindButton.PressBorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            FindButton.PressColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            FindButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            FindButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             FindButton.PressTextColor = System.Drawing.Color.White;
             FindButton.Size = new System.Drawing.Size( 78, 26 );
             FindButton.Style = MetroSet_UI.Enums.Style.Custom;
@@ -690,17 +693,17 @@ namespace Baby
             // 
             AutoScaleDimensions = new System.Drawing.SizeF( 96F, 96F );
             AutoScaleMode = AutoScaleMode.Dpi;
-            BackColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             BorderThickness = 2;
             CaptionAlign = HorizontalAlignment.Left;
-            CaptionBarColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            CaptionBarColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             CaptionBarHeight = 5;
-            CaptionButtonColor = System.Drawing.Color.FromArgb(   64  ,   64  ,   64   );
+            CaptionButtonColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
             CaptionButtonHoverColor = System.Drawing.Color.Red;
             CaptionFont = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            CaptionForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            ClientSize = new System.Drawing.Size( 688, 448 );
+            CaptionForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            ClientSize = new System.Drawing.Size( 688, 449 );
             ControlBox = false;
             Controls.Add( FindButton );
             Controls.Add( MessageLabel );
@@ -712,10 +715,10 @@ namespace Baby
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ForeColor = System.Drawing.Color.LightGray;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Icon = (System.Drawing.Icon) resources.GetObject( "$this.Icon" ) ;
+            Icon = (System.Drawing.Icon)resources.GetObject( "$this.Icon" );
             MaximizeBox = false;
             MaximumSize = new System.Drawing.Size( 700, 460 );
-            MetroColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            MetroColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             MinimizeBox = false;
             MinimumSize = new System.Drawing.Size( 700, 460 );
             Name = "FileBrowser";
@@ -727,9 +730,8 @@ namespace Baby
             TextBoxLayout.ResumeLayout( false );
             CheckBoxLayout.ResumeLayout( false );
             TopTablePanel.ResumeLayout( false );
-            TopTablePanel.PerformLayout( );
-            ( (ISupportInitialize) Picture  ).EndInit( );
-            ( (ISupportInitialize) BindingSource  ).EndInit( );
+            ( (ISupportInitialize)Picture ).EndInit( );
+            ( (ISupportInitialize)BindingSource ).EndInit( );
             ResumeLayout( false );
         }
 

@@ -50,15 +50,35 @@ namespace Baby
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
+    [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoProperty" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertToAutoPropertyWhenPossible" ) ]
     public partial class SearchDialog : MetroForm
     {
+        /// <summary>
+        /// The results
+        /// </summary>
+        private string _results;
+
         /// <summary>
         /// Gets or sets the results.
         /// </summary>
         /// <value>
         /// The results.
         /// </value>
-        public string Results { get; set; }
+        public string Results
+        {
+            get
+            {
+                return _results;
+            }
+            private set
+            {
+                _results = value;
+            }
+        }
 
         /// <inheritdoc />
         /// <summary>
@@ -66,6 +86,9 @@ namespace Baby
         public SearchDialog( )
         {
             InitializeComponent( );
+            RegisterCallbacks( );
+
+            // Form Properterties
             Size = new Size( 700, 160 );
             MinimumSize = new Size( 700, 160 );
             MaximumSize = new Size( 700, 160 );
@@ -84,19 +107,8 @@ namespace Baby
             Enabled = true;
             Visible = true;
 
-            // Control Properties
-            CloseButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            CloseButton.Text = "Close";
-            CloseButton.ForeColor = Color.FromArgb( 0, 120, 212 );
-            CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
-            KeyWordTextBox.BackColor = Color.FromArgb( 75, 75, 75 );
-            KeyWordTextBox.BorderColor = Color.FromArgb( 0, 120, 212 );
-            KeyWordTextBox.HoverColor = Color.FromArgb( 0, 120, 212 );
-            Header.ForeColor = Color.FromArgb( 0, 120, 212 );
-            Header.Text = "Web SaveAs";
-
             //Event Wiring
-            CloseButton.Click += OnCloseButtonClick;
+            Load += OnLoad;
         }
 
         /// <inheritdoc />
@@ -132,6 +144,72 @@ namespace Baby
             Header.Text = caption;
         }
 
+        /// <summary>
+        /// Registers the callbacks.
+        /// </summary>
+        private void RegisterCallbacks( )
+        {
+            try
+            {
+                CloseButton.Click += OnCloseButtonClick;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Initializes the text box.
+        /// </summary>
+        private void InitializeTextBox( )
+        {
+            try
+            {
+                KeyWordTextBox.BackColor = Color.FromArgb( 75, 75, 75 );
+                KeyWordTextBox.BorderColor = Color.FromArgb( 0, 120, 212 );
+                KeyWordTextBox.HoverColor = Color.FromArgb( 0, 120, 212 );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Initializes the title.
+        /// </summary>
+        private void InitializeTitle( )
+        {
+            try
+            {
+                Header.ForeColor = Color.FromArgb( 0, 120, 212 );
+                Header.Text = "Web Browser";
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Initializes the buttons.
+        /// </summary>
+        private void InitializeButtons( )
+        {
+            try
+            {
+                CloseButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+                CloseButton.Text = "Close";
+                CloseButton.ForeColor = Color.FromArgb( 0, 120, 212 );
+                CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
         /// <summary> Called when [load]. </summary>
         /// <param name="sender">
         /// The sender.
@@ -143,6 +221,9 @@ namespace Baby
         {
             try
             {
+                InitializeButtons( );
+                InitializeTextBox( );
+                InitializeTitle( );
             }
             catch( Exception _ex )
             {
@@ -167,10 +248,51 @@ namespace Baby
             {
                 if( !string.IsNullOrEmpty( KeyWordTextBox.Text ) )
                 {
-                    Results = KeyWordTextBox.Text;
+                    _results = KeyWordTextBox.Text;
                 }
 
                 Close( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [okay button click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        public virtual void OnOkayButtonClick( object sender, EventArgs e )
+        {
+            try
+            {
+                if( !string.IsNullOrEmpty( KeyWordTextBox.Text ) )
+                {
+                    _results = KeyWordTextBox.Text;
+                }
+
+                Close( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [clear button click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        public virtual void OnClearButtonClick( object sender, EventArgs e )
+        {
+            try
+            {
+                KeyWordTextBox.Text = string.Empty;
+                _results = string.Empty;
             }
             catch( Exception _ex )
             {

@@ -44,7 +44,7 @@ namespace Baby
             KeyWordTextBox = new TextBox( );
             TitleTable = new TableLayoutPanel( );
             ClearButton = new Button( );
-            SearchButton = new Button( );
+            OkayButton = new Button( );
             CancelButton = new Button( );
             ButtonTable = new TableLayoutPanel( );
             ( (ISupportInitialize)Picture ).BeginInit( );
@@ -86,7 +86,7 @@ namespace Baby
             CloseButton.HoverText = null;
             CloseButton.HoverTextColor = System.Drawing.Color.White;
             CloseButton.IsDerivedStyle = true;
-            CloseButton.Location = new System.Drawing.Point( 563, 1 );
+            CloseButton.Location = new System.Drawing.Point( 544, 1 );
             CloseButton.Margin = new Padding( 0 );
             CloseButton.Name = "CloseButton";
             CloseButton.NormalBorderColor = System.Drawing.Color.Transparent;
@@ -96,7 +96,7 @@ namespace Baby
             CloseButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             CloseButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             CloseButton.PressTextColor = System.Drawing.Color.White;
-            CloseButton.Size = new System.Drawing.Size( 103, 36 );
+            CloseButton.Size = new System.Drawing.Size( 131, 36 );
             CloseButton.Style = MetroSet_UI.Enums.Style.Custom;
             CloseButton.StyleManager = null;
             CloseButton.TabIndex = 10;
@@ -119,20 +119,21 @@ namespace Baby
             // 
             // Header
             // 
+            Header.Dock = DockStyle.Fill;
             Header.FlatStyle = FlatStyle.Flat;
-            Header.Font = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            Header.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             Header.HoverText = null;
             Header.IsDerivedStyle = true;
             Header.Location = new System.Drawing.Point( 43, 3 );
             Header.Margin = new Padding( 3 );
             Header.Name = "Header";
             Header.Padding = new Padding( 1 );
-            Header.Size = new System.Drawing.Size( 586, 22 );
+            Header.Size = new System.Drawing.Size( 642, 22 );
             Header.Style = MetroSet_UI.Enums.Style.Custom;
             Header.StyleManager = null;
             Header.TabIndex = 14;
-            Header.Text = "Web SaveAs";
-            Header.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            Header.Text = "Web Search";
+            Header.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             Header.ThemeAuthor = "Terry D. Eppler";
             Header.ThemeName = "Baby";
             Header.ToolTip = null;
@@ -241,38 +242,38 @@ namespace Baby
             ClearButton.ThemeName = "Baby";
             ClearButton.ToolTip = ToolTip;
             // 
-            // SearchButton
+            // OkayButton
             // 
-            SearchButton.BackColor = System.Drawing.Color.Transparent;
-            SearchButton.DisabledBackColor = System.Drawing.Color.Transparent;
-            SearchButton.DisabledBorderColor = System.Drawing.Color.Transparent;
-            SearchButton.DisabledForeColor = System.Drawing.Color.Transparent;
-            SearchButton.Dock = DockStyle.Fill;
-            SearchButton.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            SearchButton.ForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            SearchButton.HoverBorderColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            SearchButton.HoverColor = System.Drawing.Color.FromArgb( 17, 53, 84 );
-            SearchButton.HoverText = "Begin SaveAs";
-            SearchButton.HoverTextColor = System.Drawing.Color.White;
-            SearchButton.IsDerivedStyle = true;
-            SearchButton.Location = new System.Drawing.Point( 372, 1 );
-            SearchButton.Margin = new Padding( 0 );
-            SearchButton.Name = "SearchButton";
-            SearchButton.NormalBorderColor = System.Drawing.Color.Transparent;
-            SearchButton.NormalColor = System.Drawing.Color.Transparent;
-            SearchButton.NormalTextColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            SearchButton.Padding = new Padding( 1 );
-            SearchButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            SearchButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            SearchButton.PressTextColor = System.Drawing.Color.White;
-            SearchButton.Size = new System.Drawing.Size( 117, 36 );
-            SearchButton.Style = MetroSet_UI.Enums.Style.Custom;
-            SearchButton.StyleManager = null;
-            SearchButton.TabIndex = 18;
-            SearchButton.Text = "SaveAs";
-            SearchButton.ThemeAuthor = "Terry D. Eppler";
-            SearchButton.ThemeName = "Baby";
-            SearchButton.ToolTip = ToolTip;
+            OkayButton.BackColor = System.Drawing.Color.Transparent;
+            OkayButton.DisabledBackColor = System.Drawing.Color.Transparent;
+            OkayButton.DisabledBorderColor = System.Drawing.Color.Transparent;
+            OkayButton.DisabledForeColor = System.Drawing.Color.Transparent;
+            OkayButton.Dock = DockStyle.Fill;
+            OkayButton.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            OkayButton.ForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            OkayButton.HoverBorderColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            OkayButton.HoverColor = System.Drawing.Color.FromArgb( 17, 53, 84 );
+            OkayButton.HoverText = "Begin SaveAs";
+            OkayButton.HoverTextColor = System.Drawing.Color.White;
+            OkayButton.IsDerivedStyle = true;
+            OkayButton.Location = new System.Drawing.Point( 372, 1 );
+            OkayButton.Margin = new Padding( 0 );
+            OkayButton.Name = "OkayButton";
+            OkayButton.NormalBorderColor = System.Drawing.Color.Transparent;
+            OkayButton.NormalColor = System.Drawing.Color.Transparent;
+            OkayButton.NormalTextColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            OkayButton.Padding = new Padding( 1 );
+            OkayButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            OkayButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            OkayButton.PressTextColor = System.Drawing.Color.White;
+            OkayButton.Size = new System.Drawing.Size( 117, 36 );
+            OkayButton.Style = MetroSet_UI.Enums.Style.Custom;
+            OkayButton.StyleManager = null;
+            OkayButton.TabIndex = 18;
+            OkayButton.Text = "Okay";
+            OkayButton.ThemeAuthor = "Terry D. Eppler";
+            OkayButton.ThemeName = "Baby";
+            OkayButton.ToolTip = ToolTip;
             // 
             // CancelButton
             // 
@@ -288,7 +289,7 @@ namespace Baby
             CancelButton.HoverText = "Cancel SaveAs";
             CancelButton.HoverTextColor = System.Drawing.Color.White;
             CancelButton.IsDerivedStyle = true;
-            CancelButton.Location = new System.Drawing.Point( 180, 1 );
+            CancelButton.Location = new System.Drawing.Point( 187, 1 );
             CancelButton.Margin = new Padding( 0 );
             CancelButton.Name = "CancelButton";
             CancelButton.NormalBorderColor = System.Drawing.Color.Transparent;
@@ -298,7 +299,7 @@ namespace Baby
             CancelButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             CancelButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             CancelButton.PressTextColor = System.Drawing.Color.White;
-            CancelButton.Size = new System.Drawing.Size( 139, 36 );
+            CancelButton.Size = new System.Drawing.Size( 132, 36 );
             CancelButton.Style = MetroSet_UI.Enums.Style.Custom;
             CancelButton.StyleManager = null;
             CancelButton.TabIndex = 19;
@@ -312,16 +313,16 @@ namespace Baby
             ButtonTable.ColumnCount = 9;
             ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 20.4641342F ) );
             ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 79.5358658F ) );
-            ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 41F ) );
-            ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 139F ) );
+            ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 48F ) );
+            ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 132F ) );
             ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 53F ) );
             ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 117F ) );
-            ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 74F ) );
-            ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 103F ) );
-            ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 20F ) );
+            ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 55F ) );
+            ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 131F ) );
+            ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 11F ) );
             ButtonTable.Controls.Add( CancelButton, 3, 0 );
             ButtonTable.Controls.Add( ClearButton, 1, 0 );
-            ButtonTable.Controls.Add( SearchButton, 5, 0 );
+            ButtonTable.Controls.Add( OkayButton, 5, 0 );
             ButtonTable.Controls.Add( CloseButton, 7, 0 );
             ButtonTable.Dock = DockStyle.Bottom;
             ButtonTable.Location = new System.Drawing.Point( 0, 111 );
@@ -352,6 +353,7 @@ namespace Baby
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ForeColor = System.Drawing.Color.LightSteelBlue;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject( "$this.Icon" );
             MaximizeBox = false;
             MaximumSize = new System.Drawing.Size( 700, 160 );
             MetroColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
@@ -362,6 +364,7 @@ namespace Baby
             ShowMaximizeBox = false;
             ShowMinimizeBox = false;
             SizeGripStyle = SizeGripStyle.Hide;
+            StartPosition = FormStartPosition.Manual;
             ( (ISupportInitialize)Picture ).EndInit( );
             BackPanel.ResumeLayout( false );
             TitleTable.ResumeLayout( false );
@@ -379,7 +382,7 @@ namespace Baby
         public TableLayoutPanel TitleTable;
         public Layout BackPanel;
         public Button ClearButton;
-        public Button SearchButton;
+        public Button OkayButton;
         public Button CancelButton;
         public TableLayoutPanel ButtonTable;
         public TextBox KeyWordTextBox;

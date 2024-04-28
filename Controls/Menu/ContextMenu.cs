@@ -55,8 +55,207 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "ArrangeDefaultValueWhenTypeNotEvident" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" ) ]
     public class ContextMenu : MenuBase
     {
+        /// <summary>
+        /// Gets or sets the close option.
+        /// </summary>
+        /// <value>
+        /// The close option.
+        /// </value>
+        public MetroSetToolStripMenuItem CloseItem
+        {
+            get
+            {
+                return _close;
+            }
+            private set
+            {
+                _close = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the exit option.
+        /// </summary>
+        /// <value>
+        /// The exit option.
+        /// </value>
+        public MetroSetToolStripMenuItem Other
+        {
+            get
+            {
+                return _other;
+            }
+            private set
+            {
+                _other = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the calculator option.
+        /// </summary>
+        /// <value>
+        /// The calculator option.
+        /// </value>
+        public MetroSetToolStripMenuItem Developer
+        {
+            get
+            {
+                return _developer;
+            }
+            private set
+            {
+                _developer = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the calculator option.
+        /// </summary>
+        /// <value>
+        /// The calculator option.
+        /// </value>
+        public MetroSetToolStripMenuItem Source
+        {
+            get
+            {
+                return _source;
+            }
+            private set
+            {
+                _source = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the refresh option.
+        /// </summary>
+        /// <value>
+        /// The refresh option.
+        /// </value>
+        public MetroSetToolStripMenuItem RefreshItem
+        {
+            get
+            {
+                return _refresh;
+            }
+            private set
+            {
+                _refresh = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the Save As Pdf option.
+        /// </summary>
+        /// <value>
+        /// The calculator option.
+        /// </value>
+        public MetroSetToolStripMenuItem SaveAs
+        {
+            get
+            {
+                return _saveAs;
+            }
+            private set
+            {
+                _saveAs = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the calculator option.
+        /// </summary>
+        /// <value>
+        /// The calculator option.
+        /// </value>
+        public MetroSetToolStripMenuItem Print
+        {
+            get
+            {
+                return _print;
+            }
+            private set
+            {
+                _print = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the exit option.
+        /// </summary>
+        /// <value>
+        /// The exit option.
+        /// </value>
+        public MetroSetToolStripMenuItem Exit
+        {
+            get
+            {
+                return _exit;
+            }
+            private set
+            {
+                _exit = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the chrome option.
+        /// </summary>
+        /// <value>
+        /// The chrome option.
+        /// </value>
+        public MetroSetToolStripMenuItem Chrome
+        {
+            get
+            {
+                return _chrome;
+            }
+            private set
+            {
+                _chrome = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the edge option.
+        /// </summary>
+        /// <value>
+        /// The edge option.
+        /// </value>
+        public MetroSetToolStripMenuItem Edge
+        {
+            get
+            {
+                return _edge;
+            }
+            private set
+            {
+                _edge = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the firefox option.
+        /// </summary>
+        /// <value>
+        /// The firefox option.
+        /// </value>
+        public MetroSetToolStripMenuItem Firefox
+        {
+            get
+            {
+                return _firefox;
+            }
+            private set
+            {
+                _firefox = value;
+            }
+        }
+
         /// <summary>
         /// Initializes a new instance of the
         /// <see cref="ContextMenu"/> class.
@@ -65,7 +264,7 @@ namespace Baby
         {
             BackColor = Color.FromArgb( 30, 30, 30 );
             BackgroundColor = Color.FromArgb( 30, 30, 30 );
-            ForeColor = Color.White;
+            ForeColor = Color.FromArgb( 106, 189, 252 );
             ArrowColor = Color.FromArgb( 0, 120, 212 );
             SeparatorColor = Color.FromArgb( 0, 120, 212 );
             AutoSize = false;
@@ -81,17 +280,17 @@ namespace Baby
             ThemeName = "Baby";
 
             // Menu Items
-            CloseOption = CreateCloseOption( );
-            OtherOption = CreateOtherOption( );
-            RefreshOption = CreateRefreshOption( );
-            SaveAsOption = CreateSaveAsOption( );
-            PrintOption = CreatePrintOption( );
-            DeveloperOption = CreateDeveloperOption( );
-            SourceOption = CreateSourceOption( );
-            ChromeOption = CreateChromeOption( );
-            EdgeOption = CreateEdgeOption( );
-            FirefoxOption = CreateFirefoxOption( );
-            ExitOption = CreateExitOption( );
+            CloseItem = CreateCloseOption( );
+            Other = CreateOtherOption( );
+            RefreshItem = CreateRefreshOption( );
+            SaveAs = CreateSaveAsOption( );
+            Print = CreatePrintOption( );
+            Developer = CreateDeveloperOption( );
+            Source = CreateSourceOption( );
+            Chrome = CreateChromeOption( );
+            Edge = CreateEdgeOption( );
+            Firefox = CreateFirefoxOption( );
+            Exit = CreateExitOption( );
         }
 
         /// <summary>
@@ -108,8 +307,8 @@ namespace Baby
                 _item.Name = MenuItem.Chrome.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.White;
-                _item.Text = $"Launch {MenuItem.Chrome}";
+                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
+                _item.Text = $"{MenuItem.Chrome}";
                 _item.Tag = MenuItem.Chrome.ToString( );
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
@@ -138,8 +337,8 @@ namespace Baby
                 _item.Name = MenuItem.Edge.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.White;
-                _item.Text = $"Launch MS{MenuItem.Edge}";
+                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
+                _item.Text = $"{MenuItem.Edge}";
                 _item.Tag = MenuItem.Edge.ToString( );
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
@@ -168,8 +367,8 @@ namespace Baby
                 _item.Name = MenuItem.Firefox.ToString( );
                 _item.Size = new Size( 160, 30 );
                 _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.White;
-                _item.Text = $"Launch {MenuItem.Firefox}";
+                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
+                _item.Text = $"{MenuItem.Firefox}";
                 _item.Tag = MenuItem.Firefox.ToString( );
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;

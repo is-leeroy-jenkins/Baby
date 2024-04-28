@@ -471,7 +471,7 @@ namespace Baby
             _dodgerBlue = Color.DodgerBlue;
             _maroon = Color.Maroon;
             _lightBlue = Color.LightSteelBlue;
-            _notificationBackColor = Color.FromArgb( 0, 73, 112 );
+            _notificationBackColor = Color.FromArgb( 1, 35, 54 );
             _darkGreen = Color.ForestGreen;
             _lightGreen = Color.LimeGreen;
         }

@@ -52,21 +52,98 @@ namespace Baby
     using static System.IO.Directory;
     using CheckState = MetroSet_UI.Enums.CheckState;
 
+    /// <inheritdoc />
     /// <summary>
-    /// 
     /// </summary>
-    /// <seealso cref="Syncfusion.Windows.Forms.MetroForm" />
+    /// <seealso cref="T:Syncfusion.Windows.Forms.MetroForm" />
     [SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" )]
     [SuppressMessage( "ReSharper", "MemberCanBeInternal" )]
-    public partial class FileBrowser
+    public partial class FileBrowser 
     {
         /// <summary>
-        /// Gets or sets the extenstion.
+        /// The locked object
         /// </summary>
-        /// <value>
-        /// The extenstion.
-        /// </value>
-        public EXT Extension { get; set; }
+        private protected object _path;
+
+        /// <summary>
+        /// The busy
+        /// </summary>
+        private protected bool _busy;
+
+        /// <summary>
+        /// The status update
+        /// </summary>
+        private protected Action _statusUpdate;
+
+        /// <summary>
+        /// The time
+        /// </summary>
+        private protected int _time;
+
+        /// <summary>
+        /// The count
+        /// </summary>
+        private protected int _count;
+
+        /// <summary>
+        /// The seconds
+        /// </summary>
+        private protected int _seconds;
+
+        /// <summary>
+        /// The duration
+        /// </summary>
+        private protected double _duration;
+
+        /// <summary>
+        /// The data
+        /// </summary>
+        private protected string _data;
+
+        /// <summary>
+        /// The selected path
+        /// </summary>
+        private protected string _selectedPath;
+
+        /// <summary>
+        /// The selected file
+        /// </summary>
+        private protected string _selectedFile;
+
+        /// <summary>
+        /// The initial directory
+        /// </summary>
+        private protected string _initialDirectory;
+
+        /// <summary>
+        /// The file extension
+        /// </summary>
+        private protected string _fileExtension;
+
+        /// <summary>
+        /// The extension
+        /// </summary>
+        private protected EXT _extension;
+
+        /// <summary>
+        /// The file paths
+        /// </summary>
+        private protected IList<string> _filePaths;
+
+        /// <summary>
+        /// The initial dir paths
+        /// </summary>
+        private protected IList<string> _initialPaths;
+
+        /// <summary>
+        /// The radio buttons
+        /// </summary>
+        private protected IList<RadioButton> _radioButtons;
+
+        /// <summary>
+        /// The image
+        /// </summary>
+        private protected Bitmap _image;
 
         /// <summary>
         /// Gets or sets the file extension.
@@ -74,15 +151,17 @@ namespace Baby
         /// <value>
         /// The file extension.
         /// </value>
-        public string FileExtension { get; set; }
-
-        /// <summary>
-        /// Gets or sets the initial dir paths.
-        /// </summary>
-        /// <value>
-        /// The initial dir paths.
-        /// </value>
-        public IEnumerable<string> InitialDirPaths { get; set; }
+        public string FileExtension
+        {
+            get
+            {
+                return _fileExtension;
+            }
+            private protected set
+            {
+                _fileExtension = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the file paths.
@@ -90,7 +169,17 @@ namespace Baby
         /// <value>
         /// The file paths.
         /// </value>
-        public IEnumerable<string> FilePaths { get; set; }
+        public IList<string> FilePaths
+        {
+            get
+            {
+                return _filePaths;
+            }
+            private protected set
+            {
+                _filePaths = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the radio buttons.
@@ -98,7 +187,17 @@ namespace Baby
         /// <value>
         /// The radio buttons.
         /// </value>
-        public IEnumerable<RadioButton> RadioButtons { get; set; }
+        public IList<RadioButton> RadioButtons
+        {
+            get
+            {
+                return _radioButtons;
+            }
+            private protected set
+            {
+                _radioButtons = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the selected path.
@@ -106,7 +205,17 @@ namespace Baby
         /// <value>
         /// The selected path.
         /// </value>
-        public string SelectedPath { get; set; }
+        public string SelectedPath
+        {
+            get
+            {
+                return _selectedPath;
+            }
+            private protected set
+            {
+                _selectedPath = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the selected file.
@@ -114,7 +223,47 @@ namespace Baby
         /// <value>
         /// The selected file.
         /// </value>
-        public string SelectedFile { get; set; }
+        public string SelectedFile
+        {
+            get
+            {
+                return _selectedFile;
+            }
+            private protected set
+            {
+                _selectedFile = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this instance is busy.
+        /// </summary>
+        /// <value>
+        /// <c> true </c>
+        /// if this instance is busy; otherwise,
+        /// <c> false </c>
+        /// </value>
+        public bool IsBusy
+        {
+            get
+            {
+                if( _path == null )
+                {
+                    _path = new object( );
+                    lock( _path )
+                    {
+                        return _busy;
+                    }
+                }
+                else
+                {
+                    lock( _path )
+                    {
+                        return _busy;
+                    }
+                }
+            }
+        }
 
         /// <inheritdoc />
         /// <summary>
@@ -137,12 +286,12 @@ namespace Baby
             BorderColor = Color.FromArgb( 0, 120, 212 );
             BorderThickness = 1;
             BackColor = Color.FromArgb( 20, 20, 20 );
-            InitialDirPaths = GetInitialDirPaths( );
+            _initialPaths = GetInitialDirPaths( );
             RadioButtons = GetRadioButtons( );
-            FileExtension = "xlsx";
-            Extension = EXT.XLSX;
+            _fileExtension = "xlsx";
+            _extension = EXT.XLSX;
             Picture.Image = GetImage( );
-            FilePaths = GetListViewPaths( );
+            _filePaths = GetListViewPaths( );
             FileList.BackColor = Color.FromArgb( 40, 40, 40 );
             CaptionBarHeight = 5;
             CaptionBarColor = Color.FromArgb( 20, 20, 20 );
@@ -168,8 +317,8 @@ namespace Baby
         public FileBrowser( EXT extension )
             : this( )
         {
-            Extension = extension;
-            FileExtension = Extension.ToString( ).ToLower( );
+            _extension = extension;
+            _fileExtension = _extension.ToString( ).ToLower( );
         }
 
         /// <summary>
@@ -179,13 +328,13 @@ namespace Baby
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         public void OnLoad( object sender, EventArgs e )
         {
-            if( FilePaths?.Any( ) == true )
+            if( _filePaths?.Any( ) == true )
             {
                 try
                 {
                     PopulateListBox( );
-                    FoundLabel.Text = "Found : " + FilePaths?.Count( );
-                    Header.Text = $"{Extension} File SaveAs";
+                    FoundLabel.Text = "Found : " + _filePaths?.Count( );
+                    Header.Text = $"{_extension} File SaveAs";
                     ClearRadioButtons( );
                     SetRadioButtonEvents( );
                 }
@@ -302,17 +451,17 @@ namespace Baby
         /// Gets the ListView paths.
         /// </summary>
         /// <returns></returns>
-        private protected IEnumerable<string> GetListViewPaths( )
+        private protected IList<string> GetListViewPaths( )
         {
-            if( InitialDirPaths?.Any( ) == true )
+            if( _initialPaths?.Any( ) == true )
             {
                 try
                 {
                     var _list = new List<string>( );
-                    foreach( var _filePath in InitialDirPaths )
+                    foreach( var _filePath in _initialPaths )
                     {
                         var _first = GetFiles( _filePath )
-                            ?.Where( f => f.EndsWith( FileExtension ) )
+                            ?.Where( f => f.EndsWith( _fileExtension ) )
                             ?.Select( f => Path.GetFullPath( f ) )
                             ?.ToList( );
 
@@ -323,7 +472,7 @@ namespace Baby
                             if( !_dir.Contains( "My " ) )
                             {
                                 var _second = GetFiles( _dir )
-                                    ?.Where( s => s.EndsWith( FileExtension ) )
+                                    ?.Where( s => s.EndsWith( _fileExtension) )
                                     ?.Select( s => Path.GetFullPath( s ) )
                                     ?.ToList( );
 
@@ -339,7 +488,7 @@ namespace Baby
                                     if( !string.IsNullOrEmpty( _path ) )
                                     {
                                         var _last = GetFiles( _path )
-                                            ?.Where( l => l.EndsWith( FileExtension ) )
+                                            ?.Where( l => l.EndsWith( _fileExtension ) )
                                             ?.Select( l => Path.GetFullPath( l ) )
                                             ?.ToList( );
 
@@ -355,16 +504,16 @@ namespace Baby
 
                     return _list?.Any( ) == true
                         ? _list
-                        : default( IEnumerable<string> );
+                        : default( IList<string> );
                 }
                 catch( Exception _ex )
                 {
                     Fail( _ex );
-                    return default( IEnumerable<string> );
+                    return default( IList<string> );
                 }
             }
 
-            return default( IEnumerable<string> );
+            return default( IList<string> );
         }
 
         /// <summary>
@@ -378,7 +527,7 @@ namespace Baby
             {
                 try
                 {
-                    FileExtension = _radioButton?.Result;
+                    _fileExtension = _radioButton?.Result;
                     var _ext = _radioButton.Tag?.ToString( )
                         ?.Trim( ".".ToCharArray( ) )
                         ?.ToUpper( );
@@ -402,7 +551,7 @@ namespace Baby
         /// Gets the radio buttons.
         /// </summary>
         /// <returns></returns>
-        private protected virtual IEnumerable<RadioButton> GetRadioButtons( )
+        private protected virtual IList<RadioButton> GetRadioButtons( )
         {
             try
             {
@@ -424,12 +573,12 @@ namespace Baby
 
                 return _list?.Any( ) == true
                     ? _list
-                    : default( IEnumerable<RadioButton> );
+                    : default( IList<RadioButton> );
             }
             catch( Exception _ex )
             {
                 Fail( _ex );
-                return default( IEnumerable<RadioButton> );
+                return default( IList<RadioButton> );
             }
         }
 
@@ -437,7 +586,7 @@ namespace Baby
         /// Gets the initial dir paths.
         /// </summary>
         /// <returns></returns>
-        private protected virtual IEnumerable<string> GetInitialDirPaths( )
+        private protected virtual IList<string> GetInitialDirPaths( )
         {
             try
             {
@@ -453,12 +602,12 @@ namespace Baby
 
                 return _list?.Any( ) == true
                     ? _list
-                    : default( IEnumerable<string> );
+                    : default( IList<string> );
             }
             catch( Exception _ex )
             {
                 Fail( _ex );
-                return default( IEnumerable<string> );
+                return default( IList<string> );
             }
         }
 

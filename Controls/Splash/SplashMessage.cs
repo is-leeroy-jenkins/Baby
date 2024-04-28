@@ -178,9 +178,9 @@ namespace Baby
             RegisterCallbacks( );
 
             // Form Properties
-            Size = new Size( 650, 250 );
-            MinimumSize = new Size( 650, 250 );
-            MaximumSize = new Size( 650, 250 );
+            Size = new Size( 735, 371 );
+            MinimumSize = new Size( 735, 371 );
+            MaximumSize = new Size( 735, 371 );
             MinimizeBox = false;
             MaximizeBox = false;
             ControlBox = false;
@@ -191,21 +191,21 @@ namespace Baby
             ShowInTaskbar = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             SizeGripStyle = SizeGripStyle.Hide;
-            Padding = new Padding( 0 );
+            Padding = new Padding( 1 );
             Title.ForeColor = Color.White;
             BorderColor = Color.FromArgb( 106, 189, 252 );
-            BackColor = Color.FromArgb( 0, 73, 112 );
-            CaptionBarColor = Color.FromArgb( 0, 73, 112 );
-            Message.BackColor = Color.FromArgb( 0, 73, 112 );
-            Message.ForeColor = Color.FromArgb( 106, 189, 252 );
+            BackColor = Color.FromArgb( 1, 35, 54 );
+            CaptionBarColor = Color.FromArgb( 1, 35, 54 );
+            Message.BackColor = Color.FromArgb( 1, 35, 54 );
+            Message.ForeColor = Color.White;
             StartPosition = FormStartPosition.CenterScreen;
-            Padding = new Padding( 0 );
             ForeColor = Color.FromArgb( 106, 189, 252 );
             Font = new Font( "Roboto", 9 );
 
             // Wire Events
-            Message.MouseClick += OnClick;
             MouseClick += OnClick;
+            FormClosing += OnFormClosing;
+            Activated += OnActivated;
             Load += OnLoad;
         }
 
@@ -268,9 +268,9 @@ namespace Baby
         {
             try
             {
-                BackPanel.BorderColor = Color.FromArgb( 106, 189, 252 );
-                BackPanel.Margin = new Padding( 0 );
-                BackPanel.Padding = new Padding( 0 );
+                BackPanel.BorderColor = Color.FromArgb( 1, 35, 54 );
+                BackPanel.Margin = new Padding( 1 );
+                BackPanel.Padding = new Padding( 1 );
             }
             catch( Exception _ex )
             {
@@ -285,9 +285,9 @@ namespace Baby
         {
             try
             {
-                Message.BackColor = Color.FromArgb( 0, 73, 112 );
-                Message.Font = new Font( "Roboto", 11 );
-                Message.ForeColor = Color.FromArgb( 106, 189, 252 );
+                Message.BackColor = Color.FromArgb( 1, 35, 54 );
+                Message.Font = new Font( "Roboto", 10 );
+                Message.ForeColor = Color.White;
             }
             catch( Exception _ex )
             {
@@ -305,6 +305,8 @@ namespace Baby
                 PictureBox.MouseClick += OnClick;
                 Title.MouseClick += OnClick;
                 Message.MouseClick += OnClick;
+                CloseButton.Click += OnCloseButtonClick;
+                BackPanel.MouseClick += OnClick;
             }
             catch( Exception _ex )
             {
@@ -384,11 +386,10 @@ namespace Baby
         /// <summary>
         /// Raises the Close event.
         /// </summary>
-        public void OnClose( )
+        public void OnCloseButtonClick( object sender, EventArgs e )
         {
             try
             {
-                FadeOutAsync( this );
                 Close( );
             }
             catch( Exception _ex )
@@ -404,18 +405,13 @@ namespace Baby
         /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void OnClick( object sender, MouseEventArgs e )
         {
-            if( ( e.Button == MouseButtons.Left )
-               || ( e.Button == MouseButtons.Right ) )
+            try
             {
-                try
-                {
-                    FadeOutAsync( this );
-                    Close( );
-                }
-                catch( Exception _ex )
-                {
-                    Fail( _ex );
-                }
+                Close( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
             }
         }
 

@@ -104,6 +104,9 @@
     <Compile Update="Controls\RichTextBox\SplashTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="DialogBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Controls\Browser\WebBrowser.resx">

@@ -41,6 +41,7 @@
 namespace Baby
 {
     using System;
+    using System.Collections;
     using System.Windows.Forms;
     using System.Threading;
     using System.Diagnostics;
@@ -54,6 +55,7 @@ namespace Baby
     using Syncfusion.Windows.Forms.Tools;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
+    using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
     using static System.Configuration.ConfigurationManager;
@@ -343,7 +345,10 @@ namespace Baby
         {
             Instance = this;
             InitializeComponent( );
-            
+            InitializeDelegates( );
+            InitializeBrowser( );
+            RegisterCallbacks( );
+
             // Form Properties
             Size = new Size( 1350, 750 );
             MaximumSize = new Size( 1350, 750 );
@@ -364,40 +369,193 @@ namespace Baby
             MinimizeBox = false;
             MaximizeBox = false;
             ControlBox = true;
-            InitBrowser( );
-            SetToolStripProperties( );
-            SetStatusLabelProperties( );
-            SetTitleLabelProperties( );
             SetTitleText( null );
-            
+
             // Wireup Events
-            PreviousButton.Click += OnBackButtonClick;
-            NextButton.Click += OnForwardButtonClick;
-            HomePageButton.Click += OnHomeButtonClick;
-            CloseButton.Click += OnCloseButtonClick;
-            RefreshButton.Click += OnRefreshButtonClick;
-            DownloadButton.Click += OnDownloadsButtonClick;
-            CancelButton.Click += OnStopButtonClick;
-            DeveloperToolsButton.Click += OnDeveloperToolsButtonClick;
-            DomainComboBox.SelectedIndexChanged += OnSelectedDomainChanged;
-            GoButton.Click += OnGoButtonClick;
-            EdgeButton.Click += OnEdgeButtonClick;
-            ChromeButton.Click += OnChromeButtonClick;
-            SharepointButton.Click += OnSpfxButtonClick;
-            FireFoxButton.Click += OnFireFoxButtonClick;
-            Timer.Tick += OnTimerTick;
-            TabPages.MouseClick += OnRightClick;
-            MenuButton.MouseClick += OnMenuButtonClick;
             Load += OnLoad;
         }
-        
+
+        /// <summary>
+        /// this is done just once,
+        /// to globally initialize CefSharp/CEF
+        /// </summary>
+        private void InitializeBrowser( )
+        {
+            var _cefSettings = new CefSettings( );
+            _cefSettings.RegisterScheme( new CefCustomScheme
+            {
+                SchemeName = AppSettings[ "Internal" ],
+                SchemeHandlerFactory = new SchemaCallbackFactory( )
+            } );
+
+            _cefSettings.UserAgent = AppSettings[ "UserAgent" ];
+            _cefSettings.AcceptLanguageList = AppSettings[ "AcceptLanguage" ];
+            _cefSettings.IgnoreCertificateErrors = true;
+            _cefSettings.CachePath = GetApplicationDirectory( "Cache" );
+            if( bool.Parse( AppSettings[ "Proxy" ] ) )
+            {
+                CefSharpSettings.Proxy = new ProxyOptions( AppSettings[ "ProxyIP" ],
+                    AppSettings[ "ProxyPort" ], AppSettings[ "ProxyUsername" ],
+                    AppSettings[ "ProxyPassword" ], AppSettings[ "ProxyBypassList" ] );
+            }
+
+            Cef.Initialize( _cefSettings );
+            _downloadCallback = new DownloadCallback( this );
+            _lifeSpanCallback = new LifeSpanCallback( this );
+            _contextMenuCallback = new ContextMenuCallback( this );
+            _keyboardCallback = new KeyboardCallback( this );
+            _requestCallback = new RequestCallback( this );
+            InitializeDownloads( );
+            Host = new HostCallback( this );
+            AddNewBrowser( TabItem, AppSettings[ "HomePage" ] );
+        }
+
+        /// <summary>
+        /// we must store download metadata in a list,
+        /// since CefSharp does not
+        /// </summary>
+        private void InitializeDownloads( )
+        {
+            _downloadItems = new Dictionary<int, DownloadItem>( );
+            DownloadNames = new Dictionary<int, string>( );
+            _cancelRequests = new List<int>( );
+        }
+
+        /// <summary>
+        /// Sets the tool strip properties.
+        /// </summary>
+        private void InitializeToolStrip( )
+        {
+            try
+            {
+                // ToolStrip Properties
+                ToolStrip.ShowCaption = true;
+                ToolStrip.Visible = true;
+                ToolStrip.Text = string.Empty;
+                ToolStrip.VisualStyle = ToolStripExStyle.Office2016DarkGray;
+                ToolStrip.Office12Mode = true;
+                ToolStrip.OfficeColorScheme = ToolStripEx.ColorScheme.Black;
+                ToolStrip.LauncherStyle = LauncherStyle.Office12;
+                ToolStrip.ImageScalingSize = new Size( 16, 16 );
+
+                // ComboBox Properties
+                DomainComboBox.Font = new Font( "Roboto", 9, FontStyle.Regular );
+                DomainComboBox.Style = ToolStripExStyle.Office2016Black;
+                DomainComboBox.ForeColor = Color.FromArgb( 106, 189, 252 );
+                DomainComboBox.BackColor = Color.FromArgb( 30, 30, 30 );
+                DomainComboBox.Size = new Size( 150, 29 );
+                DomainComboBox.TextAlign = ContentAlignment.MiddleCenter;
+                DomainComboBox.SelectedIndex = -1;
+
+                // TextBox Properties
+                KeyWordTextBox.ForeColor = Color.White;
+                KeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Regular );
+                KeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
+                KeyWordTextBox.BackColor = Color.FromArgb( 30, 30, 30 );
+
+                // Progress Bar Properties
+                ProgressBar.Step = 10;
+                ProgressBar.Minimum = 0;
+                ProgressBar.Maximum = 100;
+                ProgressBar.Value = 0;
+                ProgressBar.Style = ProgressBarStyle.Blocks;
+                ProgressBar.Visible = false;
+                ProgressSeparator.Visible = false;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Initializes the tab control.
+        /// </summary>
+        private void InitializeTabControl( )
+        {
+            try
+            {
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Initializes the PictureBox.
+        /// </summary>
+        private void InitializePictureBox( )
+        {
+            try
+            {
+                PictureBox.Size = new Size( 20, 18 );
+                PictureBox.Padding = new Padding( 1 );
+                PictureBox.Margin = new Padding( 1 );
+                PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Sets the status label properties.
+        /// </summary>
+        private void InitializeLabels( )
+        {
+            try
+            {
+                StatusLabel.Font = new Font( "Roboto", 8 );
+                StatusLabel.TextAlign = ContentAlignment.MiddleCenter;
+                StatusLabel.ForeColor = Color.Black;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Sets the title label properties.
+        /// </summary>
+        private void InitializeTitle( )
+        {
+            try
+            {
+                Title.Font = new Font( "Roboto", 10 );
+                Title.ForeColor = Color.FromArgb( 106, 189, 252 );
+                Title.TextAlign = ContentAlignment.TopCenter;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Initializes the delegate.
+        /// </summary>
+        private void InitializeDelegates( )
+        {
+            try
+            {
+                _statusUpdate += UpdateStatus;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
         /// <summary>
         /// these hot keys work when the user
         /// is focused on the .NET form and its controls,
         /// AND when the user is focused on the browser
         /// (CefSharp portion)
         /// </summary>
-        private void SetHotkeys( )
+        private void InitializeHotkeys( )
         {
             // browser hot keys
             KeyboardCallback.AddHotKey( this, CloseActiveTab, Keys.W, true );
@@ -415,7 +573,91 @@ namespace Baby
             KeyboardCallback.AddHotKey( this, StopActiveTab, Keys.Escape );
             KeyboardCallback.AddHotKey( this, ToggleFullscreen, Keys.F11 );
         }
-        
+
+        /// <summary>
+        /// Initializes the callbacks.
+        /// </summary>
+        private void RegisterCallbacks( )
+        {
+            // Control Event Wiring
+            try
+            {
+                PreviousButton.Click += OnBackButtonClick;
+                NextButton.Click += OnForwardButtonClick;
+                HomePageButton.Click += OnHomeButtonClick;
+                CloseButton.Click += OnCloseButtonClick;
+                RefreshButton.Click += OnRefreshButtonClick;
+                DownloadButton.Click += OnDownloadsButtonClick;
+                CancelButton.Click += OnStopButtonClick;
+                DeveloperToolsButton.Click += OnDeveloperToolsButtonClick;
+                DomainComboBox.SelectedIndexChanged += OnSelectedDomainChanged;
+                GoButton.Click += OnGoButtonClick;
+                EdgeButton.Click += OnEdgeButtonClick;
+                ChromeButton.Click += OnChromeButtonClick;
+                FireFoxButton.Click += OnFireFoxButtonClick;
+                Timer.Tick += OnTimerTick;
+                TabPages.MouseClick += OnRightClick;
+                MenuButton.MouseClick += OnMenuButtonClick;
+                TabPages.TabStripItemClosing += OnTabClosing;
+                TabItem.MouseClick += OnRightClick;
+                Title.MouseClick += OnRightClick;
+                ContextMenu.MouseLeave += OnContextMenuMouseLeave;
+                SharepointButton.Click += OnSharepointButtonClicked;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Fades the in asynchronous.
+        /// </summary>
+        /// <param name="form">The o.</param>
+        /// <param name="interval">The interval.</param>
+        private async void FadeInAsync( Form form, int interval = 80 )
+        {
+            try
+            {
+                ThrowIf.Null( form, nameof( form ) );
+                while( form.Opacity < 1.0 )
+                {
+                    await Task.Delay( interval );
+                    form.Opacity += 0.05;
+                }
+
+                form.Opacity = 1;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Fades the out asynchronous.
+        /// </summary>
+        /// <param name="form">The o.</param>
+        /// <param name="interval">The interval.</param>
+        private async void FadeOutAsync( Form form, int interval = 80 )
+        {
+            try
+            {
+                ThrowIf.Null( form, nameof( form ) );
+                while( form.Opacity > 0.0 )
+                {
+                    await Task.Delay( interval );
+                    form.Opacity -= 0.05;
+                }
+
+                form.Opacity = 0;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
         /// <summary>
         /// we activate all the tooltips stored
         /// in the Tag property of the buttons
@@ -440,40 +682,6 @@ namespace Baby
                 {
                     SetTooltips( _panel.Controls );
                 }
-            }
-        }
-        
-        /// <summary>
-        /// Sets the status label properties.
-        /// </summary>
-        private void SetStatusLabelProperties( )
-        {
-            try
-            {
-                StatusLabel.Font = new Font( "Roboto", 8 );
-                StatusLabel.TextAlign = ContentAlignment.BottomLeft;
-                StatusLabel.ForeColor = Color.FromArgb( 106, 189, 252 );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-        
-        /// <summary>
-        /// Sets the title label properties.
-        /// </summary>
-        private void SetTitleLabelProperties( )
-        {
-            try
-            {
-                Title.Font = new Font( "Roboto", 11 );
-                Title.ForeColor = Color.FromArgb( 106, 189, 252 );
-                Title.TextAlign = ContentAlignment.TopCenter;
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
             }
         }
         
@@ -539,97 +747,14 @@ namespace Baby
         }
         
         /// <summary>
-        /// Sets the tool strip properties.
-        /// </summary>
-        private void SetToolStripProperties( )
-        {
-            try
-            {
-                // ToolStrip Properties
-                ToolStrip.Visible = true;
-                ToolStrip.Text = string.Empty;
-                ToolStrip.VisualStyle = ToolStripExStyle.Office2016DarkGray;
-                ToolStrip.Office12Mode = true;
-                ToolStrip.OfficeColorScheme = ToolStripEx.ColorScheme.Blue;
-                ToolStrip.LauncherStyle = LauncherStyle.Office2007;
-                ToolStrip.ImageScalingSize = new Size( 16, 16 );
-                
-                // ComboBox Properties
-                DomainComboBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
-                DomainComboBox.Style = ToolStripExStyle.Office2016Black;
-                DomainComboBox.ForeColor = Color.White;
-                DomainComboBox.BackColor = Color.FromArgb( 75, 75, 75 );
-                DomainComboBox.Size = new Size( 150, 29 );
-                DomainComboBox.TextAlign = ContentAlignment.MiddleCenter;
-                DomainComboBox.SelectedIndex = -1;
-                
-                // TextBox Properties
-                KeyWordTextBox.ForeColor = Color.White;
-                KeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Bold );
-                KeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
-                KeyWordTextBox.BackColor = Color.FromArgb( 75, 75, 75 );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-        
-        /// <summary>
         /// Wires up menu items.
         /// </summary>
-        private void WireUpMenuItems( )
+        private void RegisterMenuCallbacks( )
         {
             foreach( ToolStripItem _item in ContextMenu.Items )
             {
                 _item.MouseDown += OnContextMenuItemClick;
             }
-        }
-        
-        /// <summary>
-        /// this is done just once,
-        /// to globally initialize CefSharp/CEF
-        /// </summary>
-        private void InitBrowser( )
-        {
-            var _cefSettings = new CefSettings( );
-            _cefSettings.RegisterScheme( new CefCustomScheme
-            {
-                SchemeName = AppSettings[ "Internal" ],
-                SchemeHandlerFactory = new SchemaCallbackFactory( )
-            } );
-            
-            _cefSettings.UserAgent = AppSettings[ "UserAgent" ];
-            _cefSettings.AcceptLanguageList = AppSettings[ "AcceptLanguage" ];
-            _cefSettings.IgnoreCertificateErrors = true;
-            _cefSettings.CachePath = GetApplicationDirectory( "Cache" );
-            if( bool.Parse( AppSettings[ "Proxy" ] ) )
-            {
-                CefSharpSettings.Proxy = new ProxyOptions( AppSettings[ "ProxyIP" ],
-                    AppSettings[ "ProxyPort" ], AppSettings[ "ProxyUsername" ],
-                    AppSettings[ "ProxyPassword" ], AppSettings[ "ProxyBypassList" ] );
-            }
-            
-            Cef.Initialize( _cefSettings );
-            _downloadCallback = new DownloadCallback( this );
-            _lifeSpanCallback = new LifeSpanCallback( this );
-            _contextMenuCallback = new ContextMenuCallback( this );
-            _keyboardCallback = new KeyboardCallback( this );
-            _requestCallback = new RequestCallback( this );
-            InitDownloads( );
-            Host = new HostCallback( this );
-            AddNewBrowser( TabItem, AppSettings[ "HomePage" ] );
-        }
-        
-        /// <summary>
-        /// we must store download metadata in a list,
-        /// since CefSharp does not
-        /// </summary>
-        private void InitDownloads( )
-        {
-            _downloadItems = new Dictionary<int, DownloadItem>( );
-            DownloadNames = new Dictionary<int, string>( );
-            _cancelRequests = new List<int>( );
         }
         
         /// <summary>
@@ -671,16 +796,6 @@ namespace Baby
         }
         
         /// <summary>
-        /// Calculates the download path.
-        /// </summary>
-        /// <param name="item">The item.</param>
-        /// <returns></returns>
-        public string GetDownloadPath( DownloadItem item )
-        {
-            return item.SuggestedFileName;
-        }
-        
-        /// <summary>
         /// Finds the text on page.
         /// </summary>
         /// <param name="next">if set to
@@ -701,7 +816,50 @@ namespace Baby
             
             SearchPanelTextBox.Focus( );
         }
-        
+
+        /// <summary>
+        /// Gets the controls.
+        /// </summary>
+        /// <returns>
+        /// </returns>
+        private protected IEnumerable<Control> GetControls( )
+        {
+            var _list = new List<Control>( );
+            var _queue = new Queue( );
+            try
+            {
+                _queue.Enqueue( Controls );
+                while( _queue.Count > 0 )
+                {
+                    var _collection = (Control.ControlCollection)_queue.Dequeue( );
+                    foreach( Control _control in _collection )
+                    {
+                        _list.Add( _control );
+                        _queue.Enqueue( _control.Controls );
+                    }
+                }
+
+                return _list?.Any( ) == true
+                    ? _list.ToArray( )
+                    : default( Control[ ] );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return default( Control[ ] );
+            }
+        }
+
+        /// <summary>
+        /// Calculates the download path.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns></returns>
+        public string GetDownloadPath( DownloadItem item )
+        {
+            return item.SuggestedFileName;
+        }
+
         /// <summary>
         /// Gets all tabs.
         /// </summary>
@@ -747,23 +905,19 @@ namespace Baby
         /// <returns></returns>
         private static string GetApplicationDirectory( string name )
         {
-            if( !string.IsNullOrEmpty( name ) )
+            try
             {
-                try
-                {
-                    var _winXpDir = @"C:\Documents and Settings\All Users\Application Data\";
-                    return Directory.Exists( _winXpDir )
-                        ? _winXpDir + AppSettings[ "Branding" ] + @"\" + name + @"\"
-                        : @"C:\ProgramData\" + AppSettings[ "Branding" ] + @"\" + name + @"\";
-                }
-                catch( Exception _ex )
-                {
-                    Fail( _ex );
-                    return string.Empty;
-                }
+                ThrowIf.NullOrEmpty( name, nameof( name ) );
+                var _winXpDir = @"C:\Documents and Settings\All Users\Application Data\";
+                return Directory.Exists( _winXpDir )
+                    ? _winXpDir + AppSettings[ "Branding" ] + @"\" + name + @"\"
+                    : @"C:\ProgramData\" + AppSettings[ "Branding" ] + @"\" + name + @"\";
             }
-            
-            return string.Empty;
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return string.Empty;
+            }
         }
         
         /// <summary>
@@ -778,6 +932,7 @@ namespace Baby
         {
             try
             {
+                ThrowIf.NullOrEmpty( fileName, nameof( fileName ) );
                 var _prefix = "Properties.Resources.";
                 return Assembly.GetManifestResourceStream( fileName );
             }
@@ -816,7 +971,7 @@ namespace Baby
         /// <summary>
         /// Updates the status label.
         /// </summary>
-        private void UpdateStatusLabel( )
+        private void UpdateStatus( )
         {
             try
             {
@@ -837,7 +992,7 @@ namespace Baby
         /// <param name="dateTime">
         /// The date time.
         /// </param>
-        private void UpdateStatusLabel( DateTime dateTime )
+        private void UpdateStatus( DateTime dateTime )
         {
             try
             {
@@ -1626,17 +1781,21 @@ namespace Baby
         /// </param>
         private void OnLoad( object sender, EventArgs e )
         {
-            SetTooltips( Controls );
-            SetHotkeys( );
-            WireUpMenuItems( );
-            _searchEngineUrl = AppSettings[ "Google" ];
-            TabPages.TabStripItemClosing += OnTabClosing;
-            TabPages.MouseClick += OnRightClick;
-            TabItem.MouseClick += OnRightClick;
-            Title.MouseClick += OnRightClick;
-            _statusUpdate += UpdateStatusLabel;
-            ContextMenu.MouseLeave += OnContextMenuMouseLeave;
-            SharepointButton.Click += OnSharepointButtonClicked;
+            try
+            {
+                InitializePictureBox( );
+                InitializeToolStrip( );
+                InitializeHotkeys( );
+                InitializeLabels( );
+                InitializeTitle( );
+                SetTooltips( Controls );
+                RegisterMenuCallbacks( );
+                _searchEngineUrl = AppSettings[ "Google" ];
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
         }
         
         /// <summary>
@@ -2293,18 +2452,6 @@ namespace Baby
         }
         
         /// <summary>
-        /// Called when [close button clicked].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/>
-        /// instance containing the event data.
-        /// </param>
-        private void OnSpfxButtonClick( object sender, EventArgs e )
-        {
-            Notify( );
-        }
-        
-        /// <summary>
         /// Called when [right click].
         /// </summary>
         /// <param name="sender">
@@ -2454,7 +2601,46 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
+        /// <summary>
+        /// Called when [form closing].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnFormClosing( object sender, EventArgs e )
+        {
+            try
+            {
+                Timer?.Dispose( );
+                Opacity = 1;
+                FadeOutAsync( this );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [shown].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        private void OnActivated( object sender, EventArgs e )
+        {
+            try
+            {
+                Opacity = 0;
+                FadeInAsync( this );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
         /// <summary>
         /// Fails the specified ex.
         /// </summary>

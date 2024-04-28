@@ -38,89 +38,92 @@
             components = new System.ComponentModel.Container( );
             var resources = new System.ComponentModel.ComponentResourceManager( typeof( Notification ) );
             PictureBox = new ImageBox( );
-            Timer = new System.Windows.Forms.Timer( components );
+            Timer = new Timer( components );
             Title = new Label( );
             Message = new Label( );
-            ( (System.ComponentModel.ISupportInitialize) PictureBox  ).BeginInit( );
+            ( (System.ComponentModel.ISupportInitialize)PictureBox ).BeginInit( );
             SuspendLayout( );
             // 
             // PictureBox
             // 
-            PictureBox.BackColor = System.Drawing.Color.Transparent;
-            PictureBox.Image = Properties.Resources.BabyBrowser;
-            PictureBox.Location = new System.Drawing.Point( 4, 4 );
+            PictureBox.BackColor = Color.Transparent;
+            PictureBox.Image = (Image)resources.GetObject( "PictureBox.Image" );
+            PictureBox.Location = new Point( 2, 2 );
+            PictureBox.Margin = new Padding( 1 );
             PictureBox.Name = "PictureBox";
-            PictureBox.Size = new System.Drawing.Size( 20, 20 );
+            PictureBox.Padding = new Padding( 1 );
+            PictureBox.Size = new Size( 20, 20 );
             PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBox.TabIndex = 2;
             PictureBox.TabStop = false;
+            PictureBox.ToolTip = null;
             // 
             // Title
             // 
             Title.FlatStyle = FlatStyle.Flat;
-            Title.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            Title.Font = new Font( "Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point );
             Title.HoverText = null;
             Title.IsDerivedStyle = true;
-            Title.Location = new System.Drawing.Point( 60, 4 );
+            Title.Location = new Point( 60, 4 );
             Title.Margin = new Padding( 3 );
             Title.Name = "Title";
             Title.Padding = new Padding( 1 );
-            Title.Size = new System.Drawing.Size( 292, 23 );
+            Title.Size = new Size( 292, 23 );
             Title.Style = MetroSet_UI.Enums.Style.Custom;
             Title.StyleManager = null;
             Title.TabIndex = 3;
             Title.Text = "label1";
-            Title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            Title.TextAlign = ContentAlignment.MiddleLeft;
             Title.ThemeAuthor = "Terry D. Eppler";
             Title.ThemeName = "Baby";
             Title.ToolTip = null;
             // 
             // Message
             // 
-            Message.Anchor =     AnchorStyles.Top  |  AnchorStyles.Bottom   |  AnchorStyles.Left   |  AnchorStyles.Right  ;
+            Message.Anchor =    AnchorStyles.Top  |  AnchorStyles.Bottom   |  AnchorStyles.Left   |  AnchorStyles.Right ;
             Message.FlatStyle = FlatStyle.Flat;
-            Message.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            Message.Font = new Font( "Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point );
             Message.HoverText = null;
             Message.IsDerivedStyle = true;
-            Message.Location = new System.Drawing.Point( 60, 43 );
+            Message.Location = new Point( 60, 43 );
             Message.Margin = new Padding( 3 );
             Message.Name = "Message";
             Message.Padding = new Padding( 1 );
-            Message.Size = new System.Drawing.Size( 339, 81 );
+            Message.Size = new Size( 339, 99 );
             Message.Style = MetroSet_UI.Enums.Style.Custom;
             Message.StyleManager = null;
             Message.TabIndex = 4;
             Message.Text = "label2";
-            Message.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            Message.TextAlign = ContentAlignment.MiddleLeft;
             Message.ThemeAuthor = "Terry D. Eppler";
             Message.ThemeName = "Baby";
             Message.ToolTip = null;
             // 
             // Notification
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF( 7F, 14F );
+            AutoScaleDimensions = new SizeF( 7F, 14F );
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = System.Drawing.Color.FromArgb(   0  ,   73  ,   112   );
-            BorderColor = System.Drawing.Color.FromArgb(   106  ,   189  ,   252   );
-            CaptionBarColor = System.Drawing.Color.FromArgb(   0  ,   73  ,   112   );
+            BackColor = Color.FromArgb( 1, 35, 54 );
+            BorderColor = Color.FromArgb( 106, 189, 252 );
+            CaptionBarColor = Color.FromArgb( 1, 35, 54 );
             CaptionBarHeight = 3;
-            CaptionButtonColor = System.Drawing.Color.FromArgb(   0  ,   73  ,   112   );
-            CaptionButtonHoverColor = System.Drawing.Color.FromArgb(   0  ,   73  ,   112   );
-            CaptionFont = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            CaptionForeColor = System.Drawing.Color.FromArgb(   0  ,   73  ,   112   );
-            ClientSize = new System.Drawing.Size( 448, 177 );
+            CaptionButtonColor = Color.FromArgb( 1, 35, 54 );
+            CaptionButtonHoverColor = Color.FromArgb( 1, 35, 54 );
+            CaptionFont = new Font( "Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point );
+            CaptionForeColor = Color.FromArgb( 1, 35, 54 );
+            ClientSize = new Size( 448, 177 );
             ControlBox = false;
             Controls.Add( Message );
             Controls.Add( Title );
             Controls.Add( PictureBox );
-            Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            ForeColor = System.Drawing.Color.FromArgb(   106  ,   189  ,   252   );
+            Font = new Font( "Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point );
+            ForeColor = Color.FromArgb( 106, 189, 252 );
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Icon = (System.Drawing.Icon) resources.GetObject( "$this.Icon" ) ;
-            MaximumSize = new System.Drawing.Size( 460, 189 );
-            MetroColor = System.Drawing.Color.FromArgb(   0  ,   73  ,   112   );
+            Icon = (Icon)resources.GetObject( "$this.Icon" );
+            MaximumSize = new Size( 460, 189 );
+            MetroColor = Color.FromArgb( 1, 35, 54 );
             MinimizeBox = false;
-            MinimumSize = new System.Drawing.Size( 460, 189 );
+            MinimumSize = new Size( 460, 189 );
             Name = "Notification";
             Padding = new Padding( 1 );
             ShowIcon = false;
@@ -129,7 +132,7 @@
             ShowMinimizeBox = false;
             SizeGripStyle = SizeGripStyle.Hide;
             TopMost = true;
-            ( (System.ComponentModel.ISupportInitialize) PictureBox  ).EndInit( );
+            ( (System.ComponentModel.ISupportInitialize)PictureBox ).EndInit( );
             ResumeLayout( false );
         }
 

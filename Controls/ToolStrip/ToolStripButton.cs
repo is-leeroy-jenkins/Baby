@@ -52,6 +52,7 @@ namespace Baby
     /// </summary>
     /// <seealso cref="T:Baby.ToolButtonBase" />
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public class ToolStripButton : ToolButtonBase
     {
         /// <summary>

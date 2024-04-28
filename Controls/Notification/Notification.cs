@@ -44,6 +44,7 @@ namespace Baby
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
     using static System.Windows.Forms.Screen;
     using static Animator;
@@ -57,6 +58,7 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "RedundantExtendsListEntry" ) ]
+    [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     public partial class Notification : MetroForm
     {
         /// <summary>
@@ -118,13 +120,15 @@ namespace Baby
             Padding = new Padding( 0 );
             Title.ForeColor = Color.White;
             BorderColor = Color.FromArgb( 106, 189, 252 );
-            BackColor = Color.FromArgb( 0, 73, 112 );
-            CaptionBarColor = Color.FromArgb( 0, 73, 112 );
-            Message.BackColor = Color.FromArgb( 0, 73, 112 );
+            BackColor = Color.FromArgb( 1, 35, 54 );
+            CaptionBarColor = Color.FromArgb( 1, 35, 54 );
+            Message.BackColor = Color.FromArgb( 1, 35, 54 );
             Message.ForeColor = Color.FromArgb( 106, 189, 252 );
 
             // Event Wiring
             Resize += OnResized;
+            FormClosing += OnFormClosing;
+            Activated += OnActivated;
         }
 
         /// <inheritdoc />
@@ -177,129 +181,6 @@ namespace Baby
         }
 
         /// <summary>
-        /// Displays the control to the user.
-        /// </summary>
-        public new void Show( )
-        {
-            try
-            {
-                Opacity = 0;
-                if( Seconds != 0 )
-                {
-                    Timer = new Timer( );
-                    Timer.Interval = 1000;
-                    Timer.Tick += ( sender, args ) =>
-                    {
-                        Time++;
-                        if( Time == Seconds )
-                        {
-                            Timer.Stop( );
-                            FadeOut( );
-                        }
-                    };
-                }
-
-                base.Show( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Raises the Close event.
-        /// </summary>
-        public void OnClose( )
-        {
-            try
-            {
-                FadeOut( );
-                Close( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Fades the out.
-        /// </summary>
-        private void FadeOut( )
-        {
-            try
-            {
-                var _timer = new Timer( );
-                _timer.Interval = 10;
-                _timer.Tick += ( sender, args ) =>
-                {
-                    if( Opacity == 0d )
-                    {
-                        _timer.Stop( );
-                        Close( );
-                    }
-
-                    Opacity -= 0.02d;
-                };
-
-                _timer.Start( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Called when [click].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The
-        /// <see cref="MouseEventArgs"/>
-        /// instance containing the event data.
-        /// </param>
-        private void OnClick( object sender, MouseEventArgs e )
-        {
-            if( ( e.Button == MouseButtons.Left )
-               || ( e.Button == MouseButtons.Right ) )
-            {
-                try
-                {
-                    OnClose( );
-                }
-                catch( Exception _ex )
-                {
-                    Fail( _ex );
-                }
-            }
-        }
-
-        /// <summary>
-        /// Called when [load].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void OnLoad( object sender, EventArgs e )
-        {
-            try
-            {
-                var _width = PrimaryScreen.WorkingArea.Width - Width - 5;
-                var _height = PrimaryScreen.WorkingArea.Height - Height - 5;
-                Location = new Point( _width, _height );
-                InitializeLabels( );
-                InitializePanel( );
-                InitializeTitle( );
-                FadeIn( );
-                Timer.Start( );
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
         /// Initializes the title.
         /// </summary>
         private protected void InitializeTitle( )
@@ -347,25 +228,128 @@ namespace Baby
         }
 
         /// <summary>
-        /// Fades the in.
+        /// Fades the in asynchronous.
         /// </summary>
-        private protected virtual void FadeIn( )
+        /// <param name="form">The o.</param>
+        /// <param name="interval">The interval.</param>
+        private async void FadeInAsync( Form form, int interval = 80 )
         {
             try
             {
-                var _timer = new Timer( );
-                _timer.Interval = 10;
-                _timer.Tick += ( sender, args ) =>
+                ThrowIf.Null( form, nameof( form ) );
+                while( form.Opacity < 1.0 )
                 {
-                    if( Opacity == 1d )
-                    {
-                        _timer.Stop( );
-                    }
+                    await Task.Delay( interval );
+                    form.Opacity += 0.05;
+                }
 
-                    Opacity += 0.02d;
-                };
+                form.Opacity = 1;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
 
-                _timer.Start( );
+        /// <summary>
+        /// Fades the out asynchronous.
+        /// </summary>
+        /// <param name="form">The o.</param>
+        /// <param name="interval">The interval.</param>
+        private async void FadeOutAsync( Form form, int interval = 80 )
+        {
+            try
+            {
+                ThrowIf.Null( form, nameof( form ) );
+                while( form.Opacity > 0.0 )
+                {
+                    await Task.Delay( interval );
+                    form.Opacity -= 0.05;
+                }
+
+                form.Opacity = 0;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The
+        /// <see cref="MouseEventArgs"/>
+        /// instance containing the event data.
+        /// </param>
+        private void OnClick( object sender, MouseEventArgs e )
+        {
+            if( ( e.Button == MouseButtons.Left )
+               || ( e.Button == MouseButtons.Right ) )
+            {
+                try
+                {
+                    Close( );
+                }
+                catch( Exception _ex )
+                {
+                    Fail( _ex );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when [load].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void OnLoad( object sender, EventArgs e )
+        {
+            try
+            {
+                Opacity = 0;
+                var _width = PrimaryScreen.WorkingArea.Width - Width - 5;
+                var _height = PrimaryScreen.WorkingArea.Height - Height - 5;
+                Location = new Point( _width, _height );
+                InitializeLabels( );
+                InitializePanel( );
+                InitializeTitle( );
+                FadeInAsync( this );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Raises the Close event.
+        /// </summary>
+        public void OnFormClosing( object sender, EventArgs e )
+        {
+            try
+            {
+                Opacity = 1;
+                FadeOutAsync( this );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Called when [activated].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        public void OnActivated( object sender, EventArgs e )
+        {
+            try
+            {
+                Opacity = 0;
+                FadeInAsync( this );
             }
             catch( Exception _ex )
             {

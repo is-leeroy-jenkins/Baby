@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\terry\\source\\repos\\Baby\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\dialog\\filebrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\dialog\\filebrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\dialog\\searchdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\dialog\\searchdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\toolstrip\\toolstripbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\toolstrip\\toolstripbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,6 +47,69 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SearchDialog.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\SearchDialog.cs",
+              "RelativeDocumentMoniker": "Controls\\Dialog\\SearchDialog.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\SearchDialog.cs [Design]",
+              "RelativeToolTip": "Controls\\Dialog\\SearchDialog.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T13:46:17.197Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FileBrowser.cs",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\FileBrowser.cs",
+              "RelativeDocumentMoniker": "Controls\\Dialog\\FileBrowser.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\FileBrowser.cs",
+              "RelativeToolTip": "Controls\\Dialog\\FileBrowser.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAiwFAAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T13:29:19.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WebBrowser.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
+              "RelativeDocumentMoniker": "Controls\\Browser\\WebBrowser.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs [Design]",
+              "RelativeToolTip": "Controls\\Browser\\WebBrowser.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T12:28:34.644Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ToolStripButton.cs",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\ToolStrip\\ToolStripButton.cs",
+              "RelativeDocumentMoniker": "Controls\\ToolStrip\\ToolStripButton.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\ToolStrip\\ToolStripButton.cs",
+              "RelativeToolTip": "Controls\\ToolStrip\\ToolStripButton.cs",
+              "ViewState": "AQIAALoAAAAAAAAAAAAAwHUAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T12:27:24.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WebBrowser.cs",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
+              "RelativeDocumentMoniker": "Controls\\Browser\\WebBrowser.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
+              "RelativeToolTip": "Controls\\Browser\\WebBrowser.cs",
+              "ViewState": "AQIAAJYDAAAAAAAAAAAAwKMDAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T10:16:00.512Z",
+              "EditorCaption": ""
             }
           ]
         }

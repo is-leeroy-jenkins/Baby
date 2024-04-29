@@ -185,7 +185,9 @@
             SearchPanel.Controls.Add( FirstButton );
             SearchPanel.Controls.Add( CloseSearchButton );
             SearchPanel.Controls.Add( SearchPanelTextBox );
+            SearchPanel.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             SearchPanel.Location = new System.Drawing.Point( 1030, 5 );
+            SearchPanel.Margin = new System.Windows.Forms.Padding( 1 );
             SearchPanel.Name = "SearchPanel";
             SearchPanel.Size = new System.Drawing.Size( 307, 40 );
             SearchPanel.TabIndex = 9;
@@ -290,6 +292,7 @@
             ToolStrip.Name = "ToolStrip";
             ToolStrip.NavigationLabel = null;
             ToolStrip.NextButton = null;
+            ToolStrip.Office12Mode = false;
             ToolStrip.OfficeColorScheme = Syncfusion.Windows.Forms.Tools.ToolStripEx.ColorScheme.Black;
             ToolStrip.Padding = new System.Windows.Forms.Padding( 1 );
             ToolStrip.PreviousButton = null;
@@ -328,7 +331,7 @@
             StatusLabel.Margin = new System.Windows.Forms.Padding( 1 );
             StatusLabel.Name = "StatusLabel";
             StatusLabel.Padding = new System.Windows.Forms.Padding( 1 );
-            StatusLabel.Size = new System.Drawing.Size( 85, 23 );
+            StatusLabel.Size = new System.Drawing.Size( 85, 25 );
             StatusLabel.Tag = "";
             StatusLabel.Text = "          Date and Time";
             StatusLabel.ToolTip = null;
@@ -342,7 +345,7 @@
             StatusSpacer.Margin = new System.Windows.Forms.Padding( 1 );
             StatusSpacer.Name = "StatusSpacer";
             StatusSpacer.Padding = new System.Windows.Forms.Padding( 1 );
-            StatusSpacer.Size = new System.Drawing.Size( 2, 23 );
+            StatusSpacer.Size = new System.Drawing.Size( 2, 25 );
             StatusSpacer.Tag = "";
             StatusSpacer.ToolTip = null;
             // 
@@ -352,7 +355,7 @@
             Separator1.Margin = new System.Windows.Forms.Padding( 1 );
             Separator1.Name = "Separator1";
             Separator1.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator1.Size = new System.Drawing.Size( 6, 23 );
+            Separator1.Size = new System.Drawing.Size( 6, 25 );
             // 
             // DomainComboBox
             // 
@@ -365,7 +368,7 @@
             DomainComboBox.MaxLength = 32767;
             DomainComboBox.MetroColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             DomainComboBox.Name = "DomainComboBox";
-            DomainComboBox.Size = new System.Drawing.Size( 150, 25 );
+            DomainComboBox.Size = new System.Drawing.Size( 150, 27 );
             DomainComboBox.Style = Syncfusion.Windows.Forms.Tools.ToolStripExStyle.Office2016DarkGray;
             DomainComboBox.ToolTip = ToolTip;
             DomainComboBox.ToolTipText = "Select Domains";
@@ -395,7 +398,7 @@
             Separator2.Margin = new System.Windows.Forms.Padding( 1 );
             Separator2.Name = "Separator2";
             Separator2.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator2.Size = new System.Drawing.Size( 6, 23 );
+            Separator2.Size = new System.Drawing.Size( 6, 25 );
             // 
             // PreviousButton
             // 
@@ -410,7 +413,7 @@
             PreviousButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             PreviousButton.Name = "PreviousButton";
             PreviousButton.Padding = new System.Windows.Forms.Padding( 1 );
-            PreviousButton.Size = new System.Drawing.Size( 24, 23 );
+            PreviousButton.Size = new System.Drawing.Size( 24, 25 );
             PreviousButton.Text = "toolStripButton1";
             PreviousButton.ToolTip = ToolTip;
             PreviousButton.ToolType = ToolType.PreviousButton;
@@ -421,7 +424,7 @@
             Separator3.Margin = new System.Windows.Forms.Padding( 1 );
             Separator3.Name = "Separator3";
             Separator3.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator3.Size = new System.Drawing.Size( 6, 23 );
+            Separator3.Size = new System.Drawing.Size( 6, 25 );
             // 
             // NextButton
             // 
@@ -436,7 +439,7 @@
             NextButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             NextButton.Name = "NextButton";
             NextButton.Padding = new System.Windows.Forms.Padding( 1 );
-            NextButton.Size = new System.Drawing.Size( 24, 23 );
+            NextButton.Size = new System.Drawing.Size( 24, 25 );
             NextButton.ToolTip = ToolTip;
             NextButton.ToolType = ToolType.NextButton;
             // 
@@ -446,7 +449,7 @@
             Separator4.Margin = new System.Windows.Forms.Padding( 1 );
             Separator4.Name = "Separator4";
             Separator4.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator4.Size = new System.Drawing.Size( 6, 23 );
+            Separator4.Size = new System.Drawing.Size( 6, 25 );
             // 
             // KeyWordTextBox
             // 
@@ -457,7 +460,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 286, 23 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 282, 25 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -468,7 +471,7 @@
             Separator5.Margin = new System.Windows.Forms.Padding( 1 );
             Separator5.Name = "Separator5";
             Separator5.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator5.Size = new System.Drawing.Size( 6, 23 );
+            Separator5.Size = new System.Drawing.Size( 6, 25 );
             // 
             // GoButton
             // 
@@ -483,7 +486,7 @@
             GoButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             GoButton.Name = "GoButton";
             GoButton.Padding = new System.Windows.Forms.Padding( 1 );
-            GoButton.Size = new System.Drawing.Size( 24, 23 );
+            GoButton.Size = new System.Drawing.Size( 24, 25 );
             GoButton.ToolTip = ToolTip;
             GoButton.ToolType = ToolType.FirstButton;
             // 
@@ -493,7 +496,7 @@
             Separator6.Margin = new System.Windows.Forms.Padding( 1 );
             Separator6.Name = "Separator6";
             Separator6.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator6.Size = new System.Drawing.Size( 6, 23 );
+            Separator6.Size = new System.Drawing.Size( 6, 25 );
             // 
             // CancelButton
             // 
@@ -508,7 +511,7 @@
             CancelButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             CancelButton.Name = "CancelButton";
             CancelButton.Padding = new System.Windows.Forms.Padding( 1 );
-            CancelButton.Size = new System.Drawing.Size( 24, 23 );
+            CancelButton.Size = new System.Drawing.Size( 24, 25 );
             CancelButton.Text = "toolStripButton1";
             CancelButton.ToolTip = ToolTip;
             CancelButton.ToolType = ToolType.FirstButton;
@@ -519,7 +522,7 @@
             Separator7.Margin = new System.Windows.Forms.Padding( 1 );
             Separator7.Name = "Separator7";
             Separator7.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator7.Size = new System.Drawing.Size( 6, 23 );
+            Separator7.Size = new System.Drawing.Size( 6, 25 );
             // 
             // ChromeButton
             // 
@@ -534,7 +537,7 @@
             ChromeButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             ChromeButton.Name = "ChromeButton";
             ChromeButton.Padding = new System.Windows.Forms.Padding( 1 );
-            ChromeButton.Size = new System.Drawing.Size( 24, 23 );
+            ChromeButton.Size = new System.Drawing.Size( 24, 25 );
             ChromeButton.Text = "toolStripButton1";
             ChromeButton.ToolTip = ToolTip;
             ChromeButton.ToolType = ToolType.GoogleButton;
@@ -545,7 +548,7 @@
             Separator8.Margin = new System.Windows.Forms.Padding( 1 );
             Separator8.Name = "Separator8";
             Separator8.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator8.Size = new System.Drawing.Size( 6, 23 );
+            Separator8.Size = new System.Drawing.Size( 6, 25 );
             // 
             // EdgeButton
             // 
@@ -560,7 +563,7 @@
             EdgeButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             EdgeButton.Name = "EdgeButton";
             EdgeButton.Padding = new System.Windows.Forms.Padding( 1 );
-            EdgeButton.Size = new System.Drawing.Size( 24, 23 );
+            EdgeButton.Size = new System.Drawing.Size( 24, 25 );
             EdgeButton.Text = "toolStripButton1";
             EdgeButton.ToolTip = ToolTip;
             EdgeButton.ToolType = ToolType.FirstButton;
@@ -571,7 +574,7 @@
             Separator9.Margin = new System.Windows.Forms.Padding( 1 );
             Separator9.Name = "Separator9";
             Separator9.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator9.Size = new System.Drawing.Size( 6, 23 );
+            Separator9.Size = new System.Drawing.Size( 6, 25 );
             // 
             // SharepointButton
             // 
@@ -586,7 +589,7 @@
             SharepointButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             SharepointButton.Name = "SharepointButton";
             SharepointButton.Padding = new System.Windows.Forms.Padding( 1 );
-            SharepointButton.Size = new System.Drawing.Size( 24, 23 );
+            SharepointButton.Size = new System.Drawing.Size( 24, 25 );
             SharepointButton.Text = "toolStripButton1";
             SharepointButton.ToolTip = ToolTip;
             SharepointButton.ToolType = ToolType.FirstButton;
@@ -597,7 +600,7 @@
             Separator10.Margin = new System.Windows.Forms.Padding( 1 );
             Separator10.Name = "Separator10";
             Separator10.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator10.Size = new System.Drawing.Size( 6, 23 );
+            Separator10.Size = new System.Drawing.Size( 6, 25 );
             // 
             // FireFoxButton
             // 
@@ -612,7 +615,7 @@
             FireFoxButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             FireFoxButton.Name = "FireFoxButton";
             FireFoxButton.Padding = new System.Windows.Forms.Padding( 1 );
-            FireFoxButton.Size = new System.Drawing.Size( 24, 23 );
+            FireFoxButton.Size = new System.Drawing.Size( 24, 25 );
             FireFoxButton.Text = "toolStripButton1";
             FireFoxButton.ToolTip = ToolTip;
             FireFoxButton.ToolType = ToolType.FirstButton;
@@ -623,7 +626,7 @@
             Separator16.Margin = new System.Windows.Forms.Padding( 1 );
             Separator16.Name = "Separator16";
             Separator16.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator16.Size = new System.Drawing.Size( 6, 23 );
+            Separator16.Size = new System.Drawing.Size( 6, 25 );
             // 
             // RefreshButton
             // 
@@ -638,7 +641,7 @@
             RefreshButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             RefreshButton.Name = "RefreshButton";
             RefreshButton.Padding = new System.Windows.Forms.Padding( 1 );
-            RefreshButton.Size = new System.Drawing.Size( 24, 23 );
+            RefreshButton.Size = new System.Drawing.Size( 24, 25 );
             RefreshButton.Text = "toolStripButton1";
             RefreshButton.ToolTip = ToolTip;
             RefreshButton.ToolType = ToolType.RefreshButton;
@@ -649,7 +652,7 @@
             Separator11.Margin = new System.Windows.Forms.Padding( 1 );
             Separator11.Name = "Separator11";
             Separator11.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator11.Size = new System.Drawing.Size( 6, 23 );
+            Separator11.Size = new System.Drawing.Size( 6, 25 );
             // 
             // DeveloperToolsButton
             // 
@@ -664,7 +667,7 @@
             DeveloperToolsButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             DeveloperToolsButton.Name = "DeveloperToolsButton";
             DeveloperToolsButton.Padding = new System.Windows.Forms.Padding( 1 );
-            DeveloperToolsButton.Size = new System.Drawing.Size( 24, 23 );
+            DeveloperToolsButton.Size = new System.Drawing.Size( 24, 25 );
             DeveloperToolsButton.Text = "toolStripButton1";
             DeveloperToolsButton.ToolTip = ToolTip;
             DeveloperToolsButton.ToolType = ToolType.FirstButton;
@@ -675,7 +678,7 @@
             Separator13.Margin = new System.Windows.Forms.Padding( 1 );
             Separator13.Name = "Separator13";
             Separator13.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator13.Size = new System.Drawing.Size( 6, 23 );
+            Separator13.Size = new System.Drawing.Size( 6, 25 );
             // 
             // DownloadButton
             // 
@@ -690,7 +693,7 @@
             DownloadButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             DownloadButton.Name = "DownloadButton";
             DownloadButton.Padding = new System.Windows.Forms.Padding( 1 );
-            DownloadButton.Size = new System.Drawing.Size( 24, 23 );
+            DownloadButton.Size = new System.Drawing.Size( 24, 25 );
             DownloadButton.Text = "toolStripButton1";
             DownloadButton.ToolTip = ToolTip;
             DownloadButton.ToolType = ToolType.DownloadButton;
@@ -702,7 +705,7 @@
             Separator15.Margin = new System.Windows.Forms.Padding( 1 );
             Separator15.Name = "Separator15";
             Separator15.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator15.Size = new System.Drawing.Size( 6, 23 );
+            Separator15.Size = new System.Drawing.Size( 6, 25 );
             // 
             // DownloadSeparator
             // 
@@ -710,13 +713,13 @@
             DownloadSeparator.Margin = new System.Windows.Forms.Padding( 1 );
             DownloadSeparator.Name = "DownloadSeparator";
             DownloadSeparator.Padding = new System.Windows.Forms.Padding( 1 );
-            DownloadSeparator.Size = new System.Drawing.Size( 6, 23 );
+            DownloadSeparator.Size = new System.Drawing.Size( 6, 25 );
             // 
             // ProgressBar
             // 
             ProgressBar.BackColor = System.Drawing.SystemColors.ControlDark;
             ProgressBar.Name = "ProgressBar";
-            ProgressBar.Size = new System.Drawing.Size( 150, 22 );
+            ProgressBar.Size = new System.Drawing.Size( 150, 24 );
             // 
             // CloseButton
             // 
@@ -732,7 +735,7 @@
             CloseButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             CloseButton.Name = "CloseButton";
             CloseButton.Padding = new System.Windows.Forms.Padding( 1 );
-            CloseButton.Size = new System.Drawing.Size( 24, 23 );
+            CloseButton.Size = new System.Drawing.Size( 24, 25 );
             CloseButton.Text = "toolStripButton2";
             CloseButton.ToolTip = ToolTip;
             CloseButton.ToolType = ToolType.CloseButton;
@@ -744,7 +747,7 @@
             Separator14.Margin = new System.Windows.Forms.Padding( 1 );
             Separator14.Name = "Separator14";
             Separator14.Padding = new System.Windows.Forms.Padding( 1 );
-            Separator14.Size = new System.Drawing.Size( 6, 23 );
+            Separator14.Size = new System.Drawing.Size( 6, 25 );
             // 
             // HomePageButton
             // 
@@ -760,7 +763,7 @@
             HomePageButton.Margin = new System.Windows.Forms.Padding( 5, 1, 5, 1 );
             HomePageButton.Name = "HomePageButton";
             HomePageButton.Padding = new System.Windows.Forms.Padding( 1 );
-            HomePageButton.Size = new System.Drawing.Size( 24, 23 );
+            HomePageButton.Size = new System.Drawing.Size( 24, 25 );
             HomePageButton.ToolTip = null;
             HomePageButton.ToolType = ToolType.HomeButton;
             // 
@@ -770,7 +773,7 @@
             ProgressSeparator.Margin = new System.Windows.Forms.Padding( 1 );
             ProgressSeparator.Name = "ProgressSeparator";
             ProgressSeparator.Padding = new System.Windows.Forms.Padding( 1 );
-            ProgressSeparator.Size = new System.Drawing.Size( 6, 23 );
+            ProgressSeparator.Size = new System.Drawing.Size( 6, 25 );
             // 
             // Separator12
             // 

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -23,15 +23,15 @@
     <RepositoryUrl>https://github.com/KarmaScripter/Baby</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
-    <AssemblyName>BabyBrowser</AssemblyName>
-    <RootNamespace>BabyBrowser</RootNamespace>
+    <AssemblyName>Baby</AssemblyName>
+    <RootNamespace>Baby</RootNamespace>
     <SignAssembly>False</SignAssembly>
     <Version>0.0.1</Version>
     <PackageProjectUrl>https://github.com/KarmaScripter/Baby</PackageProjectUrl>
     <PackageTags>Web Browser;Baby</PackageTags>
     <IncludeSymbols>True</IncludeSymbols>
     <BaseOutputPath>C:\Users\terry\source\repos\Baby\bin\Baby</BaseOutputPath>
-    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Copyright>Terry D. Eppler</Copyright>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
@@ -68,16 +68,22 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="cef.redist.x64" Version="119.4.3" />
-    <PackageReference Include="cef.redist.x86" Version="119.4.3" />
-    <PackageReference Include="CefSharp.Common" Version="119.4.30" />
-    <PackageReference Include="CefSharp.Common.NETCore" Version="119.4.30" />
-    <PackageReference Include="CefSharp.WinForms" Version="119.4.30" />
-    <PackageReference Include="CefSharp.WinForms.NETCore" Version="119.4.30" />
-    <PackageReference Include="CefSharp.Wpf" Version="119.4.30" />
-    <PackageReference Include="CefSharp.Wpf.NETCore" Version="119.4.30" />
+    <PackageReference Include="cef.redist.x64" Version="120.2.7" />
+    <PackageReference Include="cef.redist.x86" Version="120.2.7" />
+    <PackageReference Include="CefSharp.Common" Version="123.0.60" />
+    <PackageReference Include="CefSharp.Common.NETCore" Version="123.0.60" />
+    <PackageReference Include="CefSharp.WinForms" Version="123.0.60" />
+    <PackageReference Include="CefSharp.WinForms.NETCore" Version="123.0.60" />
+    <PackageReference Include="CefSharp.Wpf" Version="123.0.60" />
+    <PackageReference Include="CefSharp.Wpf.NETCore" Version="123.0.60" />
+    <PackageReference Include="MetroSet_UI" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CharmNotification">
@@ -115,6 +121,10 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -125,13 +135,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="chromiumembeddedframework.runtime.win-arm64" Version="119.1.2" />
+    <PackageReference Update="chromiumembeddedframework.runtime.win-arm64" Version="123.0.6" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="chromiumembeddedframework.runtime.win-x64" Version="119.1.2" />
+    <PackageReference Update="chromiumembeddedframework.runtime.win-x64" Version="123.0.6" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="chromiumembeddedframework.runtime.win-x86" Version="119.1.2" />
+    <PackageReference Update="chromiumembeddedframework.runtime.win-x86" Version="123.0.6" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libraries\" />

@@ -203,14 +203,14 @@
   <data name="CancelButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGMSURBVDhPbZKtUgNBEIRbREZEIE4gIhARCASCh0BEIpAI
-        BCICEY+IiOAhIhAIHgCJ4AEQiAgEAoFAhKoAB4T+NjNXATJVU9vb0/Ozc6e/tpCqb2nwJU0+pTscDOdY
-        N2TrzYL+m/Tsc4G/SnP7bOU+c6GjkP82dxmHqDYeWbjre4uYzx37MIs5flGS0kz2CTAu4qD/mWNda27R
-        usFJkhVj0zmTfbbsG0VgA8MlDv3cuKdYDmONQtAyvqyle+MKB8MRQ+Ocw8gZ8/YJF94cBbrv0hMciVFo
-        EVz5Cj47cM69Fu+OcUp1zLiXRfDAvQgXc+HpXHopgO0GX8ziMnYWCFxFuFg0nvEE3oYwF9gk03n1OcRC
-        04ZzkRsWcsrFPswggRwbB8MRQ+OcfWN2cM5li1Fwk7mkNjwYA2cyp6d5sL42v5eCYyrSxXizkGvMmo67
-        XqH1eRb00nIXbDYKrv5IHXMHH9IjmnhO89Uas2jg0fikuf2pxfze5c7YdF6bnOYi2yyHLrkbMJxjyzc3
-        Jv0AIbwXFoNiykgAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGLSURBVDhPbZKtUgNBEIRbREZEIE4gIhAnEAgED4GIRCAR
+        CEQEIh4REcFDRCAQPAASwQMgEBEIBAJBFVAVIEDobzNzFSBTNbW9PT0/O3f6a3Op+pb6X9L4U7rBwXCO
+        dUO22izovUmPPuf4szR9lV7yDnahg5D/NncZRdLMeGjhtu8tYj637IMs5vhZSUoz2SPAuIiD/meOda25
+        RusGR0lWjE3nTPbZsq8VgQ0Mlzj0U+NasRzGGoagZXw+k26NKxwMRwyNc/YjZ8Tbx1x4cxTovksPcCRG
+        oXlw5Sv47MA591K8O8Yp1THjOovggesIF3PhyVR6KoDtBl/M4jJ2FghcRbgYjUtevA1hLrBJpvPyc4iF
+        pg3nIlcs5JiLfZBBAjk2DoYjhsY5u8bs4JTLBqPET5JLasODMXAmc3qaOz67+Z0UHFKRLsbrhVxh1nTc
+        9QKtz5OgF5a7YLNRcPlH6pjb+5Du0cRzmq/WmEX9+KS5/YnF/N7lzth0Xpmc5iKbLIcuuRswnGOLNzcm
+        /QD/dxcGFTgLmAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="ChromeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

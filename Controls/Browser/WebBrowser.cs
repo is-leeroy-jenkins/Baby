@@ -1,13 +1,13 @@
 ﻿// ******************************************************************************************
-//     Assembly:                BabyBrowser
+//     Assembly:             Bbaby
 //     Author:                  Terry D. Eppler
 //     Created:                 06-26-2023
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        04-27-2024
+//     Last Modified On:        04-28-2024
 // ******************************************************************************************
-// <copyright file="WebBrowser.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
+// <copyright file="teppler" company="Terry D. Eppler">
+//    Baby is a small web browser used in a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2024  Terry Eppler
 // 
@@ -31,7 +31,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   WebBrowser.cs
@@ -62,7 +62,7 @@ namespace Baby
     using static System.IO.Path;
     using Action = System.Action;
     using ContentAlignment = System.Drawing.ContentAlignment;
-    
+
     /// <inheritdoc />
     /// <summary>
     /// The main Baby form, supporting multiple tabs.
@@ -83,133 +83,134 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "PossibleNullReferenceException" ) ]
     [ SuppressMessage( "ReSharper", "AssignNullToNotNullAttribute" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "WrongIndentSize" ) ]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
         /// The new tab strip
         /// </summary>
         private BrowserTabStripItem _newTabItem;
-        
+
         /// <summary>
         /// The download strip
         /// </summary>
         private BrowserTabStripItem _downloadStrip;
-        
+
         /// <summary>
         /// The current full URL
         /// </summary>
         private string _originalUrl;
-        
+
         /// <summary>
         /// The current clean URL
         /// </summary>
         private string _finalUrl;
-        
+
         /// <summary>
         /// The current title
         /// </summary>
         private string _currentTitle;
-        
+
         /// <summary>
         /// The download handler
         /// </summary>
         private DownloadCallback _downloadCallback;
-        
+
         /// <summary>
         /// The context menu handler
         /// </summary>
         private ContextMenuCallback _contextMenuCallback;
-        
+
         /// <summary>
         /// The life span handler
         /// </summary>
         private LifeSpanCallback _lifeSpanCallback;
-        
+
         /// <summary>
         /// The keyboard handler
         /// </summary>
         private KeyboardCallback _keyboardCallback;
-        
+
         /// <summary>
         /// The request handler
         /// </summary>
         private RequestCallback _requestCallback;
-        
+
         /// <summary>
         /// The status update
         /// </summary>
         private Action _statusUpdate;
-        
+
         /// <summary>
         /// The browser action
         /// </summary>
         private Func<ChromiumWebBrowser> _browserCallback;
-        
+
         /// <summary>
         /// The application path
         /// </summary>
         private string _path = GetDirectoryName( Application.ExecutablePath ) + @"\";
-        
+
         /// <summary>
         /// The search open
         /// </summary>
         private bool _searchOpen;
-        
+
         /// <summary>
         /// The last search
         /// </summary>
         private string _lastSearch = "";
-        
+
         /// <summary>
         /// The search engine URL
         /// </summary>
         private string _searchEngineUrl;
-        
+
         /// <summary>
         /// The old window state
         /// </summary>
         private FormWindowState _oldWindowState;
-        
+
         /// <summary>
         /// The old border style
         /// </summary>
         private FormBorderStyle _oldBorderStyle;
-        
+
         /// <summary>
         /// The is full screen
         /// </summary>
         private bool _fullScreen;
-        
+
         /// <summary>
         /// The download cancel requests
         /// </summary>
         private List<int> _cancelRequests;
-        
+
         /// <summary>
         /// The downloads
         /// </summary>
         private Dictionary<int, DownloadItem> _downloadItems;
-        
+
         /// <summary>
         /// The instance
         /// </summary>
         public static Form Instance;
-        
+
         /// <summary>
         /// The assembly
         /// </summary>
         public static Assembly Assembly;
-        
+
         /// <summary>
         /// The host
         /// </summary>
         public HostCallback Host;
-        
+
         /// <summary>
         /// The download names
         /// </summary>
         public Dictionary<int, string> DownloadNames;
-        
+
         /// <summary>
         /// Gets or sets the index of the current.
         /// </summary>
@@ -227,7 +228,7 @@ namespace Baby
                 TabPages.SelectedItem = TabPages.Items[ value ];
             }
         }
-        
+
         /// <summary>
         /// Gets the last index.
         /// </summary>
@@ -241,7 +242,7 @@ namespace Baby
                 return TabPages.Items.Count - 2;
             }
         }
-        
+
         /// <summary>
         /// Gets the cancel requests.
         /// </summary>
@@ -255,7 +256,7 @@ namespace Baby
                 return _cancelRequests;
             }
         }
-        
+
         /// <summary>
         /// Gets the downloads.
         /// </summary>
@@ -269,7 +270,7 @@ namespace Baby
                 return _downloadItems;
             }
         }
-        
+
         /// <summary>
         /// Gets the current tab.
         /// </summary>
@@ -283,7 +284,7 @@ namespace Baby
                 return (BrowserTab)TabPages.SelectedItem?.Tag;
             }
         }
-        
+
         /// <summary>
         /// Gets the search engine URL.
         /// </summary>
@@ -297,7 +298,7 @@ namespace Baby
                 return _searchEngineUrl;
             }
         }
-        
+
         /// <summary>
         /// Gets the duration of the current tab loading.
         /// </summary>
@@ -312,7 +313,7 @@ namespace Baby
                 {
                     var _loadTime =
                         (int)( DateTime.Now - CurrentTab.DateCreated ).TotalMilliseconds;
-                    
+
                     return _loadTime;
                 }
                 else
@@ -321,7 +322,7 @@ namespace Baby
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets the current browser.
         /// </summary>
@@ -335,7 +336,7 @@ namespace Baby
                 return ( (BrowserTab)TabPages.SelectedItem?.Tag )?.Browser;
             }
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
@@ -566,7 +567,7 @@ namespace Baby
             KeyboardCallback.AddHotKey( this, OpenDeveloperTools, Keys.F12 );
             KeyboardCallback.AddHotKey( this, NextTab, Keys.Tab, true );
             KeyboardCallback.AddHotKey( this, PreviousTab, Keys.Tab, true, true );
-            
+
             // search hot keys
             KeyboardCallback.AddHotKey( this, OpenSearch, Keys.F, true );
             KeyboardCallback.AddHotKey( this, CloseSearch, Keys.Escape );
@@ -601,6 +602,7 @@ namespace Baby
                 TabPages.TabStripItemClosing += OnTabClosing;
                 TabItem.MouseClick += OnRightClick;
                 Title.MouseClick += OnRightClick;
+                UrlTextBox.MouseClick += OnRightClick;
                 ContextMenu.MouseLeave += OnContextMenuMouseLeave;
                 SharepointButton.Click += OnSharepointButtonClicked;
             }
@@ -677,14 +679,14 @@ namespace Baby
                         _tip.SetToolTip( _button, _button.Tag.ToString( ) );
                     }
                 }
-                
+
                 if( _control is Panel _panel )
                 {
                     SetTooltips( _panel.Controls );
                 }
             }
         }
-        
+
         /// <summary>
         /// Sets the tab title.
         /// </summary>
@@ -697,21 +699,21 @@ namespace Baby
             {
                 text = "New Tab";
             }
-            
+
             // save text
             browser.Tag = text;
-            
+
             // get tab of given browser
             var _tab = (BrowserTabStripItem)browser.Parent;
             _tab.Title = text;
-            
+
             // if current tab
             if( browser == CurrentBrowser )
             {
                 SetTitleText( text );
             }
         }
-        
+
         /// <summary>
         /// Sets the form title.
         /// </summary>
@@ -732,7 +734,7 @@ namespace Baby
                 }
             } );
         }
-        
+
         /// <summary>
         /// Sets the form URL.
         /// </summary>
@@ -745,7 +747,7 @@ namespace Baby
             CurrentTab.CurrentUrl = _originalUrl;
             CloseSearch( );
         }
-        
+
         /// <summary>
         /// Wires up menu items.
         /// </summary>
@@ -756,7 +758,7 @@ namespace Baby
                 _item.MouseDown += OnContextMenuItemClick;
             }
         }
-        
+
         /// <summary>
         /// this is done every time a new tab is opened
         /// </summary>
@@ -777,7 +779,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Notifies this instance.
         /// </summary>
@@ -794,7 +796,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Finds the text on page.
         /// </summary>
@@ -813,7 +815,7 @@ namespace Baby
             {
                 CurrentBrowser.GetBrowser( )?.StopFinding( true );
             }
-            
+
             SearchPanelTextBox.Focus( );
         }
 
@@ -874,10 +876,10 @@ namespace Baby
                     _tabs.Add( (BrowserTab)_tabPage.Tag );
                 }
             }
-            
+
             return _tabs;
         }
-        
+
         /// <summary>
         /// Gets the tab by browser.
         /// </summary>
@@ -894,10 +896,10 @@ namespace Baby
                     return _tab;
                 }
             }
-            
+
             return null;
         }
-        
+
         /// <summary>
         /// Gets the application directory.
         /// </summary>
@@ -919,7 +921,7 @@ namespace Baby
                 return string.Empty;
             }
         }
-        
+
         /// <summary>
         /// Gets the resource stream.
         /// </summary>
@@ -940,10 +942,10 @@ namespace Baby
             {
                 //ignore exception
             }
-            
+
             return null;
         }
-        
+
         /// <summary>
         /// Gets the browser asynchronous.
         /// </summary>
@@ -967,7 +969,7 @@ namespace Baby
                 return default( Task<ChromiumWebBrowser> );
             }
         }
-        
+
         /// <summary>
         /// Updates the status label.
         /// </summary>
@@ -985,7 +987,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Updates the status label.
         /// </summary>
@@ -1005,7 +1007,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Closes the other tabs.
         /// </summary>
@@ -1022,7 +1024,7 @@ namespace Baby
                         _listToClose.Add( _tab );
                     }
                 }
-                
+
                 foreach( var _tab in _listToClose )
                 {
                     TabPages.RemoveTab( _tab );
@@ -1033,7 +1035,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Loads the URL.
         /// </summary>
@@ -1064,11 +1066,11 @@ namespace Baby
                         _newUrl = "http://" + url;
                     }
                 }
-                
+
                 if( _urlLower.StartsWith( AppSettings[ "Internal" ] + ":" )
                    || ( Uri.TryCreate( _newUrl, UriKind.Absolute, out _outUri )
                        && ( ( ( ( _outUri.Scheme == Uri.UriSchemeHttp )
-                                   || ( _outUri.Scheme == Uri.UriSchemeHttps ) )
+                               || ( _outUri.Scheme == Uri.UriSchemeHttps ) )
                                && _newUrl.Contains( "." ) )
                            || ( _outUri.Scheme == Uri.UriSchemeFile ) ) ) )
                 {
@@ -1078,13 +1080,13 @@ namespace Baby
                     _newUrl = AppSettings[ "Google" ] + HttpUtility.UrlEncode( url );
                 }
             }
-            
+
             CurrentBrowser.Load( _newUrl );
             SetUrl( _newUrl );
             EnableBackButton( true );
             EnableForwardButton( false );
         }
-        
+
         /// <summary>
         /// Invokes if needed.
         /// </summary>
@@ -1100,7 +1102,7 @@ namespace Baby
                 action.Invoke( );
             }
         }
-        
+
         /// <summary>
         /// Waits for browser to initialize.
         /// </summary>
@@ -1114,7 +1116,7 @@ namespace Baby
                 Thread.Sleep( 100 );
             }
         }
-        
+
         /// <summary>
         /// Enables the back button.
         /// </summary>
@@ -1125,7 +1127,7 @@ namespace Baby
         {
             InvokeIfNeeded( ( ) => PreviousButton.Enabled = canGoBack );
         }
-        
+
         /// <summary>
         /// Enables the forward button.
         /// </summary>
@@ -1136,7 +1138,7 @@ namespace Baby
         {
             InvokeIfNeeded( ( ) => NextButton.Enabled = canGoForward );
         }
-        
+
         /// <summary>
         /// Cleans the URL.
         /// </summary>
@@ -1148,14 +1150,14 @@ namespace Baby
             {
                 return "";
             }
-            
+
             url = url.RemovePrefix( "http://" );
             url = url.RemovePrefix( "https://" );
             url = url.RemovePrefix( "file://" );
             url = url.RemovePrefix( "/" );
             return url.UrlEncode( );
         }
-        
+
         /// <summary>
         /// Determines whether the specified URL is blank.
         /// </summary>
@@ -1170,7 +1172,7 @@ namespace Baby
         {
             return ( url == "" ) || ( url == "about:blank" );
         }
-        
+
         /// <summary>
         /// Determines whether [is blank or system] [the specified URL].
         /// </summary>
@@ -1183,7 +1185,7 @@ namespace Baby
             return ( url == "" ) || url.BeginsWith( "about:" ) || url.BeginsWith( "chrome:" )
                 || url.BeginsWith( AppSettings[ "Internal" ] + ":" );
         }
-        
+
         /// <summary>
         /// Adds the blank window.
         /// </summary>
@@ -1198,10 +1200,10 @@ namespace Baby
                 RedirectStandardOutput = true,
                 RedirectStandardInput = true
             };
-            
+
             Process.Start( _info );
         }
-        
+
         /// <summary>
         /// Adds the blank tab.
         /// </summary>
@@ -1213,7 +1215,7 @@ namespace Baby
                 UrlTextBox.Focus( );
             } );
         }
-        
+
         /// <summary>
         /// Adds the new browser tab.
         /// </summary>
@@ -1243,7 +1245,7 @@ namespace Baby
                         return _tab2.Browser;
                     }
                 }
-                
+
                 var _tab = new BrowserTabStripItem( );
                 _tab.Title = "New Tab";
                 TabPages.Items.Insert( TabPages.Items.Count - 1, _tab );
@@ -1254,11 +1256,11 @@ namespace Baby
                 {
                     Timer.Enabled = true;
                 }
-                
+
                 return _newTab.Browser;
             } );
         }
-        
+
         /// <summary>
         /// Adds the new browser.
         /// </summary>
@@ -1271,7 +1273,7 @@ namespace Baby
             {
                 url = AppSettings[ "NewTab" ];
             }
-            
+
             var _browser = new ChromiumWebBrowser( url );
             ConfigureBrowser( _browser );
             _browser.Dock = DockStyle.Fill;
@@ -1297,17 +1299,17 @@ namespace Baby
                 Title = url,
                 DateCreated = DateTime.Now
             };
-            
+
             tabStrip.Tag = _tab;
             if( url.StartsWith( AppSettings[ "Internal" ] + ":" ) )
             {
                 _browser.JavascriptObjectRepository.Register( "host", Host,
                     BindingOptions.DefaultBinder );
             }
-            
+
             return _tab;
         }
-        
+
         /// <summary>
         /// Executes the multi search.
         /// </summary>
@@ -1384,7 +1386,7 @@ namespace Baby
                 }
             }
         }
-        
+
         /// <summary>
         /// Updates the download item.
         /// </summary>
@@ -1399,20 +1401,20 @@ namespace Baby
                 {
                     DownloadNames[ item.Id ] = item.SuggestedFileName;
                 }
-                
+
                 // Set it back if it is empty
                 if( ( item.SuggestedFileName == "" )
                    && DownloadNames.TryGetValue( item.Id, out var _name ) )
                 {
                     item.SuggestedFileName = _name;
                 }
-                
+
                 _downloadItems[ item.Id ] = item;
-                
+
                 //UpdateSnipProgress();
             }
         }
-        
+
         /// <summary>
         /// DownloadItems the in progress.
         /// </summary>
@@ -1426,10 +1428,10 @@ namespace Baby
                     return true;
                 }
             }
-            
+
             return false;
         }
-        
+
         /// <summary>
         /// Refreshes the active tab.
         /// </summary>
@@ -1437,7 +1439,7 @@ namespace Baby
         {
             CurrentBrowser.Load( CurrentBrowser.Address );
         }
-        
+
         /// <summary>
         /// Closes the active tab.
         /// </summary>
@@ -1453,7 +1455,7 @@ namespace Baby
                 }
             }
         }
-        
+
         /// <summary>
         /// Opens the downloads tab.
         /// </summary>
@@ -1471,7 +1473,7 @@ namespace Baby
                 _downloadStrip = (BrowserTabStripItem)_brw.Parent;
             }
         }
-        
+
         /// <summary>
         /// Opens the chrome browser.
         /// </summary>
@@ -1487,7 +1489,7 @@ namespace Baby
                     LoadUserProfile = true,
                     UseShellExecute = true
                 };
-                
+
                 _info.ArgumentList.Add( _url );
                 Process.Start( _info );
             }
@@ -1496,7 +1498,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Opens the chrome browser.
         /// </summary>
@@ -1511,7 +1513,7 @@ namespace Baby
                     LoadUserProfile = true,
                     UseShellExecute = true
                 };
-                
+
                 _info.ArgumentList.Add( _url );
                 Process.Start( _info );
             }
@@ -1520,7 +1522,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Opens the edge browser.
         /// </summary>
@@ -1537,7 +1539,7 @@ namespace Baby
                     UseShellExecute = true,
                     WindowStyle = ProcessWindowStyle.Normal
                 };
-                
+
                 _info.ArgumentList.Add( _url );
                 Process.Start( _info );
             }
@@ -1546,7 +1548,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Opens the edge browser.
         /// </summary>
@@ -1562,7 +1564,7 @@ namespace Baby
                     UseShellExecute = true,
                     WindowStyle = ProcessWindowStyle.Normal
                 };
-                
+
                 _info.ArgumentList.Add( _url );
                 Process.Start( _info );
             }
@@ -1571,7 +1573,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Opens the fire fox browser.
         /// </summary>
@@ -1588,7 +1590,7 @@ namespace Baby
                     UseShellExecute = true,
                     WindowStyle = ProcessWindowStyle.Normal
                 };
-                
+
                 _info.ArgumentList.Add( _url );
                 Process.Start( _info );
             }
@@ -1597,7 +1599,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Opens the fire fox browser.
         /// </summary>
@@ -1613,7 +1615,7 @@ namespace Baby
                     UseShellExecute = true,
                     WindowStyle = ProcessWindowStyle.Normal
                 };
-                
+
                 _info.ArgumentList.Add( _url );
                 Process.Start( _info );
             }
@@ -1622,7 +1624,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Opens the search.
         /// </summary>
@@ -1648,7 +1650,7 @@ namespace Baby
                 } );
             }
         }
-        
+
         /// <summary>
         /// Closes the search.
         /// </summary>
@@ -1664,7 +1666,7 @@ namespace Baby
                 } );
             }
         }
-        
+
         /// <summary>
         /// Toggles the fullscreen.
         /// </summary>
@@ -1685,7 +1687,7 @@ namespace Baby
                 _fullScreen = false;
             }
         }
-        
+
         /// <summary>
         /// Opens the developer tools.
         /// </summary>
@@ -1693,7 +1695,7 @@ namespace Baby
         {
             CurrentBrowser.ShowDevTools( );
         }
-        
+
         /// <summary>
         /// Sends the message.
         /// </summary>
@@ -1711,7 +1713,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Stops the active tab.
         /// </summary>
@@ -1719,7 +1721,7 @@ namespace Baby
         {
             CurrentBrowser.Stop( );
         }
-        
+
         /// <summary>
         /// Determines whether [is on first tab].
         /// </summary>
@@ -1730,7 +1732,7 @@ namespace Baby
         {
             return TabPages.SelectedItem == TabPages.Items[ 0 ];
         }
-        
+
         /// <summary>
         /// Determines whether [is on last tab].
         /// </summary>
@@ -1741,7 +1743,7 @@ namespace Baby
         {
             return TabPages.SelectedItem == TabPages.Items[ ^2 ];
         }
-        
+
         /// <summary>
         /// Nexts the tab.
         /// </summary>
@@ -1756,7 +1758,7 @@ namespace Baby
                 CurrentIndex++;
             }
         }
-        
+
         /// <summary>
         /// Previous tab.
         /// </summary>
@@ -1771,7 +1773,7 @@ namespace Baby
                 CurrentIndex--;
             }
         }
-        
+
         /// <summary>
         /// Called when [load].
         /// </summary>
@@ -1783,6 +1785,7 @@ namespace Baby
         {
             try
             {
+                Opacity = 0;
                 InitializePictureBox( );
                 InitializeToolStrip( );
                 InitializeHotkeys( );
@@ -1791,13 +1794,14 @@ namespace Baby
                 SetTooltips( Controls );
                 RegisterMenuCallbacks( );
                 _searchEngineUrl = AppSettings[ "Google" ];
+                FadeInAsync( this );
             }
             catch( Exception _ex )
             {
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Called when [URL changed].
         /// </summary>
@@ -1815,7 +1819,7 @@ namespace Baby
                     {
                         SetUrl( e.Address );
                     }
-                    
+
                     EnableBackButton( CurrentBrowser.CanGoBack );
                     EnableForwardButton( CurrentBrowser.CanGoForward );
                     SetTabText( (ChromiumWebBrowser)sender, "Loading..." );
@@ -1827,7 +1831,7 @@ namespace Baby
                 }
             } );
         }
-        
+
         /// <summary>
         /// Called when [load error].
         /// </summary>
@@ -1838,7 +1842,7 @@ namespace Baby
         {
             // ("Load Error:" + e.ErrorCode + ";" + e.ErrorText);
         }
-        
+
         /// <summary>
         /// Called when [title changed].
         /// </summary>
@@ -1853,7 +1857,7 @@ namespace Baby
                 SetTabText( _browser, e.Title );
             } );
         }
-        
+
         /// <summary>
         /// Called when [develop tools button clicked].
         /// </summary>
@@ -1864,7 +1868,7 @@ namespace Baby
         {
             OpenDeveloperTools( );
         }
-        
+
         /// <summary>
         /// Called when [loading state changed].
         /// </summary>
@@ -1896,7 +1900,7 @@ namespace Baby
                 }
             }
         }
-        
+
         /// <summary>
         /// Called when [tab closed].
         /// </summary>
@@ -1906,7 +1910,7 @@ namespace Baby
         private void OnTabClosed( object sender, EventArgs e )
         {
         }
-        
+
         /// <summary>
         /// Called when [status updated].
         /// </summary>
@@ -1919,7 +1923,7 @@ namespace Baby
         private void OnStatusUpdated( object sender, StatusMessageEventArgs e )
         {
         }
-        
+
         /// <summary>
         /// Raises the <see cref="E:TabClosing" /> event.
         /// </summary>
@@ -1933,16 +1937,16 @@ namespace Baby
                 e.Cancel = true;
                 return;
             }
-            
+
             // add a blank tab if the very last tab is closed!
             if( TabPages.Items.Count <= 2 )
             {
                 AddBlankTab( );
-                
+
                 //e.Cancel = true;
             }
         }
-        
+
         /// <summary>
         /// Raises the <see cref="E:TabsChanged" /> event.
         /// </summary>
@@ -1959,7 +1963,7 @@ namespace Baby
             {
                 // ignore 
             }
-            
+
             if( e.ChangeType == ChangeType.SelectionChanged )
             {
                 if( TabPages.SelectedItem == AddItemTab )
@@ -1975,17 +1979,17 @@ namespace Baby
                     EnableForwardButton( _browser.CanGoForward );
                 }
             }
-            
+
             if( e.ChangeType == ChangeType.Removed )
             {
                 if( e.Item == _downloadStrip )
                 {
                     _downloadStrip = null;
                 }
-                
+
                 _browser?.Dispose( );
             }
-            
+
             if( e.ChangeType == ChangeType.Changed )
             {
                 if( _browser != null )
@@ -1997,7 +2001,7 @@ namespace Baby
                 }
             }
         }
-        
+
         /// <summary>
         /// Called when [search engine selected].
         /// </summary>
@@ -2031,7 +2035,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Called when [timer tick].
         /// </summary>
@@ -2042,7 +2046,7 @@ namespace Baby
         {
             BeginInvoke( _statusUpdate );
         }
-        
+
         /// <summary>
         /// Called when [menu close clicked].
         /// </summary>
@@ -2053,7 +2057,7 @@ namespace Baby
         {
             CloseActiveTab( );
         }
-        
+
         /// <summary>
         /// Called when [close other tabs clicked].
         /// </summary>
@@ -2064,7 +2068,7 @@ namespace Baby
         {
             CloseOtherTabs( );
         }
-        
+
         /// <summary>
         /// Called when [back button click].
         /// </summary>
@@ -2075,7 +2079,7 @@ namespace Baby
         {
             CurrentBrowser.Back( );
         }
-        
+
         /// <summary>
         /// Called when [forward button click].
         /// </summary>
@@ -2086,7 +2090,7 @@ namespace Baby
         {
             CurrentBrowser.Forward( );
         }
-        
+
         /// <summary>
         /// Called when [downloads button clicked].
         /// </summary>
@@ -2097,7 +2101,7 @@ namespace Baby
         {
             AddNewBrowserTab( AppSettings[ "Downloads" ] );
         }
-        
+
         /// <summary>
         /// Called when [refresh button clicked].
         /// </summary>
@@ -2108,7 +2112,7 @@ namespace Baby
         {
             RefreshActiveTab( );
         }
-        
+
         /// <summary>
         /// Called when [stop button clicked].
         /// </summary>
@@ -2119,7 +2123,7 @@ namespace Baby
         {
             StopActiveTab( );
         }
-        
+
         /// <summary>
         /// Called when [menu lable mouse hover].
         /// </summary>
@@ -2140,7 +2144,7 @@ namespace Baby
                 }
             }
         }
-        
+
         /// <summary>
         /// Called when [URL text box text changed].
         /// </summary>
@@ -2150,7 +2154,7 @@ namespace Baby
         private void OnUrlTextBoxTextChanged( object sender, EventArgs e )
         {
         }
-        
+
         /// <summary>
         /// Called when [source button click].
         /// </summary>
@@ -2166,7 +2170,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Called when [URL text box key down].
         /// </summary>
@@ -2183,7 +2187,7 @@ namespace Baby
                 e.SuppressKeyPress = true;
                 Focus( );
             }
-            
+
             if( e.IsHotKey( Keys.C, true )
                && WebUtils.IsFullySelected( UrlTextBox ) )
             {
@@ -2192,7 +2196,7 @@ namespace Baby
                 e.SuppressKeyPress = true;
             }
         }
-        
+
         /// <summary>
         /// Called when [URL text box clicked].
         /// </summary>
@@ -2206,7 +2210,7 @@ namespace Baby
                 UrlTextBox.SelectAll( );
             }
         }
-        
+
         /// <summary>
         /// Called when [tab pages clicked].
         /// </summary>
@@ -2219,7 +2223,7 @@ namespace Baby
                 tabPages.GetTabItemByPoint(this.mouse
             }*/
         }
-        
+
         /// <summary>
         /// Called when [closing].
         /// </summary>
@@ -2239,7 +2243,7 @@ namespace Baby
                     return;
                 }
             }
-            
+
             try
             {
                 foreach( TabPage _tab in TabPages.Items )
@@ -2253,7 +2257,7 @@ namespace Baby
                 // ignore exception
             }
         }
-        
+
         /// <summary>
         /// Called when [close search button click].
         /// </summary>
@@ -2264,7 +2268,7 @@ namespace Baby
         {
             CloseSearch( );
         }
-        
+
         /// <summary>
         /// Called when [previous search button click].
         /// </summary>
@@ -2275,7 +2279,7 @@ namespace Baby
         {
             FindTextOnPage( false );
         }
-        
+
         /// <summary>
         /// Called when [next search button click].
         /// </summary>
@@ -2286,7 +2290,7 @@ namespace Baby
         {
             FindTextOnPage( true );
         }
-        
+
         /// <summary>
         /// Called when [search text changed].
         /// </summary>
@@ -2297,7 +2301,7 @@ namespace Baby
         {
             FindTextOnPage( true );
         }
-        
+
         /// <summary>
         /// Called when [search key down].
         /// </summary>
@@ -2310,14 +2314,14 @@ namespace Baby
             {
                 FindTextOnPage( true );
             }
-            
+
             if( e.IsHotKey( Keys.Enter, true )
                || e.IsHotKey( Keys.Enter, false, true ) )
             {
                 FindTextOnPage( false );
             }
         }
-        
+
         /// <summary>
         /// Called when [home button click].
         /// </summary>
@@ -2328,7 +2332,7 @@ namespace Baby
         {
             CurrentBrowser.Load( AppSettings[ "HomePage" ] );
         }
-        
+
         /// <summary>
         /// Called when [go button clicked].
         /// </summary>
@@ -2363,7 +2367,7 @@ namespace Baby
                 DomainComboBox.SelectedIndex = -1;
             }
         }
-        
+
         /// <summary>
         /// Called when [close button clicked].
         /// </summary>
@@ -2382,7 +2386,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Called when [fire fox button click].
         /// </summary>
@@ -2404,7 +2408,7 @@ namespace Baby
                 OpenFireFoxBrowser( );
             }
         }
-        
+
         /// <summary>
         /// Called when [close button clicked].
         /// </summary>
@@ -2427,7 +2431,7 @@ namespace Baby
                 OpenEdgeBrowser( );
             }
         }
-        
+
         /// <summary>
         /// Called when [close button clicked].
         /// </summary>
@@ -2450,7 +2454,7 @@ namespace Baby
                 OpenChromeBrowser( );
             }
         }
-        
+
         /// <summary>
         /// Called when [right click].
         /// </summary>
@@ -2467,7 +2471,10 @@ namespace Baby
             {
                 try
                 {
-                    ContextMenu.Show( this, e.Location );
+                    var _search = new SearchDialog( );
+                    _search.Owner = this;
+                    _search.Location = e.Location;
+                    _search.Show( );
                 }
                 catch( Exception _ex )
                 {
@@ -2475,7 +2482,7 @@ namespace Baby
                 }
             }
         }
-        
+
         /// <summary>
         /// Called when [context menu item click].
         /// </summary>
@@ -2561,7 +2568,7 @@ namespace Baby
                 }
             }
         }
-        
+
         /// <summary>
         /// Called when [context menu mouse leave].
         /// </summary>
@@ -2582,7 +2589,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Called when [refresh button clicked].
         /// </summary>

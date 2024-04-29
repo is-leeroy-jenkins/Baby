@@ -270,7 +270,8 @@ namespace Baby
             }
         }
 
-        /// <summary> </summary>
+        /// <summary>
+        /// </summary>
         /// <param name="argument"> </param>
         /// <param name="paramName"> </param>
         /// <exception cref="ArgumentNullException"> </exception>
@@ -283,7 +284,9 @@ namespace Baby
             }
         }
 
-        /// <summary> Determines whether the specified argument is negative. </summary>
+        /// <summary>
+        /// Determines whether the specified argument is negative.
+        /// </summary>
         /// <param name="argument"> The argument. </param>
         /// <param name="paramName"> The argument's name. </param>
         /// <exception cref="System.ArgumentOutOfRangeException"> </exception>
@@ -296,7 +299,9 @@ namespace Baby
             }
         }
 
-        /// <summary> Determines whether the specified argument is negative. </summary>
+        /// <summary>
+        /// Determines whether the specified argument is negative.
+        /// </summary>
         /// <param name="argument"> The argument. </param>
         /// <param name="paramName"> The argument's name. </param>
         /// <exception cref="System.ArgumentOutOfRangeException"> </exception>

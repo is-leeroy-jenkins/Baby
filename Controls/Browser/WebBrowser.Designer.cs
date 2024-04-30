@@ -460,7 +460,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 282, 25 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 278, 25 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -856,7 +856,7 @@
             MenuButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
             MenuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
             MenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            MenuButton.Image = (System.Drawing.Image)resources.GetObject( "MenuButton.Image" );
+            MenuButton.Image = Properties.Resources.MenulLabel;
             MenuButton.Location = new System.Drawing.Point( 1343, 3 );
             MenuButton.Name = "MenuButton";
             MenuButton.Size = new System.Drawing.Size( 40, 28 );

@@ -193,6 +193,16 @@ namespace Baby.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap MenulLabel {
+            get {
+                object obj = ResourceManager.GetObject("MenulLabel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Message {
             get {
                 object obj = ResourceManager.GetObject("Message", resourceCulture);

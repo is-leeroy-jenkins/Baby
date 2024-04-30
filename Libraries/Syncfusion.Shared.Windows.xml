@@ -24,7 +24,7 @@
         </member>
         <member name="F:Syncfusion.SharedWindowsAssembly.RootNamespace">
             <summary>
-            The root nameSpace of this assembly. Used internally for locating resources within the assembly.
+            The root namespace of this assembly. Used internally for locating resources within the assembly.
             </summary>
         </member>
         <member name="M:Syncfusion.SharedWindowsAssembly.AssemblyResolver(System.Object,System.ResolveEventArgs)">
@@ -78,7 +78,7 @@
             </param>
             <param name="parentForm" type="object">
                 <para>
-                    Parent webBrowser/object that contains the menu that item is in
+                    Parent form/object that contains the menu that item is in
                 </para>
             </param>
             <param name="srcObject" type="object">
@@ -93,7 +93,7 @@
             </summary>
             <param name="parentForm" type="object">
                 <para>
-                    Parent webBrowser/object
+                    Parent form/object
                 </para>
             </param>
         </member>
@@ -135,17 +135,6 @@
             <param name='actValue'>
                 An array of 'ActionInfo' objects with which to initialize the collection
             </param>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection.Item(System.Int32)">
-            <summary>
-                Represents the 'ActionInfo' item at the specified index position.
-            </summary>
-            <param name='intIndex'>
-                The zero-based index of the entry to locate in the collection.
-            </param>
-            <value>
-                The entry at the specified index of the collection.
-            </value>
         </member>
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection.Add(Syncfusion.Windows.Forms.InternalMenus.ActionInfo)">
             <summary>
@@ -245,6 +234,17 @@
                 before insering a new item in the collection
             </summary>
         </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection.Item(System.Int32)">
+            <summary>
+                Represents the 'ActionInfo' item at the specified index position.
+            </summary>
+            <param name='intIndex'>
+                The zero-based index of the entry to locate in the collection.
+            </param>
+            <value>
+                The entry at the specified index of the collection.
+            </value>
+        </member>
         <member name="T:Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection.ActionInfoEnumerator">
             <exclude/>
             <summary>
@@ -254,16 +254,6 @@
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection.ActionInfoEnumerator.#ctor(Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection)">
             <summary>
                 Enumerator constructor
-            </summary>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection.ActionInfoEnumerator.Current">
-            <summary>
-                Gets the current element from the collection (strongly typed)
-            </summary>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection.ActionInfoEnumerator.System#Collections#IEnumerator#Current">
-            <summary>
-                Gets the current element from the collection
             </summary>
         </member>
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection.ActionInfoEnumerator.MoveNext">
@@ -284,6 +274,16 @@
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection.ActionInfoEnumerator.System#Collections#IEnumerator#Reset">
             <summary>
                 Sets the enumerator to the first element in the collection
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection.ActionInfoEnumerator.Current">
+            <summary>
+                Gets the current element from the collection (strongly typed)
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ActionInfoCollection.ActionInfoEnumerator.System#Collections#IEnumerator#Current">
+            <summary>
+                Gets the current element from the collection
             </summary>
         </member>
         <member name="T:Syncfusion.Windows.Forms.InternalMenus.BasicAction">
@@ -426,7 +426,7 @@
             </param>
             <param name="eventActionNamespace" type="string">
                 <para>
-                    The fully qualified nameSpace that contains the menu actions
+                    The fully qualified namespace that contains the menu actions
                 </para>
             </param>
             <param name="toolbarDefinitionXmlResource" type="string[]">
@@ -446,7 +446,7 @@
             </param>
             <param name="parent" type="object">
                 <para>
-                    The parent webBrowser/object that contains the menu
+                    The parent form/object that contains the menu
                 </para>
             </param>
             <returns>
@@ -464,7 +464,7 @@
             </param>
             <param name="eventActionNamespace" type="string">
                 <para>
-                    Fully qualified nameSpace that contains the action items
+                    Fully qualified namespace that contains the action items
                 </para>
             </param>
             <param name="toolbarItemStructXmlResource" type="string">
@@ -484,7 +484,7 @@
             </param>
             <param name="parent" type="object">
                 <para>
-                    The parent webBrowser/object that contains the menu.
+                    The parent form/object that contains the menu.
                 </para>
             </param>
             <returns>
@@ -502,7 +502,7 @@
             </param>
             <param name="eventActionNamespace" type="string">
                 <para>
-                    Fully qualified nameSpace that contains the action items
+                    Fully qualified namespace that contains the action items
                 </para>
             </param>
             <param name="toolbarItemCollectionXmlStream" type="System.IO.Stream">
@@ -522,7 +522,7 @@
             </param>
             <param name="parent" type="object">
                 <para>
-                    Parent webBrowser/object that contains the menu
+                    Parent form/object that contains the menu
                 </para>
             </param>
             <returns>
@@ -540,7 +540,7 @@
             </param>
             <param name="eventActionNamespace" type="string">
                 <para>
-                    Fully qualified nameSpace containing the action items
+                    Fully qualified namespace containing the action items
                 </para>
             </param>
             <param name="toolbarItemStructCollection" type="Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection">
@@ -560,7 +560,7 @@
             </param>
             <param name="parent" type="object">
                 <para>
-                    Parent webBrowser/object that contains the menu
+                    Parent form/object that contains the menu
                 </para>
             </param>
             <returns>
@@ -578,7 +578,7 @@
             </param>
             <param name="eventActionNamespace" type="string">
                 <para>
-                    Fully qualified nameSpace that contains the action items
+                    Fully qualified namespace that contains the action items
                 </para>
             </param>
             <param name="toolbarItemStructs" type="Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection[]">
@@ -598,7 +598,7 @@
             </param>
             <param name="parent" type="object">
                 <para>
-                    Parent webBrowser/object that contains the menu
+                    Parent form/object that contains the menu
                 </para>
             </param>
             <returns>
@@ -739,17 +739,6 @@
                 An array of 'ImageStruct' objects with which to initialize the collection
             </param>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection.Item(System.Int32)">
-            <summary>
-                Represents the 'ImageStruct' item at the specified index position.
-            </summary>
-            <param name='intIndex'>
-                The zero-based index of the entry to locate in the collection.
-            </param>
-            <value>
-                The entry at the specified index of the collection.
-            </value>
-        </member>
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection.Add(Syncfusion.Windows.Forms.InternalMenus.ImageStruct)">
             <summary>
                 Adds a 'ImageStruct' item with the specified value to the 'ImageStructCollection'
@@ -853,6 +842,17 @@
                 The item to remove from the 'ImageStructCollection'.
             </param>
         </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection.Item(System.Int32)">
+            <summary>
+                Represents the 'ImageStruct' item at the specified index position.
+            </summary>
+            <param name='intIndex'>
+                The zero-based index of the entry to locate in the collection.
+            </param>
+            <value>
+                The entry at the specified index of the collection.
+            </value>
+        </member>
         <member name="T:Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection.ImageStructEnumerator">
             <exclude/>
             <summary>
@@ -862,16 +862,6 @@
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection.ImageStructEnumerator.#ctor(Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection)">
             <summary>
                 Enumerator constructor
-            </summary>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection.ImageStructEnumerator.Current">
-            <summary>
-                Gets the current element from the collection (strongly typed)
-            </summary>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection.ImageStructEnumerator.System#Collections#IEnumerator#Current">
-            <summary>
-                Gets the current element from the collection
             </summary>
         </member>
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection.ImageStructEnumerator.MoveNext">
@@ -892,6 +882,16 @@
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection.ImageStructEnumerator.System#Collections#IEnumerator#Reset">
             <summary>
                 Sets the enumerator to the first element in the collection
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection.ImageStructEnumerator.Current">
+            <summary>
+                Gets the current element from the collection (strongly typed)
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ImageStructCollection.ImageStructEnumerator.System#Collections#IEnumerator#Current">
+            <summary>
+                Gets the current element from the collection
             </summary>
         </member>
         <member name="T:Syncfusion.Windows.Forms.InternalMenus.MenuDefinition">
@@ -1049,10 +1049,6 @@
                 Initializes a new instance of 'MenuItemStructCollection'.
             </summary>
         </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.MenuName">
-            <exclude/>
-            <summary>Name of the menu</summary>
-        </member>
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.#ctor(Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection)">
             <summary>
                 Initializes a new instance of 'MenuItemStructCollection' based on an already existing instance.
@@ -1068,17 +1064,6 @@
             <param name='menValue'>
                 An array of 'MenuItemStruct' objects with which to initialize the collection
             </param>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.Item(System.Int32)">
-            <summary>
-                Represents the 'MenuItemStruct' item at the specified index position.
-            </summary>
-            <param name='intIndex'>
-                The zero-based index of the entry to locate in the collection.
-            </param>
-            <value>
-                The entry at the specified index of the collection.
-            </value>
         </member>
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.Add(Syncfusion.Windows.Forms.InternalMenus.MenuItemStruct)">
             <summary>
@@ -1166,6 +1151,21 @@
                 The item to remove from the 'MenuItemStructCollection'.
             </param>
         </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.MenuName">
+            <exclude/>
+            <summary>Name of the menu</summary>
+        </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.Item(System.Int32)">
+            <summary>
+                Represents the 'MenuItemStruct' item at the specified index position.
+            </summary>
+            <param name='intIndex'>
+                The zero-based index of the entry to locate in the collection.
+            </param>
+            <value>
+                The entry at the specified index of the collection.
+            </value>
+        </member>
         <member name="T:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.MenuItemStructEnumerator">
             <exclude/>
             <summary>
@@ -1175,16 +1175,6 @@
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.MenuItemStructEnumerator.#ctor(Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection)">
             <summary>
                 Enumerator constructor
-            </summary>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.MenuItemStructEnumerator.Current">
-            <summary>
-                Gets the current element from the collection (strongly typed)
-            </summary>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.MenuItemStructEnumerator.System#Collections#IEnumerator#Current">
-            <summary>
-                Gets the current element from the collection
             </summary>
         </member>
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.MenuItemStructEnumerator.MoveNext">
@@ -1207,6 +1197,16 @@
                 Sets the enumerator to the first element in the collection
             </summary>
         </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.MenuItemStructEnumerator.Current">
+            <summary>
+                Gets the current element from the collection (strongly typed)
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.MenuItemStructCollection.MenuItemStructEnumerator.System#Collections#IEnumerator#Current">
+            <summary>
+                Gets the current element from the collection
+            </summary>
+        </member>
         <member name="T:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection">
             <exclude/>
             <summary>
@@ -1217,10 +1217,6 @@
             <summary>
                 Initializes a new instance of 'ToolBarItemStructCollection'.
             </summary>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.ToolBarName">
-            <exclude/>
-            <summary>Name of the toolbar</summary>
         </member>
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.#ctor(Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection)">
             <summary>
@@ -1237,17 +1233,6 @@
             <param name='tooValue'>
                 An array of 'ToolBarItemStruct' objects with which to initialize the collection
             </param>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.Item(System.Int32)">
-            <summary>
-                Represents the 'ToolBarItemStruct' item at the specified index position.
-            </summary>
-            <param name='intIndex'>
-                The zero-based index of the entry to locate in the collection.
-            </param>
-            <value>
-                The entry at the specified index of the collection.
-            </value>
         </member>
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.Add(Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStruct)">
             <summary>
@@ -1335,6 +1320,21 @@
                 The item to remove from the 'ToolBarItemStructCollection'.
             </param>
         </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.ToolBarName">
+            <exclude/>
+            <summary>Name of the toolbar</summary>
+        </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.Item(System.Int32)">
+            <summary>
+                Represents the 'ToolBarItemStruct' item at the specified index position.
+            </summary>
+            <param name='intIndex'>
+                The zero-based index of the entry to locate in the collection.
+            </param>
+            <value>
+                The entry at the specified index of the collection.
+            </value>
+        </member>
         <member name="T:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.ToolBarItemStructEnumerator">
             <exclude/>
             <summary>
@@ -1344,16 +1344,6 @@
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.ToolBarItemStructEnumerator.#ctor(Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection)">
             <summary>
                 Enumerator constructor
-            </summary>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.ToolBarItemStructEnumerator.Current">
-            <summary>
-                Gets the current element from the collection (strongly typed)
-            </summary>
-        </member>
-        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.ToolBarItemStructEnumerator.System#Collections#IEnumerator#Current">
-            <summary>
-                Gets the current element from the collection
             </summary>
         </member>
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.ToolBarItemStructEnumerator.MoveNext">
@@ -1374,6 +1364,16 @@
         <member name="M:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.ToolBarItemStructEnumerator.System#Collections#IEnumerator#Reset">
             <summary>
                 Sets the enumerator to the first element in the collection
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.ToolBarItemStructEnumerator.Current">
+            <summary>
+                Gets the current element from the collection (strongly typed)
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Windows.Forms.InternalMenus.ToolBarItemStructCollection.ToolBarItemStructEnumerator.System#Collections#IEnumerator#Current">
+            <summary>
+                Gets the current element from the collection
             </summary>
         </member>
     </members>

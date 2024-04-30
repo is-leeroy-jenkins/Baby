@@ -359,7 +359,7 @@ namespace Baby
             BorderColor = Color.FromArgb( 0, 120, 212 );
             BorderThickness = 1;
             BackColor = Color.FromArgb( 20, 20, 20 );
-            ForeColor = Color.LightGray;
+            ForeColor = Color.FromArgb( 106, 189, 252 );
             Font = new Font( "Roboto", 9 );
             ShowIcon = false;
             ShowInTaskbar = true;
@@ -2135,8 +2135,7 @@ namespace Baby
             {
                 try
                 {
-                    var _location = new Point( 1270, 6 );
-                    ContextMenu.Show( this, _location );
+                    OpenSearch( );
                 }
                 catch( Exception _ex )
                 {

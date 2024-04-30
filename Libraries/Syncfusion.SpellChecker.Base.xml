@@ -4,31 +4,6 @@
         <name>Syncfusion.SpellChecker.Base</name>
     </assembly>
     <members>
-        <member name="T:Syncfusion.SpellChecker.Base.AccuracyLevels">
-            <summary>
-            Represents a list of accuracy levels based on which phonetic matching is executed for filtering suggestions
-            </summary>
-        </member>
-        <member name="F:Syncfusion.SpellChecker.Base.AccuracyLevels.High">
-            <summary>
-            Represents a high level which filters maximum possible suggestions.
-            </summary>
-        </member>
-        <member name="F:Syncfusion.SpellChecker.Base.AccuracyLevels.Medium">
-            <summary>
-            Represents a medium level which filters matching suggestions.
-            </summary>
-        </member>
-        <member name="F:Syncfusion.SpellChecker.Base.AccuracyLevels.Low">
-            <summary>
-            Represents a most accurate level which filters accurate suggestions only.
-            </summary>
-        </member>
-        <member name="M:Syncfusion.SpellChecker.Base.TransmutationHelper.GetTransmutations(System.Char[])">
-            <summary>
-            Returns a list of possible combinations for the given character array
-            </summary>
-        </member>
         <member name="T:Syncfusion.SpellChecker.Base.CustomDictionaryBase">
             <summary>
             Represents a class that stores information about custom words
@@ -55,14 +30,14 @@
             </example>
         </member>
         <!-- Badly formed XML comment ignored for member "T:Syncfusion.SpellChecker.Base.DictionaryBase" -->
-        <member name="P:Syncfusion.SpellChecker.Base.DictionaryBase.Culture">
-            <summary>
-            Gets or Sets the culture of a dictionary.
-            </summary>
-        </member>
         <member name="M:Syncfusion.SpellChecker.Base.DictionaryBase.GetDictionaryStream">
             <summary>
             Gets or Sets the dictionary uri of a dictionary.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.SpellChecker.Base.DictionaryBase.Culture">
+            <summary>
+            Gets or Sets the culture of a dictionary.
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "T:Syncfusion.SpellChecker.Base.DictionaryCollection" -->
@@ -132,6 +107,31 @@
             <param name="grammar"></param>
             <returns></returns>
         </member>
+        <member name="T:Syncfusion.SpellChecker.Base.AccuracyLevels">
+            <summary>
+            Represents a list of accuracy levels based on which phonetic matching is executed for filtering suggestions
+            </summary>
+        </member>
+        <member name="F:Syncfusion.SpellChecker.Base.AccuracyLevels.High">
+            <summary>
+            Represents a high level which filters maximum possible suggestions.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.SpellChecker.Base.AccuracyLevels.Medium">
+            <summary>
+            Represents a medium level which filters matching suggestions.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.SpellChecker.Base.AccuracyLevels.Low">
+            <summary>
+            Represents a most accurate level which filters accurate suggestions only.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.SpellChecker.Base.TransmutationHelper.GetTransmutations(System.Char[])">
+            <summary>
+            Returns a list of possible combinations for the given character array
+            </summary>
+        </member>
         <member name="M:Syncfusion.SpellChecker.Base.VerbalProcessor.GetSimilarSounds(System.String,System.Collections.Generic.List{System.Object},Syncfusion.SpellChecker.Base.AccuracyLevels)">
             <summary>
             Returns a list of phonetic suggestions for the given word in specified accuracy level.
@@ -170,41 +170,6 @@
         <member name="M:Syncfusion.SpellChecker.Base.SpellCheckerBase.#ctor">
             <summary>
             Initializes the instance of SpellChecker base.
-            </summary>
-        </member>
-        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreAlphaNumericWords">
-            <summary>
-            Gets or Sets the boolean value to check AlphaNumericWords
-            </summary>
-        </member>
-        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreFileNames">
-            <summary>
-            Gets or Sets the boolean value to check file names
-            </summary>
-        </member>
-        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreHtmlTags">
-            <summary>
-            Gets or Sets the boolean value to check html tags
-            </summary>
-        </member>
-        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreEmailAddress">
-            <summary>
-            Gets or Sets the boolean value to check Email addresses
-            </summary>
-        </member>
-        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreMixedCaseWords">
-            <summary>
-            Gets or Sets the boolean value to check mixed case words
-            </summary>
-        </member>
-        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreUpperCaseWords">
-            <summary>
-            Gets or Sets the boolean value to check upper case words
-            </summary>
-        </member>
-        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreUrl">
-            <summary>
-            Gets or Sets the boolean value to check urls
             </summary>
         </member>
         <member name="M:Syncfusion.SpellChecker.Base.SpellCheckerBase.AddWordToDictionary(System.String)">
@@ -253,6 +218,41 @@
             </summary>
             <param name="word"></param>
             <returns>Returns a boolean value.</returns>
+        </member>
+        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreAlphaNumericWords">
+            <summary>
+            Gets or Sets the boolean value to check AlphaNumericWords
+            </summary>
+        </member>
+        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreFileNames">
+            <summary>
+            Gets or Sets the boolean value to check file names
+            </summary>
+        </member>
+        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreHtmlTags">
+            <summary>
+            Gets or Sets the boolean value to check html tags
+            </summary>
+        </member>
+        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreEmailAddress">
+            <summary>
+            Gets or Sets the boolean value to check Email addresses
+            </summary>
+        </member>
+        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreMixedCaseWords">
+            <summary>
+            Gets or Sets the boolean value to check mixed case words
+            </summary>
+        </member>
+        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreUpperCaseWords">
+            <summary>
+            Gets or Sets the boolean value to check upper case words
+            </summary>
+        </member>
+        <member name="P:Syncfusion.SpellChecker.Base.SpellCheckerBase.IgnoreUrl">
+            <summary>
+            Gets or Sets the boolean value to check urls
+            </summary>
         </member>
     </members>
 </doc>

@@ -169,7 +169,7 @@
     <value>224, 8</value>
   </metadata>
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>323, 4</value>
+    <value>321, 10</value>
   </metadata>
   <data name="PreviousButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -204,13 +204,13 @@
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGLSURBVDhPbZKtUgNBEIRbREZEIE4gIhAnEAgED4GIRCAR
-        CEQEIh4REcFDRCAQPAASwQMgEBEIBAJBFVAVIEDobzNzFSBTNbW9PT0/O3f6a3Op+pb6X9L4U7rBwXCO
+        CEQEIh4REcFDRCAQPAASwQMgEBEIBAIBVVAVIEDobzNzFSBTNbW9PT0/O3f6a3Op+pb6X9L4U7rBwXCO
         dUO22izovUmPPuf4szR9lV7yDnahg5D/NncZRdLMeGjhtu8tYj637IMs5vhZSUoz2SPAuIiD/meOda25
         RusGR0lWjE3nTPbZsq8VgQ0Mlzj0U+NasRzGGoagZXw+k26NKxwMRwyNc/YjZ8Tbx1x4cxTovksPcCRG
         oXlw5Sv47MA591K8O8Yp1THjOovggesIF3PhyVR6KoDtBl/M4jJ2FghcRbgYjUtevA1hLrBJpvPyc4iF
         pg3nIlcs5JiLfZBBAjk2DoYjhsY5u8bs4JTLBqPET5JLasODMXAmc3qaOz67+Z0UHFKRLsbrhVxh1nTc
         9QKtz5OgF5a7YLNRcPlH6pjb+5Du0cRzmq/WmEX9+KS5/YnF/N7lzth0Xpmc5iKbLIcuuRswnGOLNzcm
-        /QD/dxcGFTgLmAAAAABJRU5ErkJggg==
+        /QDdQRb2n51AVwAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="ChromeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -607,18 +607,11 @@
         AABJRU5ErkJggg==
 </value>
   </data>
-  <data name="MenuButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAFRJREFUOE9jGHjw////BiKwA1Q5JsCiGBvGbcDQAv/+/ctA9hqQX0JSGAA1mADx
-        ZyD/P5D+DcQeJAciUFMEkA8yoAAqRDpANnAQAKgfCeHhmxIZGAD2qwFmpy/PYwAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="ContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>20, 5</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>42</value>
+    <value>38</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

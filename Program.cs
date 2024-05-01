@@ -59,7 +59,7 @@ namespace Baby
         [ STAThread ]
         private static void Main( )
         {
-            var _key = ConfigurationManager.AppSettings[ "Sync" ];
+            var _key = ConfigurationManager.AppSettings[ "UI" ];
             SyncfusionLicenseProvider.RegisterLicense( _key );
             Application.EnableVisualStyles( );
             Application.SetCompatibleTextRenderingDefault( false );

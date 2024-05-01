@@ -52,6 +52,7 @@ namespace Baby
     /// </summary>
     /// <seealso cref="T:Baby.ToolStripBase" />
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public class ToolStrip : ToolStripBase
     {
         /// <summary>
@@ -85,13 +86,13 @@ namespace Baby
             BorderStyle = ToolStripBorderStyle.StaticEdge;
             CanApplyTheme = true;
             CanOverrideStyle = true;
-            ImageScalingSize = new Size( 18, 18 );
+            ImageScalingSize = new Size( 16, 16 );
             Office12Mode = true;
             LauncherStyle = LauncherStyle.Office12;
             ShowLauncher = true;
             GripStyle = ToolStripGripStyle.Hidden;
             VisualStyle = ToolStripExStyle.Office2016DarkGray;
-            OfficeColorScheme = ColorScheme.Blue;
+            OfficeColorScheme = ColorScheme.Black;
             ThemeStyle.BackColor = Color.Transparent;
             ThemeStyle.ArrowColor = Color.FromArgb( 0, 120, 212 );
             ThemeStyle.BottomToolStripBackColor = Color.Transparent;

@@ -7,8 +7,8 @@
 //     Last Modified On:        04-28-2024
 // ******************************************************************************************
 // <copyright file="teppler" company="Terry D. Eppler">
-//    Baby is a small web browser used in a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
+//    Baby is a small web browser used in a Federal Budget, Finance, and Accounting application
+//    for the  US Environmental Protection Agency (US EPA).
 //    Copyright ©  2024  Terry Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -84,6 +84,7 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "AssignNullToNotNullAttribute" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "WrongIndentSize" ) ]
+    [ SuppressMessage( "ReSharper", "AsyncVoidMethod" ) ]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -2128,7 +2129,9 @@ namespace Baby
         /// Called when [menu lable mouse hover].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/>
+        /// instance containing the event data.
+        /// </param>
         private void OnMenuButtonClick( object sender, MouseEventArgs e )
         {
             if( e.Button == MouseButtons.Left )

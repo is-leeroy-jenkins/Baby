@@ -84,34 +84,13 @@
     <PackageReference Include="CefSharp.Wpf" Version="123.0.60" />
     <PackageReference Include="CefSharp.Wpf.NETCore" Version="123.0.60" />
     <PackageReference Include="MetroSet_UI" Version="2.0.0" />
+    <PackageReference Include="Syncfusion.Licensing" Version="24.1.41" />
+    <PackageReference Include="Syncfusion.Shared.Base" Version="24.1.41" />
+    <PackageReference Include="Syncfusion.Tools.Windows" Version="24.1.41" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CharmNotification">
       <HintPath>Libraries\CharmNotification.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroSet UI">
-      <HintPath>Libraries\MetroSet UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Grid.Windows">
-      <HintPath>Libraries\Syncfusion.Grid.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Licensing">
-      <HintPath>Libraries\Syncfusion.Licensing.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Shared.Base">
-      <HintPath>Libraries\Syncfusion.Shared.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Shared.Windows">
-      <HintPath>Libraries\Syncfusion.Shared.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SpellChecker.Base">
-      <HintPath>Libraries\Syncfusion.SpellChecker.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Tools.Base">
-      <HintPath>Libraries\Syncfusion.Tools.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Tools.Windows">
-      <HintPath>Libraries\Syncfusion.Tools.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Web" />

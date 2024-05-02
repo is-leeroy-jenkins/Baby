@@ -810,11 +810,13 @@ namespace Baby
             _lastSearch = SearchPanelTextBox.Text;
             if( _lastSearch.CheckIfValid( ) )
             {
-                CurrentBrowser.GetBrowser( )?.Find( _lastSearch, true, false, !_first );
+                CurrentBrowser.GetBrowser( )
+                    ?.Find( _lastSearch, true, false, !_first );
             }
             else
             {
-                CurrentBrowser.GetBrowser( )?.StopFinding( true );
+                CurrentBrowser.GetBrowser( )
+                    ?.StopFinding( true );
             }
 
             SearchPanelTextBox.Focus( );
@@ -2268,7 +2270,7 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.</param>
-        private void OnSearchPanelCloseButtonClick( object sender, EventArgs e )
+        private void OnSearchPanelClearButtonClick( object sender, EventArgs e )
         {
             CloseSearch( );
         }

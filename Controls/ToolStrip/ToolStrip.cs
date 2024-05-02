@@ -53,6 +53,7 @@ namespace Baby
     /// <seealso cref="T:Baby.ToolStripBase" />
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     public class ToolStrip : ToolStripBase
     {
         /// <summary>

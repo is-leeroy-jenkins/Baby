@@ -206,7 +206,7 @@
             LastButton.TabIndex = 9;
             LastButton.Tag = "Find next (Enter)";
             LastButton.UseVisualStyleBackColor = true;
-            LastButton.Click +=  OnNextSearchButtonClick ;
+            LastButton.Click +=  OnSearchPanelNextButtonClick ;
             // 
             // FirstButton
             // 
@@ -221,7 +221,7 @@
             FirstButton.TabIndex = 8;
             FirstButton.Tag = "Find previous (Shift+Enter)";
             FirstButton.UseVisualStyleBackColor = true;
-            FirstButton.Click +=  OnPreviousSearchButtonClick ;
+            FirstButton.Click +=  OnSearchPanelPreviousButtonClick ;
             // 
             // CloseSearchButton
             // 
@@ -236,7 +236,7 @@
             CloseSearchButton.TabIndex = 7;
             CloseSearchButton.Tag = "Close (Esc)";
             CloseSearchButton.UseVisualStyleBackColor = true;
-            CloseSearchButton.Click +=  OnCloseSearchButtonClick ;
+            CloseSearchButton.Click +=  OnSearchPanelCloseButtonClick ;
             // 
             // SearchPanelTextBox
             // 
@@ -250,7 +250,7 @@
             SearchPanelTextBox.Name = "SearchPanelTextBox";
             SearchPanelTextBox.Size = new System.Drawing.Size( 181, 25 );
             SearchPanelTextBox.TabIndex = 6;
-            SearchPanelTextBox.TextChanged +=  OnSearchTextChanged ;
+            SearchPanelTextBox.TextChanged +=  OnSearchPanelTextChanged ;
             SearchPanelTextBox.KeyDown +=  OnSearchKeyDown ;
             // 
             // ToolStripTable

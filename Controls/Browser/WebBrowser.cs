@@ -1064,7 +1064,7 @@ namespace Baby
                     if( ( _outUri == null )
                        || ( _outUri.Scheme != Uri.UriSchemeFile ) )
                     {
-                        _newUrl = "http://" + url;
+                        _newUrl = "https://" + url;
                     }
                 }
 
@@ -1179,7 +1179,9 @@ namespace Baby
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <returns>
-        ///   <c>true</c> if [is blank or system] [the specified URL]; otherwise, <c>false</c>.
+        ///   <c>true</c> if [is blank or system] [the specified URL];
+        ///   otherwise,
+        ///   <c>false</c>.
         /// </returns>
         private bool IsBlankOrSystem( string url )
         {
@@ -2266,7 +2268,7 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.</param>
-        private void OnCloseSearchButtonClick( object sender, EventArgs e )
+        private void OnSearchPanelCloseButtonClick( object sender, EventArgs e )
         {
             CloseSearch( );
         }
@@ -2277,7 +2279,7 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.</param>
-        private void OnPreviousSearchButtonClick( object sender, EventArgs e )
+        private void OnSearchPanelPreviousButtonClick( object sender, EventArgs e )
         {
             FindTextOnPage( false );
         }
@@ -2288,7 +2290,7 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.</param>
-        private void OnNextSearchButtonClick( object sender, EventArgs e )
+        private void OnSearchPanelNextButtonClick( object sender, EventArgs e )
         {
             FindTextOnPage( true );
         }
@@ -2299,7 +2301,7 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.</param>
-        private void OnSearchTextChanged( object sender, EventArgs e )
+        private void OnSearchPanelTextChanged( object sender, EventArgs e )
         {
             FindTextOnPage( true );
         }

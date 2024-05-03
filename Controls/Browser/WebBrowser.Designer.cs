@@ -462,7 +462,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 242, 25 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 240, 25 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -791,6 +791,7 @@
             TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 3.66614676F ) );
             TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 96.3338547F ) );
             TopTable.Controls.Add( Title, 1, 0 );
+            TopTable.Controls.Add( PictureBox, 0, 0 );
             TopTable.Dock = System.Windows.Forms.DockStyle.Top;
             TopTable.Location = new System.Drawing.Point( 0, 0 );
             TopTable.Name = "TopTable";
@@ -822,10 +823,9 @@
             // 
             // PictureBox
             // 
-            PictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             PictureBox.BackColor = System.Drawing.Color.Transparent;
             PictureBox.Image = (System.Drawing.Image)resources.GetObject( "PictureBox.Image" );
-            PictureBox.Location = new System.Drawing.Point( 26, 9 );
+            PictureBox.Location = new System.Drawing.Point( 1, 1 );
             PictureBox.Margin = new System.Windows.Forms.Padding( 1 );
             PictureBox.Name = "PictureBox";
             PictureBox.Padding = new System.Windows.Forms.Padding( 1 );
@@ -840,9 +840,8 @@
             UrlTextBoxTable.ColumnCount = 3;
             UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 3.43283582F ) );
             UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 96.56716F ) );
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 52F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 51F ) );
             UrlTextBoxTable.Controls.Add( MenuButton, 2, 0 );
-            UrlTextBoxTable.Controls.Add( PictureBox, 0, 0 );
             UrlTextBoxTable.Controls.Add( UrlTextBox, 1, 0 );
             UrlTextBoxTable.Dock = System.Windows.Forms.DockStyle.Fill;
             UrlTextBoxTable.Location = new System.Drawing.Point( 1, 1 );
@@ -860,7 +859,7 @@
             MenuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
             MenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             MenuButton.Image = Properties.Resources.MenulLabel;
-            MenuButton.Location = new System.Drawing.Point( 1436, 6 );
+            MenuButton.Location = new System.Drawing.Point( 1437, 6 );
             MenuButton.Name = "MenuButton";
             MenuButton.Size = new System.Drawing.Size( 26, 28 );
             MenuButton.TabIndex = 0;

@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\terry\\source\\repos\\Baby\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -47,31 +43,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WebBrowser.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
-              "RelativeDocumentMoniker": "Controls\\Browser\\WebBrowser.cs",
-              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs [Design]",
-              "RelativeToolTip": "Controls\\Browser\\WebBrowser.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T10:26:21.597Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "WebBrowser.cs",
               "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
               "RelativeDocumentMoniker": "Controls\\Browser\\WebBrowser.cs",
               "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
               "RelativeToolTip": "Controls\\Browser\\WebBrowser.cs",
-              "ViewState": "AQIAAE8BAAAAAAAAAAAAwFcBAAAzAAAA",
+              "ViewState": "AQIAAE8BAAAAAAAAAAAAwGUBAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-03T09:40:04.28Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Palette.cs",
               "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Style\\Palette.cs",
               "RelativeDocumentMoniker": "Controls\\Style\\Palette.cs",
@@ -84,7 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "SearchDialog.cs",
               "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\SearchDialog.cs",
               "RelativeDocumentMoniker": "Controls\\Dialog\\SearchDialog.cs",

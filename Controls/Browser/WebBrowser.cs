@@ -352,9 +352,9 @@ namespace Baby
             RegisterCallbacks( );
 
             // Form Properties
-            Size = new Size( 1350, 750 );
-            MaximumSize = new Size( 1350, 750 );
-            MinimumSize = new Size( 1350, 750 );
+            Size = new Size( 1500, 850 );
+            MaximumSize = new Size( 1500, 850 );
+            MinimumSize = new Size( 1500, 850 );
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             BorderColor = Color.FromArgb( 0, 120, 212 );
@@ -599,7 +599,7 @@ namespace Baby
                 FireFoxButton.Click += OnFireFoxButtonClick;
                 Timer.Tick += OnTimerTick;
                 TabPages.MouseClick += OnRightClick;
-                MenuButton.MouseClick += OnMenuButtonClick;
+                MenuButton.MouseClick += OnSearchButtonClick;
                 TabPages.TabStripItemClosing += OnTabClosing;
                 TabItem.MouseClick += OnRightClick;
                 Title.MouseClick += OnRightClick;
@@ -721,7 +721,7 @@ namespace Baby
         /// <param name="title">Name of the tab.</param>
         private void SetTitleText( string title )
         {
-            InvokeIfNeeded( delegate
+            InvokeIf( delegate
             {
                 if( title.CheckIfValid( ) )
                 {
@@ -1091,22 +1091,6 @@ namespace Baby
         }
 
         /// <summary>
-        /// Invokes if needed.
-        /// </summary>
-        /// <param name="action">The action.</param>
-        public void InvokeIfNeeded( Action action )
-        {
-            if( InvokeRequired )
-            {
-                BeginInvoke( action );
-            }
-            else
-            {
-                action.Invoke( );
-            }
-        }
-
-        /// <summary>
         /// Waits for browser to initialize.
         /// </summary>
         /// <param name="browser">
@@ -1128,7 +1112,7 @@ namespace Baby
         /// </param>
         private void EnableBackButton( bool canGoBack )
         {
-            InvokeIfNeeded( ( ) => PreviousButton.Enabled = canGoBack );
+            InvokeIf( ( ) => PreviousButton.Enabled = canGoBack );
         }
 
         /// <summary>
@@ -1139,7 +1123,7 @@ namespace Baby
         /// </param>
         private void EnableForwardButton( bool canGoForward )
         {
-            InvokeIfNeeded( ( ) => NextButton.Enabled = canGoForward );
+            InvokeIf( ( ) => NextButton.Enabled = canGoForward );
         }
 
         /// <summary>
@@ -1159,6 +1143,30 @@ namespace Baby
             url = url.RemovePrefix( "file://" );
             url = url.RemovePrefix( "/" );
             return url.UrlEncode( );
+        }
+
+        /// <summary>
+        /// Invokes if needed.
+        /// </summary>
+        /// <param name="action">The action.</param>
+        public void InvokeIf( Action action )
+        {
+            try
+            {
+                ThrowIf.Null( action, nameof( action ) );
+                if( InvokeRequired )
+                {
+                    BeginInvoke( action );
+                }
+                else
+                {
+                    action.Invoke( );
+                }
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
         }
 
         /// <summary>
@@ -1189,6 +1197,66 @@ namespace Baby
         {
             return ( url == "" ) || url.BeginsWith( "about:" ) || url.BeginsWith( "chrome:" )
                 || url.BeginsWith( AppSettings[ "Internal" ] + ":" );
+        }
+
+        /// <summary>
+        /// Determines whether [is on first tab].
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if [is on first tab]; otherwise, <c>false</c>.
+        /// </returns>
+        private bool IsFirstTab( )
+        {
+            return TabPages.SelectedItem == TabPages.Items[ 0 ];
+        }
+
+        /// <summary>
+        /// Determines whether [is on last tab].
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if [is on last tab]; otherwise, <c>false</c>.
+        /// </returns>
+        private bool IsLastTab( )
+        {
+            return TabPages.SelectedItem == TabPages.Items[ ^2 ];
+        }
+
+        /// <summary>
+        /// Stops the active tab.
+        /// </summary>
+        private void StopActiveTab( )
+        {
+            CurrentBrowser.Stop( );
+        }
+
+        /// <summary>
+        /// Nexts the tab.
+        /// </summary>
+        private void NextTab( )
+        {
+            if( IsLastTab( ) )
+            {
+                CurrentIndex = 0;
+            }
+            else
+            {
+                CurrentIndex++;
+            }
+        }
+
+        /// <summary>
+        /// Previous tab.
+        /// </summary>
+        private void PreviousTab( )
+        {
+            if( IsFirstTab( ) )
+            {
+                CurrentIndex = LastIndex;
+            }
+            else
+            {
+                CurrentIndex--;
+            }
         }
 
         /// <summary>
@@ -1638,7 +1706,7 @@ namespace Baby
             if( !_searchOpen )
             {
                 _searchOpen = true;
-                InvokeIfNeeded( delegate
+                InvokeIf( delegate
                 {
                     SearchPanel.Visible = true;
                     SearchPanelTextBox.Text = _lastSearch;
@@ -1648,7 +1716,7 @@ namespace Baby
             }
             else
             {
-                InvokeIfNeeded( delegate
+                InvokeIf( delegate
                 {
                     SearchPanelTextBox.Focus( );
                     SearchPanelTextBox.SelectAll( );
@@ -1664,7 +1732,7 @@ namespace Baby
             if( _searchOpen )
             {
                 _searchOpen = false;
-                InvokeIfNeeded( delegate
+                InvokeIf( delegate
                 {
                     SearchPanel.Visible = false;
                     CurrentBrowser.GetBrowser( ).StopFinding( true );
@@ -1720,66 +1788,6 @@ namespace Baby
         }
 
         /// <summary>
-        /// Stops the active tab.
-        /// </summary>
-        private void StopActiveTab( )
-        {
-            CurrentBrowser.Stop( );
-        }
-
-        /// <summary>
-        /// Determines whether [is on first tab].
-        /// </summary>
-        /// <returns>
-        ///   <c>true</c> if [is on first tab]; otherwise, <c>false</c>.
-        /// </returns>
-        private bool IsFirstTab( )
-        {
-            return TabPages.SelectedItem == TabPages.Items[ 0 ];
-        }
-
-        /// <summary>
-        /// Determines whether [is on last tab].
-        /// </summary>
-        /// <returns>
-        ///   <c>true</c> if [is on last tab]; otherwise, <c>false</c>.
-        /// </returns>
-        private bool IsLastTab( )
-        {
-            return TabPages.SelectedItem == TabPages.Items[ ^2 ];
-        }
-
-        /// <summary>
-        /// Nexts the tab.
-        /// </summary>
-        private void NextTab( )
-        {
-            if( IsLastTab( ) )
-            {
-                CurrentIndex = 0;
-            }
-            else
-            {
-                CurrentIndex++;
-            }
-        }
-
-        /// <summary>
-        /// Previous tab.
-        /// </summary>
-        private void PreviousTab( )
-        {
-            if( IsFirstTab( ) )
-            {
-                CurrentIndex = LastIndex;
-            }
-            else
-            {
-                CurrentIndex--;
-            }
-        }
-
-        /// <summary>
         /// Called when [load].
         /// </summary>
         /// <param name="sender">The sender.</param>
@@ -1815,7 +1823,7 @@ namespace Baby
         /// instance containing the event data.</param>
         private void OnUrlChanged( object sender, AddressChangedEventArgs e )
         {
-            InvokeIfNeeded( ( ) =>
+            InvokeIf( ( ) =>
             {
                 // if current tab
                 if( sender == CurrentBrowser )
@@ -1856,7 +1864,7 @@ namespace Baby
         /// instance containing the event data.</param>
         private void OnTitleChanged( object sender, TitleChangedEventArgs e )
         {
-            InvokeIfNeeded( ( ) =>
+            InvokeIf( ( ) =>
             {
                 var _browser = (ChromiumWebBrowser)sender;
                 SetTabText( _browser, e.Title );
@@ -1895,7 +1903,7 @@ namespace Baby
                 else
                 {
                     // after loaded / stopped
-                    InvokeIfNeeded( ( ) =>
+                    InvokeIf( ( ) =>
                     {
                         Separator10.Visible = true;
                         RefreshButton.Visible = true;
@@ -2136,13 +2144,16 @@ namespace Baby
         /// <param name="e">The <see cref="MouseEventArgs"/>
         /// instance containing the event data.
         /// </param>
-        private void OnMenuButtonClick( object sender, MouseEventArgs e )
+        private void OnSearchButtonClick( object sender, MouseEventArgs e )
         {
             if( e.Button == MouseButtons.Left )
             {
                 try
                 {
-                    OpenSearch( );
+                    var _search = new SearchDialog( );
+                    _search.Owner = this;
+                    _search.Location = new Point( e.X + 600, e.Y + 150 );
+                    _search.Show( );
                 }
                 catch( Exception _ex )
                 {

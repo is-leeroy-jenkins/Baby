@@ -263,6 +263,26 @@ namespace Baby.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap SearchPanelHomeButton {
+            get {
+                object obj = ResourceManager.GetObject("SearchPanelHomeButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SearchPanelLookUpButton {
+            get {
+                object obj = ResourceManager.GetObject("SearchPanelLookUpButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap SearchPreviousButton {
             get {
                 object obj = ResourceManager.GetObject("SearchPreviousButton", resourceCulture);

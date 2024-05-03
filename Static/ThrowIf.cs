@@ -43,8 +43,10 @@ namespace Baby
     using CefSharp;
     using CefSharp.WinForms;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Data;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.IO;
@@ -161,6 +163,16 @@ namespace Baby
 
                     break;
                 }
+                case EventArgs _eventArgs:
+                {
+                    if( _eventArgs == null )
+                    {
+                        var _message = @$"The '{paramName}' is null!";
+                        throw new ArgumentNullException( _message );
+                    }
+
+                    break;
+                }
                 case object _args:
                 {
                     if( _args == null )
@@ -171,23 +183,126 @@ namespace Baby
 
                     break;
                 }
-                default:
-                {
-                    break;
-                }
             }
         }
 
-        /// <summary> Nulls the specified argument. </summary>
-        /// <param name="argument"> The argument. </param>
-        /// <param name="paramName"> Name of the parameter. </param>
-        /// <exception cref="System.ArgumentNullException"> </exception>
-        public static void NoItems( IDictionary<string, object> argument, string paramName )
+        /// <summary>
+        /// Empty throws exception if 'argument' is null.
+        /// </summary>
+        /// <param name="argument">The argument.</param>
+        /// <param name="paramName">Name of the parameter.</param>
+        /// <exception cref="System.ArgumentException"></exception>
+        /// <exception cref="System.ArgumentNullException">ArgumentNullException</exception>
+        public static void Empty( object argument, string paramName )
         {
-            if( argument?.Any( ) != true )
+            switch( argument )
             {
-                var _message = @$"The IDictionary<string, object> '{paramName}' is null or empty!";
-                throw new ArgumentNullException( _message );
+                case string _args:
+                {
+                    if( string.IsNullOrEmpty( _args ) )
+                    {
+                        var _message = @$"The '{paramName}' is empty!";
+                        throw new ArgumentNullException( _message );
+                    }
+
+                    break;
+                }
+                case IListSource _listSource:
+                {
+                    if( _listSource == null )
+                    {
+                        var _message = @$"The IListSource '{paramName}' is empty!";
+                        throw new ArgumentException( _message );
+                    }
+
+                    break;
+                }
+                case IBindingList _bindingList:
+                {
+                    if( _bindingList == null )
+                    {
+                        var _message = @$"The IBindingList '{paramName}' is empty!";
+                        throw new ArgumentException( _message );
+                    }
+
+                    break;
+                }
+                case IEnumerable<string> _list:
+                {
+                    if( _list == null 
+                       || _list.Any( ) == false )
+                    {
+                        var _message = @$"The IEnumerable<string> '{paramName}' is empty!";
+                        throw new ArgumentException( _message );
+                    }
+
+                    break;
+                }
+                case IEnumerable<byte> _data:
+                {
+                    if( _data == null
+                       || _data.Any( ) == false )
+                    {
+                        var _message = @$"The IEnumerable<string> '{paramName}' is empty!";
+                        throw new ArgumentException( _message );
+                    }
+
+                    break;
+                }
+                case IEnumerable<DataRow> _rows:
+                {
+                    if( _rows == null
+                       || _rows.Any( ) == false )
+                    {
+                        var _message = @$"The IEnumerable<DataRow> '{paramName}' is empty!";
+                        throw new ArgumentException( _message );
+                    }
+
+                    break;
+                }
+                case ICollection _collection:
+                {
+                    if( _collection == null
+                       || _collection.Count > 0 )
+                    {
+                        var _message = @$"The ICollection '{paramName}' is empty!";
+                        throw new ArgumentException( _message );
+                    }
+
+                    break;
+                }
+                case IDictionary<string, object> _dict:
+                {
+                    if( _dict == null
+                       || _dict.Keys.Any( ) == false )
+                    {
+                        var _message = @$"The IDictionary<string, object> '{paramName}' is empty!";
+                        throw new ArgumentException( _message );
+                    }
+
+                    break;
+                }
+                case IDictionary<string, string> _nvp:
+                {
+                    if( _nvp == null
+                       || _nvp.Keys.Any( ) == false )
+                    {
+                        var _message = @$"The IDictionary<string, string> '{paramName}' is empty!";
+                        throw new ArgumentException( _message );
+                    }
+
+                    break;
+                }
+                default:
+                {
+                    if( argument == null )
+                    {
+                        var _message = @$"The '{paramName}' is null!";
+                        throw new ArgumentNullException( _message );
+                    }
+
+                    break;
+                }
             }
         }
 

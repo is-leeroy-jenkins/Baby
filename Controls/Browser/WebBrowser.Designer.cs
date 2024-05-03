@@ -79,21 +79,13 @@
             ProgressSeparator = new ToolSeparator( );
             Separator12 = new ToolSeparator( );
             TopTable = new System.Windows.Forms.TableLayoutPanel( );
-            PictureBox = new ImageBox( );
             Title = new Label( );
+            PictureBox = new ImageBox( );
             UrlTextBoxTable = new System.Windows.Forms.TableLayoutPanel( );
             MenuButton = new System.Windows.Forms.Button( );
             UrlTextBox = new TextBox( );
             UrlSearchPanel = new Layout( );
             ContextMenu = new ContextMenu( );
-            PopUpPanel = new System.Windows.Forms.Panel( );
-            SearchTextBox = new RichTextBox( );
-            button1 = new System.Windows.Forms.Button( );
-            button2 = new System.Windows.Forms.Button( );
-            button3 = new System.Windows.Forms.Button( );
-            button4 = new System.Windows.Forms.Button( );
-            button5 = new System.Windows.Forms.Button( );
-            button6 = new System.Windows.Forms.Button( );
             ( (System.ComponentModel.ISupportInitialize)TabPages ).BeginInit( );
             TabPages.SuspendLayout( );
             SearchPanel.SuspendLayout( );
@@ -103,7 +95,6 @@
             ( (System.ComponentModel.ISupportInitialize)PictureBox ).BeginInit( );
             UrlTextBoxTable.SuspendLayout( );
             UrlSearchPanel.SuspendLayout( );
-            PopUpPanel.SuspendLayout( );
             SuspendLayout( );
             // 
             // Timer
@@ -115,13 +106,16 @@
             // TabPages
             // 
             TabPages.BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            TabPages.Font = new System.Drawing.Font( "Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            TabPages.Dock = System.Windows.Forms.DockStyle.Fill;
+            TabPages.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            TabPages.ForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
             TabPages.Items.AddRange( new BrowserTabStripItem[ ] { TabItem, AddItemTab } );
             TabPages.Location = new System.Drawing.Point( 0, 72 );
+            TabPages.Margin = new System.Windows.Forms.Padding( 1 );
             TabPages.Name = "TabPages";
             TabPages.Padding = new System.Windows.Forms.Padding( 1, 29, 1, 1 );
             TabPages.SelectedItem = TabItem;
-            TabPages.Size = new System.Drawing.Size( 1388, 622 );
+            TabPages.Size = new System.Drawing.Size( 1488, 722 );
             TabPages.TabIndex = 4;
             TabPages.Text = "faTabStrip1";
             TabPages.TabStripItemSelectionChanged +=  OnTabsChanged ;
@@ -146,7 +140,7 @@
             TabItem.Name = "TabItem";
             TabItem.Padding = new System.Windows.Forms.Padding( 1 );
             TabItem.Selected = true;
-            TabItem.Size = new System.Drawing.Size( 1386, 592 );
+            TabItem.Size = new System.Drawing.Size( 1486, 692 );
             TabItem.StripRectangle = (System.Drawing.RectangleF)resources.GetObject( "TabItem.StripRectangle" );
             TabItem.Style = MetroSet_UI.Enums.Style.Custom;
             TabItem.StyleManager = null;
@@ -244,7 +238,7 @@
             CloseSearchButton.TabIndex = 7;
             CloseSearchButton.Tag = "Close (Esc)";
             CloseSearchButton.UseVisualStyleBackColor = true;
-            CloseSearchButton.Click +=  OnSearchPanelCloseButtonClick ;
+            CloseSearchButton.Click +=  OnSearchPanelClearButtonClick ;
             // 
             // SearchPanelTextBox
             // 
@@ -268,11 +262,11 @@
             ToolStripTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 20F ) );
             ToolStripTable.Controls.Add( ToolStrip, 0, 0 );
             ToolStripTable.Dock = System.Windows.Forms.DockStyle.Bottom;
-            ToolStripTable.Location = new System.Drawing.Point( 0, 694 );
+            ToolStripTable.Location = new System.Drawing.Point( 0, 794 );
             ToolStripTable.Name = "ToolStripTable";
             ToolStripTable.RowCount = 1;
             ToolStripTable.RowStyles.Add( new System.Windows.Forms.RowStyle( System.Windows.Forms.SizeType.Percent, 100F ) );
-            ToolStripTable.Size = new System.Drawing.Size( 1388, 45 );
+            ToolStripTable.Size = new System.Drawing.Size( 1488, 45 );
             ToolStripTable.TabIndex = 0;
             // 
             // ToolStrip
@@ -311,7 +305,7 @@
             ToolStrip.ShowCaption = true;
             ToolStrip.ShowItemToolTips = true;
             ToolStrip.ShowLauncher = true;
-            ToolStrip.Size = new System.Drawing.Size( 1386, 43 );
+            ToolStrip.Size = new System.Drawing.Size( 1486, 43 );
             ToolStrip.TabIndex = 9;
             ToolStrip.ThemeName = "Office2016DarkGray";
             ToolStrip.ThemeStyle.ArrowColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
@@ -468,7 +462,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 272, 25 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 242, 25 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -796,29 +790,14 @@
             TopTable.ColumnCount = 2;
             TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 3.66614676F ) );
             TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 96.3338547F ) );
-            TopTable.Controls.Add( PictureBox, 0, 0 );
             TopTable.Controls.Add( Title, 1, 0 );
             TopTable.Dock = System.Windows.Forms.DockStyle.Top;
             TopTable.Location = new System.Drawing.Point( 0, 0 );
             TopTable.Name = "TopTable";
             TopTable.RowCount = 1;
             TopTable.RowStyles.Add( new System.Windows.Forms.RowStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
-            TopTable.Size = new System.Drawing.Size( 1388, 30 );
+            TopTable.Size = new System.Drawing.Size( 1488, 30 );
             TopTable.TabIndex = 0;
-            // 
-            // PictureBox
-            // 
-            PictureBox.BackColor = System.Drawing.Color.Transparent;
-            PictureBox.Image = (System.Drawing.Image)resources.GetObject( "PictureBox.Image" );
-            PictureBox.Location = new System.Drawing.Point( 1, 1 );
-            PictureBox.Margin = new System.Windows.Forms.Padding( 1 );
-            PictureBox.Name = "PictureBox";
-            PictureBox.Padding = new System.Windows.Forms.Padding( 1 );
-            PictureBox.Size = new System.Drawing.Size( 22, 22 );
-            PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            PictureBox.TabIndex = 0;
-            PictureBox.TabStop = false;
-            PictureBox.ToolTip = null;
             // 
             // Title
             // 
@@ -827,11 +806,11 @@
             Title.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             Title.HoverText = null;
             Title.IsDerivedStyle = true;
-            Title.Location = new System.Drawing.Point( 53, 3 );
+            Title.Location = new System.Drawing.Point( 57, 3 );
             Title.Margin = new System.Windows.Forms.Padding( 3 );
             Title.Name = "Title";
             Title.Padding = new System.Windows.Forms.Padding( 1 );
-            Title.Size = new System.Drawing.Size( 1332, 24 );
+            Title.Size = new System.Drawing.Size( 1428, 24 );
             Title.Style = MetroSet_UI.Enums.Style.Custom;
             Title.StyleManager = null;
             Title.TabIndex = 1;
@@ -841,38 +820,55 @@
             Title.ThemeName = "Baby";
             Title.ToolTip = ToolTip;
             // 
+            // PictureBox
+            // 
+            PictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            PictureBox.BackColor = System.Drawing.Color.Transparent;
+            PictureBox.Image = (System.Drawing.Image)resources.GetObject( "PictureBox.Image" );
+            PictureBox.Location = new System.Drawing.Point( 26, 9 );
+            PictureBox.Margin = new System.Windows.Forms.Padding( 1 );
+            PictureBox.Name = "PictureBox";
+            PictureBox.Padding = new System.Windows.Forms.Padding( 1 );
+            PictureBox.Size = new System.Drawing.Size( 22, 22 );
+            PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            PictureBox.TabIndex = 0;
+            PictureBox.TabStop = false;
+            PictureBox.ToolTip = null;
+            // 
             // UrlTextBoxTable
             // 
             UrlTextBoxTable.ColumnCount = 3;
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 3.5658915F ) );
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 96.4341049F ) );
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 45F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 3.43283582F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 96.56716F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 52F ) );
             UrlTextBoxTable.Controls.Add( MenuButton, 2, 0 );
+            UrlTextBoxTable.Controls.Add( PictureBox, 0, 0 );
             UrlTextBoxTable.Controls.Add( UrlTextBox, 1, 0 );
             UrlTextBoxTable.Dock = System.Windows.Forms.DockStyle.Fill;
             UrlTextBoxTable.Location = new System.Drawing.Point( 1, 1 );
             UrlTextBoxTable.Name = "UrlTextBoxTable";
             UrlTextBoxTable.RowCount = 1;
             UrlTextBoxTable.RowStyles.Add( new System.Windows.Forms.RowStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
-            UrlTextBoxTable.Size = new System.Drawing.Size( 1386, 34 );
+            UrlTextBoxTable.Size = new System.Drawing.Size( 1486, 40 );
             UrlTextBoxTable.TabIndex = 0;
             // 
             // MenuButton
             // 
-            MenuButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            MenuButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             MenuButton.FlatAppearance.BorderSize = 0;
             MenuButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
             MenuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
             MenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             MenuButton.Image = Properties.Resources.MenulLabel;
-            MenuButton.Location = new System.Drawing.Point( 1343, 3 );
+            MenuButton.Location = new System.Drawing.Point( 1436, 6 );
             MenuButton.Name = "MenuButton";
-            MenuButton.Size = new System.Drawing.Size( 40, 28 );
+            MenuButton.Size = new System.Drawing.Size( 26, 28 );
             MenuButton.TabIndex = 0;
             MenuButton.UseVisualStyleBackColor = true;
             // 
             // UrlTextBox
             // 
+            UrlTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             UrlTextBox.AutoCompleteCustomSource = null;
             UrlTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             UrlTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -880,20 +876,21 @@
             UrlTextBox.DisabledBackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             UrlTextBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             UrlTextBox.DisabledForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            UrlTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             UrlTextBox.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             UrlTextBox.HoverColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             UrlTextBox.HoverText = null;
             UrlTextBox.Image = null;
             UrlTextBox.IsDerivedStyle = true;
             UrlTextBox.Lines = null;
-            UrlTextBox.Location = new System.Drawing.Point( 50, 3 );
+            UrlTextBox.Location = new System.Drawing.Point( 60, 5 );
+            UrlTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             UrlTextBox.MaxLength = 32767;
             UrlTextBox.Multiline = false;
             UrlTextBox.Name = "UrlTextBox";
+            UrlTextBox.Padding = new System.Windows.Forms.Padding( 0, 10, 0, 0 );
             UrlTextBox.ReadOnly = false;
             UrlTextBox.SelectionLength = 0;
-            UrlTextBox.Size = new System.Drawing.Size( 1287, 28 );
+            UrlTextBox.Size = new System.Drawing.Size( 1362, 30 );
             UrlTextBox.Style = MetroSet_UI.Enums.Style.Custom;
             UrlTextBox.StyleManager = null;
             UrlTextBox.TabIndex = 0;
@@ -921,7 +918,7 @@
             UrlSearchPanel.Location = new System.Drawing.Point( 0, 30 );
             UrlSearchPanel.Name = "UrlSearchPanel";
             UrlSearchPanel.Padding = new System.Windows.Forms.Padding( 1 );
-            UrlSearchPanel.Size = new System.Drawing.Size( 1388, 36 );
+            UrlSearchPanel.Size = new System.Drawing.Size( 1488, 42 );
             UrlSearchPanel.Style = MetroSet_UI.Enums.Style.Custom;
             UrlSearchPanel.StyleManager = null;
             UrlSearchPanel.TabIndex = 1;
@@ -943,119 +940,6 @@
             ContextMenu.ThemeAuthor = "Terry Eppler";
             ContextMenu.ThemeName = "Baby";
             // 
-            // PopUpPanel
-            // 
-            PopUpPanel.Controls.Add( button6 );
-            PopUpPanel.Controls.Add( button5 );
-            PopUpPanel.Controls.Add( button4 );
-            PopUpPanel.Controls.Add( button3 );
-            PopUpPanel.Controls.Add( button2 );
-            PopUpPanel.Controls.Add( button1 );
-            PopUpPanel.Controls.Add( SearchTextBox );
-            PopUpPanel.Location = new System.Drawing.Point( 837, -1 );
-            PopUpPanel.Name = "PopUpPanel";
-            PopUpPanel.Size = new System.Drawing.Size( 546, 92 );
-            PopUpPanel.TabIndex = 2;
-            // 
-            // SearchTextBox
-            // 
-            SearchTextBox.AutoWordSelection = false;
-            SearchTextBox.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            SearchTextBox.DisabledBackColor = System.Drawing.Color.FromArgb( 204, 204, 204 );
-            SearchTextBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 155, 155, 155 );
-            SearchTextBox.DisabledForeColor = System.Drawing.Color.FromArgb( 136, 136, 136 );
-            SearchTextBox.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            SearchTextBox.HoverColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            SearchTextBox.HoverText = null;
-            SearchTextBox.IsDerivedStyle = true;
-            SearchTextBox.Lines = null;
-            SearchTextBox.Location = new System.Drawing.Point( 50, 14 );
-            SearchTextBox.MaxLength = 32767;
-            SearchTextBox.Name = "SearchTextBox";
-            SearchTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            SearchTextBox.ReadOnly = false;
-            SearchTextBox.Size = new System.Drawing.Size( 415, 60 );
-            SearchTextBox.Style = MetroSet_UI.Enums.Style.Custom;
-            SearchTextBox.StyleManager = null;
-            SearchTextBox.TabIndex = 0;
-            SearchTextBox.Text = "richTextBox1";
-            SearchTextBox.ThemeAuthor = "Terry D. Eppler";
-            SearchTextBox.ThemeName = "Baby";
-            SearchTextBox.ToolTip = ToolTip;
-            SearchTextBox.WordWrap = true;
-            // 
-            // button1
-            // 
-            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button1.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            button1.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            button1.Image = Properties.Resources.SearchPreviousButton;
-            button1.Location = new System.Drawing.Point( 14, 14 );
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size( 30, 23 );
-            button1.TabIndex = 1;
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button2.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            button2.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            button2.Image = Properties.Resources.SearchNextButton;
-            button2.Location = new System.Drawing.Point( 14, 51 );
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size( 30, 23 );
-            button2.TabIndex = 2;
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button3.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            button3.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            button3.Image = Properties.Resources.SearchRefreshButton;
-            button3.Location = new System.Drawing.Point( 471, 14 );
-            button3.Name = "button3";
-            button3.Size = new System.Drawing.Size( 30, 23 );
-            button3.TabIndex = 3;
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button4.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            button4.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            button4.Image = Properties.Resources.SearchCancelButton;
-            button4.Location = new System.Drawing.Point( 471, 51 );
-            button4.Name = "button4";
-            button4.Size = new System.Drawing.Size( 30, 23 );
-            button4.TabIndex = 4;
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button5.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            button5.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            button5.Image = Properties.Resources.SearchHomeButton;
-            button5.Location = new System.Drawing.Point( 507, 14 );
-            button5.Name = "button5";
-            button5.Size = new System.Drawing.Size( 30, 23 );
-            button5.TabIndex = 5;
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button6.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            button6.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            button6.Image = Properties.Resources.SearchDownloadButton;
-            button6.Location = new System.Drawing.Point( 507, 51 );
-            button6.Name = "button6";
-            button6.Size = new System.Drawing.Size( 30, 23 );
-            button6.TabIndex = 5;
-            button6.UseVisualStyleBackColor = true;
-            // 
             // WebBrowser
             // 
             AutoScaleDimensions = new System.Drawing.SizeF( 7F, 14F );
@@ -1064,25 +948,27 @@
             BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             CaptionBarColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             CaptionBarHeight = 5;
-            CaptionButtonColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
-            CaptionButtonHoverColor = System.Drawing.Color.Maroon;
+            CaptionButtonColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            CaptionButtonHoverColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             CaptionFont = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CaptionForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            ClientSize = new System.Drawing.Size( 1388, 739 );
+            ClientSize = new System.Drawing.Size( 1488, 839 );
+            ControlBox = false;
             Controls.Add( TabPages );
             Controls.Add( UrlSearchPanel );
             Controls.Add( ToolStripTable );
             Controls.Add( TopTable );
+            DoubleBuffered = true;
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            ForeColor = System.Drawing.Color.LightGray;
+            ForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject( "$this.Icon" );
             Margin = new System.Windows.Forms.Padding( 4, 5, 4, 5 );
             MaximizeBox = false;
-            MaximumSize = new System.Drawing.Size( 1400, 750 );
+            MaximumSize = new System.Drawing.Size( 1500, 850 );
             MetroColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             MinimizeBox = false;
-            MinimumSize = new System.Drawing.Size( 1400, 750 );
+            MinimumSize = new System.Drawing.Size( 1500, 850 );
             Name = "WebBrowser";
             ShowIcon = false;
             ShowMaximizeBox = false;
@@ -1105,7 +991,6 @@
             ( (System.ComponentModel.ISupportInitialize)PictureBox ).EndInit( );
             UrlTextBoxTable.ResumeLayout( false );
             UrlSearchPanel.ResumeLayout( false );
-            PopUpPanel.ResumeLayout( false );
             ResumeLayout( false );
         }
 
@@ -1155,7 +1040,6 @@
         public ToolSeparator Separator11;
         public ToolSeparator Separator12;
         public System.Windows.Forms.TableLayoutPanel UrlTextBoxTable;
-        private TextBox UrlTextBox;
         private Layout UrlSearchPanel;
         public Label Title;
         public ToolStripButton FireFoxButton;
@@ -1169,14 +1053,7 @@
         public System.Windows.Forms.ToolStripProgressBar ProgressBar;
         public ToolSeparator ProgressSeparator;
         public ToolStripLabel StatusSpacer;
-        private System.Windows.Forms.Panel PopUpPanel;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        public RichTextBox SearchTextBox;
+        public TextBox UrlTextBox;
     }
 }
 

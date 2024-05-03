@@ -168,9 +168,6 @@
   <metadata name="ToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>224, 8</value>
   </metadata>
-  <metadata name="ToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>224, 8</value>
-  </metadata>
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>321, 10</value>
   </metadata>
@@ -206,14 +203,14 @@
   <data name="CancelButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGOSURBVDhPbZMhUkNBEERbREZEIL5ARCAiEAgEh0BEIpAI
-        BCICER8REcEhIhAIDoBEcAAEIgKBQFBUBFQFCBD6bWZ+BchUbW1vT8/szOz/+msLqfqWel/S+FO6ZYHh
-        7GuHbL1Z0H2TnrwvWFNp9iq95BnsREch/22+ZYToWZobDy3c9bmBz/uOVz+T2X9egtJMdnFQLuKg/5l9
-        bWtu0PqCkyQryubmDPbe8NooAhsYLjF62jPuKIZDWcMQNIwv5tKdccUCw+FD45jDiBnR+5gDPUeC9rv0
-        CEdgJFoEV17BewvOsVei7yinZMeMO5mEFbgT7mJOPJlJ0wKYbvDFLC5lZ4LAVbiLcXGJi94Q5gDrYG5e
-        bQdfaJpwTnLNQE45ePXTiSPLZoHh8KFxzL4xMzjjsEUp8ZHkkJrwYAycweyu5p5nN7+XgmMycovxZiHX
-        mDUt33qJ1vsg6KXlLJhsJFz9kFrmDj6kBzTRTv1qtVnUiyfN6U8s5vMu5/hPBmuD05xkm+FwS84GDGff
-        sufapB+8ZBbm6rk0NQAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGNSURBVDhPbZOhUoJREIVPIBIIhj8YCAaCwWDwIQxEg9Fg
+        MBAMdAKB4EMQDAYfwGjwAQwGAsFgMBB0BhUVz3fZ/QeVnblzzz17du/u3v/XX1tK1bfU+5LGn9I9Cwxn
+        Xztkm82C7pv07H3JmknzV+klz2AnOgn5b/MtI0RTaWE8tHDf5wY+73te/Uxm/2UJSjPZxUG5iIP+Z/a1
+        rblD6wvOkqwom5sz2HvDa6sIbGC4xOhpz7ijGA5lDUPQML5aSA/GFQsMhw+NY44jZkTvYw70HAna79IT
+        HIGRaBlceQXvLTjH3oi+o5ySHTPuZBJW4E64iznxZC7NCmC6wRezuJSdCQJX4S7GxSUuekOYA6yDuXm9
+        HXyhacI5yS0DOefg1U8njiybBYbDh8Yxh8bM4ILDDqXER5JDasKDMXAGs7uaKc9u/iAFp2TkFuPtQm4w
+        a1q+9Rqt90HQK8tZMNlIuP4htcwdfUiPaKKd+tVqs6gXT5rTn1jM513O8Z8MNganOckuw+GWnA0Yzr5V
+        z7VJP04WFq5MAl2dAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="ChromeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

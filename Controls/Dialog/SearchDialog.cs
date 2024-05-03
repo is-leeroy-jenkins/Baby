@@ -1,15 +1,15 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:             Bbaby
 //     Author:                  Terry D. Eppler
-//     Created:                 03-24-2023
+//     Created:                 05-01-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-08-2023
+//     Last Modified On:        05-03-2024
 // ******************************************************************************************
-// <copyright file="SearchDialog.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
+// <copyright file="teppler" company="Terry D. Eppler">
+//    Baby is a small web browser used in a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//    Copyright ©  2024  Terry Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +31,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   SearchDialog.cs
@@ -45,7 +45,7 @@ namespace Baby
     using System.Drawing;
     using System.Windows.Forms;
     using Syncfusion.Windows.Forms;
-
+    
     /// <summary>
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
@@ -61,7 +61,7 @@ namespace Baby
         /// The results
         /// </summary>
         private string _results;
-
+        
         /// <summary>
         /// Gets or sets the results.
         /// </summary>
@@ -79,7 +79,7 @@ namespace Baby
                 _results = value;
             }
         }
-
+        
         /// <inheritdoc />
         /// <summary>
         /// </summary>
@@ -87,16 +87,17 @@ namespace Baby
         {
             InitializeComponent( );
             RegisterCallbacks( );
-
+            
             // Form Properterties
-            Size = new Size( 700, 160 );
-            MinimumSize = new Size( 700, 160 );
-            MaximumSize = new Size( 700, 160 );
+            Size = new Size( 783, 64 );
+            MinimumSize = new Size( 783, 64 );
+            MaximumSize = new Size( 783, 64 );
             BorderColor = Color.FromArgb( 0, 120, 212 );
             FormBorderStyle = FormBorderStyle.FixedSingle;
             BorderThickness = 1;
             BackColor = Color.FromArgb( 20, 20, 20 );
-            StartPosition = FormStartPosition.CenterScreen;
+            ForeColor = Color.FromArgb( 106, 189, 252 );
+            StartPosition = FormStartPosition.Manual;
             CaptionBarHeight = 5;
             CaptionForeColor = Color.FromArgb( 20, 20, 20 );
             CaptionButtonColor = Color.FromArgb( 20, 20, 20 );
@@ -106,11 +107,11 @@ namespace Baby
             MaximizeBox = false;
             Enabled = true;
             Visible = true;
-
+            
             //Event Wiring
             Load += OnLoad;
         }
-
+        
         /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the
@@ -125,25 +126,7 @@ namespace Baby
         {
             KeyWordTextBox.Text = text;
         }
-
-        /// <inheritdoc />
-        /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="T:Baby.MessageDialog" />
-        /// class.
-        /// </summary>
-        /// <param name="text">
-        /// The text.
-        /// </param>
-        /// <param name="caption">
-        /// The caption.
-        /// </param>
-        public SearchDialog( string text, string caption )
-            : this( text )
-        {
-            Header.Text = caption;
-        }
-
+        
         /// <summary>
         /// Registers the callbacks.
         /// </summary>
@@ -158,7 +141,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-
+        
         /// <summary>
         /// Initializes the text box.
         /// </summary>
@@ -166,32 +149,19 @@ namespace Baby
         {
             try
             {
-                KeyWordTextBox.BackColor = Color.FromArgb( 75, 75, 75 );
-                KeyWordTextBox.BorderColor = Color.FromArgb( 0, 120, 212 );
+                KeyWordTextBox.BackColor = Color.FromArgb( 30, 30, 30 );
+                KeyWordTextBox.BorderColor = Color.FromArgb( 90, 90, 90 );
                 KeyWordTextBox.HoverColor = Color.FromArgb( 0, 120, 212 );
+                KeyWordTextBox.Size = new Size( 637, 31 );
+                KeyWordTextBox.Font = new Font( "Roboto", 10 );
+                KeyWordTextBox.ForeColor = Color.FromArgb( 106, 189, 252 );
             }
             catch( Exception _ex )
             {
                 Fail( _ex );
             }
         }
-
-        /// <summary>
-        /// Initializes the title.
-        /// </summary>
-        private void InitializeTitle( )
-        {
-            try
-            {
-                Header.ForeColor = Color.FromArgb( 0, 120, 212 );
-                Header.Text = "Web Browser";
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
+        
         /// <summary>
         /// Initializes the buttons.
         /// </summary>
@@ -199,9 +169,20 @@ namespace Baby
         {
             try
             {
-                CloseButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-                CloseButton.Text = "Close";
-                CloseButton.ForeColor = Color.FromArgb( 0, 120, 212 );
+                CloseButton.Size = new Size( 21, 23 );
+                CloseButton.FlatStyle = FlatStyle.Flat;
+                CloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+                CloseButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
+                CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
+                LookupButton.Size = new Size( 21, 23 );
+                LookupButton.FlatStyle = FlatStyle.Flat;
+                LookupButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+                LookupButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
+                LookupButton.BackColor = Color.FromArgb( 20, 20, 20 );
+                CloseButton.Size = new Size( 21, 23 );
+                CloseButton.FlatStyle = FlatStyle.Flat;
+                CloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+                CloseButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
                 CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
             }
             catch( Exception _ex )
@@ -209,7 +190,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-
+        
         /// <summary> Called when [load]. </summary>
         /// <param name="sender">
         /// The sender.
@@ -221,16 +202,15 @@ namespace Baby
         {
             try
             {
-                InitializeButtons( );
                 InitializeTextBox( );
-                InitializeTitle( );
+                InitializeButtons( );
             }
             catch( Exception _ex )
             {
                 Fail( _ex );
             }
         }
-
+        
         /// <summary>
         /// Called when [close button clicked].
         /// </summary>
@@ -250,7 +230,7 @@ namespace Baby
                 {
                     _results = KeyWordTextBox.Text;
                 }
-
+                
                 Close( );
             }
             catch( Exception _ex )
@@ -258,7 +238,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-
+        
         /// <summary>
         /// Called when [okay button click].
         /// </summary>
@@ -273,7 +253,7 @@ namespace Baby
                 {
                     _results = KeyWordTextBox.Text;
                 }
-
+                
                 Close( );
             }
             catch( Exception _ex )
@@ -281,7 +261,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-
+        
         /// <summary>
         /// Called when [clear button click].
         /// </summary>
@@ -299,7 +279,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-
+        
         /// <summary>
         /// Get ErrorDialog Dialog.
         /// </summary>

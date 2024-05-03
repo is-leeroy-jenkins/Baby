@@ -229,4 +229,10 @@
   <data name="MenulLabel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Images\MenulLabel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SearchPanelHomeButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\SearchPanelHomeButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SearchPanelLookUpButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\SearchPanelLookUpButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

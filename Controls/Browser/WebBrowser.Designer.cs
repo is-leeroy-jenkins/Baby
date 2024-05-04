@@ -462,7 +462,7 @@
             KeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            KeyWordTextBox.Size = new System.Drawing.Size( 240, 25 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 238, 25 );
             KeyWordTextBox.Tag = "";
             KeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             KeyWordTextBox.ToolTip = ToolTip;
@@ -933,7 +933,7 @@
             ContextMenu.IsDerivedStyle = true;
             ContextMenu.Name = "ContextMenu";
             ContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            ContextMenu.Size = new System.Drawing.Size( 160, 360 );
+            ContextMenu.Size = new System.Drawing.Size( 160, 450 );
             ContextMenu.Style = MetroSet_UI.Enums.Style.Custom;
             ContextMenu.StyleManager = null;
             ContextMenu.ThemeAuthor = "Terry Eppler";

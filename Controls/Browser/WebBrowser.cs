@@ -66,6 +66,7 @@ namespace Baby
     /// <inheritdoc />
     /// <summary>
     /// The main Baby form, supporting multiple tabs.
+    /// 
     /// We used the x86 version of CefSharp, so the app works on 32-bit and 64-bit machines.
     /// If you would only like to support 64-bit machines, simply change the DLL references.
     /// </summary>
@@ -370,11 +371,12 @@ namespace Baby
             ShowMouseOver = true;
             MinimizeBox = false;
             MaximizeBox = false;
-            ControlBox = true;
+            ControlBox = false;
             SetTitleText( null );
 
             // Wireup Events
             Load += OnLoad;
+            MouseClick += OnRightClick;
         }
 
         /// <summary>
@@ -695,23 +697,37 @@ namespace Baby
         /// <param name="text">The text.</param>
         private void SetTabText( ChromiumWebBrowser browser, string text )
         {
-            text = text.Trim( );
-            if( IsBlank( text ) )
+            try
             {
-                text = "New Tab";
+                ThrowIf.NullOrEmpty( text, nameof( text ) );
+                text = text.Trim( );
+                if( IsBlank( text ) )
+                {
+                    text = "New Tab";
+                }
+                
+                browser.Tag = text;
+                if( text.Length > 20 )
+                {
+                    var _title = text.Substring( 0, 20 ) + "...";
+                    var _tab = (BrowserTabStripItem)browser.Parent;
+                    _tab.Title = _title;
+                }
+                else
+                {
+                    var _tab = (BrowserTabStripItem)browser.Parent;
+                    _tab.Title = text;
+                }
+                
+                // if current tab
+                if( browser == CurrentBrowser )
+                {
+                    SetTitleText( text );
+                }
             }
-
-            // save text
-            browser.Tag = text;
-
-            // get tab of given browser
-            var _tab = (BrowserTabStripItem)browser.Parent;
-            _tab.Title = text;
-
-            // if current tab
-            if( browser == CurrentBrowser )
+            catch( Exception _ex )
             {
-                SetTitleText( text );
+                Fail( _ex );
             }
         }
 
@@ -725,7 +741,7 @@ namespace Baby
             {
                 if( title.CheckIfValid( ) )
                 {
-                    Title.Text = title + " - " + AppSettings[ "Branding" ];
+                    Title.Text = AppSettings[ "Branding" ] + " - " + title;
                     _currentTitle = title;
                 }
                 else
@@ -1798,7 +1814,6 @@ namespace Baby
         {
             try
             {
-                Opacity = 0;
                 InitializePictureBox( );
                 InitializeToolStrip( );
                 InitializeHotkeys( );
@@ -1807,6 +1822,7 @@ namespace Baby
                 SetTooltips( Controls );
                 RegisterMenuCallbacks( );
                 _searchEngineUrl = AppSettings[ "Google" ];
+                Opacity = 0;
                 FadeInAsync( this );
             }
             catch( Exception _ex )
@@ -1922,6 +1938,13 @@ namespace Baby
         /// instance containing the event data.</param>
         private void OnTabClosed( object sender, EventArgs e )
         {
+            try
+            {
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
         }
 
         /// <summary>
@@ -1935,6 +1958,13 @@ namespace Baby
         /// </param>
         private void OnStatusUpdated( object sender, StatusMessageEventArgs e )
         {
+            try
+            {
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
         }
 
         /// <summary>
@@ -2153,6 +2183,7 @@ namespace Baby
                     var _search = new SearchDialog( );
                     _search.Owner = this;
                     _search.Location = new Point( e.X + 600, e.Y + 150 );
+                    _search.KeyWordTextBox.Text = UrlTextBox.Text ?? string.Empty;
                     _search.Show( );
                 }
                 catch( Exception _ex )
@@ -2170,6 +2201,13 @@ namespace Baby
         /// instance containing the event data.</param>
         private void OnUrlTextBoxTextChanged( object sender, EventArgs e )
         {
+            try
+            {
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
         }
 
         /// <summary>
@@ -2488,10 +2526,7 @@ namespace Baby
             {
                 try
                 {
-                    var _search = new SearchDialog( );
-                    _search.Owner = this;
-                    _search.Location = e.Location;
-                    _search.Show( );
+                    ContextMenu.Show( this, e.Location );
                 }
                 catch( Exception _ex )
                 {
@@ -2566,6 +2601,26 @@ namespace Baby
                         case MenuItem.Firefox:
                         {
                             OpenFireFoxBrowser( );
+                            break;
+                        }
+                        case MenuItem.Calculator:
+                        {
+                            WinMinion.LaunchCalculator( );
+                            break;
+                        }
+                        case MenuItem.ControlPanel:
+                        {
+                            WinMinion.LaunchControlPanel( );
+                            break;
+                        }
+                        case MenuItem.TaskManager:
+                        {
+                            WinMinion.LaunchTaskManager( );
+                            break;
+                        }
+                        case MenuItem.OneDrive:
+                        {
+                            WinMinion.LaunchOneDrive( );
                             break;
                         }
                         case MenuItem.Exit:

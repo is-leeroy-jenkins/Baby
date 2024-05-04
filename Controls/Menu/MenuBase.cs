@@ -43,6 +43,7 @@ namespace Baby
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
+    using System.Windows.Forms;
     using MetroSet_UI.Child;
     using MetroSet_UI.Controls;
 
@@ -142,6 +143,21 @@ namespace Baby
         /// The firefox option.
         /// </value>
         private protected MetroSetToolStripMenuItem _firefox;
+
+        /// <summary>
+        /// The calculator
+        /// </summary>
+        private protected MetroSetToolStripMenuItem _calculator;
+
+        /// <summary>
+        /// The task manager
+        /// </summary>
+        private protected MetroSetToolStripMenuItem _taskManager;
+
+        /// <summary>
+        /// The task manager
+        /// </summary>
+        private protected MetroSetToolStripMenuItem _controlPanel;
 
         /// <summary>
         /// Creates the close option.
@@ -319,68 +335,6 @@ namespace Baby
                 _item.Text = $"{MenuItem.Developer} Tools";
                 _item.Tag = MenuItem.Developer.ToString( );
                 _item.MouseHover += OnMouseEnter;
-                _item.MouseLeave += OnMouseLeave;
-                _item.MouseDown -= null;
-                Items.Add( _item );
-                return _item;
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-                return default( MetroSetToolStripMenuItem );
-            }
-        }
-
-        /// <summary>
-        /// Creates the close others option.
-        /// </summary>
-        /// <returns></returns>
-        protected MetroSetToolStripMenuItem CreateSourceOption( )
-        {
-            try
-            {
-                var _item = new MetroSetToolStripMenuItem( );
-                _item.TextAlign = ContentAlignment.BottomCenter;
-                _item.Font = new Font( "Roboto", 9 );
-                _item.Name = MenuItem.Source.ToString( );
-                _item.Size = new Size( 160, 30 );
-                _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
-                _item.Text = $"View {MenuItem.Source}";
-                _item.Tag = MenuItem.Source.ToString( );
-                _item.MouseHover += OnMouseEnter;
-                _item.MouseLeave += OnMouseLeave;
-                _item.MouseDown -= null;
-                Items.Add( _item );
-                return _item;
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-                return default( MetroSetToolStripMenuItem );
-            }
-        }
-
-        /// <summary>
-        /// Creates the exit option.
-        /// </summary>
-        /// <returns>
-        /// MetroSetToolStripMenuItem
-        /// </returns>
-        protected MetroSetToolStripMenuItem CreateExitOption( )
-        {
-            try
-            {
-                var _item = new MetroSetToolStripMenuItem( );
-                _item.TextAlign = ContentAlignment.BottomCenter;
-                _item.Font = new Font( "Roboto", 9 );
-                _item.Name = MenuItem.Exit.ToString( );
-                _item.Size = new Size( 160, 30 );
-                _item.BackColor = Color.FromArgb( 30, 30, 30 );
-                _item.ForeColor = Color.FromArgb( 106, 189, 252 );
-                _item.Text = $"{MenuItem.Exit}";
-                _item.Tag = MenuItem.Exit.ToString( );
-                _item.MouseEnter += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;
                 Items.Add( _item );

@@ -99,8 +99,28 @@ namespace Baby
         Firefox = 10,
 
         /// <summary>
+        /// The calculator
+        /// </summary>
+        Calculator = 11,
+
+        /// <summary>
+        /// The task manager
+        /// </summary>
+        TaskManager = 12,
+
+        /// <summary>
+        /// The control panel
+        /// </summary>
+        ControlPanel = 13,
+
+        /// <summary>
+        /// The one drive
+        /// </summary>
+        OneDrive = 14,
+
+        /// <summary>
         /// The exit
         /// </summary>
-        Exit = 11
+        Exit = 15
     }
 }

@@ -41,6 +41,7 @@ namespace Baby
             LookupButton = new System.Windows.Forms.Button( );
             RefreshButton = new System.Windows.Forms.Button( );
             CloseButton = new System.Windows.Forms.Button( );
+            DomainComboBox = new MetroSet_UI.Controls.MetroSetComboBox( );
             SuspendLayout( );
             // 
             // ToolTip
@@ -66,20 +67,20 @@ namespace Baby
             // 
             KeyWordTextBox.AutoWordSelection = false;
             KeyWordTextBox.BorderColor = System.Drawing.Color.FromArgb( 90, 90, 90 );
-            KeyWordTextBox.DisabledBackColor = System.Drawing.Color.FromArgb( 204, 204, 204 );
-            KeyWordTextBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 155, 155, 155 );
-            KeyWordTextBox.DisabledForeColor = System.Drawing.Color.FromArgb( 136, 136, 136 );
+            KeyWordTextBox.DisabledBackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            KeyWordTextBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            KeyWordTextBox.DisabledForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             KeyWordTextBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             KeyWordTextBox.HoverColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             KeyWordTextBox.HoverText = null;
             KeyWordTextBox.IsDerivedStyle = true;
             KeyWordTextBox.Lines = null;
-            KeyWordTextBox.Location = new System.Drawing.Point( 45, 10 );
+            KeyWordTextBox.Location = new System.Drawing.Point( 12, 12 );
             KeyWordTextBox.MaxLength = 32767;
             KeyWordTextBox.Name = "KeyWordTextBox";
             KeyWordTextBox.Padding = new Padding( 1 );
             KeyWordTextBox.ReadOnly = false;
-            KeyWordTextBox.Size = new System.Drawing.Size( 637, 33 );
+            KeyWordTextBox.Size = new System.Drawing.Size( 487, 67 );
             KeyWordTextBox.Style = MetroSet_UI.Enums.Style.Custom;
             KeyWordTextBox.StyleManager = null;
             KeyWordTextBox.TabIndex = 0;
@@ -96,9 +97,9 @@ namespace Baby
             LookupButton.FlatStyle = FlatStyle.Flat;
             LookupButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             LookupButton.Image = Properties.Resources.SearchPanelLookUpButton;
-            LookupButton.Location = new System.Drawing.Point( 688, 3 );
+            LookupButton.Location = new System.Drawing.Point( 505, 12 );
             LookupButton.Name = "LookupButton";
-            LookupButton.Size = new System.Drawing.Size( 36, 40 );
+            LookupButton.Size = new System.Drawing.Size( 44, 33 );
             LookupButton.TabIndex = 9;
             LookupButton.UseVisualStyleBackColor = false;
             // 
@@ -110,9 +111,9 @@ namespace Baby
             RefreshButton.FlatStyle = FlatStyle.Flat;
             RefreshButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             RefreshButton.Image = Properties.Resources.SearchRefreshButton;
-            RefreshButton.Location = new System.Drawing.Point( 3, 3 );
+            RefreshButton.Location = new System.Drawing.Point( 555, 12 );
             RefreshButton.Name = "RefreshButton";
-            RefreshButton.Size = new System.Drawing.Size( 36, 40 );
+            RefreshButton.Size = new System.Drawing.Size( 48, 33 );
             RefreshButton.TabIndex = 1;
             RefreshButton.UseVisualStyleBackColor = false;
             // 
@@ -124,11 +125,41 @@ namespace Baby
             CloseButton.FlatStyle = FlatStyle.Flat;
             CloseButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             CloseButton.Image = Properties.Resources.SearchCancelButton;
-            CloseButton.Location = new System.Drawing.Point( 730, 3 );
+            CloseButton.Location = new System.Drawing.Point( 609, 13 );
             CloseButton.Name = "CloseButton";
-            CloseButton.Size = new System.Drawing.Size( 36, 40 );
+            CloseButton.Size = new System.Drawing.Size( 53, 32 );
             CloseButton.TabIndex = 3;
             CloseButton.UseVisualStyleBackColor = false;
+            // 
+            // DomainComboBox
+            // 
+            DomainComboBox.AllowDrop = true;
+            DomainComboBox.ArrowColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            DomainComboBox.BackColor = System.Drawing.Color.Transparent;
+            DomainComboBox.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            DomainComboBox.BorderColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            DomainComboBox.CausesValidation = false;
+            DomainComboBox.DisabledBackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            DomainComboBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            DomainComboBox.DisabledForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            DomainComboBox.DrawMode = DrawMode.OwnerDrawFixed;
+            DomainComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            DomainComboBox.FlatStyle = FlatStyle.Flat;
+            DomainComboBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            DomainComboBox.FormattingEnabled = true;
+            DomainComboBox.IsDerivedStyle = true;
+            DomainComboBox.ItemHeight = 22;
+            DomainComboBox.Location = new System.Drawing.Point( 518, 51 );
+            DomainComboBox.MaxDropDownItems = 20;
+            DomainComboBox.Name = "DomainComboBox";
+            DomainComboBox.SelectedItemBackColor = System.Drawing.Color.FromArgb( 65, 177, 225 );
+            DomainComboBox.SelectedItemForeColor = System.Drawing.Color.White;
+            DomainComboBox.Size = new System.Drawing.Size( 144, 28 );
+            DomainComboBox.Style = MetroSet_UI.Enums.Style.Light;
+            DomainComboBox.StyleManager = null;
+            DomainComboBox.TabIndex = 10;
+            DomainComboBox.ThemeAuthor = "Narwin";
+            DomainComboBox.ThemeName = "MetroLite";
             // 
             // SearchDialog
             // 
@@ -142,7 +173,8 @@ namespace Baby
             CaptionButtonHoverColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             CaptionFont = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CaptionForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            ClientSize = new System.Drawing.Size( 771, 51 );
+            ClientSize = new System.Drawing.Size( 666, 89 );
+            Controls.Add( DomainComboBox );
             Controls.Add( LookupButton );
             Controls.Add( RefreshButton );
             Controls.Add( KeyWordTextBox );
@@ -153,10 +185,10 @@ namespace Baby
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject( "$this.Icon" );
             MaximizeBox = false;
-            MaximumSize = new System.Drawing.Size( 783, 62 );
+            MaximumSize = new System.Drawing.Size( 678, 100 );
             MetroColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             MinimizeBox = false;
-            MinimumSize = new System.Drawing.Size( 783, 62 );
+            MinimumSize = new System.Drawing.Size( 678, 100 );
             Name = "SearchDialog";
             ShowIcon = false;
             ShowMaximizeBox = false;
@@ -175,6 +207,7 @@ namespace Baby
         public System.Windows.Forms.Button RefreshButton;
         public RichTextBox KeyWordTextBox;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        public MetroSet_UI.Controls.MetroSetComboBox DomainComboBox;
     }
 
 }

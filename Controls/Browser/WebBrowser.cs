@@ -6,7 +6,7 @@
 //     Last Modified By:        Terry D. Eppler
 //     Last Modified On:        05-01-2024
 // ******************************************************************************************
-// <copyright file="teppler" company="Terry D. Eppler">
+// <copyright file="WebBrowser.cs" company="Terry D. Eppler">
 //    Baby is a small web browser used in a Federal Budget, Finance, and Accounting application
 //    for the  US Environmental Protection Agency (US EPA).
 //    Copyright ©  2024  Terry Eppler
@@ -608,6 +608,10 @@ namespace Baby
                 UrlTextBox.MouseClick += OnRightClick;
                 ContextMenu.MouseLeave += OnContextMenuMouseLeave;
                 SharepointButton.Click += OnSharepointButtonClicked;
+                foreach( ToolStripItem _item in ContextMenu.Items )
+                {
+                    _item.MouseDown += OnContextMenuItemClick;
+                }
             }
             catch( Exception _ex )
             {
@@ -668,7 +672,7 @@ namespace Baby
         /// in the Tag property of the buttons
         /// </summary>
         /// <param name="parent">The parent.</param>
-        public void SetTooltips( Control.ControlCollection parent )
+        public void InitializeTooltips( Control.ControlCollection parent )
         {
             foreach( Control _control in parent )
             {
@@ -685,7 +689,7 @@ namespace Baby
 
                 if( _control is Panel _panel )
                 {
-                    SetTooltips( _panel.Controls );
+                    InitializeTooltips( _panel.Controls );
                 }
             }
         }
@@ -766,17 +770,6 @@ namespace Baby
         }
 
         /// <summary>
-        /// Wires up menu items.
-        /// </summary>
-        private void RegisterMenuCallbacks( )
-        {
-            foreach( ToolStripItem _item in ContextMenu.Items )
-            {
-                _item.MouseDown += OnContextMenuItemClick;
-            }
-        }
-
-        /// <summary>
         /// this is done every time a new tab is opened
         /// </summary>
         /// <param name="browser">
@@ -800,7 +793,7 @@ namespace Baby
         /// <summary>
         /// Notifies this instance.
         /// </summary>
-        private void Notify( )
+        private void SendNotification( )
         {
             try
             {
@@ -1149,16 +1142,25 @@ namespace Baby
         /// <returns></returns>
         private string CleanUrl( string url )
         {
-            if( url.BeginsWith( "about:" ) )
+            try
             {
-                return "";
+                ThrowIf.NullOrEmpty( url, nameof( url ) );
+                if( url.BeginsWith( "about:" ) )
+                {
+                    return "";
+                }
+                
+                url = url.RemovePrefix( "http://" );
+                url = url.RemovePrefix( "https://" );
+                url = url.RemovePrefix( "file://" );
+                url = url.RemovePrefix( "/" );
+                return url.UrlEncode( );
             }
-
-            url = url.RemovePrefix( "http://" );
-            url = url.RemovePrefix( "https://" );
-            url = url.RemovePrefix( "file://" );
-            url = url.RemovePrefix( "/" );
-            return url.UrlEncode( );
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return string.Empty;
+            }
         }
 
         /// <summary>
@@ -1197,7 +1199,16 @@ namespace Baby
         /// </returns>
         private bool IsBlank( string url )
         {
-            return ( url == "" ) || ( url == "about:blank" );
+            try
+            {
+                ThrowIf.NullOrEmpty( url, nameof( url ) );
+                return ( url == "" ) || ( url == "about:blank" );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return false;
+            }
         }
 
         /// <summary>
@@ -1211,8 +1222,17 @@ namespace Baby
         /// </returns>
         private bool IsBlankOrSystem( string url )
         {
-            return ( url == "" ) || url.BeginsWith( "about:" ) || url.BeginsWith( "chrome:" )
-                || url.BeginsWith( AppSettings[ "Internal" ] + ":" );
+            try
+            {
+                ThrowIf.NullOrEmpty( url, nameof( url ) );
+                return ( url == "" ) || url.BeginsWith( "about:" ) || url.BeginsWith( "chrome:" )
+                    || url.BeginsWith( AppSettings[ "Internal" ] + ":" );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return false;
+            }
         }
 
         /// <summary>
@@ -1819,11 +1839,8 @@ namespace Baby
                 InitializeHotkeys( );
                 InitializeLabels( );
                 InitializeTitle( );
-                SetTooltips( Controls );
-                RegisterMenuCallbacks( );
+                InitializeTooltips( Controls );
                 _searchEngineUrl = AppSettings[ "Google" ];
-                Opacity = 0;
-                FadeInAsync( this );
             }
             catch( Exception _ex )
             {
@@ -2585,7 +2602,7 @@ namespace Baby
                         }
                         case MenuItem.Source:
                         {
-                            Notify( );
+                            SendNotification( );
                             break;
                         }
                         case MenuItem.Chrome:

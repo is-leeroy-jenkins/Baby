@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************************
-//     Assembly:             Bbaby
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
 //     Created:                 05-01-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        05-03-2024
+//     Last Modified On:        05-04-2024
 // ******************************************************************************************
 // <copyright file="teppler" company="Terry D. Eppler">
 //    Baby is a small web browser used in a Federal Budget, Finance, and Accounting application for the
@@ -89,9 +89,9 @@ namespace Baby
             RegisterCallbacks( );
             
             // Form Properterties
-            Size = new Size( 783, 64 );
-            MinimumSize = new Size( 783, 64 );
-            MaximumSize = new Size( 783, 64 );
+            Size = new Size( 678, 100 );
+            MinimumSize = new Size( 678, 100 );
+            MaximumSize = new Size( 678, 100 );
             BorderColor = Color.FromArgb( 0, 120, 212 );
             FormBorderStyle = FormBorderStyle.FixedSingle;
             BorderThickness = 1;
@@ -190,7 +190,48 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
+        /// <summary>
+        /// Initializes the ComboBox.
+        /// </summary>
+        private void InitializeComboBox( )
+        {
+            try
+            {
+                DomainComboBox.BackColor = Color.FromArgb( 20, 20, 20 );
+                DomainComboBox.BorderColor = Color.FromArgb( 20, 20, 20 );
+                DomainComboBox.ForeColor = Color.FromArgb( 106, 189, 252 );
+                DomainComboBox.ItemHeight = 22;
+                DomainComboBox.ArrowColor = Color.FromArgb( 0, 120, 212 );
+                DomainComboBox.DisabledBackColor = Color.FromArgb( 20, 20, 20 );
+                DomainComboBox.DisabledForeColor = Color.FromArgb( 20, 20, 20 );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Populates the domain ComboBox.
+        /// </summary>
+        private void PopulateDomainComboBox( )
+        {
+            try
+            {
+                DomainComboBox.Items?.Clear( );
+                var _domains = Enum.GetNames( typeof( Domain ) );
+                foreach( var _item in _domains )
+                {
+                    DomainComboBox.Items.Add( _item );
+                }
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
         /// <summary> Called when [load]. </summary>
         /// <param name="sender">
         /// The sender.
@@ -204,6 +245,8 @@ namespace Baby
             {
                 InitializeTextBox( );
                 InitializeButtons( );
+                InitializeComboBox( );
+                PopulateDomainComboBox( );
             }
             catch( Exception _ex )
             {

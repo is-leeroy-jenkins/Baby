@@ -41,7 +41,7 @@ namespace Baby
             LookupButton = new System.Windows.Forms.Button( );
             RefreshButton = new System.Windows.Forms.Button( );
             CloseButton = new System.Windows.Forms.Button( );
-            DomainComboBox = new MetroSet_UI.Controls.MetroSetComboBox( );
+            ComboBox = new MetroSet_UI.Controls.MetroSetComboBox( );
             SuspendLayout( );
             // 
             // ToolTip
@@ -113,7 +113,7 @@ namespace Baby
             RefreshButton.Image = Properties.Resources.SearchRefreshButton;
             RefreshButton.Location = new System.Drawing.Point( 555, 12 );
             RefreshButton.Name = "RefreshButton";
-            RefreshButton.Size = new System.Drawing.Size( 48, 33 );
+            RefreshButton.Size = new System.Drawing.Size( 44, 33 );
             RefreshButton.TabIndex = 1;
             RefreshButton.UseVisualStyleBackColor = false;
             // 
@@ -127,39 +127,37 @@ namespace Baby
             CloseButton.Image = Properties.Resources.SearchCancelButton;
             CloseButton.Location = new System.Drawing.Point( 609, 13 );
             CloseButton.Name = "CloseButton";
-            CloseButton.Size = new System.Drawing.Size( 53, 32 );
+            CloseButton.Size = new System.Drawing.Size( 44, 33 );
             CloseButton.TabIndex = 3;
             CloseButton.UseVisualStyleBackColor = false;
             // 
-            // DomainComboBox
+            // ComboBox
             // 
-            DomainComboBox.AllowDrop = true;
-            DomainComboBox.ArrowColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            DomainComboBox.BackColor = System.Drawing.Color.Transparent;
-            DomainComboBox.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            DomainComboBox.BorderColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            DomainComboBox.CausesValidation = false;
-            DomainComboBox.DisabledBackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            DomainComboBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            DomainComboBox.DisabledForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            DomainComboBox.DrawMode = DrawMode.OwnerDrawFixed;
-            DomainComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            DomainComboBox.FlatStyle = FlatStyle.Flat;
-            DomainComboBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            DomainComboBox.FormattingEnabled = true;
-            DomainComboBox.IsDerivedStyle = true;
-            DomainComboBox.ItemHeight = 22;
-            DomainComboBox.Location = new System.Drawing.Point( 518, 51 );
-            DomainComboBox.MaxDropDownItems = 20;
-            DomainComboBox.Name = "DomainComboBox";
-            DomainComboBox.SelectedItemBackColor = System.Drawing.Color.FromArgb( 65, 177, 225 );
-            DomainComboBox.SelectedItemForeColor = System.Drawing.Color.White;
-            DomainComboBox.Size = new System.Drawing.Size( 144, 28 );
-            DomainComboBox.Style = MetroSet_UI.Enums.Style.Light;
-            DomainComboBox.StyleManager = null;
-            DomainComboBox.TabIndex = 10;
-            DomainComboBox.ThemeAuthor = "Narwin";
-            DomainComboBox.ThemeName = "MetroLite";
+            ComboBox.AllowDrop = true;
+            ComboBox.ArrowColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            ComboBox.BackColor = System.Drawing.Color.Transparent;
+            ComboBox.BackgroundColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
+            ComboBox.BorderColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
+            ComboBox.CausesValidation = false;
+            ComboBox.DisabledBackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            ComboBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            ComboBox.DisabledForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            ComboBox.DrawMode = DrawMode.OwnerDrawFixed;
+            ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            ComboBox.FormattingEnabled = true;
+            ComboBox.IsDerivedStyle = true;
+            ComboBox.ItemHeight = 20;
+            ComboBox.Location = new System.Drawing.Point( 518, 51 );
+            ComboBox.Name = "ComboBox";
+            ComboBox.SelectedItemBackColor = System.Drawing.Color.FromArgb( 65, 177, 225 );
+            ComboBox.SelectedItemForeColor = System.Drawing.Color.White;
+            ComboBox.Size = new System.Drawing.Size( 136, 26 );
+            ComboBox.Style = MetroSet_UI.Enums.Style.Custom;
+            ComboBox.StyleManager = null;
+            ComboBox.TabIndex = 10;
+            ComboBox.ThemeAuthor = "Narwin";
+            ComboBox.ThemeName = "MetroLite";
             // 
             // SearchDialog
             // 
@@ -174,7 +172,7 @@ namespace Baby
             CaptionFont = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CaptionForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             ClientSize = new System.Drawing.Size( 666, 89 );
-            Controls.Add( DomainComboBox );
+            Controls.Add( ComboBox );
             Controls.Add( LookupButton );
             Controls.Add( RefreshButton );
             Controls.Add( KeyWordTextBox );
@@ -207,7 +205,7 @@ namespace Baby
         public System.Windows.Forms.Button RefreshButton;
         public RichTextBox KeyWordTextBox;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        public MetroSet_UI.Controls.MetroSetComboBox DomainComboBox;
+        private MetroSet_UI.Controls.MetroSetComboBox ComboBox;
     }
 
 }

@@ -169,20 +169,20 @@ namespace Baby
         {
             try
             {
-                CloseButton.Size = new Size( 21, 23 );
+                CloseButton.Size = new Size( 44, 33 );
                 CloseButton.FlatStyle = FlatStyle.Flat;
                 CloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
                 CloseButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
                 CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
-                LookupButton.Size = new Size( 21, 23 );
+                LookupButton.Size = new Size( 44, 33 );
                 LookupButton.FlatStyle = FlatStyle.Flat;
                 LookupButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
                 LookupButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
                 LookupButton.BackColor = Color.FromArgb( 20, 20, 20 );
-                CloseButton.Size = new Size( 21, 23 );
+                CloseButton.Size = new Size( 44, 33 );
                 CloseButton.FlatStyle = FlatStyle.Flat;
                 CloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
-                CloseButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
+                CloseButton.FlatAppearance.MouseOverBackColor = Color.Maroon;
                 CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
             }
             catch( Exception _ex )
@@ -198,13 +198,14 @@ namespace Baby
         {
             try
             {
-                DomainComboBox.BackColor = Color.FromArgb( 20, 20, 20 );
-                DomainComboBox.BorderColor = Color.FromArgb( 20, 20, 20 );
-                DomainComboBox.ForeColor = Color.FromArgb( 106, 189, 252 );
-                DomainComboBox.ItemHeight = 22;
-                DomainComboBox.ArrowColor = Color.FromArgb( 0, 120, 212 );
-                DomainComboBox.DisabledBackColor = Color.FromArgb( 20, 20, 20 );
-                DomainComboBox.DisabledForeColor = Color.FromArgb( 20, 20, 20 );
+                ComboBox.BackColor = Color.FromArgb( 45, 45, 45 );
+                ComboBox.BorderColor = Color.FromArgb( 45, 45, 45 );
+                ComboBox.ForeColor = Color.FromArgb( 106, 189, 252 );
+                var _domains = Enum.GetNames( typeof( Domain ) );
+                foreach( var _item in _domains )
+                {
+                    ComboBox.Items.Add( _item );
+                }
             }
             catch( Exception _ex )
             {
@@ -219,11 +220,10 @@ namespace Baby
         {
             try
             {
-                DomainComboBox.Items?.Clear( );
                 var _domains = Enum.GetNames( typeof( Domain ) );
                 foreach( var _item in _domains )
                 {
-                    DomainComboBox.Items.Add( _item );
+                    ComboBox.Items?.Add( _item );
                 }
             }
             catch( Exception _ex )
@@ -239,14 +239,13 @@ namespace Baby
         /// <param name="e">
         /// instance containing the event data.
         /// </param>
-        public virtual void OnLoad( object sender, EventArgs e )
+        private void OnLoad( object sender, EventArgs e )
         {
             try
             {
                 InitializeTextBox( );
                 InitializeButtons( );
                 InitializeComboBox( );
-                PopulateDomainComboBox( );
             }
             catch( Exception _ex )
             {

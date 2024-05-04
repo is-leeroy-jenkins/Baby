@@ -41,7 +41,7 @@
 
 namespace Baby
 {
-    partial class DialogBase
+    partial class BasicDialog
     {
         /// <summary>
         /// Required designer variable.

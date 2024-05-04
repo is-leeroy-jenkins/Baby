@@ -44,6 +44,7 @@ namespace Baby
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Windows.Forms;
+    using MetroSet_UI.Enums;
     using Syncfusion.Windows.Forms;
     
     /// <summary>
@@ -89,9 +90,9 @@ namespace Baby
             RegisterCallbacks( );
             
             // Form Properterties
-            Size = new Size( 678, 100 );
-            MinimumSize = new Size( 678, 100 );
-            MaximumSize = new Size( 678, 100 );
+            Size = new Size( 667, 84 );
+            MinimumSize = new Size( 667, 84 );
+            MaximumSize = new Size( 667, 84 );
             BorderColor = Color.FromArgb( 0, 120, 212 );
             FormBorderStyle = FormBorderStyle.FixedSingle;
             BorderThickness = 1;
@@ -152,8 +153,7 @@ namespace Baby
                 KeyWordTextBox.BackColor = Color.FromArgb( 30, 30, 30 );
                 KeyWordTextBox.BorderColor = Color.FromArgb( 90, 90, 90 );
                 KeyWordTextBox.HoverColor = Color.FromArgb( 0, 120, 212 );
-                KeyWordTextBox.Size = new Size( 637, 31 );
-                KeyWordTextBox.Font = new Font( "Roboto", 10 );
+                KeyWordTextBox.Font = new Font( "Roboto", 9 );
                 KeyWordTextBox.ForeColor = Color.FromArgb( 106, 189, 252 );
             }
             catch( Exception _ex )
@@ -169,17 +169,14 @@ namespace Baby
         {
             try
             {
-                CloseButton.Size = new Size( 44, 33 );
                 CloseButton.FlatStyle = FlatStyle.Flat;
                 CloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
                 CloseButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
                 CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
-                LookupButton.Size = new Size( 44, 33 );
                 LookupButton.FlatStyle = FlatStyle.Flat;
                 LookupButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
                 LookupButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
                 LookupButton.BackColor = Color.FromArgb( 20, 20, 20 );
-                CloseButton.Size = new Size( 44, 33 );
                 CloseButton.FlatStyle = FlatStyle.Flat;
                 CloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
                 CloseButton.FlatAppearance.MouseOverBackColor = Color.Maroon;
@@ -190,7 +187,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-
+        
         /// <summary>
         /// Initializes the ComboBox.
         /// </summary>
@@ -198,6 +195,7 @@ namespace Baby
         {
             try
             {
+                ComboBox.Style = Style.Custom;
                 ComboBox.BackColor = Color.FromArgb( 45, 45, 45 );
                 ComboBox.BorderColor = Color.FromArgb( 45, 45, 45 );
                 ComboBox.ForeColor = Color.FromArgb( 106, 189, 252 );
@@ -212,7 +210,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-
+        
         /// <summary>
         /// Populates the domain ComboBox.
         /// </summary>
@@ -231,7 +229,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-
+        
         /// <summary> Called when [load]. </summary>
         /// <param name="sender">
         /// The sender.

@@ -52,9 +52,13 @@ namespace Baby
     using System.Windows.Forms;
     using Syncfusion.Windows.Forms;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Syncfusion.Windows.Forms.MetroForm" />
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
-    public partial class DialogBase : MetroForm
+    public partial class BasicDialog : MetroForm
     {
         /// <summary>
         /// The locked object
@@ -141,7 +145,7 @@ namespace Baby
         /// Initializes a new instance of the
         /// <see cref="T:Baby.DialogBase" /> class.
         /// </summary>
-        protected DialogBase( )
+        protected BasicDialog( )
         {
             InitializeComponent( );
         }
@@ -151,7 +155,7 @@ namespace Baby
         /// 
         /// </summary>
         /// <returns></returns>
-        private protected Image GetImage( )
+        private protected Image GetExtensionImage( )
         {
             if( !string.IsNullOrEmpty( _fileExtension ) )
             {
@@ -163,7 +167,10 @@ namespace Baby
                         var _files = Directory.GetFiles( _filePath );
                         if( _files?.Any( ) == true )
                         {
-                            var _ext = _fileExtension.TrimStart( '.' ).ToUpper( );
+                            var _ext = _fileExtension
+                                .TrimStart( '.' )
+                                ?.ToUpper( );
+
                             var _file = _files
                                 ?.Where( f => f.Contains( _ext ) )
                                 ?.First( );

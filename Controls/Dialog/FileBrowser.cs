@@ -60,7 +60,7 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "RedundantExtendsListEntry" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
-    public partial class FileBrowser : DialogBase
+    public partial class FileBrowser : BasicDialog
     {
         /// <summary>
         /// Gets or sets the file extension.
@@ -208,7 +208,7 @@ namespace Baby
             BorderThickness = 1;
             BackColor = Color.FromArgb( 20, 20, 20 );
             RadioButtons = GetRadioButtons( );
-            Picture.Image = GetImage( );
+            Picture.Image = GetExtensionImage( );
             FileList.BackColor = Color.FromArgb( 40, 40, 40 );
             CaptionBarHeight = 5;
             CaptionBarColor = Color.FromArgb( 20, 20, 20 );
@@ -509,7 +509,7 @@ namespace Baby
                     FoundLabel.Text = string.Empty;
                     var _paths = GetListViewPaths( );
                     PopulateListBox( _paths );
-                    Picture.Image = GetImage( );
+                    Picture.Image = GetExtensionImage( );
                     FoundLabel.Text = "Found: " + _paths?.ToList( )?.Count ?? "0";
                 }
                 catch( Exception _ex )

@@ -603,9 +603,9 @@ namespace Baby
                 TabPages.MouseClick += OnRightClick;
                 MenuButton.MouseClick += OnSearchButtonClick;
                 TabPages.TabStripItemClosing += OnTabClosing;
-                TabItem.MouseClick += OnRightClick;
                 Title.MouseClick += OnRightClick;
                 UrlTextBox.MouseClick += OnRightClick;
+                TabItem.MouseClick += OnRightClick;
                 ContextMenu.MouseLeave += OnContextMenuMouseLeave;
                 SharepointButton.Click += OnSharepointButtonClicked;
                 foreach( ToolStripItem _item in ContextMenu.Items )

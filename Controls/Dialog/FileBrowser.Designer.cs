@@ -8,7 +8,7 @@ namespace Baby
     using Syncfusion.Windows.Forms;
 
 
-    partial class FileBrowser : DialogBase
+    partial class FileBrowser : BasicDialog
     {
         /// <summary>
         /// Required designer variable.

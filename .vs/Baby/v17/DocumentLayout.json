@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,18 +46,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WebBrowser.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
-              "RelativeDocumentMoniker": "Controls\\Browser\\WebBrowser.cs",
-              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs [Design]*",
-              "RelativeToolTip": "Controls\\Browser\\WebBrowser.cs [Design]*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T15:53:19.179Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "SearchDialog.cs [Design]",
               "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\SearchDialog.cs",
@@ -65,8 +53,33 @@
               "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\SearchDialog.cs [Design]",
               "RelativeToolTip": "Controls\\Dialog\\SearchDialog.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T15:15:02.914Z",
+              "WhenOpened": "2024-05-04T22:32:48.165Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WebBrowser.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
+              "RelativeDocumentMoniker": "Controls\\Browser\\WebBrowser.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs [Design]",
+              "RelativeToolTip": "Controls\\Browser\\WebBrowser.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T22:19:45.382Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WebBrowser.cs",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
+              "RelativeDocumentMoniker": "Controls\\Browser\\WebBrowser.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
+              "RelativeToolTip": "Controls\\Browser\\WebBrowser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T22:19:40.824Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -76,22 +89,9 @@
               "RelativeDocumentMoniker": "Controls\\Dialog\\SearchDialog.cs",
               "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\SearchDialog.cs",
               "RelativeToolTip": "Controls\\Dialog\\SearchDialog.cs",
-              "ViewState": "AQIAAKEAAAAAAAAAAAAgwK8AAABFAAAA",
+              "ViewState": "AQIAAJUAAAAAAAAAAAAcwJ0AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T15:14:07.105Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WebBrowser.cs",
-              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
-              "RelativeDocumentMoniker": "Controls\\Browser\\WebBrowser.cs",
-              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs*",
-              "RelativeToolTip": "Controls\\Browser\\WebBrowser.cs*",
-              "ViewState": "AQIAAIIIAAAAAAAAAAASwI8IAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T15:13:19.187Z",
+              "WhenOpened": "2024-05-04T21:59:52.988Z",
               "EditorCaption": ""
             }
           ]

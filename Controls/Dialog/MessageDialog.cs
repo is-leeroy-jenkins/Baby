@@ -50,6 +50,7 @@ namespace Baby
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
     public partial class MessageDialog : MetroForm
     {
         /// <inheritdoc />
@@ -131,7 +132,7 @@ namespace Baby
         /// <param name="e">
         /// instance containing the event data.
         /// </param>
-        public virtual void OnLoad( object sender, EventArgs e )
+        public void OnLoad( object sender, EventArgs e )
         {
             try
             {
@@ -154,13 +155,60 @@ namespace Baby
         /// <see cref="EventArgs"/>
         /// instance containing the event data.
         /// </param>
-        public virtual void OnCloseButtonClick( object sender, EventArgs e )
+        public void OnCloseButtonClick( object sender, EventArgs e )
         {
             if( sender is Button _button
                && !string.IsNullOrEmpty( _button?.Name ) )
             {
                 try
                 {
+                    DialogResult = DialogResult.Ignore;
+                    Close( );
+                }
+                catch( Exception _ex )
+                {
+                    Fail( _ex );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when [select button click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        public void OnSelectButtonClick( object sender, EventArgs e )
+        {
+            if( sender is Button _button
+               && !string.IsNullOrEmpty( _button?.Name ) )
+            {
+                try
+                {
+                    DialogResult = DialogResult.OK;
+                    Close( );
+                }
+                catch( Exception _ex )
+                {
+                    Fail( _ex );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Called when [cancel button click].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
+        public void OnCancelButtonClick( object sender, EventArgs e )
+        {
+            if( sender is Button _button
+               && !string.IsNullOrEmpty( _button?.Name ) )
+            {
+                try
+                {
+                    DialogResult = DialogResult.Cancel;
                     Close( );
                 }
                 catch( Exception _ex )

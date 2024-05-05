@@ -83,6 +83,7 @@
             PictureBox = new ImageBox( );
             UrlTextBoxTable = new System.Windows.Forms.TableLayoutPanel( );
             MenuButton = new System.Windows.Forms.Button( );
+            button1 = new System.Windows.Forms.Button( );
             UrlTextBox = new TextBox( );
             UrlSearchPanel = new Layout( );
             ContextMenu = new ContextMenu( );
@@ -366,7 +367,7 @@
             ToolStripDomainComboBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ToolStripDomainComboBox.ForeColor = System.Drawing.Color.FromArgb( 38, 38, 38 );
             ToolStripDomainComboBox.HoverText = "Select Domains";
-            ToolStripDomainComboBox.Items.AddRange( new object[ ] { "Google", "EPA", "CRS", "LOC", "GPO", "GovInfo", "OMB", "Treasury", "NASA", "NOAA", "GitHub", "NuGet", "PyPI" } );
+            ToolStripDomainComboBox.Items.AddRange( new object[ ] { "Google", "EPA ", "DATA  ", "GPO ", "USGI ", "CRS ", "LOC ", "OMB ", "UST ", "NASA ", "NOAA ", "DOI ", "NPS ", "GSA ", "NARA ", "DOC", "HHS", "NRC", "DOE", "NSF", "USDA", "CSB", "IRS", "FDA", "CDC", "ACE", "DHS", "DOD", "USNO", "NWS" } );
             ToolStripDomainComboBox.MaxLength = 32767;
             ToolStripDomainComboBox.MetroColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             ToolStripDomainComboBox.Name = "ToolStripDomainComboBox";
@@ -462,7 +463,7 @@
             ToolStripKeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             ToolStripKeyWordTextBox.Name = "ToolStripKeyWordTextBox";
             ToolStripKeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 198, 25 );
+            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 188, 25 );
             ToolStripKeyWordTextBox.Tag = "";
             ToolStripKeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             ToolStripKeyWordTextBox.ToolTip = ToolTip;
@@ -838,10 +839,11 @@
             // UrlTextBoxTable
             // 
             UrlTextBoxTable.ColumnCount = 3;
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 3.43283582F ) );
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 96.56716F ) );
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 51F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 3.57643747F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 96.42356F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 59F ) );
             UrlTextBoxTable.Controls.Add( MenuButton, 2, 0 );
+            UrlTextBoxTable.Controls.Add( button1, 0, 0 );
             UrlTextBoxTable.Controls.Add( UrlTextBox, 1, 0 );
             UrlTextBoxTable.Dock = System.Windows.Forms.DockStyle.Fill;
             UrlTextBoxTable.Location = new System.Drawing.Point( 1, 1 );
@@ -859,11 +861,27 @@
             MenuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
             MenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             MenuButton.Image = Properties.Resources.MenulLabel;
-            MenuButton.Location = new System.Drawing.Point( 1437, 6 );
+            MenuButton.Location = new System.Drawing.Point( 1429, 6 );
             MenuButton.Name = "MenuButton";
+            MenuButton.Padding = new System.Windows.Forms.Padding( 5 );
             MenuButton.Size = new System.Drawing.Size( 26, 28 );
             MenuButton.TabIndex = 0;
             MenuButton.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
+            button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button1.Image = Properties.Resources.SearchPanelHomeButton;
+            button1.Location = new System.Drawing.Point( 22, 6 );
+            button1.Name = "button1";
+            button1.Padding = new System.Windows.Forms.Padding( 5 );
+            button1.Size = new System.Drawing.Size( 26, 28 );
+            button1.TabIndex = 1;
+            button1.UseVisualStyleBackColor = true;
             // 
             // UrlTextBox
             // 
@@ -881,7 +899,7 @@
             UrlTextBox.Image = null;
             UrlTextBox.IsDerivedStyle = true;
             UrlTextBox.Lines = null;
-            UrlTextBox.Location = new System.Drawing.Point( 60, 5 );
+            UrlTextBox.Location = new System.Drawing.Point( 56, 5 );
             UrlTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             UrlTextBox.MaxLength = 32767;
             UrlTextBox.Multiline = false;
@@ -889,7 +907,7 @@
             UrlTextBox.Padding = new System.Windows.Forms.Padding( 0, 10, 0, 0 );
             UrlTextBox.ReadOnly = false;
             UrlTextBox.SelectionLength = 0;
-            UrlTextBox.Size = new System.Drawing.Size( 1362, 30 );
+            UrlTextBox.Size = new System.Drawing.Size( 1365, 30 );
             UrlTextBox.Style = MetroSet_UI.Enums.Style.Custom;
             UrlTextBox.StyleManager = null;
             UrlTextBox.TabIndex = 0;
@@ -1053,6 +1071,7 @@
         public ToolSeparator ProgressSeparator;
         public ToolStripLabel StatusSpacer;
         public TextBox UrlTextBox;
+        public System.Windows.Forms.Button button1;
     }
 }
 

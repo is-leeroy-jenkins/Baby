@@ -52,6 +52,7 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "ReplaceSubstringWithRangeIndexer" ) ]
     [ SuppressMessage( "ReSharper", "ExpressionIsAlwaysNull" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
     public static class WebUtils
     {
         /// <summary>
@@ -313,7 +314,16 @@ namespace Baby
         /// <returns></returns>
         public static bool FileNotExists( this string path )
         {
-            return !File.Exists( path );
+            try
+            {
+                ThrowIf.NullOrEmpty( path, nameof( path ) );
+                return !File.Exists( path );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return false;
+            }
         }
 
         /// <summary>
@@ -393,7 +403,16 @@ namespace Baby
         /// </returns>
         public static bool IsBitMaskOn( this int num, int bitMask )
         {
-            return ( num & bitMask ) != 0;
+            try
+            {
+                ThrowIf.Negative( bitMask, nameof( bitMask ) );
+                return ( num & bitMask ) != 0;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return false;
+            }
         }
 
         /// <summary>
@@ -406,22 +425,31 @@ namespace Baby
         public static bool BeginsWith( this string str, string beginsWith,
             bool caseSensitive = true )
         {
-            if( beginsWith.Length > str.Length )
+            try
             {
+                ThrowIf.NullOrEmpty( beginsWith, nameof( beginsWith ) );
+                if( beginsWith.Length > str.Length )
+                {
+                    return false;
+                }
+                
+                if( beginsWith.Length == str.Length )
+                {
+                    return String.Equals( beginsWith, str, caseSensitive
+                        ? StringComparison.Ordinal
+                        : StringComparison.OrdinalIgnoreCase );
+                }
+                
+                return str.LastIndexOf( beginsWith, beginsWith.Length - 1, caseSensitive
+                        ? StringComparison.Ordinal
+                        : StringComparison.OrdinalIgnoreCase )
+                    == 0;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
                 return false;
             }
-
-            if( beginsWith.Length == str.Length )
-            {
-                return String.Equals( beginsWith, str, caseSensitive
-                    ? StringComparison.Ordinal
-                    : StringComparison.OrdinalIgnoreCase );
-            }
-
-            return str.LastIndexOf( beginsWith, beginsWith.Length - 1, caseSensitive
-                    ? StringComparison.Ordinal
-                    : StringComparison.OrdinalIgnoreCase )
-                == 0;
         }
 
         /// <summary>
@@ -434,9 +462,31 @@ namespace Baby
         public static string RemovePrefix( this string str, string prefix,
             bool caseSensitive = true )
         {
-            return ( str.Length >= prefix.Length ) && str.BeginsWith( prefix, caseSensitive )
-                ? str.Substring( prefix.Length )
-                : str;
+            try
+            {
+                ThrowIf.NullOrEmpty( prefix, nameof( prefix ) );
+                return ( str.Length >= prefix.Length ) && str.BeginsWith( prefix, caseSensitive )
+                    ? str.Substring( prefix.Length )
+                    : str;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// Get ErrorDialog Dialog.
+        /// </summary>
+        /// <param name="ex">
+        /// The ex.
+        /// </param>
+        private static void Fail( Exception ex )
+        {
+            using var _error = new ErrorDialog( ex );
+            _error?.SetText( );
+            _error?.ShowDialog( );
         }
     }
 }

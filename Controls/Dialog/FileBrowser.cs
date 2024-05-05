@@ -254,7 +254,7 @@ namespace Baby
             {
                 CloseButton.Click += OnCloseButtonClicked;
                 FileList.SelectedValueChanged += OnPathSelected;
-                FindButton.Click += OnBrowseButtonClicked;
+                BrowseButton.Click += OnBrowseButtonClicked;
             }
             catch( Exception _ex )
             {
@@ -467,7 +467,8 @@ namespace Baby
         /// Called when [load].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         public void OnLoad( object sender, EventArgs e )
         {
             if( _filePaths?.Any( ) == true )
@@ -492,7 +493,7 @@ namespace Baby
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name = "e" > </param>
-        private protected virtual void OnRadioButtonSelected( object sender, EventArgs e )
+        private protected void OnRadioButtonSelected( object sender, EventArgs e )
         {
             if( sender is RadioButton _radioButton
                && !string.IsNullOrEmpty( _radioButton.Tag?.ToString( ) ) )
@@ -523,7 +524,7 @@ namespace Baby
         /// Called when [path selected].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        private protected virtual void OnPathSelected( object sender )
+        private protected void OnPathSelected( object sender )
         {
             if( sender is ListBox _listBox
                && !string.IsNullOrEmpty( _listBox.SelectedItem?.ToString( ) ) )
@@ -545,7 +546,7 @@ namespace Baby
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private protected virtual void OnBrowseButtonClicked( object sender, EventArgs e )
+        private protected void OnBrowseButtonClicked( object sender, EventArgs e )
         {
             if( sender is Button )
             {
@@ -558,7 +559,7 @@ namespace Baby
                     FileDialog.Multiselect = false;
                     var _ext = _fileExtension.ToLower( );
                     FileDialog.Filter = $@"File Extension | *{_ext}";
-                    FileDialog.Title = $@"SaveAs Directories for *{_ext} files...";
+                    FileDialog.Title = $@"Search Directories for *{_ext} files...";
                     FileDialog.InitialDirectory = GetFolderPath( SpecialFolder.DesktopDirectory );
                     FileDialog.ShowDialog( );
                     var _selection = FileDialog.FileName;
@@ -579,12 +580,13 @@ namespace Baby
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private protected virtual void OnCloseButtonClicked( object sender, EventArgs e )
+        private protected void OnCloseButtonClicked( object sender, EventArgs e )
         {
             if( sender is Button )
             {
                 try
                 {
+                    DialogResult = DialogResult.Cancel;
                     Close( );
                 }
                 catch( Exception _ex )

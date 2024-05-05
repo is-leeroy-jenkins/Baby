@@ -44,6 +44,8 @@ namespace Baby
             ButtonTable = new TableLayoutPanel( );
             ControlTable = new TableLayoutPanel( );
             DialogKeyWordTextBox = new System.Windows.Forms.RichTextBox( );
+            KeyWordLabel = new Label( );
+            DomainLabel = new Label( );
             ButtonTable.SuspendLayout( );
             ControlTable.SuspendLayout( );
             SuspendLayout( );
@@ -73,7 +75,7 @@ namespace Baby
             DialogLookupButton.DialogResult = DialogResult.OK;
             DialogLookupButton.Dock = DockStyle.Fill;
             DialogLookupButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            DialogLookupButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            DialogLookupButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 18, 79, 17 );
             DialogLookupButton.FlatStyle = FlatStyle.Flat;
             DialogLookupButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             DialogLookupButton.Image = Properties.Resources.SearchPanelLookUpButton;
@@ -81,7 +83,7 @@ namespace Baby
             DialogLookupButton.Margin = new Padding( 1 );
             DialogLookupButton.Name = "DialogLookupButton";
             DialogLookupButton.Padding = new Padding( 5 );
-            DialogLookupButton.Size = new System.Drawing.Size( 39, 32 );
+            DialogLookupButton.Size = new System.Drawing.Size( 39, 29 );
             DialogLookupButton.TabIndex = 9;
             DialogLookupButton.Tag = "Begin Search";
             DialogLookupButton.UseVisualStyleBackColor = false;
@@ -100,7 +102,7 @@ namespace Baby
             DialogRefreshButton.Margin = new Padding( 1 );
             DialogRefreshButton.Name = "DialogRefreshButton";
             DialogRefreshButton.Padding = new Padding( 5 );
-            DialogRefreshButton.Size = new System.Drawing.Size( 35, 32 );
+            DialogRefreshButton.Size = new System.Drawing.Size( 35, 29 );
             DialogRefreshButton.TabIndex = 1;
             DialogRefreshButton.Tag = "Clear Search";
             DialogRefreshButton.UseVisualStyleBackColor = false;
@@ -119,7 +121,7 @@ namespace Baby
             DialogCloseButton.Margin = new Padding( 1 );
             DialogCloseButton.Name = "DialogCloseButton";
             DialogCloseButton.Padding = new Padding( 5 );
-            DialogCloseButton.Size = new System.Drawing.Size( 46, 32 );
+            DialogCloseButton.Size = new System.Drawing.Size( 46, 29 );
             DialogCloseButton.TabIndex = 3;
             DialogCloseButton.Tag = "Cancel Search";
             DialogCloseButton.UseVisualStyleBackColor = false;
@@ -142,8 +144,8 @@ namespace Baby
             DialogDomainComboBox.FormattingEnabled = true;
             DialogDomainComboBox.IsDerivedStyle = true;
             DialogDomainComboBox.ItemHeight = 20;
-            DialogDomainComboBox.Items.AddRange( new object[ ] { "Google", "EPA", "CRS", "LOC", "GPO", "GovInfo", "OMB", "Treasury", "NASA", "NOAA" } );
-            DialogDomainComboBox.Location = new System.Drawing.Point( 522, 44 );
+            DialogDomainComboBox.Items.AddRange( new object[ ] { "Google", "EPA ", "DATA  ", "GPO ", "USGI ", "CRS ", "LOC ", "OMB ", "UST ", "NASA ", "NOAA ", "DOI ", "NPS ", "GSA ", "NARA ", "DOC", "HHS", "NRC", "DOE", "NSF", "USDA", "CSB", "IRS", "FDA", "CDC", "ACE", "DHS", "DOD", "USNO", "NWS" } );
+            DialogDomainComboBox.Location = new System.Drawing.Point( 433, 41 );
             DialogDomainComboBox.Name = "DialogDomainComboBox";
             DialogDomainComboBox.SelectedItemBackColor = System.Drawing.Color.FromArgb( 65, 177, 225 );
             DialogDomainComboBox.SelectedItemForeColor = System.Drawing.Color.White;
@@ -168,7 +170,7 @@ namespace Baby
             ButtonTable.Name = "ButtonTable";
             ButtonTable.RowCount = 1;
             ButtonTable.RowStyles.Add( new RowStyle( SizeType.Percent, 50F ) );
-            ButtonTable.Size = new System.Drawing.Size( 126, 34 );
+            ButtonTable.Size = new System.Drawing.Size( 126, 31 );
             ButtonTable.TabIndex = 11;
             // 
             // ControlTable
@@ -176,26 +178,66 @@ namespace Baby
             ControlTable.ColumnCount = 1;
             ControlTable.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 100F ) );
             ControlTable.Controls.Add( ButtonTable, 0, 0 );
-            ControlTable.Location = new System.Drawing.Point( 522, 0 );
+            ControlTable.Location = new System.Drawing.Point( 433, 0 );
             ControlTable.Margin = new Padding( 1 );
             ControlTable.Name = "ControlTable";
             ControlTable.RowCount = 1;
             ControlTable.RowStyles.Add( new RowStyle( SizeType.Percent, 100F ) );
             ControlTable.RowStyles.Add( new RowStyle( SizeType.Absolute, 20F ) );
-            ControlTable.Size = new System.Drawing.Size( 132, 40 );
+            ControlTable.Size = new System.Drawing.Size( 132, 37 );
             ControlTable.TabIndex = 12;
             // 
             // DialogKeyWordTextBox
             // 
             DialogKeyWordTextBox.BackColor = System.Drawing.Color.FromArgb( 34, 34, 34 );
             DialogKeyWordTextBox.BorderStyle = BorderStyle.None;
-            DialogKeyWordTextBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            DialogKeyWordTextBox.Font = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             DialogKeyWordTextBox.ForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
-            DialogKeyWordTextBox.Location = new System.Drawing.Point( 5, 4 );
+            DialogKeyWordTextBox.Location = new System.Drawing.Point( 12, 41 );
             DialogKeyWordTextBox.Name = "DialogKeyWordTextBox";
-            DialogKeyWordTextBox.Size = new System.Drawing.Size( 496, 66 );
+            DialogKeyWordTextBox.Size = new System.Drawing.Size( 397, 26 );
             DialogKeyWordTextBox.TabIndex = 13;
             DialogKeyWordTextBox.Text = "";
+            // 
+            // KeyWordLabel
+            // 
+            KeyWordLabel.FlatStyle = FlatStyle.Flat;
+            KeyWordLabel.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            KeyWordLabel.HoverText = null;
+            KeyWordLabel.IsDerivedStyle = true;
+            KeyWordLabel.Location = new System.Drawing.Point( 12, 11 );
+            KeyWordLabel.Margin = new Padding( 3 );
+            KeyWordLabel.Name = "KeyWordLabel";
+            KeyWordLabel.Padding = new Padding( 1 );
+            KeyWordLabel.Size = new System.Drawing.Size( 254, 23 );
+            KeyWordLabel.Style = MetroSet_UI.Enums.Style.Custom;
+            KeyWordLabel.StyleManager = null;
+            KeyWordLabel.TabIndex = 14;
+            KeyWordLabel.Text = "Key Words:";
+            KeyWordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            KeyWordLabel.ThemeAuthor = "Terry D. Eppler";
+            KeyWordLabel.ThemeName = "Baby";
+            KeyWordLabel.ToolTip = null;
+            // 
+            // DomainLabel
+            // 
+            DomainLabel.FlatStyle = FlatStyle.Flat;
+            DomainLabel.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            DomainLabel.HoverText = null;
+            DomainLabel.IsDerivedStyle = true;
+            DomainLabel.Location = new System.Drawing.Point( 281, 11 );
+            DomainLabel.Margin = new Padding( 3 );
+            DomainLabel.Name = "DomainLabel";
+            DomainLabel.Padding = new Padding( 1 );
+            DomainLabel.Size = new System.Drawing.Size( 128, 23 );
+            DomainLabel.Style = MetroSet_UI.Enums.Style.Custom;
+            DomainLabel.StyleManager = null;
+            DomainLabel.TabIndex = 15;
+            DomainLabel.Text = "Domain:";
+            DomainLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            DomainLabel.ThemeAuthor = "Terry D. Eppler";
+            DomainLabel.ThemeName = "Baby";
+            DomainLabel.ToolTip = null;
             // 
             // SearchDialog
             // 
@@ -209,7 +251,9 @@ namespace Baby
             CaptionButtonHoverColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             CaptionFont = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CaptionForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
-            ClientSize = new System.Drawing.Size( 655, 73 );
+            ClientSize = new System.Drawing.Size( 569, 79 );
+            Controls.Add( DomainLabel );
+            Controls.Add( KeyWordLabel );
             Controls.Add( DialogKeyWordTextBox );
             Controls.Add( ControlTable );
             Controls.Add( DialogDomainComboBox );
@@ -219,10 +263,10 @@ namespace Baby
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject( "$this.Icon" );
             MaximizeBox = false;
-            MaximumSize = new System.Drawing.Size( 667, 84 );
+            MaximumSize = new System.Drawing.Size( 581, 90 );
             MetroColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             MinimizeBox = false;
-            MinimumSize = new System.Drawing.Size( 667, 84 );
+            MinimumSize = new System.Drawing.Size( 581, 90 );
             Name = "SearchDialog";
             ShowIcon = false;
             ShowMaximizeBox = false;
@@ -246,6 +290,8 @@ namespace Baby
         public TableLayoutPanel ControlTable;
         public MetroSet_UI.Controls.MetroSetComboBox DialogDomainComboBox;
         public System.Windows.Forms.RichTextBox DialogKeyWordTextBox;
+        public Label KeyWordLabel;
+        public Label DomainLabel;
     }
 
 }

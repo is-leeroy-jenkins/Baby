@@ -36,7 +36,7 @@ namespace Baby
         private void InitializeComponent( )
         {
             components = new Container( );
-            var resources = new ComponentResourceManager( typeof( Message ) );
+            var resources = new ComponentResourceManager( typeof( MessageDialog ) );
             BindingSource = new BindingSource( components );
             ToolTip = new ToolTip( );
             CloseButton = new Button( );
@@ -46,8 +46,10 @@ namespace Baby
             BackPanel = new Layout( );
             TextBox = new RichTextBox( );
             TitleTable = new TableLayoutPanel( );
-            ( (ISupportInitialize) BindingSource  ).BeginInit( );
-            ( (ISupportInitialize) Picture  ).BeginInit( );
+            SelectButton = new Button( );
+            CancelButton = new Button( );
+            ( (ISupportInitialize)BindingSource ).BeginInit( );
+            ( (ISupportInitialize)Picture ).BeginInit( );
             BackPanel.SuspendLayout( );
             TitleTable.SuspendLayout( );
             SuspendLayout( );
@@ -55,7 +57,7 @@ namespace Baby
             // ToolTip
             // 
             ToolTip.AutoPopDelay = 5000;
-            ToolTip.BackColor = System.Drawing.Color.FromArgb(   5  ,   5  ,   5   );
+            ToolTip.BackColor = System.Drawing.Color.FromArgb( 5, 5, 5 );
             ToolTip.BorderColor = System.Drawing.SystemColors.Highlight;
             ToolTip.ForeColor = System.Drawing.Color.White;
             ToolTip.InitialDelay = 500;
@@ -78,21 +80,21 @@ namespace Baby
             CloseButton.DisabledBorderColor = System.Drawing.Color.Transparent;
             CloseButton.DisabledForeColor = System.Drawing.Color.Transparent;
             CloseButton.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            CloseButton.ForeColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            CloseButton.HoverBorderColor = System.Drawing.Color.FromArgb(   50  ,   93  ,   129   );
-            CloseButton.HoverColor = System.Drawing.Color.FromArgb(   17  ,   53  ,   84   );
+            CloseButton.ForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CloseButton.HoverBorderColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            CloseButton.HoverColor = System.Drawing.Color.FromArgb( 17, 53, 84 );
             CloseButton.HoverText = null;
             CloseButton.HoverTextColor = System.Drawing.Color.White;
             CloseButton.IsDerivedStyle = true;
-            CloseButton.Location = new System.Drawing.Point( 601, 354 );
+            CloseButton.Location = new System.Drawing.Point( 580, 354 );
             CloseButton.Margin = new Padding( 0 );
             CloseButton.Name = "CloseButton";
             CloseButton.NormalBorderColor = System.Drawing.Color.Transparent;
             CloseButton.NormalColor = System.Drawing.Color.Transparent;
-            CloseButton.NormalTextColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            CloseButton.NormalTextColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             CloseButton.Padding = new Padding( 1 );
-            CloseButton.PressBorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            CloseButton.PressColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            CloseButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CloseButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             CloseButton.PressTextColor = System.Drawing.Color.White;
             CloseButton.Size = new System.Drawing.Size( 78, 26 );
             CloseButton.Style = MetroSet_UI.Enums.Style.Custom;
@@ -105,7 +107,7 @@ namespace Baby
             // 
             // Label
             // 
-            Label.Anchor =    AnchorStyles.Top  |  AnchorStyles.Left   |  AnchorStyles.Right  ;
+            Label.Anchor =   AnchorStyles.Top  |  AnchorStyles.Left   |  AnchorStyles.Right ;
             Label.FlatStyle = FlatStyle.Flat;
             Label.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             Label.HoverText = null;
@@ -126,11 +128,11 @@ namespace Baby
             // Picture
             // 
             Picture.BackColor = System.Drawing.Color.Transparent;
-            Picture.Image = Properties.Resources.Message;
+            Picture.Image = Properties.Resources.BabyBrowser;
             Picture.Location = new System.Drawing.Point( 3, 3 );
             Picture.Name = "Picture";
             Picture.Padding = new Padding( 1 );
-            Picture.Size = new System.Drawing.Size( 20, 20 );
+            Picture.Size = new System.Drawing.Size( 20, 18 );
             Picture.SizeMode = PictureBoxSizeMode.StretchImage;
             Picture.TabIndex = 13;
             Picture.TabStop = false;
@@ -138,7 +140,7 @@ namespace Baby
             // Header
             // 
             Header.FlatStyle = FlatStyle.Flat;
-            Header.Font = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point );
+            Header.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             Header.HoverText = null;
             Header.IsDerivedStyle = true;
             Header.Location = new System.Drawing.Point( 43, 3 );
@@ -149,7 +151,7 @@ namespace Baby
             Header.Style = MetroSet_UI.Enums.Style.Custom;
             Header.StyleManager = null;
             Header.TabIndex = 14;
-            Header.Text = "Budget Browser Message";
+            Header.Text = "Baby Message";
             Header.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             Header.ThemeAuthor = "Terry D. Eppler";
             Header.ThemeName = "Baby";
@@ -158,8 +160,8 @@ namespace Baby
             // BackPanel
             // 
             BackPanel.BackColor = System.Drawing.Color.Transparent;
-            BackPanel.BackgroundColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            BackPanel.BorderColor = System.Drawing.Color.FromArgb(   65  ,   65  ,   65   );
+            BackPanel.BackgroundColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            BackPanel.BorderColor = System.Drawing.Color.FromArgb( 65, 65, 65 );
             BackPanel.BorderThickness = 1;
             BackPanel.Children = null;
             BackPanel.Controls.Add( TextBox );
@@ -168,10 +170,10 @@ namespace Baby
             BackPanel.ForeColor = System.Drawing.Color.Transparent;
             BackPanel.HoverText = null;
             BackPanel.IsDerivedStyle = true;
-            BackPanel.Location = new System.Drawing.Point( 70, 77 );
+            BackPanel.Location = new System.Drawing.Point( 43, 60 );
             BackPanel.Name = "BackPanel";
             BackPanel.Padding = new Padding( 1 );
-            BackPanel.Size = new System.Drawing.Size( 542, 229 );
+            BackPanel.Size = new System.Drawing.Size( 615, 246 );
             BackPanel.Style = MetroSet_UI.Enums.Style.Custom;
             BackPanel.StyleManager = null;
             BackPanel.TabIndex = 15;
@@ -182,21 +184,21 @@ namespace Baby
             // TextBox
             // 
             TextBox.AutoWordSelection = false;
-            TextBox.BorderColor = System.Drawing.Color.FromArgb(   55  ,   55  ,   55   );
-            TextBox.DisabledBackColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            TextBox.DisabledBorderColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            TextBox.DisabledForeColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            TextBox.BorderColor = System.Drawing.Color.FromArgb( 55, 55, 55 );
+            TextBox.DisabledBackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            TextBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            TextBox.DisabledForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             TextBox.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            TextBox.HoverColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            TextBox.HoverColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             TextBox.HoverText = null;
             TextBox.IsDerivedStyle = true;
             TextBox.Lines = null;
-            TextBox.Location = new System.Drawing.Point( 33, 24 );
+            TextBox.Location = new System.Drawing.Point( 33, 38 );
             TextBox.MaxLength = 32767;
             TextBox.Name = "TextBox";
             TextBox.Padding = new Padding( 1 );
             TextBox.ReadOnly = false;
-            TextBox.Size = new System.Drawing.Size( 478, 175 );
+            TextBox.Size = new System.Drawing.Size( 553, 168 );
             TextBox.Style = MetroSet_UI.Enums.Style.Custom;
             TextBox.StyleManager = null;
             TextBox.TabIndex = 0;
@@ -221,19 +223,85 @@ namespace Baby
             TitleTable.Size = new System.Drawing.Size( 688, 28 );
             TitleTable.TabIndex = 16;
             // 
-            // Message
+            // SelectButton
+            // 
+            SelectButton.BackColor = System.Drawing.Color.Transparent;
+            SelectButton.DisabledBackColor = System.Drawing.Color.Transparent;
+            SelectButton.DisabledBorderColor = System.Drawing.Color.Transparent;
+            SelectButton.DisabledForeColor = System.Drawing.Color.Transparent;
+            SelectButton.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            SelectButton.ForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SelectButton.HoverBorderColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            SelectButton.HoverColor = System.Drawing.Color.FromArgb( 17, 53, 84 );
+            SelectButton.HoverText = null;
+            SelectButton.HoverTextColor = System.Drawing.Color.White;
+            SelectButton.IsDerivedStyle = true;
+            SelectButton.Location = new System.Drawing.Point( 308, 354 );
+            SelectButton.Margin = new Padding( 0 );
+            SelectButton.Name = "SelectButton";
+            SelectButton.NormalBorderColor = System.Drawing.Color.Transparent;
+            SelectButton.NormalColor = System.Drawing.Color.Transparent;
+            SelectButton.NormalTextColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SelectButton.Padding = new Padding( 1 );
+            SelectButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SelectButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SelectButton.PressTextColor = System.Drawing.Color.White;
+            SelectButton.Size = new System.Drawing.Size( 78, 26 );
+            SelectButton.Style = MetroSet_UI.Enums.Style.Custom;
+            SelectButton.StyleManager = null;
+            SelectButton.TabIndex = 17;
+            SelectButton.Text = "Ok";
+            SelectButton.ThemeAuthor = "Terry D. Eppler";
+            SelectButton.ThemeName = "Baby";
+            SelectButton.ToolTip = ToolTip;
+            // 
+            // CancelButton
+            // 
+            CancelButton.BackColor = System.Drawing.Color.Transparent;
+            CancelButton.DisabledBackColor = System.Drawing.Color.Transparent;
+            CancelButton.DisabledBorderColor = System.Drawing.Color.Transparent;
+            CancelButton.DisabledForeColor = System.Drawing.Color.Transparent;
+            CancelButton.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            CancelButton.ForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CancelButton.HoverBorderColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            CancelButton.HoverColor = System.Drawing.Color.FromArgb( 17, 53, 84 );
+            CancelButton.HoverText = null;
+            CancelButton.HoverTextColor = System.Drawing.Color.White;
+            CancelButton.IsDerivedStyle = true;
+            CancelButton.Location = new System.Drawing.Point( 43, 354 );
+            CancelButton.Margin = new Padding( 0 );
+            CancelButton.Name = "CancelButton";
+            CancelButton.NormalBorderColor = System.Drawing.Color.Transparent;
+            CancelButton.NormalColor = System.Drawing.Color.Transparent;
+            CancelButton.NormalTextColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CancelButton.Padding = new Padding( 1 );
+            CancelButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CancelButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CancelButton.PressTextColor = System.Drawing.Color.White;
+            CancelButton.Size = new System.Drawing.Size( 78, 26 );
+            CancelButton.Style = MetroSet_UI.Enums.Style.Custom;
+            CancelButton.StyleManager = null;
+            CancelButton.TabIndex = 18;
+            CancelButton.Text = "Cancel";
+            CancelButton.ThemeAuthor = "Terry D. Eppler";
+            CancelButton.ThemeName = "Baby";
+            CancelButton.ToolTip = ToolTip;
+            // 
+            // MessageDialog
             // 
             AutoScaleMode = AutoScaleMode.Inherit;
             AutoSize = true;
-            BackColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            BorderColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
-            CaptionBarColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CaptionBarColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             CaptionBarHeight = 5;
-            CaptionButtonColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
-            CaptionButtonHoverColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            CaptionButtonColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            CaptionButtonHoverColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             CaptionFont = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            CaptionForeColor = System.Drawing.Color.FromArgb(   0  ,   120  ,   212   );
+            CaptionForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             ClientSize = new System.Drawing.Size( 688, 389 );
+            Controls.Add( CancelButton );
+            Controls.Add( SelectButton );
             Controls.Add( TitleTable );
             Controls.Add( BackPanel );
             Controls.Add( Label );
@@ -242,19 +310,19 @@ namespace Baby
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ForeColor = System.Drawing.Color.LightSteelBlue;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Icon = (System.Drawing.Icon) resources.GetObject( "$this.Icon" ) ;
+            Icon = (System.Drawing.Icon)resources.GetObject( "$this.Icon" );
             MaximizeBox = false;
             MaximumSize = new System.Drawing.Size( 700, 400 );
-            MetroColor = System.Drawing.Color.FromArgb(   20  ,   20  ,   20   );
+            MetroColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             MinimizeBox = false;
             MinimumSize = new System.Drawing.Size( 700, 400 );
-            Name = "Message";
+            Name = "MessageDialog";
             ShowIcon = false;
             ShowMaximizeBox = false;
             ShowMinimizeBox = false;
             SizeGripStyle = SizeGripStyle.Hide;
-            ( (ISupportInitialize) BindingSource  ).EndInit( );
-            ( (ISupportInitialize) Picture  ).EndInit( );
+            ( (ISupportInitialize)BindingSource ).EndInit( );
+            ( (ISupportInitialize)Picture ).EndInit( );
             BackPanel.ResumeLayout( false );
             TitleTable.ResumeLayout( false );
             ResumeLayout( false );
@@ -270,6 +338,8 @@ namespace Baby
         public TableLayoutPanel TitleTable;
         public Layout BackPanel;
         public RichTextBox TextBox;
+        public Button SelectButton;
+        public Button CancelButton;
     }
 
 }

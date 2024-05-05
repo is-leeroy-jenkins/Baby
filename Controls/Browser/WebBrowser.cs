@@ -454,6 +454,7 @@ namespace Baby
 
                 // TextBox Properties
                 ToolStripKeyWordTextBox.ForeColor = Color.White;
+                ToolStripKeyWordTextBox.Size = new Size( 210, 25 );
                 ToolStripKeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Regular );
                 ToolStripKeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
                 ToolStripKeyWordTextBox.BackColor = Color.FromArgb( 30, 30, 30 );
@@ -619,6 +620,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
+        
 
         /// <summary>
         /// Initializes the callbacks.
@@ -2091,17 +2093,34 @@ namespace Baby
                 {
                     0 => AppSettings[ "Google" ],
                     1 => AppSettings[ "EPA" ],
-                    2 => AppSettings[ "CRS" ],
-                    3 => AppSettings[ "LOC" ],
-                    4 => AppSettings[ "GPO" ],
-                    5 => AppSettings[ "GovInfo" ],
-                    6 => AppSettings[ "OMB" ],
-                    7 => AppSettings[ "Treasury" ],
-                    8 => AppSettings[ "NASA" ],
-                    9 => AppSettings[ "NOAA" ],
-                    10 => AppSettings[ "GitHub" ],
-                    11 => AppSettings[ "NuGet" ],
-                    12 => AppSettings[ "PyPI" ],
+                    2 => AppSettings[ "DATA" ],
+                    3 => AppSettings[ "GPO" ],
+                    4 => AppSettings[ "USGI" ],
+                    5 => AppSettings[ "CRS" ],
+                    6 => AppSettings[ "LOC" ],
+                    7 => AppSettings[ "OMB" ],
+                    8 => AppSettings[ "UST" ],
+                    9 => AppSettings[ "NASA" ],
+                    10 => AppSettings[ "NOAA" ],
+                    11 => AppSettings[ "DOI" ],
+                    12 => AppSettings[ "NPS" ],
+                    13 => AppSettings[ "GSA" ],
+                    14 => AppSettings[ "NARA" ],
+                    15 => AppSettings[ "DOC" ],
+                    16 => AppSettings[ "HHS" ],
+                    17 => AppSettings[ "NRC" ],
+                    18 => AppSettings[ "DOE" ],
+                    19 => AppSettings[ "NSF" ],
+                    20 => AppSettings[ "USDA" ],
+                    21 => AppSettings[ "CSB" ],
+                    22 => AppSettings[ "IRS" ],
+                    23 => AppSettings[ "FDA" ],
+                    24 => AppSettings[ "CDC" ],
+                    25 => AppSettings[ "ACE" ],
+                    26 => AppSettings[ "DHS" ],
+                    27 => AppSettings[ "DOD" ],
+                    28 => AppSettings[ "USNO" ],
+                    29 => AppSettings[ "NWS" ],
                     _ => AppSettings[ "Google" ]
                 };
             }
@@ -2213,8 +2232,8 @@ namespace Baby
                 var _search = new SearchDialog( );
                 _search.Owner = this;
                 _search.Location = new Point( e.X + 600, e.Y + 150 );
-                _search.DialogKeyWordTextBox.Text = UrlTextBox.Text ?? string.Empty;
-                _search.FormClosing += OnDialogKeyWordsSelected;
+                _search.FormClosing += OnSearchDialogClosing;
+                _search.DialogKeyWordTextBox.Focus( );
                 _search.Show( );
             }
             catch( Exception _ex )
@@ -2229,7 +2248,7 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.</param>
-        private void OnDialogKeyWordsSelected( object sender, EventArgs e )
+        private void OnSearchDialogClosing( object sender, EventArgs e )
         {
             if( sender is SearchDialog _dialog )
             {
@@ -2239,8 +2258,7 @@ namespace Baby
                     {
                         case DialogResult.OK:
                         {
-                            var _keywords = _dialog.Results;
-                            var _search = SearchEngineUrl + _keywords;
+                            var _search = _dialog.Results;
                             CurrentBrowser.Load( _search );
                             break;
                         }

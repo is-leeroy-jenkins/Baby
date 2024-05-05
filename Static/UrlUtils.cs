@@ -44,30 +44,45 @@ namespace Baby
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
 
-    /// <summary> </summary>
-    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
+    /// <summary>
+    /// 
+    /// </summary>
+    [SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
     [ SuppressMessage( "ReSharper", "UnusedParameter.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public static class UrlUtils
     {
-        /// <summary> Paths to URL. </summary>
-        /// <param name="filePath" > The file path. </param>
-        /// <param name="removeBaseDir" > The remove base dir. </param>
-        /// <returns> </returns>
+        /// <summary>
+        /// Paths to URL.
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
+        /// <param name="removeBaseDir">The remove base dir.</param>
+        /// <returns></returns>
         public static string PathToUrl( this string filePath, string removeBaseDir = null )
         {
-            if( !filePath.CheckIfValid( ) )
+            try
             {
-                return "";
+                if( !filePath.CheckIfValid( ) )
+                {
+                    return "";
+                }
+                
+                return @"file:///" + filePath.Replace( @"\", "/" );
             }
-
-            return @"file:///" + filePath.Replace( @"\", "/" );
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return string.Empty;
+            }
         }
 
-        /// <summary> Determines whether [is file offline]. </summary>
-        /// <param name="url" > The URL. </param>
+        /// <summary>
+        /// Determines whether [is file offline].
+        /// </summary>
+        /// <param name="url">The URL.</param>
         /// <returns>
         /// <c> true </c>
         /// if [is file offline] [the specified URL]; otherwise,
@@ -76,11 +91,21 @@ namespace Baby
         /// </returns>
         public static bool IsFileOffline( this string url )
         {
-            return url.StartsWith( "file://", StringComparison.Ordinal );
+            try
+            {
+                return url.StartsWith( "file://", StringComparison.Ordinal );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return false;
+            }
         }
 
-        /// <summary> Determines whether this instance is localhost. </summary>
-        /// <param name="url" > The URL. </param>
+        /// <summary>
+        /// Determines whether this instance is localhost.
+        /// </summary>
+        /// <param name="url">The URL.</param>
         /// <returns>
         /// <c> true </c>
         /// if the specified URL is localhost; otherwise,
@@ -89,192 +114,245 @@ namespace Baby
         /// </returns>
         public static bool IsLocalhost( this string url )
         {
-            return url.BeginsWith( "http://localhost" ) || url.BeginsWith( "localhost" );
+            try
+            {
+                return url.BeginsWith( "http://localhost" ) || url.BeginsWith( "localhost" );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return false;
+            }
         }
 
-        /// <summary> URLs the decode. </summary>
-        /// <param name="url" > The URL. </param>
-        /// <returns> </returns>
+        /// <summary>
+        /// URLs the decode.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
         public static string UrlDecode( this string url )
         {
-            if( url == null )
+            try
             {
-                return null;
-            }
-
-            var _length = url.Length;
-            var _decoder = new UrlDecoder( _length, Encoding.UTF8 );
-            for( var _i = 0; _i < _length; _i++ )
-            {
-                var _char = url[ _i ];
-                if( _char == '+' )
+                if( url == null )
                 {
-                    _char = ' ';
+                    return null;
                 }
-                else if( ( _char == '%' )
-                        && ( _i < _length - 2 ) )
+                
+                var _length = url.Length;
+                var _decoder = new UrlDecoder( _length, Encoding.UTF8 );
+                for( var _i = 0; _i < _length; _i++ )
                 {
-                    if( ( url[ _i + 1 ] == 'u' )
-                       && ( _i < _length - 5 ) )
+                    var _char = url[ _i ];
+                    if( _char == '+' )
                     {
-                        var _num3 = url[ _i + 2 ].HexToInt( );
-                        var _num4 = url[ _i + 3 ].HexToInt( );
-                        var _num5 = url[ _i + 4 ].HexToInt( );
-                        var _num6 = url[ _i + 5 ].HexToInt( );
-                        if( ( _num3 < 0 )
-                           || ( _num4 < 0 )
-                           || ( _num5 < 0 )
-                           || ( _num6 < 0 ) )
+                        _char = ' ';
+                    }
+                    else if( ( _char == '%' )
+                            && ( _i < _length - 2 ) )
+                    {
+                        if( ( url[ _i + 1 ] == 'u' )
+                           && ( _i < _length - 5 ) )
                         {
-                            goto Label_010B;
+                            var _num3 = url[ _i + 2 ].HexToInt( );
+                            var _num4 = url[ _i + 3 ].HexToInt( );
+                            var _num5 = url[ _i + 4 ].HexToInt( );
+                            var _num6 = url[ _i + 5 ].HexToInt( );
+                            if( ( _num3 < 0 )
+                               || ( _num4 < 0 )
+                               || ( _num5 < 0 )
+                               || ( _num6 < 0 ) )
+                            {
+                                goto Label_010B;
+                            }
+                            
+                            _char = (char)( _num3 << 12 | _num4 << 8 | _num5 << 4 | _num6 );
+                            _i += 5;
+                            _decoder.AddChar( _char );
+                            continue;
                         }
-
-                        _char = (char)( _num3 << 12 | _num4 << 8 | _num5 << 4 | _num6 );
-                        _i += 5;
-                        _decoder.AddChar( _char );
-                        continue;
+                        
+                        var _num7 = url[ _i + 1 ].HexToInt( );
+                        var _num8 = url[ _i + 2 ].HexToInt( );
+                        if( ( _num7 >= 0 )
+                           && ( _num8 >= 0 ) )
+                        {
+                            var _b = (byte)( _num7 << 4 | _num8 );
+                            _i += 2;
+                            _decoder.AddByte( _b );
+                            continue;
+                        }
                     }
-
-                    var _num7 = url[ _i + 1 ].HexToInt( );
-                    var _num8 = url[ _i + 2 ].HexToInt( );
-                    if( ( _num7 >= 0 )
-                       && ( _num8 >= 0 ) )
+                    
+                    Label_010B:
+                    if( ( _char & 0xff80 ) == 0 )
                     {
-                        var _b = (byte)( _num7 << 4 | _num8 );
-                        _i += 2;
-                        _decoder.AddByte( _b );
-                        continue;
+                        _decoder.AddByte( (byte)_char );
+                    }
+                    else
+                    {
+                        _decoder.AddChar( _char );
                     }
                 }
-
-                Label_010B:
-                if( ( _char & 0xff80 ) == 0 )
-                {
-                    _decoder.AddByte( (byte)_char );
-                }
-                else
-                {
-                    _decoder.AddChar( _char );
-                }
+                
+                return _decoder.GetString( );
             }
-
-            return _decoder.GetString( );
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return string.Empty;
+            }
         }
 
-        /// <summary> Hexadecimals to int. </summary>
-        /// <param name="hex" > The hexadecimal. </param>
-        /// <returns> </returns>
+        /// <summary>
+        /// Hexadecimals to int.
+        /// </summary>
+        /// <param name="hex">The hexadecimal.</param>
+        /// <returns></returns>
         public static int HexToInt( this char hex )
         {
-            return hex switch
+            try
             {
-                >= '0' and <= '9' => hex - '0',
-                >= 'a' and <= 'f' => hex - 'a' + 10,
-                >= 'A' and <= 'F' => hex - 'A' + 10,
-                var _ => -1
-            };
+                return hex switch
+                {
+                    >= '0' and <= '9' => hex - '0',
+                    >= 'a' and <= 'f' => hex - 'a' + 10,
+                    >= 'A' and <= 'F' => hex - 'A' + 10,
+                    var _ => -1
+                };
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return -1;
+            }
         }
 
-        /// <summary> Decodes the URL for filepath. </summary>
-        /// <param name="url" > The URL. </param>
-        /// <returns> </returns>
+        /// <summary>
+        /// Decodes the URL for filepath.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
         public static string DecodeUrlForFilePath( this string url )
         {
-            if( url == null )
+            try
             {
-                return null;
-            }
-
-            var _length = url.Length;
-            var _decoder = new UrlDecoder( _length * 10, Encoding.UTF8 )
-            {
-                ForFilePaths = true
-            };
-
-            for( var _i = 0; _i < _length; _i++ )
-            {
-                var _ch = url[ _i ];
-                if( _ch == '+' )
+                if( url == null )
                 {
-                    _ch = ' ';
+                    return null;
                 }
-                else if( ( _ch == '%' )
-                        && ( _i < _length - 2 ) )
+                
+                var _length = url.Length;
+                var _decoder = new UrlDecoder( _length * 10, Encoding.UTF8 )
                 {
-                    if( ( url[ _i + 1 ] == 'u' )
-                       && ( _i < _length - 5 ) )
+                    ForFilePaths = true
+                };
+                
+                for( var _i = 0; _i < _length; _i++ )
+                {
+                    var _ch = url[ _i ];
+                    if( _ch == '+' )
                     {
-                        var _num3 = url[ _i + 2 ].HexToInt( );
-                        var _num4 = url[ _i + 3 ].HexToInt( );
-                        var _num5 = url[ _i + 4 ].HexToInt( );
-                        var _num6 = url[ _i + 5 ].HexToInt( );
-                        if( ( _num3 < 0 )
-                           || ( _num4 < 0 )
-                           || ( _num5 < 0 )
-                           || ( _num6 < 0 ) )
-                        {
-                            goto Label_010B;
-                        }
-
-                        _ch = (char)( _num3 << 12 | _num4 << 8 | _num5 << 4 | _num6 );
-                        _i += 5;
-                        _decoder.FlushBytes( false );
-                        _decoder.AddChar( _ch, true );
-                        continue;
+                        _ch = ' ';
                     }
-
-                    var _num7 = url[ _i + 1 ].HexToInt( );
-                    var _num8 = url[ _i + 2 ].HexToInt( );
-                    if( ( _num7 >= 0 )
-                       && ( _num8 >= 0 ) )
+                    else if( ( _ch == '%' )
+                            && ( _i < _length - 2 ) )
                     {
-                        var _b = (byte)( _num7 << 4 | _num8 );
-                        _i += 2;
-                        _decoder.FlushBytes( false );
-                        _decoder.AddByte( _b );
-                        if( ( _i + 1 < _length - 2 )
-                           && ( url[ _i + 1 ] == '%' ) )
+                        if( ( url[ _i + 1 ] == 'u' )
+                           && ( _i < _length - 5 ) )
                         {
-                            _num7 = url[ _i + 1 ].HexToInt( );
-                            _num8 = url[ _i + 2 ].HexToInt( );
-                            if( ( _num7 >= 0 )
-                               && ( _num8 >= 0 ) )
+                            var _num3 = url[ _i + 2 ].HexToInt( );
+                            var _num4 = url[ _i + 3 ].HexToInt( );
+                            var _num5 = url[ _i + 4 ].HexToInt( );
+                            var _num6 = url[ _i + 5 ].HexToInt( );
+                            if( ( _num3 < 0 )
+                               || ( _num4 < 0 )
+                               || ( _num5 < 0 )
+                               || ( _num6 < 0 ) )
                             {
-                                _b = (byte)( _num7 << 4 | _num8 );
-                                _i += 2;
-                                _decoder.AddByte( _b );
+                                goto Label_010B;
+                            }
+                            
+                            _ch = (char)( _num3 << 12 | _num4 << 8 | _num5 << 4 | _num6 );
+                            _i += 5;
+                            _decoder.FlushBytes( false );
+                            _decoder.AddChar( _ch, true );
+                            continue;
+                        }
+                        
+                        var _num7 = url[ _i + 1 ].HexToInt( );
+                        var _num8 = url[ _i + 2 ].HexToInt( );
+                        if( ( _num7 >= 0 )
+                           && ( _num8 >= 0 ) )
+                        {
+                            var _b = (byte)( _num7 << 4 | _num8 );
+                            _i += 2;
+                            _decoder.FlushBytes( false );
+                            _decoder.AddByte( _b );
+                            if( ( _i + 1 < _length - 2 )
+                               && ( url[ _i + 1 ] == '%' ) )
+                            {
+                                _num7 = url[ _i + 1 ].HexToInt( );
+                                _num8 = url[ _i + 2 ].HexToInt( );
+                                if( ( _num7 >= 0 )
+                                   && ( _num8 >= 0 ) )
+                                {
+                                    _b = (byte)( _num7 << 4 | _num8 );
+                                    _i += 2;
+                                    _decoder.AddByte( _b );
+                                    _decoder.FlushBytes( true );
+                                }
+                            }
+                            else
+                            {
                                 _decoder.FlushBytes( true );
                             }
+                            
+                            continue;
                         }
-                        else
-                        {
-                            _decoder.FlushBytes( true );
-                        }
-
-                        continue;
+                    }
+                    
+                    Label_010B:
+                    if( ( _ch & 0xff80 ) == 0 )
+                    {
+                        _decoder.AddByte( (byte)_ch );
+                    }
+                    else
+                    {
+                        _decoder.AddChar( _ch, false );
                     }
                 }
-
-                Label_010B:
-                if( ( _ch & 0xff80 ) == 0 )
-                {
-                    _decoder.AddByte( (byte)_ch );
-                }
-                else
-                {
-                    _decoder.AddChar( _ch, false );
-                }
+                
+                return _decoder.GetString( );
             }
-
-            return _decoder.GetString( );
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+                return string.Empty;
+            }
         }
 
-        /// <summary> URLs the encode. </summary>
-        /// <param name="text" > The text. </param>
-        /// <returns> </returns>
+        /// <summary>
+        /// URLs the encode.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns></returns>
         public static string UrlEncode( this string text )
         {
             return Uri.EscapeDataString( text );
+        }
+
+        /// <summary>
+        /// Get ErrorDialog Dialog.
+        /// </summary>
+        /// <param name="ex">
+        /// The ex.
+        /// </param>
+        private static void Fail( Exception ex )
+        {
+            using var _error = new ErrorDialog( ex );
+            _error?.SetText( );
+            _error?.ShowDialog( );
         }
     }
 }

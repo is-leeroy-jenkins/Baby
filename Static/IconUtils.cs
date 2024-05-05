@@ -55,6 +55,7 @@ namespace Baby
     /// 
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public static class IconUtils
     {
         /// <summary>

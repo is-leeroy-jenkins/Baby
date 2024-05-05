@@ -64,7 +64,8 @@ namespace Baby
             MessageLabel = new Label( );
             SelectButton = new Button( );
             CloseButton = new Button( );
-            FindButton = new Button( );
+            BrowseButton = new Button( );
+            CancelButton = new Button( );
             TextBoxLayout.SuspendLayout( );
             CheckBoxLayout.SuspendLayout( );
             TopTablePanel.SuspendLayout( );
@@ -525,8 +526,8 @@ namespace Baby
             // 
             TopTablePanel.BackColor = System.Drawing.Color.Transparent;
             TopTablePanel.ColumnCount = 2;
-            TopTablePanel.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 3.63372087F ) );
-            TopTablePanel.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 96.36628F ) );
+            TopTablePanel.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 3.19767451F ) );
+            TopTablePanel.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 96.80232F ) );
             TopTablePanel.Controls.Add( Picture, 0, 0 );
             TopTablePanel.Controls.Add( Header, 1, 0 );
             TopTablePanel.Dock = DockStyle.Top;
@@ -541,13 +542,13 @@ namespace Baby
             // 
             Picture.BackColor = System.Drawing.Color.Transparent;
             Picture.Dock = DockStyle.Top;
-            Picture.Image = Baby.Properties.Resources.BabyBrowser;
+            Picture.Image = Properties.Resources.BabyBrowser;
             Picture.InitialImage = null;
             Picture.Location = new System.Drawing.Point( 1, 1 );
             Picture.Margin = new Padding( 1 );
             Picture.Name = "Picture";
             Picture.Padding = new Padding( 1 );
-            Picture.Size = new System.Drawing.Size( 23, 18 );
+            Picture.Size = new System.Drawing.Size( 20, 18 );
             Picture.SizeMode = PictureBoxSizeMode.Zoom;
             Picture.TabIndex = 1;
             Picture.TabStop = false;
@@ -557,14 +558,14 @@ namespace Baby
             // 
             Header.Dock = DockStyle.Top;
             Header.FlatStyle = FlatStyle.Flat;
-            Header.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point );
+            Header.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             Header.HoverText = null;
             Header.IsDerivedStyle = true;
-            Header.Location = new System.Drawing.Point( 28, 3 );
+            Header.Location = new System.Drawing.Point( 25, 3 );
             Header.Margin = new Padding( 3 );
             Header.Name = "Header";
             Header.Padding = new Padding( 1 );
-            Header.Size = new System.Drawing.Size( 657, 31 );
+            Header.Size = new System.Drawing.Size( 660, 31 );
             Header.Style = MetroSet_UI.Enums.Style.Custom;
             Header.StyleManager = null;
             Header.TabIndex = 0;
@@ -606,7 +607,7 @@ namespace Baby
             SelectButton.HoverText = "Select File";
             SelectButton.HoverTextColor = System.Drawing.Color.White;
             SelectButton.IsDerivedStyle = true;
-            SelectButton.Location = new System.Drawing.Point( 307, 417 );
+            SelectButton.Location = new System.Drawing.Point( 394, 417 );
             SelectButton.Margin = new Padding( 0 );
             SelectButton.Name = "SelectButton";
             SelectButton.NormalBorderColor = System.Drawing.Color.Transparent;
@@ -657,37 +658,69 @@ namespace Baby
             CloseButton.ThemeName = "Baby";
             CloseButton.ToolTip = null;
             // 
-            // FindButton
+            // BrowseButton
             // 
-            FindButton.BackColor = System.Drawing.Color.Transparent;
-            FindButton.DisabledBackColor = System.Drawing.Color.Transparent;
-            FindButton.DisabledBorderColor = System.Drawing.Color.Transparent;
-            FindButton.DisabledForeColor = System.Drawing.Color.Transparent;
-            FindButton.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            FindButton.ForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            FindButton.HoverBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            FindButton.HoverColor = System.Drawing.Color.FromArgb( 17, 53, 84 );
-            FindButton.HoverText = "Select File";
-            FindButton.HoverTextColor = System.Drawing.Color.White;
-            FindButton.IsDerivedStyle = true;
-            FindButton.Location = new System.Drawing.Point( 9, 417 );
-            FindButton.Margin = new Padding( 0 );
-            FindButton.Name = "FindButton";
-            FindButton.NormalBorderColor = System.Drawing.Color.Transparent;
-            FindButton.NormalColor = System.Drawing.Color.Transparent;
-            FindButton.NormalTextColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            FindButton.Padding = new Padding( 1 );
-            FindButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            FindButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            FindButton.PressTextColor = System.Drawing.Color.White;
-            FindButton.Size = new System.Drawing.Size( 78, 26 );
-            FindButton.Style = MetroSet_UI.Enums.Style.Custom;
-            FindButton.StyleManager = null;
-            FindButton.TabIndex = 13;
-            FindButton.Text = "Find";
-            FindButton.ThemeAuthor = "Terry D. Eppler";
-            FindButton.ThemeName = "Budget Execution";
-            FindButton.ToolTip = null;
+            BrowseButton.BackColor = System.Drawing.Color.Transparent;
+            BrowseButton.DisabledBackColor = System.Drawing.Color.Transparent;
+            BrowseButton.DisabledBorderColor = System.Drawing.Color.Transparent;
+            BrowseButton.DisabledForeColor = System.Drawing.Color.Transparent;
+            BrowseButton.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            BrowseButton.ForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            BrowseButton.HoverBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            BrowseButton.HoverColor = System.Drawing.Color.FromArgb( 17, 53, 84 );
+            BrowseButton.HoverText = "Select File";
+            BrowseButton.HoverTextColor = System.Drawing.Color.White;
+            BrowseButton.IsDerivedStyle = true;
+            BrowseButton.Location = new System.Drawing.Point( 9, 417 );
+            BrowseButton.Margin = new Padding( 0 );
+            BrowseButton.Name = "BrowseButton";
+            BrowseButton.NormalBorderColor = System.Drawing.Color.Transparent;
+            BrowseButton.NormalColor = System.Drawing.Color.Transparent;
+            BrowseButton.NormalTextColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            BrowseButton.Padding = new Padding( 1 );
+            BrowseButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            BrowseButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            BrowseButton.PressTextColor = System.Drawing.Color.White;
+            BrowseButton.Size = new System.Drawing.Size( 78, 26 );
+            BrowseButton.Style = MetroSet_UI.Enums.Style.Custom;
+            BrowseButton.StyleManager = null;
+            BrowseButton.TabIndex = 13;
+            BrowseButton.Text = "Find";
+            BrowseButton.ThemeAuthor = "Terry D. Eppler";
+            BrowseButton.ThemeName = "Budget Execution";
+            BrowseButton.ToolTip = null;
+            // 
+            // CancelButton
+            // 
+            CancelButton.BackColor = System.Drawing.Color.Transparent;
+            CancelButton.DisabledBackColor = System.Drawing.Color.Transparent;
+            CancelButton.DisabledBorderColor = System.Drawing.Color.Transparent;
+            CancelButton.DisabledForeColor = System.Drawing.Color.Transparent;
+            CancelButton.Font = new System.Drawing.Font( "Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            CancelButton.ForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CancelButton.HoverBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CancelButton.HoverColor = System.Drawing.Color.FromArgb( 17, 53, 84 );
+            CancelButton.HoverText = "Select File";
+            CancelButton.HoverTextColor = System.Drawing.Color.White;
+            CancelButton.IsDerivedStyle = true;
+            CancelButton.Location = new System.Drawing.Point( 209, 417 );
+            CancelButton.Margin = new Padding( 0 );
+            CancelButton.Name = "CancelButton";
+            CancelButton.NormalBorderColor = System.Drawing.Color.Transparent;
+            CancelButton.NormalColor = System.Drawing.Color.Transparent;
+            CancelButton.NormalTextColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CancelButton.Padding = new Padding( 1 );
+            CancelButton.PressBorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CancelButton.PressColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            CancelButton.PressTextColor = System.Drawing.Color.White;
+            CancelButton.Size = new System.Drawing.Size( 78, 26 );
+            CancelButton.Style = MetroSet_UI.Enums.Style.Custom;
+            CancelButton.StyleManager = null;
+            CancelButton.TabIndex = 14;
+            CancelButton.Text = "Cancel";
+            CancelButton.ThemeAuthor = "Terry D. Eppler";
+            CancelButton.ThemeName = "Budget Execution";
+            CancelButton.ToolTip = null;
             // 
             // FileBrowser
             // 
@@ -705,7 +738,8 @@ namespace Baby
             CaptionForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             ClientSize = new System.Drawing.Size( 688, 449 );
             ControlBox = false;
-            Controls.Add( FindButton );
+            Controls.Add( CancelButton );
+            Controls.Add( BrowseButton );
             Controls.Add( MessageLabel );
             Controls.Add( SelectButton );
             Controls.Add( CloseButton );
@@ -762,7 +796,8 @@ namespace Baby
         public RadioButton SqlServerRadioButton;
         public RadioButton WordRadioButton;
         public RadioButton PdfRadioButton;
-        public Button FindButton;
+        public Button BrowseButton;
+        public Button CancelButton;
     }
 
 }

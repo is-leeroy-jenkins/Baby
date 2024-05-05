@@ -2229,10 +2229,10 @@ namespace Baby
             try
             {
                 var _search = new SearchDialog( );
-                _search.Owner = this;
-                var _width = Width / 3;
+                var _width = Width / 3 + (int)( _search.Width * .66 );
                 var _heigth = Height / 15;
-                _search.Location = new Point( _width + (int)( _search.Width * .75 ), _heigth );
+                _search.Owner = this;
+                _search.Location = new Point( _width, _heigth );
                 _search.FormClosing += OnSearchDialogClosing;
                 _search.Show( );
                 _search.DialogKeyWordTextBox.Focus( );

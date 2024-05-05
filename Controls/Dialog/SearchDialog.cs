@@ -6,7 +6,7 @@
 //     Last Modified By:        Terry D. Eppler
 //     Last Modified On:        05-05-2024
 // ******************************************************************************************
-// <copyright file="teppler" company="Terry D. Eppler">
+// <copyright file="SearchDialog.cs" company="Terry D. Eppler">
 //    Baby is a small web browser used in a Federal Budget, Finance, and Accounting application for the
 //    US Environmental Protection Agency (US EPA).
 //    Copyright ©  2024  Terry Eppler
@@ -45,7 +45,7 @@ namespace Baby
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Windows.Forms;
-    using CefSharp.DevTools.IndexedDB;
+    using MetroSet_UI.Controls;
     using MetroSet_UI.Enums;
     using Syncfusion.Windows.Forms;
     
@@ -79,12 +79,12 @@ namespace Baby
         /// <summary>
         /// The keyword prefix
         /// </summary>
-        private string _keywordPrefix;
+        private string _keywordLabelPrefix;
         
         /// <summary>
         /// The domain prefix
         /// </summary>
-        private string _domainPrefix;
+        private string _domainLabelPrefix;
 
         /// <summary>
         /// Gets the selected domain.
@@ -151,9 +151,16 @@ namespace Baby
             Visible = true;
             _keywordInput = string.Empty;
             _results = string.Empty;
-            _domainPrefix = "Domain:";
-            _keywordPrefix = "Key Words:";
-            
+            _domainLabelPrefix = "Domain:";
+            _keywordLabelPrefix = "Key Words:";
+
+            // Control Properties
+            DialogDomainComboBox.BorderColor = Color.FromArgb( 34, 34, 34 );
+            DialogDomainComboBox.SelectedIndex = -1;
+            DialogDomainComboBox.ArrowColor = Color.FromArgb( 0, 120, 212 );
+            DomainLabel.Text = _domainLabelPrefix + " " + "Google";
+            KeyWordLabel.Text = _keywordLabelPrefix + " " + "0";
+
             //Event Wiring
             Load += OnLoad;
         }
@@ -201,12 +208,8 @@ namespace Baby
         {
             try
             {
-                var _s = " ";
-                DomainLabel.Text = _domainPrefix 
-                    + _s 
-                    + DialogDomainComboBox.SelectedText ?? "Google";
-
-                KeyWordLabel.Text = _keywordPrefix ?? "0";
+                KeyWordLabel.ForeColor = Color.FromArgb( 106, 189, 252 );
+                DomainLabel.ForeColor = Color.FromArgb( 106, 189, 252 );
             }
             catch( Exception _ex )
             {
@@ -298,7 +301,7 @@ namespace Baby
             {
                 _results = string.Empty;
                 _queryPrefix = string.Empty;
-                _domainPrefix = string.Empty;
+                _domainLabelPrefix = string.Empty;
                 DialogResult = DialogResult.Cancel;
                 Close( );
             }
@@ -318,9 +321,9 @@ namespace Baby
         {
             try
             {
-                if( !string.IsNullOrEmpty( DialogKeyWordTextBox.Text ) )
+                if( !string.IsNullOrEmpty( _keywordInput ) )
                 {
-                    _results = _queryPrefix + DialogKeyWordTextBox.Text;
+                    _results = _queryPrefix + " " + _keywordInput;
                     DialogResult = DialogResult.OK;
                     Close( );
                 }
@@ -342,7 +345,11 @@ namespace Baby
             try
             {
                 DialogKeyWordTextBox.Text = string.Empty;
+                _keywordInput = string.Empty;
                 _results = string.Empty;
+                DomainLabel.Text = _domainLabelPrefix + " Google";
+                KeyWordLabel.Text = _keywordLabelPrefix + " 0";
+                _queryPrefix = ConfigurationManager.AppSettings[ "Google" ];
                 DialogResult = DialogResult.Continue;
             }
             catch( Exception _ex )
@@ -361,16 +368,15 @@ namespace Baby
         {
             try
             {
-                var _s = " ";
-                var _input = DialogKeyWordTextBox.Text;
-                if( _input.Contains( " " ) )
+                _keywordInput = DialogKeyWordTextBox.Text;
+                if( _keywordInput.Contains( " " ) )
                 {
-                    var _split = _input.Split( " " );
-                    KeyWordLabel.Text = _keywordPrefix + _s + _split.Length;
+                    var _split = _keywordInput.Split( " " );
+                    KeyWordLabel.Text = _keywordLabelPrefix + " " + _split.Length;
                 }
                 else
                 {
-                    KeyWordLabel.Text = _keywordPrefix + _s + 0;
+                    KeyWordLabel.Text = _keywordLabelPrefix + " " + 0;
                 }
             }
             catch( Exception _ex )
@@ -389,44 +395,47 @@ namespace Baby
         {
             try
             {
-                var _s = " ";
-                var _index = DialogDomainComboBox.SelectedIndex;
-                _queryPrefix = _index switch
+                if( sender is MetroSetComboBox _comboBox )
                 {
-                    0 => ConfigurationManager.AppSettings[ "Google" ],
-                    1 => ConfigurationManager.AppSettings[ "EPA" ],
-                    2 => ConfigurationManager.AppSettings[ "DATA" ],
-                    3 => ConfigurationManager.AppSettings[ "GPO" ],
-                    4 => ConfigurationManager.AppSettings[ "USGI" ],
-                    5 => ConfigurationManager.AppSettings[ "CRS" ],
-                    6 => ConfigurationManager.AppSettings[ "LOC" ],
-                    7 => ConfigurationManager.AppSettings[ "OMB" ],
-                    8 => ConfigurationManager.AppSettings[ "UST" ],
-                    9 => ConfigurationManager.AppSettings[ "NASA" ],
-                    10 => ConfigurationManager.AppSettings[ "NOAA" ],
-                    11 => ConfigurationManager.AppSettings[ "DOI" ],
-                    12 => ConfigurationManager.AppSettings[ "NPS" ],
-                    13 => ConfigurationManager.AppSettings[ "GSA" ],
-                    14 => ConfigurationManager.AppSettings[ "NARA" ],
-                    15 => ConfigurationManager.AppSettings[ "DOC" ],
-                    16 => ConfigurationManager.AppSettings[ "HHS" ],
-                    17 => ConfigurationManager.AppSettings[ "NRC" ],
-                    18 => ConfigurationManager.AppSettings[ "DOE" ],
-                    19 => ConfigurationManager.AppSettings[ "NSF" ],
-                    20 => ConfigurationManager.AppSettings[ "USDA" ],
-                    21 => ConfigurationManager.AppSettings[ "CSB" ],
-                    22 => ConfigurationManager.AppSettings[ "IRS" ],
-                    23 => ConfigurationManager.AppSettings[ "FDA" ],
-                    24 => ConfigurationManager.AppSettings[ "CDC" ],
-                    25 => ConfigurationManager.AppSettings[ "ACE" ],
-                    26 => ConfigurationManager.AppSettings[ "DHS" ],
-                    27 => ConfigurationManager.AppSettings[ "DOD" ],
-                    28 => ConfigurationManager.AppSettings[ "USNO" ],
-                    29 => ConfigurationManager.AppSettings[ "NWS" ],
-                    _ => ConfigurationManager.AppSettings[ "Google" ]
-                };
-                
-                DomainLabel.Text = _domainPrefix + _s + DialogDomainComboBox.SelectedText;
+                    var _selection = _comboBox.SelectedItem?.ToString( );
+                    var _index = _comboBox.SelectedIndex;
+                    _queryPrefix = _index switch
+                    {
+                        0 => ConfigurationManager.AppSettings[ "Google" ],
+                        1 => ConfigurationManager.AppSettings[ "EPA" ],
+                        2 => ConfigurationManager.AppSettings[ "DATA" ],
+                        3 => ConfigurationManager.AppSettings[ "GPO" ],
+                        4 => ConfigurationManager.AppSettings[ "USGI" ],
+                        5 => ConfigurationManager.AppSettings[ "CRS" ],
+                        6 => ConfigurationManager.AppSettings[ "LOC" ],
+                        7 => ConfigurationManager.AppSettings[ "OMB" ],
+                        8 => ConfigurationManager.AppSettings[ "UST" ],
+                        9 => ConfigurationManager.AppSettings[ "NASA" ],
+                        10 => ConfigurationManager.AppSettings[ "NOAA" ],
+                        11 => ConfigurationManager.AppSettings[ "DOI" ],
+                        12 => ConfigurationManager.AppSettings[ "NPS" ],
+                        13 => ConfigurationManager.AppSettings[ "GSA" ],
+                        14 => ConfigurationManager.AppSettings[ "NARA" ],
+                        15 => ConfigurationManager.AppSettings[ "DOC" ],
+                        16 => ConfigurationManager.AppSettings[ "HHS" ],
+                        17 => ConfigurationManager.AppSettings[ "NRC" ],
+                        18 => ConfigurationManager.AppSettings[ "DOE" ],
+                        19 => ConfigurationManager.AppSettings[ "NSF" ],
+                        20 => ConfigurationManager.AppSettings[ "USDA" ],
+                        21 => ConfigurationManager.AppSettings[ "CSB" ],
+                        22 => ConfigurationManager.AppSettings[ "IRS" ],
+                        23 => ConfigurationManager.AppSettings[ "FDA" ],
+                        24 => ConfigurationManager.AppSettings[ "CDC" ],
+                        25 => ConfigurationManager.AppSettings[ "ACE" ],
+                        26 => ConfigurationManager.AppSettings[ "DHS" ],
+                        27 => ConfigurationManager.AppSettings[ "DOD" ],
+                        28 => ConfigurationManager.AppSettings[ "USNO" ],
+                        29 => ConfigurationManager.AppSettings[ "NWS" ],
+                        _ => ConfigurationManager.AppSettings[ "Google" ]
+                    };
+                    
+                    DomainLabel.Text = _domainLabelPrefix + " " + _selection;
+                }
             }
             catch( Exception _ex )
             {

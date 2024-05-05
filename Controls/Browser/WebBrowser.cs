@@ -621,7 +621,6 @@ namespace Baby
             }
         }
         
-
         /// <summary>
         /// Initializes the callbacks.
         /// </summary>
@@ -2233,7 +2232,6 @@ namespace Baby
                 _search.Owner = this;
                 _search.Location = new Point( e.X + 600, e.Y + 150 );
                 _search.FormClosing += OnSearchDialogClosing;
-                _search.DialogKeyWordTextBox.Focus( );
                 _search.Show( );
             }
             catch( Exception _ex )

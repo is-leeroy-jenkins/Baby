@@ -37,13 +37,13 @@ namespace Baby
         {
             var resources = new ComponentResourceManager( typeof( SearchDialog ) );
             ToolTip = new ToolTip( );
-            KeyWordTextBox = new RichTextBox( );
             LookupButton = new System.Windows.Forms.Button( );
-            RefreshButton = new System.Windows.Forms.Button( );
+            ClearButton = new System.Windows.Forms.Button( );
             CloseButton = new System.Windows.Forms.Button( );
             ComboBox = new MetroSet_UI.Controls.MetroSetComboBox( );
             ButtonTable = new TableLayoutPanel( );
             ControlTable = new TableLayoutPanel( );
+            TextBox = new RichTextBox( );
             ButtonTable.SuspendLayout( );
             ControlTable.SuspendLayout( );
             SuspendLayout( );
@@ -67,32 +67,6 @@ namespace Baby
             ToolTip.TipText = null;
             ToolTip.TipTitle = null;
             // 
-            // KeyWordTextBox
-            // 
-            KeyWordTextBox.AutoWordSelection = false;
-            KeyWordTextBox.BorderColor = System.Drawing.Color.FromArgb( 110, 110, 110 );
-            KeyWordTextBox.DisabledBackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            KeyWordTextBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            KeyWordTextBox.DisabledForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            KeyWordTextBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            KeyWordTextBox.HoverColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            KeyWordTextBox.HoverText = null;
-            KeyWordTextBox.IsDerivedStyle = true;
-            KeyWordTextBox.Lines = null;
-            KeyWordTextBox.Location = new System.Drawing.Point( 2, 3 );
-            KeyWordTextBox.MaxLength = 32767;
-            KeyWordTextBox.Name = "KeyWordTextBox";
-            KeyWordTextBox.Padding = new Padding( 1 );
-            KeyWordTextBox.ReadOnly = false;
-            KeyWordTextBox.Size = new System.Drawing.Size( 487, 67 );
-            KeyWordTextBox.Style = MetroSet_UI.Enums.Style.Custom;
-            KeyWordTextBox.StyleManager = null;
-            KeyWordTextBox.TabIndex = 0;
-            KeyWordTextBox.ThemeAuthor = "Terry D. Eppler";
-            KeyWordTextBox.ThemeName = "Baby";
-            KeyWordTextBox.ToolTip = ToolTip;
-            KeyWordTextBox.WordWrap = true;
-            // 
             // LookupButton
             // 
             LookupButton.BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
@@ -106,26 +80,26 @@ namespace Baby
             LookupButton.Margin = new Padding( 1 );
             LookupButton.Name = "LookupButton";
             LookupButton.Padding = new Padding( 5 );
-            LookupButton.Size = new System.Drawing.Size( 48, 32 );
+            LookupButton.Size = new System.Drawing.Size( 39, 32 );
             LookupButton.TabIndex = 9;
             LookupButton.UseVisualStyleBackColor = false;
             // 
-            // RefreshButton
+            // ClearButton
             // 
-            RefreshButton.BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            RefreshButton.Dock = DockStyle.Fill;
-            RefreshButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            RefreshButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            RefreshButton.FlatStyle = FlatStyle.Flat;
-            RefreshButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            RefreshButton.Image = Properties.Resources.SearchRefreshButton;
-            RefreshButton.Location = new System.Drawing.Point( 51, 1 );
-            RefreshButton.Margin = new Padding( 1 );
-            RefreshButton.Name = "RefreshButton";
-            RefreshButton.Padding = new Padding( 5 );
-            RefreshButton.Size = new System.Drawing.Size( 43, 32 );
-            RefreshButton.TabIndex = 1;
-            RefreshButton.UseVisualStyleBackColor = false;
+            ClearButton.BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            ClearButton.Dock = DockStyle.Fill;
+            ClearButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            ClearButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            ClearButton.FlatStyle = FlatStyle.Flat;
+            ClearButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            ClearButton.Image = Properties.Resources.SearchRefreshButton;
+            ClearButton.Location = new System.Drawing.Point( 42, 1 );
+            ClearButton.Margin = new Padding( 1 );
+            ClearButton.Name = "ClearButton";
+            ClearButton.Padding = new Padding( 5 );
+            ClearButton.Size = new System.Drawing.Size( 35, 32 );
+            ClearButton.TabIndex = 1;
+            ClearButton.UseVisualStyleBackColor = false;
             // 
             // CloseButton
             // 
@@ -136,7 +110,7 @@ namespace Baby
             CloseButton.FlatStyle = FlatStyle.Flat;
             CloseButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             CloseButton.Image = Properties.Resources.SearchCancelButton;
-            CloseButton.Location = new System.Drawing.Point( 96, 1 );
+            CloseButton.Location = new System.Drawing.Point( 79, 1 );
             CloseButton.Margin = new Padding( 1 );
             CloseButton.Name = "CloseButton";
             CloseButton.Padding = new Padding( 5 );
@@ -163,11 +137,11 @@ namespace Baby
             ComboBox.IsDerivedStyle = true;
             ComboBox.ItemHeight = 20;
             ComboBox.Items.AddRange( new object[ ] { "Google", "EPA", "CRS", "LOC", "GPO", "GovInfo", "OMB", "Treasury", "NASA", "NOAA" } );
-            ComboBox.Location = new System.Drawing.Point( 505, 44 );
+            ComboBox.Location = new System.Drawing.Point( 522, 44 );
             ComboBox.Name = "ComboBox";
             ComboBox.SelectedItemBackColor = System.Drawing.Color.FromArgb( 65, 177, 225 );
             ComboBox.SelectedItemForeColor = System.Drawing.Color.White;
-            ComboBox.Size = new System.Drawing.Size( 143, 26 );
+            ComboBox.Size = new System.Drawing.Size( 132, 26 );
             ComboBox.Style = MetroSet_UI.Enums.Style.Dark;
             ComboBox.StyleManager = null;
             ComboBox.TabIndex = 10;
@@ -181,14 +155,14 @@ namespace Baby
             ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 47.36842F ) );
             ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 47F ) );
             ButtonTable.Controls.Add( LookupButton, 0, 0 );
-            ButtonTable.Controls.Add( RefreshButton, 1, 0 );
+            ButtonTable.Controls.Add( ClearButton, 1, 0 );
             ButtonTable.Controls.Add( CloseButton, 2, 0 );
             ButtonTable.Dock = DockStyle.Fill;
             ButtonTable.Location = new System.Drawing.Point( 3, 3 );
             ButtonTable.Name = "ButtonTable";
             ButtonTable.RowCount = 1;
             ButtonTable.RowStyles.Add( new RowStyle( SizeType.Percent, 50F ) );
-            ButtonTable.Size = new System.Drawing.Size( 143, 34 );
+            ButtonTable.Size = new System.Drawing.Size( 126, 34 );
             ButtonTable.TabIndex = 11;
             // 
             // ControlTable
@@ -196,14 +170,41 @@ namespace Baby
             ControlTable.ColumnCount = 1;
             ControlTable.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 100F ) );
             ControlTable.Controls.Add( ButtonTable, 0, 0 );
-            ControlTable.Location = new System.Drawing.Point( 505, 0 );
+            ControlTable.Location = new System.Drawing.Point( 522, 0 );
             ControlTable.Margin = new Padding( 1 );
             ControlTable.Name = "ControlTable";
             ControlTable.RowCount = 1;
             ControlTable.RowStyles.Add( new RowStyle( SizeType.Percent, 100F ) );
             ControlTable.RowStyles.Add( new RowStyle( SizeType.Absolute, 20F ) );
-            ControlTable.Size = new System.Drawing.Size( 149, 40 );
+            ControlTable.Size = new System.Drawing.Size( 132, 40 );
             ControlTable.TabIndex = 12;
+            // 
+            // TextBox
+            // 
+            TextBox.AutoWordSelection = false;
+            TextBox.BorderColor = System.Drawing.Color.FromArgb( 110, 110, 110 );
+            TextBox.DisabledBackColor = System.Drawing.Color.FromArgb( 204, 204, 204 );
+            TextBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 155, 155, 155 );
+            TextBox.DisabledForeColor = System.Drawing.Color.FromArgb( 136, 136, 136 );
+            TextBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            TextBox.HoverColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            TextBox.HoverText = null;
+            TextBox.IsDerivedStyle = true;
+            TextBox.Lines = null;
+            TextBox.Location = new System.Drawing.Point( 2, 0 );
+            TextBox.MaxLength = 32767;
+            TextBox.Name = "TextBox";
+            TextBox.Padding = new Padding( 1 );
+            TextBox.ReadOnly = false;
+            TextBox.Size = new System.Drawing.Size( 503, 70 );
+            TextBox.Style = MetroSet_UI.Enums.Style.Custom;
+            TextBox.StyleManager = null;
+            TextBox.TabIndex = 13;
+            TextBox.Text = "richTextBox2";
+            TextBox.ThemeAuthor = "Terry D. Eppler";
+            TextBox.ThemeName = "Baby";
+            TextBox.ToolTip = null;
+            TextBox.WordWrap = true;
             // 
             // SearchDialog
             // 
@@ -218,9 +219,9 @@ namespace Baby
             CaptionFont = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CaptionForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
             ClientSize = new System.Drawing.Size( 655, 73 );
+            Controls.Add( TextBox );
             Controls.Add( ControlTable );
             Controls.Add( ComboBox );
-            Controls.Add( KeyWordTextBox );
             DoubleBuffered = true;
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
@@ -248,12 +249,12 @@ namespace Baby
         public BindingSource BindingSource;
         public System.Windows.Forms.Button LookupButton;
         public System.Windows.Forms.Button CloseButton;
-        public System.Windows.Forms.Button RefreshButton;
-        public RichTextBox KeyWordTextBox;
+        public System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.RichTextBox richTextBox1;
         public TableLayoutPanel ButtonTable;
         public TableLayoutPanel ControlTable;
         public MetroSet_UI.Controls.MetroSetComboBox ComboBox;
+        public RichTextBox TextBox;
     }
 
 }

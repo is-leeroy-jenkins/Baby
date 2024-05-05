@@ -2200,7 +2200,8 @@ namespace Baby
                     var _search = new SearchDialog( );
                     _search.Owner = this;
                     _search.Location = new Point( e.X + 600, e.Y + 150 );
-                    _search.KeyWordTextBox.Text = UrlTextBox.Text ?? string.Empty;
+                    _search.TextBox.Text = UrlTextBox.Text ?? string.Empty;
+                    _search.TextChanged += OnSearchDialogTextSelected;
                     _search.Show( );
                 }
                 catch( Exception _ex )
@@ -2216,10 +2217,15 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.</param>
-        private void OnUrlTextBoxTextChanged( object sender, EventArgs e )
+        private void OnSearchDialogTextSelected( object sender, EventArgs e )
         {
             try
             {
+                if( sender is SearchDialog _search 
+                   && !string.IsNullOrEmpty( _search.TextBox.Text ) )
+                {
+                    _searchEngineUrl = _search.TextBox.Text;
+                }
             }
             catch( Exception _ex )
             {

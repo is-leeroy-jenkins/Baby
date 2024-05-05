@@ -108,6 +108,7 @@ namespace Baby
             MaximizeBox = false;
             Enabled = true;
             Visible = true;
+            _results = string.Empty;
             
             //Event Wiring
             Load += OnLoad;
@@ -125,7 +126,7 @@ namespace Baby
         public SearchDialog( string text )
             : this( )
         {
-            KeyWordTextBox.Text = text;
+            TextBox.Text = text;
         }
         
         /// <summary>
@@ -136,32 +137,30 @@ namespace Baby
             try
             {
                 CloseButton.Click += OnCloseButtonClick;
+                LookupButton.Click += OnLookupButtonClick;
+                ClearButton.Click += OnClearButtonClick;
             }
             catch( Exception _ex )
             {
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
-        /// Initializes the text box.
+        /// Initializes the buttons.
         /// </summary>
         private void InitializeTextBox( )
         {
             try
             {
-                KeyWordTextBox.BackColor = Color.FromArgb( 30, 30, 30 );
-                KeyWordTextBox.BorderColor = Color.FromArgb( 90, 90, 90 );
-                KeyWordTextBox.HoverColor = Color.FromArgb( 0, 120, 212 );
-                KeyWordTextBox.Font = new Font( "Roboto", 9 );
-                KeyWordTextBox.ForeColor = Color.FromArgb( 106, 189, 252 );
+                TextBox.Font = new Font( "Roboto", 9 );
             }
             catch( Exception _ex )
             {
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Initializes the buttons.
         /// </summary>
@@ -266,11 +265,6 @@ namespace Baby
         {
             try
             {
-                if( !string.IsNullOrEmpty( KeyWordTextBox.Text ) )
-                {
-                    _results = KeyWordTextBox.Text;
-                }
-                
                 Close( );
             }
             catch( Exception _ex )
@@ -285,13 +279,13 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.</param>
-        public virtual void OnOkayButtonClick( object sender, EventArgs e )
+        public virtual void OnLookupButtonClick( object sender, EventArgs e )
         {
             try
             {
-                if( !string.IsNullOrEmpty( KeyWordTextBox.Text ) )
+                if( !string.IsNullOrEmpty( TextBox.Text ) )
                 {
-                    _results = KeyWordTextBox.Text;
+                    _results = TextBox.Text;
                 }
                 
                 Close( );
@@ -311,7 +305,7 @@ namespace Baby
         {
             try
             {
-                KeyWordTextBox.Text = string.Empty;
+                TextBox.Text = string.Empty;
                 _results = string.Empty;
             }
             catch( Exception _ex )

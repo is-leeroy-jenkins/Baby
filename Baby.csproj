@@ -84,6 +84,7 @@
     <PackageReference Include="CefSharp.Wpf" Version="123.0.60" />
     <PackageReference Include="CefSharp.Wpf.NETCore" Version="123.0.60" />
     <PackageReference Include="MetroSet_UI" Version="2.0.0" />
+    <PackageReference Include="Syncfusion.Edit.Windows" Version="24.1.41" />
     <PackageReference Include="Syncfusion.Licensing" Version="24.1.41" />
     <PackageReference Include="Syncfusion.Shared.Base" Version="24.1.41" />
     <PackageReference Include="Syncfusion.Tools.Windows" Version="24.1.41" />

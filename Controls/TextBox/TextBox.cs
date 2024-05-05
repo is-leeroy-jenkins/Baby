@@ -43,6 +43,7 @@ namespace Baby
     using MetroSet_UI.Controls;
     using MetroSet_UI.Enums;
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Windows.Forms;
 
@@ -50,6 +51,7 @@ namespace Baby
     /// 
     /// </summary>
     /// <seealso cref="MetroSet_UI.Controls.MetroSetTextBox" />
+    [ SuppressMessage( "ReSharper", "ClassNeverInstantiated.Global" ) ]
     public class TextBox : MetroSetTextBox
     {
         /// <summary>
@@ -77,7 +79,8 @@ namespace Baby
         public string HoverText { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TextBox"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="TextBox"/> class.
         /// </summary>
         public TextBox( )
         {
@@ -93,8 +96,10 @@ namespace Baby
             TextAlign = HorizontalAlignment.Left;
         }
 
-        /// <summary> Get ErrorDialog Dialog. </summary>
-        /// <param name="ex"> The ex. </param>
+        /// <summary>
+        /// Get ErrorDialog Dialog.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
         private protected void Fail( Exception ex )
         {
             using var _error = new ErrorDialog( ex );

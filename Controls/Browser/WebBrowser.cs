@@ -86,6 +86,7 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "WrongIndentSize" ) ]
     [ SuppressMessage( "ReSharper", "AsyncVoidMethod" ) ]
+    [ SuppressMessage( "ReSharper", "MergeIntoPattern" ) ]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -443,19 +444,19 @@ namespace Baby
                 ToolStrip.ImageScalingSize = new Size( 16, 16 );
 
                 // ComboBox Properties
-                DomainComboBox.Font = new Font( "Roboto", 9, FontStyle.Regular );
-                DomainComboBox.Style = ToolStripExStyle.Office2016Black;
-                DomainComboBox.ForeColor = Color.FromArgb( 106, 189, 252 );
-                DomainComboBox.BackColor = Color.FromArgb( 30, 30, 30 );
-                DomainComboBox.Size = new Size( 150, 29 );
-                DomainComboBox.TextAlign = ContentAlignment.MiddleCenter;
-                DomainComboBox.SelectedIndex = -1;
+                ToolStripDomainComboBox.Font = new Font( "Roboto", 9, FontStyle.Regular );
+                ToolStripDomainComboBox.Style = ToolStripExStyle.Office2016Black;
+                ToolStripDomainComboBox.ForeColor = Color.FromArgb( 106, 189, 252 );
+                ToolStripDomainComboBox.BackColor = Color.FromArgb( 30, 30, 30 );
+                ToolStripDomainComboBox.Size = new Size( 150, 29 );
+                ToolStripDomainComboBox.TextAlign = ContentAlignment.MiddleCenter;
+                ToolStripDomainComboBox.SelectedIndex = -1;
 
                 // TextBox Properties
-                KeyWordTextBox.ForeColor = Color.White;
-                KeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Regular );
-                KeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
-                KeyWordTextBox.BackColor = Color.FromArgb( 30, 30, 30 );
+                ToolStripKeyWordTextBox.ForeColor = Color.White;
+                ToolStripKeyWordTextBox.Font = new Font( "Roboto", 9, FontStyle.Regular );
+                ToolStripKeyWordTextBox.TextBoxTextAlign = HorizontalAlignment.Center;
+                ToolStripKeyWordTextBox.BackColor = Color.FromArgb( 30, 30, 30 );
 
                 // Progress Bar Properties
                 ProgressBar.Step = 10;
@@ -561,21 +562,62 @@ namespace Baby
         /// </summary>
         private void InitializeHotkeys( )
         {
-            // browser hot keys
-            KeyboardCallback.AddHotKey( this, CloseActiveTab, Keys.W, true );
-            KeyboardCallback.AddHotKey( this, CloseActiveTab, Keys.Escape, true );
-            KeyboardCallback.AddHotKey( this, AddBlankWindow, Keys.N, true );
-            KeyboardCallback.AddHotKey( this, AddBlankTab, Keys.T, true );
-            KeyboardCallback.AddHotKey( this, RefreshActiveTab, Keys.F5 );
-            KeyboardCallback.AddHotKey( this, OpenDeveloperTools, Keys.F12 );
-            KeyboardCallback.AddHotKey( this, NextTab, Keys.Tab, true );
-            KeyboardCallback.AddHotKey( this, PreviousTab, Keys.Tab, true, true );
+            try
+            {
+                // browser hot keys
+                KeyboardCallback.AddHotKey( this, CloseActiveTab, Keys.W, true );
+                KeyboardCallback.AddHotKey( this, CloseActiveTab, Keys.Escape, true );
+                KeyboardCallback.AddHotKey( this, AddBlankWindow, Keys.N, true );
+                KeyboardCallback.AddHotKey( this, AddBlankTab, Keys.T, true );
+                KeyboardCallback.AddHotKey( this, RefreshActiveTab, Keys.F5 );
+                KeyboardCallback.AddHotKey( this, OpenDeveloperTools, Keys.F12 );
+                KeyboardCallback.AddHotKey( this, NextTab, Keys.Tab, true );
+                KeyboardCallback.AddHotKey( this, PreviousTab, Keys.Tab, true, true );
+                
+                // search hot keys
+                KeyboardCallback.AddHotKey( this, OpenSearch, Keys.F, true );
+                KeyboardCallback.AddHotKey( this, CloseSearch, Keys.Escape );
+                KeyboardCallback.AddHotKey( this, StopActiveTab, Keys.Escape );
+                KeyboardCallback.AddHotKey( this, ToggleFullscreen, Keys.F11 );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
 
-            // search hot keys
-            KeyboardCallback.AddHotKey( this, OpenSearch, Keys.F, true );
-            KeyboardCallback.AddHotKey( this, CloseSearch, Keys.Escape );
-            KeyboardCallback.AddHotKey( this, StopActiveTab, Keys.Escape );
-            KeyboardCallback.AddHotKey( this, ToggleFullscreen, Keys.F11 );
+        /// <summary>
+        /// we activate all the tooltips stored
+        /// in the Tag property of the buttons
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        public void InitializeTooltips( Control.ControlCollection parent )
+        {
+            try
+            {
+                foreach( Control _control in parent )
+                {
+                    if( _control is Button _button )
+                    {
+                        if( _button.Tag != null )
+                        {
+                            System.Windows.Forms.ToolTip _tip = new ToolTip( );
+                            _tip.ReshowDelay = _tip.InitialDelay = 200;
+                            _tip.ShowAlways = true;
+                            _tip.SetToolTip( _button, _button.Tag.ToString( ) );
+                        }
+                    }
+                    
+                    if( _control is Panel _panel )
+                    {
+                        InitializeTooltips( _panel.Controls );
+                    }
+                }
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
         }
 
         /// <summary>
@@ -583,22 +625,22 @@ namespace Baby
         /// </summary>
         private void RegisterCallbacks( )
         {
-            // Control Event Wiring
             try
             {
+                // Control Event Wiring
                 PreviousButton.Click += OnBackButtonClick;
                 NextButton.Click += OnForwardButtonClick;
-                HomePageButton.Click += OnHomeButtonClick;
-                CloseButton.Click += OnCloseButtonClick;
-                RefreshButton.Click += OnRefreshButtonClick;
-                DownloadButton.Click += OnDownloadsButtonClick;
-                CancelButton.Click += OnStopButtonClick;
+                ToolStripHomeButton.Click += OnHomeButtonClick;
+                ToolStripCloseButton.Click += OnCloseButtonClick;
+                ToolStripRefreshButton.Click += OnRefreshButtonClick;
+                ToolStripDownloadButton.Click += OnDownloadsButtonClick;
+                ToolStripCancelButton.Click += OnStopButtonClick;
                 DeveloperToolsButton.Click += OnDeveloperToolsButtonClick;
-                DomainComboBox.SelectedIndexChanged += OnSelectedDomainChanged;
-                GoButton.Click += OnGoButtonClick;
-                EdgeButton.Click += OnEdgeButtonClick;
-                ChromeButton.Click += OnChromeButtonClick;
-                FireFoxButton.Click += OnFireFoxButtonClick;
+                ToolStripDomainComboBox.SelectedIndexChanged += OnSelectedDomainChanged;
+                ToolStripLookupButton.Click += OnGoButtonClick;
+                ToolStripEdgeButton.Click += OnEdgeButtonClick;
+                ToolStripChromeButton.Click += OnChromeButtonClick;
+                ToolStripFireFoxButton.Click += OnFireFoxButtonClick;
                 Timer.Tick += OnTimerTick;
                 TabPages.MouseClick += OnRightClick;
                 MenuButton.MouseClick += OnSearchButtonClick;
@@ -607,7 +649,7 @@ namespace Baby
                 UrlTextBox.MouseClick += OnRightClick;
                 TabItem.MouseClick += OnRightClick;
                 ContextMenu.MouseLeave += OnContextMenuMouseLeave;
-                SharepointButton.Click += OnSharepointButtonClicked;
+                ToolStripSharepointButton.Click += OnSharepointButtonClicked;
                 foreach( ToolStripItem _item in ContextMenu.Items )
                 {
                     _item.MouseDown += OnContextMenuItemClick;
@@ -664,33 +706,6 @@ namespace Baby
             catch( Exception _ex )
             {
                 Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// we activate all the tooltips stored
-        /// in the Tag property of the buttons
-        /// </summary>
-        /// <param name="parent">The parent.</param>
-        public void InitializeTooltips( Control.ControlCollection parent )
-        {
-            foreach( Control _control in parent )
-            {
-                if( _control is Button _button )
-                {
-                    if( _button.Tag != null )
-                    {
-                        System.Windows.Forms.ToolTip _tip = new ToolTip( );
-                        _tip.ReshowDelay = _tip.InitialDelay = 200;
-                        _tip.ShowAlways = true;
-                        _tip.SetToolTip( _button, _button.Tag.ToString( ) );
-                    }
-                }
-
-                if( _control is Panel _panel )
-                {
-                    InitializeTooltips( _panel.Controls );
-                }
             }
         }
 
@@ -757,7 +772,7 @@ namespace Baby
         }
 
         /// <summary>
-        /// Sets the form URL.
+        /// Called by LoadURL to set the form URL.
         /// </summary>
         /// <param name="url">The URL.</param>
         private void SetUrl( string url )
@@ -1136,7 +1151,7 @@ namespace Baby
         }
 
         /// <summary>
-        /// Cleans the URL.
+        /// Called by SetURL to clean up the URL
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <returns></returns>
@@ -1870,9 +1885,9 @@ namespace Baby
                     EnableForwardButton( CurrentBrowser.CanGoForward );
                     SetTabText( (ChromiumWebBrowser)sender, "Loading..." );
                     Separator10.Visible = false;
-                    RefreshButton.Visible = false;
+                    ToolStripRefreshButton.Visible = false;
                     Separator6.Visible = true;
-                    CancelButton.Visible = true;
+                    ToolStripCancelButton.Visible = true;
                     CurrentTab.DateCreated = DateTime.Now;
                 }
             } );
@@ -1939,9 +1954,9 @@ namespace Baby
                     InvokeIf( ( ) =>
                     {
                         Separator10.Visible = true;
-                        RefreshButton.Visible = true;
+                        ToolStripRefreshButton.Visible = true;
                         Separator6.Visible = false;
-                        CancelButton.Visible = false;
+                        ToolStripCancelButton.Visible = false;
                     } );
                 }
             }
@@ -2071,7 +2086,7 @@ namespace Baby
         {
             try
             {
-                var _index = DomainComboBox.SelectedIndex;
+                var _index = ToolStripDomainComboBox.SelectedIndex;
                 _searchEngineUrl = _index switch
                 {
                     0 => AppSettings[ "Google" ],
@@ -2193,21 +2208,18 @@ namespace Baby
         /// </param>
         private void OnSearchButtonClick( object sender, MouseEventArgs e )
         {
-            if( e.Button == MouseButtons.Left )
+            try
             {
-                try
-                {
-                    var _search = new SearchDialog( );
-                    _search.Owner = this;
-                    _search.Location = new Point( e.X + 600, e.Y + 150 );
-                    _search.TextBox.Text = UrlTextBox.Text ?? string.Empty;
-                    _search.TextChanged += OnSearchDialogTextSelected;
-                    _search.Show( );
-                }
-                catch( Exception _ex )
-                {
-                    Fail( _ex );
-                }
+                var _search = new SearchDialog( );
+                _search.Owner = this;
+                _search.Location = new Point( e.X + 600, e.Y + 150 );
+                _search.DialogKeyWordTextBox.Text = UrlTextBox.Text ?? string.Empty;
+                _search.FormClosing += OnDialogKeyWordsSelected;
+                _search.Show( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
             }
         }
 
@@ -2217,19 +2229,40 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.</param>
-        private void OnSearchDialogTextSelected( object sender, EventArgs e )
+        private void OnDialogKeyWordsSelected( object sender, EventArgs e )
         {
-            try
+            if( sender is SearchDialog _dialog )
             {
-                if( sender is SearchDialog _search 
-                   && !string.IsNullOrEmpty( _search.TextBox.Text ) )
+                try
                 {
-                    _searchEngineUrl = _search.TextBox.Text;
+                    switch( _dialog.DialogResult )
+                    {
+                        case DialogResult.OK:
+                        {
+                            var _keywords = _dialog.Results;
+                            var _search = SearchEngineUrl + _keywords;
+                            CurrentBrowser.Load( _search );
+                            break;
+                        }
+                        case DialogResult.Cancel:
+                        {
+                            break;
+                        }
+                        default:
+                        {
+                            break;
+                        }
+                    }
                 }
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
+                catch( Exception _ex )
+                {
+                    Fail( _ex );
+                }
+                finally
+                {
+                    _dialog.DialogKeyWordTextBox.Text = string.Empty;
+                    _dialog.DialogDomainComboBox.SelectedIndex = -1;
+                }
             }
         }
 
@@ -2422,14 +2455,14 @@ namespace Baby
         {
             try
             {
-                var _keywords = KeyWordTextBox.Text;
+                var _keywords = ToolStripKeyWordTextBox.Text;
                 if( !string.IsNullOrEmpty( _keywords )
-                   && ( DomainComboBox.SelectedIndex == -1 ) )
+                   && ( ToolStripDomainComboBox.SelectedIndex == -1 ) )
                 {
                     SearchGovernmentDomains( _keywords );
                 }
                 else if( !string.IsNullOrEmpty( _keywords )
-                        && ( DomainComboBox.SelectedIndex > -1 ) )
+                        && ( ToolStripDomainComboBox.SelectedIndex > -1 ) )
                 {
                     var _search = SearchEngineUrl + _keywords;
                     CurrentBrowser.Load( _search );
@@ -2441,8 +2474,8 @@ namespace Baby
             }
             finally
             {
-                KeyWordTextBox.Text = string.Empty;
-                DomainComboBox.SelectedIndex = -1;
+                ToolStripKeyWordTextBox.Text = string.Empty;
+                ToolStripDomainComboBox.SelectedIndex = -1;
             }
         }
 
@@ -2473,13 +2506,13 @@ namespace Baby
         /// instance containing the event data.</param>
         private void OnFireFoxButtonClick( object sender, EventArgs e )
         {
-            KeyWordTextBox.SelectAll( );
-            var _args = KeyWordTextBox.Text;
+            ToolStripKeyWordTextBox.SelectAll( );
+            var _args = ToolStripKeyWordTextBox.Text;
             if( !string.IsNullOrEmpty( _args ) )
             {
                 OpenFireFoxBrowser( _args );
-                KeyWordTextBox.Clear( );
-                DomainComboBox.SelectedIndex = -1;
+                ToolStripKeyWordTextBox.Clear( );
+                ToolStripDomainComboBox.SelectedIndex = -1;
             }
             else
             {
@@ -2496,13 +2529,13 @@ namespace Baby
         /// </param>
         private void OnEdgeButtonClick( object sender, EventArgs e )
         {
-            KeyWordTextBox.SelectAll( );
-            var _args = KeyWordTextBox.Text;
+            ToolStripKeyWordTextBox.SelectAll( );
+            var _args = ToolStripKeyWordTextBox.Text;
             if( !string.IsNullOrEmpty( _args ) )
             {
                 OpenEdgeBrowser( _args );
-                KeyWordTextBox.Clear( );
-                DomainComboBox.SelectedIndex = -1;
+                ToolStripKeyWordTextBox.Clear( );
+                ToolStripDomainComboBox.SelectedIndex = -1;
             }
             else
             {
@@ -2519,13 +2552,13 @@ namespace Baby
         /// </param>
         private void OnChromeButtonClick( object sender, EventArgs e )
         {
-            KeyWordTextBox.SelectAll( );
-            var _args = KeyWordTextBox.Text;
+            ToolStripKeyWordTextBox.SelectAll( );
+            var _args = ToolStripKeyWordTextBox.Text;
             if( !string.IsNullOrEmpty( _args ) )
             {
                 OpenChromeBrowser( _args );
-                KeyWordTextBox.Clear( );
-                DomainComboBox.SelectedIndex = -1;
+                ToolStripKeyWordTextBox.Clear( );
+                ToolStripDomainComboBox.SelectedIndex = -1;
             }
             else
             {

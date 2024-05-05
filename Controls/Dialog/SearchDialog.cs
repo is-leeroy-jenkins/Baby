@@ -109,7 +109,7 @@ namespace Baby
             Enabled = true;
             Visible = true;
             _results = string.Empty;
-            
+
             //Event Wiring
             Load += OnLoad;
         }
@@ -126,7 +126,7 @@ namespace Baby
         public SearchDialog( string text )
             : this( )
         {
-            TextBox.Text = text;
+            DialogKeyWordTextBox.Text = text;
         }
         
         /// <summary>
@@ -136,9 +136,9 @@ namespace Baby
         {
             try
             {
-                CloseButton.Click += OnCloseButtonClick;
-                LookupButton.Click += OnLookupButtonClick;
-                ClearButton.Click += OnClearButtonClick;
+                DialogCloseButton.Click += OnCloseButtonClick;
+                DialogLookupButton.Click += OnLookupButtonClick;
+                DialogRefreshButton.Click += OnClearButtonClick;
             }
             catch( Exception _ex )
             {
@@ -153,7 +153,9 @@ namespace Baby
         {
             try
             {
-                TextBox.Font = new Font( "Roboto", 9 );
+                DialogKeyWordTextBox.Font = new Font( "Roboto", 10 );
+                DialogKeyWordTextBox.ForeColor = Color.FromArgb( 106, 189, 252 );
+                DialogKeyWordTextBox.BackColor = Color.FromArgb( 34, 34, 34 );
             }
             catch( Exception _ex )
             {
@@ -168,18 +170,18 @@ namespace Baby
         {
             try
             {
-                CloseButton.FlatStyle = FlatStyle.Flat;
-                CloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
-                CloseButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
-                CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
-                LookupButton.FlatStyle = FlatStyle.Flat;
-                LookupButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
-                LookupButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
-                LookupButton.BackColor = Color.FromArgb( 20, 20, 20 );
-                CloseButton.FlatStyle = FlatStyle.Flat;
-                CloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
-                CloseButton.FlatAppearance.MouseOverBackColor = Color.Maroon;
-                CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
+                DialogCloseButton.FlatStyle = FlatStyle.Flat;
+                DialogCloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+                DialogCloseButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
+                DialogCloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
+                DialogLookupButton.FlatStyle = FlatStyle.Flat;
+                DialogLookupButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+                DialogLookupButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
+                DialogLookupButton.BackColor = Color.FromArgb( 20, 20, 20 );
+                DialogCloseButton.FlatStyle = FlatStyle.Flat;
+                DialogCloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+                DialogCloseButton.FlatAppearance.MouseOverBackColor = Color.Maroon;
+                DialogCloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
             }
             catch( Exception _ex )
             {
@@ -194,34 +196,10 @@ namespace Baby
         {
             try
             {
-                ComboBox.Style = Style.Custom;
-                ComboBox.BackColor = Color.FromArgb( 45, 45, 45 );
-                ComboBox.BorderColor = Color.FromArgb( 45, 45, 45 );
-                ComboBox.ForeColor = Color.FromArgb( 106, 189, 252 );
-                var _domains = Enum.GetNames( typeof( Domain ) );
-                foreach( var _item in _domains )
-                {
-                    ComboBox.Items.Add( _item );
-                }
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-        
-        /// <summary>
-        /// Populates the domain ComboBox.
-        /// </summary>
-        private void PopulateDomainComboBox( )
-        {
-            try
-            {
-                var _domains = Enum.GetNames( typeof( Domain ) );
-                foreach( var _item in _domains )
-                {
-                    ComboBox.Items?.Add( _item );
-                }
+                DialogDomainComboBox.Style = Style.Custom;
+                DialogDomainComboBox.BackColor = Color.FromArgb( 45, 45, 45 );
+                DialogDomainComboBox.BorderColor = Color.FromArgb( 45, 45, 45 );
+                DialogDomainComboBox.ForeColor = Color.FromArgb( 106, 189, 252 );
             }
             catch( Exception _ex )
             {
@@ -265,6 +243,8 @@ namespace Baby
         {
             try
             {
+                _results = string.Empty;
+                DialogResult = DialogResult.Cancel;
                 Close( );
             }
             catch( Exception _ex )
@@ -283,12 +263,12 @@ namespace Baby
         {
             try
             {
-                if( !string.IsNullOrEmpty( TextBox.Text ) )
+                if( !string.IsNullOrEmpty( DialogKeyWordTextBox.Text ) )
                 {
-                    _results = TextBox.Text;
+                    _results = DialogKeyWordTextBox.Text;
+                    DialogResult = DialogResult.OK;
+                    Close( );
                 }
-                
-                Close( );
             }
             catch( Exception _ex )
             {
@@ -305,8 +285,9 @@ namespace Baby
         {
             try
             {
-                TextBox.Text = string.Empty;
+                DialogKeyWordTextBox.Text = string.Empty;
                 _results = string.Empty;
+                DialogResult = DialogResult.Continue;
             }
             catch( Exception _ex )
             {

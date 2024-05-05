@@ -54,6 +54,9 @@ namespace Baby
     /// <seealso cref="MetroSet_UI.Controls.MetroSetRadioButton" />
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     [ SuppressMessage( "ReSharper", "ConvertTypeCheckPatternToNullCheck" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MergeIntoPattern" ) ]
     public class RadioButton : MetroSetRadioButton
     {
         /// <summary>
@@ -81,7 +84,8 @@ namespace Baby
         public virtual string HoverText { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RadioButton"/> class.
+        /// Initializes a new instance of the
+        /// <see cref="RadioButton"/> class.
         /// </summary>
         public RadioButton( )
         {
@@ -105,8 +109,9 @@ namespace Baby
             MouseLeave += OnMouseLeave;
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="RadioButton"/> class.
+        /// Initializes a new instance of the <see cref="T:Baby.RadioButton" /> class.
         /// </summary>
         /// <param name="text">The text displayed by the control.</param>
         public RadioButton( string text )
@@ -121,16 +126,16 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         public void OnCheckStateChanged( object sender )
         {
-            if( sender is RadioButton radioButton
-               && ( radioButton.Tag != null ) )
+            if( sender is RadioButton _radioButton
+               && ( _radioButton.Tag != null ) )
             {
                 try
                 {
-                    Result = radioButton.Tag?.ToString( );
+                    Result = _radioButton.Tag?.ToString( );
                 }
-                catch( Exception ex )
+                catch( Exception _ex )
                 {
-                    Fail( ex );
+                    Fail( _ex );
                 }
             }
         }
@@ -139,7 +144,8 @@ namespace Baby
         /// Called when [mouse hover].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         public virtual void OnMouseHover( object sender, EventArgs e )
         {
             try
@@ -148,8 +154,8 @@ namespace Baby
                 if( _control is RadioButton _radioButton
                    && !string.IsNullOrEmpty( HoverText ) )
                 {
-                    var tip = new ToolTip( _radioButton, HoverText );
-                    ToolTip = tip;
+                    var _tip = new ToolTip( _radioButton, HoverText );
+                    ToolTip = _tip;
                 }
                 else
                 {
@@ -160,9 +166,9 @@ namespace Baby
                     }
                 }
             }
-            catch( Exception ex )
+            catch( Exception _ex )
             {
-                Fail( ex );
+                Fail( _ex );
             }
         }
 
@@ -170,7 +176,8 @@ namespace Baby
         /// Called when [mouse leave].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         public virtual void OnMouseLeave( object sender, EventArgs e )
         {
             try
@@ -181,9 +188,9 @@ namespace Baby
                     ToolTip = null;
                 }
             }
-            catch( Exception ex )
+            catch( Exception _ex )
             {
-                Fail( ex );
+                Fail( _ex );
             }
         }
 

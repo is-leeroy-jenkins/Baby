@@ -3,9 +3,15 @@ namespace Baby
 {
     using Syncfusion.Windows.Forms.Tools;
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Windows.Forms;
 
+    /// <inheritdoc />
+    /// <summary>
+    /// </summary>
+    /// <seealso cref="T:Syncfusion.Windows.Forms.Tools.TabControlAdv" />
+    [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
     public class TabControl : TabControlAdv
     {
         /// <summary>
@@ -24,8 +30,9 @@ namespace Baby
         /// </value>
         public string HoverText { get; set; }
 
+        /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="TabControl"/> class.
+        /// Initializes a new instance of the <see cref="T:Baby.TabControl" /> class.
         /// </summary>
         /// <example>
         /// The following example creates a TabControlAdv with one TabPageAdv object.

@@ -45,26 +45,37 @@ namespace Baby
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
-    using System.Threading;
     using System.Windows.Forms;
 
-    /// <summary> </summary>
-    /// <seealso cref="MetroSet_UI.Controls.MetroSetRichTextBox"/>
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="MetroSet_UI.Controls.MetroSetRichTextBox" />
     [ SuppressMessage( "ReSharper", "ClassCanBeSealed.Global" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
+    [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public class SplashTextBox : MetroSetRichTextBox
     {
-        /// <summary> Gets or sets the tool tip. </summary>
-        /// <value> The tool tip. </value>
+        /// <summary>
+        /// Gets or sets the tool tip.
+        /// </summary>
+        /// <value>
+        /// The tool tip.
+        /// </value>
         public ToolTip ToolTip { get; set; }
 
-        /// <summary> Gets or sets the hover text. </summary>
-        /// <value> The hover text. </value>
+        /// <summary>
+        /// Gets or sets the hover text.
+        /// </summary>
+        /// <value>
+        /// The hover text.
+        /// </value>
         public string HoverText { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="SplashTextBox "/>
+        /// <see cref="SplashTextBox " />
         /// class.
         /// </summary>
         public SplashTextBox( )
@@ -175,8 +186,10 @@ namespace Baby
             Text = title;
         }
 
-        /// <summary> Sets the text. </summary>
-        /// <param name="text"> The text. </param>
+        /// <summary>
+        /// Sets the text.
+        /// </summary>
+        /// <param name="text">The text.</param>
         public void SetText( string text )
         {
             if( !string.IsNullOrEmpty( text ) )
@@ -192,10 +205,12 @@ namespace Baby
             }
         }
 
-        /// <summary> Sets the font style. </summary>
-        /// <param name="fontFamily"> The font family. </param>
-        /// <param name="fontColor"> Color of the font. </param>
-        /// <param name="fontSize"> Size of the font. </param>
+        /// <summary>
+        /// Sets the font style.
+        /// </summary>
+        /// <param name="fontFamily">The font family.</param>
+        /// <param name="fontColor">Color of the font.</param>
+        /// <param name="fontSize">Size of the font.</param>
         public void SetFontStyle( string fontFamily, Color fontColor, int fontSize = 10 )
         {
             if( !string.IsNullOrEmpty( fontFamily )
@@ -213,8 +228,10 @@ namespace Baby
             }
         }
 
-        /// <summary> Sets the color of the back. </summary>
-        /// <param name="backColor"> Color of the back. </param>
+        /// <summary>
+        /// Sets the color of the back.
+        /// </summary>
+        /// <param name="backColor">Color of the back.</param>
         public void SetBackColor( Color backColor )
         {
             if( backColor != Color.Empty )
@@ -230,8 +247,10 @@ namespace Baby
             }
         }
 
-        /// <summary> Fails the specified ex. </summary>
-        /// <param name="ex"> The ex. </param>
+        /// <summary>
+        /// Fails the specified ex.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
         private protected void Fail( Exception ex )
         {
             using var _error = new ErrorDialog( ex );

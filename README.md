@@ -1,6 +1,6 @@
 ﻿![Baby](Resources/Images/logo3.png)
 
-Baby is an open source C# web browser!. Slightly faster than Google Chrome when rendering web pages due to lightweight CEF renderer. We compared every available .NET browsing engine and finally settled on the high-performance [CefSharp](https://github.com/cefsharp/CefSharp/). Released under the permissive MIT license.
+Baby is an open source C# web browser!. Released under the permissive MIT license.
 
 ## Features
 

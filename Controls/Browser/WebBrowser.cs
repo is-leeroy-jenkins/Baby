@@ -46,7 +46,6 @@ namespace Baby
     using System.Threading;
     using System.Diagnostics;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.IO;
     using System.Web;
     using CefSharp;
@@ -1009,7 +1008,8 @@ namespace Baby
                 var _dateTime = DateTime.Now;
                 var _dateString = _dateTime.ToLongDateString( );
                 var _timeString = _dateTime.ToLongTimeString( );
-                StatusLabel.Text = _dateString + "  " + _timeString;
+                StatusLabel.Text = _dateString;
+                TimeLabel.Text = _timeString;
             }
             catch( Exception _ex )
             {
@@ -1029,7 +1029,8 @@ namespace Baby
             {
                 var _dateString = dateTime.ToLongDateString( );
                 var _timeString = dateTime.ToLongTimeString( );
-                StatusLabel.Text = _dateString + "  " + _timeString;
+                StatusLabel.Text = _dateString;
+                TimeLabel.Text = _timeString;
             }
             catch( Exception _ex )
             {
@@ -2239,7 +2240,7 @@ namespace Baby
                 _search.Location = new Point( _width, _heigth );
                 _search.FormClosing += OnSearchDialogClosing;
                 _search.Show( );
-                _search.DialogKeyWordTextBox.Focus( );
+                _search.TextBox.Focus( );
             }
             catch( Exception _ex )
             {
@@ -2283,8 +2284,8 @@ namespace Baby
                 }
                 finally
                 {
-                    _dialog.DialogKeyWordTextBox.Text = string.Empty;
-                    _dialog.DialogDomainComboBox.SelectedIndex = -1;
+                    _dialog.TextBox.Text = string.Empty;
+                    _dialog.DomainComboBox.SelectedIndex = -1;
                 }
             }
         }
@@ -2293,7 +2294,8 @@ namespace Baby
         /// Called when [source button click].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         private void OnSourceButtonClick( object sender, EventArgs e )
         {
             try

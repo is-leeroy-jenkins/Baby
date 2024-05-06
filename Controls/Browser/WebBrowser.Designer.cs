@@ -81,16 +81,19 @@
             TopTable = new System.Windows.Forms.TableLayoutPanel( );
             Title = new Label( );
             PictureBox = new ImageBox( );
+            TimeLabel = new Label( );
             UrlTextBoxTable = new System.Windows.Forms.TableLayoutPanel( );
-            NavigationTable = new System.Windows.Forms.TableLayoutPanel( );
-            DialogForwardButton = new System.Windows.Forms.Button( );
-            DialogBackButton = new System.Windows.Forms.Button( );
-            PageTable = new System.Windows.Forms.TableLayoutPanel( );
-            button1 = new System.Windows.Forms.Button( );
+            SearchForwardButton = new System.Windows.Forms.Button( );
             MenuButton = new System.Windows.Forms.Button( );
+            SearchBackButton = new System.Windows.Forms.Button( );
             UrlTextBox = new TextBox( );
+            SearchHomeButton = new System.Windows.Forms.Button( );
             UrlSearchPanel = new Layout( );
             ContextMenu = new ContextMenu( );
+            SearchCancelButton = new System.Windows.Forms.Button( );
+            SearchRefreshButton = new System.Windows.Forms.Button( );
+            SearchLayout = new System.Windows.Forms.FlowLayoutPanel( );
+            NavigationLayout = new System.Windows.Forms.FlowLayoutPanel( );
             ( (System.ComponentModel.ISupportInitialize)TabPages ).BeginInit( );
             TabPages.SuspendLayout( );
             SearchPanel.SuspendLayout( );
@@ -99,9 +102,9 @@
             TopTable.SuspendLayout( );
             ( (System.ComponentModel.ISupportInitialize)PictureBox ).BeginInit( );
             UrlTextBoxTable.SuspendLayout( );
-            NavigationTable.SuspendLayout( );
-            PageTable.SuspendLayout( );
             UrlSearchPanel.SuspendLayout( );
+            SearchLayout.SuspendLayout( );
+            NavigationLayout.SuspendLayout( );
             SuspendLayout( );
             // 
             // Timer
@@ -117,12 +120,12 @@
             TabPages.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             TabPages.ForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
             TabPages.Items.AddRange( new BrowserTabStripItem[ ] { TabItem, AddItemTab } );
-            TabPages.Location = new System.Drawing.Point( 0, 72 );
+            TabPages.Location = new System.Drawing.Point( 0, 76 );
             TabPages.Margin = new System.Windows.Forms.Padding( 1 );
             TabPages.Name = "TabPages";
             TabPages.Padding = new System.Windows.Forms.Padding( 1, 29, 1, 1 );
             TabPages.SelectedItem = TabItem;
-            TabPages.Size = new System.Drawing.Size( 1488, 722 );
+            TabPages.Size = new System.Drawing.Size( 1488, 718 );
             TabPages.TabIndex = 4;
             TabPages.Text = "faTabStrip1";
             TabPages.TabStripItemSelectionChanged +=  OnTabsChanged ;
@@ -147,7 +150,7 @@
             TabItem.Name = "TabItem";
             TabItem.Padding = new System.Windows.Forms.Padding( 1 );
             TabItem.Selected = true;
-            TabItem.Size = new System.Drawing.Size( 1486, 692 );
+            TabItem.Size = new System.Drawing.Size( 1486, 688 );
             TabItem.StripRectangle = (System.Drawing.RectangleF)resources.GetObject( "TabItem.StripRectangle" );
             TabItem.Style = MetroSet_UI.Enums.Style.Custom;
             TabItem.StyleManager = null;
@@ -469,7 +472,7 @@
             ToolStripKeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             ToolStripKeyWordTextBox.Name = "ToolStripKeyWordTextBox";
             ToolStripKeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 180, 25 );
+            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 156, 25 );
             ToolStripKeyWordTextBox.Tag = "";
             ToolStripKeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             ToolStripKeyWordTextBox.ToolTip = ToolTip;
@@ -794,17 +797,19 @@
             // 
             // TopTable
             // 
-            TopTable.ColumnCount = 2;
-            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 3.66614676F ) );
-            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 96.3338547F ) );
+            TopTable.ColumnCount = 3;
+            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 2.889785F ) );
+            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 97.1102142F ) );
+            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 158F ) );
             TopTable.Controls.Add( Title, 1, 0 );
             TopTable.Controls.Add( PictureBox, 0, 0 );
+            TopTable.Controls.Add( TimeLabel, 2, 0 );
             TopTable.Dock = System.Windows.Forms.DockStyle.Top;
             TopTable.Location = new System.Drawing.Point( 0, 0 );
             TopTable.Name = "TopTable";
             TopTable.RowCount = 1;
             TopTable.RowStyles.Add( new System.Windows.Forms.RowStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
-            TopTable.Size = new System.Drawing.Size( 1488, 30 );
+            TopTable.Size = new System.Drawing.Size( 1488, 34 );
             TopTable.TabIndex = 0;
             // 
             // Title
@@ -814,11 +819,11 @@
             Title.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             Title.HoverText = null;
             Title.IsDerivedStyle = true;
-            Title.Location = new System.Drawing.Point( 57, 3 );
+            Title.Location = new System.Drawing.Point( 41, 3 );
             Title.Margin = new System.Windows.Forms.Padding( 3 );
             Title.Name = "Title";
             Title.Padding = new System.Windows.Forms.Padding( 1 );
-            Title.Size = new System.Drawing.Size( 1428, 24 );
+            Title.Size = new System.Drawing.Size( 1285, 28 );
             Title.Style = MetroSet_UI.Enums.Style.Custom;
             Title.StyleManager = null;
             Title.TabIndex = 1;
@@ -842,14 +847,34 @@
             PictureBox.TabStop = false;
             PictureBox.ToolTip = null;
             // 
+            // TimeLabel
+            // 
+            TimeLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            TimeLabel.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            TimeLabel.HoverText = null;
+            TimeLabel.IsDerivedStyle = true;
+            TimeLabel.Location = new System.Drawing.Point( 1332, 3 );
+            TimeLabel.Margin = new System.Windows.Forms.Padding( 3 );
+            TimeLabel.Name = "TimeLabel";
+            TimeLabel.Padding = new System.Windows.Forms.Padding( 1 );
+            TimeLabel.Size = new System.Drawing.Size( 153, 23 );
+            TimeLabel.Style = MetroSet_UI.Enums.Style.Custom;
+            TimeLabel.StyleManager = null;
+            TimeLabel.TabIndex = 2;
+            TimeLabel.Text = "label2";
+            TimeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            TimeLabel.ThemeAuthor = "Terry D. Eppler";
+            TimeLabel.ThemeName = "Baby";
+            TimeLabel.ToolTip = null;
+            // 
             // UrlTextBoxTable
             // 
             UrlTextBoxTable.ColumnCount = 3;
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 6.214286F ) );
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 93.78571F ) );
-            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 91F ) );
-            UrlTextBoxTable.Controls.Add( NavigationTable, 0, 0 );
-            UrlTextBoxTable.Controls.Add( PageTable, 2, 0 );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 11.4285717F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 88.57143F ) );
+            UrlTextBoxTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 155F ) );
+            UrlTextBoxTable.Controls.Add( SearchLayout, 2, 0 );
+            UrlTextBoxTable.Controls.Add( NavigationLayout, 0, 0 );
             UrlTextBoxTable.Controls.Add( UrlTextBox, 1, 0 );
             UrlTextBoxTable.Dock = System.Windows.Forms.DockStyle.Fill;
             UrlTextBoxTable.Location = new System.Drawing.Point( 1, 1 );
@@ -859,84 +884,22 @@
             UrlTextBoxTable.Size = new System.Drawing.Size( 1486, 40 );
             UrlTextBoxTable.TabIndex = 0;
             // 
-            // NavigationTable
+            // SearchForwardButton
             // 
-            NavigationTable.ColumnCount = 2;
-            NavigationTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
-            NavigationTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
-            NavigationTable.Controls.Add( DialogForwardButton, 1, 0 );
-            NavigationTable.Controls.Add( DialogBackButton, 0, 0 );
-            NavigationTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            NavigationTable.Location = new System.Drawing.Point( 3, 3 );
-            NavigationTable.Name = "NavigationTable";
-            NavigationTable.RowCount = 1;
-            NavigationTable.RowStyles.Add( new System.Windows.Forms.RowStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
-            NavigationTable.Size = new System.Drawing.Size( 80, 34 );
-            NavigationTable.TabIndex = 0;
-            // 
-            // DialogForwardButton
-            // 
-            DialogForwardButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            DialogForwardButton.FlatAppearance.BorderSize = 0;
-            DialogForwardButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
-            DialogForwardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            DialogForwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            DialogForwardButton.Image = Properties.Resources.DialogForwardButton;
-            DialogForwardButton.Location = new System.Drawing.Point( 43, 3 );
-            DialogForwardButton.Name = "DialogForwardButton";
-            DialogForwardButton.Padding = new System.Windows.Forms.Padding( 5 );
-            DialogForwardButton.Size = new System.Drawing.Size( 34, 28 );
-            DialogForwardButton.TabIndex = 2;
-            DialogForwardButton.UseVisualStyleBackColor = true;
-            // 
-            // DialogBackButton
-            // 
-            DialogBackButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            DialogBackButton.FlatAppearance.BorderSize = 0;
-            DialogBackButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
-            DialogBackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            DialogBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            DialogBackButton.Image = Properties.Resources.DialogBackButton;
-            DialogBackButton.Location = new System.Drawing.Point( 3, 3 );
-            DialogBackButton.Name = "DialogBackButton";
-            DialogBackButton.Padding = new System.Windows.Forms.Padding( 5 );
-            DialogBackButton.Size = new System.Drawing.Size( 34, 28 );
-            DialogBackButton.TabIndex = 2;
-            DialogBackButton.UseVisualStyleBackColor = true;
-            // 
-            // PageTable
-            // 
-            PageTable.ColumnCount = 2;
-            PageTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
-            PageTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
-            PageTable.Controls.Add( button1, 1, 0 );
-            PageTable.Controls.Add( MenuButton, 0, 0 );
-            PageTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            PageTable.Location = new System.Drawing.Point( 1397, 3 );
-            PageTable.Name = "PageTable";
-            PageTable.RowCount = 1;
-            PageTable.RowStyles.Add( new System.Windows.Forms.RowStyle( System.Windows.Forms.SizeType.Percent, 50F ) );
-            PageTable.Size = new System.Drawing.Size( 86, 34 );
-            PageTable.TabIndex = 1;
-            // 
-            // button1
-            // 
-            button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
-            button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button1.Image = Properties.Resources.DialogHomeButton;
-            button1.Location = new System.Drawing.Point( 46, 3 );
-            button1.Name = "button1";
-            button1.Padding = new System.Windows.Forms.Padding( 5 );
-            button1.Size = new System.Drawing.Size( 37, 28 );
-            button1.TabIndex = 1;
-            button1.UseVisualStyleBackColor = true;
+            SearchForwardButton.FlatAppearance.BorderSize = 0;
+            SearchForwardButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
+            SearchForwardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            SearchForwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchForwardButton.Image = Properties.Resources.SearchNextButton;
+            SearchForwardButton.Location = new System.Drawing.Point( 35, 3 );
+            SearchForwardButton.Name = "SearchForwardButton";
+            SearchForwardButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchForwardButton.Size = new System.Drawing.Size( 33, 28 );
+            SearchForwardButton.TabIndex = 2;
+            SearchForwardButton.UseVisualStyleBackColor = true;
             // 
             // MenuButton
             // 
-            MenuButton.Dock = System.Windows.Forms.DockStyle.Fill;
             MenuButton.FlatAppearance.BorderSize = 0;
             MenuButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
             MenuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
@@ -945,13 +908,27 @@
             MenuButton.Location = new System.Drawing.Point( 3, 3 );
             MenuButton.Name = "MenuButton";
             MenuButton.Padding = new System.Windows.Forms.Padding( 5 );
-            MenuButton.Size = new System.Drawing.Size( 37, 28 );
+            MenuButton.Size = new System.Drawing.Size( 30, 28 );
             MenuButton.TabIndex = 0;
             MenuButton.UseVisualStyleBackColor = true;
             // 
+            // SearchBackButton
+            // 
+            SearchBackButton.FlatAppearance.BorderSize = 0;
+            SearchBackButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
+            SearchBackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            SearchBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchBackButton.Image = Properties.Resources.SearchPreviousButton;
+            SearchBackButton.Location = new System.Drawing.Point( 74, 3 );
+            SearchBackButton.Name = "SearchBackButton";
+            SearchBackButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchBackButton.Size = new System.Drawing.Size( 32, 28 );
+            SearchBackButton.TabIndex = 2;
+            SearchBackButton.UseVisualStyleBackColor = true;
+            // 
             // UrlTextBox
             // 
-            UrlTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            UrlTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             UrlTextBox.AutoCompleteCustomSource = null;
             UrlTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             UrlTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -965,7 +942,7 @@
             UrlTextBox.Image = null;
             UrlTextBox.IsDerivedStyle = true;
             UrlTextBox.Lines = null;
-            UrlTextBox.Location = new System.Drawing.Point( 95, 6 );
+            UrlTextBox.Location = new System.Drawing.Point( 153, 6 );
             UrlTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             UrlTextBox.MaxLength = 32767;
             UrlTextBox.Multiline = false;
@@ -973,7 +950,7 @@
             UrlTextBox.Padding = new System.Windows.Forms.Padding( 0, 10, 0, 0 );
             UrlTextBox.ReadOnly = false;
             UrlTextBox.SelectionLength = 0;
-            UrlTextBox.Size = new System.Drawing.Size( 1290, 28 );
+            UrlTextBox.Size = new System.Drawing.Size( 1176, 28 );
             UrlTextBox.Style = MetroSet_UI.Enums.Style.Custom;
             UrlTextBox.StyleManager = null;
             UrlTextBox.TabIndex = 0;
@@ -983,6 +960,21 @@
             UrlTextBox.ToolTip = null;
             UrlTextBox.UseSystemPasswordChar = false;
             UrlTextBox.WatermarkText = "";
+            // 
+            // SearchHomeButton
+            // 
+            SearchHomeButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            SearchHomeButton.FlatAppearance.BorderSize = 0;
+            SearchHomeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SearchHomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            SearchHomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchHomeButton.Image = Properties.Resources.SearchPanelHomeButton;
+            SearchHomeButton.Location = new System.Drawing.Point( 112, 3 );
+            SearchHomeButton.Name = "SearchHomeButton";
+            SearchHomeButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchHomeButton.Size = new System.Drawing.Size( 31, 28 );
+            SearchHomeButton.TabIndex = 1;
+            SearchHomeButton.UseVisualStyleBackColor = true;
             // 
             // UrlSearchPanel
             // 
@@ -998,7 +990,7 @@
             UrlSearchPanel.ForeColor = System.Drawing.Color.Transparent;
             UrlSearchPanel.HoverText = null;
             UrlSearchPanel.IsDerivedStyle = true;
-            UrlSearchPanel.Location = new System.Drawing.Point( 0, 30 );
+            UrlSearchPanel.Location = new System.Drawing.Point( 0, 34 );
             UrlSearchPanel.Name = "UrlSearchPanel";
             UrlSearchPanel.Padding = new System.Windows.Forms.Padding( 1 );
             UrlSearchPanel.Size = new System.Drawing.Size( 1488, 42 );
@@ -1022,6 +1014,57 @@
             ContextMenu.StyleManager = null;
             ContextMenu.ThemeAuthor = "Terry Eppler";
             ContextMenu.ThemeName = "Baby";
+            // 
+            // SearchCancelButton
+            // 
+            SearchCancelButton.FlatAppearance.BorderSize = 0;
+            SearchCancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
+            SearchCancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            SearchCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchCancelButton.Image = Properties.Resources.SearchCancelButton;
+            SearchCancelButton.Location = new System.Drawing.Point( 77, 3 );
+            SearchCancelButton.Name = "SearchCancelButton";
+            SearchCancelButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchCancelButton.Size = new System.Drawing.Size( 33, 28 );
+            SearchCancelButton.TabIndex = 2;
+            SearchCancelButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchRefreshButton
+            // 
+            SearchRefreshButton.FlatAppearance.BorderSize = 0;
+            SearchRefreshButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SearchRefreshButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            SearchRefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchRefreshButton.Image = Properties.Resources.SearchRefreshButton;
+            SearchRefreshButton.Location = new System.Drawing.Point( 39, 3 );
+            SearchRefreshButton.Name = "SearchRefreshButton";
+            SearchRefreshButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchRefreshButton.Size = new System.Drawing.Size( 32, 28 );
+            SearchRefreshButton.TabIndex = 2;
+            SearchRefreshButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchLayout
+            // 
+            SearchLayout.Controls.Add( MenuButton );
+            SearchLayout.Controls.Add( SearchRefreshButton );
+            SearchLayout.Controls.Add( SearchCancelButton );
+            SearchLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            SearchLayout.Location = new System.Drawing.Point( 1333, 3 );
+            SearchLayout.Name = "SearchLayout";
+            SearchLayout.Size = new System.Drawing.Size( 150, 34 );
+            SearchLayout.TabIndex = 0;
+            // 
+            // NavigationLayout
+            // 
+            NavigationLayout.Controls.Add( SearchHomeButton );
+            NavigationLayout.Controls.Add( SearchBackButton );
+            NavigationLayout.Controls.Add( SearchForwardButton );
+            NavigationLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            NavigationLayout.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            NavigationLayout.Location = new System.Drawing.Point( 3, 3 );
+            NavigationLayout.Name = "NavigationLayout";
+            NavigationLayout.Size = new System.Drawing.Size( 146, 34 );
+            NavigationLayout.TabIndex = 1;
             // 
             // WebBrowser
             // 
@@ -1073,9 +1116,9 @@
             TopTable.ResumeLayout( false );
             ( (System.ComponentModel.ISupportInitialize)PictureBox ).EndInit( );
             UrlTextBoxTable.ResumeLayout( false );
-            NavigationTable.ResumeLayout( false );
-            PageTable.ResumeLayout( false );
             UrlSearchPanel.ResumeLayout( false );
+            SearchLayout.ResumeLayout( false );
+            NavigationLayout.ResumeLayout( false );
             ResumeLayout( false );
         }
 
@@ -1139,11 +1182,14 @@
         public ToolSeparator ProgressSeparator;
         public ToolStripLabel StatusSpacer;
         public TextBox UrlTextBox;
-        public System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TableLayoutPanel NavigationTable;
-        public System.Windows.Forms.Button DialogForwardButton;
-        public System.Windows.Forms.Button DialogBackButton;
-        private System.Windows.Forms.TableLayoutPanel PageTable;
+        public System.Windows.Forms.Button SearchHomeButton;
+        public System.Windows.Forms.Button SearchForwardButton;
+        public System.Windows.Forms.Button SearchBackButton;
+        public Label TimeLabel;
+        public System.Windows.Forms.Button SearchRefreshButton;
+        public System.Windows.Forms.Button SearchCancelButton;
+        public System.Windows.Forms.FlowLayoutPanel SearchLayout;
+        public System.Windows.Forms.FlowLayoutPanel NavigationLayout;
     }
 }
 

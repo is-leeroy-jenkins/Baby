@@ -139,9 +139,9 @@ namespace Baby
             _queryPrefix = ConfigurationManager.AppSettings[ "Google" ];
 
             // Control Properties
-            DialogDomainComboBox.BorderColor = Color.FromArgb( 34, 34, 34 );
-            DialogDomainComboBox.SelectedIndex = -1;
-            DialogDomainComboBox.ArrowColor = Color.FromArgb( 0, 120, 212 );
+            DomainComboBox.BorderColor = Color.FromArgb( 34, 34, 34 );
+            DomainComboBox.SelectedIndex = -1;
+            DomainComboBox.ArrowColor = Color.FromArgb( 0, 120, 212 );
             DomainLabel.Text = _domainLabelPrefix + " " + "Google";
             KeyWordLabel.Text = _keywordLabelPrefix + " " + "0";
 
@@ -159,8 +159,8 @@ namespace Baby
                 DialogCloseButton.Click += OnCloseButtonClick;
                 DialogLookupButton.Click += OnLookupButtonClick;
                 DialogRefreshButton.Click += OnClearButtonClick;
-                DialogDomainComboBox.SelectionChangeCommitted += OnSelectedDomainChanged;
-                DialogKeyWordTextBox.TextChanged += OnInputTextChanged;
+                DomainComboBox.SelectionChangeCommitted += OnSelectedDomainChanged;
+                TextBox.TextChanged += OnInputTextChanged;
             }
             catch( Exception _ex )
             {
@@ -175,9 +175,9 @@ namespace Baby
         {
             try
             {
-                DialogKeyWordTextBox.Font = new Font( "Roboto", 10 );
-                DialogKeyWordTextBox.ForeColor = Color.FromArgb( 106, 189, 252 );
-                DialogKeyWordTextBox.BackColor = Color.FromArgb( 34, 34, 34 );
+                TextBox.Font = new Font( "Roboto", 10 );
+                TextBox.ForeColor = Color.FromArgb( 106, 189, 252 );
+                TextBox.BackColor = Color.FromArgb( 34, 34, 34 );
             }
             catch( Exception _ex )
             {
@@ -234,10 +234,10 @@ namespace Baby
         {
             try
             {
-                DialogDomainComboBox.Style = Style.Custom;
-                DialogDomainComboBox.BackColor = Color.FromArgb( 34, 34, 34 );
-                DialogDomainComboBox.BorderColor = Color.FromArgb( 34, 34, 34 );
-                DialogDomainComboBox.ForeColor = Color.FromArgb( 106, 189, 252 );
+                DomainComboBox.Style = Style.Custom;
+                DomainComboBox.BackColor = Color.FromArgb( 75, 75, 75 );
+                DomainComboBox.BorderColor = Color.FromArgb( 0, 120, 212 );
+                DomainComboBox.ForeColor = Color.White;
             }
             catch( Exception _ex )
             {
@@ -401,7 +401,7 @@ namespace Baby
         {
             try
             {
-                _keywordInput = DialogKeyWordTextBox.Text;
+                _keywordInput = TextBox.Text;
                 if( _keywordInput.Contains( " " ) )
                 {
                     var _split = _keywordInput.Split( " " );

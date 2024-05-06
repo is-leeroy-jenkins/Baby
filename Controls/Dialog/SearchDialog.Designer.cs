@@ -40,12 +40,12 @@ namespace Baby
             DialogLookupButton = new System.Windows.Forms.Button( );
             DialogRefreshButton = new System.Windows.Forms.Button( );
             DialogCloseButton = new System.Windows.Forms.Button( );
-            DialogDomainComboBox = new MetroSet_UI.Controls.MetroSetComboBox( );
+            DomainComboBox = new MetroSet_UI.Controls.MetroSetComboBox( );
             ButtonTable = new TableLayoutPanel( );
             ControlTable = new TableLayoutPanel( );
-            DialogKeyWordTextBox = new System.Windows.Forms.RichTextBox( );
             KeyWordLabel = new Label( );
             DomainLabel = new Label( );
+            TextBox = new TextBox( );
             ButtonTable.SuspendLayout( );
             ControlTable.SuspendLayout( );
             SuspendLayout( );
@@ -126,35 +126,35 @@ namespace Baby
             DialogCloseButton.Tag = "Cancel Search";
             DialogCloseButton.UseVisualStyleBackColor = false;
             // 
-            // DialogDomainComboBox
+            // DomainComboBox
             // 
-            DialogDomainComboBox.AllowDrop = true;
-            DialogDomainComboBox.ArrowColor = System.Drawing.Color.FromArgb( 110, 110, 110 );
-            DialogDomainComboBox.BackColor = System.Drawing.Color.Transparent;
-            DialogDomainComboBox.BackgroundColor = System.Drawing.Color.FromArgb( 34, 34, 34 );
-            DialogDomainComboBox.BorderColor = System.Drawing.Color.FromArgb( 110, 110, 110 );
-            DialogDomainComboBox.CausesValidation = false;
-            DialogDomainComboBox.DisabledBackColor = System.Drawing.Color.FromArgb( 80, 80, 80 );
-            DialogDomainComboBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 109, 109, 109 );
-            DialogDomainComboBox.DisabledForeColor = System.Drawing.Color.FromArgb( 109, 109, 109 );
-            DialogDomainComboBox.DrawMode = DrawMode.OwnerDrawFixed;
-            DialogDomainComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            DialogDomainComboBox.FlatStyle = FlatStyle.Flat;
-            DialogDomainComboBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            DialogDomainComboBox.FormattingEnabled = true;
-            DialogDomainComboBox.IsDerivedStyle = true;
-            DialogDomainComboBox.ItemHeight = 20;
-            DialogDomainComboBox.Items.AddRange( new object[ ] { "Google", "EPA ", "DATA  ", "GPO ", "USGI ", "CRS ", "LOC ", "OMB ", "UST ", "NASA ", "NOAA ", "DOI ", "NPS ", "GSA ", "NARA ", "DOC", "HHS", "NRC", "DOE", "NSF", "USDA", "CSB", "IRS", "FDA", "CDC", "ACE", "DHS", "DOD", "USNO", "NWS" } );
-            DialogDomainComboBox.Location = new System.Drawing.Point( 433, 41 );
-            DialogDomainComboBox.Name = "DialogDomainComboBox";
-            DialogDomainComboBox.SelectedItemBackColor = System.Drawing.Color.FromArgb( 65, 177, 225 );
-            DialogDomainComboBox.SelectedItemForeColor = System.Drawing.Color.White;
-            DialogDomainComboBox.Size = new System.Drawing.Size( 132, 26 );
-            DialogDomainComboBox.Style = MetroSet_UI.Enums.Style.Dark;
-            DialogDomainComboBox.StyleManager = null;
-            DialogDomainComboBox.TabIndex = 10;
-            DialogDomainComboBox.ThemeAuthor = "Narwin";
-            DialogDomainComboBox.ThemeName = "MetroDark";
+            DomainComboBox.AllowDrop = true;
+            DomainComboBox.ArrowColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            DomainComboBox.BackColor = System.Drawing.Color.Transparent;
+            DomainComboBox.BackgroundColor = System.Drawing.Color.FromArgb( 75, 75, 75 );
+            DomainComboBox.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            DomainComboBox.CausesValidation = false;
+            DomainComboBox.DisabledBackColor = System.Drawing.Color.FromArgb( 80, 80, 80 );
+            DomainComboBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 109, 109, 109 );
+            DomainComboBox.DisabledForeColor = System.Drawing.Color.FromArgb( 109, 109, 109 );
+            DomainComboBox.DrawMode = DrawMode.OwnerDrawFixed;
+            DomainComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            DomainComboBox.FlatStyle = FlatStyle.Flat;
+            DomainComboBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            DomainComboBox.FormattingEnabled = true;
+            DomainComboBox.IsDerivedStyle = true;
+            DomainComboBox.ItemHeight = 20;
+            DomainComboBox.Items.AddRange( new object[ ] { "Google", "EPA ", "DATA  ", "GPO ", "USGI ", "CRS ", "LOC ", "OMB ", "UST ", "NASA ", "NOAA ", "DOI ", "NPS ", "GSA ", "NARA ", "DOC", "HHS", "NRC", "DOE", "NSF", "USDA", "CSB", "IRS", "FDA", "CDC", "ACE", "DHS", "DOD", "USNO", "NWS" } );
+            DomainComboBox.Location = new System.Drawing.Point( 433, 41 );
+            DomainComboBox.Name = "DomainComboBox";
+            DomainComboBox.SelectedItemBackColor = System.Drawing.Color.FromArgb( 65, 177, 225 );
+            DomainComboBox.SelectedItemForeColor = System.Drawing.Color.White;
+            DomainComboBox.Size = new System.Drawing.Size( 129, 26 );
+            DomainComboBox.Style = MetroSet_UI.Enums.Style.Dark;
+            DomainComboBox.StyleManager = null;
+            DomainComboBox.TabIndex = 10;
+            DomainComboBox.ThemeAuthor = "Narwin";
+            DomainComboBox.ThemeName = "MetroDark";
             // 
             // ButtonTable
             // 
@@ -186,18 +186,6 @@ namespace Baby
             ControlTable.RowStyles.Add( new RowStyle( SizeType.Absolute, 20F ) );
             ControlTable.Size = new System.Drawing.Size( 132, 37 );
             ControlTable.TabIndex = 12;
-            // 
-            // DialogKeyWordTextBox
-            // 
-            DialogKeyWordTextBox.BackColor = System.Drawing.Color.FromArgb( 34, 34, 34 );
-            DialogKeyWordTextBox.BorderStyle = BorderStyle.None;
-            DialogKeyWordTextBox.Font = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            DialogKeyWordTextBox.ForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
-            DialogKeyWordTextBox.Location = new System.Drawing.Point( 12, 41 );
-            DialogKeyWordTextBox.Name = "DialogKeyWordTextBox";
-            DialogKeyWordTextBox.Size = new System.Drawing.Size( 397, 26 );
-            DialogKeyWordTextBox.TabIndex = 13;
-            DialogKeyWordTextBox.Text = "";
             // 
             // KeyWordLabel
             // 
@@ -239,6 +227,39 @@ namespace Baby
             DomainLabel.ThemeName = "Baby";
             DomainLabel.ToolTip = null;
             // 
+            // TextBox
+            // 
+            TextBox.AutoCompleteCustomSource = null;
+            TextBox.AutoCompleteMode = AutoCompleteMode.None;
+            TextBox.AutoCompleteSource = AutoCompleteSource.None;
+            TextBox.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            TextBox.DisabledBackColor = System.Drawing.Color.FromArgb( 204, 204, 204 );
+            TextBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 155, 155, 155 );
+            TextBox.DisabledForeColor = System.Drawing.Color.FromArgb( 136, 136, 136 );
+            TextBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            TextBox.HoverColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            TextBox.HoverText = null;
+            TextBox.Image = null;
+            TextBox.IsDerivedStyle = true;
+            TextBox.Lines = null;
+            TextBox.Location = new System.Drawing.Point( 12, 40 );
+            TextBox.MaxLength = 32767;
+            TextBox.Multiline = false;
+            TextBox.Name = "TextBox";
+            TextBox.ReadOnly = false;
+            TextBox.SelectionLength = 0;
+            TextBox.Size = new System.Drawing.Size( 397, 27 );
+            TextBox.Style = MetroSet_UI.Enums.Style.Custom;
+            TextBox.StyleManager = null;
+            TextBox.TabIndex = 16;
+            TextBox.Text = "Key Words";
+            TextBox.TextAlign = HorizontalAlignment.Center;
+            TextBox.ThemeAuthor = "Terry D. Eppler";
+            TextBox.ThemeName = "Baby";
+            TextBox.ToolTip = ToolTip;
+            TextBox.UseSystemPasswordChar = false;
+            TextBox.WatermarkText = "";
+            // 
             // SearchDialog
             // 
             AutoScaleMode = AutoScaleMode.Inherit;
@@ -249,14 +270,14 @@ namespace Baby
             CaptionBarHeight = 5;
             CaptionButtonColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
             CaptionButtonHoverColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            CaptionFont = new System.Drawing.Font( "Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            CaptionFont = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CaptionForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
             ClientSize = new System.Drawing.Size( 569, 79 );
+            Controls.Add( TextBox );
             Controls.Add( DomainLabel );
             Controls.Add( KeyWordLabel );
-            Controls.Add( DialogKeyWordTextBox );
             Controls.Add( ControlTable );
-            Controls.Add( DialogDomainComboBox );
+            Controls.Add( DomainComboBox );
             DoubleBuffered = true;
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
@@ -288,10 +309,10 @@ namespace Baby
         private System.Windows.Forms.RichTextBox richTextBox1;
         public TableLayoutPanel ButtonTable;
         public TableLayoutPanel ControlTable;
-        public MetroSet_UI.Controls.MetroSetComboBox DialogDomainComboBox;
-        public System.Windows.Forms.RichTextBox DialogKeyWordTextBox;
+        public MetroSet_UI.Controls.MetroSetComboBox DomainComboBox;
         public Label KeyWordLabel;
         public Label DomainLabel;
+        public TextBox TextBox;
     }
 
 }

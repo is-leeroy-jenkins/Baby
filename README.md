@@ -1,4 +1,4 @@
-﻿![Baby](Resources/Images/logo3.png)
+﻿![Baby](https://github.com/KarmaScripter/Baby/tree/main/Properties/Images/logo3.png)
 
 Baby is an open source C# web browser!. Released under the permissive MIT license.
 
@@ -68,35 +68,35 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ### Apple.com
 
-![](Resources/Images/1.png)
+![](https://github.com/KarmaScripter/Baby/tree/main/Properties/Images/1.png)
 
 ### WebAssembly & WebGL
 
-![](Resources/Images/5.png)
+![](https://github.com/KarmaScripter/Baby/tree/main/Properties/Images/5.png)
 
 ### YouTube
 
-![](Resources/Images/6.png)
+![](https://github.com/KarmaScripter/Baby/tree/main/Properties/Images/6.png)
 
 ### Google Maps
 
-![](Resources/Images/2.png)
+![](https://github.com/KarmaScripter/Baby/tree/main/Properties/Images/2.png)
 
 ### Search Bar
 
-![](Resources/Images/search.png)
+![](https://github.com/KarmaScripter/Baby/tree/main/Properties/Images/search.png)
 
 ### Downloads Tab
 
-![](Resources/Images/3.png)
+![](https://github.com/KarmaScripter/Baby/tree/main/Properties/Images/3.png)
 
 ### Developer Tools
 
-![](Resources/Images/4.png)
+![](https://github.com/KarmaScripter/Baby/tree/main/Properties/Images/4.png)
 
 ### Custom Error Pages
 
-![](Resources/Images/error1.png)
+![](https://github.com/KarmaScripter/Baby/tree/main/Properties/Images/error1.png)
 
-![](Resources/Images/error2.png)
+![](https://github.com/KarmaScripter/Baby/tree/main/Properties/Images/error2.png)
 

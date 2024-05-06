@@ -132,7 +132,7 @@ namespace Baby
             DialogDomainComboBox.ArrowColor = System.Drawing.Color.FromArgb( 110, 110, 110 );
             DialogDomainComboBox.BackColor = System.Drawing.Color.Transparent;
             DialogDomainComboBox.BackgroundColor = System.Drawing.Color.FromArgb( 34, 34, 34 );
-            DialogDomainComboBox.BorderColor = System.Drawing.Color.FromArgb( 34, 34, 34 );
+            DialogDomainComboBox.BorderColor = System.Drawing.Color.FromArgb( 110, 110, 110 );
             DialogDomainComboBox.CausesValidation = false;
             DialogDomainComboBox.DisabledBackColor = System.Drawing.Color.FromArgb( 80, 80, 80 );
             DialogDomainComboBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 109, 109, 109 );

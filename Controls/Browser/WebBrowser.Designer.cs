@@ -463,7 +463,7 @@
             ToolStripKeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             ToolStripKeyWordTextBox.Name = "ToolStripKeyWordTextBox";
             ToolStripKeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 188, 25 );
+            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 184, 25 );
             ToolStripKeyWordTextBox.Tag = "";
             ToolStripKeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             ToolStripKeyWordTextBox.ToolTip = ToolTip;

@@ -86,25 +86,7 @@ namespace Baby
         /// The domain prefix
         /// </summary>
         private string _domainLabelPrefix;
-
-        /// <summary>
-        /// Gets the selected domain.
-        /// </summary>
-        /// <value>
-        /// The selected domain.
-        /// </value>
-        public string QueryPrefix
-        {
-            get
-            {
-                return _queryPrefix;
-            }
-            private set
-            {
-                _queryPrefix = value;
-            }
-        }
-
+        
         /// <summary>
         /// Gets or sets the results.
         /// </summary>
@@ -117,7 +99,7 @@ namespace Baby
             {
                 return _results;
             }
-            private set
+            private protected set
             {
                 _results = value;
             }
@@ -154,6 +136,7 @@ namespace Baby
             _results = string.Empty;
             _domainLabelPrefix = "Domain:";
             _keywordLabelPrefix = "Key Words:";
+            _queryPrefix = ConfigurationManager.AppSettings[ "Google" ];
 
             // Control Properties
             DialogDomainComboBox.BorderColor = Color.FromArgb( 34, 34, 34 );
@@ -164,7 +147,6 @@ namespace Baby
 
             //Event Wiring
             Load += OnLoad;
-            Activated += OnActivated;
         }
         
         /// <summary>
@@ -177,7 +159,7 @@ namespace Baby
                 DialogCloseButton.Click += OnCloseButtonClick;
                 DialogLookupButton.Click += OnLookupButtonClick;
                 DialogRefreshButton.Click += OnClearButtonClick;
-                DialogDomainComboBox.SelectedIndexChanged += OnSelectedDomainChanged;
+                DialogDomainComboBox.SelectionChangeCommitted += OnSelectedDomainChanged;
                 DialogKeyWordTextBox.TextChanged += OnInputTextChanged;
             }
             catch( Exception _ex )
@@ -193,7 +175,7 @@ namespace Baby
         {
             try
             {
-                DialogKeyWordTextBox.Font = new Font( "Roboto", 12 );
+                DialogKeyWordTextBox.Font = new Font( "Roboto", 10 );
                 DialogKeyWordTextBox.ForeColor = Color.FromArgb( 106, 189, 252 );
                 DialogKeyWordTextBox.BackColor = Color.FromArgb( 34, 34, 34 );
             }
@@ -311,7 +293,9 @@ namespace Baby
             }
         }
 
-        /// <summary> Called when [load]. </summary>
+        /// <summary>
+        /// Called when [load].
+        /// </summary>
         /// <param name="sender">
         /// The sender.
         /// </param>
@@ -322,7 +306,6 @@ namespace Baby
         {
             try
             {
-                _queryPrefix = ConfigurationManager.AppSettings[ "Google" ];
                 InitializeTextBox( );
                 InitializeButtons( );
                 InitializeComboBox( );
@@ -371,9 +354,10 @@ namespace Baby
         {
             try
             {
-                if( !string.IsNullOrEmpty( _keywordInput ) )
+                if( !string.IsNullOrEmpty( _keywordInput ) 
+                   && !string.IsNullOrEmpty( _queryPrefix ) )
                 {
-                    _results = _queryPrefix + " " + _keywordInput;
+                    _results = _queryPrefix + _keywordInput;
                     DialogResult = DialogResult.OK;
                     Close( );
                 }
@@ -394,13 +378,12 @@ namespace Baby
         {
             try
             {
-                DialogKeyWordTextBox.Text = string.Empty;
                 _keywordInput = string.Empty;
                 _results = string.Empty;
-                DomainLabel.Text = _domainLabelPrefix + " Google";
-                KeyWordLabel.Text = _keywordLabelPrefix + " 0";
                 _queryPrefix = ConfigurationManager.AppSettings[ "Google" ];
-                DialogResult = DialogResult.Continue;
+                DomainLabel.Text = _domainLabelPrefix;
+                KeyWordLabel.Text = _keywordLabelPrefix;
+                DialogResult = DialogResult.Retry;
             }
             catch( Exception _ex )
             {
@@ -423,10 +406,12 @@ namespace Baby
                 {
                     var _split = _keywordInput.Split( " " );
                     KeyWordLabel.Text = _keywordLabelPrefix + " " + _split.Length;
+                    _results = _queryPrefix + _keywordInput;
                 }
                 else
                 {
                     KeyWordLabel.Text = _keywordLabelPrefix + " " + 0;
+                    _results = _queryPrefix + _keywordInput;
                 }
             }
             catch( Exception _ex )
@@ -447,8 +432,9 @@ namespace Baby
             {
                 if( sender is MetroSetComboBox _comboBox )
                 {
-                    var _selection = _comboBox.SelectedItem?.ToString( );
                     var _index = _comboBox.SelectedIndex;
+                    var _tag = _comboBox.SelectedItem;
+                    _comboBox.Tag = _tag;
                     _queryPrefix = _index switch
                     {
                         0 => ConfigurationManager.AppSettings[ "Google" ],
@@ -484,27 +470,16 @@ namespace Baby
                         _ => ConfigurationManager.AppSettings[ "Google" ]
                     };
                     
-                    DomainLabel.Text = _domainLabelPrefix + " " + _selection;
+                    var _selection = _tag.ToString( );
+                    if( !string.IsNullOrEmpty( _selection ) )
+                    {
+                        DomainLabel.Text = _domainLabelPrefix + " " + _selection;
+                    }
+                    else
+                    {
+                        DomainLabel.Text = _domainLabelPrefix + " " + "Google";
+                    }
                 }
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Called when [shown].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/>
-        /// instance containing the event data.</param>
-        private void OnActivated( object sender, EventArgs e )
-        {
-            try
-            {
-                Opacity = 0;
-                FadeInAsync( this );
             }
             catch( Exception _ex )
             {

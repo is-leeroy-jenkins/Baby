@@ -46,6 +46,7 @@ namespace Baby
     using System.Threading;
     using System.Diagnostics;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.IO;
     using System.Web;
     using CefSharp;
@@ -2087,41 +2088,44 @@ namespace Baby
         {
             try
             {
-                var _index = ToolStripDomainComboBox.SelectedIndex;
-                _searchEngineUrl = _index switch
+                if( sender is ToolStripComboBox _comboBox )
                 {
-                    0 => AppSettings[ "Google" ],
-                    1 => AppSettings[ "EPA" ],
-                    2 => AppSettings[ "DATA" ],
-                    3 => AppSettings[ "GPO" ],
-                    4 => AppSettings[ "USGI" ],
-                    5 => AppSettings[ "CRS" ],
-                    6 => AppSettings[ "LOC" ],
-                    7 => AppSettings[ "OMB" ],
-                    8 => AppSettings[ "UST" ],
-                    9 => AppSettings[ "NASA" ],
-                    10 => AppSettings[ "NOAA" ],
-                    11 => AppSettings[ "DOI" ],
-                    12 => AppSettings[ "NPS" ],
-                    13 => AppSettings[ "GSA" ],
-                    14 => AppSettings[ "NARA" ],
-                    15 => AppSettings[ "DOC" ],
-                    16 => AppSettings[ "HHS" ],
-                    17 => AppSettings[ "NRC" ],
-                    18 => AppSettings[ "DOE" ],
-                    19 => AppSettings[ "NSF" ],
-                    20 => AppSettings[ "USDA" ],
-                    21 => AppSettings[ "CSB" ],
-                    22 => AppSettings[ "IRS" ],
-                    23 => AppSettings[ "FDA" ],
-                    24 => AppSettings[ "CDC" ],
-                    25 => AppSettings[ "ACE" ],
-                    26 => AppSettings[ "DHS" ],
-                    27 => AppSettings[ "DOD" ],
-                    28 => AppSettings[ "USNO" ],
-                    29 => AppSettings[ "NWS" ],
-                    _ => AppSettings[ "Google" ]
-                };
+                    var _index = _comboBox.SelectedIndex;
+                    _searchEngineUrl = _index switch
+                    {
+                        0 => AppSettings[ "Google" ],
+                        1 => AppSettings[ "EPA" ],
+                        2 => AppSettings[ "DATA" ],
+                        3 => AppSettings[ "GPO" ],
+                        4 => AppSettings[ "USGI" ],
+                        5 => AppSettings[ "CRS" ],
+                        6 => AppSettings[ "LOC" ],
+                        7 => AppSettings[ "OMB" ],
+                        8 => AppSettings[ "UST" ],
+                        9 => AppSettings[ "NASA" ],
+                        10 => AppSettings[ "NOAA" ],
+                        11 => AppSettings[ "DOI" ],
+                        12 => AppSettings[ "NPS" ],
+                        13 => AppSettings[ "GSA" ],
+                        14 => AppSettings[ "NARA" ],
+                        15 => AppSettings[ "DOC" ],
+                        16 => AppSettings[ "HHS" ],
+                        17 => AppSettings[ "NRC" ],
+                        18 => AppSettings[ "DOE" ],
+                        19 => AppSettings[ "NSF" ],
+                        20 => AppSettings[ "USDA" ],
+                        21 => AppSettings[ "CSB" ],
+                        22 => AppSettings[ "IRS" ],
+                        23 => AppSettings[ "FDA" ],
+                        24 => AppSettings[ "CDC" ],
+                        25 => AppSettings[ "ACE" ],
+                        26 => AppSettings[ "DHS" ],
+                        27 => AppSettings[ "DOD" ],
+                        28 => AppSettings[ "USNO" ],
+                        29 => AppSettings[ "NWS" ],
+                        _ => AppSettings[ "Google" ]
+                    };
+                }
             }
             catch( Exception _ex )
             {

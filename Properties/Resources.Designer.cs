@@ -153,6 +153,36 @@ namespace Baby.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap DialogBackButton {
+            get {
+                object obj = ResourceManager.GetObject("DialogBackButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap DialogForwardButton {
+            get {
+                object obj = ResourceManager.GetObject("DialogForwardButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap DialogHomeButton {
+            get {
+                object obj = ResourceManager.GetObject("DialogHomeButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap EpaSkew {
             get {
                 object obj = ResourceManager.GetObject("EpaSkew", resourceCulture);

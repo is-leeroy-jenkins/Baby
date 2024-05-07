@@ -89,8 +89,8 @@
             SearchCancelButton = new System.Windows.Forms.Button( );
             NavigationLayout = new System.Windows.Forms.FlowLayoutPanel( );
             SearchHomeButton = new System.Windows.Forms.Button( );
-            SearchBackButton = new System.Windows.Forms.Button( );
             SearchForwardButton = new System.Windows.Forms.Button( );
+            SearchBackButton = new System.Windows.Forms.Button( );
             UrlTextBox = new TextBox( );
             UrlSearchPanel = new Layout( );
             ContextMenu = new ContextMenu( );
@@ -472,7 +472,7 @@
             ToolStripKeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             ToolStripKeyWordTextBox.Name = "ToolStripKeyWordTextBox";
             ToolStripKeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 154, 25 );
+            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 152, 25 );
             ToolStripKeyWordTextBox.Tag = "";
             ToolStripKeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             ToolStripKeyWordTextBox.ToolTip = ToolTip;
@@ -887,8 +887,8 @@
             // SearchLayout
             // 
             SearchLayout.Controls.Add( SearchLookupButton );
-            SearchLayout.Controls.Add( SearchRefreshButton );
             SearchLayout.Controls.Add( SearchCancelButton );
+            SearchLayout.Controls.Add( SearchRefreshButton );
             SearchLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             SearchLayout.Location = new System.Drawing.Point( 1333, 3 );
             SearchLayout.Name = "SearchLayout";
@@ -916,7 +916,7 @@
             SearchRefreshButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
             SearchRefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             SearchRefreshButton.Image = Properties.Resources.SearchRefreshButton;
-            SearchRefreshButton.Location = new System.Drawing.Point( 39, 3 );
+            SearchRefreshButton.Location = new System.Drawing.Point( 78, 3 );
             SearchRefreshButton.Name = "SearchRefreshButton";
             SearchRefreshButton.Padding = new System.Windows.Forms.Padding( 5 );
             SearchRefreshButton.Size = new System.Drawing.Size( 32, 28 );
@@ -929,8 +929,8 @@
             SearchCancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
             SearchCancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
             SearchCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SearchCancelButton.Image = Properties.Resources.SearchCancelButton;
-            SearchCancelButton.Location = new System.Drawing.Point( 77, 3 );
+            SearchCancelButton.Image = Properties.Resources.WebCancelButton;
+            SearchCancelButton.Location = new System.Drawing.Point( 39, 3 );
             SearchCancelButton.Name = "SearchCancelButton";
             SearchCancelButton.Padding = new System.Windows.Forms.Padding( 5 );
             SearchCancelButton.Size = new System.Drawing.Size( 33, 28 );
@@ -956,27 +956,13 @@
             SearchHomeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             SearchHomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
             SearchHomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SearchHomeButton.Image = Properties.Resources.SearchPanelHomeButton;
+            SearchHomeButton.Image = Properties.Resources.WebHomeButton;
             SearchHomeButton.Location = new System.Drawing.Point( 112, 3 );
             SearchHomeButton.Name = "SearchHomeButton";
             SearchHomeButton.Padding = new System.Windows.Forms.Padding( 5 );
             SearchHomeButton.Size = new System.Drawing.Size( 31, 28 );
             SearchHomeButton.TabIndex = 1;
             SearchHomeButton.UseVisualStyleBackColor = true;
-            // 
-            // SearchBackButton
-            // 
-            SearchBackButton.FlatAppearance.BorderSize = 0;
-            SearchBackButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
-            SearchBackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            SearchBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SearchBackButton.Image = Properties.Resources.SearchPreviousButton;
-            SearchBackButton.Location = new System.Drawing.Point( 35, 3 );
-            SearchBackButton.Name = "SearchBackButton";
-            SearchBackButton.Padding = new System.Windows.Forms.Padding( 5 );
-            SearchBackButton.Size = new System.Drawing.Size( 32, 28 );
-            SearchBackButton.TabIndex = 2;
-            SearchBackButton.UseVisualStyleBackColor = true;
             // 
             // SearchForwardButton
             // 
@@ -991,6 +977,20 @@
             SearchForwardButton.Size = new System.Drawing.Size( 33, 28 );
             SearchForwardButton.TabIndex = 2;
             SearchForwardButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchBackButton
+            // 
+            SearchBackButton.FlatAppearance.BorderSize = 0;
+            SearchBackButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
+            SearchBackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            SearchBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchBackButton.Image = Properties.Resources.SearchPreviousButton;
+            SearchBackButton.Location = new System.Drawing.Point( 35, 3 );
+            SearchBackButton.Name = "SearchBackButton";
+            SearchBackButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchBackButton.Size = new System.Drawing.Size( 32, 28 );
+            SearchBackButton.TabIndex = 2;
+            SearchBackButton.UseVisualStyleBackColor = true;
             // 
             // UrlTextBox
             // 

@@ -139,9 +139,10 @@ namespace Baby
             _queryPrefix = ConfigurationManager.AppSettings[ "Google" ];
 
             // Control Properties
-            DomainComboBox.BorderColor = Color.FromArgb( 34, 34, 34 );
-            DomainComboBox.SelectedIndex = -1;
-            DomainComboBox.ArrowColor = Color.FromArgb( 0, 120, 212 );
+            ComboBox.BackColor = Color.FromArgb( 75, 75, 75 );
+            ComboBox.ArrowColor = Color.FromArgb( 0, 120, 212 );
+            ComboBox.BorderColor = Color.FromArgb( 0, 120, 212 );
+            ComboBox.ForeColor = Color.White;
             DomainLabel.Text = _domainLabelPrefix + " " + "Google";
             KeyWordLabel.Text = _keywordLabelPrefix + " " + "0";
 
@@ -156,10 +157,10 @@ namespace Baby
         {
             try
             {
-                DialogCloseButton.Click += OnCloseButtonClick;
-                DialogLookupButton.Click += OnLookupButtonClick;
-                DialogRefreshButton.Click += OnClearButtonClick;
-                DomainComboBox.SelectionChangeCommitted += OnSelectedDomainChanged;
+                CloseButton.Click += OnCloseButtonClick;
+                LookupButton.Click += OnLookupButtonClick;
+                RefreshButton.Click += OnClearButtonClick;
+                ComboBox.SelectionChangeCommitted += OnSelectedDomainChanged;
                 TextBox.TextChanged += OnInputTextChanged;
             }
             catch( Exception _ex )
@@ -177,7 +178,7 @@ namespace Baby
             {
                 TextBox.Font = new Font( "Roboto", 10 );
                 TextBox.ForeColor = Color.FromArgb( 106, 189, 252 );
-                TextBox.BackColor = Color.FromArgb( 34, 34, 34 );
+                TextBox.BackColor = Color.FromArgb( 75, 75, 75 );
             }
             catch( Exception _ex )
             {
@@ -208,18 +209,18 @@ namespace Baby
         {
             try
             {
-                DialogCloseButton.FlatStyle = FlatStyle.Flat;
-                DialogCloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
-                DialogCloseButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
-                DialogCloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
-                DialogLookupButton.FlatStyle = FlatStyle.Flat;
-                DialogLookupButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
-                DialogLookupButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 18, 79, 17 );
-                DialogLookupButton.BackColor = Color.FromArgb( 20, 20, 20 );
-                DialogCloseButton.FlatStyle = FlatStyle.Flat;
-                DialogCloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
-                DialogCloseButton.FlatAppearance.MouseOverBackColor = Color.Maroon;
-                DialogCloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
+                CloseButton.FlatStyle = FlatStyle.Flat;
+                CloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+                CloseButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 50, 93, 129 );
+                CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
+                LookupButton.FlatStyle = FlatStyle.Flat;
+                LookupButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+                LookupButton.FlatAppearance.MouseOverBackColor = Color.FromArgb( 18, 79, 17 );
+                LookupButton.BackColor = Color.FromArgb( 20, 20, 20 );
+                CloseButton.FlatStyle = FlatStyle.Flat;
+                CloseButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+                CloseButton.FlatAppearance.MouseOverBackColor = Color.Maroon;
+                CloseButton.BackColor = Color.FromArgb( 20, 20, 20 );
             }
             catch( Exception _ex )
             {
@@ -234,10 +235,11 @@ namespace Baby
         {
             try
             {
-                DomainComboBox.Style = Style.Custom;
-                DomainComboBox.BackColor = Color.FromArgb( 75, 75, 75 );
-                DomainComboBox.BorderColor = Color.FromArgb( 0, 120, 212 );
-                DomainComboBox.ForeColor = Color.White;
+                ComboBox.Style = Style.Custom;
+                ComboBox.BackColor = Color.FromArgb( 75, 75, 75 );
+                ComboBox.ArrowColor = Color.FromArgb( 0, 120, 212 );
+                ComboBox.BorderColor = Color.FromArgb( 0, 120, 212 );
+                ComboBox.ForeColor = Color.White;
             }
             catch( Exception _ex )
             {

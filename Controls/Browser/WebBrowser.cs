@@ -664,7 +664,28 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
+        /// <summary>
+        /// this is done every time a new tab is opened
+        /// </summary>
+        /// <param name="browser">
+        /// The browser.
+        /// </param>
+        private void ConfigureBrowser( ChromiumWebBrowser browser )
+        {
+            try
+            {
+                ThrowIf.Null( browser, nameof( browser ) );
+                var _config = new BrowserSettings( );
+                _config.WebGl = bool.Parse( AppSettings[ "WebGL" ] ).ToCefState( );
+                browser.BrowserSettings = _config;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
         /// <summary>
         /// Fades the in asynchronous.
         /// </summary>
@@ -789,19 +810,16 @@ namespace Baby
         }
 
         /// <summary>
-        /// this is done every time a new tab is opened
+        /// Sends the message.
         /// </summary>
-        /// <param name="browser">
-        /// The browser.
-        /// </param>
-        private void ConfigureBrowser( ChromiumWebBrowser browser )
+        /// <param name="message">The message.</param>
+        private void SendMessage( string message )
         {
             try
             {
-                ThrowIf.Null( browser, nameof( browser ) );
-                var _config = new BrowserSettings( );
-                _config.WebGl = bool.Parse( AppSettings[ "WebGL" ] ).ToCefState( );
-                browser.BrowserSettings = _config;
+                ThrowIf.NullOrEmpty( message, nameof( message ) );
+                var _splashMessage = new SplashMessage( message );
+                _splashMessage.Show( );
             }
             catch( Exception _ex )
             {
@@ -998,46 +1016,6 @@ namespace Baby
                 _tcs.SetException( _ex );
                 Fail( _ex );
                 return default( Task<ChromiumWebBrowser> );
-            }
-        }
-
-        /// <summary>
-        /// Updates the status label.
-        /// </summary>
-        private void UpdateStatus( )
-        {
-            try
-            {
-                var _dateTime = DateTime.Now;
-                var _dateString = _dateTime.ToLongDateString( );
-                var _timeString = _dateTime.ToLongTimeString( );
-                StatusLabel.Text = _dateString;
-                TimeLabel.Text = _timeString;
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
-            }
-        }
-
-        /// <summary>
-        /// Updates the status label.
-        /// </summary>
-        /// <param name="dateTime">
-        /// The date time.
-        /// </param>
-        private void UpdateStatus( DateTime dateTime )
-        {
-            try
-            {
-                var _dateString = dateTime.ToLongDateString( );
-                var _timeString = dateTime.ToLongTimeString( );
-                StatusLabel.Text = _dateString;
-                TimeLabel.Text = _timeString;
-            }
-            catch( Exception _ex )
-            {
-                Fail( _ex );
             }
         }
 
@@ -1607,6 +1585,14 @@ namespace Baby
         }
 
         /// <summary>
+        /// Opens the developer tools.
+        /// </summary>
+        private void OpenDeveloperTools( )
+        {
+            CurrentBrowser.ShowDevTools( );
+        }
+
+        /// <summary>
         /// Opens the chrome browser.
         /// </summary>
         /// <param name="args">The arguments.</param>
@@ -1821,24 +1807,38 @@ namespace Baby
         }
 
         /// <summary>
-        /// Opens the developer tools.
+        /// Updates the status label.
         /// </summary>
-        private void OpenDeveloperTools( )
-        {
-            CurrentBrowser.ShowDevTools( );
-        }
-
-        /// <summary>
-        /// Sends the message.
-        /// </summary>
-        /// <param name="message">The message.</param>
-        private void SendMessage( string message )
+        private void UpdateStatus( )
         {
             try
             {
-                ThrowIf.NullOrEmpty( message, nameof( message ) );
-                var _splashMessage = new SplashMessage( message );
-                _splashMessage.Show( );
+                var _dateTime = DateTime.Now;
+                var _dateString = _dateTime.ToLongDateString( );
+                var _timeString = _dateTime.ToLongTimeString( );
+                StatusLabel.Text = _dateString;
+                TimeLabel.Text = _timeString;
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Updates the status label.
+        /// </summary>
+        /// <param name="dateTime">
+        /// The date time.
+        /// </param>
+        private void UpdateStatus( DateTime dateTime )
+        {
+            try
+            {
+                var _dateString = dateTime.ToLongDateString( );
+                var _timeString = dateTime.ToLongTimeString( );
+                StatusLabel.Text = _dateString;
+                TimeLabel.Text = _timeString;
             }
             catch( Exception _ex )
             {
@@ -2093,7 +2093,8 @@ namespace Baby
         /// Called when [search engine selected].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         private void OnSelectedDomainChanged( object sender, EventArgs e )
         {
             try
@@ -2294,7 +2295,7 @@ namespace Baby
                 finally
                 {
                     _dialog.TextBox.Text = string.Empty;
-                    _dialog.DomainComboBox.SelectedIndex = -1;
+                    _dialog.ComboBox.SelectedIndex = -1;
                 }
             }
         }

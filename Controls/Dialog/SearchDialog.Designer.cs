@@ -37,10 +37,10 @@ namespace Baby
         {
             var resources = new ComponentResourceManager( typeof( SearchDialog ) );
             ToolTip = new ToolTip( );
-            DialogLookupButton = new System.Windows.Forms.Button( );
-            DialogRefreshButton = new System.Windows.Forms.Button( );
-            DialogCloseButton = new System.Windows.Forms.Button( );
-            DomainComboBox = new MetroSet_UI.Controls.MetroSetComboBox( );
+            LookupButton = new System.Windows.Forms.Button( );
+            RefreshButton = new System.Windows.Forms.Button( );
+            CloseButton = new System.Windows.Forms.Button( );
+            ComboBox = new MetroSet_UI.Controls.MetroSetComboBox( );
             ButtonTable = new TableLayoutPanel( );
             ControlTable = new TableLayoutPanel( );
             KeyWordLabel = new Label( );
@@ -69,92 +69,92 @@ namespace Baby
             ToolTip.TipText = null;
             ToolTip.TipTitle = null;
             // 
-            // DialogLookupButton
+            // LookupButton
             // 
-            DialogLookupButton.BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            DialogLookupButton.DialogResult = DialogResult.OK;
-            DialogLookupButton.Dock = DockStyle.Fill;
-            DialogLookupButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            DialogLookupButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 18, 79, 17 );
-            DialogLookupButton.FlatStyle = FlatStyle.Flat;
-            DialogLookupButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            DialogLookupButton.Image = Properties.Resources.SearchPanelLookUpButton;
-            DialogLookupButton.Location = new System.Drawing.Point( 1, 1 );
-            DialogLookupButton.Margin = new Padding( 1 );
-            DialogLookupButton.Name = "DialogLookupButton";
-            DialogLookupButton.Padding = new Padding( 5 );
-            DialogLookupButton.Size = new System.Drawing.Size( 39, 29 );
-            DialogLookupButton.TabIndex = 9;
-            DialogLookupButton.Tag = "Begin Search";
-            DialogLookupButton.UseVisualStyleBackColor = false;
+            LookupButton.BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            LookupButton.DialogResult = DialogResult.OK;
+            LookupButton.Dock = DockStyle.Fill;
+            LookupButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            LookupButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 18, 79, 17 );
+            LookupButton.FlatStyle = FlatStyle.Flat;
+            LookupButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            LookupButton.Image = Properties.Resources.WebLookUpButton;
+            LookupButton.Location = new System.Drawing.Point( 1, 1 );
+            LookupButton.Margin = new Padding( 1 );
+            LookupButton.Name = "LookupButton";
+            LookupButton.Padding = new Padding( 5 );
+            LookupButton.Size = new System.Drawing.Size( 39, 29 );
+            LookupButton.TabIndex = 9;
+            LookupButton.Tag = "Begin Search";
+            LookupButton.UseVisualStyleBackColor = false;
             // 
-            // DialogRefreshButton
+            // RefreshButton
             // 
-            DialogRefreshButton.BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            DialogRefreshButton.DialogResult = DialogResult.Ignore;
-            DialogRefreshButton.Dock = DockStyle.Fill;
-            DialogRefreshButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            DialogRefreshButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            DialogRefreshButton.FlatStyle = FlatStyle.Flat;
-            DialogRefreshButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            DialogRefreshButton.Image = Properties.Resources.SearchRefreshButton;
-            DialogRefreshButton.Location = new System.Drawing.Point( 42, 1 );
-            DialogRefreshButton.Margin = new Padding( 1 );
-            DialogRefreshButton.Name = "DialogRefreshButton";
-            DialogRefreshButton.Padding = new Padding( 5 );
-            DialogRefreshButton.Size = new System.Drawing.Size( 35, 29 );
-            DialogRefreshButton.TabIndex = 1;
-            DialogRefreshButton.Tag = "Clear Search";
-            DialogRefreshButton.UseVisualStyleBackColor = false;
+            RefreshButton.BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            RefreshButton.DialogResult = DialogResult.Ignore;
+            RefreshButton.Dock = DockStyle.Fill;
+            RefreshButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            RefreshButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            RefreshButton.FlatStyle = FlatStyle.Flat;
+            RefreshButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            RefreshButton.Image = Properties.Resources.SearchRefreshButton;
+            RefreshButton.Location = new System.Drawing.Point( 42, 1 );
+            RefreshButton.Margin = new Padding( 1 );
+            RefreshButton.Name = "RefreshButton";
+            RefreshButton.Padding = new Padding( 5 );
+            RefreshButton.Size = new System.Drawing.Size( 35, 29 );
+            RefreshButton.TabIndex = 1;
+            RefreshButton.Tag = "Clear Search";
+            RefreshButton.UseVisualStyleBackColor = false;
             // 
-            // DialogCloseButton
+            // CloseButton
             // 
-            DialogCloseButton.BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            DialogCloseButton.DialogResult = DialogResult.Cancel;
-            DialogCloseButton.Dock = DockStyle.Fill;
-            DialogCloseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            DialogCloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
-            DialogCloseButton.FlatStyle = FlatStyle.Flat;
-            DialogCloseButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
-            DialogCloseButton.Image = Properties.Resources.SearchCancelButton;
-            DialogCloseButton.Location = new System.Drawing.Point( 79, 1 );
-            DialogCloseButton.Margin = new Padding( 1 );
-            DialogCloseButton.Name = "DialogCloseButton";
-            DialogCloseButton.Padding = new Padding( 5 );
-            DialogCloseButton.Size = new System.Drawing.Size( 46, 29 );
-            DialogCloseButton.TabIndex = 3;
-            DialogCloseButton.Tag = "Cancel Search";
-            DialogCloseButton.UseVisualStyleBackColor = false;
+            CloseButton.BackColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            CloseButton.DialogResult = DialogResult.Cancel;
+            CloseButton.Dock = DockStyle.Fill;
+            CloseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            CloseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            CloseButton.FlatStyle = FlatStyle.Flat;
+            CloseButton.ForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            CloseButton.Image = Properties.Resources.SearchCancelButton;
+            CloseButton.Location = new System.Drawing.Point( 79, 1 );
+            CloseButton.Margin = new Padding( 1 );
+            CloseButton.Name = "CloseButton";
+            CloseButton.Padding = new Padding( 5 );
+            CloseButton.Size = new System.Drawing.Size( 46, 29 );
+            CloseButton.TabIndex = 3;
+            CloseButton.Tag = "Cancel Search";
+            CloseButton.UseVisualStyleBackColor = false;
             // 
-            // DomainComboBox
+            // ComboBox
             // 
-            DomainComboBox.AllowDrop = true;
-            DomainComboBox.ArrowColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            DomainComboBox.BackColor = System.Drawing.Color.Transparent;
-            DomainComboBox.BackgroundColor = System.Drawing.Color.FromArgb( 75, 75, 75 );
-            DomainComboBox.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            DomainComboBox.CausesValidation = false;
-            DomainComboBox.DisabledBackColor = System.Drawing.Color.FromArgb( 80, 80, 80 );
-            DomainComboBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 109, 109, 109 );
-            DomainComboBox.DisabledForeColor = System.Drawing.Color.FromArgb( 109, 109, 109 );
-            DomainComboBox.DrawMode = DrawMode.OwnerDrawFixed;
-            DomainComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            DomainComboBox.FlatStyle = FlatStyle.Flat;
-            DomainComboBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            DomainComboBox.FormattingEnabled = true;
-            DomainComboBox.IsDerivedStyle = true;
-            DomainComboBox.ItemHeight = 20;
-            DomainComboBox.Items.AddRange( new object[ ] { "Google", "EPA ", "DATA  ", "GPO ", "USGI ", "CRS ", "LOC ", "OMB ", "UST ", "NASA ", "NOAA ", "DOI ", "NPS ", "GSA ", "NARA ", "DOC", "HHS", "NRC", "DOE", "NSF", "USDA", "CSB", "IRS", "FDA", "CDC", "ACE", "DHS", "DOD", "USNO", "NWS" } );
-            DomainComboBox.Location = new System.Drawing.Point( 433, 41 );
-            DomainComboBox.Name = "DomainComboBox";
-            DomainComboBox.SelectedItemBackColor = System.Drawing.Color.FromArgb( 65, 177, 225 );
-            DomainComboBox.SelectedItemForeColor = System.Drawing.Color.White;
-            DomainComboBox.Size = new System.Drawing.Size( 129, 26 );
-            DomainComboBox.Style = MetroSet_UI.Enums.Style.Dark;
-            DomainComboBox.StyleManager = null;
-            DomainComboBox.TabIndex = 10;
-            DomainComboBox.ThemeAuthor = "Narwin";
-            DomainComboBox.ThemeName = "MetroDark";
+            ComboBox.AllowDrop = true;
+            ComboBox.ArrowColor = System.Drawing.Color.FromArgb( 110, 110, 110 );
+            ComboBox.BackColor = System.Drawing.Color.Transparent;
+            ComboBox.BackgroundColor = System.Drawing.Color.FromArgb( 34, 34, 34 );
+            ComboBox.BorderColor = System.Drawing.Color.FromArgb( 110, 110, 110 );
+            ComboBox.CausesValidation = false;
+            ComboBox.DisabledBackColor = System.Drawing.Color.FromArgb( 80, 80, 80 );
+            ComboBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 109, 109, 109 );
+            ComboBox.DisabledForeColor = System.Drawing.Color.FromArgb( 109, 109, 109 );
+            ComboBox.DrawMode = DrawMode.OwnerDrawFixed;
+            ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBox.FlatStyle = FlatStyle.Flat;
+            ComboBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            ComboBox.FormattingEnabled = true;
+            ComboBox.IsDerivedStyle = true;
+            ComboBox.ItemHeight = 20;
+            ComboBox.Items.AddRange( new object[ ] { "Google", "EPA ", "DATA  ", "GPO ", "USGI ", "CRS ", "LOC ", "OMB ", "UST ", "NASA ", "NOAA ", "DOI ", "NPS ", "GSA ", "NARA ", "DOC", "HHS", "NRC", "DOE", "NSF", "USDA", "CSB", "IRS", "FDA", "CDC", "ACE", "DHS", "DOD", "USNO", "NWS" } );
+            ComboBox.Location = new System.Drawing.Point( 432, 41 );
+            ComboBox.Name = "ComboBox";
+            ComboBox.SelectedItemBackColor = System.Drawing.Color.FromArgb( 65, 177, 225 );
+            ComboBox.SelectedItemForeColor = System.Drawing.Color.White;
+            ComboBox.Size = new System.Drawing.Size( 129, 26 );
+            ComboBox.Style = MetroSet_UI.Enums.Style.Dark;
+            ComboBox.StyleManager = null;
+            ComboBox.TabIndex = 10;
+            ComboBox.ThemeAuthor = "Narwin";
+            ComboBox.ThemeName = "MetroDark";
             // 
             // ButtonTable
             // 
@@ -162,9 +162,9 @@ namespace Baby
             ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 52.63158F ) );
             ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Percent, 47.36842F ) );
             ButtonTable.ColumnStyles.Add( new ColumnStyle( SizeType.Absolute, 47F ) );
-            ButtonTable.Controls.Add( DialogLookupButton, 0, 0 );
-            ButtonTable.Controls.Add( DialogRefreshButton, 1, 0 );
-            ButtonTable.Controls.Add( DialogCloseButton, 2, 0 );
+            ButtonTable.Controls.Add( LookupButton, 0, 0 );
+            ButtonTable.Controls.Add( RefreshButton, 1, 0 );
+            ButtonTable.Controls.Add( CloseButton, 2, 0 );
             ButtonTable.Dock = DockStyle.Fill;
             ButtonTable.Location = new System.Drawing.Point( 3, 3 );
             ButtonTable.Name = "ButtonTable";
@@ -277,7 +277,7 @@ namespace Baby
             Controls.Add( DomainLabel );
             Controls.Add( KeyWordLabel );
             Controls.Add( ControlTable );
-            Controls.Add( DomainComboBox );
+            Controls.Add( ComboBox );
             DoubleBuffered = true;
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
@@ -303,13 +303,13 @@ namespace Baby
         public ToolTip ToolTip;
         public Label Label;
         public BindingSource BindingSource;
-        public System.Windows.Forms.Button DialogLookupButton;
-        public System.Windows.Forms.Button DialogCloseButton;
-        public System.Windows.Forms.Button DialogRefreshButton;
+        public System.Windows.Forms.Button LookupButton;
+        public System.Windows.Forms.Button CloseButton;
+        public System.Windows.Forms.Button RefreshButton;
         private System.Windows.Forms.RichTextBox richTextBox1;
         public TableLayoutPanel ButtonTable;
         public TableLayoutPanel ControlTable;
-        public MetroSet_UI.Controls.MetroSetComboBox DomainComboBox;
+        public MetroSet_UI.Controls.MetroSetComboBox ComboBox;
         public Label KeyWordLabel;
         public Label DomainLabel;
         public TextBox TextBox;

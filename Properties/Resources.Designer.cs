@@ -413,6 +413,16 @@ namespace Baby.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap WebLookUpButton {
+            get {
+                object obj = ResourceManager.GetObject("WebLookUpButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap WebMenuButton {
             get {
                 object obj = ResourceManager.GetObject("WebMenuButton", resourceCulture);

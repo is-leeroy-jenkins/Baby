@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\terry\\source\\repos\\Baby\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\dialog\\searchdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\dialog\\searchdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\dialog\\searchdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\dialog\\searchdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\tabstrip\\browsertabstripitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\tabstrip\\browsertabstripitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\tabstrip\\browsertabstrip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\tabstrip\\browsertabstrip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\menu\\menubase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\menu\\menubase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,40 +46,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SearchDialog.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\SearchDialog.cs",
-              "RelativeDocumentMoniker": "Controls\\Dialog\\SearchDialog.cs",
-              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\SearchDialog.cs [Design]",
-              "RelativeToolTip": "Controls\\Dialog\\SearchDialog.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-07T07:13:50.716Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SearchDialog.cs",
-              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\SearchDialog.cs",
-              "RelativeDocumentMoniker": "Controls\\Dialog\\SearchDialog.cs",
-              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Dialog\\SearchDialog.cs",
-              "RelativeToolTip": "Controls\\Dialog\\SearchDialog.cs",
-              "ViewState": "AQIAAIUAAAAAAAAAAAAQwJMAAAAAAAAA",
+              "Title": "BrowserTabStripItem.cs",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\TabStrip\\BrowserTabStripItem.cs",
+              "RelativeDocumentMoniker": "Controls\\TabStrip\\BrowserTabStripItem.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\TabStrip\\BrowserTabStripItem.cs",
+              "RelativeToolTip": "Controls\\TabStrip\\BrowserTabStripItem.cs",
+              "ViewState": "AQIAAPMAAAAAAAAAAAAAABABAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-07T06:53:38.775Z",
+              "WhenOpened": "2024-05-07T09:07:49.235Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "BrowserTabStrip.cs",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\TabStrip\\BrowserTabStrip.cs",
+              "RelativeDocumentMoniker": "Controls\\TabStrip\\BrowserTabStrip.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\TabStrip\\BrowserTabStrip.cs",
+              "RelativeToolTip": "Controls\\TabStrip\\BrowserTabStrip.cs",
+              "ViewState": "AQIAACMCAAAAAAAAAADwvycCAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-07T08:42:20.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "WebBrowser.cs",
               "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
               "RelativeDocumentMoniker": "Controls\\Browser\\WebBrowser.cs",
-              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
-              "RelativeToolTip": "Controls\\Browser\\WebBrowser.cs",
-              "ViewState": "AQIAAJcCAAAAAAAAAAAcwKMCAAAPAAAA",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs*",
+              "RelativeToolTip": "Controls\\Browser\\WebBrowser.cs*",
+              "ViewState": "AQIAAGEBAAAAAAAAAAAowIgBAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-07T06:29:13.294Z",
+              "WhenOpened": "2024-05-07T08:40:19.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MenuBase.cs",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Menu\\MenuBase.cs",
+              "RelativeDocumentMoniker": "Controls\\Menu\\MenuBase.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Menu\\MenuBase.cs",
+              "RelativeToolTip": "Controls\\Menu\\MenuBase.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAAE0AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-07T08:39:04.581Z",
               "EditorCaption": ""
             }
           ]

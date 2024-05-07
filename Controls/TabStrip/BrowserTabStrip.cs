@@ -64,6 +64,14 @@ namespace Baby
     [ ToolboxItem( true ) ]
     [ SuppressMessage( "ReSharper", "LocalVariableHidesMember" ) ]
     [ SuppressMessage( "ReSharper", "IntroduceOptionalParameters.Global" ) ]
+    [ SuppressMessage( "ReSharper", "UnusedType.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
+    [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertIfStatementToNullCoalescingExpression" ) ]
+    [ SuppressMessage( "ReSharper", "RedundantAssignment" ) ]
+    [ SuppressMessage( "ReSharper", "AssignNullToNotNullAttribute" ) ]
+    [ SuppressMessage( "ReSharper", "MergeIntoPattern" ) ]
+    [ SuppressMessage( "ReSharper", "PossibleNullReferenceException" ) ]
     public class BrowserTabStrip : BaseStyledPanel, ISupportInitialize 
 
     {
@@ -400,13 +408,6 @@ namespace Baby
             }
 
             return _result;
-        }
-
-        /// <summary>
-        /// Shows the menu.
-        /// </summary>
-        public virtual void ShowMenu( )
-        {
         }
 
         /// <summary>
@@ -961,15 +962,16 @@ namespace Baby
                 Items.CollectionChanged -= OnCollectionChanged;
                 _menu.ItemClicked -= OnMenuItemClicked;
                 _menu.VisibleChanged -= OnMenuVisibleChanged;
-                foreach( BrowserTabStripItem _item in Items )
+                for( var _i = 0; _i < Items.Count; _i++ )
                 {
+                    var _item = Items[ _i ];
                     if( ( _item != null )
                        && !_item.IsDisposed )
                     {
                         _item.Dispose( );
                     }
                 }
-
+                
                 if( ( _menu != null )
                    && !_menu.IsDisposed )
                 {
@@ -980,6 +982,19 @@ namespace Baby
             }
 
             base.Dispose( disposing );
+        }
+
+        /// <summary>
+        /// Fails the specified ex.
+        /// </summary>
+        /// <param name="ex">
+        /// The ex.
+        /// </param>
+        private protected void Fail( Exception ex )
+        {
+            using var _error = new ErrorDialog( ex );
+            _error?.SetText( );
+            _error?.ShowDialog( );
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Baby
     using static System.IO.Path;
     using Action = System.Action;
     using ContentAlignment = System.Drawing.ContentAlignment;
-
+    
     /// <inheritdoc />
     /// <summary>
     /// The main Baby form, supporting multiple tabs.
@@ -87,6 +87,7 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "WrongIndentSize" ) ]
     [ SuppressMessage( "ReSharper", "AsyncVoidMethod" ) ]
     [ SuppressMessage( "ReSharper", "MergeIntoPattern" ) ]
+    [ SuppressMessage( "ReSharper", "ConvertIfStatementToConditionalTernaryExpression" ) ]
     public partial class WebBrowser : MetroForm
     {
         /// <summary>
@@ -648,6 +649,8 @@ namespace Baby
                 SearchRefreshButton.Click += OnRefreshButtonClick;
                 SearchHomeButton.Click += OnHomeButtonClick;
                 SearchCancelButton.Click += OnStopButtonClick;
+                SearchBackButton.Click += OnBackButtonClick;
+                SearchForwardButton.Click += OnForwardButtonClick;
                 TabPages.TabStripItemClosing += OnTabClosing;
                 Title.MouseClick += OnRightClick;
                 UrlTextBox.MouseClick += OnRightClick;
@@ -1121,7 +1124,18 @@ namespace Baby
         private void EnableBackButton( bool canGoBack )
         {
             InvokeIf( ( ) => PreviousButton.Enabled = canGoBack );
-            InvokeIf( ( ) => SearchBackButton.Enabled = canGoBack );
+            InvokeIf( ( ) =>
+            {
+                SearchBackButton.Enabled = canGoBack;
+                if( canGoBack )
+                {
+                    SearchBackButton.Visible = true;
+                }
+                else
+                {
+                    SearchBackButton.Visible = false;
+                }
+            } );
         }
 
         /// <summary>
@@ -1133,7 +1147,18 @@ namespace Baby
         private void EnableForwardButton( bool canGoForward )
         {
             InvokeIf( ( ) => NextButton.Enabled = canGoForward );
-            InvokeIf( ( ) => SearchForwardButton.Enabled = canGoForward );
+            InvokeIf( ( ) =>
+            {
+                SearchForwardButton.Enabled = canGoForward;
+                if( canGoForward )
+                {
+                    SearchForwardButton.Visible = true;
+                }
+                else
+                {
+                    SearchForwardButton.Visible = false;
+                }
+            } );
         }
 
         /// <summary>
@@ -2282,10 +2307,6 @@ namespace Baby
                         {
                             break;
                         }
-                        default:
-                        {
-                            break;
-                        }
                     }
                 }
                 catch( Exception _ex )
@@ -2421,7 +2442,7 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.</param>
-        private void OnSearchPanelPreviousButtonClick( object sender, EventArgs e )
+        private void OnSearchPreviousButtonClick( object sender, EventArgs e )
         {
             FindTextOnPage( false );
         }
@@ -2432,7 +2453,7 @@ namespace Baby
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/>
         /// instance containing the event data.</param>
-        private void OnSearchPanelNextButtonClick( object sender, EventArgs e )
+        private void OnSearchForwardButtonClick( object sender, EventArgs e )
         {
             FindTextOnPage( true );
         }

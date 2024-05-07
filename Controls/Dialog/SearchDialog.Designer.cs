@@ -40,12 +40,12 @@ namespace Baby
             LookupButton = new System.Windows.Forms.Button( );
             RefreshButton = new System.Windows.Forms.Button( );
             CloseButton = new System.Windows.Forms.Button( );
-            ComboBox = new MetroSet_UI.Controls.MetroSetComboBox( );
             ButtonTable = new TableLayoutPanel( );
             ControlTable = new TableLayoutPanel( );
             KeyWordLabel = new Label( );
             DomainLabel = new Label( );
             TextBox = new TextBox( );
+            ComboBox = new ComboBox( );
             ButtonTable.SuspendLayout( );
             ControlTable.SuspendLayout( );
             SuspendLayout( );
@@ -125,36 +125,6 @@ namespace Baby
             CloseButton.TabIndex = 3;
             CloseButton.Tag = "Cancel Search";
             CloseButton.UseVisualStyleBackColor = false;
-            // 
-            // ComboBox
-            // 
-            ComboBox.AllowDrop = true;
-            ComboBox.ArrowColor = System.Drawing.Color.FromArgb( 110, 110, 110 );
-            ComboBox.BackColor = System.Drawing.Color.Transparent;
-            ComboBox.BackgroundColor = System.Drawing.Color.FromArgb( 34, 34, 34 );
-            ComboBox.BorderColor = System.Drawing.Color.FromArgb( 110, 110, 110 );
-            ComboBox.CausesValidation = false;
-            ComboBox.DisabledBackColor = System.Drawing.Color.FromArgb( 80, 80, 80 );
-            ComboBox.DisabledBorderColor = System.Drawing.Color.FromArgb( 109, 109, 109 );
-            ComboBox.DisabledForeColor = System.Drawing.Color.FromArgb( 109, 109, 109 );
-            ComboBox.DrawMode = DrawMode.OwnerDrawFixed;
-            ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            ComboBox.FlatStyle = FlatStyle.Flat;
-            ComboBox.Font = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
-            ComboBox.FormattingEnabled = true;
-            ComboBox.IsDerivedStyle = true;
-            ComboBox.ItemHeight = 20;
-            ComboBox.Items.AddRange( new object[ ] { "Google", "EPA ", "DATA  ", "GPO ", "USGI ", "CRS ", "LOC ", "OMB ", "UST ", "NASA ", "NOAA ", "DOI ", "NPS ", "GSA ", "NARA ", "DOC", "HHS", "NRC", "DOE", "NSF", "USDA", "CSB", "IRS", "FDA", "CDC", "ACE", "DHS", "DOD", "USNO", "NWS" } );
-            ComboBox.Location = new System.Drawing.Point( 432, 41 );
-            ComboBox.Name = "ComboBox";
-            ComboBox.SelectedItemBackColor = System.Drawing.Color.FromArgb( 65, 177, 225 );
-            ComboBox.SelectedItemForeColor = System.Drawing.Color.White;
-            ComboBox.Size = new System.Drawing.Size( 129, 26 );
-            ComboBox.Style = MetroSet_UI.Enums.Style.Dark;
-            ComboBox.StyleManager = null;
-            ComboBox.TabIndex = 10;
-            ComboBox.ThemeAuthor = "Narwin";
-            ComboBox.ThemeName = "MetroDark";
             // 
             // ButtonTable
             // 
@@ -260,6 +230,38 @@ namespace Baby
             TextBox.UseSystemPasswordChar = false;
             TextBox.WatermarkText = "";
             // 
+            // ComboBox
+            // 
+            ComboBox.AllowDrop = true;
+            ComboBox.ArrowColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            ComboBox.BackColor = System.Drawing.Color.Transparent;
+            ComboBox.BackgroundColor = System.Drawing.Color.FromArgb( 75, 75, 75 );
+            ComboBox.BorderColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            ComboBox.CausesValidation = false;
+            ComboBox.DisabledBackColor = System.Drawing.Color.Transparent;
+            ComboBox.DisabledBorderColor = System.Drawing.Color.Transparent;
+            ComboBox.DisabledForeColor = System.Drawing.Color.Transparent;
+            ComboBox.DrawMode = DrawMode.OwnerDrawFixed;
+            ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBox.FlatStyle = FlatStyle.Flat;
+            ComboBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            ComboBox.FormattingEnabled = true;
+            ComboBox.HoverText = null;
+            ComboBox.IsDerivedStyle = true;
+            ComboBox.ItemHeight = 24;
+            ComboBox.Items.AddRange( new object[ ] { "Google", "EPA ", "DATA  ", "GPO ", "USGI ", "CRS ", "LOC ", "OMB ", "UST ", "NASA ", "NOAA ", "DOI ", "NPS ", "GSA ", "NARA ", "DOC", "HHS", "NRC", "DOE", "NSF", "USDA", "CSB", "IRS", "FDA", "CDC", "ACE", "DHS", "DOD", "USNO", "NWS" } );
+            ComboBox.Location = new System.Drawing.Point( 432, 40 );
+            ComboBox.Name = "ComboBox";
+            ComboBox.SelectedItemBackColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            ComboBox.SelectedItemForeColor = System.Drawing.Color.White;
+            ComboBox.Size = new System.Drawing.Size( 129, 30 );
+            ComboBox.Style = MetroSet_UI.Enums.Style.Custom;
+            ComboBox.StyleManager = null;
+            ComboBox.TabIndex = 17;
+            ComboBox.ThemeAuthor = "Terry D. Eppler";
+            ComboBox.ThemeName = "Budget Execution";
+            ComboBox.ToolTip = null;
+            // 
             // SearchDialog
             // 
             AutoScaleMode = AutoScaleMode.Inherit;
@@ -273,11 +275,11 @@ namespace Baby
             CaptionFont = new System.Drawing.Font( "Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CaptionForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
             ClientSize = new System.Drawing.Size( 569, 79 );
+            Controls.Add( ComboBox );
             Controls.Add( TextBox );
             Controls.Add( DomainLabel );
             Controls.Add( KeyWordLabel );
             Controls.Add( ControlTable );
-            Controls.Add( ComboBox );
             DoubleBuffered = true;
             Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             ForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
@@ -309,10 +311,10 @@ namespace Baby
         private System.Windows.Forms.RichTextBox richTextBox1;
         public TableLayoutPanel ButtonTable;
         public TableLayoutPanel ControlTable;
-        public MetroSet_UI.Controls.MetroSetComboBox ComboBox;
         public Label KeyWordLabel;
         public Label DomainLabel;
         public TextBox TextBox;
+        public ComboBox ComboBox;
     }
 
 }

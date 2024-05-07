@@ -389,5 +389,31 @@ namespace Baby
                 Image.Dispose( );
             }
         }
+
+        /// <summary>
+        /// Called when [right click].
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">The
+        /// <see cref="MouseEventArgs"/>
+        /// instance containing the event data.
+        /// </param>
+        private void OnRightClick( object sender, MouseEventArgs e )
+        {
+            if( e.Button == MouseButtons.Right )
+            {
+                try
+                {
+                    var _contextMenu = new ContextMenu( );
+                    _contextMenu.Show( this, e.Location );
+                }
+                catch( Exception _ex )
+                {
+                    Fail( _ex );
+                }
+            }
+        }
     }
 }

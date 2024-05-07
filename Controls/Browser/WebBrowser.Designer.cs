@@ -218,7 +218,7 @@
             LastButton.TabIndex = 9;
             LastButton.Tag = "Find next (Enter)";
             LastButton.UseVisualStyleBackColor = true;
-            LastButton.Click +=  OnSearchPanelNextButtonClick ;
+            LastButton.Click +=  OnSearchForwardButtonClick ;
             // 
             // FirstButton
             // 
@@ -233,7 +233,7 @@
             FirstButton.TabIndex = 8;
             FirstButton.Tag = "Find previous (Shift+Enter)";
             FirstButton.UseVisualStyleBackColor = true;
-            FirstButton.Click +=  OnSearchPanelPreviousButtonClick ;
+            FirstButton.Click +=  OnSearchPreviousButtonClick ;
             // 
             // CloseSearchButton
             // 

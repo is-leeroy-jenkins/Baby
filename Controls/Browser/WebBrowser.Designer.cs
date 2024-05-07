@@ -83,17 +83,17 @@
             PictureBox = new ImageBox( );
             TimeLabel = new Label( );
             UrlTextBoxTable = new System.Windows.Forms.TableLayoutPanel( );
-            SearchForwardButton = new System.Windows.Forms.Button( );
-            MenuButton = new System.Windows.Forms.Button( );
-            SearchBackButton = new System.Windows.Forms.Button( );
-            UrlTextBox = new TextBox( );
+            SearchLayout = new System.Windows.Forms.FlowLayoutPanel( );
+            SearchLookupButton = new System.Windows.Forms.Button( );
+            SearchRefreshButton = new System.Windows.Forms.Button( );
+            SearchCancelButton = new System.Windows.Forms.Button( );
+            NavigationLayout = new System.Windows.Forms.FlowLayoutPanel( );
             SearchHomeButton = new System.Windows.Forms.Button( );
+            SearchBackButton = new System.Windows.Forms.Button( );
+            SearchForwardButton = new System.Windows.Forms.Button( );
+            UrlTextBox = new TextBox( );
             UrlSearchPanel = new Layout( );
             ContextMenu = new ContextMenu( );
-            SearchCancelButton = new System.Windows.Forms.Button( );
-            SearchRefreshButton = new System.Windows.Forms.Button( );
-            SearchLayout = new System.Windows.Forms.FlowLayoutPanel( );
-            NavigationLayout = new System.Windows.Forms.FlowLayoutPanel( );
             ( (System.ComponentModel.ISupportInitialize)TabPages ).BeginInit( );
             TabPages.SuspendLayout( );
             SearchPanel.SuspendLayout( );
@@ -102,9 +102,9 @@
             TopTable.SuspendLayout( );
             ( (System.ComponentModel.ISupportInitialize)PictureBox ).BeginInit( );
             UrlTextBoxTable.SuspendLayout( );
-            UrlSearchPanel.SuspendLayout( );
             SearchLayout.SuspendLayout( );
             NavigationLayout.SuspendLayout( );
+            UrlSearchPanel.SuspendLayout( );
             SuspendLayout( );
             // 
             // Timer
@@ -472,7 +472,7 @@
             ToolStripKeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             ToolStripKeyWordTextBox.Name = "ToolStripKeyWordTextBox";
             ToolStripKeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 156, 25 );
+            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 154, 25 );
             ToolStripKeyWordTextBox.Tag = "";
             ToolStripKeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             ToolStripKeyWordTextBox.ToolTip = ToolTip;
@@ -884,33 +884,85 @@
             UrlTextBoxTable.Size = new System.Drawing.Size( 1486, 40 );
             UrlTextBoxTable.TabIndex = 0;
             // 
-            // SearchForwardButton
+            // SearchLayout
             // 
-            SearchForwardButton.FlatAppearance.BorderSize = 0;
-            SearchForwardButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
-            SearchForwardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            SearchForwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SearchForwardButton.Image = Properties.Resources.SearchNextButton;
-            SearchForwardButton.Location = new System.Drawing.Point( 35, 3 );
-            SearchForwardButton.Name = "SearchForwardButton";
-            SearchForwardButton.Padding = new System.Windows.Forms.Padding( 5 );
-            SearchForwardButton.Size = new System.Drawing.Size( 33, 28 );
-            SearchForwardButton.TabIndex = 2;
-            SearchForwardButton.UseVisualStyleBackColor = true;
+            SearchLayout.Controls.Add( SearchLookupButton );
+            SearchLayout.Controls.Add( SearchRefreshButton );
+            SearchLayout.Controls.Add( SearchCancelButton );
+            SearchLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            SearchLayout.Location = new System.Drawing.Point( 1333, 3 );
+            SearchLayout.Name = "SearchLayout";
+            SearchLayout.Size = new System.Drawing.Size( 150, 34 );
+            SearchLayout.TabIndex = 0;
             // 
-            // MenuButton
+            // SearchLookupButton
             // 
-            MenuButton.FlatAppearance.BorderSize = 0;
-            MenuButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
-            MenuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            MenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            MenuButton.Image = Properties.Resources.MenulLabel;
-            MenuButton.Location = new System.Drawing.Point( 3, 3 );
-            MenuButton.Name = "MenuButton";
-            MenuButton.Padding = new System.Windows.Forms.Padding( 5 );
-            MenuButton.Size = new System.Drawing.Size( 30, 28 );
-            MenuButton.TabIndex = 0;
-            MenuButton.UseVisualStyleBackColor = true;
+            SearchLookupButton.FlatAppearance.BorderSize = 0;
+            SearchLookupButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
+            SearchLookupButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            SearchLookupButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchLookupButton.Image = Properties.Resources.MenulLabel;
+            SearchLookupButton.Location = new System.Drawing.Point( 3, 3 );
+            SearchLookupButton.Name = "SearchLookupButton";
+            SearchLookupButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchLookupButton.Size = new System.Drawing.Size( 30, 28 );
+            SearchLookupButton.TabIndex = 0;
+            SearchLookupButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchRefreshButton
+            // 
+            SearchRefreshButton.FlatAppearance.BorderSize = 0;
+            SearchRefreshButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SearchRefreshButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            SearchRefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchRefreshButton.Image = Properties.Resources.SearchRefreshButton;
+            SearchRefreshButton.Location = new System.Drawing.Point( 39, 3 );
+            SearchRefreshButton.Name = "SearchRefreshButton";
+            SearchRefreshButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchRefreshButton.Size = new System.Drawing.Size( 32, 28 );
+            SearchRefreshButton.TabIndex = 2;
+            SearchRefreshButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchCancelButton
+            // 
+            SearchCancelButton.FlatAppearance.BorderSize = 0;
+            SearchCancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
+            SearchCancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            SearchCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchCancelButton.Image = Properties.Resources.SearchCancelButton;
+            SearchCancelButton.Location = new System.Drawing.Point( 77, 3 );
+            SearchCancelButton.Name = "SearchCancelButton";
+            SearchCancelButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchCancelButton.Size = new System.Drawing.Size( 33, 28 );
+            SearchCancelButton.TabIndex = 2;
+            SearchCancelButton.UseVisualStyleBackColor = true;
+            // 
+            // NavigationLayout
+            // 
+            NavigationLayout.Controls.Add( SearchHomeButton );
+            NavigationLayout.Controls.Add( SearchForwardButton );
+            NavigationLayout.Controls.Add( SearchBackButton );
+            NavigationLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            NavigationLayout.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            NavigationLayout.Location = new System.Drawing.Point( 3, 3 );
+            NavigationLayout.Name = "NavigationLayout";
+            NavigationLayout.Size = new System.Drawing.Size( 146, 34 );
+            NavigationLayout.TabIndex = 1;
+            // 
+            // SearchHomeButton
+            // 
+            SearchHomeButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            SearchHomeButton.FlatAppearance.BorderSize = 0;
+            SearchHomeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SearchHomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            SearchHomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchHomeButton.Image = Properties.Resources.SearchPanelHomeButton;
+            SearchHomeButton.Location = new System.Drawing.Point( 112, 3 );
+            SearchHomeButton.Name = "SearchHomeButton";
+            SearchHomeButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchHomeButton.Size = new System.Drawing.Size( 31, 28 );
+            SearchHomeButton.TabIndex = 1;
+            SearchHomeButton.UseVisualStyleBackColor = true;
             // 
             // SearchBackButton
             // 
@@ -919,12 +971,26 @@
             SearchBackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
             SearchBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             SearchBackButton.Image = Properties.Resources.SearchPreviousButton;
-            SearchBackButton.Location = new System.Drawing.Point( 74, 3 );
+            SearchBackButton.Location = new System.Drawing.Point( 35, 3 );
             SearchBackButton.Name = "SearchBackButton";
             SearchBackButton.Padding = new System.Windows.Forms.Padding( 5 );
             SearchBackButton.Size = new System.Drawing.Size( 32, 28 );
             SearchBackButton.TabIndex = 2;
             SearchBackButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchForwardButton
+            // 
+            SearchForwardButton.FlatAppearance.BorderSize = 0;
+            SearchForwardButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
+            SearchForwardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            SearchForwardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchForwardButton.Image = Properties.Resources.SearchNextButton;
+            SearchForwardButton.Location = new System.Drawing.Point( 73, 3 );
+            SearchForwardButton.Name = "SearchForwardButton";
+            SearchForwardButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchForwardButton.Size = new System.Drawing.Size( 33, 28 );
+            SearchForwardButton.TabIndex = 2;
+            SearchForwardButton.UseVisualStyleBackColor = true;
             // 
             // UrlTextBox
             // 
@@ -960,21 +1026,6 @@
             UrlTextBox.ToolTip = null;
             UrlTextBox.UseSystemPasswordChar = false;
             UrlTextBox.WatermarkText = "";
-            // 
-            // SearchHomeButton
-            // 
-            SearchHomeButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            SearchHomeButton.FlatAppearance.BorderSize = 0;
-            SearchHomeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            SearchHomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            SearchHomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SearchHomeButton.Image = Properties.Resources.SearchPanelHomeButton;
-            SearchHomeButton.Location = new System.Drawing.Point( 112, 3 );
-            SearchHomeButton.Name = "SearchHomeButton";
-            SearchHomeButton.Padding = new System.Windows.Forms.Padding( 5 );
-            SearchHomeButton.Size = new System.Drawing.Size( 31, 28 );
-            SearchHomeButton.TabIndex = 1;
-            SearchHomeButton.UseVisualStyleBackColor = true;
             // 
             // UrlSearchPanel
             // 
@@ -1014,57 +1065,6 @@
             ContextMenu.StyleManager = null;
             ContextMenu.ThemeAuthor = "Terry Eppler";
             ContextMenu.ThemeName = "Baby";
-            // 
-            // SearchCancelButton
-            // 
-            SearchCancelButton.FlatAppearance.BorderSize = 0;
-            SearchCancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 64, 64, 64 );
-            SearchCancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
-            SearchCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SearchCancelButton.Image = Properties.Resources.SearchCancelButton;
-            SearchCancelButton.Location = new System.Drawing.Point( 77, 3 );
-            SearchCancelButton.Name = "SearchCancelButton";
-            SearchCancelButton.Padding = new System.Windows.Forms.Padding( 5 );
-            SearchCancelButton.Size = new System.Drawing.Size( 33, 28 );
-            SearchCancelButton.TabIndex = 2;
-            SearchCancelButton.UseVisualStyleBackColor = true;
-            // 
-            // SearchRefreshButton
-            // 
-            SearchRefreshButton.FlatAppearance.BorderSize = 0;
-            SearchRefreshButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            SearchRefreshButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            SearchRefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SearchRefreshButton.Image = Properties.Resources.SearchRefreshButton;
-            SearchRefreshButton.Location = new System.Drawing.Point( 39, 3 );
-            SearchRefreshButton.Name = "SearchRefreshButton";
-            SearchRefreshButton.Padding = new System.Windows.Forms.Padding( 5 );
-            SearchRefreshButton.Size = new System.Drawing.Size( 32, 28 );
-            SearchRefreshButton.TabIndex = 2;
-            SearchRefreshButton.UseVisualStyleBackColor = true;
-            // 
-            // SearchLayout
-            // 
-            SearchLayout.Controls.Add( MenuButton );
-            SearchLayout.Controls.Add( SearchRefreshButton );
-            SearchLayout.Controls.Add( SearchCancelButton );
-            SearchLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            SearchLayout.Location = new System.Drawing.Point( 1333, 3 );
-            SearchLayout.Name = "SearchLayout";
-            SearchLayout.Size = new System.Drawing.Size( 150, 34 );
-            SearchLayout.TabIndex = 0;
-            // 
-            // NavigationLayout
-            // 
-            NavigationLayout.Controls.Add( SearchHomeButton );
-            NavigationLayout.Controls.Add( SearchBackButton );
-            NavigationLayout.Controls.Add( SearchForwardButton );
-            NavigationLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            NavigationLayout.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            NavigationLayout.Location = new System.Drawing.Point( 3, 3 );
-            NavigationLayout.Name = "NavigationLayout";
-            NavigationLayout.Size = new System.Drawing.Size( 146, 34 );
-            NavigationLayout.TabIndex = 1;
             // 
             // WebBrowser
             // 
@@ -1116,9 +1116,9 @@
             TopTable.ResumeLayout( false );
             ( (System.ComponentModel.ISupportInitialize)PictureBox ).EndInit( );
             UrlTextBoxTable.ResumeLayout( false );
-            UrlSearchPanel.ResumeLayout( false );
             SearchLayout.ResumeLayout( false );
             NavigationLayout.ResumeLayout( false );
+            UrlSearchPanel.ResumeLayout( false );
             ResumeLayout( false );
         }
 
@@ -1175,7 +1175,7 @@
         public ContextMenu ContextMenu;
         public Label MenuLabel;
         private Label label1;
-        public System.Windows.Forms.Button MenuButton;
+        public System.Windows.Forms.Button SearchLookupButton;
         public ToolStripLabel StatusLabel;
         public ToolSeparator DownloadSeparator;
         public System.Windows.Forms.ToolStripProgressBar ProgressBar;

@@ -644,7 +644,10 @@ namespace Baby
                 ToolStripFireFoxButton.Click += OnFireFoxButtonClick;
                 Timer.Tick += OnTimerTick;
                 TabPages.MouseClick += OnRightClick;
-                MenuButton.MouseClick += OnSearchButtonClick;
+                SearchLookupButton.MouseClick += OnSearchButtonClick;
+                SearchRefreshButton.Click += OnRefreshButtonClick;
+                SearchHomeButton.Click += OnHomeButtonClick;
+                SearchCancelButton.Click += OnStopButtonClick;
                 TabPages.TabStripItemClosing += OnTabClosing;
                 Title.MouseClick += OnRightClick;
                 UrlTextBox.MouseClick += OnRightClick;
@@ -661,7 +664,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-
+        
         /// <summary>
         /// Fades the in asynchronous.
         /// </summary>
@@ -1140,6 +1143,7 @@ namespace Baby
         private void EnableBackButton( bool canGoBack )
         {
             InvokeIf( ( ) => PreviousButton.Enabled = canGoBack );
+            InvokeIf( ( ) => SearchBackButton.Enabled = canGoBack );
         }
 
         /// <summary>
@@ -1151,6 +1155,7 @@ namespace Baby
         private void EnableForwardButton( bool canGoForward )
         {
             InvokeIf( ( ) => NextButton.Enabled = canGoForward );
+            InvokeIf( ( ) => SearchForwardButton.Enabled = canGoForward );
         }
 
         /// <summary>
@@ -1889,8 +1894,10 @@ namespace Baby
                     SetTabText( (ChromiumWebBrowser)sender, "Loading..." );
                     Separator10.Visible = false;
                     ToolStripRefreshButton.Visible = false;
+                    SearchRefreshButton.Visible = false;
                     Separator6.Visible = true;
                     ToolStripCancelButton.Visible = true;
+                    SearchCancelButton.Visible = true;
                     CurrentTab.DateCreated = DateTime.Now;
                 }
             } );
@@ -1958,8 +1965,10 @@ namespace Baby
                     {
                         Separator10.Visible = true;
                         ToolStripRefreshButton.Visible = true;
+                        SearchRefreshButton.Visible = true;
                         Separator6.Visible = false;
                         ToolStripCancelButton.Visible = false;
+                        SearchCancelButton.Visible = false;
                     } );
                 }
             }
@@ -2500,7 +2509,6 @@ namespace Baby
             finally
             {
                 ToolStripKeyWordTextBox.Text = string.Empty;
-                ToolStripDomainComboBox.SelectedIndex = -1;
             }
         }
 

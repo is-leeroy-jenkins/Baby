@@ -554,7 +554,8 @@ namespace Baby
         /// <summary>
         /// Raises the <see cref="E:TabStripItemClosing" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="TabClosingEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="TabClosingEventArgs"/>
+        /// instance containing the event data.</param>
         protected virtual void OnTabStripItemClosing( TabClosingEventArgs e )
         {
             TabStripItemClosing?.Invoke( e );
@@ -563,7 +564,8 @@ namespace Baby
         /// <summary>
         /// Raises the <see cref="E:TabStripItemClosed" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         protected virtual void OnTabStripItemClosed( EventArgs e )
         {
             _selectedItem = null;
@@ -573,7 +575,8 @@ namespace Baby
         /// <summary>
         /// Raises the <see cref="E:MenuItemsLoading" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="HandledEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="HandledEventArgs"/>
+        /// instance containing the event data.</param>
         protected virtual void OnMenuItemsLoading( HandledEventArgs e )
         {
             MenuItemsLoading?.Invoke( this, e );
@@ -582,7 +585,8 @@ namespace Baby
         /// <summary>
         /// Raises the <see cref="E:MenuItemsLoaded" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         protected virtual void OnMenuItemsLoaded( EventArgs e )
         {
             MenuItemsLoaded?.Invoke( this, e );
@@ -591,7 +595,8 @@ namespace Baby
         /// <summary>
         /// Raises the <see cref="E:TabStripItemChanged" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="TabItemChangedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="TabItemChangedEventArgs"/>
+        /// instance containing the event data.</param>
         protected virtual void OnTabStripItemChanged( TabItemChangedEventArgs e )
         {
             TabStripItemSelectionChanged?.Invoke( e );
@@ -625,7 +630,8 @@ namespace Baby
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Control.RightToLeftChanged" /> event.
         /// </summary>
-        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        /// <param name="e">An <see cref="T:System.EventArgs" />
+        /// that contains the event data.</param>
         protected override void OnRightToLeftChanged( EventArgs e )
         {
             base.OnRightToLeftChanged( e );
@@ -778,9 +784,11 @@ namespace Baby
 
         /// <inheritdoc />
         /// <summary>
-        /// Raises the <see cref="E:System.Windows.Forms.Control.MouseLeave" /> event.
+        /// Raises the
+        /// <see cref="E:System.Windows.Forms.Control.MouseLeave" /> event.
         /// </summary>
-        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        /// <param name="e">An <see cref="T:System.EventArgs" />
+        /// that contains the event data.</param>
         protected override void OnMouseLeave( EventArgs e )
         {
             base.OnMouseLeave( e );
@@ -793,9 +801,11 @@ namespace Baby
 
         /// <inheritdoc />
         /// <summary>
-        /// Raises the <see cref="E:System.Windows.Forms.Control.SizeChanged" /> event.
+        /// Raises the
+        /// <see cref="E:System.Windows.Forms.Control.SizeChanged" /> event.
         /// </summary>
-        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        /// <param name="e">An <see cref="T:System.EventArgs" />
+        /// that contains the event data.</param>
         protected override void OnSizeChanged( EventArgs e )
         {
             base.OnSizeChanged( e );
@@ -821,7 +831,8 @@ namespace Baby
         /// Called when [menu visible changed].
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs"/>
+        /// instance containing the event data.</param>
         private void OnMenuVisibleChanged( object sender, EventArgs e )
         {
             if( !_menu.Visible )
@@ -982,19 +993,6 @@ namespace Baby
             }
 
             base.Dispose( disposing );
-        }
-
-        /// <summary>
-        /// Fails the specified ex.
-        /// </summary>
-        /// <param name="ex">
-        /// The ex.
-        /// </param>
-        private protected void Fail( Exception ex )
-        {
-            using var _error = new ErrorDialog( ex );
-            _error?.SetText( );
-            _error?.ShowDialog( );
         }
     }
 }

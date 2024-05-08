@@ -122,6 +122,8 @@ namespace Baby
             BorderColor = Color.FromArgb( 106, 189, 252 );
             BackColor = Color.FromArgb( 1, 35, 54 );
             CaptionBarColor = Color.FromArgb( 1, 35, 54 );
+
+            // Control Properties
             Message.BackColor = Color.FromArgb( 1, 35, 54 );
             Message.ForeColor = Color.FromArgb( 106, 189, 252 );
 

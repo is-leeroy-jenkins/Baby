@@ -690,7 +690,7 @@ namespace Baby
         }
 
         /// <summary>
-        /// Fades the in asynchronous.
+        /// Fades the in asynchronously.
         /// </summary>
         /// <param name="form">The o.</param>
         /// <param name="interval">The interval.</param>
@@ -714,7 +714,7 @@ namespace Baby
         }
 
         /// <summary>
-        /// Fades the out asynchronous.
+        /// Fades the out asynchronously.
         /// </summary>
         /// <param name="form">The o.</param>
         /// <param name="interval">The interval.</param>

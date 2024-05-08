@@ -55,6 +55,8 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Global" ) ]
     [ SuppressMessage( "ReSharper", "InconsistentNaming" ) ]
     [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
+    [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
     public class BaseStyledPanel : ContainerControl
     {
         /// <summary>
@@ -140,9 +142,16 @@ namespace Baby
         /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnSystemColorsChanged( EventArgs e )
         {
-            base.OnSystemColorsChanged( e );
-            UpdateRenderer( );
-            Invalidate( );
+            try
+            {
+                base.OnSystemColorsChanged( e );
+                UpdateRenderer( );
+                Invalidate( );
+            }
+            catch( Exception _ex )
+            {
+                Fail( _ex );
+            }
         }
 
         /// <summary>
@@ -152,6 +161,19 @@ namespace Baby
         protected virtual void OnThemeChanged( EventArgs e )
         {
             ThemeChanged?.Invoke( this, e );
+        }
+
+        /// <summary>
+        /// Fails the specified ex.
+        /// </summary>
+        /// <param name="ex">
+        /// The ex.
+        /// </param>
+        private protected void Fail( Exception ex )
+        {
+            using var _error = new ErrorDialog( ex );
+            _error?.SetText( );
+            _error?.ShowDialog( );
         }
     }
 }

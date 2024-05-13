@@ -44,6 +44,7 @@ namespace Baby
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using MetroSet_UI.Child;
+    using Properties;
     
     /// <inheritdoc />
     /// <summary>
@@ -79,6 +80,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Chrome}";
                 _item.Tag = MenuItem.Chrome.ToString( );
+                _item.Image = Resources.ChromeItem;
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown += null;
@@ -109,6 +111,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"View {MenuItem.Source}";
                 _item.Tag = MenuItem.Source.ToString( );
+                _item.Image = Resources.OneDriveItem;
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;
@@ -141,6 +144,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Calculator}";
                 _item.Tag = MenuItem.Calculator.ToString( );
+                _item.Image = Resources.CalculatorItem;
                 _item.MouseEnter += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;
@@ -172,6 +176,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = _name.SplitPascal( );
                 _item.Tag = MenuItem.TaskManager.ToString( );
+                _item.Image = Resources.TaskManagerItem;
                 _item.MouseEnter += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;
@@ -203,6 +208,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = _name.SplitPascal( );
                 _item.Tag = MenuItem.ControlPanel.ToString( );
+                _item.Image = Resources.ControlPanelItem;
                 _item.MouseEnter += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;
@@ -235,6 +241,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Exit}";
                 _item.Tag = MenuItem.Exit.ToString( );
+                _item.Image = Resources.ExitItem;
                 _item.MouseEnter += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;
@@ -265,6 +272,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Edge}";
                 _item.Tag = MenuItem.Edge.ToString( );
+                _item.Image = Resources.EdgeItem;
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;
@@ -295,6 +303,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Firefox}";
                 _item.Tag = MenuItem.Firefox.ToString( );
+                _item.Image = Resources.FirefoxItem;
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;

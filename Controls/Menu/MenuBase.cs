@@ -45,7 +45,8 @@ namespace Baby
     using System.Drawing;
     using MetroSet_UI.Child;
     using MetroSet_UI.Controls;
-
+    using Properties;
+    
     /// <summary>
     /// 
     /// </summary>
@@ -177,6 +178,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Close} Tab";
                 _item.Tag = MenuItem.Close.ToString( );
+                _item.Image = Resources.CloseItem;
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown += null;
@@ -209,6 +211,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"Close {MenuItem.Other} Tabs";
                 _item.Tag = MenuItem.Other.ToString( );
+                _item.Image = Resources.OtherItem;
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown += null;
@@ -241,6 +244,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Refresh} Tab";
                 _item.Tag = MenuItem.Refresh.ToString( );
+                _item.Image = Resources.RefreshItem;
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;
@@ -273,6 +277,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.SaveAs}".SplitPascal( ) + " PDF";
                 _item.Tag = MenuItem.SaveAs.ToString( );
+                _item.Image = Resources.SaveItem;
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;
@@ -303,6 +308,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Print}";
                 _item.Tag = MenuItem.Print.ToString( );
+                _item.Image = Resources.PrintItem;
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;
@@ -333,6 +339,7 @@ namespace Baby
                 _item.ForeColor = Color.FromArgb( 106, 189, 252 );
                 _item.Text = $"{MenuItem.Developer} Tools";
                 _item.Tag = MenuItem.Developer.ToString( );
+                _item.Image = Resources.ToolsItem;
                 _item.MouseHover += OnMouseEnter;
                 _item.MouseLeave += OnMouseLeave;
                 _item.MouseDown -= null;

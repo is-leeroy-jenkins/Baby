@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\terry\\source\\repos\\Baby\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\browser\\webbrowser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\menu\\menubase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\menu\\menubase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
-      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\menu\\contextbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\menu\\contextbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|c:\\users\\terry\\source\\repos\\baby\\controls\\menu\\contextmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703472B8-B275-4F3F-95B6-426036F8462E}|Baby.csproj|solutionrelative:controls\\menu\\contextmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,26 +43,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Resources.resx",
-              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Properties\\Resources.resx",
-              "RelativeDocumentMoniker": "Properties\\Resources.resx",
-              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Properties\\Resources.resx",
-              "RelativeToolTip": "Properties\\Resources.resx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-05-11T14:17:18.619Z",
+              "Title": "ContextBase.cs",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Menu\\ContextBase.cs",
+              "RelativeDocumentMoniker": "Controls\\Menu\\ContextBase.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Menu\\ContextBase.cs",
+              "RelativeToolTip": "Controls\\Menu\\ContextBase.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAgwFIAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-13T22:27:53.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ContextMenu.cs",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Menu\\ContextMenu.cs",
+              "RelativeDocumentMoniker": "Controls\\Menu\\ContextMenu.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Menu\\ContextMenu.cs",
+              "RelativeToolTip": "Controls\\Menu\\ContextMenu.cs",
+              "ViewState": "AQIAADkBAAAAAAAAAAAAAFgBAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-13T22:27:51.979Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WebBrowser.cs",
-              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
-              "RelativeDocumentMoniker": "Controls\\Browser\\WebBrowser.cs",
-              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Browser\\WebBrowser.cs",
-              "RelativeToolTip": "Controls\\Browser\\WebBrowser.cs",
-              "ViewState": "AQIAALgEAAAAAAAAAAAUwNIEAAAcAAAA",
+              "Title": "MenuBase.cs",
+              "DocumentMoniker": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Menu\\MenuBase.cs",
+              "RelativeDocumentMoniker": "Controls\\Menu\\MenuBase.cs",
+              "ToolTip": "C:\\Users\\terry\\source\\repos\\Baby\\Controls\\Menu\\MenuBase.cs",
+              "RelativeToolTip": "Controls\\Menu\\MenuBase.cs",
+              "ViewState": "AQIAAJEAAAAAAAAAAAAAAK0AAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T23:48:49.076Z",
+              "WhenOpened": "2024-05-13T22:27:39.991Z",
               "EditorCaption": ""
             }
           ]

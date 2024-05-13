@@ -153,6 +153,66 @@ namespace Baby.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap CalculatorItem {
+            get {
+                object obj = ResourceManager.GetObject("CalculatorItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CalendarItem {
+            get {
+                object obj = ResourceManager.GetObject("CalendarItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ChromeItem {
+            get {
+                object obj = ResourceManager.GetObject("ChromeItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ClockItem {
+            get {
+                object obj = ResourceManager.GetObject("ClockItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CloseItem {
+            get {
+                object obj = ResourceManager.GetObject("CloseItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ControlPanelItem {
+            get {
+                object obj = ResourceManager.GetObject("ControlPanelItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap DialogBackButton {
             get {
                 object obj = ResourceManager.GetObject("DialogBackButton", resourceCulture);
@@ -176,6 +236,26 @@ namespace Baby.Properties {
         public static System.Drawing.Bitmap DialogHomeButton {
             get {
                 object obj = ResourceManager.GetObject("DialogHomeButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap DocumentaionItem {
+            get {
+                object obj = ResourceManager.GetObject("DocumentaionItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap EdgeItem {
+            get {
+                object obj = ResourceManager.GetObject("EdgeItem", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +293,69 @@ namespace Baby.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ExitItem {
+            get {
+                object obj = ResourceManager.GetObject("ExitItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap FileItem {
+            get {
+                object obj = ResourceManager.GetObject("FileItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap FirefoxItem {
+            get {
+                object obj = ResourceManager.GetObject("FirefoxItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap FolderItem {
+            get {
+                object obj = ResourceManager.GetObject("FolderItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap logo3 {
             get {
                 object obj = ResourceManager.GetObject("logo3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap MapItem {
+            get {
+                object obj = ResourceManager.GetObject("MapItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap MediaPlayerItem {
+            get {
+                object obj = ResourceManager.GetObject("MediaPlayerItem", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +373,69 @@ namespace Baby.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap MenulLabel1 {
+            get {
+                object obj = ResourceManager.GetObject("MenulLabel1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Message {
             get {
                 object obj = ResourceManager.GetObject("Message", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap OneDriveItem {
+            get {
+                object obj = ResourceManager.GetObject("OneDriveItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap OtherItem {
+            get {
+                object obj = ResourceManager.GetObject("OtherItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap PrintItem {
+            get {
+                object obj = ResourceManager.GetObject("PrintItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap RefreshItem {
+            get {
+                object obj = ResourceManager.GetObject("RefreshItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SaveItem {
+            get {
+                object obj = ResourceManager.GetObject("SaveItem", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -326,6 +526,26 @@ namespace Baby.Properties {
         public static System.Drawing.Bitmap SearchRefreshButton {
             get {
                 object obj = ResourceManager.GetObject("SearchRefreshButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap TaskManagerItem {
+            get {
+                object obj = ResourceManager.GetObject("TaskManagerItem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ToolsItem {
+            get {
+                object obj = ResourceManager.GetObject("ToolsItem", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

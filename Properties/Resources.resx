@@ -247,4 +247,70 @@
   <data name="WebLookUpButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Images\WebLookUpButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CalculatorItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\CalculatorItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CalendarItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\CalendarItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ChromeItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\ChromeItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClockItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\ClockItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ControlPanelItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\ControlPanelItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DocumentaionItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\DocumentaionItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EdgeItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\EdgeItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExitItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\ExitItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FileItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\FileItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FirefoxItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\FirefoxItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FolderItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\FolderItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MapItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\MapItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MediaPlayerItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\MediaPlayerItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenulLabel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\MenulLabel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OneDriveItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\OneDriveItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RefreshItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\RefreshItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SaveItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\SaveItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TaskManagerItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\TaskManagerItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OtherItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\OtherItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PrintItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\PrintItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ToolsItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\ToolsItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CloseItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\CloseItem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

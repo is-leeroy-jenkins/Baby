@@ -69,5 +69,7 @@ dkms.conf
 *.sdf
 *.DotSettings
 *.editorconfig
+*.idea
+*.vs
 Clients/WebBrower/net6.0-windows/runtimes/win-x64/native/libcef.dll
 Clients/WebBrower/net6.0-windows/runtimes/win-x64/native/libcef.dll

@@ -67,5 +67,7 @@ dkms.conf
 *.accdb
 *.accdb
 *.sdf
+*.DotSettings
+*.editorconfig
 Clients/WebBrower/net6.0-windows/runtimes/win-x64/native/libcef.dll
 Clients/WebBrower/net6.0-windows/runtimes/win-x64/native/libcef.dll

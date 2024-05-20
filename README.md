@@ -64,6 +64,11 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ## Credits
 
+
+### Baby Overview
+
+![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/Overview.png)
+
 ## Screenshots
 
 ### Apple.com

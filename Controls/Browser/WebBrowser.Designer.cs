@@ -82,11 +82,12 @@
             Title = new Label( );
             PictureBox = new ImageBox( );
             TimeLabel = new Label( );
+            ControlBox = new ControlBox( );
             UrlTextBoxTable = new System.Windows.Forms.TableLayoutPanel( );
             SearchLayout = new System.Windows.Forms.FlowLayoutPanel( );
             SearchLookupButton = new System.Windows.Forms.Button( );
-            SearchRefreshButton = new System.Windows.Forms.Button( );
             SearchCancelButton = new System.Windows.Forms.Button( );
+            SearchRefreshButton = new System.Windows.Forms.Button( );
             NavigationLayout = new System.Windows.Forms.FlowLayoutPanel( );
             SearchHomeButton = new System.Windows.Forms.Button( );
             SearchForwardButton = new System.Windows.Forms.Button( );
@@ -472,7 +473,7 @@
             ToolStripKeyWordTextBox.Margin = new System.Windows.Forms.Padding( 1 );
             ToolStripKeyWordTextBox.Name = "ToolStripKeyWordTextBox";
             ToolStripKeyWordTextBox.Padding = new System.Windows.Forms.Padding( 1 );
-            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 152, 25 );
+            ToolStripKeyWordTextBox.Size = new System.Drawing.Size( 140, 25 );
             ToolStripKeyWordTextBox.Tag = "";
             ToolStripKeyWordTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             ToolStripKeyWordTextBox.ToolTip = ToolTip;
@@ -797,13 +798,15 @@
             // 
             // TopTable
             // 
-            TopTable.ColumnCount = 3;
-            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 2.889785F ) );
-            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 97.1102142F ) );
-            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 158F ) );
+            TopTable.ColumnCount = 4;
+            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 18.02842F ) );
+            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Percent, 81.97158F ) );
+            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 201F ) );
+            TopTable.ColumnStyles.Add( new System.Windows.Forms.ColumnStyle( System.Windows.Forms.SizeType.Absolute, 168F ) );
             TopTable.Controls.Add( Title, 1, 0 );
             TopTable.Controls.Add( PictureBox, 0, 0 );
             TopTable.Controls.Add( TimeLabel, 2, 0 );
+            TopTable.Controls.Add( ControlBox, 3, 0 );
             TopTable.Dock = System.Windows.Forms.DockStyle.Top;
             TopTable.Location = new System.Drawing.Point( 0, 0 );
             TopTable.Name = "TopTable";
@@ -819,11 +822,11 @@
             Title.Font = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             Title.HoverText = null;
             Title.IsDerivedStyle = true;
-            Title.Location = new System.Drawing.Point( 41, 3 );
+            Title.Location = new System.Drawing.Point( 204, 3 );
             Title.Margin = new System.Windows.Forms.Padding( 3 );
             Title.Name = "Title";
             Title.Padding = new System.Windows.Forms.Padding( 1 );
-            Title.Size = new System.Drawing.Size( 1285, 28 );
+            Title.Size = new System.Drawing.Size( 911, 28 );
             Title.Style = MetroSet_UI.Enums.Style.Custom;
             Title.StyleManager = null;
             Title.TabIndex = 1;
@@ -849,23 +852,54 @@
             // 
             // TimeLabel
             // 
+            TimeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             TimeLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             TimeLabel.Font = new System.Drawing.Font( "Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             TimeLabel.HoverText = null;
             TimeLabel.IsDerivedStyle = true;
-            TimeLabel.Location = new System.Drawing.Point( 1332, 3 );
+            TimeLabel.Location = new System.Drawing.Point( 1121, 3 );
             TimeLabel.Margin = new System.Windows.Forms.Padding( 3 );
             TimeLabel.Name = "TimeLabel";
             TimeLabel.Padding = new System.Windows.Forms.Padding( 1 );
-            TimeLabel.Size = new System.Drawing.Size( 153, 23 );
+            TimeLabel.Size = new System.Drawing.Size( 195, 28 );
             TimeLabel.Style = MetroSet_UI.Enums.Style.Custom;
             TimeLabel.StyleManager = null;
             TimeLabel.TabIndex = 2;
             TimeLabel.Text = "label2";
-            TimeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            TimeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             TimeLabel.ThemeAuthor = "Terry D. Eppler";
             TimeLabel.ThemeName = "Baby";
             TimeLabel.ToolTip = null;
+            // 
+            // ControlBox
+            // 
+            ControlBox.CloseHoverBackColor = System.Drawing.Color.Maroon;
+            ControlBox.CloseHoverForeColor = System.Drawing.Color.White;
+            ControlBox.CloseNormalForeColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
+            ControlBox.DisabledForeColor = System.Drawing.Color.FromArgb( 20, 20, 20 );
+            ControlBox.Dock = System.Windows.Forms.DockStyle.Right;
+            ControlBox.Font = new System.Drawing.Font( "Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
+            ControlBox.ForeColor = System.Drawing.Color.FromArgb( 106, 189, 252 );
+            ControlBox.IsDerivedStyle = true;
+            ControlBox.Location = new System.Drawing.Point( 1387, 1 );
+            ControlBox.Margin = new System.Windows.Forms.Padding( 1 );
+            ControlBox.MaximizeBox = true;
+            ControlBox.MaximizeHoverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            ControlBox.MaximizeHoverForeColor = System.Drawing.Color.White;
+            ControlBox.MaximizeNormalForeColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
+            ControlBox.MinimizeBox = true;
+            ControlBox.MinimizeHoverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            ControlBox.MinimizeHoverForeColor = System.Drawing.Color.White;
+            ControlBox.MinimizeNormalForeColor = System.Drawing.Color.FromArgb( 45, 45, 45 );
+            ControlBox.Name = "ControlBox";
+            ControlBox.Padding = new System.Windows.Forms.Padding( 1 );
+            ControlBox.Size = new System.Drawing.Size( 100, 25 );
+            ControlBox.Style = MetroSet_UI.Enums.Style.Custom;
+            ControlBox.StyleManager = null;
+            ControlBox.TabIndex = 3;
+            ControlBox.Text = "controlBox1";
+            ControlBox.ThemeAuthor = "Terry D. Eppler";
+            ControlBox.ThemeName = "DarkControls";
             // 
             // UrlTextBoxTable
             // 
@@ -909,20 +943,6 @@
             SearchLookupButton.TabIndex = 0;
             SearchLookupButton.UseVisualStyleBackColor = true;
             // 
-            // SearchRefreshButton
-            // 
-            SearchRefreshButton.FlatAppearance.BorderSize = 0;
-            SearchRefreshButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
-            SearchRefreshButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
-            SearchRefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            SearchRefreshButton.Image = Properties.Resources.SearchRefreshButton;
-            SearchRefreshButton.Location = new System.Drawing.Point( 78, 3 );
-            SearchRefreshButton.Name = "SearchRefreshButton";
-            SearchRefreshButton.Padding = new System.Windows.Forms.Padding( 5 );
-            SearchRefreshButton.Size = new System.Drawing.Size( 32, 28 );
-            SearchRefreshButton.TabIndex = 2;
-            SearchRefreshButton.UseVisualStyleBackColor = true;
-            // 
             // SearchCancelButton
             // 
             SearchCancelButton.FlatAppearance.BorderSize = 0;
@@ -936,6 +956,20 @@
             SearchCancelButton.Size = new System.Drawing.Size( 33, 28 );
             SearchCancelButton.TabIndex = 2;
             SearchCancelButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchRefreshButton
+            // 
+            SearchRefreshButton.FlatAppearance.BorderSize = 0;
+            SearchRefreshButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
+            SearchRefreshButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb( 50, 93, 129 );
+            SearchRefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            SearchRefreshButton.Image = Properties.Resources.SearchRefreshButton;
+            SearchRefreshButton.Location = new System.Drawing.Point( 78, 3 );
+            SearchRefreshButton.Name = "SearchRefreshButton";
+            SearchRefreshButton.Padding = new System.Windows.Forms.Padding( 5 );
+            SearchRefreshButton.Size = new System.Drawing.Size( 32, 28 );
+            SearchRefreshButton.TabIndex = 2;
+            SearchRefreshButton.UseVisualStyleBackColor = true;
             // 
             // NavigationLayout
             // 
@@ -994,7 +1028,7 @@
             // 
             // UrlTextBox
             // 
-            UrlTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            UrlTextBox.Anchor =  System.Windows.Forms.AnchorStyles.Left  |  System.Windows.Forms.AnchorStyles.Right ;
             UrlTextBox.AutoCompleteCustomSource = null;
             UrlTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             UrlTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -1079,7 +1113,6 @@
             CaptionFont = new System.Drawing.Font( "Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point );
             CaptionForeColor = System.Drawing.Color.FromArgb( 0, 120, 212 );
             ClientSize = new System.Drawing.Size( 1488, 839 );
-            ControlBox = false;
             Controls.Add( TabPages );
             Controls.Add( UrlSearchPanel );
             Controls.Add( ToolStripTable );
@@ -1190,6 +1223,7 @@
         public System.Windows.Forms.Button SearchCancelButton;
         public System.Windows.Forms.FlowLayoutPanel SearchLayout;
         public System.Windows.Forms.FlowLayoutPanel NavigationLayout;
+        private ControlBox ControlBox;
     }
 }
 

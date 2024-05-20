@@ -357,8 +357,8 @@ namespace Baby
 
             // Form Properties
             Size = new Size( 1490, 840 );
-            MaximumSize = new Size( 1500, 850 );
-            MinimumSize = new Size( 1480, 830 );
+            MaximumSize = new Size( 1920, 1080 );
+            MinimumSize = new Size( 1450, 750 );
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.Sizable;
             BorderColor = Color.FromArgb( 0, 120, 212 );
@@ -369,12 +369,11 @@ namespace Baby
             ShowIcon = false;
             ShowInTaskbar = true;
             MetroColor = Color.FromArgb( 20, 20, 20 );
-            CaptionBarHeight = 5;
-            SizeGripStyle = SizeGripStyle.Hide;
+            CaptionBarHeight = 3;
+            SizeGripStyle = SizeGripStyle.Show;
             ShowMouseOver = true;
             MinimizeBox = false;
             MaximizeBox = false;
-            ControlBox = false;
             SetTitleText( null );
 
             // Wireup Events

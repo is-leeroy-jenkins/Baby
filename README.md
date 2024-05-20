@@ -67,7 +67,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ### Baby Overview
 
-![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/Overview.png)
+![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/Overview.gif)
 
 ## Screenshots
 

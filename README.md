@@ -62,10 +62,9 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - `bin` - Binaries are included in the `bin` folder due to the complex CefSharp setup required. Don't empty this folder.
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages
 
-## Credits
 
 
-### Baby Overview
+## Baby Overview
 
 ![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/Overview.gif)
 

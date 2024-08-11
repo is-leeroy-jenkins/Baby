@@ -8,6 +8,12 @@
     <Compile Update="Controls\Button\Button.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Controls\ComboBox\ComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ControlBox\ControlBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Controls\Dialog\ErrorDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -32,6 +38,9 @@
     <Compile Update="Controls\ListBox\ListBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Controls\Menu\ContextBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Controls\Menu\ContextMenu.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -52,6 +61,9 @@
     </Compile>
     <Compile Update="Controls\Splash\SplashMessage.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\Style\StyleManager.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Update="Controls\TabControl\TabControl.cs">
       <SubType>Component</SubType>

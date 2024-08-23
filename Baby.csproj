@@ -79,9 +79,7 @@
     <PackageReference Include="cef.redist.x86" Version="120.2.7" />
     <PackageReference Include="CefSharp.Common" Version="123.0.60" />
     <PackageReference Include="CefSharp.Common.NETCore" Version="123.0.60" />
-    <PackageReference Include="CefSharp.WinForms" Version="123.0.60" />
     <PackageReference Include="CefSharp.WinForms.NETCore" Version="123.0.60" />
-    <PackageReference Include="CefSharp.Wpf" Version="123.0.60" />
     <PackageReference Include="CefSharp.Wpf.NETCore" Version="123.0.60" />
     <PackageReference Include="MetroSet_UI" Version="2.0.0" />
     <PackageReference Include="Syncfusion.Edit.Windows" Version="24.1.41" />

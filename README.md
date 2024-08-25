@@ -1,6 +1,6 @@
 ## ![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/logo3.png)
 
-## Baby is an open source C# web browser released under the MIT license.
+## An open source web browser written in C# and released under the MIT license.
 
 ## Features
 

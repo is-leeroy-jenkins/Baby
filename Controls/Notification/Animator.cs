@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 03-24-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        05-31-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="Animator.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   Animator.cs
@@ -134,7 +136,8 @@ namespace Baby
         /// <param name="method">The method.</param>
         /// <param name="direction">The direction.</param>
         /// <param name="duration">The duration.</param>
-        public Animator( Form form, AnimationMethod method, AnimationDirection direction, int duration )
+        public Animator( Form form, AnimationMethod method, AnimationDirection direction,
+            int duration )
             : this( form, method, duration )
         {
             Direction = direction;
@@ -147,10 +150,11 @@ namespace Baby
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Form_Load( object sender, EventArgs e )
         {
-            if( ( Form.MdiParent == null )
-               || ( Method != AnimationMethod.Fade ) )
+            if( Form.MdiParent == null
+                || Method != AnimationMethod.Fade )
             {
-                NativeMethods.AnimateWindow( Form.Handle, Duration, _AW_ACTIVATE | (int)Method | (int)Direction );
+                NativeMethods.AnimateWindow( Form.Handle, Duration,
+                    _AW_ACTIVATE | ( int )Method | ( int )Direction );
             }
         }
 
@@ -163,7 +167,7 @@ namespace Baby
         {
             if( Form.MdiParent == null )
             {
-                var _flags = (int)Method | (int)Direction;
+                var _flags = ( int )Method | ( int )Direction;
                 if( Form.Visible )
                 {
                     _flags |= _AW_ACTIVATE;
@@ -186,10 +190,11 @@ namespace Baby
         {
             if( !e.Cancel )
             {
-                if( ( Form.MdiParent == null )
-                   || ( Method != AnimationMethod.Fade ) )
+                if( Form.MdiParent == null
+                    || Method != AnimationMethod.Fade )
                 {
-                    NativeMethods.AnimateWindow( Form.Handle, Duration, _AW_HIDE | (int)Method | (int)Direction );
+                    NativeMethods.AnimateWindow( Form.Handle, Duration,
+                        _AW_HIDE | ( int )Method | ( int )Direction );
                 }
             }
         }

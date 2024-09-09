@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-29-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="IconUtils.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   IconUtils.cs
@@ -66,7 +68,7 @@ namespace Baby
         /// <returns></returns>
         public static MemoryStream GetFileIcon( string name, IconSize size )
         {
-            var _icon = IconFromExtension( name.GetAfter( "." ), size );
+            var _icon = IconUtils.IconFromExtension( name.GetAfter( "." ), size );
             using( _icon )
             {
                 using var _bmp = _icon.ToBitmap( );
@@ -101,7 +103,7 @@ namespace Baby
                 _largeIconsPtrs = new IntPtr[ iconCount ];
             }
 
-            var _apiResult = ExtractIconEx( fileName, firstIconIndex, _largeIconsPtrs,
+            var _apiResult = IconUtils.ExtractIconEx( fileName, firstIconIndex, _largeIconsPtrs,
                 _smallIconsPtrs, iconCount );
 
             if( _apiResult != iconCount )
@@ -114,7 +116,7 @@ namespace Baby
                 smallIcons.Clear( );
                 foreach( var _actualIconPtr in _smallIconsPtrs )
                 {
-                    smallIcons.Add( FromHandle( _actualIconPtr ) );
+                    smallIcons.Add( Icon.FromHandle( _actualIconPtr ) );
                 }
             }
 
@@ -123,7 +125,7 @@ namespace Baby
                 largeIcons.Clear( );
                 foreach( var _actualIconPtr in _largeIconsPtrs )
                 {
-                    largeIcons.Add( FromHandle( _actualIconPtr ) );
+                    largeIcons.Add( Icon.FromHandle( _actualIconPtr ) );
                 }
             }
         }
@@ -145,12 +147,16 @@ namespace Baby
             {
                 case IconSize.Large:
                 {
-                    ExtractEx( fileName, _iconList, null, firstIconIndex, iconCount );
+                    IconUtils.ExtractEx( fileName, _iconList, null, firstIconIndex,
+                        iconCount );
+
                     break;
                 }
                 case IconSize.Small:
                 {
-                    ExtractEx( fileName, null, _iconList, firstIconIndex, iconCount );
+                    IconUtils.ExtractEx( fileName, null, _iconList, firstIconIndex,
+                        iconCount );
+
                     break;
                 }
                 default:
@@ -170,8 +176,9 @@ namespace Baby
         /// <param name="smallIcons">The small icons.</param>
         public static void Extract( string fileName, List<Icon> largeIcons, List<Icon> smallIcons )
         {
-            var _iconCount = GetIconsCountInFile( fileName );
-            ExtractEx( fileName, largeIcons, smallIcons, 0, _iconCount );
+            var _iconCount = IconUtils.GetIconsCountInFile( fileName );
+            IconUtils.ExtractEx( fileName, largeIcons, smallIcons, 0,
+                _iconCount );
         }
 
         /// <summary>
@@ -182,8 +189,8 @@ namespace Baby
         /// <returns></returns>
         public static List<Icon> Extract( string fileName, IconSize size )
         {
-            var _iconCount = GetIconsCountInFile( fileName );
-            return ExtractEx( fileName, size, 0, _iconCount );
+            var _iconCount = IconUtils.GetIconsCountInFile( fileName );
+            return IconUtils.ExtractEx( fileName, size, 0, _iconCount );
         }
 
         /// <summary>
@@ -198,7 +205,7 @@ namespace Baby
         {
             try
             {
-                var _iconList = ExtractEx( fileName, size, index, 1 );
+                var _iconList = IconUtils.ExtractEx( fileName, size, index, 1 );
                 return _iconList[ 0 ];
             }
             catch( UnableToExtractIconsException )
@@ -222,7 +229,9 @@ namespace Baby
             var _largeIconList = new List<Icon>( );
             try
             {
-                ExtractEx( fileName, _largeIconList, _smallIconList, index, 1 );
+                IconUtils.ExtractEx( fileName, _largeIconList, _smallIconList, index,
+                    1 );
+
                 largeIcon = _largeIconList[ 0 ];
                 smallIcon = _smallIconList[ 0 ];
             }
@@ -263,10 +272,12 @@ namespace Baby
             IntPtr[ ] _large = new IntPtr[ 1 ], _small = new IntPtr[ 1 ];
 
             //extracts the icon from the file.
-            ExtractIconEx( _iconPath[ 0 ], Convert.ToInt16( _iconPath[ 1 ] ), _large, _small, 1 );
+            IconUtils.ExtractIconEx( _iconPath[ 0 ], Convert.ToInt16( _iconPath[ 1 ] ), _large,
+                _small, 1 );
+
             return size == IconSize.Large
-                ? FromHandle( _large[ 0 ] )
-                : FromHandle( _small[ 0 ] );
+                ? Icon.FromHandle( _large[ 0 ] )
+                : Icon.FromHandle( _small[ 0 ] );
         }
 
         /// <summary>
@@ -345,7 +356,8 @@ namespace Baby
         /// </returns>
         [ DllImport( "Shell32", CharSet = CharSet.Auto ) ]
         private static extern int ExtractIconEx( [ MarshalAs( LPTStr ) ] string lpszFile,
-            int nIconIndex, IntPtr[ ] phIconLarge, IntPtr[ ] phIconSmall, int nIcons );
+            int nIconIndex, IntPtr[ ] phIconLarge, IntPtr[ ] phIconSmall,
+            int nIcons );
 
         /// <summary>
         /// Shes the get file information.
@@ -367,7 +379,8 @@ namespace Baby
         /// <returns></returns>
         private static int GetIconsCountInFile( string fileName )
         {
-            return ExtractIconEx( fileName, -1, null, null, 0 );
+            return IconUtils.ExtractIconEx( fileName, -1, null, null,
+                0 );
         }
     }
 }

@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-29-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="WebUtils.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   WebUtils.cs
@@ -88,8 +90,8 @@ namespace Baby
         /// <param name="ctrl">if set to <c>true</c> [control].</param>
         /// <param name="shift">if set to <c>true</c> [shift].</param>
         /// <param name="alt">if set to <c>true</c> [alt].</param>
-        public static void AddHotKey( Form form, Action function, Keys key, bool ctrl = false,
-            bool shift = false, bool alt = false )
+        public static void AddHotKey( Form form, Action function, Keys key,
+            bool ctrl = false, bool shift = false, bool alt = false )
         {
             form.KeyPreview = true;
             form.KeyDown += delegate( object sender, KeyEventArgs e )
@@ -261,24 +263,9 @@ namespace Baby
         /// <returns></returns>
         public static bool SupportedInFilePath( this char c )
         {
-            return !( ( c == '?' )
-                || ( c == '\'' )
-                || ( c == '\"' )
-                || ( c == '/' )
-                || ( c == '\\' )
-                || ( c == ';' )
-                || ( c == ':' )
-                || ( c == '&' )
-                || ( c == '*' )
-                || ( c == '<' )
-                || ( c == '>' )
-                || ( c == '|' )
-                || ( c == '{' )
-                || ( c == '}' )
-                || ( c == '[' )
-                || ( c == ']' )
-                || ( c == '(' )
-                || ( c == ')' ) );
+            return !( c == '?' || c == '\'' || c == '\"' || c == '/' || c == '\\' || c == ';'
+                || c == ':' || c == '&' || c == '*' || c == '<' || c == '>' || c == '|' || c == '{'
+                || c == '}' || c == '[' || c == ']' || c == '(' || c == ')' );
         }
 
         /// <summary>
@@ -321,7 +308,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebUtils.Fail( _ex );
                 return false;
             }
         }
@@ -375,10 +362,8 @@ namespace Baby
         public static bool IsHotKey( this KeyEventArgs eventData, Keys key, bool ctrl = false,
             bool shift = false, bool alt = false )
         {
-            return ( eventData.KeyCode == key )
-                && ( eventData.Control == ctrl )
-                && ( eventData.Shift == shift )
-                && ( eventData.Alt == alt );
+            return eventData.KeyCode == key && eventData.Control == ctrl && eventData.Shift == shift
+                && eventData.Alt == alt;
         }
 
         /// <summary>
@@ -410,7 +395,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebUtils.Fail( _ex );
                 return false;
             }
         }
@@ -432,22 +417,21 @@ namespace Baby
                 {
                     return false;
                 }
-                
+
                 if( beginsWith.Length == str.Length )
                 {
                     return String.Equals( beginsWith, str, caseSensitive
                         ? StringComparison.Ordinal
                         : StringComparison.OrdinalIgnoreCase );
                 }
-                
+
                 return str.LastIndexOf( beginsWith, beginsWith.Length - 1, caseSensitive
-                        ? StringComparison.Ordinal
-                        : StringComparison.OrdinalIgnoreCase )
-                    == 0;
+                    ? StringComparison.Ordinal
+                    : StringComparison.OrdinalIgnoreCase ) == 0;
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebUtils.Fail( _ex );
                 return false;
             }
         }
@@ -465,13 +449,13 @@ namespace Baby
             try
             {
                 ThrowIf.NullOrEmpty( prefix, nameof( prefix ) );
-                return ( str.Length >= prefix.Length ) && str.BeginsWith( prefix, caseSensitive )
+                return str.Length >= prefix.Length && str.BeginsWith( prefix, caseSensitive )
                     ? str.Substring( prefix.Length )
                     : str;
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebUtils.Fail( _ex );
                 return string.Empty;
             }
         }

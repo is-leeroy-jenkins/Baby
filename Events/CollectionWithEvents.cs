@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-29-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="CollectionWithEvents.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   CollectionWithEvents.cs
@@ -139,7 +141,7 @@ namespace Baby
         protected override void OnClear( )
         {
             if( !IsSuspended
-               && ( Clearing != null ) )
+                && Clearing != null )
             {
                 Clearing( );
             }
@@ -154,7 +156,7 @@ namespace Baby
         protected override void OnClearComplete( )
         {
             if( !IsSuspended
-               && ( Cleared != null ) )
+                && Cleared != null )
             {
                 Cleared( );
             }
@@ -177,7 +179,7 @@ namespace Baby
         protected override void OnInsert( int index, object value )
         {
             if( !IsSuspended
-               && ( Inserting != null ) )
+                && Inserting != null )
             {
                 Inserting( index, value );
             }
@@ -200,7 +202,7 @@ namespace Baby
         protected override void OnInsertComplete( int index, object value )
         {
             if( !IsSuspended
-               && ( Inserted != null ) )
+                && Inserted != null )
             {
                 Inserted( index, value );
             }
@@ -223,7 +225,7 @@ namespace Baby
         protected override void OnRemove( int index, object value )
         {
             if( !IsSuspended
-               && ( Removing != null ) )
+                && Removing != null )
             {
                 Removing( index, value );
             }
@@ -242,7 +244,7 @@ namespace Baby
         protected override void OnRemoveComplete( int index, object value )
         {
             if( !IsSuspended
-               && ( Removed != null ) )
+                && Removed != null )
             {
                 Removed( index, value );
             }

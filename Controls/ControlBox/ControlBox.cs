@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 1-4-2024
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        1-4-2024
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="ControlBox.cs" company="Terry D. Eppler">
-//    Baby is tiny web browser used in a Federal Budget, Finance, and Accounting application
-//    for the US Environmental Protection Agency (US EPA).
-//    Copyright ©  2024  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    Contact at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   ControlBox.cs
@@ -46,7 +48,7 @@ namespace Baby
     using System.Windows.Forms;
     using MetroSet_UI.Controls;
     using MetroSet_UI.Enums;
-    
+
     /// <summary>
     /// 
     /// </summary>
@@ -80,7 +82,7 @@ namespace Baby
         /// Initializes a new instance of the
         /// <see cref="ControlBox"/> class.
         /// </summary>
-        public ControlBox( ) 
+        public ControlBox( )
             : base( )
         {
             Style = Style.Custom;
@@ -90,7 +92,7 @@ namespace Baby
             Size = new Size( 100, 25 );
             Margin = new Padding( 1 );
             Padding = new Padding( 1 );
-            ForeColor = Color.FromArgb( 106, 189, 252 ); 
+            ForeColor = Color.FromArgb( 106, 189, 252 );
             DisabledForeColor = Color.FromArgb( 20, 20, 20 );
             CloseHoverBackColor = Color.Maroon;
             MinimizeHoverBackColor = Color.FromArgb( 50, 93, 129 );

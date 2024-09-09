@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-29-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
-// <copyright file="KeyboardHandler.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+// <copyright file="KeyboardCallback.cs" company="Terry D. Eppler">
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,10 +33,10 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   KeyboardHandler.cs
+//   KeyboardCallback.cs
 // </summary>
 // ******************************************************************************************
 
@@ -97,13 +99,14 @@ namespace Baby
         /// <param name="alt">
         /// if set to <c>true</c> [alt].
         /// </param>
-        public static void AddHotKey( Form form, Action function, Keys key, bool ctrl = false,
-            bool shift = false, bool alt = false )
+        public static void AddHotKey( Form form, Action function, Keys key,
+            bool ctrl = false, bool shift = false, bool alt = false )
         {
-            WebUtils.AddHotKey( form, function, key, ctrl, shift,
-                alt );
+            WebUtils.AddHotKey( form, function, key, ctrl,
+                shift, alt );
 
-            Hotkeys.Add( new BrowserHotKey( function, key, ctrl, shift, alt ) );
+            Hotkeys.Add( new BrowserHotKey( function, key, ctrl, shift,
+                alt ) );
         }
 
         /// <summary>
@@ -159,8 +162,8 @@ namespace Baby
         /// <param name="isKeyboardShortcut"></param>
         /// <returns></returns>
         public bool OnPreKeyEvent( IWebBrowser browserControl, IBrowser browser, KeyType type,
-            int windowsKeyCode, int nativeKeyCode, CefEventFlags modifiers, bool isSystemKey,
-            ref bool isKeyboardShortcut )
+            int windowsKeyCode, int nativeKeyCode, CefEventFlags modifiers,
+            bool isSystemKey, ref bool isKeyboardShortcut )
         {
             return false;
         }
@@ -210,21 +213,22 @@ namespace Baby
         /// <param name="isSystemKey"></param>
         /// <returns></returns>
         public bool OnKeyEvent( IWebBrowser browserControl, IBrowser browser, KeyType type,
-            int windowsKeyCode, int nativeKeyCode, CefEventFlags modifiers, bool isSystemKey )
+            int windowsKeyCode, int nativeKeyCode, CefEventFlags modifiers,
+            bool isSystemKey )
         {
             if( type == KeyType.RawKeyDown )
             {
-                var _mod = (int)modifiers;
-                var _ctrlDown = _mod.IsBitMaskOn( (int)CefEventFlags.ControlDown );
-                var _shiftDown = _mod.IsBitMaskOn( (int)CefEventFlags.ShiftDown );
-                var _altDown = _mod.IsBitMaskOn( (int)CefEventFlags.AltDown );
+                var _mod = ( int )modifiers;
+                var _ctrlDown = _mod.IsBitMaskOn( ( int )CefEventFlags.ControlDown );
+                var _shiftDown = _mod.IsBitMaskOn( ( int )CefEventFlags.ShiftDown );
+                var _altDown = _mod.IsBitMaskOn( ( int )CefEventFlags.AltDown );
                 foreach( var _key in Hotkeys )
                 {
                     if( _key.KeyCode == windowsKeyCode )
                     {
-                        if( ( _key.Ctrl == _ctrlDown )
-                           && ( _key.Shift == _shiftDown )
-                           && ( _key.Alt == _altDown ) )
+                        if( _key.Ctrl == _ctrlDown
+                            && _key.Shift == _shiftDown
+                            && _key.Alt == _altDown )
                         {
                             _webBrowser.InvokeOnParent( delegate
                             {

@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-29-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
-// <copyright file="RequestHandler.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+// <copyright file="RequestCallback.cs" company="Terry D. Eppler">
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,10 +33,10 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   RequestHandler.cs
+//   RequestCallback.cs
 // </summary>
 // ******************************************************************************************
 
@@ -84,8 +86,9 @@ namespace Baby
         /// <param name="callback">The callback.</param>
         /// <returns></returns>
         public bool GetAuthCredentials( IWebBrowser chromiumWebBrowser, IBrowser browser,
-            string originUrl, bool isProxy, string host, int port,
-            string realm, string scheme, IAuthCallback callback )
+            string originUrl, bool isProxy, string host,
+            int port, string realm, string scheme,
+            IAuthCallback callback )
         {
             return false;
         }
@@ -117,7 +120,8 @@ namespace Baby
         /// <param name="callback">The callback.</param>
         /// <returns></returns>
         public bool OnCertificateError( IWebBrowser browserControl, IBrowser browser,
-            CefErrorCode errorCode, string requestUrl, ISslInfo sslInfo, IRequestCallback callback )
+            CefErrorCode errorCode, string requestUrl, ISslInfo sslInfo,
+            IRequestCallback callback )
         {
             return true;
         }
@@ -174,6 +178,8 @@ namespace Baby
         public void OnRenderProcessTerminated( IWebBrowser browserControl, IBrowser browser,
             CefTerminationStatus status )
         {
+            var _message = "NOT YET IMPLEMENTED!";
+            SendMessage( _message );
         }
 
         /// <summary>
@@ -183,6 +189,23 @@ namespace Baby
         /// <param name="browser">The browser.</param>
         public void OnRenderViewReady( IWebBrowser browserControl, IBrowser browser )
         {
+            var _message = "NOT YET IMPLEMENTED!";
+            SendMessage( _message );
+        }
+
+        /// <summary>
+        /// Called when [render process terminated].
+        /// </summary>
+        /// <param name="chromiumWebBrowser">The chromium WebBrowser.</param>
+        /// <param name="browser">The browser.</param>
+        /// <param name="status">The status.</param>
+        /// <param name="errorCode">The error code.</param>
+        /// <param name="errorMessage">The error message.</param>
+        public void OnRenderProcessTerminated( IWebBrowser chromiumWebBrowser, IBrowser browser,
+            CefTerminationStatus status, int errorCode, string errorMessage )
+        {
+            var _message = "NOT YET IMPLEMENTED!";
+            SendMessage( _message );
         }
 
         /// <summary>
@@ -198,8 +221,9 @@ namespace Baby
         /// <param name="disableDefaultHandling">if set to <c>true</c> [disable default handling].</param>
         /// <returns></returns>
         public IResourceRequestHandler GetResourceRequestHandler( IWebBrowser chromiumWebBrowser,
-            IBrowser browser, IFrame frame, IRequest request, bool isNavigation,
-            bool isDownload, string requestInitiator, ref bool disableDefaultHandling )
+            IBrowser browser, IFrame frame, IRequest request,
+            bool isNavigation, bool isDownload, string requestInitiator,
+            ref bool disableDefaultHandling )
         {
             var _rh = new ResourceRequestCallback( _webBrowser );
             return _rh;
@@ -217,8 +241,8 @@ namespace Baby
         /// <param name="callback">The callback.</param>
         /// <returns></returns>
         public bool OnSelectClientCertificate( IWebBrowser chromiumWebBrowser, IBrowser browser,
-            bool isProxy, string host, int port, X509Certificate2Collection certificates,
-            ISelectClientCertificateCallback callback )
+            bool isProxy, string host, int port,
+            X509Certificate2Collection certificates, ISelectClientCertificateCallback callback )
         {
             return false;
         }
@@ -231,6 +255,54 @@ namespace Baby
         public void OnDocumentAvailableInMainFrame( IWebBrowser chromiumWebBrowser,
             IBrowser browser )
         {
+        }
+
+        /// <summary>
+        /// Sends the message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        private void SendMessage( string message )
+        {
+            try
+            {
+                ThrowIf.NullOrEmpty( message, nameof( message ) );
+                var _splashMessage = new SplashMessage( message );
+                _splashMessage.Show( );
+            }
+            catch( Exception _ex )
+            {
+                RequestCallback.Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Notifies this instance.
+        /// </summary>
+        private void SendNotification( )
+        {
+            try
+            {
+                var _message = "THIS IS NOT YET IMPLEMENTED!";
+                var _notify = new Notification( _message );
+                _notify.Show( );
+            }
+            catch( Exception _ex )
+            {
+                RequestCallback.Fail( _ex );
+            }
+        }
+
+        /// <summary>
+        /// Fails the specified ex.
+        /// </summary>
+        /// <param name="ex">
+        /// The ex.
+        /// </param>
+        private protected static void Fail( Exception ex )
+        {
+            using var _error = new ErrorDialog( ex );
+            _error?.SetText( );
+            _error?.ShowDialog( );
         }
     }
 }

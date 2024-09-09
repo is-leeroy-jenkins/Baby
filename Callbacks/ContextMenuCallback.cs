@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-29-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
-// <copyright file="ContextMenuHandler.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+// <copyright file="ContextMenuCallback.cs" company="Terry D. Eppler">
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,10 +33,10 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   ContextMenuHandler.cs
+//   ContextMenuCallback.cs
 // </summary>
 // ******************************************************************************************
 
@@ -158,13 +160,13 @@ namespace Baby
 
             if( parameters.LinkUrl != "" )
             {
-                model.AddItem( (CefMenuCommand)_OPEN_LINK_IN_NEW_TAB, "Open link in new tab" );
-                model.AddItem( (CefMenuCommand)_COPY_LINK_ADDRESS, "Copy link" );
+                model.AddItem( ( CefMenuCommand )_OPEN_LINK_IN_NEW_TAB, "Open link in new tab" );
+                model.AddItem( ( CefMenuCommand )_COPY_LINK_ADDRESS, "Copy link" );
                 model.AddSeparator( );
             }
 
             if( parameters.HasImageContents
-               && parameters.SourceUrl.CheckIfValid( ) )
+                && parameters.SourceUrl.CheckIfValid( ) )
             {
                 // RIGHT CLICKED ON IMAGE
             }
@@ -174,14 +176,14 @@ namespace Baby
                 // TEXT IS SELECTED
             }
 
-            model.AddItem( (CefMenuCommand)_SHOW_DEV_TOOLS, "Developer tools" );
+            model.AddItem( ( CefMenuCommand )_SHOW_DEV_TOOLS, "Developer tools" );
             model.AddItem( CefMenuCommand.ViewSource, "View source" );
             model.AddSeparator( );
-            model.AddItem( (CefMenuCommand)_REFRESH_TAB, "Refresh tab" );
-            model.AddItem( (CefMenuCommand)_CLOSE_TAB, "Close tab" );
+            model.AddItem( ( CefMenuCommand )_REFRESH_TAB, "Refresh tab" );
+            model.AddItem( ( CefMenuCommand )_CLOSE_TAB, "Close tab" );
             model.AddSeparator( );
-            model.AddItem( (CefMenuCommand)_SAVE_AS_PDF, "Save as PDF" );
-            model.AddItem( (CefMenuCommand)_PRINT, "Print Page" );
+            model.AddItem( ( CefMenuCommand )_SAVE_AS_PDF, "Save as PDF" );
+            model.AddItem( ( CefMenuCommand )_PRINT, "Print Page" );
         }
 
         /// <summary>
@@ -203,7 +205,7 @@ namespace Baby
             IFrame frame, IContextMenuParams parameters, CefMenuCommand commandId,
             CefEventFlags eventFlags )
         {
-            var _id = (int)commandId;
+            var _id = ( int )commandId;
             switch( _id )
             {
                 case _SHOW_DEV_TOOLS:

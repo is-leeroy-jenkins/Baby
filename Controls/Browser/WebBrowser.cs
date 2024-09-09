@@ -1,16 +1,17 @@
-﻿
-// ******************************************************************************************
+﻿// ******************************************************************************************
 //     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 05-01-2024
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        05-01-2024
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="WebBrowser.cs" company="Terry D. Eppler">
-//    Baby is a small web browser used in a Federal Budget, Finance, and Accounting application
-//    for the  US Environmental Protection Agency (US EPA).
-//    Copyright ©  2024  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -63,7 +64,7 @@ namespace Baby
     using static System.IO.Path;
     using Action = System.Action;
     using ContentAlignment = System.Drawing.ContentAlignment;
-    
+
     /// <inheritdoc />
     /// <summary>
     /// The main Baby form, supporting multiple tabs.
@@ -154,7 +155,7 @@ namespace Baby
         /// <summary>
         /// The application path
         /// </summary>
-        private string _path = GetDirectoryName( Application.ExecutablePath ) + @"\";
+        private string _path = Path.GetDirectoryName( Application.ExecutablePath ) + @"\";
 
         /// <summary>
         /// The search open
@@ -286,7 +287,7 @@ namespace Baby
         {
             get
             {
-                return (BrowserTab)TabPages.SelectedItem?.Tag;
+                return ( BrowserTab )TabPages.SelectedItem?.Tag;
             }
         }
 
@@ -317,7 +318,7 @@ namespace Baby
                 if( TabPages.SelectedItem?.Tag != null )
                 {
                     var _loadTime =
-                        (int)( DateTime.Now - CurrentTab.DateCreated ).TotalMilliseconds;
+                        ( int )( DateTime.Now - CurrentTab.DateCreated ).TotalMilliseconds;
 
                     return _loadTime;
                 }
@@ -338,7 +339,7 @@ namespace Baby
         {
             get
             {
-                return ( (BrowserTab)TabPages.SelectedItem?.Tag )?.Browser;
+                return ( ( BrowserTab )TabPages.SelectedItem?.Tag )?.Browser;
             }
         }
 
@@ -397,7 +398,7 @@ namespace Baby
             _cefSettings.UserAgent = AppSettings[ "UserAgent" ];
             _cefSettings.AcceptLanguageList = AppSettings[ "AcceptLanguage" ];
             _cefSettings.IgnoreCertificateErrors = true;
-            _cefSettings.CachePath = GetApplicationDirectory( "Cache" );
+            _cefSettings.CachePath = WebBrowser.GetApplicationDirectory( "Cache" );
             if( bool.Parse( AppSettings[ "Proxy" ] ) )
             {
                 CefSharpSettings.Proxy = new ProxyOptions( AppSettings[ "ProxyIP" ],
@@ -471,7 +472,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -485,7 +486,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -503,7 +504,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -520,7 +521,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -537,7 +538,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -552,7 +553,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -574,8 +575,9 @@ namespace Baby
                 KeyboardCallback.AddHotKey( this, RefreshActiveTab, Keys.F5 );
                 KeyboardCallback.AddHotKey( this, OpenDeveloperTools, Keys.F12 );
                 KeyboardCallback.AddHotKey( this, NextTab, Keys.Tab, true );
-                KeyboardCallback.AddHotKey( this, PreviousTab, Keys.Tab, true, true );
-                
+                KeyboardCallback.AddHotKey( this, PreviousTab, Keys.Tab, true,
+                    true );
+
                 // search hot keys
                 KeyboardCallback.AddHotKey( this, OpenSearch, Keys.F, true );
                 KeyboardCallback.AddHotKey( this, CloseSearch, Keys.Escape );
@@ -584,7 +586,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -609,7 +611,7 @@ namespace Baby
                             _tip.SetToolTip( _button, _button.Tag.ToString( ) );
                         }
                     }
-                    
+
                     if( _control is Panel _panel )
                     {
                         InitializeTooltips( _panel.Controls );
@@ -618,10 +620,10 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Initializes the callbacks.
         /// </summary>
@@ -664,7 +666,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -685,7 +687,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -709,7 +711,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -733,7 +735,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -751,20 +753,20 @@ namespace Baby
                 {
                     text = "New Tab";
                 }
-                
+
                 browser.Tag = text;
                 if( text.Length > 20 )
                 {
                     var _title = text.Substring( 0, 20 ) + "...";
-                    var _tab = (BrowserTabStripItem)browser.Parent;
+                    var _tab = ( BrowserTabStripItem )browser.Parent;
                     _tab.Title = _title;
                 }
                 else
                 {
-                    var _tab = (BrowserTabStripItem)browser.Parent;
+                    var _tab = ( BrowserTabStripItem )browser.Parent;
                     _tab.Title = text;
                 }
-                
+
                 // if current tab
                 if( browser == CurrentBrowser )
                 {
@@ -773,7 +775,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -825,7 +827,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -842,7 +844,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -858,13 +860,11 @@ namespace Baby
             _lastSearch = SearchPanelTextBox.Text;
             if( _lastSearch.CheckIfValid( ) )
             {
-                CurrentBrowser.GetBrowser( )
-                    ?.Find( _lastSearch, true, false, !_first );
+                CurrentBrowser.GetBrowser( )?.Find( _lastSearch, true, false, !_first );
             }
             else
             {
-                CurrentBrowser.GetBrowser( )
-                    ?.StopFinding( true );
+                CurrentBrowser.GetBrowser( )?.StopFinding( true );
             }
 
             SearchPanelTextBox.Focus( );
@@ -884,7 +884,7 @@ namespace Baby
                 _queue.Enqueue( Controls );
                 while( _queue.Count > 0 )
                 {
-                    var _collection = (Control.ControlCollection)_queue.Dequeue( );
+                    var _collection = ( Control.ControlCollection )_queue.Dequeue( );
                     foreach( Control _control in _collection )
                     {
                         _list.Add( _control );
@@ -898,7 +898,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
                 return default( Control[ ] );
             }
         }
@@ -924,7 +924,7 @@ namespace Baby
             {
                 if( _tabPage.Tag != null )
                 {
-                    _tabs.Add( (BrowserTab)_tabPage.Tag );
+                    _tabs.Add( ( BrowserTab )_tabPage.Tag );
                 }
             }
 
@@ -940,9 +940,9 @@ namespace Baby
         {
             foreach( BrowserTabStripItem _item in TabPages.Items )
             {
-                var _tab = (BrowserTab)_item.Tag;
-                if( ( _tab != null )
-                   && ( _tab.Browser == browser ) )
+                var _tab = ( BrowserTab )_item.Tag;
+                if( _tab != null
+                    && _tab.Browser == browser )
                 {
                     return _tab;
                 }
@@ -968,7 +968,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
                 return string.Empty;
             }
         }
@@ -1016,7 +1016,7 @@ namespace Baby
             catch( Exception _ex )
             {
                 _tcs.SetException( _ex );
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
                 return default( Task<ChromiumWebBrowser> );
             }
         }
@@ -1031,8 +1031,8 @@ namespace Baby
                 var _listToClose = new List<BrowserTabStripItem>( );
                 foreach( BrowserTabStripItem _tab in TabPages.Items )
                 {
-                    if( ( _tab != AddItemTab )
-                       && ( _tab != TabPages.SelectedItem ) )
+                    if( _tab != AddItemTab
+                        && _tab != TabPages.SelectedItem )
                     {
                         _listToClose.Add( _tab );
                     }
@@ -1045,7 +1045,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -1063,7 +1063,7 @@ namespace Baby
                 _newUrl = "http://localhost/";
             }
             else if( url.CheckIfFilePath( )
-                    || url.CheckIfFilePath2( ) )
+                || url.CheckIfFilePath2( ) )
             {
                 _newUrl = url.PathToUrl( );
             }
@@ -1071,21 +1071,21 @@ namespace Baby
             {
                 Uri.TryCreate( url, UriKind.Absolute, out var _outUri );
                 if( !( _urlLower.StartsWith( "http" )
-                       || _urlLower.StartsWith( AppSettings[ "Internal" ] ) ) )
+                    || _urlLower.StartsWith( AppSettings[ "Internal" ] ) ) )
                 {
-                    if( ( _outUri == null )
-                       || ( _outUri.Scheme != Uri.UriSchemeFile ) )
+                    if( _outUri == null
+                        || _outUri.Scheme != Uri.UriSchemeFile )
                     {
                         _newUrl = "https://" + url;
                     }
                 }
 
                 if( _urlLower.StartsWith( AppSettings[ "Internal" ] + ":" )
-                   || ( Uri.TryCreate( _newUrl, UriKind.Absolute, out _outUri )
-                       && ( ( ( ( _outUri.Scheme == Uri.UriSchemeHttp )
-                               || ( _outUri.Scheme == Uri.UriSchemeHttps ) )
-                               && _newUrl.Contains( "." ) )
-                           || ( _outUri.Scheme == Uri.UriSchemeFile ) ) ) )
+                    || ( Uri.TryCreate( _newUrl, UriKind.Absolute, out _outUri )
+                        && ( ( ( _outUri.Scheme == Uri.UriSchemeHttp
+                                || _outUri.Scheme == Uri.UriSchemeHttps )
+                            && _newUrl.Contains( "." ) )
+                            || _outUri.Scheme == Uri.UriSchemeFile ) ) )
                 {
                 }
                 else
@@ -1174,7 +1174,7 @@ namespace Baby
                 {
                     return "";
                 }
-                
+
                 url = url.RemovePrefix( "http://" );
                 url = url.RemovePrefix( "https://" );
                 url = url.RemovePrefix( "file://" );
@@ -1183,7 +1183,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
                 return string.Empty;
             }
         }
@@ -1208,7 +1208,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -1227,11 +1227,11 @@ namespace Baby
             try
             {
                 ThrowIf.NullOrEmpty( url, nameof( url ) );
-                return ( url == "" ) || ( url == "about:blank" );
+                return url == "" || url == "about:blank";
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
                 return false;
             }
         }
@@ -1250,12 +1250,12 @@ namespace Baby
             try
             {
                 ThrowIf.NullOrEmpty( url, nameof( url ) );
-                return ( url == "" ) || url.BeginsWith( "about:" ) || url.BeginsWith( "chrome:" )
+                return url == "" || url.BeginsWith( "about:" ) || url.BeginsWith( "chrome:" )
                     || url.BeginsWith( AppSettings[ "Internal" ] + ":" );
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
                 return false;
             }
         }
@@ -1371,9 +1371,9 @@ namespace Baby
                 // check if already exists
                 foreach( BrowserTabStripItem _item in TabPages.Items )
                 {
-                    var _tab2 = (BrowserTab)_item.Tag;
-                    if( ( _tab2 != null )
-                       && ( _tab2.CurrentUrl == url ) )
+                    var _tab2 = ( BrowserTab )_item.Tag;
+                    if( _tab2 != null
+                        && _tab2.CurrentUrl == url )
                     {
                         TabPages.SelectedItem = _item;
                         return _tab2.Browser;
@@ -1516,7 +1516,7 @@ namespace Baby
                 }
                 catch( Exception _ex )
                 {
-                    Fail( _ex );
+                    WebBrowser.Fail( _ex );
                 }
             }
         }
@@ -1537,8 +1537,8 @@ namespace Baby
                 }
 
                 // Set it back if it is empty
-                if( ( item.SuggestedFileName == "" )
-                   && DownloadNames.TryGetValue( item.Id, out var _name ) )
+                if( item.SuggestedFileName == ""
+                    && DownloadNames.TryGetValue( item.Id, out var _name ) )
                 {
                     item.SuggestedFileName = _name;
                 }
@@ -1595,16 +1595,16 @@ namespace Baby
         /// </summary>
         public void OpenDownloadsTab( )
         {
-            if( ( _downloadStrip != null )
-               && ( ( (ChromiumWebBrowser)_downloadStrip.Controls[ 0 ] ).Address
-                   == AppSettings[ "Downloads" ] ) )
+            if( _downloadStrip != null
+                && ( ( ChromiumWebBrowser )_downloadStrip.Controls[ 0 ] ).Address
+                == AppSettings[ "Downloads" ] )
             {
                 TabPages.SelectedItem = _downloadStrip;
             }
             else
             {
                 var _brw = AddNewBrowserTab( AppSettings[ "Downloads" ] );
-                _downloadStrip = (BrowserTabStripItem)_brw.Parent;
+                _downloadStrip = ( BrowserTabStripItem )_brw.Parent;
             }
         }
 
@@ -1637,7 +1637,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -1661,7 +1661,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -1687,7 +1687,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -1712,7 +1712,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -1738,7 +1738,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -1763,7 +1763,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -1845,7 +1845,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -1866,7 +1866,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -1891,7 +1891,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -1915,7 +1915,7 @@ namespace Baby
 
                     EnableBackButton( CurrentBrowser.CanGoBack );
                     EnableForwardButton( CurrentBrowser.CanGoForward );
-                    SetTabText( (ChromiumWebBrowser)sender, "Loading..." );
+                    SetTabText( ( ChromiumWebBrowser )sender, "Loading..." );
                     Separator10.Visible = false;
                     ToolStripRefreshButton.Visible = false;
                     SearchRefreshButton.Visible = false;
@@ -1948,7 +1948,7 @@ namespace Baby
         {
             InvokeIf( ( ) =>
             {
-                var _browser = (ChromiumWebBrowser)sender;
+                var _browser = ( ChromiumWebBrowser )sender;
                 SetTabText( _browser, e.Title );
             } );
         }
@@ -2011,7 +2011,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -2031,7 +2031,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -2068,7 +2068,7 @@ namespace Baby
             ChromiumWebBrowser _browser = null;
             try
             {
-                _browser = (ChromiumWebBrowser)e.Item.Controls[ 0 ];
+                _browser = ( ChromiumWebBrowser )e.Item.Controls[ 0 ];
             }
             catch( Exception )
             {
@@ -2164,7 +2164,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -2268,7 +2268,7 @@ namespace Baby
             try
             {
                 var _search = new SearchDialog( );
-                var _width = Width / 3 + (int)( _search.Width * .66 );
+                var _width = Width / 3 + ( int )( _search.Width * .66 );
                 var _heigth = Height / 15;
                 _search.Owner = this;
                 _search.Location = new Point( _width, _heigth );
@@ -2278,7 +2278,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -2310,7 +2310,7 @@ namespace Baby
                 }
                 catch( Exception _ex )
                 {
-                    Fail( _ex );
+                    WebBrowser.Fail( _ex );
                 }
                 finally
                 {
@@ -2333,7 +2333,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -2346,7 +2346,7 @@ namespace Baby
         private void OnUrlTextBoxKeyDown( object sender, KeyEventArgs e )
         {
             if( e.IsHotKey( Keys.Enter )
-               || e.IsHotKey( Keys.Enter, true ) )
+                || e.IsHotKey( Keys.Enter, true ) )
             {
                 LoadUrl( UrlTextBox.Text );
                 e.Handled = true;
@@ -2355,7 +2355,7 @@ namespace Baby
             }
 
             if( e.IsHotKey( Keys.C, true )
-               && WebUtils.IsFullySelected( UrlTextBox ) )
+                && WebUtils.IsFullySelected( UrlTextBox ) )
             {
                 Clipboard.SetText( CurrentBrowser.Address, TextDataFormat.UnicodeText );
                 e.Handled = true;
@@ -2402,8 +2402,8 @@ namespace Baby
             if( DownloadsInProgress( ) )
             {
                 if( MessageBox.Show( "DownloadItems are in progress. Cancel those and exit?",
-                       "Confirm exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question )
-                   != DialogResult.Yes )
+                        "Confirm exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question )
+                    != DialogResult.Yes )
                 {
                     e.Cancel = true;
                     return;
@@ -2414,7 +2414,7 @@ namespace Baby
             {
                 foreach( TabPage _tab in TabPages.Items )
                 {
-                    var _browser = (ChromiumWebBrowser)_tab.Controls[ 0 ];
+                    var _browser = ( ChromiumWebBrowser )_tab.Controls[ 0 ];
                     _browser.Dispose( );
                 }
             }
@@ -2482,7 +2482,7 @@ namespace Baby
             }
 
             if( e.IsHotKey( Keys.Enter, true )
-               || e.IsHotKey( Keys.Enter, false, true ) )
+                || e.IsHotKey( Keys.Enter, false, true ) )
             {
                 FindTextOnPage( false );
             }
@@ -2512,12 +2512,12 @@ namespace Baby
             {
                 var _keywords = ToolStripKeyWordTextBox.Text;
                 if( !string.IsNullOrEmpty( _keywords )
-                   && ( ToolStripDomainComboBox.SelectedIndex == -1 ) )
+                    && ToolStripDomainComboBox.SelectedIndex == -1 )
                 {
                     SearchGovernmentDomains( _keywords );
                 }
                 else if( !string.IsNullOrEmpty( _keywords )
-                        && ( ToolStripDomainComboBox.SelectedIndex > -1 ) )
+                    && ToolStripDomainComboBox.SelectedIndex > -1 )
                 {
                     var _search = SearchEngineUrl + _keywords;
                     CurrentBrowser.Load( _search );
@@ -2525,7 +2525,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
             finally
             {
@@ -2548,7 +2548,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -2640,7 +2640,7 @@ namespace Baby
                 }
                 catch( Exception _ex )
                 {
-                    Fail( _ex );
+                    WebBrowser.Fail( _ex );
                 }
             }
         }
@@ -2658,7 +2658,7 @@ namespace Baby
                 try
                 {
                     var _type = _item.Tag?.ToString( );
-                    var _option = (MenuItem)Enum.Parse( typeof( MenuItem ), _type );
+                    var _option = ( MenuItem )Enum.Parse( typeof( MenuItem ), _type );
                     switch( _option )
                     {
                         case MenuItem.Close:
@@ -2742,7 +2742,7 @@ namespace Baby
                 }
                 catch( Exception _ex )
                 {
-                    Fail( _ex );
+                    WebBrowser.Fail( _ex );
                 }
                 finally
                 {
@@ -2768,7 +2768,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -2787,7 +2787,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -2807,7 +2807,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 
@@ -2826,7 +2826,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                WebBrowser.Fail( _ex );
             }
         }
 

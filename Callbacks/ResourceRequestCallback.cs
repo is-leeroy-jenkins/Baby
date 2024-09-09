@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-29-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
-// <copyright file="ResourceRequestHandler.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+// <copyright file="ResourceRequestCallback.cs" company="Terry D. Eppler">
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,10 +33,10 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   ResourceRequestHandler.cs
+//   ResourceRequestCallback.cs
 // </summary>
 // ******************************************************************************************
 
@@ -107,7 +109,8 @@ namespace Baby
         /// <param name="response">The response.</param>
         /// <returns></returns>
         public IResponseFilter GetResourceResponseFilter( IWebBrowser chromiumWebBrowser,
-            IBrowser browser, IFrame frame, IRequest request, IResponse response )
+            IBrowser browser, IFrame frame, IRequest request,
+            IResponse response )
         {
             return null;
         }
@@ -122,7 +125,8 @@ namespace Baby
         /// <param name="callback">The callback.</param>
         /// <returns></returns>
         public CefReturnValue OnBeforeResourceLoad( IWebBrowser chromiumWebBrowser,
-            IBrowser browser, IFrame frame, IRequest request, IRequestCallback callback )
+            IBrowser browser, IFrame frame, IRequest request,
+            IRequestCallback callback )
         {
             var _tab = _webBrowser.GetTabByBrowser( chromiumWebBrowser );
             if( _tab?.ReferringUrl != null )
@@ -158,8 +162,8 @@ namespace Baby
         /// <param name="status">The status.</param>
         /// <param name="receivedContentLength">Length of the received content.</param>
         public void OnResourceLoadComplete( IWebBrowser chromiumWebBrowser, IBrowser browser,
-            IFrame frame, IRequest request, IResponse response, UrlRequestStatus status,
-            long receivedContentLength )
+            IFrame frame, IRequest request, IResponse response,
+            UrlRequestStatus status, long receivedContentLength )
         {
             var _code = response.StatusCode;
             if( !frame.IsValid )
@@ -175,9 +179,8 @@ namespace Baby
                 }
                 else
                 {
-                    frame.LoadUrl( BrowserConfig.FileNotFound
-                        + "?path="
-                        + request.Url.UrlEncode( ) );
+                    frame.LoadUrl(
+                        BrowserConfig.FileNotFound + "?path=" + request.Url.UrlEncode( ) );
                 }
             }
             else if( request.Url.IsFileOffline( ) )
@@ -190,8 +193,8 @@ namespace Baby
             }
             else
             {
-                if( ( _code == 444 )
-                   || ( ( _code >= 500 ) && ( _code <= 599 ) ) )
+                if( _code == 444
+                    || ( _code >= 500 && _code <= 599 ) )
                 {
                     frame.LoadUrl( BrowserConfig.CannotConnect );
                 }
@@ -208,7 +211,8 @@ namespace Baby
         /// <param name="response">The response.</param>
         /// <param name="newUrl">The new URL.</param>
         public void OnResourceRedirect( IWebBrowser chromiumWebBrowser, IBrowser browser,
-            IFrame frame, IRequest request, IResponse response, ref string newUrl )
+            IFrame frame, IRequest request, IResponse response,
+            ref string newUrl )
         {
         }
 

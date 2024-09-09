@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 05-01-2024
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        05-05-2024
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="SearchDialog.cs" company="Terry D. Eppler">
-//    Baby is a small web browser used in a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2024  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -49,7 +51,7 @@ namespace Baby
     using MetroSet_UI.Controls;
     using MetroSet_UI.Enums;
     using Syncfusion.Windows.Forms;
-    
+
     /// <summary>
     /// </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
@@ -66,27 +68,27 @@ namespace Baby
         /// The domain
         /// </summary>
         private string _queryPrefix;
-        
+
         /// <summary>
         /// The results
         /// </summary>
         private string _results;
-        
+
         /// <summary>
         /// The input
         /// </summary>
         private string _keywordInput;
-        
+
         /// <summary>
         /// The keyword prefix
         /// </summary>
         private string _keywordLabelPrefix;
-        
+
         /// <summary>
         /// The domain prefix
         /// </summary>
         private string _domainLabelPrefix;
-        
+
         /// <summary>
         /// Gets or sets the results.
         /// </summary>
@@ -104,7 +106,7 @@ namespace Baby
                 _results = value;
             }
         }
-        
+
         /// <inheritdoc />
         /// <summary>
         /// </summary>
@@ -112,7 +114,7 @@ namespace Baby
         {
             InitializeComponent( );
             RegisterCallbacks( );
-            
+
             // Form Properterties
             Size = new Size( 581, 90 );
             MinimumSize = new Size( 581, 90 );
@@ -149,7 +151,7 @@ namespace Baby
             //Event Wiring
             Load += OnLoad;
         }
-        
+
         /// <summary>
         /// Registers the callbacks.
         /// </summary>
@@ -168,7 +170,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Initializes the buttons.
         /// </summary>
@@ -185,7 +187,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Initializes the labels.
         /// </summary>
@@ -201,7 +203,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Initializes the buttons.
         /// </summary>
@@ -227,7 +229,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Initializes the ComboBox.
         /// </summary>
@@ -318,7 +320,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Called when [close button clicked].
         /// </summary>
@@ -345,7 +347,7 @@ namespace Baby
                 Fail( _ex );
             }
         }
-        
+
         /// <summary>
         /// Called when [okay button click].
         /// </summary>
@@ -356,8 +358,8 @@ namespace Baby
         {
             try
             {
-                if( !string.IsNullOrEmpty( _keywordInput ) 
-                   && !string.IsNullOrEmpty( _queryPrefix ) )
+                if( !string.IsNullOrEmpty( _keywordInput )
+                    && !string.IsNullOrEmpty( _queryPrefix ) )
                 {
                     _results = _queryPrefix + _keywordInput;
                     DialogResult = DialogResult.OK;
@@ -471,7 +473,7 @@ namespace Baby
                         29 => ConfigurationManager.AppSettings[ "NWS" ],
                         _ => ConfigurationManager.AppSettings[ "Google" ]
                     };
-                    
+
                     var _selection = _tag.ToString( );
                     if( !string.IsNullOrEmpty( _selection ) )
                     {

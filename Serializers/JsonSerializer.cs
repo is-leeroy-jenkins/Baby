@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                BabyBrowser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        11-15-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="JsonSerializer.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   JsonSerializer.cs
@@ -142,75 +144,76 @@ namespace Baby
         /// <param name="obj">The object.</param>
         private void WriteValue( object obj )
         {
-            if( ( obj == null )
-               || obj is DBNull )
+            if( obj == null
+                || obj is DBNull )
             {
                 _output.Append( "null" );
             }
             else if( obj is string
-                    || obj is char )
+                || obj is char )
             {
                 WriteString( obj.ToString( ) );
             }
             else if( obj is Guid )
             {
-                WriteGuid( (Guid)obj );
+                WriteGuid( ( Guid )obj );
             }
             else if( obj is bool )
             {
-                _output.Append( (bool)obj
+                _output.Append( ( bool )obj
                     ? "true"
                     : "false" );// conform to standard
             }
             else if( obj is int
-                    || obj is long
-                    || obj is double
-                    || obj is decimal
-                    || obj is float
-                    || obj is byte
-                    || obj is short
-                    || obj is sbyte
-                    || obj is ushort
-                    || obj is uint
-                    || obj is ulong )
+                || obj is long
+                || obj is double
+                || obj is decimal
+                || obj is float
+                || obj is byte
+                || obj is short
+                || obj is sbyte
+                || obj is ushort
+                || obj is uint
+                || obj is ulong )
             {
-                _output.Append( ( (IConvertible)obj ).ToString( NumberFormatInfo.InvariantInfo ) );
+                _output.Append(
+                    ( ( IConvertible )obj ).ToString( NumberFormatInfo.InvariantInfo ) );
             }
             else if( obj is DateTime )
             {
-                WriteDateTime( (DateTime)obj );
+                WriteDateTime( ( DateTime )obj );
             }
             else if( obj is IDictionary
-                    && obj.GetType( ).IsGenericType
-                    && ( obj.GetType( ).GetGenericArguments( )[ 0 ] == typeof( string ) ) )
+                && obj.GetType( ).IsGenericType
+                && obj.GetType( ).GetGenericArguments( )[ 0 ] == typeof( string ) )
             {
-                WriteStringDictionary( (IDictionary)obj );
+                WriteStringDictionary( ( IDictionary )obj );
             }
             else if( obj is IDictionary )
             {
-                WriteDictionary( (IDictionary)obj );
+                WriteDictionary( ( IDictionary )obj );
             }
             else if( obj is DataSet )
             {
-                WriteDataset( (DataSet)obj );
+                WriteDataset( ( DataSet )obj );
             }
             else if( obj is DataTable )
             {
-                WriteDataTable( (DataTable)obj );
+                WriteDataTable( ( DataTable )obj );
             }
             else if( obj is byte[ ] )
             {
-                WriteBytes( (byte[ ])obj );
+                WriteBytes( ( byte[ ] )obj );
             }
             else if( obj is Array
-                    || obj is IList
-                    || obj is ICollection )
+                || obj is IList
+                || obj is ICollection )
             {
-                WriteArray( (IEnumerable)obj );
+                WriteArray( ( IEnumerable )obj );
             }
             else if( obj is Enum )
             {
-                WriteEnum( (Enum)obj );
+                WriteEnum( ( Enum )obj );
             }
             else
             {
@@ -518,16 +521,16 @@ namespace Baby
                 }
 
                 var _o = _p.GetterCallback( obj );
-                if( ( ( _o == null ) || _o is DBNull )
-                   && ( _params.SerializeNullValues == false ) )
+                if( ( _o == null || _o is DBNull )
+                    && _params.SerializeNullValues == false )
                 {
                     _append = false;
                 }
                 else
                 {
                     WritePair( _p.Name, _o );
-                    if( ( _o != null )
-                       && _params.UseExtensions )
+                    if( _o != null
+                        && _params.UseExtensions )
                     {
                         var _tt = _o.GetType( );
                         if( _tt == typeof( Object ) )
@@ -540,8 +543,8 @@ namespace Baby
                 }
             }
 
-            if( ( _map.Count > 0 )
-               && _params.UseExtensions )
+            if( _map.Count > 0
+                && _params.UseExtensions )
             {
                 _output.Append( ",\"$map\":" );
                 WriteStringDictionary( _map );
@@ -559,8 +562,8 @@ namespace Baby
         /// <param name="value">The value.</param>
         private void WritePairFast( string name, string value )
         {
-            if( ( value == null )
-               && ( _params.SerializeNullValues == false ) )
+            if( value == null
+                && _params.SerializeNullValues == false )
             {
                 return;
             }
@@ -577,8 +580,8 @@ namespace Baby
         /// <param name="value">The value.</param>
         private void WritePair( string name, object value )
         {
-            if( ( ( value == null ) || value is DBNull )
-               && ( _params.SerializeNullValues == false ) )
+            if( ( value == null || value is DBNull )
+                && _params.SerializeNullValues == false )
             {
                 return;
             }
@@ -625,7 +628,7 @@ namespace Baby
                     _output.Append( ',' );
                 }
 
-                WritePair( (string)_entry.Key, _entry.Value );
+                WritePair( ( string )_entry.Key, _entry.Value );
                 _pendingSeparator = true;
             }
 
@@ -680,10 +683,10 @@ namespace Baby
             for( var _index = 0; _index < s.Length; ++_index )
             {
                 var _c = s[ _index ];
-                if( ( _c >= ' ' )
-                   && ( _c < 128 )
-                   && ( _c != '\"' )
-                   && ( _c != '\\' ) )
+                if( _c >= ' '
+                    && _c < 128
+                    && _c != '\"'
+                    && _c != '\\' )
                 {
                     if( _runIndex == -1 )
                     {
@@ -727,7 +730,7 @@ namespace Baby
                     {
                         _output.Append( "\\u" );
                         _output.Append(
-                            ( (int)_c ).ToString( "X4", NumberFormatInfo.InvariantInfo ) );
+                            ( ( int )_c ).ToString( "X4", NumberFormatInfo.InvariantInfo ) );
 
                         break;
                     }

@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                BabyBrowser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-28-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        11-15-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="Reflection.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   Reflection.cs
@@ -136,14 +138,15 @@ namespace Baby
                 {
                     var _dynMethod = new DynamicMethod( "_",
                         MethodAttributes.Public | MethodAttributes.Static,
-                        CallingConventions.Standard, typeof( object ), null, objtype, false );
+                        CallingConventions.Standard, typeof( object ), null, objtype,
+                        false );
 
                     var _ilGen = _dynMethod.GetILGenerator( );
                     if( objtype.IsClass )
                     {
                         _ilGen.Emit( OpCodes.Newobj, objtype.GetConstructor( Type.EmptyTypes ) );
                         _ilGen.Emit( OpCodes.Ret );
-                        _c = (CreateObject)_dynMethod.CreateDelegate( typeof( CreateObject ) );
+                        _c = ( CreateObject )_dynMethod.CreateDelegate( typeof( CreateObject ) );
                         _constrcache.Add( objtype, _c );
                     }
                     else// structs
@@ -154,7 +157,7 @@ namespace Baby
                         _ilGen.Emit( OpCodes.Ldloc_0 );
                         _ilGen.Emit( OpCodes.Box, objtype );
                         _ilGen.Emit( OpCodes.Ret );
-                        _c = (CreateObject)_dynMethod.CreateDelegate( typeof( CreateObject ) );
+                        _c = ( CreateObject )_dynMethod.CreateDelegate( typeof( CreateObject ) );
                         _constrcache.Add( objtype, _c );
                     }
 
@@ -178,7 +181,9 @@ namespace Baby
         {
             var _arguments = new Type[ 2 ];
             _arguments[ 0 ] = _arguments[ 1 ] = typeof( object );
-            var _dynamicSet = new DynamicMethod( "_", typeof( object ), _arguments, type, true );
+            var _dynamicSet = new DynamicMethod( "_", typeof( object ), _arguments, type,
+                true );
+
             var _il = _dynamicSet.GetILGenerator( );
             if( !type.IsClass )// structs
             {
@@ -216,7 +221,7 @@ namespace Baby
                 _il.Emit( OpCodes.Ret );
             }
 
-            return (SetterCallback)_dynamicSet.CreateDelegate( typeof( SetterCallback ) );
+            return ( SetterCallback )_dynamicSet.CreateDelegate( typeof( SetterCallback ) );
         }
 
         /// <summary> Creates the set method. </summary>
@@ -275,7 +280,7 @@ namespace Baby
             }
 
             _il.Emit( OpCodes.Ret );
-            return (SetterCallback)_setter.CreateDelegate( typeof( SetterCallback ) );
+            return ( SetterCallback )_setter.CreateDelegate( typeof( SetterCallback ) );
         }
 
         /// <summary> Creates the get field. </summary>
@@ -314,7 +319,7 @@ namespace Baby
             }
 
             _il.Emit( OpCodes.Ret );
-            return (GetterCallback)_dynamicGet.CreateDelegate( typeof( GetterCallback ) );
+            return ( GetterCallback )_dynamicGet.CreateDelegate( typeof( GetterCallback ) );
         }
 
         /// <summary> Creates the get method. </summary>
@@ -358,7 +363,7 @@ namespace Baby
             }
 
             _il.Emit( OpCodes.Ret );
-            return (GetterCallback)_getter.CreateDelegate( typeof( GetterCallback ) );
+            return ( GetterCallback )_getter.CreateDelegate( typeof( GetterCallback ) );
         }
 
         /// <summary> Gets the getters. </summary>
@@ -377,19 +382,19 @@ namespace Baby
             foreach( var _p in _props )
             {
                 if( !_p.CanWrite
-                   && ( ShowReadOnlyProperties == false ) )
+                    && ShowReadOnlyProperties == false )
                 {
                     continue;
                 }
 
                 var _att = _p.GetCustomAttributes( typeof( XmlIgnoreAttribute ), false );
-                if( ( _att != null )
-                   && ( _att.Length > 0 ) )
+                if( _att != null
+                    && _att.Length > 0 )
                 {
                     continue;
                 }
 
-                var _g = CreateGetMethod( type, _p );
+                var _g = Reflection.CreateGetMethod( type, _p );
                 if( _g != null )
                 {
                     var _gg = new Getters
@@ -407,13 +412,13 @@ namespace Baby
             foreach( var _f in _fi )
             {
                 var _att = _f.GetCustomAttributes( typeof( XmlIgnoreAttribute ), false );
-                if( ( _att != null )
-                   && ( _att.Length > 0 ) )
+                if( _att != null
+                    && _att.Length > 0 )
                 {
                     continue;
                 }
 
-                var _g = CreateGetField( type, _f );
+                var _g = Reflection.CreateGetField( type, _f );
                 if( _g != null )
                 {
                     var _gg = new Getters

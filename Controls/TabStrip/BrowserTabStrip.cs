@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-28-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="BrowserTabStrip.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   BrowserTabStrip.cs
@@ -72,7 +74,7 @@ namespace Baby
     [ SuppressMessage( "ReSharper", "AssignNullToNotNullAttribute" ) ]
     [ SuppressMessage( "ReSharper", "MergeIntoPattern" ) ]
     [ SuppressMessage( "ReSharper", "PossibleNullReferenceException" ) ]
-    public class BrowserTabStrip : BaseStyledPanel, ISupportInitialize 
+    public class BrowserTabStrip : BaseStyledPanel, ISupportInitialize
 
     {
         /// <summary>
@@ -178,8 +180,8 @@ namespace Baby
                     return;
                 }
 
-                if( ( value == null )
-                   && ( Items.Count > 0 ) )
+                if( value == null
+                    && Items.Count > 0 )
                 {
                     var _fATabStripItem = Items[ 0 ];
                     if( _fATabStripItem.Visible )
@@ -301,10 +303,10 @@ namespace Baby
             BackColor = _dark;
             base.Size = new Size( 350, 200 );
             _menu = new ContextMenuStrip( );
-            _menu.Renderer = base.ToolStripRenderer;
+            _menu.Renderer = ToolStripRenderer;
             _menu.ItemClicked += OnMenuItemClicked;
             _menu.VisibleChanged += OnMenuVisibleChanged;
-            _closeButton = new BrowserTabStripCloseButton( base.ToolStripRenderer );
+            _closeButton = new BrowserTabStripCloseButton( ToolStripRenderer );
             Font = _font;
             _formatString = new StringFormat( );
             EndInit( );
@@ -319,7 +321,7 @@ namespace Baby
         public HitResult HitTest( Point point )
         {
             if( _closeButton.IsVisible
-               && _closeButton.ButtonRectangle.Contains( point ) )
+                && _closeButton.ButtonRectangle.Contains( point ) )
             {
                 return HitResult.CloseButton;
             }
@@ -348,7 +350,7 @@ namespace Baby
             tabItem.Dock = DockStyle.Fill;
             Items.Add( tabItem );
             if( ( autoSelect && tabItem.Visible )
-               || ( tabItem.Visible && ( Items.DrawnCount < 1 ) ) )
+                || ( tabItem.Visible && Items.DrawnCount < 1 ) )
             {
                 SelectedItem = tabItem;
                 SelectItem( tabItem );
@@ -394,8 +396,8 @@ namespace Baby
             {
                 var _fATabStripItem = Items[ _i ];
                 if( _fATabStripItem.StripRectangle.Contains( pt )
-                   && _fATabStripItem.Visible
-                   && _fATabStripItem.Drawn )
+                    && _fATabStripItem.Visible
+                    && _fATabStripItem.Drawn )
                 {
                     _result = _fATabStripItem;
                     _flag = true;
@@ -416,8 +418,7 @@ namespace Baby
         /// <returns></returns>
         public bool ShouldSerializeFont( )
         {
-            return ( Font != null ) 
-                && !Font.Equals( _font );
+            return Font != null && !Font.Equals( _font );
         }
 
         /// <summary>
@@ -538,8 +539,8 @@ namespace Baby
         /// </summary>
         private void SetDefaultSelection( )
         {
-            if( ( _selectedItem == null )
-               && ( Items.Count > 0 ) )
+            if( _selectedItem == null
+                && Items.Count > 0 )
             {
                 _selectedItem = Items[ 0 ];
             }
@@ -681,24 +682,24 @@ namespace Baby
                     OnDrawTabButton( e.Graphics, _selectedItem );
                 }
 
-                if( ( Items.DrawnCount == 0 )
-                   || ( Items.VisibleCount == 0 ) )
+                if( Items.DrawnCount == 0
+                    || Items.VisibleCount == 0 )
                 {
                     e.Graphics.DrawLine( _pen, new Point( 0, 28 ),
                         new Point( ClientRectangle.Width, 28 ) );
                 }
-                else if( ( SelectedItem != null )
-                        && SelectedItem.Drawn )
+                else if( SelectedItem != null
+                    && SelectedItem.Drawn )
                 {
-                    var _num = (int)( SelectedItem.StripRectangle.Height / 4f );
-                    var _point = new Point( (int)SelectedItem.StripRectangle.Left - _num, 28 );
+                    var _num = ( int )( SelectedItem.StripRectangle.Height / 4f );
+                    var _point = new Point( ( int )SelectedItem.StripRectangle.Left - _num, 28 );
                     e.Graphics.DrawLine( _pen, new Point( 0, 28 ), _point );
-                    _point.X += (int)SelectedItem.StripRectangle.Width + _num * 2;
+                    _point.X += ( int )SelectedItem.StripRectangle.Width + _num * 2;
                     e.Graphics.DrawLine( _pen, _point, new Point( ClientRectangle.Width, 28 ) );
                 }
 
-                if( ( SelectedItem != null )
-                   && SelectedItem.CanClose )
+                if( SelectedItem != null
+                    && SelectedItem.CanClose )
                 {
                     _closeButton.IsVisible = true;
                     _closeButton.CalculateBounds( _selectedItem );
@@ -733,20 +734,18 @@ namespace Baby
             }
             else
             {
-                if( ( e.Button != MouseButtons.Left )
-                   || ( _hitTestResult != 0 ) )
+                if( e.Button != MouseButtons.Left
+                    || _hitTestResult != 0 )
                 {
                     return;
                 }
 
                 if( SelectedItem != null )
                 {
-                    var _tabStripItemClosingEventArgs =
-                        new TabClosingEventArgs( SelectedItem );
-
+                    var _tabStripItemClosingEventArgs = new TabClosingEventArgs( SelectedItem );
                     OnTabStripItemClosing( _tabStripItemClosingEventArgs );
                     if( !_tabStripItemClosingEventArgs.Cancel
-                       && SelectedItem.CanClose )
+                        && SelectedItem.CanClose )
                     {
                         RemoveTab( SelectedItem );
                         OnTabStripItemClosed( EventArgs.Empty );
@@ -824,7 +823,7 @@ namespace Baby
         /// instance containing the event data.</param>
         private void OnMenuItemClicked( object sender, ToolStripItemClickedEventArgs e )
         {
-            var _fATabStripItem2 = SelectedItem = (BrowserTabStripItem)e.ClickedItem.Tag;
+            var _fATabStripItem2 = SelectedItem = ( BrowserTabStripItem )e.ClickedItem.Tag;
         }
 
         /// <summary>
@@ -863,8 +862,8 @@ namespace Baby
                 }
             }
 
-            var _rectangleF2 =
-                currentItem.StripRectangle = new RectangleF( _startPosition, 3f, _num, 28f );
+            var _rectangleF2 = currentItem.StripRectangle =
+                new RectangleF( _startPosition, 3f, _num, 28f );
 
             _startPosition += _num;
         }
@@ -915,13 +914,13 @@ namespace Baby
             _layout.Height = 23f;
             if( currentItem == SelectedItem )
             {
-                g.DrawString( currentItem.Title, _font, new SolidBrush( ForeColor ),
-                    _layout, _formatString );
+                g.DrawString( currentItem.Title, _font, new SolidBrush( ForeColor ), _layout,
+                    _formatString );
             }
             else
             {
-                g.DrawString( currentItem.Title, _font, new SolidBrush( ForeColor ),
-                    _layout, _formatString );
+                g.DrawString( currentItem.Title, _font, new SolidBrush( ForeColor ), _layout,
+                    _formatString );
             }
 
             currentItem.Drawn = true;
@@ -936,7 +935,7 @@ namespace Baby
         /// instance containing the event data.</param>
         private void OnCollectionChanged( object sender, CollectionChangeEventArgs e )
         {
-            var _tab = (BrowserTabStripItem)e.Element;
+            var _tab = ( BrowserTabStripItem )e.Element;
             if( e.Action == CollectionChangeAction.Add )
             {
                 Controls.Add( _tab );
@@ -976,15 +975,15 @@ namespace Baby
                 for( var _i = 0; _i < Items.Count; _i++ )
                 {
                     var _item = Items[ _i ];
-                    if( ( _item != null )
-                       && !_item.IsDisposed )
+                    if( _item != null
+                        && !_item.IsDisposed )
                     {
                         _item.Dispose( );
                     }
                 }
-                
-                if( ( _menu != null )
-                   && !_menu.IsDisposed )
+
+                if( _menu != null
+                    && !_menu.IsDisposed )
                 {
                     _menu.Dispose( );
                 }

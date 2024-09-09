@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Browser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-24-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        06-24-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="JsonParser.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   JsonParser.cs
@@ -330,7 +332,7 @@ namespace Baby
                         var _codePoint = ParseUnicode( _json[ _index ], _json[ _index + 1 ],
                             _json[ _index + 2 ], _json[ _index + 3 ] );
 
-                        _s.Append( (char)_codePoint );
+                        _s.Append( ( char )_codePoint );
 
                         // skip 4 chars
                         _index += 4;
@@ -352,20 +354,20 @@ namespace Baby
         private uint ParseSingleChar( char c1, uint multiplier )
         {
             uint _p1 = 0;
-            if( ( c1 >= '0' )
-               && ( c1 <= '9' ) )
+            if( c1 >= '0'
+                && c1 <= '9' )
             {
-                _p1 = (uint)( c1 - '0' ) * multiplier;
+                _p1 = ( uint )( c1 - '0' ) * multiplier;
             }
-            else if( ( c1 >= 'A' )
-                    && ( c1 <= 'F' ) )
+            else if( c1 >= 'A'
+                && c1 <= 'F' )
             {
-                _p1 = (uint)( c1 - 'A' + 10 ) * multiplier;
+                _p1 = ( uint )( c1 - 'A' + 10 ) * multiplier;
             }
-            else if( ( c1 >= 'a' )
-                    && ( c1 <= 'f' ) )
+            else if( c1 >= 'a'
+                && c1 <= 'f' )
             {
-                _p1 = (uint)( c1 - 'a' + 10 ) * multiplier;
+                _p1 = ( uint )( c1 - 'a' + 10 ) * multiplier;
             }
 
             return _p1;
@@ -379,7 +381,8 @@ namespace Baby
         /// <param name="c3">The c3.</param>
         /// <param name="c4">The c4.</param>
         /// <returns></returns>
-        private uint ParseUnicode( char c1, char c2, char c3, char c4 )
+        private uint ParseUnicode( char c1, char c2, char c3,
+            char c4 )
         {
             var _p1 = ParseSingleChar( c1, 0x1000 );
             var _p2 = ParseSingleChar( c2, 0x100 );
@@ -401,12 +404,12 @@ namespace Baby
             do
             {
                 var _c = _json[ _index ];
-                if( ( ( _c >= '0' ) && ( _c <= '9' ) )
-                   || ( _c == '.' )
-                   || ( _c == '-' )
-                   || ( _c == '+' )
-                   || ( _c == 'e' )
-                   || ( _c == 'E' ) )
+                if( ( _c >= '0' && _c <= '9' )
+                    || _c == '.'
+                    || _c == '-'
+                    || _c == '+'
+                    || _c == 'e'
+                    || _c == 'E' )
                 {
                     if( ++_index == _json.Length )
                     {
@@ -481,10 +484,10 @@ namespace Baby
                     break;
                 }
 
-                if( ( _c != ' ' )
-                   && ( _c != '\t' )
-                   && ( _c != '\n' )
-                   && ( _c != '\r' ) )
+                if( _c != ' '
+                    && _c != '\t'
+                    && _c != '\n'
+                    && _c != '\r' )
                 {
                     break;
                 }
@@ -549,11 +552,11 @@ namespace Baby
                 }
                 case 'f':
                 {
-                    if( ( _json.Length - _index >= 4 )
-                       && ( _json[ _index + 0 ] == 'a' )
-                       && ( _json[ _index + 1 ] == 'l' )
-                       && ( _json[ _index + 2 ] == 's' )
-                       && ( _json[ _index + 3 ] == 'e' ) )
+                    if( _json.Length - _index >= 4
+                        && _json[ _index + 0 ] == 'a'
+                        && _json[ _index + 1 ] == 'l'
+                        && _json[ _index + 2 ] == 's'
+                        && _json[ _index + 3 ] == 'e' )
                     {
                         _index += 4;
                         return Token.False;
@@ -563,10 +566,10 @@ namespace Baby
                 }
                 case 't':
                 {
-                    if( ( _json.Length - _index >= 3 )
-                       && ( _json[ _index + 0 ] == 'r' )
-                       && ( _json[ _index + 1 ] == 'u' )
-                       && ( _json[ _index + 2 ] == 'e' ) )
+                    if( _json.Length - _index >= 3
+                        && _json[ _index + 0 ] == 'r'
+                        && _json[ _index + 1 ] == 'u'
+                        && _json[ _index + 2 ] == 'e' )
                     {
                         _index += 3;
                         return Token.True;
@@ -576,10 +579,10 @@ namespace Baby
                 }
                 case 'n':
                 {
-                    if( ( _json.Length - _index >= 3 )
-                       && ( _json[ _index + 0 ] == 'u' )
-                       && ( _json[ _index + 1 ] == 'l' )
-                       && ( _json[ _index + 2 ] == 'l' ) )
+                    if( _json.Length - _index >= 3
+                        && _json[ _index + 0 ] == 'u'
+                        && _json[ _index + 1 ] == 'l'
+                        && _json[ _index + 2 ] == 'l' )
                     {
                         _index += 3;
                         return Token.Null;

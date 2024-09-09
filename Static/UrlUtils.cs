@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        11-15-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="UrlUtils.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   UrlUtils.cs
@@ -47,7 +49,7 @@ namespace Baby
     /// <summary>
     /// 
     /// </summary>
-    [SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
+    [ SuppressMessage( "ReSharper", "FieldCanBeMadeReadOnly.Local" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "MemberCanBeInternal" ) ]
     [ SuppressMessage( "ReSharper", "ConvertIfStatementToSwitchStatement" ) ]
@@ -69,12 +71,12 @@ namespace Baby
                 {
                     return "";
                 }
-                
+
                 return @"file:///" + filePath.Replace( @"\", "/" );
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                UrlUtils.Fail( _ex );
                 return string.Empty;
             }
         }
@@ -97,7 +99,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                UrlUtils.Fail( _ex );
                 return false;
             }
         }
@@ -120,7 +122,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                UrlUtils.Fail( _ex );
                 return false;
             }
         }
@@ -138,7 +140,7 @@ namespace Baby
                 {
                     return null;
                 }
-                
+
                 var _length = url.Length;
                 var _decoder = new UrlDecoder( _length, Encoding.UTF8 );
                 for( var _i = 0; _i < _length; _i++ )
@@ -148,58 +150,60 @@ namespace Baby
                     {
                         _char = ' ';
                     }
-                    else if( ( _char == '%' )
-                            && ( _i < _length - 2 ) )
+                    else if( _char == '%'
+                        && _i < _length - 2 )
                     {
-                        if( ( url[ _i + 1 ] == 'u' )
-                           && ( _i < _length - 5 ) )
+                        if( url[ _i + 1 ] == 'u'
+                            && _i < _length - 5 )
                         {
                             var _num3 = url[ _i + 2 ].HexToInt( );
                             var _num4 = url[ _i + 3 ].HexToInt( );
                             var _num5 = url[ _i + 4 ].HexToInt( );
                             var _num6 = url[ _i + 5 ].HexToInt( );
-                            if( ( _num3 < 0 )
-                               || ( _num4 < 0 )
-                               || ( _num5 < 0 )
-                               || ( _num6 < 0 ) )
+                            if( _num3 < 0
+                                || _num4 < 0
+                                || _num5 < 0
+                                || _num6 < 0 )
                             {
                                 goto Label_010B;
                             }
-                            
-                            _char = (char)( _num3 << 12 | _num4 << 8 | _num5 << 4 | _num6 );
+
+                            _char = ( char )( ( _num3 << 12 ) | ( _num4 << 8 ) | ( _num5 << 4 )
+                                | _num6 );
+
                             _i += 5;
                             _decoder.AddChar( _char );
                             continue;
                         }
-                        
+
                         var _num7 = url[ _i + 1 ].HexToInt( );
                         var _num8 = url[ _i + 2 ].HexToInt( );
-                        if( ( _num7 >= 0 )
-                           && ( _num8 >= 0 ) )
+                        if( _num7 >= 0
+                            && _num8 >= 0 )
                         {
-                            var _b = (byte)( _num7 << 4 | _num8 );
+                            var _b = ( byte )( ( _num7 << 4 ) | _num8 );
                             _i += 2;
                             _decoder.AddByte( _b );
                             continue;
                         }
                     }
-                    
+
                     Label_010B:
                     if( ( _char & 0xff80 ) == 0 )
                     {
-                        _decoder.AddByte( (byte)_char );
+                        _decoder.AddByte( ( byte )_char );
                     }
                     else
                     {
                         _decoder.AddChar( _char );
                     }
                 }
-                
+
                 return _decoder.GetString( );
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                UrlUtils.Fail( _ex );
                 return string.Empty;
             }
         }
@@ -223,7 +227,7 @@ namespace Baby
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                UrlUtils.Fail( _ex );
                 return -1;
             }
         }
@@ -241,13 +245,13 @@ namespace Baby
                 {
                     return null;
                 }
-                
+
                 var _length = url.Length;
                 var _decoder = new UrlDecoder( _length * 10, Encoding.UTF8 )
                 {
                     ForFilePaths = true
                 };
-                
+
                 for( var _i = 0; _i < _length; _i++ )
                 {
                     var _ch = url[ _i ];
@@ -255,49 +259,51 @@ namespace Baby
                     {
                         _ch = ' ';
                     }
-                    else if( ( _ch == '%' )
-                            && ( _i < _length - 2 ) )
+                    else if( _ch == '%'
+                        && _i < _length - 2 )
                     {
-                        if( ( url[ _i + 1 ] == 'u' )
-                           && ( _i < _length - 5 ) )
+                        if( url[ _i + 1 ] == 'u'
+                            && _i < _length - 5 )
                         {
                             var _num3 = url[ _i + 2 ].HexToInt( );
                             var _num4 = url[ _i + 3 ].HexToInt( );
                             var _num5 = url[ _i + 4 ].HexToInt( );
                             var _num6 = url[ _i + 5 ].HexToInt( );
-                            if( ( _num3 < 0 )
-                               || ( _num4 < 0 )
-                               || ( _num5 < 0 )
-                               || ( _num6 < 0 ) )
+                            if( _num3 < 0
+                                || _num4 < 0
+                                || _num5 < 0
+                                || _num6 < 0 )
                             {
                                 goto Label_010B;
                             }
-                            
-                            _ch = (char)( _num3 << 12 | _num4 << 8 | _num5 << 4 | _num6 );
+
+                            _ch = ( char )( ( _num3 << 12 ) | ( _num4 << 8 ) | ( _num5 << 4 )
+                                | _num6 );
+
                             _i += 5;
                             _decoder.FlushBytes( false );
                             _decoder.AddChar( _ch, true );
                             continue;
                         }
-                        
+
                         var _num7 = url[ _i + 1 ].HexToInt( );
                         var _num8 = url[ _i + 2 ].HexToInt( );
-                        if( ( _num7 >= 0 )
-                           && ( _num8 >= 0 ) )
+                        if( _num7 >= 0
+                            && _num8 >= 0 )
                         {
-                            var _b = (byte)( _num7 << 4 | _num8 );
+                            var _b = ( byte )( ( _num7 << 4 ) | _num8 );
                             _i += 2;
                             _decoder.FlushBytes( false );
                             _decoder.AddByte( _b );
-                            if( ( _i + 1 < _length - 2 )
-                               && ( url[ _i + 1 ] == '%' ) )
+                            if( _i + 1 < _length - 2
+                                && url[ _i + 1 ] == '%' )
                             {
                                 _num7 = url[ _i + 1 ].HexToInt( );
                                 _num8 = url[ _i + 2 ].HexToInt( );
-                                if( ( _num7 >= 0 )
-                                   && ( _num8 >= 0 ) )
+                                if( _num7 >= 0
+                                    && _num8 >= 0 )
                                 {
-                                    _b = (byte)( _num7 << 4 | _num8 );
+                                    _b = ( byte )( ( _num7 << 4 ) | _num8 );
                                     _i += 2;
                                     _decoder.AddByte( _b );
                                     _decoder.FlushBytes( true );
@@ -307,27 +313,27 @@ namespace Baby
                             {
                                 _decoder.FlushBytes( true );
                             }
-                            
+
                             continue;
                         }
                     }
-                    
+
                     Label_010B:
                     if( ( _ch & 0xff80 ) == 0 )
                     {
-                        _decoder.AddByte( (byte)_ch );
+                        _decoder.AddByte( ( byte )_ch );
                     }
                     else
                     {
                         _decoder.AddChar( _ch, false );
                     }
                 }
-                
+
                 return _decoder.GetString( );
             }
             catch( Exception _ex )
             {
-                Fail( _ex );
+                UrlUtils.Fail( _ex );
                 return string.Empty;
             }
         }

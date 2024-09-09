@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
-//     Assembly:                Budget Execution
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 03-24-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        05-31-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="FileBrowser.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   FileBrowser.cs
@@ -187,7 +189,7 @@ namespace Baby
         /// Initializes a new instance of the
         /// <see cref="T:Baby.FileBrowser" /> class.
         /// </summary>
-        public FileBrowser( ) 
+        public FileBrowser( )
             : base( )
         {
             InitializeComponent( );
@@ -328,37 +330,34 @@ namespace Baby
                     var _list = new List<string>( );
                     foreach( var _filePath in _searchPaths )
                     {
-                        var _first = GetFiles( _filePath )
+                        var _first = Directory.GetFiles( _filePath )
                             ?.Where( f => f.EndsWith( _fileExtension ) )
-                            ?.Select( f => Path.GetFullPath( f ) )
-                            ?.ToList( );
+                            ?.Select( f => Path.GetFullPath( f ) )?.ToList( );
 
                         _list.AddRange( _first );
-                        var _dirs = GetDirectories( _filePath );
+                        var _dirs = Directory.GetDirectories( _filePath );
                         foreach( var _dir in _dirs )
                         {
                             if( !_dir.Contains( "My " ) )
                             {
-                                var _second = GetFiles( _dir )
+                                var _second = Directory.GetFiles( _dir )
                                     ?.Where( s => s.EndsWith( _fileExtension ) )
-                                    ?.Select( s => Path.GetFullPath( s ) )
-                                    ?.ToList( );
+                                    ?.Select( s => Path.GetFullPath( s ) )?.ToList( );
 
                                 if( _second?.Any( ) == true )
                                 {
                                     _list.AddRange( _second );
                                 }
 
-                                var _subDir = GetDirectories( _dir );
+                                var _subDir = Directory.GetDirectories( _dir );
                                 for( var _i = 0; _i < _subDir.Length; _i++ )
                                 {
                                     var _value = _subDir[ _i ];
                                     if( !string.IsNullOrEmpty( _value ) )
                                     {
-                                        var _last = GetFiles( _value )
+                                        var _last = Directory.GetFiles( _value )
                                             ?.Where( l => l.EndsWith( _fileExtension ) )
-                                            ?.Select( l => Path.GetFullPath( l ) )
-                                            ?.ToList( );
+                                            ?.Select( l => Path.GetFullPath( l ) )?.ToList( );
 
                                         if( _last?.Any( ) == true )
                                         {
@@ -395,9 +394,9 @@ namespace Baby
                 var _current = CurrentDirectory;
                 var _list = new List<string>
                 {
-                    GetFolderPath( SpecialFolder.DesktopDirectory ),
-                    GetFolderPath( SpecialFolder.Personal ),
-                    GetFolderPath( SpecialFolder.Recent ),
+                    Environment.GetFolderPath( SpecialFolder.DesktopDirectory ),
+                    Environment.GetFolderPath( SpecialFolder.Personal ),
+                    Environment.GetFolderPath( SpecialFolder.Recent ),
                     @"C:\Users\terry\source\repos\Budget\Resource\Documents",
                     _current
                 };
@@ -496,13 +495,12 @@ namespace Baby
         private protected void OnRadioButtonSelected( object sender, EventArgs e )
         {
             if( sender is RadioButton _radioButton
-               && !string.IsNullOrEmpty( _radioButton.Tag?.ToString( ) ) )
+                && !string.IsNullOrEmpty( _radioButton.Tag?.ToString( ) ) )
             {
                 try
                 {
                     _fileExtension = _radioButton?.Result;
-                    var _ext = _radioButton.Tag?.ToString( )
-                        ?.Trim( ".".ToCharArray( ) )
+                    var _ext = _radioButton.Tag?.ToString( )?.Trim( ".".ToCharArray( ) )
                         ?.ToUpper( );
 
                     Header.Text = $"{_ext} File Browser";
@@ -527,7 +525,7 @@ namespace Baby
         private protected void OnPathSelected( object sender )
         {
             if( sender is ListBox _listBox
-               && !string.IsNullOrEmpty( _listBox.SelectedItem?.ToString( ) ) )
+                && !string.IsNullOrEmpty( _listBox.SelectedItem?.ToString( ) ) )
             {
                 try
                 {
@@ -560,7 +558,9 @@ namespace Baby
                     var _ext = _fileExtension.ToLower( );
                     FileDialog.Filter = $@"File Extension | *{_ext}";
                     FileDialog.Title = $@"Search Directories for *{_ext} files...";
-                    FileDialog.InitialDirectory = GetFolderPath( SpecialFolder.DesktopDirectory );
+                    FileDialog.InitialDirectory =
+                        Environment.GetFolderPath( SpecialFolder.DesktopDirectory );
+
                     FileDialog.ShowDialog( );
                     var _selection = FileDialog.FileName;
                     if( !string.IsNullOrEmpty( _selection ) )

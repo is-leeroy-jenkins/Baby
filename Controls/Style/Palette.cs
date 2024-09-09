@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        04-27-2024
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
-// <copyright file="WebBrowser.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2024  Terry Eppler
+// <copyright file="Palette.cs" company="Terry D. Eppler">
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,10 +33,10 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
-//   WebBrowser.cs
+//   Palette.cs
 // </summary>
 // ******************************************************************************************
 
@@ -450,7 +452,7 @@ namespace Baby
         /// <summary>
         /// Initializes a new instance of the <see cref="Palette"/> class.
         /// </summary>
-        public Palette( ) 
+        public Palette( )
             : base( )
         {
             _blue = Color.FromArgb( 0, 120, 212 );

@@ -1,15 +1,17 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 06-26-2023
+//     Created:                 09-09-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        11-15-2023
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="JSON.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  2023  Terry Eppler
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
 // 
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the “Software”),
@@ -31,7 +33,7 @@
 //    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
 // 
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   JSON.cs
@@ -149,7 +151,7 @@ namespace Baby
         /// <returns></returns>
         public T ToObject<T>( string json )
         {
-            return (T)ToObject( json, typeof( T ) );
+            return ( T )ToObject( json, typeof( T ) );
         }
 
         /// <summary>
@@ -312,21 +314,21 @@ namespace Baby
             }
 
             _d.IsByteArray = t == typeof( byte[ ] );
-            _d.IsGuid = ( t == typeof( Guid ) ) || ( t == typeof( Guid? ) );
+            _d.IsGuid = t == typeof( Guid ) || t == typeof( Guid? );
             _d.IsHashtable = t == typeof( Hashtable );
             _d.IsDataSet = t == typeof( DataSet );
             _d.IsDataTable = t == typeof( DataTable );
             _d.ChangeType = GetChangeType( t );
             _d.IsEnum = t.IsEnum;
-            _d.IsDateTime = ( t == typeof( DateTime ) ) || ( t == typeof( DateTime? ) );
-            _d.IsInt = ( t == typeof( int ) ) || ( t == typeof( int? ) );
-            _d.IsLong = ( t == typeof( long ) ) || ( t == typeof( long? ) );
+            _d.IsDateTime = t == typeof( DateTime ) || t == typeof( DateTime? );
+            _d.IsInt = t == typeof( int ) || t == typeof( int? );
+            _d.IsLong = t == typeof( long ) || t == typeof( long? );
             _d.IsString = t == typeof( string );
-            _d.IsBool = ( t == typeof( bool ) ) || ( t == typeof( bool? ) );
+            _d.IsBool = t == typeof( bool ) || t == typeof( bool? );
             _d.IsClass = t.IsClass;
             if( _d.IsDictionary
-               && ( _d.GenericTypes.Length > 0 )
-               && ( _d.GenericTypes[ 0 ] == typeof( string ) ) )
+                && _d.GenericTypes.Length > 0
+                && _d.GenericTypes[ 0 ] == typeof( string ) )
             {
                 _d.IsStringDictionary = true;
             }
@@ -344,23 +346,23 @@ namespace Baby
         {
             if( conversionType == typeof( int ) )
             {
-                return (int)CreateLong( (string)value );
+                return ( int )CreateLong( ( string )value );
             }
             else if( conversionType == typeof( long ) )
             {
-                return CreateLong( (string)value );
+                return CreateLong( ( string )value );
             }
             else if( conversionType == typeof( string ) )
             {
-                return (string)value;
+                return ( string )value;
             }
             else if( conversionType == typeof( Guid ) )
             {
-                return CreateGuid( (string)value );
+                return CreateGuid( ( string )value );
             }
             else if( conversionType.IsEnum )
             {
-                return CreateEnum( conversionType, (string)value );
+                return CreateEnum( conversionType, ( string )value );
             }
 
             return Convert.ChangeType( value, conversionType, CultureInfo.InvariantCulture );
@@ -383,15 +385,15 @@ namespace Baby
             {
                 _usingglobals = true;
                 globaltypes = new Dictionary<string, object>( );
-                foreach( var _kv in (Dictionary<string, object>)_tn )
+                foreach( var _kv in ( Dictionary<string, object> )_tn )
                 {
-                    globaltypes.Add( (string)_kv.Value, _kv.Key );
+                    globaltypes.Add( ( string )_kv.Value, _kv.Key );
                 }
             }
 
             var _found = d.TryGetValue( "$type", out _tn );
-            if( ( _found == false )
-               && ( type == typeof( Object ) ) )
+            if( _found == false
+                && type == typeof( Object ) )
             {
                 return CreateDataset( d, globaltypes );
             }
@@ -401,13 +403,13 @@ namespace Baby
                 if( _usingglobals )
                 {
                     object _tname = "";
-                    if( globaltypes.TryGetValue( (string)_tn, out _tname ) )
+                    if( globaltypes.TryGetValue( ( string )_tn, out _tname ) )
                     {
                         _tn = _tname;
                     }
                 }
 
-                type = Reflection.Instance.GetTypeFromCache( (string)_tn );
+                type = Reflection.Instance.GetTypeFromCache( ( string )_tn );
             }
 
             if( type == null )
@@ -433,7 +435,7 @@ namespace Baby
 
                 if( _name == "$map" )
                 {
-                    ProcessMap( _o, _props, (Dictionary<string, object>)d[ _name ] );
+                    ProcessMap( _o, _props, ( Dictionary<string, object> )d[ _name ] );
                     continue;
                 }
 
@@ -451,70 +453,72 @@ namespace Baby
                         object _oset = null;
                         if( _pi.IsInt )
                         {
-                            _oset = (int)CreateLong( (string)_v );
+                            _oset = ( int )CreateLong( ( string )_v );
                         }
                         else if( _pi.IsLong )
                         {
-                            _oset = CreateLong( (string)_v );
+                            _oset = CreateLong( ( string )_v );
                         }
                         else if( _pi.IsString )
                         {
-                            _oset = (string)_v;
+                            _oset = ( string )_v;
                         }
                         else if( _pi.IsBool )
                         {
-                            _oset = (bool)_v;
+                            _oset = ( bool )_v;
                         }
                         else if( _pi.IsGenericType
-                                && ( _pi.IsValueType == false )
-                                && ( _pi.IsDictionary == false ) )
+                            && _pi.IsValueType == false
+                            && _pi.IsDictionary == false )
                         {
-                            _oset = CreateGenericList( (ArrayList)_v, _pi.Pt, _pi.Bt, globaltypes );
+                            _oset = CreateGenericList( ( ArrayList )_v, _pi.Pt, _pi.Bt,
+                                globaltypes );
                         }
                         else if( _pi.IsByteArray )
                         {
-                            _oset = Convert.FromBase64String( (string)_v );
+                            _oset = Convert.FromBase64String( ( string )_v );
                         }
                         else if( _pi.IsArray
-                                && ( _pi.IsValueType == false ) )
+                            && _pi.IsValueType == false )
                         {
-                            _oset = CreateArray( (ArrayList)_v, _pi.Pt, _pi.Bt, globaltypes );
+                            _oset = CreateArray( ( ArrayList )_v, _pi.Pt, _pi.Bt, globaltypes );
                         }
                         else if( _pi.IsGuid )
                         {
-                            _oset = CreateGuid( (string)_v );
+                            _oset = CreateGuid( ( string )_v );
                         }
                         else if( _pi.IsDataSet )
                         {
-                            _oset = CreateDataset( (Dictionary<string, object>)_v, globaltypes );
+                            _oset = CreateDataset( ( Dictionary<string, object> )_v, globaltypes );
                         }
                         else if( _pi.IsDataTable )
                         {
-                            _oset = CreateDataTable( (Dictionary<string, object>)_v, globaltypes );
+                            _oset = CreateDataTable( ( Dictionary<string, object> )_v,
+                                globaltypes );
                         }
                         else if( _pi.IsStringDictionary )
                         {
-                            _oset = CreateStringKeyDictionary( (Dictionary<string, object>)_v,
+                            _oset = CreateStringKeyDictionary( ( Dictionary<string, object> )_v,
                                 _pi.Pt, _pi.GenericTypes, globaltypes );
                         }
                         else if( _pi.IsDictionary
-                                || _pi.IsHashtable )
+                            || _pi.IsHashtable )
                         {
-                            _oset = CreateDictionary( (ArrayList)_v, _pi.Pt, _pi.GenericTypes,
+                            _oset = CreateDictionary( ( ArrayList )_v, _pi.Pt, _pi.GenericTypes,
                                 globaltypes );
                         }
                         else if( _pi.IsEnum )
                         {
-                            _oset = CreateEnum( _pi.Pt, (string)_v );
+                            _oset = CreateEnum( _pi.Pt, ( string )_v );
                         }
                         else if( _pi.IsDateTime )
                         {
-                            _oset = CreateDateTime( (string)_v );
+                            _oset = CreateDateTime( ( string )_v );
                         }
                         else if( _pi.IsClass
-                                && _v is Dictionary<string, object> )
+                            && _v is Dictionary<string, object> )
                         {
-                            _oset = ParseDictionary( (Dictionary<string, object>)_v, globaltypes,
+                            _oset = ParseDictionary( ( Dictionary<string, object> )_v, globaltypes,
                                 _pi.Pt, null );
                         }
                         else if( _pi.IsValueType )
@@ -523,7 +527,7 @@ namespace Baby
                         }
                         else if( _v is ArrayList )
                         {
-                            _oset = CreateArray( (ArrayList)_v, _pi.Pt, typeof( object ),
+                            _oset = CreateArray( ( ArrayList )_v, _pi.Pt, typeof( object ),
                                 globaltypes );
                         }
                         else
@@ -555,10 +559,10 @@ namespace Baby
             {
                 var _p = props[ _kv.Key ];
                 var _o = _p.GetterCallback( obj );
-                var _t = Type.GetType( (string)_kv.Value );
+                var _t = Type.GetType( ( string )_kv.Value );
                 if( _t == typeof( Guid ) )
                 {
-                    _p.SetterCallback( obj, CreateGuid( (string)_o ) );
+                    _p.SetterCallback( obj, CreateGuid( ( string )_o ) );
                 }
             }
         }
@@ -634,27 +638,27 @@ namespace Baby
 
             //                   0123456789012345678
             // datetime format = yyyy-MM-dd HH:mm:ss
-            var _year = (int)CreateLong( value.Substring( 0, 4 ) );
-            var _month = (int)CreateLong( value.Substring( 5, 2 ) );
-            var _day = (int)CreateLong( value.Substring( 8, 2 ) );
-            var _hour = (int)CreateLong( value.Substring( 11, 2 ) );
-            var _min = (int)CreateLong( value.Substring( 14, 2 ) );
-            var _sec = (int)CreateLong( value.Substring( 17, 2 ) );
+            var _year = ( int )CreateLong( value.Substring( 0, 4 ) );
+            var _month = ( int )CreateLong( value.Substring( 5, 2 ) );
+            var _day = ( int )CreateLong( value.Substring( 8, 2 ) );
+            var _hour = ( int )CreateLong( value.Substring( 11, 2 ) );
+            var _min = ( int )CreateLong( value.Substring( 14, 2 ) );
+            var _sec = ( int )CreateLong( value.Substring( 17, 2 ) );
             if( value.EndsWith( "Z" ) )
             {
                 _utc = true;
             }
 
-            if( ( _params.UseUtcDateTime == false )
-               && ( _utc == false ) )
+            if( _params.UseUtcDateTime == false
+                && _utc == false )
             {
-                return new DateTime( _year, _month, _day, _hour, _min,
-                    _sec );
+                return new DateTime( _year, _month, _day, _hour,
+                    _min, _sec );
             }
             else
             {
-                return new DateTime( _year, _month, _day, _hour, _min,
-                    _sec, DateTimeKind.Utc ).ToLocalTime( );
+                return new DateTime( _year, _month, _day, _hour,
+                    _min, _sec, DateTimeKind.Utc ).ToLocalTime( );
             }
         }
 
@@ -676,7 +680,7 @@ namespace Baby
             {
                 if( _ob is IDictionary )
                 {
-                    _col.Add( ParseDictionary( (Dictionary<string, object>)_ob, globalTypes, bt,
+                    _col.Add( ParseDictionary( ( Dictionary<string, object> )_ob, globalTypes, bt,
                         null ) );
                 }
                 else
@@ -699,19 +703,19 @@ namespace Baby
         private object CreateGenericList( ArrayList data, Type pt, Type bt,
             Dictionary<string, object> globalTypes )
         {
-            var _col = (IList)Reflection.Instance.FastCreateInstance( pt );
+            var _col = ( IList )Reflection.Instance.FastCreateInstance( pt );
 
             // create an array of objects
             foreach( var _ob in data )
             {
                 if( _ob is IDictionary )
                 {
-                    _col.Add( ParseDictionary( (Dictionary<string, object>)_ob, globalTypes, bt,
+                    _col.Add( ParseDictionary( ( Dictionary<string, object> )_ob, globalTypes, bt,
                         null ) );
                 }
                 else if( _ob is ArrayList )
                 {
-                    _col.Add( ( (ArrayList)_ob ).ToArray( ) );
+                    _col.Add( ( ( ArrayList )_ob ).ToArray( ) );
                 }
                 else
                 {
@@ -733,7 +737,7 @@ namespace Baby
         private object CreateStringKeyDictionary( Dictionary<string, object> reader, Type pt,
             Type[ ] types, Dictionary<string, object> globalTypes )
         {
-            var _col = (IDictionary)Reflection.Instance.FastCreateInstance( pt );
+            var _col = ( IDictionary )Reflection.Instance.FastCreateInstance( pt );
             Type _t2 = null;
             if( types != null )
             {
@@ -747,8 +751,8 @@ namespace Baby
                 object _val = null;
                 if( _values.Value is Dictionary<string, object> )
                 {
-                    _val = ParseDictionary( (Dictionary<string, object>)_values.Value, globalTypes,
-                        _t2, null );
+                    _val = ParseDictionary( ( Dictionary<string, object> )_values.Value,
+                        globalTypes, _t2, null );
                 }
                 else
                 {
@@ -772,7 +776,7 @@ namespace Baby
         private object CreateDictionary( ArrayList reader, Type pt, Type[ ] types,
             Dictionary<string, object> globalTypes )
         {
-            var _col = (IDictionary)Reflection.Instance.FastCreateInstance( pt );
+            var _col = ( IDictionary )Reflection.Instance.FastCreateInstance( pt );
             Type _t1 = null;
             Type _t2 = null;
             if( types != null )
@@ -787,7 +791,7 @@ namespace Baby
                 var _val = _values[ "v" ];
                 if( _key is Dictionary<string, object> )
                 {
-                    _key = ParseDictionary( (Dictionary<string, object>)_key, globalTypes, _t1,
+                    _key = ParseDictionary( ( Dictionary<string, object> )_key, globalTypes, _t1,
                         null );
                 }
                 else
@@ -797,7 +801,7 @@ namespace Baby
 
                 if( _val is Dictionary<string, object> )
                 {
-                    _val = ParseDictionary( (Dictionary<string, object>)_val, globalTypes, _t2,
+                    _val = ParseDictionary( ( Dictionary<string, object> )_val, globalTypes, _t2,
                         null );
                 }
                 else
@@ -819,7 +823,7 @@ namespace Baby
         private Type GetChangeType( Type conversionType )
         {
             if( conversionType.IsGenericType
-               && conversionType.GetGenericTypeDefinition( ).Equals( typeof( Nullable<> ) ) )
+                && conversionType.GetGenericTypeDefinition( ).Equals( typeof( Nullable<> ) ) )
             {
                 return conversionType.GetGenericArguments( )[ 0 ];
             }
@@ -844,13 +848,13 @@ namespace Baby
             ReadSchema( reader, _ds, globalTypes );
             foreach( var _pair in reader )
             {
-                if( ( _pair.Key == "$type" )
-                   || ( _pair.Key == "$schema" ) )
+                if( _pair.Key == "$type"
+                    || _pair.Key == "$schema" )
                 {
                     continue;
                 }
 
-                var _rows = (ArrayList)_pair.Value;
+                var _rows = ( ArrayList )_pair.Value;
                 if( _rows == null )
                 {
                     continue;
@@ -876,12 +880,12 @@ namespace Baby
             var _schema = reader[ "$schema" ];
             if( _schema is string )
             {
-                TextReader _tr = new StringReader( (string)_schema );
+                TextReader _tr = new StringReader( ( string )_schema );
                 ds.ReadXmlSchema( _tr );
             }
             else
             {
-                var _ms = (DataSchema)ParseDictionary( (Dictionary<string, object>)_schema,
+                var _ms = ( DataSchema )ParseDictionary( ( Dictionary<string, object> )_schema,
                     globalTypes, typeof( DataSchema ), null );
 
                 ds.DataSetName = _ms.Name;
@@ -911,15 +915,14 @@ namespace Baby
             var _datecol = new List<int>( );
             foreach( DataColumn _c in dt.Columns )
             {
-                if( ( _c.DataType == typeof( Guid ) )
-                   || ( _c.DataType == typeof( Guid? ) ) )
+                if( _c.DataType == typeof( Guid )
+                    || _c.DataType == typeof( Guid? ) )
                 {
                     _guidcols.Add( _c.Ordinal );
                 }
 
                 if( _params.UseUtcDateTime
-                   && ( ( _c.DataType == typeof( DateTime ) )
-                       || ( _c.DataType == typeof( DateTime? ) ) ) )
+                    && ( _c.DataType == typeof( DateTime ) || _c.DataType == typeof( DateTime? ) ) )
                 {
                     _datecol.Add( _c.Ordinal );
                 }
@@ -931,9 +934,9 @@ namespace Baby
                 _row.CopyTo( _v, 0 );
                 foreach( var _i in _guidcols )
                 {
-                    var _s = (string)_v[ _i ];
-                    if( ( _s != null )
-                       && ( _s.Length < 36 ) )
+                    var _s = ( string )_v[ _i ];
+                    if( _s != null
+                        && _s.Length < 36 )
                     {
                         _v[ _i ] = new Guid( Convert.FromBase64String( _s ) );
                     }
@@ -943,7 +946,7 @@ namespace Baby
                 {
                     foreach( var _i in _datecol )
                     {
-                        var _s = (string)_v[ _i ];
+                        var _s = ( string )_v[ _i ];
                         if( _s != null )
                         {
                             _v[ _i ] = CreateDateTime( _s );
@@ -973,12 +976,12 @@ namespace Baby
             var _schema = reader[ "$schema" ];
             if( _schema is string )
             {
-                TextReader _tr = new StringReader( (string)_schema );
+                TextReader _tr = new StringReader( ( string )_schema );
                 _dt.ReadXmlSchema( _tr );
             }
             else
             {
-                var _ms = (DataSchema)ParseDictionary( (Dictionary<string, object>)_schema,
+                var _ms = ( DataSchema )ParseDictionary( ( Dictionary<string, object> )_schema,
                     globalTypes, typeof( DataSchema ), null );
 
                 _dt.TableName = _ms.Info[ 0 ];
@@ -990,20 +993,20 @@ namespace Baby
 
             foreach( var _pair in reader )
             {
-                if( ( _pair.Key == "$type" )
-                   || ( _pair.Key == "$schema" ) )
+                if( _pair.Key == "$type"
+                    || _pair.Key == "$schema" )
                 {
                     continue;
                 }
 
-                var _rows = (ArrayList)_pair.Value;
+                var _rows = ( ArrayList )_pair.Value;
                 if( _rows == null )
                 {
                     continue;
                 }
 
                 if( !_dt.TableName.Equals( _pair.Key,
-                       StringComparison.InvariantCultureIgnoreCase ) )
+                    StringComparison.InvariantCultureIgnoreCase ) )
                 {
                     continue;
                 }

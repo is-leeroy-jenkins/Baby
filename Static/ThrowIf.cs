@@ -1,37 +1,39 @@
 ﻿// ******************************************************************************************
-//     Assembly:                BabyBrowser
+//     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 $CREATED_MONTH$-$CREATED_DAY$-$CREATED_YEAR$
-//
+//     Created:                 09-09-2024
+// 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        $CURRENT_MONTH$-$CURRENT_DAY$-$CURRENT_YEAR$
+//     Last Modified On:        09-09-2024
 // ******************************************************************************************
 // <copyright file="ThrowIf.cs" company="Terry D. Eppler">
-//    This is a Federal Budget, Finance, and Accounting application for the 
-//    US Environmental Protection Agency (US EPA).
-//    Copyright ©  $CURRENT_YEAR$  Terry Eppler
-//
-//    Permission is hereby granted, free of charge, to any person obtaining a copy 
-//    of this software and associated documentation files (the “Software”), 
-//    to deal in the Software without restriction, 
-//    including without limitation the rights to use, 
-//    copy, modify, merge, publish, distribute, sublicense, 
-//    and/or sell copies of the Software, 
-//    and to permit persons to whom the Software is furnished to do so, 
+//     Baby is a light-weight, full-featured, web-browser built with .NET 6 and is written
+//     in C#.  The baby browser is designed for budget execution and data analysis.
+//     A tool for EPA analysts and a component that can be used for general browsing.
+// 
+//     Copyright ©  2020 Terry D. Eppler
+// 
+//    Permission is hereby granted, free of charge, to any person obtaining a copy
+//    of this software and associated documentation files (the “Software”),
+//    to deal in the Software without restriction,
+//    including without limitation the rights to use,
+//    copy, modify, merge, publish, distribute, sublicense,
+//    and/or sell copies of the Software,
+//    and to permit persons to whom the Software is furnished to do so,
 //    subject to the following conditions:
-//    
-//    The above copyright notice and this permission notice shall be included in all 
+// 
+//    The above copyright notice and this permission notice shall be included in all
 //    copies or substantial portions of the Software.
-//    
-//    THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-//    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-//    FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. 
-//    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-//    DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
-//    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+// 
+//    THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+//    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//    FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+//    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+//    DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+//    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 //    DEALINGS IN THE SOFTWARE.
-//
-//    You can contact me at:   terryeppler@gmail.com or eppler.terry@epa.gov
+// 
+//    You can contact me at:  terryeppler@gmail.com or eppler.terry@epa.gov
 // </copyright>
 // <summary>
 //   ThrowIf.cs
@@ -229,8 +231,8 @@ namespace Baby
                 }
                 case IEnumerable<string> _list:
                 {
-                    if( _list == null 
-                       || _list.Any( ) == false )
+                    if( _list == null
+                        || _list.Any( ) == false )
                     {
                         var _message = @$"The IEnumerable<string> '{paramName}' is empty!";
                         throw new ArgumentException( _message );
@@ -241,7 +243,7 @@ namespace Baby
                 case IEnumerable<byte> _data:
                 {
                     if( _data == null
-                       || _data.Any( ) == false )
+                        || _data.Any( ) == false )
                     {
                         var _message = @$"The IEnumerable<string> '{paramName}' is empty!";
                         throw new ArgumentException( _message );
@@ -252,7 +254,7 @@ namespace Baby
                 case IEnumerable<DataRow> _rows:
                 {
                     if( _rows == null
-                       || _rows.Any( ) == false )
+                        || _rows.Any( ) == false )
                     {
                         var _message = @$"The IEnumerable<DataRow> '{paramName}' is empty!";
                         throw new ArgumentException( _message );
@@ -263,7 +265,7 @@ namespace Baby
                 case ICollection _collection:
                 {
                     if( _collection == null
-                       || _collection.Count > 0 )
+                        || _collection.Count > 0 )
                     {
                         var _message = @$"The ICollection '{paramName}' is empty!";
                         throw new ArgumentException( _message );
@@ -274,7 +276,7 @@ namespace Baby
                 case IDictionary<string, object> _dict:
                 {
                     if( _dict == null
-                       || _dict.Keys.Any( ) == false )
+                        || _dict.Keys.Any( ) == false )
                     {
                         var _message = @$"The IDictionary<string, object> '{paramName}' is empty!";
                         throw new ArgumentException( _message );
@@ -285,7 +287,7 @@ namespace Baby
                 case IDictionary<string, string> _nvp:
                 {
                     if( _nvp == null
-                       || _nvp.Keys.Any( ) == false )
+                        || _nvp.Keys.Any( ) == false )
                     {
                         var _message = @$"The IDictionary<string, string> '{paramName}' is empty!";
                         throw new ArgumentException( _message );

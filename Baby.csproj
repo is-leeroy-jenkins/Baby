@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <OutputPath>bin\</OutputPath>
@@ -32,25 +32,37 @@
     <IncludeSymbols>True</IncludeSymbols>
     <BaseOutputPath>C:\Users\terry\source\repos\Baby\bin\Baby</BaseOutputPath>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <Copyright>Terry D. Eppler</Copyright>
+    <Copyright>2019 Terry D. Eppler</Copyright>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <UseWPF>True</UseWPF>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <Title>Baby</Title>
+    <Company>Terry Eppler</Company>
+    <Description>A light-weight, full-featured, web-browser written in C# for Winforms and WPF.</Description>
+    <AnalysisLevel>6.0-recommended</AnalysisLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702;CA1416;CS0169</NoWarn>
     <Optimize>True</Optimize>
+    <DebugType>embedded</DebugType>
+    <WarningLevel>6</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <NoWarn>1701;1702;CA1416;CS0169</NoWarn>
     <Optimize>True</Optimize>
+    <DebugType>embedded</DebugType>
+    <WarningLevel>6</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <NoWarn>1701;1702;CA1416;CS0169</NoWarn>
+    <DebugType>embedded</DebugType>
+    <WarningLevel>6</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <NoWarn>1701;1702;CA1416;CS0169</NoWarn>
+    <DebugType>embedded</DebugType>
+    <WarningLevel>6</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Properties\Images\Baby.ico" />
@@ -78,22 +90,15 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="cef.redist.x64" Version="120.2.7" />
-    <PackageReference Include="CefSharp.Common" Version="127.3.50" />
     <PackageReference Include="CefSharp.Common.NETCore" Version="127.3.50" />
     <PackageReference Include="CefSharp.WinForms.NETCore" Version="127.3.50" />
     <PackageReference Include="CefSharp.Wpf.NETCore" Version="127.3.50" />
     <PackageReference Include="MetroSet_UI" Version="2.0.0" />
-    <PackageReference Include="Syncfusion.Edit.Windows" Version="24.1.41" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="8.0.0-preview.7.23375.6" />
+    <PackageReference Include="Syncfusion.Edit.Windows" Version="20.3.0.61" />
     <PackageReference Include="Syncfusion.Licensing" Version="24.1.41" />
-    <PackageReference Include="Syncfusion.Shared.Base" Version="24.1.41" />
-    <PackageReference Include="Syncfusion.Tools.Windows" Version="24.1.41" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="CharmNotification">
-      <HintPath>Libraries\CharmNotification.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net" />
-    <Reference Include="System.Web" />
+    <PackageReference Include="Syncfusion.Shared.Base" Version="20.3.0.61" />
+    <PackageReference Include="Syncfusion.Tools.Windows" Version="20.3.0.61" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Misc\LICENSE">

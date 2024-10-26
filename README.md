@@ -1,5 +1,5 @@
-## Baby
-## ![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/logo3.png)
+#### _
+## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Resources/Assets/DemoImages/Baby.png)
 
 ## An open source web browser written in C# and released under the MIT license.
 
@@ -104,4 +104,5 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 ![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/error1.png)
 
 ![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/error2.png)
+
 

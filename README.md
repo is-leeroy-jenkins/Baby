@@ -67,42 +67,42 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ## Baby Overview
 
-![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/Overview.gif)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/Overview.gif)
 
 ## Screenshots
 
 ### Apple.com
 
-![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/1.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/1.png)
 
 ### WebAssembly & WebGL
 
-![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/5.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/5.png)
 
 ### YouTube
 
-![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/6.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/6.png)
 
 ### Google Maps
 
-![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/2.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/2.png)
 
 ### Search Bar
 
-![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/search.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/search.png)
 
 ### Downloads Tab
 
-![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/3.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/3.png)
 
 ### Developer Tools
 
-![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/4.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/4.png)
 
 ### Custom Error Pages
 
-![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/error1.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/error1.png)
 
-![](https://github.com/KarmaScripter/Baby/blob/main/Properties/Images/error2.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/error2.png)
 
 

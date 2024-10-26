@@ -45,7 +45,7 @@ namespace Baby
     using System;
     using CefSharp;
     using System.Diagnostics.CodeAnalysis;
-    using System.Windows.Forms;
+    using System.Windows;
 
     /// <summary>
     /// 
@@ -242,29 +242,21 @@ namespace Baby
                 }
                 case _CLOSE_TAB:
                 {
-                    _webBrowser.InvokeOnParent( delegate
-                    {
-                        _webBrowser.CloseActiveTab( );
-                    } );
-
+                    _webBrowser.CloseActiveTab( );
                     break;
                 }
                 case _REFRESH_TAB:
                 {
-                    _webBrowser.InvokeOnParent( delegate
-                    {
-                        _webBrowser.RefreshActiveTab( );
-                    } );
+                    _webBrowser.RefreshActiveTab( );
 
                     break;
                 }
                 case _SAVE_AS_PDF:
                 {
-                    var _sfd = new SaveFileDialog( );
-                    _sfd.Filter = "PDF Files | *.pdf";
-                    if( _sfd.ShowDialog( ) == DialogResult.OK )
+                    var _sfd = new FileBrowser( );
+                    if( !string.IsNullOrEmpty( _sfd.SelectedPath ) )
                     {
-                        browser.PrintToPdfAsync( _sfd.FileName, new PdfPrintSettings( )
+                        browser.PrintToPdfAsync( _sfd.SelectedFile, new PdfPrintSettings( )
                         {
                             PrintBackground = true
                         } );

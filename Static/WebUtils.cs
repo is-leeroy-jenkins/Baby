@@ -44,9 +44,12 @@ namespace Baby
 {
     using System;
     using System.IO;
-    using System.Windows.Forms;
     using CefSharp;
     using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Controls;
+    using CefSharp.Wpf.Internals;
 
     /// <summary>
     /// 
@@ -64,21 +67,9 @@ namespace Baby
         /// <returns>
         ///   <c>true</c> if the specified tb is focused; otherwise, <c>false</c>.
         /// </returns>
-        public static bool IsFocused( System.Windows.Forms.TextBox textBox )
-        {
-            return textBox.Focused;
-        }
-
-        /// <summary>
-        /// Determines whether the specified tb is focused.
-        /// </summary>
-        /// <param name="textBox">The tb.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified tb is focused; otherwise, <c>false</c>.
-        /// </returns>
         public static bool IsFocused( TextBox textBox )
         {
-            return textBox.Focused;
+            return textBox.IsFocused;
         }
 
         /// <summary>
@@ -86,34 +77,19 @@ namespace Baby
         /// </summary>
         /// <param name="form">The form.</param>
         /// <param name="function">The function.</param>
-        /// <param name="key">The key.</param>
         /// <param name="ctrl">if set to <c>true</c> [control].</param>
         /// <param name="shift">if set to <c>true</c> [shift].</param>
         /// <param name="alt">if set to <c>true</c> [alt].</param>
-        public static void AddHotKey( Form form, Action function, Keys key,
-            bool ctrl = false, bool shift = false, bool alt = false )
+        public static void AddHotKey( Window form, Action function, bool ctrl = false, 
+            bool shift = false, bool alt = false )
         {
-            form.KeyPreview = true;
             form.KeyDown += delegate( object sender, KeyEventArgs e )
             {
-                if( e.IsHotKey( key, ctrl, shift, alt ) )
+                if( e.IsHotKey( ctrl, shift, alt ) )
                 {
                     function( );
                 }
             };
-        }
-
-        /// <summary>
-        /// Determines whether [is fully selected] [the specified tb].
-        /// </summary>
-        /// <param name="textBox">The tb.</param>
-        /// <returns>
-        /// <c>true</c> if [is fully selected]
-        /// [the specified tb]; otherwise, <c>false</c>.
-        /// </returns>
-        public static bool IsFullySelected( System.Windows.Forms.TextBox textBox )
-        {
-            return textBox.SelectionLength == textBox.Text.Length;
         }
 
         /// <summary>
@@ -134,19 +110,10 @@ namespace Baby
         /// </summary>
         /// <param name="textBox">The tb.</param>
         /// <returns>
-        ///   <c>true</c> if the specified tb has selection; otherwise, <c>false</c>.
-        /// </returns>
-        public static bool HasSelection( System.Windows.Forms.TextBox textBox )
-        {
-            return textBox.SelectionLength > 0;
-        }
-
-        /// <summary>
-        /// Determines whether the specified tb has selection.
-        /// </summary>
-        /// <param name="textBox">The tb.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified tb has selection; otherwise, <c>false</c>.
+        ///   <c>true</c>
+        /// if the specified tb has selection;
+        /// otherwise,
+        /// <c>false</c>.
         /// </returns>
         public static bool HasSelection( TextBox textBox )
         {
@@ -207,9 +174,15 @@ namespace Baby
         /// <param name="text">The text.</param>
         /// <param name="find">The find.</param>
         /// <param name="startAt">The start at.</param>
-        /// <param name="returnAll">if set to <c>true</c> [return all].</param>
-        /// <param name="forward">if set to <c>true</c> [forward].</param>
-        /// <returns></returns>
+        /// <param name="returnAll">
+        /// if set to <c>true</c> [return all].
+        /// </param>
+        /// <param name="forward">
+        /// if set to <c>true</c> [forward].
+        /// </param>
+        /// <returns>
+        /// string
+        /// </returns>
         public static string GetAfter( this string text, string find, int startAt = 0,
             bool returnAll = false, bool forward = true )
         {
@@ -306,9 +279,9 @@ namespace Baby
                 ThrowIf.NullOrEmpty( path, nameof( path ) );
                 return !File.Exists( path );
             }
-            catch( Exception _ex )
+            catch( Exception ex )
             {
-                WebUtils.Fail( _ex );
+                WebUtils.Fail( ex );
                 return false;
             }
         }
@@ -335,35 +308,24 @@ namespace Baby
         }
 
         /// <summary>
-        /// Invokes the on parent.
-        /// </summary>
-        /// <param name="control">The control.</param>
-        /// <param name="method">The method.</param>
-        public static void InvokeOnParent( this Control control, MethodInvoker method )
-        {
-            var _parent = control.Parent ?? control;
-            if( _parent.IsHandleCreated )
-            {
-                _parent.Invoke( method );
-            }
-        }
-
-        /// <summary>
         /// Determines whether [is hot key] [the specified key].
         /// </summary>
-        /// <param name="eventData">The <see cref="KeyEventArgs"/> instance containing the event data.</param>
+        /// <param name="eventData">The <see cref="KeyEventArgs"/>
+        /// instance containing the event data.
+        /// </param>
         /// <param name="key">The key.</param>
         /// <param name="ctrl">if set to <c>true</c> [control].</param>
         /// <param name="shift">if set to <c>true</c> [shift].</param>
         /// <param name="alt">if set to <c>true</c> [alt].</param>
         /// <returns>
-        ///   <c>true</c> if [is hot key] [the specified key]; otherwise, <c>false</c>.
+        ///   <c>true</c> if [is hot key] [the specified key];
+        /// otherwise, <c>false</c>.
         /// </returns>
-        public static bool IsHotKey( this KeyEventArgs eventData, Keys key, bool ctrl = false,
+        public static bool IsHotKey( this KeyEventArgs eventData, bool ctrl = false,
             bool shift = false, bool alt = false )
         {
-            return eventData.KeyCode == key && eventData.Control == ctrl && eventData.Shift == shift
-                && eventData.Alt == alt;
+            return eventData.IsDown == ctrl && eventData.Handled == shift
+                && eventData.Key == Key.LeftShift == alt;
         }
 
         /// <summary>
@@ -405,7 +367,9 @@ namespace Baby
         /// </summary>
         /// <param name="str">The string.</param>
         /// <param name="beginsWith">The begins with.</param>
-        /// <param name="caseSensitive">if set to <c>true</c> [case sensitive].</param>
+        /// <param name="caseSensitive">
+        /// if set to <c>true</c> [case sensitive].
+        /// </param>
         /// <returns></returns>
         public static bool BeginsWith( this string str, string beginsWith,
             bool caseSensitive = true )
@@ -468,7 +432,7 @@ namespace Baby
         /// </param>
         private static void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            using var _error = new ErrorWindow( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

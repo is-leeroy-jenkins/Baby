@@ -360,19 +360,6 @@ namespace Baby
             int nIcons );
 
         /// <summary>
-        /// Shes the get file information.
-        /// </summary>
-        /// <param name="pszPath">The PSZ path.</param>
-        /// <param name="dwFileAttributes">The dw file attributes.</param>
-        /// <param name="psfi">The psfi.</param>
-        /// <param name="cbFileInfo">The cb file information.</param>
-        /// <param name="uFlags">The u flags.</param>
-        /// <returns></returns>
-        [ DllImport( "Shell32", CharSet = CharSet.Auto ) ]
-        private static extern IntPtr SHGetFileInfo( string pszPath, int dwFileAttributes,
-            out ShellFileInfo psfi, int cbFileInfo, InfoFlags uFlags );
-
-        /// <summary>
         /// Get the number of icons in the specified file.
         /// </summary>
         /// <param name="fileName">Full path of the file to look for.</param>

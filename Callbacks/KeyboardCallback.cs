@@ -47,6 +47,7 @@ namespace Baby
     using System.Windows.Forms;
     using CefSharp;
     using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
 
     /// <summary>
     /// 
@@ -61,7 +62,7 @@ namespace Baby
         /// <summary>
         /// My form
         /// </summary>
-        private Form _webBrowser;
+        private WebBrowser _webBrowser;
 
         /// <summary>
         /// The hot keys
@@ -73,7 +74,7 @@ namespace Baby
         /// <see cref="KeyboardCallback"/> class.
         /// </summary>
         /// <param name="form">The form.</param>
-        public KeyboardCallback( Form form )
+        public KeyboardCallback( WebBrowser form )
         {
             _webBrowser = form;
         }
@@ -99,10 +100,10 @@ namespace Baby
         /// <param name="alt">
         /// if set to <c>true</c> [alt].
         /// </param>
-        public static void AddHotKey( Form form, Action function, Keys key,
+        public static void AddHotKey( Window form, Action function, Keys key,
             bool ctrl = false, bool shift = false, bool alt = false )
         {
-            WebUtils.AddHotKey( form, function, key, ctrl,
+            WebUtils.AddHotKey( form, function, ctrl,
                 shift, alt );
 
             Hotkeys.Add( new BrowserHotKey( function, key, ctrl, shift,
@@ -230,7 +231,7 @@ namespace Baby
                             && _key.Shift == _shiftDown
                             && _key.Alt == _altDown )
                         {
-                            _webBrowser.InvokeOnParent( delegate
+                            _webBrowser.Parent.Dispatcher.Invoke( delegate
                             {
                                 _key.Callback( );
                             } );

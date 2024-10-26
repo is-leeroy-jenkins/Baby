@@ -2,130 +2,180 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="Controls\Browser\WebBrowser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Controls\Button\Button.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ComboBox\ComboBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ControlBox\ControlBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\Dialog\ErrorDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Controls\Dialog\FileBrowser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Controls\Dialog\GuidanceDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Controls\Dialog\MessageDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Controls\Dialog\SearchDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Controls\Label\Label.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\Layout\Layout.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ListBox\ListBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\Menu\ContextBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\Menu\ContextMenu.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\Menu\MenuBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\Notification\Notification.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Controls\ImageBox\ImageBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\RadioButton\RadioButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\RichTextBox\RichTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\Splash\SplashMessage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Controls\Style\StyleManager.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\TabControl\TabControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\TabStrip\BaseStyledPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\TabStrip\BrowserTabStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\TabStrip\BrowserTabStripItem.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\TextBox\TextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ToolStrip\ToolButtonBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ToolStrip\ToolSeparator.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ToolStrip\ToolStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ToolStrip\ToolStripBase.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ToolStrip\ToolStripButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ToolStrip\ToolStripComboBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ToolStrip\ToolStripDropDown.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ToolStrip\ToolStripLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ToolStrip\ToolStripTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\ToolTip\ToolTip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\Layout\SplashLayout.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\RichTextBox\SplashTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Controls\Dialog\BasicDialog.cs">
-      <SubType>Form</SubType>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="UI\Views\Search\SearchDialog.xaml.cs">
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Controls\Browser\WebBrowser.resx">
+    <Page Update="UI\Themes\TabControl\TabControlExt.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Properties\Resources.resx">
+    </Page>
+    <Page Update="UI\Themes\TabControl\BrowserTabItem.xaml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+    </Page>
+    <Page Update="UI\Themes\TabControl\TabControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Button\MetroButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\ComboBox\MetroComboBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\TextBox\MetroRichTextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\TextBox\MetroTextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\ToolStrip\ToolStripButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\ToolStrip\ToolStripDropDown.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\ToolStrip\ToolStripTextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\ToolStrip\MetroToolStrip.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\CheckBox\CheckBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\CheckList\CheckList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\DropDown\DropDown.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\DropDown\DropDownButtonAdv.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Menu\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Menu\Menu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Menu\MenuItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Tile\SfHubTile.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Tile\SfPulsingTile.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Tile\Tile.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Tile\TileViewControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\ToolTip\ToolTip.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Views\Search\SearchDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Views\WebBrowser.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Button\Button.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Button\ButtonAdv.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Calculator\SfCalculator.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Colors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\ComboBox\ComboBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\ComboBox\ComboBoxAdv.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Common\BaseStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Common\Fonts.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\Common\Sizes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\ListBox\ListBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\ListView\ListView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\RichTextBox\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\RichTextBox\Dialogs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\RichTextBox\FormatDialogs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\RichTextBox\MiniToolBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\RichTextBox\SfRichTextBoxAdv.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\RichTextBox\SfRichTextBoxCommon.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\RichTextBox\SfRichTextRibbon.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\RichTextBox\StyleDialogs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\RichTextBox\TableDialogs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\TextBlock\TextBlock.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\TextBox\SfTextBoxExt.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Themes\TextBox\TextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Views\Calculator\CalculatorWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Views\Error\ErrorWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Views\File\FileBrowser.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Views\Folder\FolderBrowser.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Views\Notification\Notification.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\Views\Splash\SplashMessage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

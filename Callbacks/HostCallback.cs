@@ -43,8 +43,8 @@
 namespace Baby
 {
     using System;
-    using System.Windows.Forms;
     using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
 
     /// <summary>
     /// functions in this class are accessible
@@ -65,7 +65,7 @@ namespace Baby
         /// <see cref="HostCallback"/> class.
         /// </summary>
         /// <param name="webBrowser">The webBrowser.</param>
-        public HostCallback( Form webBrowser )
+        public HostCallback( Window webBrowser )
         {
             _webBrowser = webBrowser as WebBrowser;
         }
@@ -80,21 +80,6 @@ namespace Baby
         public void AddNewBrowserTab( string url, bool focusNewTab = true )
         {
             _webBrowser.AddNewBrowserTab( url, focusNewTab );
-        }
-
-        /// <summary>
-        /// Gets the downloads.
-        /// </summary>
-        /// <returns>
-        /// string
-        /// </returns>
-        public string GetDownloads( )
-        {
-            lock( _webBrowser.DownloadItems )
-            {
-                var _x = Json.Instance.ToJson( _webBrowser.DownloadItems );
-                return _x;
-            }
         }
 
         /// <summary>

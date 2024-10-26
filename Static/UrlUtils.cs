@@ -356,7 +356,7 @@ namespace Baby
         /// </param>
         private static void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            using var _error = new ErrorWindow( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

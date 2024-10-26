@@ -46,6 +46,7 @@ namespace Baby
     using System;
     using System.Windows.Forms;
     using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
 
     /// <summary> </summary>
     /// <seealso cref="CefSharp.IDownloadHandler"/>
@@ -65,7 +66,7 @@ namespace Baby
         /// class.
         /// </summary>
         /// <param name="form"> The form. </param>
-        public DownloadCallback( Form form )
+        public DownloadCallback( Window form )
         {
             _webBrowser = form as WebBrowser;
         }

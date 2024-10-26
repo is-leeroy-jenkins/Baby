@@ -43,7 +43,6 @@
 namespace Baby
 {
     using CefSharp;
-    using CefSharp.WinForms;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -54,6 +53,7 @@ namespace Baby
     using System.IO;
     using System.Linq;
     using System.Windows.Forms;
+    using CefSharp.Wpf;
 
     /// <summary>
     /// 
@@ -105,19 +105,9 @@ namespace Baby
 
                     break;
                 }
-                case WebBrowser _browser:
+                case ChromiumWebBrowser _chromiumWebBrowser:
                 {
-                    if( _browser == null )
-                    {
-                        var _message = @$"The WebBrowser '{paramName}' is null!";
-                        throw new ArgumentNullException( _message );
-                    }
-
-                    break;
-                }
-                case ChromiumWebBrowser _chrome:
-                {
-                    if( _chrome == null )
+                    if( _chromiumWebBrowser == null )
                     {
                         var _message = @$"The ChromiumWebBrowser '{paramName}' is null!";
                         throw new ArgumentNullException( _message );
@@ -125,9 +115,9 @@ namespace Baby
 
                     break;
                 }
-                case BrowserTabStripItem _item:
+                case BrowserTabItem _browserTabItem:
                 {
-                    if( _item == null )
+                    if( _browserTabItem == null )
                     {
                         var _message = @$"The BrowserTabStripItem '{paramName}' is null!";
                         throw new ArgumentNullException( _message );
@@ -135,9 +125,9 @@ namespace Baby
 
                     break;
                 }
-                case DownloadItem _download:
+                case DownloadItem _downloadItem:
                 {
-                    if( _download == null )
+                    if( _downloadItem == null )
                     {
                         var _message = @$"The DownloadItem '{paramName}' is null!";
                         throw new ArgumentNullException( _message );

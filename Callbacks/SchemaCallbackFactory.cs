@@ -54,6 +54,11 @@ namespace Baby
     public class SchemaCallbackFactory : ISchemeHandlerFactory
     {
         /// <summary>
+        /// My form
+        /// </summary>
+        private WebBrowser _webBrowser;
+
+        /// <summary>
         /// Creates the specified browser.
         /// </summary>
         /// <param name="browser">The browser.</param>
@@ -64,7 +69,7 @@ namespace Baby
         public IResourceHandler Create( IBrowser browser, IFrame frame, string schemeName,
             IRequest request )
         {
-            return new SchemaCallback( WebBrowser.Instance );
+            return new SchemaCallback( _webBrowser );
         }
     }
 }

@@ -45,7 +45,7 @@ namespace Baby
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="e">The <see cref="TabItemChangedEventArgs"/>
+    /// <param name="e">The <see cref="BrowserTabChangedEventArgs"/>
     /// instance containing the event data.</param>
-    public delegate void TabItemChange( TabItemChangedEventArgs e );
+    public delegate void TabItemChange( BrowserTabChangedEventArgs e );
 }

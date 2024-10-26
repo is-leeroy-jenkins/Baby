@@ -45,6 +45,7 @@ namespace Baby
     using System;
     using CefSharp;
     using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
     using System.Windows.Forms;
 
     /// <summary>
@@ -66,9 +67,9 @@ namespace Baby
         /// class.
         /// </summary>
         /// <param name="form">The form.</param>
-        public ResourceRequestCallback( Form form )
+        public ResourceRequestCallback( WebBrowser form )
         {
-            _webBrowser = form as WebBrowser;
+            _webBrowser = form;
         }
 
         /// <summary>

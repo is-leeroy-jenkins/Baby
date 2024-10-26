@@ -60,14 +60,14 @@ namespace Baby
         /// <summary>
         /// The browser
         /// </summary>
-        private readonly Form _webBrowser;
+        private readonly WebBrowser _webBrowser;
 
         /// <summary>
         /// Initializes a new instance of the
         /// <see cref="RequestCallback"/> class.
         /// </summary>
         /// <param name="form">The form.</param>
-        public RequestCallback( Form form )
+        public RequestCallback( WebBrowser form )
         {
             _webBrowser = form;
         }
@@ -300,7 +300,7 @@ namespace Baby
         /// </param>
         private protected static void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            using var _error = new ErrorWindow( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

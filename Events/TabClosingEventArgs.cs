@@ -58,7 +58,7 @@ namespace Baby
         /// <value>
         /// The item.
         /// </value>
-        public BrowserTabStripItem Item { get; set; }
+        public BrowserTabItem Item { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="TabClosingEventArgs"/> is cancel.
@@ -70,10 +70,10 @@ namespace Baby
 
         /// <inheritdoc />
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:Baby.TabStripItemClosingEventArgs" /> class.
+        /// Initializes a new instance of the <see cref="T:Baby.TabClosingEventArgs" /> class.
         /// </summary>
         /// <param name="item">The item.</param>
-        public TabClosingEventArgs( BrowserTabStripItem item )
+        public TabClosingEventArgs( BrowserTabItem item )
         {
             Item = item;
         }

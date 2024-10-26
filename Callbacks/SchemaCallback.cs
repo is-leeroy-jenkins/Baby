@@ -47,9 +47,9 @@ namespace Baby
     using System.Net;
     using System.Threading.Tasks;
     using CefSharp;
-    using System.Windows.Forms;
     using CefSharp.Callback;
     using System.Diagnostics.CodeAnalysis;
+    using System.Windows.Forms;
     using Cookie = CefSharp.Cookie;
 
     /// <summary>
@@ -75,7 +75,7 @@ namespace Baby
         /// <summary>
         /// The browser
         /// </summary>
-        private Form _webBrowser;
+        private WebBrowser _webBrowser;
 
         /// <summary>
         /// The stream
@@ -98,7 +98,7 @@ namespace Baby
         /// <see cref="SchemaCallback"/> class.
         /// </summary>
         /// <param name="form">The form.</param>
-        public SchemaCallback( Form form )
+        public SchemaCallback( WebBrowser form )
         {
             _webBrowser = form;
         }

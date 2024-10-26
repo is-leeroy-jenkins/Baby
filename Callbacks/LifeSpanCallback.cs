@@ -44,6 +44,7 @@ namespace Baby
 {
     using CefSharp;
     using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
     using System.Windows.Forms;
 
     /// <summary>
@@ -64,7 +65,7 @@ namespace Baby
         /// <see cref="LifeSpanCallback"/> class.
         /// </summary>
         /// <param name="form">The form.</param>
-        public LifeSpanCallback( Form form )
+        public LifeSpanCallback( Window form )
         {
             _webBrowser = form as WebBrowser;
         }

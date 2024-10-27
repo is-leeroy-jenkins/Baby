@@ -58,7 +58,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - Baby supports AnyCPU as well as x86/x64 specific builds
 - [WebBrowser.xaml.cs](https://github.com/is-leeroy-jenkins/Baby/blob/main/UI/Views/WebBrowser.xaml.cs) - main web browser UI and related functionality
 - [WebBrowser.xaml](https://github.com/is-leeroy-jenkins/Baby/blob/main/UI/Views/WebBrowser.xaml) - main web browser UI and related functionality
-- [Callbacks](https://github.com/is-leeroy-jenkins/Baby/tree/main/Callbacks) - various handlers that we have registered with CefSharp that enable deeper integration between us and CefSharp
+- [Callbacks](https://github.com/is-leeroy-jenkins/Baby/tree/main/Callbacks) - various handlers that we have registered with CefSharp.
 - [Delegates]() - fast JSON serializer/deserializer
 - [Enumerations](https://github.com/is-leeroy-jenkins/Baby/tree/main/Enumerations) - Enumerations used by Baby.
 - [Events](https://github.com/is-leeroy-jenkins/Baby/tree/main/Events) - events for the interface. 

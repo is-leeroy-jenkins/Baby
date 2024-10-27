@@ -60,7 +60,14 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - [WebBrowser.xaml.cs](https://github.com/is-leeroy-jenkins/Baby/blob/main/UI/Views/WebBrowser.xaml.cs) - main web browser UI and related functionality
 - [WebBrowser.xaml](https://github.com/is-leeroy-jenkins/Baby/blob/main/UI/Views/WebBrowser.xaml) - main web browser UI and related functionality
 - [Callbacks](https://github.com/is-leeroy-jenkins/Baby/tree/main/Callbacks) - various handlers that we have registered with CefSharp that enable deeper integration between us and CefSharp
-- `Serializers` - fast JSON serializer/deserializer
+- [Delegates]() - fast JSON serializer/deserializer
+- [Enumerations](https://github.com/is-leeroy-jenkins/Baby/tree/main/Enumerations) -
+- [Events](https://github.com/is-leeroy-jenkins/Baby/tree/main/Events) - 
+- [Exceptions](https://github.com/is-leeroy-jenkins/Baby/tree/main/Exceptions) - 
+- [Views](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Views) - 
+- [Themes](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Themes) - 
+- [Controls](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Controls) -
+- [WebPages](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/WebPages)
 - `bin` - Binaries are included in the `bin` folder due to the complex CefSharp setup required. Don't empty this folder.
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages
 

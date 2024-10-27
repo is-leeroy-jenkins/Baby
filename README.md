@@ -58,7 +58,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - Baby uses CefSharp 106 and is built on NET 6
 - Baby supports AnyCPU as well as x86/x64 specific builds
 - `WebBrowser.cs` - main web browser UI and related functionality
-- `Callbacks` - various handlers that we have registered with CefSharp that enable deeper integration between us and CefSharp
+- [Callbacks](https://github.com/is-leeroy-jenkins/Baby/tree/main/Callbacks) - various handlers that we have registered with CefSharp that enable deeper integration between us and CefSharp
 - `Serializers` - fast JSON serializer/deserializer
 - `bin` - Binaries are included in the `bin` folder due to the complex CefSharp setup required. Don't empty this folder.
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages

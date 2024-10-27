@@ -3,7 +3,7 @@
 
 ## An open source web browser written in C# and released under the MIT license.
 
-## Features
+## (https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/baby.png)  Features
 
 - HTML5, CSS3, JS, HTML5 Video, WebGL 3D, WebAssembly, etc
 - Tabbed browsing
@@ -17,7 +17,7 @@
 - Easily add vendor-specific branding, buttons or hotkeys
 - View online & offline webpages
 
-## Hotkeys
+## (https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/tools.png)  Hotkeys
 
 Hotkeys | Function
 ------------ | -------------
@@ -31,7 +31,7 @@ Ctrl+Shift+Tab	| Switch to the previous tab
 Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 
-## System requirements
+## (https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/system_requirements.png)  System requirements
 
 - You need [VC++ 2019 Runtime](https://aka.ms/vs/17/release/vc_redist.x64.exe) 32-bit and 64-bit versions
 
@@ -45,7 +45,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - See the [Compilation Guide](Docs/Compilation.md) for steps to get started.
 
 
-## Documentation
+## (https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/documentation.png)  Documentation
 
 - [User Guide](Docs/Users.md)
 - [Compilation Guide](Docs/Compilation.md)
@@ -53,7 +53,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - [Distribution Guide](Docs/Distribution.md)
 
 
-## Code
+## (https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/csharp.png)  Code
 
 - Baby uses CefSharp 106 and is built on NET 6
 - Baby supports AnyCPU as well as x86/x64 specific builds

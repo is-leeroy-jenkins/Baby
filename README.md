@@ -1,7 +1,7 @@
 #### _
 ## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Resources/Assets/DemoImages/Baby.png)
 
-## An open source web browser written in C# and released under the MIT license.
+# An open source web browser written in C# and released under the MIT license.
 
 ## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/baby.png)  Features
 
@@ -64,7 +64,8 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages
 
 
-## Baby Overview
+# Baby Overview
+
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Overview.gif)
 

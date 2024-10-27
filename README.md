@@ -3,7 +3,7 @@
 
 ## An open source web browser written in C# and released under the MIT license.
 
-# ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/baby.png)  Features
+## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/baby.png)  Features
 
 - HTML5, CSS3, JS, HTML5 Video, WebGL 3D, WebAssembly, etc
 - Tabbed browsing
@@ -17,7 +17,7 @@
 - Easily add vendor-specific branding, buttons or hotkeys
 - View online & offline webpages
 
-# ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/tools.png)  Hotkeys
+## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/tools.png)  Hotkeys
 
 Hotkeys | Function
 ------------ | -------------
@@ -31,7 +31,7 @@ Ctrl+Shift+Tab	| Switch to the previous tab
 Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 
-# ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/system_requirements.png)  System requirements
+## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/system_requirements.png)  System requirements
 
 - You need [VC++ 2019 Runtime](https://aka.ms/vs/17/release/vc_redist.x64.exe) 32-bit and 64-bit versions
 
@@ -45,7 +45,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - See the [Compilation Guide](Docs/Compilation.md) for steps to get started.
 
 
-# ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/documentation.png)  Documentation
+## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/documentation.png)  Documentation
 
 - [User Guide](Docs/Users.md)
 - [Compilation Guide](Docs/Compilation.md)
@@ -53,7 +53,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - [Distribution Guide](Docs/Distribution.md)
 
 
-# ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/csharp.png)  Code
+## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/csharp.png)  Code
 
 - Baby uses CefSharp 106 and is built on NET 6
 - Baby supports AnyCPU as well as x86/x64 specific builds
@@ -64,43 +64,42 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages
 
 
-
-# Baby Overview
+## Baby Overview
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Overview.gif)
 
 
-# Apple.com
+## Apple.com
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/1.png)
 
 
-# WebAssembly & WebGL
+## WebAssembly & WebGL
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/5.png)
 
 
-# YouTube
+## YouTube
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/6.png)
 
 
-# Google Maps
+## Google Maps
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/2.png)
 
 
-# Search Bar
+## Search Bar
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/search.png)
 
 
-# Downloads Tab
+## Downloads Tab
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/3.png)
 
 
-# Developer Tools
+## Developer Tools
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/4.png)
 

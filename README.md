@@ -67,7 +67,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ## Baby Overview
 
-![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/Overview.gif)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Overview.gif)
 
 ## Screenshots
 

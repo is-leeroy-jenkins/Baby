@@ -52,7 +52,6 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - [Configuration Guide](Docs/Configuration.md)
 - [Distribution Guide](Docs/Distribution.md)
 
-
 ## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/csharp.png)  Code
 
 - Baby uses CefSharp 106 and is built on NET 6
@@ -61,13 +60,14 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - [WebBrowser.xaml](https://github.com/is-leeroy-jenkins/Baby/blob/main/UI/Views/WebBrowser.xaml) - main web browser UI and related functionality
 - [Callbacks](https://github.com/is-leeroy-jenkins/Baby/tree/main/Callbacks) - various handlers that we have registered with CefSharp that enable deeper integration between us and CefSharp
 - [Delegates]() - fast JSON serializer/deserializer
-- [Enumerations](https://github.com/is-leeroy-jenkins/Baby/tree/main/Enumerations) -
-- [Events](https://github.com/is-leeroy-jenkins/Baby/tree/main/Events) - 
-- [Exceptions](https://github.com/is-leeroy-jenkins/Baby/tree/main/Exceptions) - 
-- [Views](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Views) - 
-- [Themes](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Themes) - 
-- [Controls](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Controls) -
-- [WebPages](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/WebPages)
+- [Enumerations](https://github.com/is-leeroy-jenkins/Baby/tree/main/Enumerations) - Enumerations used by Baby.
+- [Events](https://github.com/is-leeroy-jenkins/Baby/tree/main/Events) - events for the interface. 
+- [Exceptions](https://github.com/is-leeroy-jenkins/Baby/tree/main/Exceptions) - custom exception classes.
+- [Serializers](https://github.com/is-leeroy-jenkins/Baby/tree/main/Serializers) - custom serialization classes.
+- [Views](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Views) - windows used in the application.
+- [Themes](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Themes) - themes used on the application controls.
+- [Controls](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Controls) - classes for user inter-action
+- [WebPages](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/WebPages) - optional custom web page templates
 - `bin` - Binaries are included in the `bin` folder due to the complex CefSharp setup required. Don't empty this folder.
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages
 

@@ -69,29 +69,36 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Overview.gif)
 
+
 # Apple.com
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/1.png)
+
 
 # WebAssembly & WebGL
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/5.png)
 
+
 # YouTube
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/6.png)
+
 
 # Google Maps
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/2.png)
 
+
 # Search Bar
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/search.png)
 
+
 # Downloads Tab
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/3.png)
+
 
 # Developer Tools
 

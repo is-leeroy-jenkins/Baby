@@ -73,36 +73,36 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ### Apple.com
 
-![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/1.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/1.png)
 
 ### WebAssembly & WebGL
 
-![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/5.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/5.png)
 
 ### YouTube
 
-![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/6.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/6.png)
 
 ### Google Maps
 
-![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/2.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/2.png)
 
 ### Search Bar
 
-![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/search.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/search.png)
 
 ### Downloads Tab
 
-![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/3.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/3.png)
 
 ### Developer Tools
 
-![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/4.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/4.png)
 
 ### Custom Error Pages
 
-![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/error1.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/error1.png)
 
-![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Images/error2.png)
+![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/error2.png)
 
 

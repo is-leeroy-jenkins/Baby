@@ -37,7 +37,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace Baby
+namespace Bubba
 {
     using Microsoft.Office.Interop.Outlook;
     using System;

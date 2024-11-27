@@ -37,7 +37,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace Baby
+namespace Bubba
 {
     using OfficeOpenXml;
     using OfficeOpenXml.Drawing.Chart;

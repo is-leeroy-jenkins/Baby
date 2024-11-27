@@ -39,7 +39,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace Baby
+namespace Bubba
 {
     using Syncfusion.Windows.Controls.Notification;
     using System;

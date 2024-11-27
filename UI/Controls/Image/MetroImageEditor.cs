@@ -40,7 +40,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace Baby
+namespace Bubba
 {
     using Syncfusion.UI.Xaml.ImageEditor;
     using System;

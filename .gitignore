@@ -364,3 +364,5 @@ FodyWeavers.xsd
 Data/Clients/SQLite/DB Browser for SQLCipher.exe
 Data/Clients/SQLite/sqlcipher.dll
 Data/Clients/SqlCe/uninst.exe
+/Baby.csproj.DotSettings
+/Baby.DotSettings

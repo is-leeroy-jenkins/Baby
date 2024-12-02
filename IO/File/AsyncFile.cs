@@ -37,7 +37,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace Bubba
+namespace Baby
 {
     using Microsoft.Win32;
     using System;

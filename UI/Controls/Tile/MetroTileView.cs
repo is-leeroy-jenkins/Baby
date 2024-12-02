@@ -39,7 +39,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace Bubba
+namespace Baby
 {
     using Syncfusion.Windows.Shared;
     using System;

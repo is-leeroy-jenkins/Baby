@@ -1,15 +1,14 @@
 ﻿// ******************************************************************************************
 //     Assembly:                Baby
 //     Author:                  Terry D. Eppler
-//     Created:                 10-16-2024
+//     Created:                 12-02-2024
 // 
 //     Last Modified By:        Terry D. Eppler
-//     Last Modified On:        10-16-2024
+//     Last Modified On:        12-02-2024
 // ******************************************************************************************
 // <copyright file="WebBrowser.xaml.cs" company="Terry D. Eppler">
-//    A light-weight, full-featured, open-source web browser
-//    using widows presentation framework (WPF) that's written in C-Sharp
-//    and released under the MIT license.
+//    Bubba is a small windows (wpf) application for interacting with
+//    Chat GPT that's developed in C-Sharp under the MIT license
 // 
 //    Copyright ©  2020-2024 Terry D. Eppler
 // 
@@ -40,7 +39,7 @@
 // </summary>
 // ******************************************************************************************
 
-namespace Bubba
+namespace Baby
 {
     using System;
     using System.Diagnostics;
@@ -1520,7 +1519,7 @@ namespace Bubba
         /// <param name="tabItem">The tab strip.</param>
         /// <param name="url">The URL.</param>
         /// <returns></returns>
-        private BrowserTabItem AddNewBrowser( BrowserTabItem tabItem, String url )
+        private BrowserTabItem AddNewBrowser( BrowserTabItem tabItem, string url )
         {
             if( url == "" )
             {
@@ -2343,7 +2342,7 @@ namespace Bubba
                         26 => AppSettings[ "DOD" ],
                         27 => AppSettings[ "USNO" ],
                         28 => AppSettings[ "NWS" ],
-                        _ => AppSettings[ "Google" ]
+                        var _ => AppSettings[ "Google" ]
                     };
                 }
             }
@@ -2580,6 +2579,8 @@ namespace Bubba
                 {
                     _tab.Dispose( );
                 }
+
+                _timer?.Dispose( );
             }
             catch( Exception )
             {
@@ -2953,7 +2954,7 @@ namespace Bubba
         {
             try
             {
-                Application.Exit( );
+                Environment.Exit( 0 );
             }
             catch( Exception ex )
             {

@@ -66,7 +66,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - [Serializers](https://github.com/is-leeroy-jenkins/Baby/tree/main/Serializers) - custom serialization classes.
 - [Views](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Views) - windows used in the application.
 - [Themes](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Themes) - themes used on the application controls.
-- [Controls](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Controls) - classes for user inter-action
+- [Controls](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/Controls) - classes for the Baby user interface.
 - [WebPages](https://github.com/is-leeroy-jenkins/Baby/tree/main/UI/WebPages) - optional custom web page templates
 - `bin` - Binaries are included in the `bin` folder due to the complex CefSharp setup required. Don't empty this folder.
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages

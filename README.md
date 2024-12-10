@@ -47,10 +47,10 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 ## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/documentation.png)  Documentation
 
-- [User Guide](Docs/Users.md)
-- [Compilation Guide](Docs/Compilation.md)
-- [Configuration Guide](Docs/Configuration.md)
-- [Distribution Guide](Docs/Distribution.md)
+- [User Guide](Resources/Github/Users.md)
+- [Compilation Guide](Resources/Github/Compilation.md)
+- [Configuration Guide](Resources/Github/Configuration.md)
+- [Distribution Guide](Resources/Github/Distribution.md)
 
 ## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/csharp.png)  Code
 

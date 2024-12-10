@@ -1,5 +1,5 @@
-# How to use Bocefus
+# How to use Baby
 
-Simply run the executable `BocefusSetup.exe` and it should install.
+Simply run the executable `BabySetup.exe` and it should install.
 
 This only works on Windows.

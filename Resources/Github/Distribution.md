@@ -1,8 +1,8 @@
-# How to distribute Bocefus within your own Department/Agency/Region/Division/Branch/Section
+# How to distribute Baby within your own organization
 
 #### Step 1: Clone the source
 
-Create a Github clone of Badger using [our tutorial](Compilation.md).
+Create a Github clone of Baby using [our tutorial](Compilation.md).
 
 #### Step 2: Edit the configuration strings
  

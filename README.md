@@ -42,7 +42,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 # Getting started
 
-- See the [Compilation Guide](Docs/Compilation.md) for steps to get started.
+- See the [Compilation Guide](Resources/Github/Compilation.md) for steps to get started.
 
 
 ## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/documentation.png)  Documentation

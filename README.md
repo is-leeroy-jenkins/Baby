@@ -1,7 +1,8 @@
 #### Baby
 ## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Resources/Assets/DemoImages/Baby.png)
 
-#### An open source web browser written in C# and released under the MIT license.
+
+
 
 ## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/baby.png)  Features
 

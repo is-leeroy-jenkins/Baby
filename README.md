@@ -54,7 +54,7 @@ ___
 - [Compilation Guide](Resources/Github/Compilation.md)
 - [Configuration Guide](Resources/Github/Configuration.md)
 - [Distribution Guide](Resources/Github/Distribution.md)
-___
+
 
 ### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/csharp.png)  Code
 
@@ -75,6 +75,7 @@ ___
 - `bin` - Binaries are included in the `bin` folder due to the complex CefSharp setup required. Don't empty this folder.
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages
 
+___
 
 ### Baby Overview
 

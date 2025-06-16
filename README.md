@@ -43,7 +43,7 @@ ___
 - You need to install the version of VC++ Runtime that CEFSharp needs. Since we are using CefSharp 106, according to [this](https://github.com/cefsharp/CefSharp/#release-branches) we need the above versions
 
 
-# Getting started
+### Getting started
 
 - See the [Compilation Guide](Resources/Github/Compilation.md) for steps to get started.
 
@@ -54,6 +54,7 @@ ___
 - [Compilation Guide](Resources/Github/Compilation.md)
 - [Configuration Guide](Resources/Github/Configuration.md)
 - [Distribution Guide](Resources/Github/Distribution.md)
+___
 
 ### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/csharp.png)  Code
 
@@ -75,7 +76,7 @@ ___
 - `bin/storage` - HTML and JS required for downloads manager and custom error pages
 
 
-# Baby Overview
+### Baby Overview
 
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Overview.gif)

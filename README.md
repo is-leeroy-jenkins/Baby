@@ -1,10 +1,10 @@
 #### Baby
-## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Resources/Assets/DemoImages/Baby.png)
+### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Resources/Assets/DemoImages/Baby.png)
 
 
 
-
-## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/baby.png)  Features
+___
+### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/baby.png)  Features
 
 - HTML5, CSS3, JS, HTML5 Video, WebGL 3D, WebAssembly, etc
 - Tabbed browsing
@@ -17,8 +17,9 @@
 - Custom context menu
 - Easily add vendor-specific branding, buttons or hotkeys
 - View online & offline webpages
+___
 
-## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/tools.png)  Hotkeys
+### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/tools.png)  Hotkeys
 
 Hotkeys | Function
 ------------ | -------------
@@ -31,8 +32,9 @@ Ctrl+Tab	| Switch to the next tab
 Ctrl+Shift+Tab	| Switch to the previous tab
 Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
+___
 
-## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/system_requirements.png)  System requirements
+### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/system_requirements.png)  System requirements
 
 - You need [VC++ 2019 Runtime](https://aka.ms/vs/17/release/vc_redist.x64.exe) 32-bit and 64-bit versions
 
@@ -46,14 +48,14 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 - See the [Compilation Guide](Resources/Github/Compilation.md) for steps to get started.
 
 
-## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/documentation.png)  Documentation
+### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/documentation.png)  Documentation
 
 - [User Guide](Resources/Github/Users.md)
 - [Compilation Guide](Resources/Github/Compilation.md)
 - [Configuration Guide](Resources/Github/Configuration.md)
 - [Distribution Guide](Resources/Github/Distribution.md)
 
-## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/csharp.png)  Code
+### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/csharp.png)  Code
 
 - Baby uses CefSharp 106 and is built on NET 6
 - Baby supports AnyCPU as well as x86/x64 specific builds
@@ -79,17 +81,17 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Overview.gif)
 
 
-## Apple.com
+### Apple.com
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/1.png)
 
 
-## WebAssembly & WebGL
+### WebAssembly & WebGL
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/5.png)
 
 
-## YouTube
+### YouTube
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/6.png)
 
@@ -99,22 +101,23 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/2.png)
 
 
-## Search Bar
+### Search Bar
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/search.png)
 
 
-## Downloads Tab
+### Downloads Tab
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/3.png)
 
 
-## Developer Tools
+### Developer Tools
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/4.png)
 
+___
 
-## ![](https://github.com/is-leeroy-jenkins/Bubba/blob/master/Resources/Assets/GitHubImages/chrome.png) CefSharp Requirements
+### ![](https://github.com/is-leeroy-jenkins/Bubba/blob/master/Resources/Assets/GitHubImages/chrome.png) CefSharp Requirements
 
 #### The binaries directory must contain these required dependencies:
 
@@ -145,7 +148,7 @@ Ctrl+F		| Open search bar (Enter to find next, Esc to close)
 
 
 
-## 🙏 Acknowledgements
+### 🙏 Acknowledgements
 
 Bubba uses the following projects and libraries. Please consider supporting them as well (e.g., by starring their repositories):
 
@@ -176,9 +179,9 @@ Bubba uses the following projects and libraries. Please consider supporting them
 | [Syncfusion.UI.WPF.NET 24.1.41](https://www.nuget.org/packages/Syncfusion.UI.WPF.NET)          | Syncfusion WPF Controls is a library of 100+ WPF UI components and file formats to build modern WPF applications. 
 
 
+___
 
-
-## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Resources/Assets/GitHubImages/signature.png)  Code Signing 
+### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Resources/Assets/GitHubImages/signature.png)  Code Signing 
 
 Baby uses free code signing provided by [SignPath.io](https://signpath.io/) and a free code signing certificate
 from [SignPath Foundation](https://signpath.org/).
@@ -188,7 +191,7 @@ Build artifacts are automatically sent to [SignPath.io](https://signpath.io/) vi
 The signed binaries are then uploaded to the [GitHub releases](https://github.com/is-leeroy-jenkins/Baby/releases) page.
 
 
-## ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Resources/Assets/GitHubImages/web.png) Privacy Policy
+### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Resources/Assets/GitHubImages/web.png) Privacy Policy
 
 This program will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it.
 
@@ -198,7 +201,9 @@ Baby has integrated the following services for additional functions, which can b
 - [ipify.org](https://www.ipify.org/) (Retrieve the public IP address used by the client)
 - [ip-api.com](https://ip-api.com/docs/legal) (Retrieve network information such as geo location, ISP, DNS resolver used, etc. used by the client)
 
-## 📝 License
+___
+
+### 📝 License
 
 Baby is published under the [MIT General Public License v3](https://github.com/is-leeroy-jenkins/Baby/blob/main/LICENSE).
 

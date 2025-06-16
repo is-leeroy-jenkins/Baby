@@ -55,6 +55,7 @@ ___
 - [Configuration Guide](Resources/Github/Configuration.md)
 - [Distribution Guide](Resources/Github/Distribution.md)
 
+___
 
 ### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/csharp.png)  Code
 
@@ -81,42 +82,41 @@ ___
 
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/Overview.gif)
-
+___
 
 ### Apple.com
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/1.png)
-
+___
 
 ### WebAssembly & WebGL
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/5.png)
-
+___
 
 ### YouTube
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/6.png)
-
+___
 
 ## Google Maps
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/2.png)
-
+___
 
 ### Search Bar
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/search.png)
-
+___
 
 ### Downloads Tab
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/3.png)
-
+___
 
 ### Developer Tools
 
 ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Properties/4.png)
-
 ___
 
 ### ![](https://github.com/is-leeroy-jenkins/Bubba/blob/master/Resources/Assets/GitHubImages/chrome.png) CefSharp Requirements
@@ -148,7 +148,7 @@ ___
 #### By default `CEF` has it's own log file, `Debug.log` which is located in your executing folder. e.g. `bin`
 
 
-
+___
 
 ### 🙏 Acknowledgements
 
@@ -192,7 +192,7 @@ The binaries and installer are built on [AppVeyor](https://ci.appveyor.com/proje
 Build artifacts are automatically sent to [SignPath.io](https://signpath.io/) via webhook, where they are signed after manual approval by the maintainer.
 The signed binaries are then uploaded to the [GitHub releases](https://github.com/is-leeroy-jenkins/Baby/releases) page.
 
-
+___
 ### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Resources/Assets/GitHubImages/web.png) Privacy Policy
 
 This program will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it.

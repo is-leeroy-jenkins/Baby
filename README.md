@@ -1,6 +1,6 @@
 ###### Baby
 ### ![](https://github.com/is-leeroy-jenkins/Baby/blob/main/Resources/Assets/DemoImages/Baby.png)
-8lb 4oz of web-browsing omnipotence baked in a light-weight, full-featured browser in C# optimized for finance, and open source under the MIT license.
+##### 8lb 4oz of web-browsing omnipotence baked in a light-weight, full-featured browser in C# optimized for finance, and open source under the MIT license.
 
 
 ___

@@ -130,7 +130,7 @@ namespace Baby
             InitializeCefSharp( );
             var _key = ConfigurationManager.AppSettings[ "UI" ];
             SyncfusionLicenseProvider.RegisterLicense( _key );
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            ExcelPackage.License.SetNonCommercialPersonal( "Terry Eppler" );
             ActiveWindows = new Dictionary<string, Window>( );
             RegisterTheme( );
 

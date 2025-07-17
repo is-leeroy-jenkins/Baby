@@ -108,32 +108,32 @@ namespace Baby
         /// <summary>
         /// The left margin
         /// </summary>
-        private protected decimal _leftMargin;
+        private protected double _leftMargin;
 
         /// <summary>
         /// The right margin
         /// </summary>
-        private protected decimal _rightMargin;
+        private protected double _rightMargin;
 
         /// <summary>
         /// The header margin
         /// </summary>
-        private protected decimal _headerMargin;
+        private protected double _headerMargin;
 
         /// <summary>
         /// The top margin
         /// </summary>
-        private protected decimal _topMargin;
+        private protected double _topMargin;
 
         /// <summary>
         /// The footer margin
         /// </summary>
-        private protected decimal _footerMargin;
+        private protected double _footerMargin;
 
         /// <summary>
         /// The bottom margin
         /// </summary>
-        private protected decimal _bottomMargin;
+        private protected double _bottomMargin;
 
         /// <summary>
         /// The data connection

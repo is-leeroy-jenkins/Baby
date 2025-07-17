@@ -225,15 +225,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.Common.NETCore" Version="130.1.90" />
-    <PackageReference Include="CefSharp.Wpf.NETCore" Version="130.1.90" />
-    <PackageReference Include="EPPlus" Version="7.4.2" />
-    <PackageReference Include="EPPlus.Interfaces" Version="6.1.1" />
-    <PackageReference Include="EPPlus.System.Drawing" Version="6.1.1" />
+    <PackageReference Include="CefSharp.Common.NETCore" Version="138.0.170" />
+    <PackageReference Include="CefSharp.Wpf.NETCore" Version="138.0.170" />
+    <PackageReference Include="EPPlus" Version="8.0.7" />
+    <PackageReference Include="EPPlus.Interfaces" Version="8.0.0" />
+    <PackageReference Include="EPPlus.System.Drawing" Version="8.0.0" />
     <PackageReference Include="Google.Apis.CustomSearchAPI.v1" Version="1.68.0.3520" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
     <PackageReference Include="Microsoft.Office.Interop.Outlook" Version="15.0.4797.1004" />
-    <PackageReference Include="SkiaSharp" Version="2.88.9" />
+    <PackageReference Include="SkiaSharp" Version="3.119.0" />
     <PackageReference Include="Syncfusion.Licensing" Version="24.1.41" />
     <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="24.1.41" />
     <PackageReference Include="Syncfusion.Shared.Base" Version="24.1.41" />
@@ -241,7 +241,7 @@
     <PackageReference Include="Syncfusion.Themes.FluentDark.WPF" Version="24.1.41" />
     <PackageReference Include="Syncfusion.Tools.WPF" Version="24.1.41" />
     <PackageReference Include="Syncfusion.UI.WPF.NET" Version="24.1.41" />
-    <PackageReference Include="System.Data.OleDb" Version="8.0.1" />
+    <PackageReference Include="System.Data.OleDb" Version="9.0.7" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
     <PackageReference Include="ToastNotifications.Messages.Net6" Version="1.0.4" />
     <PackageReference Include="ToastNotifications.Net6" Version="1.0.4" />
@@ -448,15 +448,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="chromiumembeddedframework.runtime.win-arm64" Version="130.1.9" />
+    <PackageReference Update="chromiumembeddedframework.runtime.win-arm64" Version="138.0.17" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="chromiumembeddedframework.runtime.win-x64" Version="130.1.9" />
+    <PackageReference Update="chromiumembeddedframework.runtime.win-x64" Version="138.0.17" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="chromiumembeddedframework.runtime.win-x86" Version="130.1.9" />
+    <PackageReference Update="chromiumembeddedframework.runtime.win-x86" Version="138.0.17" />
   </ItemGroup>
 
 </Project>
